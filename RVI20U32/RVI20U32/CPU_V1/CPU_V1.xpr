@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="/media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020_1_MYIR_BRAM_DP/CPU_V1/CPU_V1.xpr">
+<Project Version="7" Minor="49" Path="/media/steckler/xilinx_linux/RISCV_ZYNQ/RVI20U32/RVI20U32/CPU_V1/CPU_V1.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="9575f41180e14107b52ae1c793f66669"/>
@@ -318,6 +318,12 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../../rv32i_vscode/prog.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../rv32i_vscode/prog_asm.coe">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>

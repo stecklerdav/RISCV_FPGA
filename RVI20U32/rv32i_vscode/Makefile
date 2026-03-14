@@ -23,7 +23,7 @@ LDFLAGS := -Wl,-T,link.ld,--gc-sections \
           --specs=nano.specs --specs=nosys.specs \
           -lc -lgcc
 
-LOADER_HDR := /media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020_1_MYIR_BRAM_DP/CPU_V1/vitis/RV32I/src/prog_array.h
+LOADER_HDR := /media/steckler/xilinx_linux/RISCV_ZYNQ/RVI20U32/RVI20U32/CPU_V1/vitis/RV32I/src/prog_array.h
 
 # Targets extra:
 # - prog.asm:   disassembly "puro" (sin intercalar C)
