@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="/media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020_1_MYIR_BRAM_DP/CPU_V1/vitis/bootloader_RV32I/export/bootloader_RV32I" key="sdx.custom.platform.repository.locations"/>
+</section>

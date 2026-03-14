@@ -1,0 +1,4 @@
+vhdl xil_defaultlib  \
+"../../../bd/RISCV/ip/RISCV_proc_sys_reset_0_0/sim/RISCV_proc_sys_reset_0_0.vhd" \
+
+nosort

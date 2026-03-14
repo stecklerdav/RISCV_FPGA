@@ -1,0 +1,44 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/Section_debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/Section_debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vivado_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/pc_unit.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_decoder.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_regfile.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_control_full.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ram_datav.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_alu.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_wb_mux.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_pc_redirect.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_imm_mux.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_opA_mux.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_opB_mux.v" \
+"../../../../CPU_V1.srcs/sources_1/new/pc_to_rom_addr.v" \
+"../../../../CPU_V1.srcs/sources_1/new/gpio_mmio.v" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_lsu.v" \
+"../../../../CPU_V1.srcs/sources_1/new/mmio_decode_ram_gpio.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_xlconstant_0_0/sim/RISCV_xlconstant_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_pc_unit_0_0/sim/RISCV_pc_unit_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_xlconstant_0_1/sim/RISCV_xlconstant_0_1.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_decoder_0_0/sim/RISCV_rv32i_decoder_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_regfile_0_0/sim/RISCV_rv32i_regfile_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_control_full_0_0/sim/RISCV_rv32i_control_full_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_ram_datav_0_0/sim/RISCV_rv32i_ram_datav_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_alu_0_0/sim/RISCV_rv32i_alu_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_wb_mux_0_0/sim/RISCV_rv32i_wb_mux_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_pc_redirect_0_0/sim/RISCV_rv32i_pc_redirect_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_imm_mux_0_0/sim/RISCV_rv32i_imm_mux_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_opA_mux_0_0/sim/RISCV_rv32i_opA_mux_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_rv32i_opB_mux_0_0/sim/RISCV_rv32i_opB_mux_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_dist_mem_gen_0_0/sim/RISCV_dist_mem_gen_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_pc_to_rom_addr_0_0/sim/RISCV_pc_to_rom_addr_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_gpio_mmio_0_0/sim/RISCV_gpio_mmio_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_mmio_decode_ram_gpio_0_0/sim/RISCV_mmio_decode_ram_gpio_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_zynq_ultra_ps_e_0_2/sim/RISCV_zynq_ultra_ps_e_0_2_vip_wrapper.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/ip/RISCV_xlconstant_3_0/sim/RISCV_xlconstant_3_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV/sim/RISCV.v" \
+"../../../../CPU_V1.srcs/sources_1/bd/RISCV/hdl/RISCV_wrapper.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

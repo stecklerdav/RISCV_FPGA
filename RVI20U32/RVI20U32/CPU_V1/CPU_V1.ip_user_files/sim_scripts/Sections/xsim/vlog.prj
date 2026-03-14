@@ -1,0 +1,30 @@
+verilog xil_defaultlib --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/1b7e/hdl/verilog" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/122e/hdl/verilog" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/b205/hdl/verilog" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/c968/hdl/verilog" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/Sections/ipshared/46fd/hdl" \
+"../../../bd/Sections/ip/Sections_gpio_mmio_0_0/sim/Sections_gpio_mmio_0_0.v" \
+"../../../bd/Sections/ip/Sections_ila_0_0/sim/Sections_ila_0_0.v" \
+"../../../bd/Sections/ip/Sections_mmio_decode_ram_gpio_0_0/sim/Sections_mmio_decode_ram_gpio_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_alu_0_0/sim/Sections_rv32i_alu_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_control_full_0_0/sim/Sections_rv32i_control_full_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_decoder_0_0/sim/Sections_rv32i_decoder_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_imm_mux_0_0/sim/Sections_rv32i_imm_mux_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_opA_mux_0_0/sim/Sections_rv32i_opA_mux_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_opB_mux_0_0/sim/Sections_rv32i_opB_mux_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_ram_datav_0_0/sim/Sections_rv32i_ram_datav_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_regfile_0_0/sim/Sections_rv32i_regfile_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_wb_mux_0_0/sim/Sections_rv32i_wb_mux_0_0.v" \
+"../../../bd/Sections/ip/Sections_xlconstant_0_0/sim/Sections_xlconstant_0_0.v" \
+"../../../bd/Sections/ip/Sections_zynq_ultra_ps_e_1_0/sim/Sections_zynq_ultra_ps_e_1_0_vip_wrapper.v" \
+"../../../bd/Sections/ip/Sections_xlconstant_3_0/sim/Sections_xlconstant_3_0.v" \
+"../../../bd/Sections/ip/Sections_pc_to_rom_addr_0_0/sim/Sections_pc_to_rom_addr_0_0.v" \
+"../../../bd/Sections/ip/Sections_pc_unit_0_0/sim/Sections_pc_unit_0_0.v" \
+"../../../bd/Sections/ip/Sections_rv32i_pc_redirect_0_0/sim/Sections_rv32i_pc_redirect_0_0.v" \
+"../../../bd/Sections/ip/Sections_xlconstant_1_0/sim/Sections_xlconstant_1_0.v" \
+"../../../bd/Sections/ip/Sections_vio_0_0/sim/Sections_vio_0_0.v" \
+"../../../bd/Sections/ip/Sections_util_vector_logic_0_0/sim/Sections_util_vector_logic_0_0.v" \
+"../../../bd/Sections/ip/Sections_blk_mem_gen_0_0/sim/Sections_blk_mem_gen_0_0.v" \
+"../../../bd/Sections/ip/Sections_xlconstant_0_1/sim/Sections_xlconstant_0_1.v" \
+"../../../bd/Sections/ip/Sections_xlconstant_1_1/sim/Sections_xlconstant_1_1.v" \
+"../../../bd/Sections/sim/Sections.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

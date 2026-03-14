@@ -1,0 +1,4 @@
+FAIL: gcc.c-torture/execute/printf-2.c
+FAIL: gcc.c-torture/execute/fprintf-2.c
+FAIL: gcc.c-torture/execute/user-printf.c
+FAIL: g++.dg/cpp2a/decomp2.C

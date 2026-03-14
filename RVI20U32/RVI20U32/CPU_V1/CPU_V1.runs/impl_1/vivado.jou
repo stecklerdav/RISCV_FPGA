@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Mon Mar  2 23:30:18 2026
+# Process ID: 11671
+# Current directory: /media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020_1_MYIR_BRAM_DP/CPU_V1/CPU_V1.runs/impl_1
+# Command line: vivado -log Section_debug_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Section_debug_wrapper.tcl -notrace
+# Log file: /media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020_1_MYIR_BRAM_DP/CPU_V1/CPU_V1.runs/impl_1/Section_debug_wrapper.vdi
+# Journal file: /media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020_1_MYIR_BRAM_DP/CPU_V1/CPU_V1.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source Section_debug_wrapper.tcl -notrace

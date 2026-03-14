@@ -1,0 +1,6 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../CPU_V1.ip_user_files/bd/A/ip/A_proc_sys_reset_0_0/sim/A_proc_sys_reset_0_0.vhd" \
+
+# Do not sort compile order
+nosort

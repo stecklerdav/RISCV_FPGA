@@ -1,0 +1,22 @@
+timestamp=[2026-02-28 23:06:26], mode=WORKBENCH_START, duration=0:00:04.177, duration_ms=4177, data={}
+timestamp=[2026-02-28 23:06:28], mode=WORKBENCH_UI_INIT, duration=0:00:01.914, duration_ms=1914, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2026-02-28 23:06:30], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:03.074, duration_ms=3074, data={}
+timestamp=[2026-02-28 23:08:52], mode=PLATFORM_CREATION, duration=0:00:11.745, duration_ms=11745, data={platform_source=dsa, os=standalone, processor=psu_cortexa53, platform=null}
+timestamp=[2026-02-28 23:09:39], mode=PLATFORM_GENERATION, duration=0:00:25.560, duration_ms=25560, data={name=bootloader_RV32I}
+timestamp=[2026-02-28 23:11:36], mode=APP_CREATION, duration=0:00:02.774, duration_ms=2774, data={name=RV32I, project_type=sdk, os=standalone, processor=cortex-a53, runtime=C/C++, platform=bootloader_RV32I, application_type=application}
+timestamp=[2026-02-28 23:13:03], mode=BUILD, duration=0:00:00.355, duration_ms=355, data={name=RV32I, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:13:09], mode=BUILD, duration=0:00:05.485, duration_ms=5485, data={name=RV32I_system, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:16:36], mode=BUILD, duration=0:00:00.336, duration_ms=336, data={name=RV32I, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:16:42], mode=BUILD, duration=0:00:05.388, duration_ms=5388, data={name=RV32I_system, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:23:30], mode=BUILD, duration=0:00:00.246, duration_ms=246, data={name=RV32I, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:23:36], mode=BUILD, duration=0:00:05.420, duration_ms=5420, data={name=RV32I_system, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:26:30], mode=PLATFORM_GENERATION, duration=0:00:05.238, duration_ms=5238, data={name=bootloader_RV32I}
+timestamp=[2026-02-28 23:26:30], mode=BUILD, duration=0:00:00.186, duration_ms=186, data={name=RV32I, configuration=Debug, clean_build=true}
+timestamp=[2026-02-28 23:26:55], mode=PLATFORM_GENERATION, duration=0:00:25.375, duration_ms=25375, data={name=bootloader_RV32I}
+timestamp=[2026-02-28 23:27:04], mode=BUILD, duration=0:00:00.339, duration_ms=339, data={name=RV32I, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:29:12], mode=PLATFORM_GENERATION, duration=0:00:05.285, duration_ms=5285, data={name=bootloader_RV32I}
+timestamp=[2026-02-28 23:29:13], mode=BUILD, duration=0:00:00.198, duration_ms=198, data={name=RV32I, configuration=Debug, clean_build=true}
+timestamp=[2026-02-28 23:29:38], mode=PLATFORM_GENERATION, duration=0:00:25.684, duration_ms=25684, data={name=bootloader_RV32I}
+timestamp=[2026-02-28 23:29:46], mode=BUILD, duration=0:00:00.353, duration_ms=353, data={name=RV32I, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:30:27], mode=BUILD, duration=0:00:00.196, duration_ms=196, data={name=RV32I, configuration=Debug, clean_build=false}
+timestamp=[2026-02-28 23:30:34], mode=BUILD, duration=0:00:07.058, duration_ms=7058, data={name=RV32I_system, configuration=Debug, clean_build=false}

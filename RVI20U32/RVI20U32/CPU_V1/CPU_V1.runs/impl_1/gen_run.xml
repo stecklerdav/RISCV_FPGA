@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1772493936">
+  <File Type="CFI_FILE" Name="Section_debug_wrapper.cfi"/>
+  <File Type="RCFI_FILE" Name="Section_debug_wrapper.rcfi"/>
+  <File Type="PDI-FILE" Name="Section_debug_wrapper.pdi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="Section_debug_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-RPX" Name="Section_debug_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="Section_debug_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="Section_debug_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="Section_debug_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="Section_debug_wrapper_postroute_physopt.dcp"/>
+  <File Type="PHYSOPT-DCP" Name="Section_debug_wrapper_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="Section_debug_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PWROPT-DCP" Name="Section_debug_wrapper_pwropt.dcp"/>
+  <File Type="PLACE-DCP" Name="Section_debug_wrapper_placed.dcp"/>
+  <File Type="OPT-DCP" Name="Section_debug_wrapper_opt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW" Name="Section_debug_wrapper_bus_skew_routed.rpt"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="Section_debug_wrapper.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="Section_debug_wrapper.sysdef"/>
+  <File Type="BITSTR-MMI" Name="Section_debug_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="Section_debug_wrapper_bd.bmm"/>
+  <File Type="ROUTE-CLK" Name="Section_debug_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="BITSTR-NKY" Name="Section_debug_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="Section_debug_wrapper.rbt"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="Section_debug_wrapper_bus_skew_routed.rpx"/>
+  <File Type="REPORTS-TCL" Name="Section_debug_wrapper_reports.tcl"/>
+  <File Type="ROUTE-TIMING-RPX" Name="Section_debug_wrapper_timing_summary_routed.rpx"/>
+  <File Type="BITSTR-MSK" Name="Section_debug_wrapper.msk"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="Section_debug_wrapper_bus_skew_routed.pb"/>
+  <File Type="PA-TCL" Name="Section_debug_wrapper.tcl"/>
+  <File Type="ROUTE-TIMING-PB" Name="Section_debug_wrapper_timing_summary_routed.pb"/>
+  <File Type="OPT-DRC" Name="Section_debug_wrapper_drc_opted.rpt"/>
+  <File Type="RBD_FILE" Name="Section_debug_wrapper.rbd"/>
+  <File Type="BG-BIN" Name="Section_debug_wrapper.bin"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="Section_debug_wrapper_timing_summary_routed.rpt"/>
+  <File Type="NPI_FILE" Name="Section_debug_wrapper.npi"/>
+  <File Type="BG-BGN" Name="Section_debug_wrapper.bgn"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="Section_debug_wrapper_routed_bb.dcp"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="RDI-RDI" Name="Section_debug_wrapper.vdi"/>
+  <File Type="RNPI_FILE" Name="Section_debug_wrapper.rnpi"/>
+  <File Type="BG-DRC" Name="Section_debug_wrapper.drc"/>
+  <File Type="ROUTE-ERROR-DCP" Name="Section_debug_wrapper_routed_error.dcp"/>
+  <File Type="BG-BIT" Name="Section_debug_wrapper.bit"/>
+  <File Type="ROUTE-STATUS-PB" Name="Section_debug_wrapper_route_status.pb"/>
+  <File Type="OPT-HWDEF" Name="Section_debug_wrapper.hwdef"/>
+  <File Type="PLACE-IO" Name="Section_debug_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="Section_debug_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="Section_debug_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="Section_debug_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="Section_debug_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="ROUTE-DRC" Name="Section_debug_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="Section_debug_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="Section_debug_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="Section_debug_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="Section_debug_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="Section_debug_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-DCP" Name="Section_debug_wrapper_routed.dcp"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/pc_unit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pc_to_rom_addr.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_decoder.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Section_debug/hdl/Section_debug_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/gpio_mmio.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_lsu.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mmio_decode_ram_gpio.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_alu.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_control_full.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_imm_mux.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_opA_mux.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_opB_mux.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_ram_datav.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_regfile.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_wb_mux.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_pc_redirect.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Sections/Sections.bd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/Sections/hdl/Sections_wrapper.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/RISCV/RISCV.bd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/RISCV/hdl/RISCV_wrapper.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rv32i_addr_imm_mux.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/eerom.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/stack_unit.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pc_jump_offset.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../rv32i_vscode/prog.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Section_debug_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2019"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+    <Step Id="write_device_image"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="Section_debug"/>
+</GenRun>

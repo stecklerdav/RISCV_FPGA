@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<wave_config>
+	<wave_state>
+	</wave_state>
+	<db_ref_list>
+		<db_ref path="/media/steckler/xilinx_linux/SDR_custom/SDR/Software/SDR_Firmware/CPU_N1_ONECYCLE_RISCV_2020.1_MYIR/CPU_V1/CPU_V1.hw/hw_1/wave/hw_ila_data_6/hw_ila_data_6.wdb" id="1" type="auto">
+			<top_modules>
+				<top_module name="top">
+				</top_module>
+			</top_modules>
+		</db_ref>
+	</db_ref_list>
+	<WVObjectSize size="9">
+	</WVObjectSize>
+	<wvobject fp_name="RISCV_i/rv32i_control_full_0_jal" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/rv32i_control_full_0_jal</obj_property>
+		<obj_property name="ObjectShortName">rv32i_control_full_0_jal</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/proc_sys_reset_0_peripheral_reset" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/proc_sys_reset_0_peripheral_reset</obj_property>
+		<obj_property name="ObjectShortName">proc_sys_reset_0_peripheral_reset</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/rv32i_control_full_0_jalr" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/rv32i_control_full_0_jalr</obj_property>
+		<obj_property name="ObjectShortName">rv32i_control_full_0_jalr</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/pc_unit_0_pc" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/pc_unit_0_pc[31:0]</obj_property>
+		<obj_property name="ObjectShortName">pc_unit_0_pc[31:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/xlconstant_3_dout" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/xlconstant_3_dout</obj_property>
+		<obj_property name="ObjectShortName">xlconstant_3_dout</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/rv32i_pc_redirect_0_pc_redirect_target" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/rv32i_pc_redirect_0_pc_redirect_target[31:0]</obj_property>
+		<obj_property name="ObjectShortName">rv32i_pc_redirect_0_pc_redirect_target[31:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/rv32i_pc_redirect_0_pc_redirect_valid" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/rv32i_pc_redirect_0_pc_redirect_valid</obj_property>
+		<obj_property name="ObjectShortName">rv32i_pc_redirect_0_pc_redirect_valid</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/dist_mem_gen_0_spo" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/dist_mem_gen_0_spo[31:0]</obj_property>
+		<obj_property name="ObjectShortName">dist_mem_gen_0_spo[31:0]</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="RISCV_i/zynq_ultra_ps_e_1_pl_clk1" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">RISCV_i/zynq_ultra_ps_e_1_pl_clk1</obj_property>
+		<obj_property name="ObjectShortName">zynq_ultra_ps_e_1_pl_clk1</obj_property>
+		<obj_property name="DisplayName">FullPathName</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+</wave_config>
+

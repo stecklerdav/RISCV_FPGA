@@ -1,0 +1,15 @@
+Cómo lo presentaría un ingeniero de industria
+
+Si tú subes tu proyecto a GitHub, tu /docs podría verse así:
+
+docs/
+ ├─ verification_plan.md
+ ├─ isa_compliance.md
+ ├─ datapath_verification.md
+ ├─ lsu_verification.md
+ ├─ mmio_gpio_verification.md
+ └─ fpga_bringup.md
+
+Y en el README principal:
+
+This repository implements and verifies a single-cycle RV32I processor. Verification covers ISA compliance, datapath correctness, LSU functionality, MMIO/GPIO integration, and FPGA bring-up.

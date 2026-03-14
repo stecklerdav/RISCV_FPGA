@@ -1,0 +1,6 @@
+UNRESOLVED: gcc.target/riscv/rvv/xtheadvector/prefix.c
+FAIL: gfortran.dg/ieee/modes_1.f90
+FAIL: gcc.target/riscv/rvv/vtype-call-clobbered.c
+UNRESOLVED: gcc.target/riscv/rvv/vtype-call-clobbered.c
+FAIL: gcc.target/riscv/rvv/xtheadvector/prefix.c
+FAIL: gfortran.dg/ieee/ieee_6.f90

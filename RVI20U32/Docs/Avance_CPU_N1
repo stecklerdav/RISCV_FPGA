@@ -1,0 +1,69 @@
+
+  *** Debo hacer las pruebas de verificacion y llenar los documentos necesarios ***
+
+
+
+
+02/03/2026
+
+	-Cree otro BD con ILA y VIO para la etapa IF verificacion.
+
+
+23/02/2026
+	- Genere bloques con subbloque para hacerlo mas legible, tambien corregio el mmio porque las direcciones no estaban correctas porque el decoder tenia direciones relativas con un offset y la ram no  		  estaba bien on eso. el gpio tambien no estaba referenciado a eso. simule el ILA en otro BD para no tocar el Original RISCV.
+	- Valores consistentes, probar mas sobre el MMIO Gpio.
+	- Genere en Docs los documentos para verificacion de harware a nivel industrial.
+ 
+
+
+22/02/2026
+	- no necesite una aplicacion en base al hardware solo debo generara el bitstream y cargarlo por jtag çuego veo el ILA y puntos d pruebas.
+
+              
+20/02/2026
+	- Genere la hardware_app con el xsa y ahora lo proximo es cargar la riscv_app con Run as.. y luego volver al vivado y cargar el bitstream de nuevo alli activara el ILA
+
+
+17/02/2026
+
+	-Genere todo el bitsteam + hardware de un riscv RV32i + ZynqMP en vivado Luego cargue el xsa en vitis.(Debo generar un  .c en vitis que active el clk del zynqMP para dar el clk al RISCV)  
+
+
+ 	
+15/12/2025
+
+	-videos sobre arquitectura RISCV
+
+13/12/2025
+ 
+        - complete las conexiones del cpu y agregue un zynq que servira como reloj(este cpu es uno sin saltos para tener solo instrucciones para el ALU) 
+	- ejecute la simulacion con program_sin_saltos.mem la cual la lee la iROM 
+        - cree una carpeta simulation donde guarde el archivo de simulacion tb_cpu_behav_iROM.wcfg. 
+
+
+13/12/2025
+ 
+        - complete las conexiones del cpu y agregue un zynq que servira como reloj(este cpu es uno sin saltos para tener solo instrucciones para el ALU) 
+	- ejecute la simulacion con program_sin_saltos.mem la cual la lee la iROM 
+        - cree una carpeta simulation donde guarde el archivo de simulacion tb_cpu_behav_iROM.wcfg. 
+
+10/12/2025
+ 
+        - siempre leer las ultimos archivos de conclusiones. 
+	- separe de pluto la carpeta de CPU_N1/CPU_V1 a esta direccion /media/steckler/xilinx_linux/SDR_custom/SDR/Software para hacerlo mas corta la ubicacionese es el proyecto a seguir desarrollando 	    
+	- interconecte todos los bloques de cada componente faltan algunos
+	- observe que instrucciones tales como sumaa resta mult div las ejecuta el bloque alu pero store load jum etc las ejecutan otros bloque y eso crea los tres tipos de formatos R, I, S
+	  alli intervienen multiplexores para emquetar registros en formatos diferentes y ejecutar la accion    
+
+  
+02/12/2025 David Steckler
+
+	-Cree otro proyecto llamado CPU_N1 en /media/steckler/xilinx_linux/SDR_custom/SDR/Software/plutosdr-fw/hdl/projects/CPU_N1/CPU_V1 el cual es solo el procesador para
+ 	 hacerle una simulacion falta interconectarlo y simularlo. 
+
+01/12/2025 David Steckler
+
+
+	-Adicione un procesador al BD, sin pipeline , sin FSM sin estados porque es mono-ciclo.interconectado a pluto- 
+	-Cree una carpeta  llamada "Procesador" en /media/steckler/xilinx_linux/SDR_custom/SDR/Software/plutosdr-fw/hdl/projects/pluto donde estan todos los documentos de 
+  	 el procesador.
