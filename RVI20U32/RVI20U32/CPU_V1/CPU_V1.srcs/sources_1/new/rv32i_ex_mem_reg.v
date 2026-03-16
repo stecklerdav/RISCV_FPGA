@@ -9,6 +9,7 @@ module rv32i_ex_mem_reg (
     input  wire [31:0] ex_alu_result,
     input  wire [31:0] ex_store_data,
     input  wire [31:0] ex_pc_plus4,
+    input  wire [31:0] ex_imm_u,       // NUEVO: inmediato U pipelineado
     input  wire [4:0]  ex_rd,
     input  wire        ex_mem_re,
     input  wire        ex_mem_we,
@@ -20,6 +21,7 @@ module rv32i_ex_mem_reg (
     output reg  [31:0] mem_alu_result,
     output reg  [31:0] mem_store_data,
     output reg  [31:0] mem_pc_plus4,
+    output reg  [31:0] mem_imm_u,      // NUEVO
     output reg  [4:0]  mem_rd,
     output reg         mem_mem_re,
     output reg         mem_mem_we,
@@ -34,6 +36,7 @@ module rv32i_ex_mem_reg (
             mem_alu_result   <= 32'd0;
             mem_store_data   <= 32'd0;
             mem_pc_plus4     <= 32'd0;
+            mem_imm_u        <= 32'd0;   // NUEVO
             mem_rd           <= 5'd0;
             mem_mem_re       <= 1'b0;
             mem_mem_we       <= 1'b0;
@@ -46,6 +49,7 @@ module rv32i_ex_mem_reg (
             mem_alu_result   <= ex_alu_result;
             mem_store_data   <= ex_store_data;
             mem_pc_plus4     <= ex_pc_plus4;
+            mem_imm_u        <= ex_imm_u;  // NUEVO
             mem_rd           <= ex_rd;
             mem_mem_re       <= ex_mem_re;
             mem_mem_we       <= ex_mem_we;

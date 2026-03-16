@@ -33,14 +33,15 @@ module rv32i_id_ex_reg (
     input  wire [31:0] id_rs1_data,
     input  wire [31:0] id_rs2_data,
     input  wire [31:0] id_imm,
+    input  wire [31:0] id_imm_u,   // NUEVO: inmediato tipo U dedicado
     input  wire [4:0]  id_rs1,
     input  wire [4:0]  id_rs2,
     input  wire [4:0]  id_rd,
 
     // Control EX
     input  wire [3:0]  id_alu_op,
-    input  wire [1:0]  id_op_a_sel,   // 00=rs1, 01=pc, 10=zero, 11=reserved
-    input  wire [1:0]  id_op_b_sel,   // 00=rs2, 01=imm, 10=4, 11=reserved
+    input  wire [1:0]  id_op_a_sel,
+    input  wire [1:0]  id_op_b_sel,
 
     input  wire        id_branch_en,
     input  wire [2:0]  id_branch_funct3,
@@ -50,12 +51,12 @@ module rv32i_id_ex_reg (
     // Control MEM
     input  wire        id_mem_re,
     input  wire        id_mem_we,
-    input  wire [1:0]  id_mem_size,      // 00=byte, 01=half, 10=word
-    input  wire        id_mem_unsigned,  // para loads unsigned
+    input  wire [1:0]  id_mem_size,
+    input  wire        id_mem_unsigned,
 
     // Control WB
     input  wire        id_rd_we,
-    input  wire [1:0]  id_wb_sel,        // 00=ALU, 01=MEM, 10=PC+4
+    input  wire [1:0]  id_wb_sel,
 
     // =========================
     // Salidas hacia EX
@@ -67,6 +68,7 @@ module rv32i_id_ex_reg (
     output reg  [31:0] ex_rs1_data,
     output reg  [31:0] ex_rs2_data,
     output reg  [31:0] ex_imm,
+    output reg  [31:0] ex_imm_u,   // NUEVO: inmediato U pipelineado
     output reg  [4:0]  ex_rs1,
     output reg  [4:0]  ex_rs2,
     output reg  [4:0]  ex_rd,
@@ -97,14 +99,13 @@ module rv32i_id_ex_reg (
     // =========================================================================
     always @(posedge clk) begin
         if (rst) begin
-            // -------------------------
             // Bubble/NOP en reset
-            // -------------------------
             ex_pc             <= 32'd0;
             ex_pc_plus4       <= 32'd0;
             ex_rs1_data       <= 32'd0;
             ex_rs2_data       <= 32'd0;
             ex_imm            <= 32'd0;
+            ex_imm_u          <= 32'd0;   // NUEVO
             ex_rs1            <= 5'd0;
             ex_rs2            <= 5'd0;
             ex_rd             <= 5'd0;
@@ -126,19 +127,15 @@ module rv32i_id_ex_reg (
             ex_rd_we          <= 1'b0;
             ex_wb_sel         <= 2'd0;
         end
+
         else if (flush) begin
-            // -------------------------
             // Insertar burbuja
-            // Muy importante para:
-            // - branch tomado
-            // - jal / jalr
-            // - hazards donde quieras matar la instrucción
-            // -------------------------
             ex_pc             <= 32'd0;
             ex_pc_plus4       <= 32'd0;
             ex_rs1_data       <= 32'd0;
             ex_rs2_data       <= 32'd0;
             ex_imm            <= 32'd0;
+            ex_imm_u          <= 32'd0;   // NUEVO
             ex_rs1            <= 5'd0;
             ex_rs2            <= 5'd0;
             ex_rd             <= 5'd0;
@@ -160,15 +157,15 @@ module rv32i_id_ex_reg (
             ex_rd_we          <= 1'b0;
             ex_wb_sel         <= 2'd0;
         end
+
         else if (stall) begin
-            // -------------------------
             // Congelar registro
-            // -------------------------
             ex_pc             <= ex_pc;
             ex_pc_plus4       <= ex_pc_plus4;
             ex_rs1_data       <= ex_rs1_data;
             ex_rs2_data       <= ex_rs2_data;
             ex_imm            <= ex_imm;
+            ex_imm_u          <= ex_imm_u;  // NUEVO
             ex_rs1            <= ex_rs1;
             ex_rs2            <= ex_rs2;
             ex_rd             <= ex_rd;
@@ -190,15 +187,15 @@ module rv32i_id_ex_reg (
             ex_rd_we          <= ex_rd_we;
             ex_wb_sel         <= ex_wb_sel;
         end
+
         else begin
-            // -------------------------
             // Captura normal ID -> EX
-            // -------------------------
             ex_pc             <= id_pc;
             ex_pc_plus4       <= id_pc_plus4;
             ex_rs1_data       <= id_rs1_data;
             ex_rs2_data       <= id_rs2_data;
             ex_imm            <= id_imm;
+            ex_imm_u          <= id_imm_u;  // NUEVO
             ex_rs1            <= id_rs1;
             ex_rs2            <= id_rs2;
             ex_rd             <= id_rd;

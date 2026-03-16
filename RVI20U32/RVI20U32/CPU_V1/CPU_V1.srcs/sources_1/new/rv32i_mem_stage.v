@@ -8,7 +8,9 @@ module rv32i_mem_stage (
     input  wire [31:0]  mem_alu_result,
     input  wire [31:0]  mem_store_data,
     input  wire [31:0]  mem_pc_plus4,
+    input  wire [31:0]  mem_imm_u,        // NUEVO
     input  wire [4:0]   mem_rd,
+    input  wire         mem_rd_we,        // NUEVO
 
     input  wire         mem_mem_re,
     input  wire         mem_mem_we,
@@ -28,7 +30,9 @@ module rv32i_mem_stage (
     // to MEM/WB
     output wire [31:0]  wb_alu_result,
     output wire [31:0]  wb_pc_plus4,
+    output wire [31:0]  wb_imm_u,         // NUEVO
     output wire [4:0]   wb_rd,
+    output wire         wb_rd_we,         // NUEVO
     output wire [1:0]   wb_sel
 
 );
@@ -133,7 +137,9 @@ module rv32i_mem_stage (
     //--------------------------------------------------------------------------
     assign wb_alu_result = mem_alu_result;
     assign wb_pc_plus4   = mem_pc_plus4;
+    assign wb_imm_u      = mem_imm_u;     // NUEVO
     assign wb_rd         = mem_rd;
+    assign wb_rd_we      = mem_rd_we;     // NUEVO
     assign wb_sel        = mem_wb_sel;
 
 endmodule
