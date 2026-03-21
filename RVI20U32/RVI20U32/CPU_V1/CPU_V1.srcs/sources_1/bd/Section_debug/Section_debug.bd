@@ -3005,24 +3005,9 @@
       },
       "RV32I_IF": {
         "ports": {
-          "pc": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
-          },
-          "addra": {
-            "direction": "O",
-            "left": "10",
-            "right": "0"
-          },
           "clk": {
             "type": "clk",
             "direction": "I"
-          },
-          "instr_rom_in": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
           },
           "rst": {
             "type": "rst",
@@ -3066,7 +3051,7 @@
               }
             },
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "pc_to_rom_addr",
               "boundary_crc": "0x0"
             },
@@ -3248,7 +3233,6 @@
           "pc_unit_0_pc": {
             "ports": [
               "pc_unit_0/pc",
-              "pc",
               "pc_to_rom_addr_0/pc",
               "rv32i_if_id_reg_0/pc_fetch_in"
             ]
@@ -3256,7 +3240,6 @@
           "pc_to_rom_addr_0_a": {
             "ports": [
               "pc_to_rom_addr_0/a",
-              "addra",
               "blk_mem_gen_0/addra"
             ]
           },
@@ -3271,7 +3254,6 @@
           "blk_mem_gen_0_douta": {
             "ports": [
               "blk_mem_gen_0/douta",
-              "instr_rom_in",
               "rv32i_if_id_reg_0/instr_rom_in"
             ]
           },

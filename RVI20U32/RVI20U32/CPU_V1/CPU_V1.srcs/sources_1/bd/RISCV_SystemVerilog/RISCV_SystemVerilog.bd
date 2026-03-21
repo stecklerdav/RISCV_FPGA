@@ -1,0 +1,1124 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xczu5ev-sfvc784-2-i",
+      "name": "RISCV_SystemVerilog",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.1"
+    },
+    "design_tree": {
+      "RV32I_IF": {
+        "util_vector_logic_0": "",
+        "pc_to_rom_addr_wrapp_0": "",
+        "blk_mem_gen_0": "",
+        "pc_unit_wrapper_0": "",
+        "rv32i_if_id_reg_wrap_0": ""
+      },
+      "RV32I_ID": {
+        "rv32i_imm_mux_wrapper_0": "",
+        "rv32i_control_full_w_0": "",
+        "rv32i_decoder_wrapper_0": "",
+        "rv32i_regfile_wrapper_0": "",
+        "rv32i_id_ex_reg_wrap_0": ""
+      }
+    },
+    "components": {
+      "RV32I_IF": {
+        "ports": {
+          "Hold": {
+            "direction": "I"
+          },
+          "Flush": {
+            "direction": "I"
+          },
+          "Pc_id_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "Pc_plus4_id_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "Instr_id_out": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "Valid_id_out": {
+            "direction": "O"
+          },
+          "Pc_redirect_valid": {
+            "direction": "I"
+          },
+          "Pc_redirect_target": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          }
+        },
+        "components": {
+          "util_vector_logic_0": {
+            "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+            "xci_name": "RISCV_SystemVerilog_util_vector_logic_0_0",
+            "parameters": {
+              "C_OPERATION": {
+                "value": "not"
+              },
+              "C_SIZE": {
+                "value": "1"
+              }
+            }
+          },
+          "pc_to_rom_addr_wrapp_0": {
+            "vlnv": "xilinx.com:module_ref:pc_to_rom_addr_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_pc_to_rom_addr_wrapp_0_0",
+            "parameters": {
+              "ADDR_W": {
+                "value": "11"
+              }
+            },
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "pc_to_rom_addr_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "a": {
+                "direction": "O",
+                "left": "10",
+                "right": "0"
+              }
+            }
+          },
+          "blk_mem_gen_0": {
+            "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+            "xci_name": "RISCV_SystemVerilog_blk_mem_gen_0_0",
+            "parameters": {
+              "Additional_Inputs_for_Power_Estimation": {
+                "value": "true"
+              },
+              "Coe_File": {
+                "value": "../../../../../../../../rv32i_vscode/prog_asm.coe"
+              },
+              "Enable_32bit_Address": {
+                "value": "false"
+              },
+              "Fill_Remaining_Memory_Locations": {
+                "value": "false"
+              },
+              "Load_Init_File": {
+                "value": "true"
+              },
+              "Memory_Type": {
+                "value": "Single_Port_ROM"
+              },
+              "Port_A_Clock": {
+                "value": "10"
+              },
+              "Port_A_Enable_Rate": {
+                "value": "10"
+              },
+              "Port_A_Write_Rate": {
+                "value": "0"
+              },
+              "Port_B_Clock": {
+                "value": "0"
+              },
+              "Port_B_Enable_Rate": {
+                "value": "0"
+              },
+              "Port_B_Write_Rate": {
+                "value": "0"
+              },
+              "Register_PortA_Output_of_Memory_Primitives": {
+                "value": "false"
+              },
+              "Use_RSTA_Pin": {
+                "value": "false"
+              },
+              "use_bram_block": {
+                "value": "Stand_Alone"
+              }
+            }
+          },
+          "pc_unit_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:pc_unit_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_pc_unit_wrapper_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "pc_unit_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "rst": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "pc_en": {
+                "direction": "I"
+              },
+              "pc_redirect_valid": {
+                "direction": "I"
+              },
+              "pc_redirect_target": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "pc": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "pc_plus4": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_if_id_reg_wrap_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_if_id_reg_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_if_id_reg_wrap_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_if_id_reg_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "rst": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "pc_fetch_in": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "pc_plus4_fetch_in": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "instr_rom_in": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "valid_fetch_in": {
+                "direction": "I"
+              },
+              "flush": {
+                "direction": "I"
+              },
+              "hold": {
+                "direction": "I"
+              },
+              "pc_id_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "pc_plus4_id_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "instr_id_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "valid_id_out": {
+                "direction": "O"
+              }
+            }
+          }
+        },
+        "nets": {
+          "util_vector_logic_0_Res": {
+            "ports": [
+              "util_vector_logic_0/Res",
+              "blk_mem_gen_0/ena",
+              "pc_unit_wrapper_0/pc_en"
+            ]
+          },
+          "pc_unit_wrapper_0_pc": {
+            "ports": [
+              "pc_unit_wrapper_0/pc",
+              "pc_to_rom_addr_wrapp_0/pc",
+              "rv32i_if_id_reg_wrap_0/pc_fetch_in"
+            ]
+          },
+          "pc_to_rom_addr_wrapp_0_a": {
+            "ports": [
+              "pc_to_rom_addr_wrapp_0/a",
+              "blk_mem_gen_0/addra"
+            ]
+          },
+          "Net": {
+            "ports": [
+              "clk",
+              "blk_mem_gen_0/clka",
+              "pc_unit_wrapper_0/clk",
+              "rv32i_if_id_reg_wrap_0/clk"
+            ]
+          },
+          "Net2": {
+            "ports": [
+              "rst",
+              "pc_unit_wrapper_0/rst",
+              "rv32i_if_id_reg_wrap_0/rst"
+            ]
+          },
+          "pc_unit_wrapper_0_pc_plus4": {
+            "ports": [
+              "pc_unit_wrapper_0/pc_plus4",
+              "rv32i_if_id_reg_wrap_0/pc_plus4_fetch_in"
+            ]
+          },
+          "blk_mem_gen_0_douta": {
+            "ports": [
+              "blk_mem_gen_0/douta",
+              "rv32i_if_id_reg_wrap_0/instr_rom_in"
+            ]
+          },
+          "Net1": {
+            "ports": [
+              "Hold",
+              "util_vector_logic_0/Op1",
+              "rv32i_if_id_reg_wrap_0/hold"
+            ]
+          },
+          "Flush_1": {
+            "ports": [
+              "Flush",
+              "rv32i_if_id_reg_wrap_0/flush"
+            ]
+          },
+          "rv32i_if_id_reg_wrap_0_pc_id_out": {
+            "ports": [
+              "rv32i_if_id_reg_wrap_0/pc_id_out",
+              "Pc_id_out"
+            ]
+          },
+          "rv32i_if_id_reg_wrap_0_pc_plus4_id_out": {
+            "ports": [
+              "rv32i_if_id_reg_wrap_0/pc_plus4_id_out",
+              "Pc_plus4_id_out"
+            ]
+          },
+          "rv32i_if_id_reg_wrap_0_instr_id_out": {
+            "ports": [
+              "rv32i_if_id_reg_wrap_0/instr_id_out",
+              "Instr_id_out"
+            ]
+          },
+          "rv32i_if_id_reg_wrap_0_valid_id_out": {
+            "ports": [
+              "rv32i_if_id_reg_wrap_0/valid_id_out",
+              "Valid_id_out"
+            ]
+          },
+          "Pc_redirect_valid_1": {
+            "ports": [
+              "Pc_redirect_valid",
+              "pc_unit_wrapper_0/pc_redirect_valid"
+            ]
+          },
+          "Pc_redirect_target_1": {
+            "ports": [
+              "Pc_redirect_target",
+              "pc_unit_wrapper_0/pc_redirect_target"
+            ]
+          }
+        }
+      },
+      "RV32I_ID": {
+        "ports": {
+          "id_pc": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "id_pc_plus4": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "instr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "clk": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          }
+        },
+        "components": {
+          "rv32i_imm_mux_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_imm_mux_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_imm_mux_wrapper_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_imm_mux_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "imm_sel": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "imm_i": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_s": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_b": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_u": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_j": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_control_full_w_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_control_full_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_control_full_w_0_3",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_control_full_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "opcode": {
+                "direction": "I",
+                "left": "6",
+                "right": "0"
+              },
+              "funct3": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "funct7": {
+                "direction": "I",
+                "left": "6",
+                "right": "0"
+              },
+              "fmt": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "bit30": {
+                "direction": "I"
+              },
+              "rd_we": {
+                "direction": "O"
+              },
+              "wb_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "alu_op": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "opA_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "opB_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "imm_sel": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "mem_re": {
+                "direction": "O"
+              },
+              "mem_we": {
+                "direction": "O"
+              },
+              "lsu_size": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "lsu_unsigned": {
+                "direction": "O"
+              },
+              "branch_en": {
+                "direction": "O"
+              },
+              "branch_f3": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "jal": {
+                "direction": "O"
+              },
+              "jalr": {
+                "direction": "O"
+              }
+            }
+          },
+          "rv32i_decoder_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_decoder_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_decoder_wrapper_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_decoder_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "instr": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "rs1": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "rs2": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "rd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "opcode": {
+                "direction": "O",
+                "left": "6",
+                "right": "0"
+              },
+              "funct3": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "funct7": {
+                "direction": "O",
+                "left": "6",
+                "right": "0"
+              },
+              "fmt": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "bit30": {
+                "direction": "O"
+              },
+              "imm_i": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_s": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_b": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_u": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_j": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "illegal_opcode": {
+                "direction": "O"
+              }
+            }
+          },
+          "rv32i_regfile_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_regfile_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_regfile_wrapper_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_regfile_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "rs1_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "rs2_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "rs1_rdata": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rs2_rdata": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rd_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "rd_wdata": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "rd_we": {
+                "direction": "I"
+              }
+            }
+          },
+          "rv32i_id_ex_reg_wrap_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_id_ex_reg_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_id_ex_reg_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I"
+              },
+              "rst": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "stall": {
+                "direction": "I"
+              },
+              "flush": {
+                "direction": "I"
+              },
+              "id_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_pc_plus4": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_rs1_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_rs2_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_imm": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_imm_u": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_rs1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "id_rs2": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "id_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "id_alu_op": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "id_op_a_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "id_op_b_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "id_branch_en": {
+                "direction": "I"
+              },
+              "id_branch_funct3": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "id_jal": {
+                "direction": "I"
+              },
+              "id_jalr": {
+                "direction": "I"
+              },
+              "id_mem_re": {
+                "direction": "I"
+              },
+              "id_mem_we": {
+                "direction": "I"
+              },
+              "id_mem_size": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "id_mem_unsigned": {
+                "direction": "I"
+              },
+              "id_rd_we": {
+                "direction": "I"
+              },
+              "id_wb_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_pc": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_pc_plus4": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs1_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs2_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_imm": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_imm_u": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs1": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_rs2": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_rd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_alu_op": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ex_op_a_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_op_b_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_branch_en": {
+                "direction": "O"
+              },
+              "ex_branch_funct3": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "ex_jal": {
+                "direction": "O"
+              },
+              "ex_jalr": {
+                "direction": "O"
+              },
+              "ex_mem_re": {
+                "direction": "O"
+              },
+              "ex_mem_we": {
+                "direction": "O"
+              },
+              "ex_mem_size": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_mem_unsigned": {
+                "direction": "O"
+              },
+              "ex_rd_we": {
+                "direction": "O"
+              },
+              "ex_wb_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              }
+            }
+          }
+        },
+        "nets": {
+          "rv32i_decoder_wrapper_0_imm_u": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/imm_u",
+              "rv32i_imm_mux_wrapper_0/imm_u",
+              "rv32i_id_ex_reg_wrap_0/id_imm_u"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_rs1": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/rs1",
+              "rv32i_regfile_wrapper_0/rs1_addr",
+              "rv32i_id_ex_reg_wrap_0/id_rs1"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_rs2": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/rs2",
+              "rv32i_regfile_wrapper_0/rs2_addr",
+              "rv32i_id_ex_reg_wrap_0/id_rs2"
+            ]
+          },
+          "rv32i_control_full_w_0_imm_sel": {
+            "ports": [
+              "rv32i_control_full_w_0/imm_sel",
+              "rv32i_imm_mux_wrapper_0/imm_sel"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_imm_j": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/imm_j",
+              "rv32i_imm_mux_wrapper_0/imm_j"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_imm_b": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/imm_b",
+              "rv32i_imm_mux_wrapper_0/imm_b"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_imm_s": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/imm_s",
+              "rv32i_imm_mux_wrapper_0/imm_s"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_imm_i": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/imm_i",
+              "rv32i_imm_mux_wrapper_0/imm_i"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_bit30": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/bit30",
+              "rv32i_control_full_w_0/bit30"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_fmt": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/fmt",
+              "rv32i_control_full_w_0/fmt"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_funct7": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/funct7",
+              "rv32i_control_full_w_0/funct7"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_funct3": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/funct3",
+              "rv32i_control_full_w_0/funct3"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_opcode": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/opcode",
+              "rv32i_control_full_w_0/opcode"
+            ]
+          },
+          "rv32i_control_full_w_0_wb_sel": {
+            "ports": [
+              "rv32i_control_full_w_0/wb_sel",
+              "rv32i_id_ex_reg_wrap_0/id_wb_sel"
+            ]
+          },
+          "rv32i_control_full_w_0_rd_we": {
+            "ports": [
+              "rv32i_control_full_w_0/rd_we",
+              "rv32i_id_ex_reg_wrap_0/id_rd_we"
+            ]
+          },
+          "rv32i_control_full_w_0_lsu_unsigned": {
+            "ports": [
+              "rv32i_control_full_w_0/lsu_unsigned",
+              "rv32i_id_ex_reg_wrap_0/id_mem_unsigned"
+            ]
+          },
+          "rv32i_control_full_w_0_lsu_size": {
+            "ports": [
+              "rv32i_control_full_w_0/lsu_size",
+              "rv32i_id_ex_reg_wrap_0/id_mem_size"
+            ]
+          },
+          "rv32i_control_full_w_0_mem_we": {
+            "ports": [
+              "rv32i_control_full_w_0/mem_we",
+              "rv32i_id_ex_reg_wrap_0/id_mem_we"
+            ]
+          },
+          "rv32i_control_full_w_0_mem_re": {
+            "ports": [
+              "rv32i_control_full_w_0/mem_re",
+              "rv32i_id_ex_reg_wrap_0/id_mem_re"
+            ]
+          },
+          "rv32i_control_full_w_0_jalr": {
+            "ports": [
+              "rv32i_control_full_w_0/jalr",
+              "rv32i_id_ex_reg_wrap_0/id_jalr"
+            ]
+          },
+          "rv32i_control_full_w_0_jal": {
+            "ports": [
+              "rv32i_control_full_w_0/jal",
+              "rv32i_id_ex_reg_wrap_0/id_jal"
+            ]
+          },
+          "rv32i_control_full_w_0_branch_f3": {
+            "ports": [
+              "rv32i_control_full_w_0/branch_f3",
+              "rv32i_id_ex_reg_wrap_0/id_branch_funct3"
+            ]
+          },
+          "rv32i_control_full_w_0_branch_en": {
+            "ports": [
+              "rv32i_control_full_w_0/branch_en",
+              "rv32i_id_ex_reg_wrap_0/id_branch_en"
+            ]
+          },
+          "rv32i_control_full_w_0_opB_sel": {
+            "ports": [
+              "rv32i_control_full_w_0/opB_sel",
+              "rv32i_id_ex_reg_wrap_0/id_op_b_sel"
+            ]
+          },
+          "rv32i_control_full_w_0_opA_sel": {
+            "ports": [
+              "rv32i_control_full_w_0/opA_sel",
+              "rv32i_id_ex_reg_wrap_0/id_op_a_sel"
+            ]
+          },
+          "rv32i_control_full_w_0_alu_op": {
+            "ports": [
+              "rv32i_control_full_w_0/alu_op",
+              "rv32i_id_ex_reg_wrap_0/id_alu_op"
+            ]
+          },
+          "rv32i_decoder_wrapper_0_rd": {
+            "ports": [
+              "rv32i_decoder_wrapper_0/rd",
+              "rv32i_id_ex_reg_wrap_0/id_rd"
+            ]
+          },
+          "rv32i_imm_mux_wrapper_0_imm_out": {
+            "ports": [
+              "rv32i_imm_mux_wrapper_0/imm_out",
+              "rv32i_id_ex_reg_wrap_0/id_imm"
+            ]
+          },
+          "rv32i_regfile_wrapper_0_rs2_rdata": {
+            "ports": [
+              "rv32i_regfile_wrapper_0/rs2_rdata",
+              "rv32i_id_ex_reg_wrap_0/id_rs2_data"
+            ]
+          },
+          "rv32i_regfile_wrapper_0_rs1_rdata": {
+            "ports": [
+              "rv32i_regfile_wrapper_0/rs1_rdata",
+              "rv32i_id_ex_reg_wrap_0/id_rs1_data"
+            ]
+          },
+          "id_pc_1": {
+            "ports": [
+              "id_pc",
+              "rv32i_id_ex_reg_wrap_0/id_pc"
+            ]
+          },
+          "id_pc_plus4_1": {
+            "ports": [
+              "id_pc_plus4",
+              "rv32i_id_ex_reg_wrap_0/id_pc_plus4"
+            ]
+          },
+          "instr_1": {
+            "ports": [
+              "instr",
+              "rv32i_decoder_wrapper_0/instr"
+            ]
+          },
+          "Net": {
+            "ports": [
+              "clk",
+              "rv32i_id_ex_reg_wrap_0/clk",
+              "rv32i_regfile_wrapper_0/clk"
+            ]
+          },
+          "rst_1": {
+            "ports": [
+              "rst",
+              "rv32i_id_ex_reg_wrap_0/rst"
+            ]
+          }
+        }
+      }
+    },
+    "nets": {
+      "RV32I_IF_Pc_id_out": {
+        "ports": [
+          "RV32I_IF/Pc_id_out",
+          "RV32I_ID/id_pc"
+        ]
+      },
+      "RV32I_IF_Pc_plus4_id_out": {
+        "ports": [
+          "RV32I_IF/Pc_plus4_id_out",
+          "RV32I_ID/id_pc_plus4"
+        ]
+      },
+      "RV32I_IF_Instr_id_out": {
+        "ports": [
+          "RV32I_IF/Instr_id_out",
+          "RV32I_ID/instr"
+        ]
+      },
+      "clk_1": {
+        "ports": [
+          "RV32I_IF/clk",
+          "RV32I_ID/clk"
+        ]
+      },
+      "rst_1": {
+        "ports": [
+          "RV32I_IF/rst",
+          "RV32I_ID/rst"
+        ]
+      }
+    }
+  }
+}

@@ -1,5 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../bd/Sections/ip/Sections_proc_sys_reset_0_0/sim/Sections_proc_sys_reset_0_0.vhd" \
-"../../../bd/Sections/ip/Sections_axi_bram_ctrl_0_0/sim/Sections_axi_bram_ctrl_0_0.vhd" \
-
-nosort
