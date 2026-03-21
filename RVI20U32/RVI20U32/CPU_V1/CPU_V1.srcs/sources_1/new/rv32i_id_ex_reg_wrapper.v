@@ -12,6 +12,9 @@ module rv32i_id_ex_reg_wrapper (
     // Entradas desde ID
     // =========================
 
+    // Validez pipelineada
+    input  wire        id_valid,
+
     // Datos
     input  wire [31:0] id_pc,
     input  wire [31:0] id_pc_plus4,
@@ -46,6 +49,9 @@ module rv32i_id_ex_reg_wrapper (
     // Salidas hacia EX
     // =========================
 
+    // Validez pipelineada
+    output wire        ex_valid,
+
     // Datos
     output wire [31:0] ex_pc,
     output wire [31:0] ex_pc_plus4,
@@ -78,11 +84,12 @@ module rv32i_id_ex_reg_wrapper (
 );
 
     // Total bits:
-    // 32+32+32+32+32+32 +5+5+5 +4+2+2+1+3+1+1 +1+1+2+1 +1+2 = 229
-    wire [228:0] id_in_flat;
-    wire [228:0] ex_out_flat;
+    // 1 + 229 = 230 bits
+    wire [229:0] id_in_flat;
+    wire [229:0] ex_out_flat;
 
     assign id_in_flat = {
+        id_valid,
         id_pc,
         id_pc_plus4,
         id_rs1_data,
@@ -107,7 +114,9 @@ module rv32i_id_ex_reg_wrapper (
         id_wb_sel
     };
 
-    rv32i_id_ex_reg u_rv32i_id_ex_reg (
+    rv32i_id_ex_reg #(
+        .WIDTH(230)
+    ) u_rv32i_id_ex_reg (
         .clk    (clk),
         .rst    (rst),
         .stall  (stall),
@@ -117,6 +126,7 @@ module rv32i_id_ex_reg_wrapper (
     );
 
     assign {
+        ex_valid,
         ex_pc,
         ex_pc_plus4,
         ex_rs1_data,
@@ -142,3 +152,4 @@ module rv32i_id_ex_reg_wrapper (
     } = ex_out_flat;
 
 endmodule
+            

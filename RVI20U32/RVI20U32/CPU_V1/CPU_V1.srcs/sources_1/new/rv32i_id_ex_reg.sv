@@ -26,10 +26,7 @@ module rv32i_id_ex_reg (
         else if (flush) begin
             ex_reg <= '0;
         end
-        else if (stall) begin
-            ex_reg <= ex_reg;
-        end
-        else begin
+        else if (!stall) begin
             ex_reg <= id_in;
         end
     end

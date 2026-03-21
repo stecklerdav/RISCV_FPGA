@@ -4467,7 +4467,7 @@
             "vlnv": "xilinx.com:module_ref:rv32i_operand_a_mux:1.0",
             "xci_name": "Section_debug_rv32i_operand_a_mux_0_0",
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "rv32i_operand_a_mux",
               "boundary_crc": "0x0"
             },
@@ -4498,7 +4498,7 @@
             "vlnv": "xilinx.com:module_ref:rv32i_alu:1.0",
             "xci_name": "Section_debug_rv32i_alu_0_0",
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "rv32i_alu",
               "boundary_crc": "0x0"
             },
@@ -4529,7 +4529,7 @@
             "vlnv": "xilinx.com:module_ref:rv32i_branch_unit:1.0",
             "xci_name": "Section_debug_rv32i_branch_unit_0_0",
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "rv32i_branch_unit",
               "boundary_crc": "0x0"
             },
@@ -4585,7 +4585,7 @@
             "vlnv": "xilinx.com:module_ref:rv32i_operand_b_mux:1.0",
             "xci_name": "Section_debug_rv32i_operand_b_mux_0_0",
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "rv32i_operand_b_mux",
               "boundary_crc": "0x0"
             },
@@ -4616,7 +4616,7 @@
             "vlnv": "xilinx.com:module_ref:rv32i_ex_mem_reg:1.0",
             "xci_name": "Section_debug_rv32i_ex_mem_reg_0_0",
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "rv32i_ex_mem_reg",
               "boundary_crc": "0x0"
             },
@@ -5255,7 +5255,7 @@
             "vlnv": "xilinx.com:module_ref:rv32i_mem_stage:1.0",
             "xci_name": "Section_debug_rv32i_mem_stage_0_1",
             "reference_info": {
-              "ref_type": "hdl",
+              "ref_type": "unknown",
               "ref_name": "rv32i_mem_stage",
               "boundary_crc": "0x0"
             },

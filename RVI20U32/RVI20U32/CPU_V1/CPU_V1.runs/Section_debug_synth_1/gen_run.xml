@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="Section_debug_synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1772493916">
-  <File Type="REPORTS-TCL" Name="Section_debug_reports.tcl"/>
-  <File Type="PA-TCL" Name="Section_debug.tcl"/>
   <File Type="RDS-DCP" Name="Section_debug.dcp"/>
-  <File Type="RDS-RDS" Name="Section_debug.vds"/>
-  <File Type="RDS-UTIL" Name="Section_debug_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="Section_debug_utilization_synth.pb"/>
+  <File Type="PA-TCL" Name="Section_debug.tcl"/>
+  <File Type="RDS-UTIL" Name="Section_debug_utilization_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="Section_debug_reports.tcl"/>
+  <File Type="RDS-RDS" Name="Section_debug.vds"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/Section_debug">
     <File Path="$PSRCDIR/sources_1/bd/Section_debug/Section_debug.bd">
       <FileInfo>
