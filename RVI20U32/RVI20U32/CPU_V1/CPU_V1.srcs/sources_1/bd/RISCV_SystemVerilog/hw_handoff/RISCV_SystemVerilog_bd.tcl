@@ -183,11 +183,11 @@ proc create_hier_cell_RV32I_WB { parentCell nameHier } {
    }
   
   # Create port connections
-  connect_bd_net -net RV32I_MEM_wb_alu_result [get_bd_pins alu_y] [get_bd_pins rv32i_wb_mux_wrapper_0/alu_y]
-  connect_bd_net -net RV32I_MEM_wb_data [get_bd_pins load_data] [get_bd_pins rv32i_wb_mux_wrapper_0/load_data]
-  connect_bd_net -net RV32I_MEM_wb_imm_u [get_bd_pins imm_u] [get_bd_pins rv32i_wb_mux_wrapper_0/imm_u]
-  connect_bd_net -net RV32I_MEM_wb_pc_plus4 [get_bd_pins pc_plus4] [get_bd_pins rv32i_wb_mux_wrapper_0/pc_plus4]
-  connect_bd_net -net RV32I_MEM_wb_sel [get_bd_pins wb_sel] [get_bd_pins rv32i_wb_mux_wrapper_0/wb_sel]
+  connect_bd_net -net alu_y_1 [get_bd_pins alu_y] [get_bd_pins rv32i_wb_mux_wrapper_0/alu_y]
+  connect_bd_net -net imm_u_1 [get_bd_pins imm_u] [get_bd_pins rv32i_wb_mux_wrapper_0/imm_u]
+  connect_bd_net -net load_data_1 [get_bd_pins load_data] [get_bd_pins rv32i_wb_mux_wrapper_0/load_data]
+  connect_bd_net -net pc_plus4_1 [get_bd_pins pc_plus4] [get_bd_pins rv32i_wb_mux_wrapper_0/pc_plus4]
+  connect_bd_net -net wb_sel_1 [get_bd_pins wb_sel] [get_bd_pins rv32i_wb_mux_wrapper_0/wb_sel]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -777,9 +777,11 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -from 3 -to 0 alu_op
+  create_bd_pin -dir O branch_taken
   create_bd_pin -dir I -type clk clk
   create_bd_pin -dir I ex_branch_en
   create_bd_pin -dir I -from 2 -to 0 ex_branch_funct3
+  create_bd_pin -dir O ex_flush_req
   create_bd_pin -dir I -from 31 -to 0 ex_imm_u
   create_bd_pin -dir I ex_jal
   create_bd_pin -dir I ex_jalr
@@ -896,6 +898,7 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   connect_bd_net -net rv32i_branch_unit_wr_0_ex_exception_cause [get_bd_pins rv32i_branch_unit_wr_0/ex_exception_cause] [get_bd_pins rv32i_ex_mem_reg_wra_0/ex_exception_cause]
   connect_bd_net -net rv32i_branch_unit_wr_0_ex_exception_tval [get_bd_pins rv32i_branch_unit_wr_0/ex_exception_tval] [get_bd_pins rv32i_ex_mem_reg_wra_0/ex_exception_tval]
   connect_bd_net -net rv32i_branch_unit_wr_0_ex_exception_valid [get_bd_pins rv32i_branch_unit_wr_0/ex_exception_valid] [get_bd_pins rv32i_ex_mem_reg_wra_0/ex_exception_valid]
+  connect_bd_net -net rv32i_branch_unit_wr_0_ex_flush_req [get_bd_pins ex_flush_req] [get_bd_pins rv32i_branch_unit_wr_0/ex_flush_req]
   connect_bd_net -net rv32i_branch_unit_wr_0_pc_redirect_target [get_bd_pins pc_redirect_target] [get_bd_pins rv32i_branch_unit_wr_0/pc_redirect_target]
   connect_bd_net -net rv32i_branch_unit_wr_0_pc_redirect_valid [get_bd_pins pc_redirect_valid] [get_bd_pins rv32i_branch_unit_wr_0/pc_redirect_valid]
   connect_bd_net -net rv32i_ex_mem_reg_wra_0_mem_alu_result [get_bd_pins mem_alu_result] [get_bd_pins rv32i_ex_mem_reg_wra_0/mem_alu_result]
@@ -973,6 +976,12 @@ proc create_root_design { parentCell } {
 
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+
+  # Create instance: xlconstant_1, and set properties
+  set xlconstant_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+ ] $xlconstant_1
 
   # Create instance: zynq_ultra_ps_e_1, and set properties
   set zynq_ultra_ps_e_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.3 zynq_ultra_ps_e_1 ]
@@ -2491,6 +2500,8 @@ proc create_root_design { parentCell } {
  ] $zynq_ultra_ps_e_1
 
   # Create port connections
+  connect_bd_net -net Flush_1 [get_bd_pins RV32I_EX/ex_flush_req] [get_bd_pins RV32I_IF/Flush]
+  connect_bd_net -net Hold_1 [get_bd_pins RV32I_IF/Hold] [get_bd_pins xlconstant_1/dout]
   connect_bd_net -net Net [get_bd_pins RV32I_EX/rs2_data] [get_bd_pins RV32I_ID/ex_rs2_data]
   connect_bd_net -net Net1 [get_bd_pins RV32I_EX/ex_valid] [get_bd_pins RV32I_ID/ex_valid]
   connect_bd_net -net Pc_redirect_target_1 [get_bd_pins RV32I_EX/pc_redirect_target] [get_bd_pins RV32I_IF/Pc_redirect_target]

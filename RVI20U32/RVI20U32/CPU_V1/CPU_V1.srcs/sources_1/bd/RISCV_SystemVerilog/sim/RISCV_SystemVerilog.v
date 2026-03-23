@@ -1,18 +1,20 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat Mar 21 20:22:40 2026
-//Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
+//Date        : Mon Mar 23 00:39:09 2026
+//Host        : xilinx running 64-bit Ubuntu 25.10
 //Command     : generate_target RISCV_SystemVerilog.bd
 //Design      : RISCV_SystemVerilog
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_SystemVerilog,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=33,numReposBlks=27,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "RISCV_SystemVerilog.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_SystemVerilog,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_SystemVerilog,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=34,numReposBlks=28,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "RISCV_SystemVerilog.hwdef" *) 
 module RISCV_SystemVerilog
    ();
 
+  wire Flush_1;
+  wire [0:0]Hold_1;
   wire [31:0]Net;
   wire Net1;
   wire [31:0]Pc_redirect_target_1;
@@ -66,6 +68,7 @@ module RISCV_SystemVerilog
         .clk(zynq_ultra_ps_e_1_pl_clk0),
         .ex_branch_en(RV32I_ID_ex_branch_en),
         .ex_branch_funct3(RV32I_ID_ex_branch_funct3),
+        .ex_flush_req(Flush_1),
         .ex_imm_u(RV32I_ID_ex_imm_u),
         .ex_jal(RV32I_ID_ex_jal),
         .ex_jalr(RV32I_ID_ex_jalr),
@@ -127,8 +130,8 @@ module RISCV_SystemVerilog
         .instr(RV32I_IF_Instr_id_out),
         .rst(rst_1));
   RV32I_IF_imp_P41UV7 RV32I_IF
-       (.Flush(1'b0),
-        .Hold(1'b0),
+       (.Flush(Flush_1),
+        .Hold(Hold_1),
         .Instr_id_out(RV32I_IF_Instr_id_out),
         .Pc_id_out(RV32I_IF_Pc_id_out),
         .Pc_plus4_id_out(RV32I_IF_Pc_plus4_id_out),
@@ -168,6 +171,8 @@ module RISCV_SystemVerilog
         .wb_sel(RV32I_MEM_wb_sel));
   RISCV_SystemVerilog_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
+  RISCV_SystemVerilog_xlconstant_0_2 xlconstant_1
+       (.dout(Hold_1));
   RISCV_SystemVerilog_zynq_ultra_ps_e_1_0 zynq_ultra_ps_e_1
        (.emio_can0_phy_rx(1'b0),
         .emio_gpio_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
@@ -191,9 +196,11 @@ endmodule
 
 module RV32I_EX_imp_159D1QK
    (alu_op,
+    branch_taken,
     clk,
     ex_branch_en,
     ex_branch_funct3,
+    ex_flush_req,
     ex_imm_u,
     ex_jal,
     ex_jalr,
@@ -227,9 +234,11 @@ module RV32I_EX_imp_159D1QK
     rs2_data,
     rst);
   input [3:0]alu_op;
+  output branch_taken;
   input clk;
   input ex_branch_en;
   input [2:0]ex_branch_funct3;
+  output ex_flush_req;
   input [31:0]ex_imm_u;
   input ex_jal;
   input ex_jalr;
@@ -290,6 +299,7 @@ module RV32I_EX_imp_159D1QK
   wire [3:0]rv32i_branch_unit_wr_0_ex_exception_cause;
   wire [31:0]rv32i_branch_unit_wr_0_ex_exception_tval;
   wire rv32i_branch_unit_wr_0_ex_exception_valid;
+  wire rv32i_branch_unit_wr_0_ex_flush_req;
   wire [31:0]rv32i_branch_unit_wr_0_pc_redirect_target;
   wire rv32i_branch_unit_wr_0_pc_redirect_valid;
   wire [31:0]rv32i_ex_mem_reg_wra_0_mem_alu_result;
@@ -328,6 +338,7 @@ module RV32I_EX_imp_159D1QK
   assign RV32I_ID_ex_rs1_data = ex_rs1_data[31:0];
   assign RV32I_ID_ex_wb_sel = ex_wb_sel[1:0];
   assign clk_1 = clk;
+  assign ex_flush_req = rv32i_branch_unit_wr_0_ex_flush_req;
   assign mem_alu_result[31:0] = rv32i_ex_mem_reg_wra_0_mem_alu_result;
   assign mem_imm_u[31:0] = rv32i_ex_mem_reg_wra_0_mem_imm_u;
   assign mem_mem_re = rv32i_ex_mem_reg_wra_0_mem_mem_re;
@@ -353,6 +364,7 @@ module RV32I_EX_imp_159D1QK
         .ex_exception_cause(rv32i_branch_unit_wr_0_ex_exception_cause),
         .ex_exception_tval(rv32i_branch_unit_wr_0_ex_exception_tval),
         .ex_exception_valid(rv32i_branch_unit_wr_0_ex_exception_valid),
+        .ex_flush_req(rv32i_branch_unit_wr_0_ex_flush_req),
         .ex_imm(RV32I_ID_ex_imm),
         .ex_jal(RV32I_ID_ex_jal),
         .ex_jalr(RV32I_ID_ex_jalr),
@@ -926,21 +938,21 @@ module RV32I_WB_imp_12X75AE
   input [31:0]pc_plus4;
   input [1:0]wb_sel;
 
-  wire [31:0]RV32I_MEM_wb_alu_result;
-  wire [31:0]RV32I_MEM_wb_data;
-  wire [31:0]RV32I_MEM_wb_imm_u;
-  wire [31:0]RV32I_MEM_wb_pc_plus4;
-  wire [1:0]RV32I_MEM_wb_sel;
+  wire [31:0]alu_y_1;
+  wire [31:0]imm_u_1;
+  wire [31:0]load_data_1;
+  wire [31:0]pc_plus4_1;
+  wire [1:0]wb_sel_1;
 
-  assign RV32I_MEM_wb_alu_result = alu_y[31:0];
-  assign RV32I_MEM_wb_data = load_data[31:0];
-  assign RV32I_MEM_wb_imm_u = imm_u[31:0];
-  assign RV32I_MEM_wb_pc_plus4 = pc_plus4[31:0];
-  assign RV32I_MEM_wb_sel = wb_sel[1:0];
+  assign alu_y_1 = alu_y[31:0];
+  assign imm_u_1 = imm_u[31:0];
+  assign load_data_1 = load_data[31:0];
+  assign pc_plus4_1 = pc_plus4[31:0];
+  assign wb_sel_1 = wb_sel[1:0];
   RISCV_SystemVerilog_rv32i_wb_mux_wrapper_0_0 rv32i_wb_mux_wrapper_0
-       (.alu_y(RV32I_MEM_wb_alu_result),
-        .imm_u(RV32I_MEM_wb_imm_u),
-        .load_data(RV32I_MEM_wb_data),
-        .pc_plus4(RV32I_MEM_wb_pc_plus4),
-        .wb_sel(RV32I_MEM_wb_sel));
+       (.alu_y(alu_y_1),
+        .imm_u(imm_u_1),
+        .load_data(load_data_1),
+        .pc_plus4(pc_plus4_1),
+        .wb_sel(wb_sel_1));
 endmodule

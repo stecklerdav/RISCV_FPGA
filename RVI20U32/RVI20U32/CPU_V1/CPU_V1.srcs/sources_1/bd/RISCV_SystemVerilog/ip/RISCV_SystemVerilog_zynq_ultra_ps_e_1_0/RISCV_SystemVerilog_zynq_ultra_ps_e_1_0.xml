@@ -10,7 +10,9 @@
       <spirit:busType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm" spirit:version="1.0"/>
       <spirit:abstractionType spirit:vendor="xilinx.com" spirit:library="interface" spirit:name="aximm_rtl" spirit:version="1.0"/>
       <spirit:master>
-        <spirit:addressSpaceRef spirit:addressSpaceRef="Data"/>
+        <spirit:addressSpaceRef spirit:addressSpaceRef="Data">
+          <spirit:baseAddress spirit:format="long">0x80000000</spirit:baseAddress>
+        </spirit:addressSpaceRef>
       </spirit:master>
       <spirit:portMaps>
         <spirit:portMap>
@@ -23090,7 +23092,7 @@
     <spirit:addressSpace>
       <spirit:name>Data</spirit:name>
       <spirit:displayName>Data</spirit:displayName>
-      <spirit:range spirit:format="long">1600000000000</spirit:range>
+      <spirit:range>1T</spirit:range>
       <spirit:width spirit:format="long">64</spirit:width>
       <spirit:segments>
         <spirit:segment>
