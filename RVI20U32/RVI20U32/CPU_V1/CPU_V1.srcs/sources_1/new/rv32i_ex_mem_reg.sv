@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`include "rv32i_ex_mem_reg_types.svh"
+import rv32i_ex_mem_reg_types_pkg::*;
 
 module rv32i_ex_mem_reg (
     input  logic                     clk,

@@ -18,26 +18,26 @@
         "rv32i_if_id_reg_wrap_0": ""
       },
       "RV32I_ID": {
-        "rv32i_imm_mux_wrapper_0": "",
         "rv32i_control_full_w_0": "",
-        "rv32i_decoder_wrapper_0": "",
+        "rv32i_imm_mux_wrapper_0": "",
         "rv32i_regfile_wrapper_0": "",
-        "rv32i_id_ex_reg_wrap_0": ""
+        "rv32i_id_ex_reg_wrap_0": "",
+        "rv32i_decoder_wrapper_0": ""
       },
       "xlconstant_0": "",
       "RV32I_EX": {
-        "rv32i_operand_a_mux_0": "",
-        "rv32i_ex_mem_reg_wra_0": "",
         "rv32i_branch_unit_wr_0": "",
+        "rv32i_operand_a_mux_0": "",
         "rv32i_operand_b_mux_0": "",
+        "rv32i_ex_mem_reg_wra_0": "",
         "rv32i_alu_wrapper_0": ""
       },
       "RV32I_MEM": {
-        "rv32i_ram_datav_wrap_0": "",
         "xlslice_0": "",
+        "rv32i_ram_datav_wrap_0": "",
         "rv32i_load_extender_0": "",
-        "rv32i_mem_stage_wrap_0": "",
-        "rv32i_mem_wb_reg_wra_0": ""
+        "rv32i_mem_wb_reg_wra_0": "",
+        "rv32i_mem_stage_wrap_0": ""
       },
       "RV32I_WB": {
         "rv32i_wb_mux_wrapper_0": ""
@@ -542,52 +542,6 @@
           }
         },
         "components": {
-          "rv32i_imm_mux_wrapper_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_imm_mux_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_imm_mux_wrapper_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_imm_mux_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "imm_sel": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "imm_i": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "imm_s": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "imm_b": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "imm_u": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "imm_j": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "imm_out": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              }
-            }
-          },
           "rv32i_control_full_w_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_control_full_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_control_full_w_0_3",
@@ -678,85 +632,49 @@
               }
             }
           },
-          "rv32i_decoder_wrapper_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_decoder_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_decoder_wrapper_0_0",
+          "rv32i_imm_mux_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_imm_mux_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_imm_mux_wrapper_0_0",
             "reference_info": {
               "ref_type": "hdl",
-              "ref_name": "rv32i_decoder_wrapper",
+              "ref_name": "rv32i_imm_mux_wrapper",
               "boundary_crc": "0x0"
             },
             "ports": {
-              "instr": {
+              "imm_sel": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "imm_i": {
                 "direction": "I",
                 "left": "31",
                 "right": "0"
               },
-              "rs1": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "rs2": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "rd": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "opcode": {
-                "direction": "O",
-                "left": "6",
-                "right": "0"
-              },
-              "funct3": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "funct7": {
-                "direction": "O",
-                "left": "6",
-                "right": "0"
-              },
-              "fmt": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "bit30": {
-                "direction": "O"
-              },
-              "imm_i": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
               "imm_s": {
-                "direction": "O",
+                "direction": "I",
                 "left": "31",
                 "right": "0"
               },
               "imm_b": {
-                "direction": "O",
+                "direction": "I",
                 "left": "31",
                 "right": "0"
               },
               "imm_u": {
-                "direction": "O",
+                "direction": "I",
                 "left": "31",
                 "right": "0"
               },
               "imm_j": {
-                "direction": "O",
+                "direction": "I",
                 "left": "31",
                 "right": "0"
               },
-              "illegal_opcode": {
-                "direction": "O"
+              "imm_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
               }
             }
           },
@@ -1052,6 +970,88 @@
                 "direction": "O",
                 "left": "1",
                 "right": "0"
+              }
+            }
+          },
+          "rv32i_decoder_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_decoder_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_decoder_wrapper_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_decoder_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "instr": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "rs1": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "rs2": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "rd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "opcode": {
+                "direction": "O",
+                "left": "6",
+                "right": "0"
+              },
+              "funct3": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "funct7": {
+                "direction": "O",
+                "left": "6",
+                "right": "0"
+              },
+              "fmt": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "bit30": {
+                "direction": "O"
+              },
+              "imm_i": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_s": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_b": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_u": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "imm_j": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "illegal_opcode": {
+                "direction": "O"
               }
             }
           }
@@ -1571,6 +1571,92 @@
           }
         },
         "components": {
+          "rv32i_branch_unit_wr_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_branch_unit_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_branch_unit_wr_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_branch_unit_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "ex_valid": {
+                "direction": "I"
+              },
+              "ex_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs1_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs2_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_imm": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_branch_en": {
+                "direction": "I"
+              },
+              "ex_branch_funct3": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "ex_jal": {
+                "direction": "I"
+              },
+              "ex_jalr": {
+                "direction": "I"
+              },
+              "branch_taken": {
+                "direction": "O"
+              },
+              "pc_redirect_valid": {
+                "direction": "O"
+              },
+              "pc_redirect_target": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "instr_addr_misaligned": {
+                "direction": "O"
+              },
+              "instr_addr_misaligned_target": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_exception_valid": {
+                "direction": "O"
+              },
+              "ex_exception_cause": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ex_exception_tval": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_flush_req": {
+                "direction": "O"
+              },
+              "ex_control_flow_change": {
+                "direction": "O"
+              }
+            }
+          },
           "rv32i_operand_a_mux_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_operand_a_mux_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_operand_a_mux_0_0",
@@ -1596,6 +1682,37 @@
                 "right": "0"
               },
               "operand_a": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_operand_b_mux_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_operand_b_mux_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_operand_b_mux_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_operand_b_mux_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "rs2_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "imm": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "op_b_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "operand_b": {
                 "direction": "O",
                 "left": "31",
                 "right": "0"
@@ -1777,123 +1894,6 @@
               }
             }
           },
-          "rv32i_branch_unit_wr_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_branch_unit_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_branch_unit_wr_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_branch_unit_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "ex_valid": {
-                "direction": "I"
-              },
-              "ex_pc": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_rs1_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_rs2_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_imm": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_branch_en": {
-                "direction": "I"
-              },
-              "ex_branch_funct3": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "ex_jal": {
-                "direction": "I"
-              },
-              "ex_jalr": {
-                "direction": "I"
-              },
-              "branch_taken": {
-                "direction": "O"
-              },
-              "pc_redirect_valid": {
-                "direction": "O"
-              },
-              "pc_redirect_target": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "instr_addr_misaligned": {
-                "direction": "O"
-              },
-              "instr_addr_misaligned_target": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_exception_valid": {
-                "direction": "O"
-              },
-              "ex_exception_cause": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "ex_exception_tval": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_flush_req": {
-                "direction": "O"
-              },
-              "ex_control_flow_change": {
-                "direction": "O"
-              }
-            }
-          },
-          "rv32i_operand_b_mux_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_operand_b_mux_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_operand_b_mux_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_operand_b_mux_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "rs2_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "imm": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "op_b_sel": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "operand_b": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              }
-            }
-          },
           "rv32i_alu_wrapper_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_alu_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_alu_wrapper_0_0",
@@ -1973,9 +1973,9 @@
           "RV32I_ID_ex_pc": {
             "ports": [
               "ex_pc",
-              "rv32i_ex_mem_reg_wra_0/ex_pc",
               "rv32i_branch_unit_wr_0/ex_pc",
-              "rv32i_operand_a_mux_0/pc"
+              "rv32i_operand_a_mux_0/pc",
+              "rv32i_ex_mem_reg_wra_0/ex_pc"
             ]
           },
           "RV32I_ID_ex_op_a_sel": {
@@ -2006,8 +2006,8 @@
           "Net": {
             "ports": [
               "rs2_data",
-              "rv32i_operand_b_mux_0/rs2_data",
               "rv32i_branch_unit_wr_0/ex_rs2_data",
+              "rv32i_operand_b_mux_0/rs2_data",
               "rv32i_ex_mem_reg_wra_0/ex_store_data"
             ]
           },
@@ -2068,8 +2068,8 @@
           "RV32I_ID_ex_imm": {
             "ports": [
               "imm",
-              "rv32i_operand_b_mux_0/imm",
-              "rv32i_branch_unit_wr_0/ex_imm"
+              "rv32i_branch_unit_wr_0/ex_imm",
+              "rv32i_operand_b_mux_0/imm"
             ]
           },
           "RV32I_ID_ex_branch_en": {
@@ -2274,6 +2274,21 @@
           }
         },
         "components": {
+          "xlslice_0": {
+            "vlnv": "xilinx.com:ip:xlslice:1.0",
+            "xci_name": "RISCV_SystemVerilog_xlslice_0_2",
+            "parameters": {
+              "DIN_FROM": {
+                "value": "1"
+              },
+              "DIN_TO": {
+                "value": "0"
+              },
+              "DOUT_WIDTH": {
+                "value": "2"
+              }
+            }
+          },
           "rv32i_ram_datav_wrap_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_ram_datav_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_ram_datav_wrap_0_0",
@@ -2322,21 +2337,6 @@
               }
             }
           },
-          "xlslice_0": {
-            "vlnv": "xilinx.com:ip:xlslice:1.0",
-            "xci_name": "RISCV_SystemVerilog_xlslice_0_2",
-            "parameters": {
-              "DIN_FROM": {
-                "value": "1"
-              },
-              "DIN_TO": {
-                "value": "0"
-              },
-              "DOUT_WIDTH": {
-                "value": "2"
-              }
-            }
-          },
           "rv32i_load_extender_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_load_extender_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_load_extender_0_0",
@@ -2367,6 +2367,111 @@
               "load_data": {
                 "direction": "O",
                 "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_mem_wb_reg_wra_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_mem_wb_reg_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_mem_wb_reg_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
+              },
+              "rst": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "stall": {
+                "direction": "I"
+              },
+              "flush": {
+                "direction": "I"
+              },
+              "mem_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_alu_result": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_pc_plus4": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_imm_u": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "mem_rd_we": {
+                "direction": "I"
+              },
+              "mem_wb_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "wb_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "wb_alu_result": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "wb_pc_plus4": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "wb_imm_u": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "wb_rd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "wb_rd_we": {
+                "direction": "O"
+              },
+              "wb_sel": {
+                "direction": "O",
+                "left": "1",
                 "right": "0"
               }
             }
@@ -2504,119 +2609,14 @@
                 "right": "0"
               }
             }
-          },
-          "rv32i_mem_wb_reg_wra_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_mem_wb_reg_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_mem_wb_reg_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
-              },
-              "rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "stall": {
-                "direction": "I"
-              },
-              "flush": {
-                "direction": "I"
-              },
-              "mem_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "mem_alu_result": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "mem_pc_plus4": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "mem_imm_u": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "mem_rd": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "mem_rd_we": {
-                "direction": "I"
-              },
-              "mem_wb_sel": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "wb_data": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "wb_alu_result": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "wb_pc_plus4": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "wb_imm_u": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "wb_rd": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "wb_rd_we": {
-                "direction": "O"
-              },
-              "wb_sel": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              }
-            }
           }
         },
         "nets": {
           "Net2": {
             "ports": [
               "clk",
-              "rv32i_mem_wb_reg_wra_0/clk",
               "rv32i_ram_datav_wrap_0/clk",
+              "rv32i_mem_wb_reg_wra_0/clk",
               "rv32i_mem_stage_wrap_0/clk"
             ]
           },
@@ -2635,8 +2635,8 @@
           "rv32i_mem_stage_wrap_0_dmem_addr": {
             "ports": [
               "rv32i_mem_stage_wrap_0/dmem_addr",
-              "rv32i_ram_datav_wrap_0/addr",
-              "xlslice_0/Din"
+              "xlslice_0/Din",
+              "rv32i_ram_datav_wrap_0/addr"
             ]
           },
           "rv32i_mem_stage_wrap_0_dmem_wdata": {
@@ -2666,8 +2666,8 @@
           },
           "Net3": {
             "ports": [
-              "rv32i_mem_stage_wrap_0/rst",
-              "rv32i_mem_wb_reg_wra_0/rst"
+              "rv32i_mem_wb_reg_wra_0/rst",
+              "rv32i_mem_stage_wrap_0/rst"
             ]
           },
           "rv32i_mem_stage_wrap_0_wb_alu_result": {

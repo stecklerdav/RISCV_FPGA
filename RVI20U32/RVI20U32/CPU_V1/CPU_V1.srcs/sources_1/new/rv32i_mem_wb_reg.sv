@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-
+import rv32i_mem_wb_reg_types_pkg::*;
 module rv32i_mem_wb_reg(
     input  logic        clk,
     input  logic        rst,

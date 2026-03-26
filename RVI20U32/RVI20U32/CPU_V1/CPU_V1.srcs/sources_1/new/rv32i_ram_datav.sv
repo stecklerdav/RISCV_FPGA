@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-
+import rv32i_ram_datav_types_pkg::*;
 module rv32i_ram_datav #(
     parameter int ADDR_WIDTH = 10,
     parameter int WORDS      = (1 << ADDR_WIDTH)

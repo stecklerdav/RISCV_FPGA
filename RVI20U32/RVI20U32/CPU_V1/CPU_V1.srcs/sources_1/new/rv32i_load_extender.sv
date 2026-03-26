@@ -1,4 +1,6 @@
 `timescale 1ns/1ps
+import rv32i_load_extender_types_pkg::*;
+
 
 module rv32i_load_extender(
     input  logic [31:0] mem_data,

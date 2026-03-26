@@ -1,22 +1,24 @@
 `timescale 1ns / 1ps
 
-`include "rv32i_alu_types.svh"
+import rv32i_alu_types_pkg::*;
 
 module rv32i_alu (
-    input  logic [31:0]       a,
-    input  logic [31:0]       b,
-    input  rv32i_alu_op_t     alu_op,
-    output logic [31:0]       y
+    input  logic [31:0]   a,
+    input  logic [31:0]   b,
+    input  logic [3:0]    alu_op,
+    output logic [31:0]   y
 );
 
     logic signed [31:0] a_s;
     logic signed [31:0] b_s;
+    rv32i_alu_op_t      alu_op_e;
 
     assign a_s = a;
     assign b_s = b;
+    assign alu_op_e = rv32i_alu_op_t'(alu_op);
 
     always_comb begin
-        unique case (alu_op)
+        unique case (alu_op_e)
             RV32I_ALU_ADD:    y = a + b;
             RV32I_ALU_SUB:    y = a - b;
             RV32I_ALU_AND:    y = a & b;

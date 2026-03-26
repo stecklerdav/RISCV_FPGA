@@ -1,7 +1,5 @@
 `timescale 1ns / 1ps
-
-`include "rv32i_imm_types.sv"
-
+import rv32i_imm_types_pkg::*;
 module rv32i_imm_mux (
     input  logic [2:0]        imm_sel,
     input  rv32i_imm_bus_t    imm_in,

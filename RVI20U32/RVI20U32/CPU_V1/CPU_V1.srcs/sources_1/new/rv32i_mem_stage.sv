@@ -15,13 +15,10 @@ module rv32i_mem_stage (
     rv32i_mem_out_t  mem_out_r;
 
     always_comb begin
-        dmem_req_r      = '0;
-        dmem_req_r.addr = mem_in.alu_result;
-        dmem_req_r.we   = mem_in.mem_we;
-        dmem_req_r.re   = mem_in.mem_re;
-    end
-
-    always_comb begin
+        dmem_req_r       = '0;
+        dmem_req_r.addr  = mem_in.alu_result;
+        dmem_req_r.we    = mem_in.mem_we;
+        dmem_req_r.re    = mem_in.mem_re;
         dmem_req_r.be    = 4'b0000;
         dmem_req_r.wdata = 32'b0;
 

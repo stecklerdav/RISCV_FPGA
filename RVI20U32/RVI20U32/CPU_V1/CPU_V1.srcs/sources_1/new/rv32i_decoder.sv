@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-`include "rv32i_decode_types.sv"
+import rv32i_decode_types_pkg::*;
 
 module rv32i_decoder (
     input  logic [31:0]         instr,

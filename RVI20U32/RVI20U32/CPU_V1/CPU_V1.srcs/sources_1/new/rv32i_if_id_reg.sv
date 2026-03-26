@@ -1,6 +1,7 @@
     `timescale 1ns/1ps
     
-    `include "rv32i_pipe_types.sv"
+ import rv32i_pipe_types_pkg::*;
+
     
     module rv32i_if_id_reg (
         input  logic       clk,

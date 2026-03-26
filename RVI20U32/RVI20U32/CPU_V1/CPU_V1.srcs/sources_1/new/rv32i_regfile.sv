@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
-
-`include "rv32i_regfile_types.sv"
+import rv32i_regfile_types_pkg::*;
 
 module rv32i_regfile (
     input  logic                  clk,

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-`include "rv32i_id_ex_types.sv"
+import rv32i_id_ex_types_pkg::*;
 
 module rv32i_id_ex_reg (
     input  logic             clk,

@@ -1,32 +1,32 @@
 `timescale 1ns / 1ps
 
-`include "rv32i_branch_types.svh"
+import rv32i_branch_types_pkg::*;
 
 module rv32i_branch_unit (
-    input  logic                         ex_valid,
-    input  logic [31:0]                  ex_pc,
-    input  logic [31:0]                  ex_rs1_data,
-    input  logic [31:0]                  ex_rs2_data,
-    input  logic [31:0]                  ex_imm,
-    input  logic                         ex_branch_en,
-    input  rv32i_branch_funct3_t         ex_branch_funct3,
-    input  logic                         ex_jal,
-    input  logic                         ex_jalr,
+    input  logic        ex_valid,
+    input  logic [31:0] ex_pc,
+    input  logic [31:0] ex_rs1_data,
+    input  logic [31:0] ex_rs2_data,
+    input  logic [31:0] ex_imm,
+    input  logic        ex_branch_en,
+    input  logic [2:0]  ex_branch_funct3,
+    input  logic        ex_jal,
+    input  logic        ex_jalr,
 
-    output logic                         branch_taken,
+    output logic        branch_taken,
 
-    output logic                         pc_redirect_valid,
-    output logic [31:0]                  pc_redirect_target,
+    output logic        pc_redirect_valid,
+    output logic [31:0] pc_redirect_target,
 
-    output logic                         instr_addr_misaligned,
-    output logic [31:0]                  instr_addr_misaligned_target,
+    output logic        instr_addr_misaligned,
+    output logic [31:0] instr_addr_misaligned_target,
 
-    output logic                         ex_exception_valid,
-    output rv32i_exception_cause_t       ex_exception_cause,
-    output logic [31:0]                  ex_exception_tval,
+    output logic        ex_exception_valid,
+    output logic [3:0]  ex_exception_cause,
+    output logic [31:0] ex_exception_tval,
 
-    output logic                         ex_flush_req,
-    output logic                         ex_control_flow_change
+    output logic        ex_flush_req,
+    output logic        ex_control_flow_change
 );
 
     logic eq;
@@ -46,6 +46,11 @@ module rv32i_branch_unit (
     logic        control_flow_req;
     logic [31:0] control_flow_target;
 
+    rv32i_branch_funct3_t   ex_branch_funct3_e;
+    rv32i_exception_cause_t ex_exception_cause_e;
+
+    assign ex_branch_funct3_e = rv32i_branch_funct3_t'(ex_branch_funct3);
+
     assign ex_rs1_data_s = ex_rs1_data;
     assign ex_rs2_data_s = ex_rs2_data;
 
@@ -60,14 +65,11 @@ module rv32i_branch_unit (
     assign jalr_target   = (ex_rs1_data + ex_imm) & 32'hFFFF_FFFE;
     assign branch_target = ex_pc + ex_imm;
 
-    // ------------------------------------------------------------
-    // Branch decision
-    // ------------------------------------------------------------
     always_comb begin
         branch_taken = 1'b0;
 
         if (ex_valid && ex_branch_en) begin
-            unique case (ex_branch_funct3)
+            unique case (ex_branch_funct3_e)
                 RV32I_BRANCH_BEQ:  branch_taken = eq;
                 RV32I_BRANCH_BNE:  branch_taken = ne;
                 RV32I_BRANCH_BLT:  branch_taken = lt;
@@ -79,13 +81,6 @@ module rv32i_branch_unit (
         end
     end
 
-    // ------------------------------------------------------------
-    // Select control-flow request and target
-    // Priority:
-    //   1) JALR
-    //   2) JAL
-    //   3) Taken branch
-    // ------------------------------------------------------------
     always_comb begin
         control_flow_req    = 1'b0;
         control_flow_target = 32'd0;
@@ -106,11 +101,6 @@ module rv32i_branch_unit (
         end
     end
 
-    // ------------------------------------------------------------
-    // RV32I base only: IALIGN = 32
-    // Any taken control-flow target must be 4-byte aligned.
-    // For JALR, bit[0] is cleared by spec, but bit[1] still matters.
-    // ------------------------------------------------------------
     always_comb begin
         instr_addr_misaligned        = 1'b0;
         instr_addr_misaligned_target = 32'd0;
@@ -121,24 +111,20 @@ module rv32i_branch_unit (
         end
     end
 
-    // ------------------------------------------------------------
-    // Exception interface out of EX
-    // ------------------------------------------------------------
     always_comb begin
         ex_exception_valid = 1'b0;
-        ex_exception_cause = RV32I_EXC_NONE;
+        ex_exception_cause_e = RV32I_EXC_NONE;
         ex_exception_tval  = 32'd0;
 
         if (instr_addr_misaligned) begin
             ex_exception_valid = 1'b1;
-            ex_exception_cause = RV32I_EXC_INSTR_ADDR_MISALIGNED;
+            ex_exception_cause_e = RV32I_EXC_INSTR_ADDR_MISALIGNED;
             ex_exception_tval  = instr_addr_misaligned_target;
         end
     end
 
-    // ------------------------------------------------------------
-    // PC redirect only if there is control flow change and no exception
-    // ------------------------------------------------------------
+    assign ex_exception_cause = ex_exception_cause_e;
+
     always_comb begin
         pc_redirect_valid  = 1'b0;
         pc_redirect_target = 32'd0;
@@ -149,12 +135,6 @@ module rv32i_branch_unit (
         end
     end
 
-    // ------------------------------------------------------------
-    // Useful global pipeline signals
-    // ex_control_flow_change = this EX instruction changes PC
-    // ex_flush_req           = flush younger instructions on redirect
-    //                          or on exception taken in EX
-    // ------------------------------------------------------------
     always_comb begin
         ex_control_flow_change = control_flow_req;
         ex_flush_req           = ex_exception_valid | pc_redirect_valid;
