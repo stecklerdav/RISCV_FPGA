@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<Runs Version="1" Minor="0">
-	<Run Id="RISCV_SystemVerilog_synth_1" LaunchDir="/media/steckler/xilinx_linux/RISCV_ZYNQ/RVI20U32/RVI20U32/CPU_V1/CPU_V1.runs/RISCV_SystemVerilog_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-	<Parameters>
-		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
-		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
-	</Parameters>
-</Runs>
-
