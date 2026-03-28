@@ -114,6 +114,7 @@ vlog -work zynq_ultra_ps_e_vip_v1_0_7 -64 -incr -sv -L axi_vip_v1_1_7 -L zynq_ul
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" "+incdir+../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" "+incdir+../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/1b7e/hdl/verilog" "+incdir+../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/122e/hdl/verilog" "+incdir+../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
 "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0/sim/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_vip_wrapper.v" \
 "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_2/sim/RISCV_SystemVerilog_xlconstant_0_2.v" \
+"../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_latency_align_0_0/sim/RISCV_SystemVerilog_latency_align_0_0.v" \
 "../../../bd/RISCV_SystemVerilog/sim/RISCV_SystemVerilog.v" \
 
 vlog -work xil_defaultlib \

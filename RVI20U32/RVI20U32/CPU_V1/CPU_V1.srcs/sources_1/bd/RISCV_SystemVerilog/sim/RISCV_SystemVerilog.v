@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Thu Mar 26 21:46:05 2026
+//Date        : Sat Mar 28 19:03:12 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_SystemVerilog.bd
 //Design      : RISCV_SystemVerilog
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_SystemVerilog,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=34,numReposBlks=28,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=18,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "RISCV_SystemVerilog.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_SystemVerilog,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_SystemVerilog,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=35,numReposBlks=29,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=19,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "RISCV_SystemVerilog.hwdef" *) 
 module RISCV_SystemVerilog
    ();
 
@@ -693,6 +693,8 @@ module RV32I_IF_imp_P41UV7
   wire [31:0]Pc_redirect_target_1;
   wire Pc_redirect_valid_1;
   wire [31:0]blk_mem_gen_0_douta;
+  wire [31:0]latency_align_0_instr_exec;
+  wire [31:0]latency_align_0_pc_exec;
   wire [10:0]pc_to_rom_addr_wrapp_0_a;
   wire [31:0]pc_unit_wrapper_0_pc;
   wire [31:0]pc_unit_wrapper_0_pc_plus4;
@@ -719,6 +721,13 @@ module RV32I_IF_imp_P41UV7
         .clka(Net),
         .douta(blk_mem_gen_0_douta),
         .ena(util_vector_logic_0_Res));
+  RISCV_SystemVerilog_latency_align_0_0 latency_align_0
+       (.clk(Net),
+        .instr_bram(blk_mem_gen_0_douta),
+        .instr_exec(latency_align_0_instr_exec),
+        .pc_exec(latency_align_0_pc_exec),
+        .pc_fetch(pc_unit_wrapper_0_pc),
+        .rst(Net2));
   RISCV_SystemVerilog_pc_to_rom_addr_wrapp_0_0 pc_to_rom_addr_wrapp_0
        (.a(pc_to_rom_addr_wrapp_0_a),
         .pc(pc_unit_wrapper_0_pc));
@@ -735,8 +744,8 @@ module RV32I_IF_imp_P41UV7
         .flush(Flush_1),
         .hold(Net1),
         .instr_id_out(rv32i_if_id_reg_wrap_0_instr_id_out),
-        .instr_rom_in(blk_mem_gen_0_douta),
-        .pc_fetch_in(pc_unit_wrapper_0_pc),
+        .instr_rom_in(latency_align_0_instr_exec),
+        .pc_fetch_in(latency_align_0_pc_exec),
         .pc_id_out(rv32i_if_id_reg_wrap_0_pc_id_out),
         .pc_plus4_fetch_in(pc_unit_wrapper_0_pc_plus4),
         .pc_plus4_id_out(rv32i_if_id_reg_wrap_0_pc_plus4_id_out),

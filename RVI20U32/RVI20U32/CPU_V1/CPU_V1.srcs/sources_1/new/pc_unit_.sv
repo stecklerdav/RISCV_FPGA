@@ -30,4 +30,30 @@ module pc_unit #(
             pc <= pc_next;
     end
 
+    // ------------------------------------------------------------
+    // ASSERTIONS
+    // ------------------------------------------------------------
+
+    // Si pc_en=1, el siguiente PC debe ser:
+    // - pc + 4 cuando no hay redirect
+    // - pc_redirect_target cuando hay redirect
+    always_ff @(posedge clk) begin
+        if (!rst && pc_en) begin
+            assert (
+                ( pc_redirect_valid && (pc_next == pc_redirect_target) ) ||
+                (!pc_redirect_valid && (pc_next == pc_plus4) )
+            )
+            else $error("PC ASSERT FAIL: pc=%h pc_plus4=%h pc_next=%h redirect_valid=%b redirect_target=%h",
+                        pc, pc_plus4, pc_next, pc_redirect_valid, pc_redirect_target);
+        end
+    end
+
+    // Si pc_en=0, el PC no debería actualizarse en ese ciclo
+    always_ff @(posedge clk) begin
+        if (!rst && !pc_en) begin
+            assert ($stable(pc))
+            else $error("PC HOLD ASSERT FAIL: pc cambió con pc_en=0. pc=%h", pc);
+        end
+    end
+
 endmodule

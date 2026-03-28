@@ -3,48 +3,66 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="Section_debug_wrapper_behav.wdb" id="1">
+      <db_ref path="RISCV_SystemVerilog_wrapper_behav.wdb" id="1">
          <top_modules>
-            <top_module name="Section_debug_wrapper" />
+            <top_module name="RISCV_SystemVerilog_wrapper" />
             <top_module name="axi_vip_pkg" />
             <top_module name="glbl" />
+            <top_module name="rv32i_alu_types_pkg" />
+            <top_module name="rv32i_branch_types_pkg" />
+            <top_module name="rv32i_control_types_pkg" />
+            <top_module name="rv32i_decode_types_pkg" />
+            <top_module name="rv32i_ex_mem_reg_types_pkg" />
+            <top_module name="rv32i_id_ex_types_pkg" />
+            <top_module name="rv32i_mem_stage_types_pkg" />
+            <top_module name="rv32i_pipe_types_pkg" />
+            <top_module name="rv32i_pkg" />
+            <top_module name="rv32i_regfile_types_pkg" />
             <top_module name="std" />
             <top_module name="xil_common_vip_pkg" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="7362755fs"></ZoomStartTime>
-      <ZoomEndTime time="8038756fs"></ZoomEndTime>
-      <Cursor1Time time="7750255fs"></Cursor1Time>
+      <ZoomStartTime time="5912231fs"></ZoomStartTime>
+      <ZoomEndTime time="8052232fs"></ZoomEndTime>
+      <Cursor1Time time="6550231fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="146"></NameColumnWidth>
-      <ValueColumnWidth column_width="96"></ValueColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
-   <wvobject type="logic" fp_name="/Section_debug_wrapper/Section_debug_i/ila_0/clk">
+   <WVObjectSize size="8" />
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Section_debug_wrapper/Section_debug_i/ila_0/probe0">
-      <obj_property name="ElementShortName">probe0[0:0]</obj_property>
-      <obj_property name="ObjectShortName">probe0[0:0]</obj_property>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Section_debug_wrapper/Section_debug_i/ila_0/probe1">
-      <obj_property name="ElementShortName">probe1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">probe1[31:0]</obj_property>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/pc_fetch">
+      <obj_property name="ElementShortName">pc_fetch[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_fetch[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Section_debug_wrapper/Section_debug_i/ila_0/probe2">
-      <obj_property name="ElementShortName">probe2[10:0]</obj_property>
-      <obj_property name="ObjectShortName">probe2[10:0]</obj_property>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/pc_exec">
+      <obj_property name="ElementShortName">pc_exec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_exec[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Section_debug_wrapper/Section_debug_i/ila_0/probe3">
-      <obj_property name="ElementShortName">probe3[31:0]</obj_property>
-      <obj_property name="ObjectShortName">probe3[31:0]</obj_property>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/instr_exec">
+      <obj_property name="ElementShortName">instr_exec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_exec[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/Section_debug_wrapper/Section_debug_i/ila_0/probe4">
-      <obj_property name="ElementShortName">probe4[31:0]</obj_property>
-      <obj_property name="ObjectShortName">probe4[31:0]</obj_property>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/pc_unit_wrapper_0/inst/pc_redirect_target">
+      <obj_property name="ElementShortName">pc_redirect_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_redirect_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/pc_unit_wrapper_0/inst/pc_redirect_valid">
+      <obj_property name="ElementShortName">pc_redirect_valid</obj_property>
+      <obj_property name="ObjectShortName">pc_redirect_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/pc_unit_wrapper_0/inst/pc_en">
+      <obj_property name="ElementShortName">pc_en</obj_property>
+      <obj_property name="ObjectShortName">pc_en</obj_property>
    </wvobject>
 </wave_config>

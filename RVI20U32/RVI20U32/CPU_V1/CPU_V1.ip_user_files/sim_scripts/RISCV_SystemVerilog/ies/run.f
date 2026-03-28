@@ -85,6 +85,7 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0/sim/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_vip_wrapper.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_2/sim/RISCV_SystemVerilog_xlconstant_0_2.v" \
+  "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_latency_align_0_0/sim/RISCV_SystemVerilog_latency_align_0_0.v" \
   "../../../bd/RISCV_SystemVerilog/sim/RISCV_SystemVerilog.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \

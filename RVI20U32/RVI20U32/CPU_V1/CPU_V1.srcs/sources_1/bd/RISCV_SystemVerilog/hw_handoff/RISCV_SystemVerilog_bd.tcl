@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# rv32i_alu_wrapper, rv32i_branch_unit_wrapper, rv32i_ex_mem_reg_wrapper, rv32i_operand_a_mux_wrapper, rv32i_operand_b_mux_wrapper, rv32i_control_full_wrapper, rv32i_decoder_wrapper, rv32i_id_ex_reg_wrapper, rv32i_imm_mux_wrapper, rv32i_regfile_wrapper, pc_to_rom_addr_wrapper, pc_unit_wrapper, rv32i_if_id_reg_wrapper, rv32i_load_extender_wrapper, rv32i_mem_stage_wrapper, rv32i_mem_wb_reg_wrapper, rv32i_ram_datav_wrapper, rv32i_wb_mux_wrapper
+# rv32i_alu_wrapper, rv32i_branch_unit_wrapper, rv32i_ex_mem_reg_wrapper, rv32i_operand_a_mux_wrapper, rv32i_operand_b_mux_wrapper, rv32i_control_full_wrapper, rv32i_decoder_wrapper, rv32i_id_ex_reg_wrapper, rv32i_imm_mux_wrapper, rv32i_regfile_wrapper, latency_align, pc_to_rom_addr_wrapper, pc_unit_wrapper, rv32i_if_id_reg_wrapper, rv32i_load_extender_wrapper, rv32i_mem_stage_wrapper, rv32i_mem_wb_reg_wrapper, rv32i_ram_datav_wrapper, rv32i_wb_mux_wrapper
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -490,6 +490,17 @@ proc create_hier_cell_RV32I_IF { parentCell nameHier } {
    CONFIG.use_bram_block {Stand_Alone} \
  ] $blk_mem_gen_0
 
+  # Create instance: latency_align_0, and set properties
+  set block_name latency_align
+  set block_cell_name latency_align_0
+  if { [catch {set latency_align_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $latency_align_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: pc_to_rom_addr_wrapp_0, and set properties
   set block_name pc_to_rom_addr_wrapper
   set block_cell_name pc_to_rom_addr_wrapp_0
@@ -536,14 +547,16 @@ proc create_hier_cell_RV32I_IF { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net Flush_1 [get_bd_pins Flush] [get_bd_pins rv32i_if_id_reg_wrap_0/flush]
-  connect_bd_net -net Net [get_bd_pins clk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins pc_unit_wrapper_0/clk] [get_bd_pins rv32i_if_id_reg_wrap_0/clk]
+  connect_bd_net -net Net [get_bd_pins clk] [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins latency_align_0/clk] [get_bd_pins pc_unit_wrapper_0/clk] [get_bd_pins rv32i_if_id_reg_wrap_0/clk]
   connect_bd_net -net Net1 [get_bd_pins Hold] [get_bd_pins rv32i_if_id_reg_wrap_0/hold] [get_bd_pins util_vector_logic_0/Op1]
-  connect_bd_net -net Net2 [get_bd_pins rst] [get_bd_pins pc_unit_wrapper_0/rst] [get_bd_pins rv32i_if_id_reg_wrap_0/rst]
+  connect_bd_net -net Net2 [get_bd_pins rst] [get_bd_pins latency_align_0/rst] [get_bd_pins pc_unit_wrapper_0/rst] [get_bd_pins rv32i_if_id_reg_wrap_0/rst]
   connect_bd_net -net Pc_redirect_target_1 [get_bd_pins Pc_redirect_target] [get_bd_pins pc_unit_wrapper_0/pc_redirect_target]
   connect_bd_net -net Pc_redirect_valid_1 [get_bd_pins Pc_redirect_valid] [get_bd_pins pc_unit_wrapper_0/pc_redirect_valid]
-  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins rv32i_if_id_reg_wrap_0/instr_rom_in]
+  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins latency_align_0/instr_bram]
+  connect_bd_net -net latency_align_0_instr_exec [get_bd_pins latency_align_0/instr_exec] [get_bd_pins rv32i_if_id_reg_wrap_0/instr_rom_in]
+  connect_bd_net -net latency_align_0_pc_exec [get_bd_pins latency_align_0/pc_exec] [get_bd_pins rv32i_if_id_reg_wrap_0/pc_fetch_in]
   connect_bd_net -net pc_to_rom_addr_wrapp_0_a [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins pc_to_rom_addr_wrapp_0/a]
-  connect_bd_net -net pc_unit_wrapper_0_pc [get_bd_pins pc_to_rom_addr_wrapp_0/pc] [get_bd_pins pc_unit_wrapper_0/pc] [get_bd_pins rv32i_if_id_reg_wrap_0/pc_fetch_in]
+  connect_bd_net -net pc_unit_wrapper_0_pc [get_bd_pins latency_align_0/pc_fetch] [get_bd_pins pc_to_rom_addr_wrapp_0/pc] [get_bd_pins pc_unit_wrapper_0/pc]
   connect_bd_net -net pc_unit_wrapper_0_pc_plus4 [get_bd_pins pc_unit_wrapper_0/pc_plus4] [get_bd_pins rv32i_if_id_reg_wrap_0/pc_plus4_fetch_in]
   connect_bd_net -net rv32i_if_id_reg_wrap_0_instr_id_out [get_bd_pins Instr_id_out] [get_bd_pins rv32i_if_id_reg_wrap_0/instr_id_out]
   connect_bd_net -net rv32i_if_id_reg_wrap_0_pc_id_out [get_bd_pins Pc_id_out] [get_bd_pins rv32i_if_id_reg_wrap_0/pc_id_out]

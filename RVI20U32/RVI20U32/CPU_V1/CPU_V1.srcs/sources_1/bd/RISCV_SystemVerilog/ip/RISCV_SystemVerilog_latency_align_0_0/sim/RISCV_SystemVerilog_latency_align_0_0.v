@@ -47,45 +47,39 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:pc_unit_wrapper:1.0
+// IP VLNV: xilinx.com:module_ref:latency_align:1.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "pc_unit_wrapper,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "RISCV_SystemVerilog_pc_unit_wrapper_0_0,pc_unit_wrapper,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog_pc_unit_wrapper_0_0,pc_unit_wrapper,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=pc_unit_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RESET_PC=0x00000000}" *)
+`timescale 1ns/1ps
+
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module RISCV_SystemVerilog_pc_unit_wrapper_0_0 (
-  rst,
+module RISCV_SystemVerilog_latency_align_0_0 (
   clk,
-  pc_en,
-  pc_redirect_valid,
-  pc_redirect_target,
-  pc,
-  pc_plus4
+  rst,
+  pc_fetch,
+  instr_bram,
+  pc_exec,
+  instr_exec
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
-input wire rst;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
-input wire pc_en;
-input wire pc_redirect_valid;
-input wire [31 : 0] pc_redirect_target;
-output wire [31 : 0] pc;
-output wire [31 : 0] pc_plus4;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
+input wire rst;
+input wire [31 : 0] pc_fetch;
+input wire [31 : 0] instr_bram;
+output wire [31 : 0] pc_exec;
+output wire [31 : 0] instr_exec;
 
-  pc_unit_wrapper #(
-    .RESET_PC(32'H00000000)
-  ) inst (
-    .rst(rst),
+  latency_align inst (
     .clk(clk),
-    .pc_en(pc_en),
-    .pc_redirect_valid(pc_redirect_valid),
-    .pc_redirect_target(pc_redirect_target),
-    .pc(pc),
-    .pc_plus4(pc_plus4)
+    .rst(rst),
+    .pc_fetch(pc_fetch),
+    .instr_bram(instr_bram),
+    .pc_exec(pc_exec),
+    .instr_exec(instr_exec)
   );
 endmodule

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Mar 26 21:46:06 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Mar 28 19:03:12 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="RISCV_SystemVerilog" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -1044,7 +1044,7 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="douta" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_blk_mem_gen_0_douta">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="instr_rom_in"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="instr_bram"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1064,6 +1064,46 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/RV32I_IF/latency_align_0" HWVERSION="1.0" INSTANCE="RV32I_IF_latency_align_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="latency_align" VLNV="xilinx.com:module_ref:latency_align:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_SystemVerilog_latency_align_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="9999900" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_1_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_1" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RV32I_RESET_util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RESET_util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="pc_fetch" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_unit_wrapper_0_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="instr_bram" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_blk_mem_gen_0_douta">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_IF_blk_mem_gen_0" PORT="douta"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_exec" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_latency_align_0_pc_exec">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="pc_fetch_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="instr_exec" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_latency_align_0_instr_exec">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="instr_rom_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/RV32I_IF/pc_to_rom_addr_wrapp_0" HWVERSION="1.0" INSTANCE="RV32I_IF_pc_to_rom_addr_wrapp_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pc_to_rom_addr_wrapper" VLNV="xilinx.com:module_ref:pc_to_rom_addr_wrapper:1.0">
       <DOCUMENTS/>
@@ -1122,7 +1162,7 @@
         <PORT DIR="O" LEFT="31" NAME="pc" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_unit_wrapper_0_pc">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_IF_pc_to_rom_addr_wrapp_0" PORT="pc"/>
-            <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="pc_fetch_in"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="pc_fetch"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_unit_wrapper_0_pc_plus4">
@@ -1150,9 +1190,9 @@
             <CONNECTION INSTANCE="RV32I_RESET_util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="pc_fetch_in" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_unit_wrapper_0_pc">
+        <PORT DIR="I" LEFT="31" NAME="pc_fetch_in" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_latency_align_0_pc_exec">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="pc"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="pc_exec"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="pc_plus4_fetch_in" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_unit_wrapper_0_pc_plus4">
@@ -1160,9 +1200,9 @@
             <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="pc_plus4"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="instr_rom_in" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_blk_mem_gen_0_douta">
+        <PORT DIR="I" LEFT="31" NAME="instr_rom_in" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_latency_align_0_instr_exec">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_IF_blk_mem_gen_0" PORT="douta"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="instr_exec"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="valid_fetch_in" SIGIS="undef" SIGNAME="xlconstant_0_dout">
@@ -1600,8 +1640,9 @@
         </PORT>
         <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_RESET_util_vector_logic_0_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="rst"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="rst"/>
+            <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="rst"/>
           </CONNECTIONS>
@@ -4298,8 +4339,9 @@
             <CONNECTION INSTANCE="RV32I_RESET_vio_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_RESET_proc_sys_reset_0" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="RV32I_IF_blk_mem_gen_0" PORT="clka"/>
-            <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="clk"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="clk"/>
+            <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="clk"/>
