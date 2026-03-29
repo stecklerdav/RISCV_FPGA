@@ -2,8 +2,8 @@
    "ActiveEmotionalView":"Default View",
    "Color Coded_ScaleFactor":"1.0",
    "Color Coded_TopLeft":"-612,-25",
-   "Default View_ScaleFactor":"0.833566",
-   "Default View_TopLeft":"5282,603",
+   "Default View_ScaleFactor":"0.612075",
+   "Default View_TopLeft":"7414,172",
    "ExpandedHierarchyInLayout":"/RV32I_IF|/RV32I_ID|/RV32I_EX",
    "Interfaces View_ScaleFactor":"1.0",
    "Interfaces View_TopLeft":"-781,-330",
@@ -12,186 +12,194 @@
    "Reduced Jogs_TopLeft":"-622,-25",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace inst RV32I_IF -pg 1 -lvl 3 -x 2100 -y 124 -defaultsOSRD
-preplace inst RV32I_ID -pg 1 -lvl 4 -x 5378 -y 534 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 2 -x 840 -y 180 -defaultsOSRD
-preplace inst RV32I_EX -pg 1 -lvl 5 -x 9343 -y 544 -defaultsOSRD
-preplace inst RV32I_MEM -pg 1 -lvl 6 -x 12637 -y 492 -defaultsOSRD
-preplace inst RV32I_WB -pg 1 -lvl 7 -x 14407 -y 492 -defaultsOSRD
-preplace inst RV32I_RESET -pg 1 -lvl 2 -x 840 -y 292 -defaultsOSRD
-preplace inst zynq_ultra_ps_e_1 -pg 1 -lvl 1 -x 330 -y 280 -defaultsOSRD
-preplace inst xlconstant_1 -pg 1 -lvl 2 -x 840 -y 60 -defaultsOSRD
-preplace inst RV32I_IF|util_vector_logic_0 -pg 1 -lvl 1 -x 2120 -y 304 -defaultsOSRD
-preplace inst RV32I_IF|pc_to_rom_addr_wrapp_0 -pg 1 -lvl 3 -x 2860 -y 314 -defaultsOSRD
-preplace inst RV32I_IF|blk_mem_gen_0 -pg 1 -lvl 4 -x 3290 -y 454 -defaultsOSRD
-preplace inst RV32I_IF|rv32i_if_id_reg_wrap_0 -pg 1 -lvl 4 -x 3290 -y 174 -defaultsOSRD
-preplace inst RV32I_IF|latency_align_0 -pg 1 -lvl 3 -x 2860 -y 134 -defaultsOSRD
-preplace inst RV32I_IF|pc_unit_wrapper_0 -pg 1 -lvl 2 -x 2490 -y 364 -defaultsOSRD
-preplace inst RV32I_ID|rv32i_imm_mux_wrapper_0 -pg 1 -lvl 3 -x 6258 -y 1004 -defaultsOSRD
-preplace inst RV32I_ID|rv32i_regfile_wrapper_0 -pg 1 -lvl 3 -x 6258 -y 444 -defaultsOSRD
-preplace inst RV32I_ID|rv32i_id_ex_reg_wrap_0 -pg 1 -lvl 4 -x 6678 -y 624 -defaultsOSRD
-preplace inst RV32I_ID|rv32i_decoder_wrapper_0 -pg 1 -lvl 1 -x 5418 -y 824 -defaultsOSRD
-preplace inst RV32I_ID|rv32i_control_full_w_0 -pg 1 -lvl 2 -x 5788 -y 774 -defaultsOSRD
-preplace inst RV32I_EX|rv32i_branch_unit_wr_0 -pg 1 -lvl 2 -x 9903 -y 974 -defaultsOSRD
-preplace inst RV32I_EX|rv32i_operand_a_mux_0 -pg 1 -lvl 1 -x 9413 -y 374 -defaultsOSRD
-preplace inst RV32I_EX|rv32i_operand_b_mux_0 -pg 1 -lvl 1 -x 9413 -y 654 -defaultsOSRD
-preplace inst RV32I_EX|rv32i_ex_mem_reg_wra_0 -pg 1 -lvl 3 -x 10453 -y 664 -defaultsOSRD
-preplace inst RV32I_EX|rv32i_alu_wrapper_0 -pg 1 -lvl 2 -x 9903 -y 654 -defaultsOSRD
-preplace netloc RV32I_IF_Pc_id_out 1 3 1 3720 144n
-preplace netloc RV32I_IF_Pc_plus4_id_out 1 3 1 3700 164n
-preplace netloc RV32I_IF_Instr_id_out 1 3 1 3680 184n
-preplace netloc rst_1 1 2 3 960 614 3730 274 7330J
-preplace netloc Net 1 4 1 7300 484n
-preplace netloc RV32I_ID_ex_pc_plus4 1 4 1 7320 404n
-preplace netloc RV32I_ID_ex_imm_u 1 4 1 7310 424n
-preplace netloc RV32I_ID_ex_rd 1 4 1 7290 444n
-preplace netloc RV32I_ID_ex_rs1_data 1 4 1 7220 354n
-preplace netloc RV32I_ID_ex_pc 1 4 1 7260 374n
-preplace netloc RV32I_ID_ex_imm 1 4 1 7260 524n
-preplace netloc RV32I_ID_ex_op_a_sel 1 4 1 7270 394n
-preplace netloc RV32I_ID_ex_op_b_sel 1 4 1 7240 644n
-preplace netloc RV32I_ID_ex_alu_op 1 4 1 7220 664n
-preplace netloc RV32I_ID_ex_mem_re 1 4 1 N 724
-preplace netloc RV32I_ID_ex_mem_we 1 4 1 N 744
-preplace netloc RV32I_ID_ex_mem_size 1 4 1 N 764
-preplace netloc RV32I_ID_ex_rd_we 1 4 1 7250 784n
-preplace netloc RV32I_ID_ex_mem_unsigned 1 4 1 7330 784n
-preplace netloc RV32I_ID_ex_wb_sel 1 4 1 N 824
-preplace netloc RV32I_ID_ex_jal 1 4 1 7230 844n
-preplace netloc RV32I_ID_ex_jalr 1 4 1 7190 864n
-preplace netloc RV32I_ID_ex_branch_funct3 1 4 1 7210 884n
-preplace netloc RV32I_ID_ex_branch_en 1 4 1 7200 904n
-preplace netloc Net1 1 4 1 7280 514n
-preplace netloc xlconstant_0_dout 1 2 1 970J 180n
-preplace netloc RV32I_IF_Valid_id_out 1 3 1 3650 204n
-preplace netloc Pc_redirect_valid_1 1 2 4 980 594 3690J 254 NJ 254 10900
-preplace netloc Pc_redirect_target_1 1 2 4 1000 584 3670J 244 NJ 244 10910
-preplace netloc RV32I_EX_mem_pc_plus4 1 5 1 10930 422n
-preplace netloc RV32I_EX_mem_rd 1 5 1 10940 462n
-preplace netloc RV32I_EX_mem_mem_re 1 5 1 10950 502n
-preplace netloc RV32I_EX_mem_mem_we 1 5 1 10990 522n
-preplace netloc RV32I_EX_mem_mem_size 1 5 1 11020 542n
-preplace netloc RV32I_EX_mem_mem_unsigned 1 5 1 11030 562n
-preplace netloc RV32I_EX_mem_rd_we 1 5 1 11010 482n
-preplace netloc RV32I_EX_mem_wb_sel 1 5 1 11040 582n
-preplace netloc RV32I_EX_mem_imm_u 1 5 1 11000 442n
-preplace netloc RV32I_EX_mem_store_data 1 5 1 10980 402n
-preplace netloc RV32I_EX_mem_alu_result 1 5 1 10970 382n
-preplace netloc zynq_ultra_ps_e_1_pl_clk0 1 0 6 20 160 650 352 950 604 3710 264 7340 264 10960
-preplace netloc zynq_ultra_ps_e_1_pl_resetn0 1 1 1 640 300n
-preplace netloc RV32I_MEM_wb_imm_u 1 6 1 N 452
-preplace netloc RV32I_MEM_wb_pc_plus4 1 6 1 N 472
-preplace netloc RV32I_MEM_wb_alu_result 1 6 1 N 492
-preplace netloc RV32I_MEM_wb_data 1 6 1 N 512
-preplace netloc RV32I_MEM_wb_sel 1 6 1 N 532
-preplace netloc Hold_1 1 2 1 1000J 60n
-preplace netloc Flush_1 1 2 4 990 574 3660J 234 NJ 234 10920
-preplace netloc RV32I_IF|util_vector_logic_0_Res 1 1 3 2300 494 NJ 494 NJ
-preplace netloc RV32I_IF|pc_unit_wrapper_0_pc 1 2 1 2670 144n
-preplace netloc RV32I_IF|pc_to_rom_addr_wrapp_0_a 1 3 1 3030 314n
-preplace netloc RV32I_IF|Net 1 0 4 1950J 364 2290 234 2680 234 3040
-preplace netloc RV32I_IF|pc_unit_wrapper_0_pc_plus4 1 2 2 NJ 374 3050
-preplace netloc RV32I_IF|blk_mem_gen_0_douta 1 2 2 2690 474 N
-preplace netloc RV32I_IF|Net1 1 0 4 1950 234 2280J 244 NJ 244 N
-preplace netloc RV32I_IF|Flush_1 1 0 4 1940J 224 NJ 224 NJ 224 N
+preplace inst RV32I_IF -pg 1 -lvl 3 -x 1200 -y 124 -defaultsOSRD
+preplace inst RV32I_ID -pg 1 -lvl 4 -x 4392 -y 550 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 2 -x 730 -y 180 -defaultsOSRD
+preplace inst RV32I_EX -pg 1 -lvl 5 -x 8181 -y 544 -defaultsOSRD
+preplace inst RV32I_MEM -pg 1 -lvl 6 -x 11408 -y 492 -defaultsOSRD
+preplace inst RV32I_WB -pg 1 -lvl 7 -x 13178 -y 492 -defaultsOSRD
+preplace inst RV32I_RESET -pg 1 -lvl 2 -x 730 -y 290 -defaultsOSRD
+preplace inst zynq_ultra_ps_e_1 -pg 1 -lvl 1 -x 320 -y 280 -defaultsOSRD
+preplace inst xlconstant_1 -pg 1 -lvl 2 -x 730 -y 60 -defaultsOSRD
+preplace inst RV32I_IF|util_vector_logic_0 -pg 1 -lvl 1 -x 1230 -y 304 -defaultsOSRD
+preplace inst RV32I_IF|pc_to_rom_addr_wrapp_0 -pg 1 -lvl 3 -x 1940 -y 314 -defaultsOSRD
+preplace inst RV32I_IF|blk_mem_gen_0 -pg 1 -lvl 4 -x 2350 -y 454 -defaultsOSRD
+preplace inst RV32I_IF|rv32i_if_id_reg_wrap_0 -pg 1 -lvl 4 -x 2350 -y 174 -defaultsOSRD
+preplace inst RV32I_IF|latency_align_0 -pg 1 -lvl 3 -x 1940 -y 134 -defaultsOSRD
+preplace inst RV32I_IF|pc_unit_wrapper_0 -pg 1 -lvl 2 -x 1580 -y 364 -defaultsOSRD
+preplace inst RV32I_ID|rv32i_imm_mux_wrapper_0 -pg 1 -lvl 3 -x 5172 -y 1080 -defaultsOSRD
+preplace inst RV32I_ID|rv32i_regfile_wrapper_0 -pg 1 -lvl 3 -x 5172 -y 560 -defaultsOSRD
+preplace inst RV32I_ID|rv32i_id_ex_reg_wrap_0 -pg 1 -lvl 4 -x 5582 -y 720 -defaultsOSRD
+preplace inst RV32I_ID|rv32i_decoder_wrapper_0 -pg 1 -lvl 1 -x 4442 -y 920 -defaultsOSRD
+preplace inst RV32I_ID|rv32i_control_full_w_0 -pg 1 -lvl 2 -x 4762 -y 890 -defaultsOSRD
+preplace inst RV32I_EX|rv32i_branch_unit_wr_0 -pg 1 -lvl 2 -x 8721 -y 974 -defaultsOSRD
+preplace inst RV32I_EX|rv32i_operand_a_mux_0 -pg 1 -lvl 1 -x 8251 -y 374 -defaultsOSRD
+preplace inst RV32I_EX|rv32i_operand_b_mux_0 -pg 1 -lvl 1 -x 8251 -y 654 -defaultsOSRD
+preplace inst RV32I_EX|rv32i_ex_mem_reg_wra_0 -pg 1 -lvl 3 -x 9211 -y 664 -defaultsOSRD
+preplace inst RV32I_EX|rv32i_alu_wrapper_0 -pg 1 -lvl 2 -x 8721 -y 654 -defaultsOSRD
+preplace netloc RV32I_IF_Pc_id_out 1 3 1 2770 144n
+preplace netloc RV32I_IF_Pc_plus4_id_out 1 3 1 2750 164n
+preplace netloc RV32I_IF_Instr_id_out 1 3 1 2730 184n
+preplace netloc rst_1 1 2 3 840 616 2760 270 6150J
+preplace netloc Net 1 4 1 6120 534n
+preplace netloc RV32I_ID_ex_pc_plus4 1 4 1 6140 500n
+preplace netloc RV32I_ID_ex_imm_u 1 4 1 6130 520n
+preplace netloc RV32I_ID_ex_rd 1 4 1 6110 540n
+preplace netloc RV32I_ID_ex_rs1_data 1 4 1 6080 354n
+preplace netloc RV32I_ID_ex_pc 1 4 1 6090 374n
+preplace netloc RV32I_ID_ex_imm 1 4 1 6200 620n
+preplace netloc RV32I_ID_ex_op_a_sel 1 4 1 6100 394n
+preplace netloc RV32I_ID_ex_op_b_sel 1 4 1 6180 740n
+preplace netloc RV32I_ID_ex_alu_op 1 4 1 6130 760n
+preplace netloc RV32I_ID_ex_mem_re 1 4 1 6210 724n
+preplace netloc RV32I_ID_ex_mem_we 1 4 1 6190 744n
+preplace netloc RV32I_ID_ex_mem_size 1 4 1 6220 764n
+preplace netloc RV32I_ID_ex_rd_we 1 4 1 6240 804n
+preplace netloc RV32I_ID_ex_mem_unsigned 1 4 1 6230 784n
+preplace netloc RV32I_ID_ex_wb_sel 1 4 1 6250 824n
+preplace netloc RV32I_ID_ex_jal 1 4 1 6170 940n
+preplace netloc RV32I_ID_ex_jalr 1 4 1 6080 960n
+preplace netloc RV32I_ID_ex_branch_funct3 1 4 1 6160 980n
+preplace netloc RV32I_ID_ex_branch_en 1 4 1 6240 994n
+preplace netloc Net1 1 4 1 6150 514n
+preplace netloc xlconstant_0_dout 1 2 1 860J 180n
+preplace netloc RV32I_IF_Valid_id_out 1 3 1 2710 204n
+preplace netloc Pc_redirect_valid_1 1 2 4 890 586 2720J 230 6230J 232 9640
+preplace netloc Pc_redirect_target_1 1 2 4 900 576 2700J 220 6240J 222 9650
+preplace netloc RV32I_EX_mem_pc_plus4 1 5 1 9660 422n
+preplace netloc RV32I_EX_mem_rd 1 5 1 9670 462n
+preplace netloc RV32I_EX_mem_mem_re 1 5 1 9680 502n
+preplace netloc RV32I_EX_mem_mem_we 1 5 1 9720 522n
+preplace netloc RV32I_EX_mem_mem_size 1 5 1 9750 542n
+preplace netloc RV32I_EX_mem_mem_unsigned 1 5 1 9760 562n
+preplace netloc RV32I_EX_mem_rd_we 1 5 1 9740 482n
+preplace netloc RV32I_EX_mem_wb_sel 1 5 1 9770 582n
+preplace netloc RV32I_EX_mem_imm_u 1 5 1 9730 442n
+preplace netloc RV32I_EX_mem_store_data 1 5 1 9710 402n
+preplace netloc RV32I_EX_mem_alu_result 1 5 1 9700 382n
+preplace netloc zynq_ultra_ps_e_1_pl_clk0 1 0 6 20 160 620 120 850 606 2740 260 6190 262 9690
+preplace netloc zynq_ultra_ps_e_1_pl_resetn0 1 1 1 N 300
+preplace netloc RV32I_MEM_wb_imm_u 1 6 1 11640 432n
+preplace netloc RV32I_MEM_wb_pc_plus4 1 6 1 11630 452n
+preplace netloc RV32I_MEM_wb_alu_result 1 6 1 11620 472n
+preplace netloc RV32I_MEM_wb_data 1 6 1 11610 492n
+preplace netloc RV32I_MEM_wb_sel 1 6 1 11600 512n
+preplace netloc Hold_1 1 2 2 870J 596 2700
+preplace netloc Flush_1 1 2 4 880 956 2750J 1242 6160J 1146 9640
+preplace netloc RV32I_MEM_wb_rd 1 3 4 2780 210 6250J 212 NJ 212 11590
+preplace netloc RV32I_WB_rd_wdata 1 3 5 2790 240 6210J 242 NJ 242 NJ 242 13320
+preplace netloc rd_we_1 1 3 4 2800 250 6200J 252 NJ 252 11580
+preplace netloc RV32I_IF|util_vector_logic_0_Res 1 1 3 1390 494 NJ 494 NJ
+preplace netloc RV32I_IF|pc_unit_wrapper_0_pc 1 2 1 1770 144n
+preplace netloc RV32I_IF|pc_to_rom_addr_wrapp_0_a 1 3 1 2110 314n
+preplace netloc RV32I_IF|Net 1 0 4 NJ 424 1410 464 1760 234 2140
+preplace netloc RV32I_IF|pc_unit_wrapper_0_pc_plus4 1 2 2 NJ 374 2120
+preplace netloc RV32I_IF|blk_mem_gen_0_douta 1 2 2 1780 224 2100
+preplace netloc RV32I_IF|Net1 1 0 4 1080 244 NJ 244 NJ 244 N
+preplace netloc RV32I_IF|Flush_1 1 0 4 NJ 364 1380J 484 NJ 484 2160
 preplace netloc RV32I_IF|rv32i_if_id_reg_wrap_0_pc_id_out 1 4 1 N 144
 preplace netloc RV32I_IF|rv32i_if_id_reg_wrap_0_pc_plus4_id_out 1 4 1 N 164
 preplace netloc RV32I_IF|rv32i_if_id_reg_wrap_0_instr_id_out 1 4 1 N 184
 preplace netloc RV32I_IF|rv32i_if_id_reg_wrap_0_valid_id_out 1 4 1 N 204
 preplace netloc RV32I_IF|Pc_redirect_valid_1 1 0 2 NJ 384 N
 preplace netloc RV32I_IF|Pc_redirect_target_1 1 0 2 NJ 404 N
-preplace netloc RV32I_IF|valid_fetch_in_1 1 0 4 1960J 244 2270J 254 NJ 254 3060
-preplace netloc RV32I_IF|Net2 1 0 4 1970J 374 2310 124 2670 44 3060
-preplace netloc RV32I_IF|latency_align_0_pc_exec 1 3 1 3050 124n
-preplace netloc RV32I_IF|latency_align_0_instr_exec 1 3 1 3030 144n
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_u 1 1 3 5598J 964 6038 574 6458J
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_rs1 1 1 3 5568 574 5968 584 NJ
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_rs2 1 1 3 5558 564 6048 604 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_imm_sel 1 2 1 6008 744n
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_j 1 1 2 5558J 984 5948
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_b 1 1 2 5568J 1004 5988
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_s 1 1 2 5578J 994 N
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_i 1 1 2 5618J 974 N
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_bit30 1 1 1 5628 814n
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_fmt 1 1 1 5618 794n
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_funct7 1 1 1 5608 774n
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_funct3 1 1 1 5598 754n
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_opcode 1 1 1 5588 734n
-preplace netloc RV32I_ID|rv32i_control_full_w_0_wb_sel 1 2 2 5938 674 6418J
-preplace netloc RV32I_ID|rv32i_control_full_w_0_rd_we 1 2 2 5938 654 6428J
-preplace netloc RV32I_ID|rv32i_control_full_w_0_lsu_unsigned 1 2 2 5988 844 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_lsu_size 1 2 2 5998 824 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_mem_we 1 2 2 6018 804 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_mem_re 1 2 2 6028 784 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_jalr 1 2 2 6068 764 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_jal 1 2 2 6058 744 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_branch_f3 1 2 2 6048 724 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_branch_en 1 2 2 5978 704 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_opB_sel 1 2 2 5968 684 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_opA_sel 1 2 2 5958 664 NJ
-preplace netloc RV32I_ID|rv32i_control_full_w_0_alu_op 1 2 2 5948 644 NJ
-preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_rd 1 1 3 5578J 584 5938J 614 6418
-preplace netloc RV32I_ID|rv32i_imm_mux_wrapper_0_imm_out 1 3 1 6438 544n
-preplace netloc RV32I_ID|rv32i_regfile_wrapper_0_rs2_rdata 1 3 1 6438 454n
-preplace netloc RV32I_ID|rv32i_regfile_wrapper_0_rs1_rdata 1 3 1 6448 434n
-preplace netloc RV32I_ID|id_pc_1 1 0 4 5268J 554 NJ 554 6058J 564 6418
-preplace netloc RV32I_ID|id_pc_plus4_1 1 0 4 5278J 544 NJ 544 6068J 554 6428
-preplace netloc RV32I_ID|instr_1 1 0 1 5228 584n
-preplace netloc RV32I_ID|Net 1 0 4 5258J 534 NJ 534 5958 334 6438
-preplace netloc RV32I_ID|rst_1 1 0 4 5248J 464 NJ 464 5948J 324 6448
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_pc_plus4 1 4 1 6978 404n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_imm_u 1 4 1 6998 424n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rd 1 4 1 7008 444n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rs1_data 1 4 1 N 464
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rs2_data 1 4 1 N 484
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_pc 1 4 1 6988 424n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_imm 1 4 1 6978 504n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_op_a_sel 1 4 1 N 624
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_op_b_sel 1 4 1 N 644
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_alu_op 1 4 1 6988 604n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_re 1 4 1 6908 724n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_we 1 4 1 6918 744n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_size 1 4 1 6928 764n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rd_we 1 4 1 6938 784n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_unsigned 1 4 1 N 804
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_wb_sel 1 4 1 6948 824n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_jal 1 4 1 6958 704n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_jalr 1 4 1 6878 724n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_branch_funct3 1 4 1 6888 684n
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_branch_en 1 4 1 6898 664n
-preplace netloc RV32I_ID|id_valid_1 1 0 4 5238J 454 NJ 454 5938J 314 6458
-preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_valid 1 4 1 6968 404n
-preplace netloc RV32I_EX|rv32i_operand_a_mux_0_operand_a 1 1 1 9613 374n
-preplace netloc RV32I_EX|rv32i_alu_wrapper_0_y 1 2 1 10143 594n
-preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_exception_valid 1 2 1 10213 814n
-preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_exception_cause 1 2 1 10223 834n
-preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_exception_tval 1 2 1 10233 854n
+preplace netloc RV32I_IF|valid_fetch_in_1 1 0 4 NJ 504 NJ 504 NJ 504 2150
+preplace netloc RV32I_IF|Net2 1 0 4 NJ 444 1400 474 1750 44 2160
+preplace netloc RV32I_IF|latency_align_0_pc_exec 1 3 1 2150 124n
+preplace netloc RV32I_IF|latency_align_0_instr_exec 1 3 1 2130 144n
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_u 1 1 3 4592J 1110 4992 680 5352J
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_rs1 1 1 3 4582J 680 4982 690 5392J
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_rs2 1 1 3 4592J 690 4972 700 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_imm_sel 1 2 1 4902 860n
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_j 1 1 2 4582J 1120 4972
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_b 1 1 2 4602J 1100 5022
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_s 1 1 2 4612J 1090 5012
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_imm_i 1 1 2 4622J 1080 5002
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_bit30 1 1 1 N 930
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_fmt 1 1 1 N 910
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_funct7 1 1 1 N 890
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_funct3 1 1 1 N 870
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_opcode 1 1 1 N 850
+preplace netloc RV32I_ID|rv32i_control_full_w_0_wb_sel 1 2 2 4942 960 5332J
+preplace netloc RV32I_ID|rv32i_control_full_w_0_rd_we 1 2 2 4912 950 5352J
+preplace netloc RV32I_ID|rv32i_control_full_w_0_lsu_unsigned 1 2 2 N 940 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_lsu_size 1 2 2 N 920 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_mem_we 1 2 2 N 900 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_mem_re 1 2 2 N 880 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_jalr 1 2 2 5022 860 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_jal 1 2 2 5012 840 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_branch_f3 1 2 2 4982 820 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_branch_en 1 2 2 4922 800 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_opB_sel 1 2 2 4952 780 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_opA_sel 1 2 2 4932 760 NJ
+preplace netloc RV32I_ID|rv32i_control_full_w_0_alu_op 1 2 2 4902 740 NJ
+preplace netloc RV32I_ID|rv32i_decoder_wrapper_0_rd 1 1 3 4622J 700 4962J 970 5392
+preplace netloc RV32I_ID|rv32i_imm_mux_wrapper_0_imm_out 1 3 1 5372 640n
+preplace netloc RV32I_ID|rv32i_regfile_wrapper_0_rs2_rdata 1 3 1 5322 570n
+preplace netloc RV32I_ID|rv32i_regfile_wrapper_0_rs1_rdata 1 3 1 5342 550n
+preplace netloc RV32I_ID|id_pc_1 1 0 4 NJ 340 NJ 340 NJ 340 5382
+preplace netloc RV32I_ID|id_pc_plus4_1 1 0 4 NJ 360 NJ 360 NJ 360 5362
+preplace netloc RV32I_ID|instr_1 1 0 1 4292 380n
+preplace netloc RV32I_ID|Net 1 0 4 NJ 400 NJ 400 4982 440 5372
+preplace netloc RV32I_ID|rst_1 1 0 4 NJ 420 NJ 420 NJ 420 5392
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_pc_plus4 1 4 1 5872 500n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_imm_u 1 4 1 5892 520n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rd 1 4 1 5902 540n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rs1_data 1 4 1 N 560
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rs2_data 1 4 1 N 580
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_pc 1 4 1 5882 520n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_imm 1 4 1 5872 600n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_op_a_sel 1 4 1 N 720
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_op_b_sel 1 4 1 N 740
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_alu_op 1 4 1 5882 700n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_re 1 4 1 5802 820n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_we 1 4 1 5812 840n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_size 1 4 1 5822 860n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_rd_we 1 4 1 5832 880n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_mem_unsigned 1 4 1 N 900
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_wb_sel 1 4 1 5842 920n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_jal 1 4 1 5852 800n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_jalr 1 4 1 5772 820n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_branch_funct3 1 4 1 5782 780n
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_branch_en 1 4 1 5792 760n
+preplace netloc RV32I_ID|id_valid_1 1 0 4 NJ 440 NJ 440 4972J 430 5352
+preplace netloc RV32I_ID|rv32i_id_ex_reg_wrap_0_ex_valid 1 4 1 5862 500n
+preplace netloc RV32I_ID|rd_addr_1 1 0 3 NJ 570 NJ 570 N
+preplace netloc RV32I_ID|rd_wdata_1 1 0 3 NJ 590 NJ 590 N
+preplace netloc RV32I_ID|rd_we_1 1 0 3 NJ 610 NJ 610 N
+preplace netloc RV32I_ID|flush_1 1 0 4 4302J 450 NJ 450 NJ 450 5342
+preplace netloc RV32I_ID|stall_1 1 0 4 NJ 670 NJ 670 NJ 670 5332
+preplace netloc RV32I_EX|rv32i_operand_a_mux_0_operand_a 1 1 1 8471 374n
+preplace netloc RV32I_EX|rv32i_alu_wrapper_0_y 1 2 1 8951 594n
+preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_exception_valid 1 2 1 8971 814n
+preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_exception_cause 1 2 1 8991 834n
+preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_exception_tval 1 2 1 9001 854n
 preplace netloc RV32I_EX|rv32i_operand_b_mux_0_operand_b 1 1 1 N 654
-preplace netloc RV32I_EX|RV32I_ID_ex_rs1_data 1 0 2 9213 934 N
-preplace netloc RV32I_EX|RV32I_ID_ex_pc 1 0 3 9223 544 9583 574 NJ
+preplace netloc RV32I_EX|RV32I_ID_ex_rs1_data 1 0 2 8101 454 8451
+preplace netloc RV32I_EX|RV32I_ID_ex_pc 1 0 3 8091 464 8441 564 8981J
 preplace netloc RV32I_EX|RV32I_ID_ex_op_a_sel 1 0 1 N 394
 preplace netloc RV32I_EX|clk_1 1 0 3 NJ 474 NJ 474 N
 preplace netloc RV32I_EX|rst_1 1 0 3 NJ 494 NJ 494 N
-preplace netloc RV32I_EX|Net1 1 0 3 9163J 504 9603 504 10233J
-preplace netloc RV32I_EX|Net 1 0 3 9203 534 9593 544 10203J
-preplace netloc RV32I_EX|RV32I_ID_ex_pc_plus4 1 0 3 NJ 554 NJ 554 10193
-preplace netloc RV32I_EX|RV32I_ID_ex_imm_u 1 0 3 9173J 514 NJ 514 10213
-preplace netloc RV32I_EX|RV32I_ID_ex_rd 1 0 3 9193J 564 NJ 564 10153
-preplace netloc RV32I_EX|RV32I_ID_ex_mem_re 1 0 3 9183J 524 NJ 524 10183
-preplace netloc RV32I_EX|RV32I_ID_ex_mem_we 1 0 3 NJ 744 NJ 744 10143
-preplace netloc RV32I_EX|RV32I_ID_ex_mem_size 1 0 3 9243J 734 NJ 734 N
-preplace netloc RV32I_EX|RV32I_ID_ex_mem_unsigned 1 0 3 NJ 784 NJ 784 10183
-preplace netloc RV32I_EX|RV32I_ID_ex_rd_we 1 0 3 NJ 804 NJ 804 10193
-preplace netloc RV32I_EX|RV32I_ID_ex_wb_sel 1 0 3 NJ 824 NJ 824 10203
-preplace netloc RV32I_EX|RV32I_ID_ex_imm 1 0 2 9253 924 9573
+preplace netloc RV32I_EX|Net1 1 0 3 NJ 514 8431 554 NJ
+preplace netloc RV32I_EX|Net 1 0 3 8101 544 8411 574 8961J
+preplace netloc RV32I_EX|RV32I_ID_ex_pc_plus4 1 0 3 NJ 554 8401J 534 8991
+preplace netloc RV32I_EX|RV32I_ID_ex_imm_u 1 0 3 NJ 574 8421J 544 8971
+preplace netloc RV32I_EX|RV32I_ID_ex_rd 1 0 3 8081J 734 NJ 734 8951
+preplace netloc RV32I_EX|RV32I_ID_ex_mem_re 1 0 3 8071J 744 NJ 744 8961
+preplace netloc RV32I_EX|RV32I_ID_ex_mem_we 1 0 3 8061J 754 NJ 754 8971
+preplace netloc RV32I_EX|RV32I_ID_ex_mem_size 1 0 3 NJ 764 NJ 764 8981
+preplace netloc RV32I_EX|RV32I_ID_ex_mem_unsigned 1 0 3 NJ 784 8461J 774 8991
+preplace netloc RV32I_EX|RV32I_ID_ex_rd_we 1 0 3 NJ 804 8481J 784 9001
+preplace netloc RV32I_EX|RV32I_ID_ex_wb_sel 1 0 3 NJ 824 8491J 794 N
+preplace netloc RV32I_EX|RV32I_ID_ex_imm 1 0 2 8091 974 N
 preplace netloc RV32I_EX|RV32I_ID_ex_branch_en 1 0 2 NJ 994 N
 preplace netloc RV32I_EX|RV32I_ID_ex_branch_funct3 1 0 2 NJ 1014 N
 preplace netloc RV32I_EX|RV32I_ID_ex_jal 1 0 2 NJ 1034 N
 preplace netloc RV32I_EX|RV32I_ID_ex_jalr 1 0 2 NJ 1054 N
-preplace netloc RV32I_EX|RV32I_ID_ex_op_b_sel 1 0 1 9233 674n
-preplace netloc RV32I_EX|RV32I_ID_ex_alu_op 1 0 2 9223J 574 9573
-preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_pc_redirect_valid 1 2 2 10173 414 10703J
-preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_pc_redirect_target 1 2 2 10163 404 10713J
+preplace netloc RV32I_EX|RV32I_ID_ex_op_b_sel 1 0 1 8101 674n
+preplace netloc RV32I_EX|RV32I_ID_ex_alu_op 1 0 2 NJ 1094 8471
+preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_pc_redirect_valid 1 2 2 8951 914 9431J
+preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_pc_redirect_target 1 2 2 N 924 9461J
 preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_pc_plus4 1 3 1 N 594
 preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_rd 1 3 1 N 634
 preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_mem_re 1 3 1 N 654
@@ -200,18 +208,18 @@ preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_mem_size 1 3 1 N 694
 preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_mem_unsigned 1 3 1 N 714
 preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_rd_we 1 3 1 N 734
 preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_wb_sel 1 3 1 N 754
-preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_imm_u 1 3 1 10673 614n
-preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_store_data 1 3 1 10683 574n
-preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_alu_result 1 3 1 10693 554n
+preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_imm_u 1 3 1 9441 614n
+preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_store_data 1 3 1 9451 574n
+preplace netloc RV32I_EX|rv32i_ex_mem_reg_wra_0_mem_alu_result 1 3 1 9421 554n
 preplace netloc RV32I_EX|rv32i_branch_unit_wr_0_ex_flush_req 1 2 2 N 1044 NJ
-levelinfo -pg 1 0 330 840 2100 5378 9343 12637 14407 14520
-levelinfo -hier RV32I_IF * 2120 2490 2860 3290 *
-levelinfo -hier RV32I_ID * 5418 5788 6258 6678 *
-levelinfo -hier RV32I_EX * 9413 9903 10453 *
-pagesize -pg 1 -db -bbox -sgen 0 0 14520 1510
-pagesize -hier RV32I_IF -db -bbox -sgen 1910 34 3520 554
-pagesize -hier RV32I_ID -db -bbox -sgen 5198 304 7038 1114
-pagesize -hier RV32I_EX -db -bbox -sgen 9133 294 10743 1124
+levelinfo -pg 1 0 320 730 1200 4392 8181 11408 13178 13340
+levelinfo -hier RV32I_IF * 1230 1580 1940 2350 *
+levelinfo -hier RV32I_ID * 4442 4762 5172 5582 *
+levelinfo -hier RV32I_EX * 8251 8721 9211 *
+pagesize -pg 1 -db -bbox -sgen 0 0 13340 1260
+pagesize -hier RV32I_IF -db -bbox -sgen 1050 34 2570 554
+pagesize -hier RV32I_ID -db -bbox -sgen 4262 320 5932 1190
+pagesize -hier RV32I_EX -db -bbox -sgen 8031 294 9491 1124
 "
 }
 0

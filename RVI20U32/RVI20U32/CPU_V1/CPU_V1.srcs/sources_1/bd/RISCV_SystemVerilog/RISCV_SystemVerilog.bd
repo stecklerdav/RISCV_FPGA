@@ -6,8 +6,7 @@
       "name": "RISCV_SystemVerilog",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2020.1",
-      "validated": "true"
+      "tool_version": "2020.1"
     },
     "design_tree": {
       "RV32I_IF": {
@@ -200,21 +199,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -275,21 +260,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -332,21 +303,7 @@
               },
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "pc_en": {
                 "direction": "I"
@@ -607,6 +564,25 @@
           },
           "ex_valid": {
             "direction": "O"
+          },
+          "rd_addr": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "rd_wdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "rd_we": {
+            "direction": "I"
+          },
+          "flush": {
+            "direction": "I"
+          },
+          "stall": {
+            "direction": "I"
           }
         },
         "components": {
@@ -667,17 +643,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rs1_addr": {
                 "direction": "I",
@@ -725,21 +691,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -1470,6 +1422,36 @@
               "rv32i_id_ex_reg_wrap_0/ex_valid",
               "ex_valid"
             ]
+          },
+          "rd_addr_1": {
+            "ports": [
+              "rd_addr",
+              "rv32i_regfile_wrapper_0/rd_addr"
+            ]
+          },
+          "rd_wdata_1": {
+            "ports": [
+              "rd_wdata",
+              "rv32i_regfile_wrapper_0/rd_wdata"
+            ]
+          },
+          "rd_we_1": {
+            "ports": [
+              "rd_we",
+              "rv32i_regfile_wrapper_0/rd_we"
+            ]
+          },
+          "flush_1": {
+            "ports": [
+              "flush",
+              "rv32i_id_ex_reg_wrap_0/flush"
+            ]
+          },
+          "stall_1": {
+            "ports": [
+              "stall",
+              "rv32i_id_ex_reg_wrap_0/stall"
+            ]
           }
         }
       },
@@ -1798,21 +1780,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -2339,6 +2307,14 @@
           "clk": {
             "type": "clk",
             "direction": "I"
+          },
+          "wb_rd": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "wb_rd_we": {
+            "direction": "O"
           }
         },
         "components": {
@@ -2368,17 +2344,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "we": {
                 "direction": "I"
@@ -2450,21 +2416,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -2555,21 +2507,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -2869,6 +2807,18 @@
               "rv32i_mem_wb_reg_wra_0/wb_sel",
               "wb_sel"
             ]
+          },
+          "rv32i_mem_wb_reg_wra_0_wb_rd": {
+            "ports": [
+              "rv32i_mem_wb_reg_wra_0/wb_rd",
+              "wb_rd"
+            ]
+          },
+          "rv32i_mem_wb_reg_wra_0_wb_rd_we": {
+            "ports": [
+              "rv32i_mem_wb_reg_wra_0/wb_rd_we",
+              "wb_rd_we"
+            ]
           }
         }
       },
@@ -2897,6 +2847,11 @@
           "wb_sel": {
             "direction": "I",
             "left": "1",
+            "right": "0"
+          },
+          "rd_wdata": {
+            "direction": "O",
+            "left": "31",
             "right": "0"
           }
         },
@@ -2972,6 +2927,12 @@
             "ports": [
               "wb_sel",
               "rv32i_wb_mux_wrapper_0/wb_sel"
+            ]
+          },
+          "rv32i_wb_mux_wrapper_0_rd_wdata": {
+            "ports": [
+              "rv32i_wb_mux_wrapper_0/rd_wdata",
+              "rd_wdata"
             ]
           }
         }
@@ -6323,13 +6284,33 @@
       "Hold_1": {
         "ports": [
           "xlconstant_1/dout",
-          "RV32I_IF/Hold"
+          "RV32I_IF/Hold",
+          "RV32I_ID/stall"
         ]
       },
       "Flush_1": {
         "ports": [
           "RV32I_EX/ex_flush_req",
-          "RV32I_IF/Flush"
+          "RV32I_IF/Flush",
+          "RV32I_ID/flush"
+        ]
+      },
+      "RV32I_MEM_wb_rd": {
+        "ports": [
+          "RV32I_MEM/wb_rd",
+          "RV32I_ID/rd_addr"
+        ]
+      },
+      "RV32I_WB_rd_wdata": {
+        "ports": [
+          "RV32I_WB/rd_wdata",
+          "RV32I_ID/rd_wdata"
+        ]
+      },
+      "rd_we_1": {
+        "ports": [
+          "RV32I_MEM/wb_rd_we",
+          "RV32I_ID/rd_we"
         ]
       }
     },
