@@ -2,15 +2,11 @@
 .globl _start
 
 _start:
-    addi x1, x0, 5
-    addi x2, x0, 5
-    beq  x1, x2, target
-    addi x3, x0, 3      # debe ser anulada
-    addi x4, x0, 4      # puede ser anulada según dónde resuelvas el branch
-
-target:
-    addi x5, x0, 5
+    addi x10, x0, 10
+    addi x11, x0, 11
+    addi x12, x0, 12
+    addi x13, x0, 13
+    addi x14, x0, 14
 
 loop:
     j loop
-

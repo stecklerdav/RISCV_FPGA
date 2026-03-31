@@ -1,10 +1,10 @@
-// (c) Copyright 1995-2026 Xilinx, Inc. All rights reserved.
-// 
+// (c) Copyright 1995-2013 Xilinx, Inc. All rights reserved.
+//
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
 // international copyright and other intellectual property
 // laws.
-// 
+//
 // DISCLAIMER
 // This disclaimer is not a license and does not grant any
 // rights to the materials distributed herewith. Except as
@@ -26,7 +26,7 @@
 // by a third party) even if such damage or loss was
 // reasonably foreseeable or Xilinx had been advised of the
 // possibility of the same.
-// 
+//
 // CRITICAL APPLICATIONS
 // Xilinx products are not designed or intended to be fail-
 // safe, or for use in any application requiring fail-safe
@@ -40,30 +40,21 @@
 // liability of any use of Xilinx products in Critical
 // Applications, subject only to applicable laws and
 // regulations governing limitations on product liability.
-// 
+//
 // THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
 // PART OF THIS FILE AT ALL TIMES.
-// 
+//
 // DO NOT MODIFY THIS FILE.
+`timescale 1ns / 1ps
+module RISCV_SystemVerilog_vio_0_1 (
+clk,
 
-
-// IP VLNV: xilinx.com:ip:xlconstant:1.1
-// IP Revision: 7
-
-(* X_CORE_INFO = "xlconstant_v1_1_7_xlconstant,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "RISCV_SystemVerilog_xlconstant_0_2,xlconstant_v1_1_7_xlconstant,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog_xlconstant_0_2,xlconstant_v1_1_7_xlconstant,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlconstant,x_ipVersion=1.1,x_ipCoreRevision=7,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CONST_WIDTH=1,CONST_VAL=0x0}" *)
-(* DowngradeIPIdentifiedWarnings = "yes" *)
-module RISCV_SystemVerilog_xlconstant_0_2 (
-  dout
+probe_out0
 );
 
-output wire [0 : 0] dout;
+input clk;
 
-  xlconstant_v1_1_7_xlconstant #(
-    .CONST_WIDTH(1),
-    .CONST_VAL('H0)
-  ) inst (
-    .dout(dout)
-  );
+output reg [0 : 0] probe_out0 = 'h0 ;
+
+
 endmodule

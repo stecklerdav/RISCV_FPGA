@@ -6,7 +6,8 @@
       "name": "RISCV_SystemVerilog",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2020.1"
+      "tool_version": "2020.1",
+      "validated": "true"
     },
     "design_tree": {
       "RV32I_IF": {
@@ -49,7 +50,7 @@
         "util_vector_logic_0": ""
       },
       "zynq_ultra_ps_e_1": "",
-      "xlconstant_1": ""
+      "vio_0": ""
     },
     "components": {
       "RV32I_IF": {
@@ -199,7 +200,21 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rst": {
                 "type": "rst",
@@ -260,7 +275,21 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rst": {
                 "type": "rst",
@@ -303,7 +332,21 @@
               },
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "pc_en": {
                 "direction": "I"
@@ -643,7 +686,17 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rs1_addr": {
                 "direction": "I",
@@ -691,7 +744,21 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rst": {
                 "type": "rst",
@@ -1780,7 +1847,21 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rst": {
                 "type": "rst",
@@ -2344,7 +2425,17 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "we": {
                 "direction": "I"
@@ -2416,7 +2507,21 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rst": {
                 "type": "rst",
@@ -2507,7 +2612,21 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
               },
               "rst": {
                 "type": "rst",
@@ -5981,11 +6100,11 @@
           }
         }
       },
-      "xlconstant_1": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "RISCV_SystemVerilog_xlconstant_0_2",
+      "vio_0": {
+        "vlnv": "xilinx.com:ip:vio:3.0",
+        "xci_name": "RISCV_SystemVerilog_vio_0_1",
         "parameters": {
-          "CONST_VAL": {
+          "C_NUM_PROBE_IN": {
             "value": "0"
           }
         }
@@ -6242,7 +6361,8 @@
           "RV32I_IF/clk",
           "RV32I_ID/clk",
           "RV32I_EX/clk",
-          "RV32I_MEM/clk"
+          "RV32I_MEM/clk",
+          "vio_0/clk"
         ]
       },
       "zynq_ultra_ps_e_1_pl_resetn0": {
@@ -6283,7 +6403,7 @@
       },
       "Hold_1": {
         "ports": [
-          "xlconstant_1/dout",
+          "vio_0/probe_out0",
           "RV32I_IF/Hold",
           "RV32I_ID/stall"
         ]
