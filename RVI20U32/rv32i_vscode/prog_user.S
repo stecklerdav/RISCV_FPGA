@@ -2,11 +2,14 @@
 .globl _start
 
 _start:
-    addi x10, x0, 10
-    addi x11, x0, 11
-    addi x12, x0, 12
-    addi x13, x0, 13
-    addi x14, x0, 14
+    addi x1, x0, 5        # x1 = 5
+    addi x2, x0, 7        # x2 = 7
 
-loop:
-    j loop
+    add  x3, x1, x2       # instrucción clave para validar ID
+    sub  x4, x2, x1       # instrucción clave para validar ID
+    and  x5, x1, x2       # instrucción clave para validar ID
+    or   x6, x1, x2       # instrucción clave para validar ID
+
+end:
+    j end
+    

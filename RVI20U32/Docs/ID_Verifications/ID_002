@@ -1,0 +1,52 @@
+.section .text.start
+.globl _start
+
+_start:
+    addi x1, x0, 12       # I-type
+    addi x2, x0, -3       # I-type negativo
+
+    sw   x1, 16(x0)       # S-type
+    lui  x3, 0x12345      # U-type
+
+end:
+    j end
+    
+Para addi x1, x0, 12
+opcode = 0010011
+rs1 = 0
+rd = 1
+imm_i = 12
+imm_sel = IMM_I
+imm_out = 12
+control:
+rd_we = 1
+alu_op = ADD
+op_a_sel = RS1
+op_b_sel = IMM
+Para addi x2, x0, -3
+imm_i = 0xFFFF_FFFD
+imm_out = 0xFFFF_FFFD
+
+Eso valida sign extension.
+
+Para sw x1, 16(x0)
+opcode = 0100011
+rs1 = 0
+rs2 = 1
+imm_s = 16
+imm_sel = IMM_S
+imm_out = 16
+control:
+rd_we = 0
+mem_we = 1
+op_a_sel = RS1
+op_b_sel = IMM
+alu_op = ADD
+Para lui x3, 0x12345
+opcode = 0110111
+rd = 3
+imm_u = 0x12345000
+imm_sel = IMM_U
+control:
+según tu diseño, normalmente wb_sel = WB_IMM o ALU con COPY_B
+rd_we = 1	

@@ -6,8 +6,7 @@
       "name": "RISCV_SystemVerilog",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "None",
-      "tool_version": "2020.1",
-      "validated": "true"
+      "tool_version": "2020.1"
     },
     "design_tree": {
       "RV32I_IF": {
@@ -23,7 +22,8 @@
         "rv32i_regfile_wrapper_0": "",
         "rv32i_id_ex_reg_wrap_0": "",
         "rv32i_decoder_wrapper_0": "",
-        "rv32i_control_full_w_0": ""
+        "rv32i_control_full_w_0": "",
+        "rv32i_hazard_detecti_0": ""
       },
       "xlconstant_0": "",
       "RV32I_EX": {
@@ -31,7 +31,10 @@
         "rv32i_operand_a_mux_0": "",
         "rv32i_operand_b_mux_0": "",
         "rv32i_ex_mem_reg_wra_0": "",
-        "rv32i_alu_wrapper_0": ""
+        "rv32i_alu_wrapper_0": "",
+        "rv32i_forwarding_uni_0": "",
+        "rv32i_forward_mux_wr_0": "",
+        "rv32i_forward_mux_wr_1": ""
       },
       "RV32I_MEM": {
         "xlslice_0": "",
@@ -200,21 +203,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -275,21 +264,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -332,21 +307,7 @@
               },
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "pc_en": {
                 "direction": "I"
@@ -686,17 +647,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rs1_addr": {
                 "direction": "I",
@@ -744,21 +695,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -1138,6 +1075,53 @@
                 "direction": "O"
               },
               "jalr": {
+                "direction": "O"
+              }
+            }
+          },
+          "rv32i_hazard_detecti_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_hazard_detection_unit_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_hazard_detecti_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_hazard_detection_unit_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "id_ex_mem_re": {
+                "direction": "I"
+              },
+              "id_ex_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "if_id_rs1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "if_id_rs2": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "if_id_rs1_used": {
+                "direction": "I"
+              },
+              "if_id_rs2_used": {
+                "direction": "I"
+              },
+              "load_use_hazard": {
+                "direction": "O"
+              },
+              "pc_en": {
+                "direction": "O"
+              },
+              "if_id_hold": {
+                "direction": "O"
+              },
+              "id_ex_flush": {
                 "direction": "O"
               }
             }
@@ -1847,21 +1831,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -2036,6 +2006,125 @@
                 "right": "0"
               },
               "y": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_forwarding_uni_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_forwarding_unit_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_forwarding_uni_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_forwarding_unit_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "ex_rs1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_rs2": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "mem_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "mem_rd_we": {
+                "direction": "I"
+              },
+              "wb_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "wb_rd_we": {
+                "direction": "I"
+              },
+              "forward_a": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "forward_b": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_forward_mux_wr_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_forward_mux_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_forward_mux_wr_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_forward_mux_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "base_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_mem_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_wb_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "forward_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "out_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "rv32i_forward_mux_wr_1": {
+            "vlnv": "xilinx.com:module_ref:rv32i_forward_mux_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_forward_mux_wr_0_1",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_forward_mux_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "base_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_mem_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_wb_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "forward_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "out_data": {
                 "direction": "O",
                 "left": "31",
                 "right": "0"
@@ -2425,17 +2514,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "we": {
                 "direction": "I"
@@ -2507,21 +2586,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",
@@ -2612,21 +2677,7 @@
             "ports": {
               "clk": {
                 "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
+                "direction": "I"
               },
               "rst": {
                 "type": "rst",

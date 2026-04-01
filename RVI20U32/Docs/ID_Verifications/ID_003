@@ -1,0 +1,50 @@
+.section .text.start
+.globl _start
+
+_start:
+    addi x1, x0, 1
+    addi x2, x0, 1
+
+    beq  x1, x2, target1  # B-type
+    addi x3, x0, 99       # debería quedar anulada si el salto se toma
+
+target1:
+    jal  x4, target2      # J-type
+    addi x5, x0, 88       # debería quedar anulada por el jal
+
+target2:
+    addi x6, x0, 32
+    jalr x0, x6, 0        # JALR a dirección contenida en x6
+
+end:
+    j end
+    
+Para beq x1, x2, target1
+opcode = 1100011
+rs1 = 1
+rs2 = 2
+branch_en = 1
+branch_funct3 = 000 (BEQ)
+jal = 0
+jalr = 0
+imm_sel = IMM_B
+imm_out = offset hacia target1
+Para jal x4, target2
+opcode = 1101111
+rd = 4
+jal = 1
+jalr = 0
+branch_en = 0
+imm_sel = IMM_J
+imm_out = offset hacia target2
+rd_we = 1
+wb_sel = WB_PC4
+Para jalr x0, x6, 0
+opcode = 1100111
+rs1 = 6
+rd = 0
+jal = 0
+jalr = 1
+imm_sel = IMM_I
+imm_out = 0
+id_rs1_data = 32
