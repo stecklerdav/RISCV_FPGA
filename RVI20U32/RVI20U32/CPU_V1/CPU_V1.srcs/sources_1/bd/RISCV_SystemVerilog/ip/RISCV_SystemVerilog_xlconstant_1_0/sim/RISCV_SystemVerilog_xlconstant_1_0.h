@@ -1,10 +1,10 @@
-// (c) Copyright 1995-2013 Xilinx, Inc. All rights reserved.
-//
+// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
+// 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
 // international copyright and other intellectual property
 // laws.
-//
+// 
 // DISCLAIMER
 // This disclaimer is not a license and does not grant any
 // rights to the materials distributed herewith. Except as
@@ -26,7 +26,7 @@
 // by a third party) even if such damage or loss was
 // reasonably foreseeable or Xilinx had been advised of the
 // possibility of the same.
-//
+// 
 // CRITICAL APPLICATIONS
 // Xilinx products are not designed or intended to be fail-
 // safe, or for use in any application requiring fail-safe
@@ -40,21 +40,26 @@
 // liability of any use of Xilinx products in Critical
 // Applications, subject only to applicable laws and
 // regulations governing limitations on product liability.
-//
+// 
 // THIS COPYRIGHT NOTICE AND DISCLAIMER MUST BE RETAINED AS
 // PART OF THIS FILE AT ALL TIMES.
-//
+// 
 // DO NOT MODIFY THIS FILE.
-`timescale 1ns / 1ps
-module RISCV_SystemVerilog_vio_0_1 (
-clk,
-
-probe_out0
-);
-
-input clk;
-
-output reg [0 : 0] probe_out0 = 'h0 ;
 
 
-endmodule
+// IP VLNV: xilinx.com:ip:xlconstant:1.1
+// IP Revision: 1
+
+#ifndef _RISCV_SystemVerilog_xlconstant_1_0_H_
+#define _RISCV_SystemVerilog_xlconstant_1_0_H_
+
+#include "xlconstant_v1_1_7.h"
+#include "systemc.h"
+class RISCV_SystemVerilog_xlconstant_1_0 : public sc_module {
+  public:
+xlconstant_v1_1_7<1,0> mod;
+  sc_out< sc_bv<1> > dout;
+RISCV_SystemVerilog_xlconstant_1_0 (sc_core::sc_module_name name);
+  };
+
+#endif
