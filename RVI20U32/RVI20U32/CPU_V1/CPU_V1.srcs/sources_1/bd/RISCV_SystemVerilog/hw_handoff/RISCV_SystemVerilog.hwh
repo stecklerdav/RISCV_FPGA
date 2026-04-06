@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr  3 15:50:30 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Apr  6 19:53:58 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="RISCV_SystemVerilog" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -1547,10 +1547,10 @@
     <MODULE COREREVISION="1" FULLNAME="/RV32I_IF/util_vector_logic_1" HWVERSION="2.0" INSTANCE="RV32I_IF_util_vector_logic_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_OPERATION" VALUE="and"/>
         <PARAMETER NAME="C_SIZE" VALUE="1"/>
         <PARAMETER NAME="Component_Name" VALUE="RISCV_SystemVerilog_util_vector_logic_0_2"/>
-        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_andgate.png"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>

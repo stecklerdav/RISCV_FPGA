@@ -1,0 +1,36 @@
+
+
+
+
+
+
+no continuan saliendo instrucciones en instr_id_out hasta que vuelve a pasar por 0x2000 no se porque revisar lo de abajo
+
+
+
+
+
+Tienes dos cosas ocurriendo:
+
+1. La memoria de programa hace wrap por truncamiento de dirección
+
+Eso explica por qué reaparece el programa en 0x2000.
+
+2. El redirect del jal en el primer bloque del programa no está cerrando bien
+
+Por eso el PC se escapa y no se queda en 0x10.
+
+Qué debes verificar ahora
+
+Busca específicamente el primer jal del programa original:
+
+cuando pc_id_out o pc_exec estén cerca de 0x10
+verifica:
+instr_exec == 0x0000006f
+ex_jal == 1
+pc_redirect_valid == 1
+pc_redirect_target == 0x10
+
+Si eso no ocurre en la primera pasada, el bug está antes de que el wrap te “salve” el programa.
+
+La lectura correcta de esta imagen es: el programa recomienza en 0x2000 porque la BRAM está envolviendo la dirección, no porque el jal original haya funcionado bien.

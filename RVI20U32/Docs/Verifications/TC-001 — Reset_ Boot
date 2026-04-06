@@ -1,0 +1,23 @@
+.section .text.start
+.globl _start
+
+_start:
+    addi x1, x0, 1
+
+done:
+    j done
+
+
+
+
+Qué validar (clave en tu caso)
+pc = RESET_PC
+después de liberar reset:
+primer pc válido sale en IF1
+instrucción aparece en IF2 (latencia BRAM)
+
+👉 waveform:
+
+ciclo 0: reset
+ciclo 1: PC válido
+ciclo 2: instr válida

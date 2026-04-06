@@ -24,65 +24,91 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6477167fs"></ZoomStartTime>
-      <ZoomEndTime time="7874168fs"></ZoomEndTime>
-      <Cursor1Time time="6762167fs"></Cursor1Time>
+      <ZoomStartTime time="215921335fs"></ZoomStartTime>
+      <ZoomEndTime time="217472336fs"></ZoomEndTime>
+      <Cursor1Time time="216254325fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="146"></NameColumnWidth>
-      <ValueColumnWidth column_width="80"></ValueColumnWidth>
+      <NameColumnWidth column_width="185"></NameColumnWidth>
+      <ValueColumnWidth column_width="93"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
-   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
+   <WVObjectSize size="18" />
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/rv32i_if_id_reg_wrap_0/valid_id_out">
+      <obj_property name="ElementShortName">valid_id_out</obj_property>
+      <obj_property name="ObjectShortName">valid_id_out</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/rst">
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/pc_unit_wrapper_0/inst/u_pc_unit/rst">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_alu_wrapper_0/inst/u_rv32i_alu/a">
-      <obj_property name="ElementShortName">a[31:0]</obj_property>
-      <obj_property name="ObjectShortName">a[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_alu_wrapper_0/inst/u_rv32i_alu/b">
-      <obj_property name="ElementShortName">b[31:0]</obj_property>
-      <obj_property name="ObjectShortName">b[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_forwarding_uni_0/inst/u_rv32i_forwarding_unit/forward_a">
-      <obj_property name="ElementShortName">forward_a[1:0]</obj_property>
-      <obj_property name="ObjectShortName">forward_a[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_forwarding_uni_0/inst/u_rv32i_forwarding_unit/forward_b">
-      <obj_property name="ElementShortName">forward_b[1:0]</obj_property>
-      <obj_property name="ObjectShortName">forward_b[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_alu_wrapper_0/inst/u_rv32i_alu/y">
-      <obj_property name="ElementShortName">y[31:0]</obj_property>
-      <obj_property name="ObjectShortName">y[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_ID/rv32i_regfile_wrapper_0/inst/u_rv32i_regfile/rd_out_r.rs1_rdata">
-      <obj_property name="ElementShortName">.rs1_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">.rs1_rdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_ID/rv32i_regfile_wrapper_0/inst/u_rv32i_regfile/rd_out_r.rs2_rdata">
-      <obj_property name="ElementShortName">.rs2_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">.rs2_rdata[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/vio_0/probe_out0[0]">
       <obj_property name="ElementShortName">[0]</obj_property>
       <obj_property name="ObjectShortName">[0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_WB/rv32i_wb_mux_wrapper_0/inst/u_rv32i_wb_mux/rd_wdata">
-      <obj_property name="ElementShortName">rd_wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd_wdata[31:0]</obj_property>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/pc_unit_wrapper_0/inst/u_pc_unit/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_MEM/rv32i_mem_wb_reg_wra_0/inst/u_rv32i_mem_wb_reg/wb_rd_we">
-      <obj_property name="ElementShortName">wb_rd_we</obj_property>
-      <obj_property name="ObjectShortName">wb_rd_we</obj_property>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/pc_unit_wrapper_0/inst/u_pc_unit/pc">
+      <obj_property name="ElementShortName">pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_MEM/rv32i_mem_wb_reg_wra_0/inst/u_rv32i_mem_wb_reg/wb_rd">
-      <obj_property name="ElementShortName">wb_rd[4:0]</obj_property>
-      <obj_property name="ObjectShortName">wb_rd[4:0]</obj_property>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/rv32i_if_id_reg_wrap_0/pc_id_out">
+      <obj_property name="ElementShortName">pc_id_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_id_out[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/rv32i_if_id_reg_wrap_0/instr_id_out">
+      <obj_property name="ElementShortName">instr_id_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_id_out[31:0]</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/pc_exec">
+      <obj_property name="ElementShortName">pc_exec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_exec[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/inst/instr_exec">
+      <obj_property name="ElementShortName">instr_exec[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr_exec[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/rv32i_if_id_reg_wrap_0/inst/u_if_id_reg/hold">
+      <obj_property name="ElementShortName">hold</obj_property>
+      <obj_property name="ObjectShortName">hold</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/Op2">
+      <obj_property name="ElementShortName">Op2[0:0]</obj_property>
+      <obj_property name="ObjectShortName">Op2[0:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/rv32i_if_id_reg_wrap_0/inst/flush">
+      <obj_property name="ElementShortName">flush</obj_property>
+      <obj_property name="ObjectShortName">flush</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/blk_mem_gen_0/ena">
+      <obj_property name="ElementShortName">ena</obj_property>
+      <obj_property name="ObjectShortName">ena</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/blk_mem_gen_0/addra">
+      <obj_property name="ElementShortName">addra[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[10:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/blk_mem_gen_0/douta">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_IF/latency_align_0/pc_fetch">
+      <obj_property name="ElementShortName">pc_fetch[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_fetch[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_branch_unit_wr_0/pc_redirect_target">
+      <obj_property name="ElementShortName">pc_redirect_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_redirect_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/RISCV_SystemVerilog_wrapper/RISCV_SystemVerilog_i/RV32I_EX/rv32i_branch_unit_wr_0/pc_redirect_valid">
+      <obj_property name="ElementShortName">pc_redirect_valid</obj_property>
+      <obj_property name="ObjectShortName">pc_redirect_valid</obj_property>
    </wvobject>
 </wave_config>

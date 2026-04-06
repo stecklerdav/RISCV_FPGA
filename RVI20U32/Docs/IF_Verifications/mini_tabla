@@ -1,8 +1,0 @@
-| Test   | Archivo                     | Qué mirar                                 |
-| ------ | --------------------------- | ----------------------------------------- |
-| IF_001 | `if_001_fetch_secuencial.S` | `pc`, `pc_exec`, `instr_exec`             |
-| IF_002 | `if_002_jump_loop.S`        | `pc_redirect_valid`, `pc_redirect_target` |
-| IF_003 | `if_003_branch_flush.S`     | `flush`, `valid`, `NOP`                   |
-| IF_004 | `if_004_hold.S`             | `hold`, `pc`, `instr_exec` congelados     |
-| IF_005 | `if_005_reset.S`            | `rst`, `pc=RESET_PC`, primer fetch        |
-

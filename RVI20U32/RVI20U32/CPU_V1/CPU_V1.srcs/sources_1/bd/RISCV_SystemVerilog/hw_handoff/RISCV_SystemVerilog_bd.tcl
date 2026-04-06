@@ -557,9 +557,9 @@ proc create_hier_cell_RV32I_IF { parentCell nameHier } {
   # Create instance: util_vector_logic_1, and set properties
   set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
   set_property -dict [ list \
-   CONFIG.C_OPERATION {or} \
+   CONFIG.C_OPERATION {and} \
    CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
  ] $util_vector_logic_1
 
   # Create port connections

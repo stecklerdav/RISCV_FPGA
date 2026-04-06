@@ -390,7 +390,7 @@
             "xci_name": "RISCV_SystemVerilog_util_vector_logic_0_2",
             "parameters": {
               "C_OPERATION": {
-                "value": "or"
+                "value": "and"
               },
               "C_SIZE": {
                 "value": "1"
