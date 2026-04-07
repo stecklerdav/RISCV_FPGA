@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Mon Apr  6 19:53:57 2026
+//Date        : Tue Apr  7 22:45:42 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_SystemVerilog.bd
 //Design      : RISCV_SystemVerilog
@@ -840,6 +840,7 @@ module RV32I_IF_imp_P41UV7
   wire [31:0]blk_mem_gen_0_douta;
   wire [31:0]latency_align_0_instr_exec;
   wire [31:0]latency_align_0_pc_exec;
+  wire [31:0]latency_align_0_pc_plus4_exec;
   wire [10:0]pc_to_rom_addr_wrapp_0_a;
   wire [31:0]pc_unit_wrapper_0_pc;
   wire [31:0]pc_unit_wrapper_0_pc_plus4;
@@ -867,13 +868,15 @@ module RV32I_IF_imp_P41UV7
        (.addra(pc_to_rom_addr_wrapp_0_a),
         .clka(Net),
         .douta(blk_mem_gen_0_douta),
-        .ena(util_vector_logic_0_Res));
+        .ena(Op2_1));
   RISCV_SystemVerilog_latency_align_0_0 latency_align_0
        (.clk(Net),
         .instr_bram(blk_mem_gen_0_douta),
         .instr_exec(latency_align_0_instr_exec),
         .pc_exec(latency_align_0_pc_exec),
         .pc_fetch(pc_unit_wrapper_0_pc),
+        .pc_plus4_exec(latency_align_0_pc_plus4_exec),
+        .pc_plus4_fetch(pc_unit_wrapper_0_pc_plus4),
         .rst(Net2));
   RISCV_SystemVerilog_pc_to_rom_addr_wrapp_0_0 pc_to_rom_addr_wrapp_0
        (.a(pc_to_rom_addr_wrapp_0_a),
@@ -894,7 +897,7 @@ module RV32I_IF_imp_P41UV7
         .instr_rom_in(latency_align_0_instr_exec),
         .pc_fetch_in(latency_align_0_pc_exec),
         .pc_id_out(rv32i_if_id_reg_wrap_0_pc_id_out),
-        .pc_plus4_fetch_in(pc_unit_wrapper_0_pc_plus4),
+        .pc_plus4_fetch_in(latency_align_0_pc_plus4_exec),
         .pc_plus4_id_out(rv32i_if_id_reg_wrap_0_pc_plus4_id_out),
         .rst(Net2),
         .valid_fetch_in(valid_fetch_in_1),

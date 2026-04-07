@@ -59,8 +59,10 @@ module RISCV_SystemVerilog_latency_align_0_0 (
   rst,
   pc_fetch,
   instr_bram,
+  pc_plus4_fetch,
   pc_exec,
-  instr_exec
+  instr_exec,
+  pc_plus4_exec
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0, INSERT_VIP 0" *)
@@ -71,15 +73,19 @@ input wire clk;
 input wire rst;
 input wire [31 : 0] pc_fetch;
 input wire [31 : 0] instr_bram;
+input wire [31 : 0] pc_plus4_fetch;
 output wire [31 : 0] pc_exec;
 output wire [31 : 0] instr_exec;
+output wire [31 : 0] pc_plus4_exec;
 
   latency_align inst (
     .clk(clk),
     .rst(rst),
     .pc_fetch(pc_fetch),
     .instr_bram(instr_bram),
+    .pc_plus4_fetch(pc_plus4_fetch),
     .pc_exec(pc_exec),
-    .instr_exec(instr_exec)
+    .instr_exec(instr_exec),
+    .pc_plus4_exec(pc_plus4_exec)
   );
 endmodule

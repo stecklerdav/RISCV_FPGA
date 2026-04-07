@@ -85,7 +85,6 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0/sim/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_vip_wrapper.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_latency_align_0_0/sim/RISCV_SystemVerilog_latency_align_0_0.v" \
-  "../../../bd/RISCV_SystemVerilog/sim/RISCV_SystemVerilog.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_forward_mux_wr_0_0/sim/RISCV_SystemVerilog_rv32i_forward_mux_wr_0_0.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_forwarding_uni_0_0/sim/RISCV_SystemVerilog_rv32i_forwarding_uni_0_0.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_hazard_detecti_0_0/sim/RISCV_SystemVerilog_rv32i_hazard_detecti_0_0.v" \
@@ -96,6 +95,7 @@
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_1/sim/RISCV_SystemVerilog_xlconstant_1_1.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_0/sim/RISCV_SystemVerilog_xlconstant_1_0.v" \
   "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_2/sim/RISCV_SystemVerilog_xlconstant_1_2.v" \
+  "../../../bd/RISCV_SystemVerilog/sim/RISCV_SystemVerilog.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v
