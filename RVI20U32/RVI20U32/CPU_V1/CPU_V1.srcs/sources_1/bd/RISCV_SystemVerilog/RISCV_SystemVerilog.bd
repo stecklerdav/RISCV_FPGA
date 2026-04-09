@@ -14,10 +14,10 @@
         "util_vector_logic_0": "",
         "pc_to_rom_addr_wrapp_0": "",
         "blk_mem_gen_0": "",
-        "rv32i_if_id_reg_wrap_0": "",
         "pc_unit_wrapper_0": "",
         "util_vector_logic_1": "",
-        "latency_align_0": ""
+        "latency_align_0": "",
+        "rv32i_if_id_reg_wrap_0": ""
       },
       "RV32I_ID": {
         "rv32i_imm_mux_wrapper_0": "",
@@ -203,81 +203,6 @@
               }
             }
           },
-          "rv32i_if_id_reg_wrap_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_if_id_reg_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_if_id_reg_wrap_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_if_id_reg_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
-              },
-              "rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "pc_fetch_in": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "pc_plus4_fetch_in": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "instr_rom_in": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "valid_fetch_in": {
-                "direction": "I"
-              },
-              "flush": {
-                "direction": "I"
-              },
-              "hold": {
-                "direction": "I"
-              },
-              "pc_id_out": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "pc_plus4_id_out": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "instr_id_out": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "valid_id_out": {
-                "direction": "O"
-              }
-            }
-          },
           "pc_unit_wrapper_0": {
             "vlnv": "xilinx.com:module_ref:pc_unit_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_pc_unit_wrapper_0_0",
@@ -406,6 +331,81 @@
                 "right": "0"
               }
             }
+          },
+          "rv32i_if_id_reg_wrap_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_if_id_reg_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_if_id_reg_wrap_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_if_id_reg_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
+              },
+              "rst": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "pc_fetch_in": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "pc_plus4_fetch_in": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "instr_rom_in": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "valid_fetch_in": {
+                "direction": "I"
+              },
+              "flush": {
+                "direction": "I"
+              },
+              "hold": {
+                "direction": "I"
+              },
+              "pc_id_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "pc_plus4_id_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "instr_id_out": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "valid_id_out": {
+                "direction": "O"
+              }
+            }
           }
         },
         "nets": {
@@ -432,9 +432,9 @@
             "ports": [
               "clk",
               "blk_mem_gen_0/clka",
-              "rv32i_if_id_reg_wrap_0/clk",
               "pc_unit_wrapper_0/clk",
-              "latency_align_0/clk"
+              "latency_align_0/clk",
+              "rv32i_if_id_reg_wrap_0/clk"
             ]
           },
           "blk_mem_gen_0_douta": {
@@ -501,9 +501,9 @@
           "Net2": {
             "ports": [
               "rst",
-              "rv32i_if_id_reg_wrap_0/rst",
               "pc_unit_wrapper_0/rst",
-              "latency_align_0/rst"
+              "latency_align_0/rst",
+              "rv32i_if_id_reg_wrap_0/rst"
             ]
           },
           "latency_align_0_pc_exec": {

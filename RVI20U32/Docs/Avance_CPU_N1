@@ -1,8 +1,8 @@
 
-  *** Debo hacer las pruebas de verificacion y llenar los documentos necesarios ***
 
+09/04/2026
 
-
+- Se adiciono 3 NOP en la etapa IF cuando se toma el branch en EX debido a  latencia interna en IF (BRAM 1 ciclo latencia + PC_alined 1 ciclo latencia + Registro IF/ID) 
 
 02/03/2026
 
