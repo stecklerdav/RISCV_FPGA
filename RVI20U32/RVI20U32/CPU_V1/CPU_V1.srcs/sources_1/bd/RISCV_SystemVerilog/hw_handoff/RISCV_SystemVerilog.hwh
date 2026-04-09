@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Apr  9 01:54:25 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Thu Apr  9 02:11:16 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="RISCV_SystemVerilog" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -1305,7 +1305,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT CLKFREQUENCY="9999900" DIR="I" NAME="clka" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_1_pl_clk0">
+        <PORT DIR="I" NAME="clka" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_1_pl_clk0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="zynq_ultra_ps_e_1" PORT="pl_clk0"/>
           </CONNECTIONS>
@@ -1995,7 +1995,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_RESET_proc_sys_reset_0_peripheral_reset">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_RESET_proc_sys_reset_0_peripheral_reset">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_RESET_proc_sys_reset_0" PORT="peripheral_reset"/>
           </CONNECTIONS>
@@ -4745,7 +4745,7 @@
           <PARAMETER NAME="PROTOCOL" VALUE="AXI4"/>
           <PARAMETER NAME="FREQ_HZ" VALUE="9999900"/>
           <PARAMETER NAME="ID_WIDTH" VALUE="16"/>
-          <PARAMETER NAME="ADDR_WIDTH" VALUE="40"/>
+          <PARAMETER NAME="ADDR_WIDTH" VALUE="39"/>
           <PARAMETER NAME="AWUSER_WIDTH" VALUE="16"/>
           <PARAMETER NAME="ARUSER_WIDTH" VALUE="16"/>
           <PARAMETER NAME="WUSER_WIDTH" VALUE="0"/>

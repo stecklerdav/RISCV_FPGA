@@ -2,7 +2,7 @@
 
 09/04/2026
 
-- Se adiciono 3 NOP en la etapa IF cuando se toma el branch en EX debido a  latencia interna en IF (BRAM 1 ciclo latencia + PC_alined 1 ciclo latencia + Registro IF/ID) 
+- Se adiciono el flush en IF/ID a causa  del redirect ejecutado por las instrucciones de saltos, se determino que al hacer flush la instruccion tarda 3 ciclos hasta salir del registro IF/ID frontera para la siguiente etapa 
 
 02/03/2026
 
