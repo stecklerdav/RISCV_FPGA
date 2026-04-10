@@ -1,0 +1,21 @@
+
+TC-013 — Hazard
+Escenario: forwarding ALU→ALU
+.section .text.start
+.globl _start
+
+_start:
+    addi x1, x0, 9
+    add  x2, x1, x1
+    addi x3, x2, 1
+    add  x4, x3, x2
+
+done:
+    jal x0, done
+
+Esperado:
+
+x2 = 18
+x3 = 19
+x4 = 37
+forwarding activo en EX

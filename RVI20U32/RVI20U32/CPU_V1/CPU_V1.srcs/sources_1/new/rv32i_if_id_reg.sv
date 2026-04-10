@@ -19,12 +19,13 @@ module rv32i_if_id_reg (
 
     localparam logic [31:0] RV32I_NOP = 32'h0000_0013;
 
-    // Número de instrucciones EXTRA a invalidar después del flush actual.
-    // Ejemplos:
-    //   0 -> solo mata la instrucción del ciclo de flush
-    //   1 -> mata la del flush + 1 extra
-    //   2 -> mata la del flush + 2 extras
-    localparam int unsigned FLUSH_EXTRA_KILLS = 0;
+   // Branch resolved in EX.
+// Frontend has 1 extra in-flight instruction due to IF path latency
+// (PC -> BRAM(1-cycle) -> align -> IF/ID).
+// Therefore, besides flushing the current IF/ID contents, we must kill
+// one additional fetched wrong-path instruction.
+
+    localparam int unsigned FLUSH_EXTRA_KILLS = 1;
 
     // Ancho mínimo de 1 bit para evitar problemas cuando FLUSH_EXTRA_KILLS = 0
     localparam int unsigned KILL_CNT_W =

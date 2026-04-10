@@ -1,3 +1,6 @@
+
+TC-002 — IF / Fetch
+Escenario: incremento secuencial de PC con IF1/IF2
 .section .text.start
 .globl _start
 
@@ -11,17 +14,9 @@ _start:
 done:
     jal x0, done
 
-
-
-
 Esperado:
 
 PC incrementa de 4 en 4
 no hay stalls
 no hay flush
 no hay redirect
-
-
-
-
-

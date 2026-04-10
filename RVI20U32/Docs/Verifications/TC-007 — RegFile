@@ -1,0 +1,20 @@
+
+
+TC-007 — RegFile
+Escenario: x0 permanece en cero
+.section .text.start
+.globl _start
+
+_start:
+    addi x0, x0, 123
+    addi x1, x0, 0
+    addi x2, x0, 5
+
+done:
+    jal x0, done
+
+Esperado:
+
+x0 = 0
+x1 = 0
+x2 = 5

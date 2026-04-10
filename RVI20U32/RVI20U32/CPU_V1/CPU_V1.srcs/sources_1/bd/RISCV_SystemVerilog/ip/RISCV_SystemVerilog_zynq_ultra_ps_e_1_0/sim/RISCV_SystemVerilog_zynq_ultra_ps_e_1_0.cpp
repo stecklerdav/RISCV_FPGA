@@ -103,7 +103,7 @@ void RISCV_SystemVerilog_zynq_ultra_ps_e_1_0::before_end_of_elaboration()
     M_AXI_HPM0_FPD_transactor_param_props.addLong("DATA_WIDTH", "32");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("FREQ_HZ", "9999900");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ID_WIDTH", "16");
-    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "39");
+    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "40");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("AWUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ARUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -234,7 +234,7 @@ void RISCV_SystemVerilog_zynq_ultra_ps_e_1_0::before_end_of_elaboration()
     M_AXI_HPM0_FPD_transactor_param_props.addLong("DATA_WIDTH", "32");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("FREQ_HZ", "9999900");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ID_WIDTH", "16");
-    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "39");
+    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "40");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("AWUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ARUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -365,7 +365,7 @@ void RISCV_SystemVerilog_zynq_ultra_ps_e_1_0::before_end_of_elaboration()
     M_AXI_HPM0_FPD_transactor_param_props.addLong("DATA_WIDTH", "32");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("FREQ_HZ", "9999900");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ID_WIDTH", "16");
-    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "39");
+    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "40");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("AWUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ARUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -484,7 +484,7 @@ RISCV_SystemVerilog_zynq_ultra_ps_e_1_0::RISCV_SystemVerilog_zynq_ultra_ps_e_1_0
     M_AXI_HPM0_FPD_transactor_param_props.addLong("DATA_WIDTH", "32");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("FREQ_HZ", "9999900");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ID_WIDTH", "16");
-    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "39");
+    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "40");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("AWUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ARUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("WUSER_WIDTH", "0");
@@ -618,7 +618,7 @@ RISCV_SystemVerilog_zynq_ultra_ps_e_1_0::RISCV_SystemVerilog_zynq_ultra_ps_e_1_0
     M_AXI_HPM0_FPD_transactor_param_props.addLong("DATA_WIDTH", "32");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("FREQ_HZ", "9999900");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ID_WIDTH", "16");
-    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "39");
+    M_AXI_HPM0_FPD_transactor_param_props.addLong("ADDR_WIDTH", "40");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("AWUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("ARUSER_WIDTH", "16");
     M_AXI_HPM0_FPD_transactor_param_props.addLong("WUSER_WIDTH", "0");

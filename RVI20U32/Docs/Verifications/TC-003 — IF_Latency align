@@ -1,3 +1,8 @@
+
+
+
+TC-003 — IF / Latency align
+Escenario: alineación PC vs instrucción retornada por BRAM
 .section .text.start
 .globl _start
 
@@ -9,8 +14,6 @@ _start:
 
 done:
     jal x0, done
-
-
 
 Esperado:
 

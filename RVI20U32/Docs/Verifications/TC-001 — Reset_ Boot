@@ -1,3 +1,13 @@
+TC-001 — IF / Reset-Boot
+Escenario: PC arranca en reset vector con BRAM 1-cycle
+
+Este sirve para ver:
+
+PC arranca en 0
+primer fetch válido aparece 1 ciclo después por BRAM
+valid_id_out sale más tarde que pc
+
+
 .section .text.start
 .globl _start
 
@@ -5,19 +15,10 @@ _start:
     addi x1, x0, 1
 
 done:
-    j done
+    jal x0, done
 
+Esperado:
 
-
-
-Qué validar (clave en tu caso)
-pc = RESET_PC
-después de liberar reset:
-primer pc válido sale en IF1
-instrucción aparece en IF2 (latencia BRAM)
-
-👉 waveform:
-
-ciclo 0: reset
-ciclo 1: PC válido
-ciclo 2: instr válida
+PC: 0x0, 0x4, 0x8, ...
+instrucción addi x1,x0,1 llega con el retardo de BRAM
+luego se ve el jal x0, done

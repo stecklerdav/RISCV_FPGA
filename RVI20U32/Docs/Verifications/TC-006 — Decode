@@ -1,0 +1,20 @@
+
+
+TC-006 — Decode
+Escenario: opcode llega decodificado correctamente
+.section .text.start
+.globl _start
+
+_start:
+    addi x1, x0, 7
+    add  x2, x1, x1
+    ori  x3, x2, 3
+    andi x4, x3, 15
+
+done:
+    jal x0, done
+
+Esperado:
+
+decode correcto de opcode/funct3/funct7
+control bus correcto por instrucción

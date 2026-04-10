@@ -1,3 +1,10 @@
+
+
+TC-004 — IF/ID / Pipeline reg
+Escenario: hold conserva IF/ID pese a latencia de fetch
+
+Este requiere que tu testbench fuerce stall o hold.
+
 .section .text.start
 .globl _start
 
@@ -10,7 +17,6 @@ _start:
 done:
     jal x0, done
 
-
 Estímulo:
 
 activa stall durante 1 o 2 ciclos cuando una instrucción ya esté en IF/ID
@@ -18,10 +24,5 @@ activa stall durante 1 o 2 ciclos cuando una instrucción ya esté en IF/ID
 Esperado:
 
 if_id_pc, if_id_instr, if_id_valid se mantienen congelados
-
-
-
-
-
 
 

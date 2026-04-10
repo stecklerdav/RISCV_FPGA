@@ -1,0 +1,27 @@
+
+
+TC-009 — ALU
+Escenario: SLL/SRL/SRA con shift > 31
+
+Puedes hacer borde y shift normal. En RV32I se usa solo shamt[4:0].
+
+.section .text.start
+.globl _start
+
+_start:
+    addi x1, x0, 1
+    slli x2, x1, 3
+    srli x3, x2, 1
+    srai x4, x3, 1
+
+    addi x5, x0, -1
+    srai x6, x5, 4
+    srli x7, x5, 4
+
+done:
+    jal x0, done
+
+Esperado:
+
+shifts correctos
+diferencia clara entre srai y srli
