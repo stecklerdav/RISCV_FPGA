@@ -5,7 +5,7 @@ steps
 1. Vivado 2020.1.
 2. Vs Code.
 3. riscv32-unknown-elf-gcc.
-4. 2 test file 1. prog.c & prog_asm.asm two way to write scripts (1. make clean-> make  (C) // 2.make -B asm (asm only))
+4. 2 test file, (1.)prog.c & (2.)prog_asm.asm, two way to write scripts (1. make clean-> make  (C) // 2.make -B asm (asm only))
 5. switch .coe inside RV32I_IF/blk_mem_gen_0.
 6. simulate 
 
