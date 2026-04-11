@@ -21,13 +21,13 @@
       },
       "RV32I_ID": {
         "rv32i_imm_mux_wrapper_0": "",
-        "rv32i_regfile_wrapper_0": "",
         "rv32i_id_ex_reg_wrap_0": "",
         "rv32i_decoder_wrapper_0": "",
         "rv32i_control_full_w_0": "",
         "rv32i_hazard_detecti_0": "",
         "xlconstant_1": "",
-        "xlconstant_2": ""
+        "xlconstant_2": "",
+        "rv32i_regfile_wrapper_0": ""
       },
       "xlconstant_0": "",
       "RV32I_EX": {
@@ -753,64 +753,6 @@
               }
             }
           },
-          "rv32i_regfile_wrapper_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_regfile_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_regfile_wrapper_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_regfile_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
-              },
-              "rs1_addr": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "rs2_addr": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "rs1_rdata": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "rs2_rdata": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "rd_addr": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "rd_wdata": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "rd_we": {
-                "direction": "I"
-              }
-            }
-          },
           "rv32i_id_ex_reg_wrap_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_id_ex_reg_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0",
@@ -1279,6 +1221,64 @@
                 "value": "0"
               }
             }
+          },
+          "rv32i_regfile_wrapper_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_regfile_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_regfile_wrapper_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_regfile_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
+              },
+              "rs1_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "rs2_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "rs1_rdata": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rs2_rdata": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "rd_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "rd_wdata": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "rd_we": {
+                "direction": "I"
+              }
+            }
           }
         },
         "nets": {
@@ -1292,17 +1292,17 @@
           "rv32i_decoder_wrapper_0_rs1": {
             "ports": [
               "rv32i_decoder_wrapper_0/rs1",
-              "rv32i_regfile_wrapper_0/rs1_addr",
               "rv32i_id_ex_reg_wrap_0/id_rs1",
-              "rv32i_hazard_detecti_0/if_id_rs1"
+              "rv32i_hazard_detecti_0/if_id_rs1",
+              "rv32i_regfile_wrapper_0/rs1_addr"
             ]
           },
           "rv32i_decoder_wrapper_0_rs2": {
             "ports": [
               "rv32i_decoder_wrapper_0/rs2",
-              "rv32i_regfile_wrapper_0/rs2_addr",
               "rv32i_id_ex_reg_wrap_0/id_rs2",
-              "rv32i_hazard_detecti_0/if_id_rs2"
+              "rv32i_hazard_detecti_0/if_id_rs2",
+              "rv32i_regfile_wrapper_0/rs2_addr"
             ]
           },
           "rv32i_control_full_w_0_imm_sel": {
@@ -1488,8 +1488,8 @@
           "Net": {
             "ports": [
               "clk",
-              "rv32i_regfile_wrapper_0/clk",
-              "rv32i_id_ex_reg_wrap_0/clk"
+              "rv32i_id_ex_reg_wrap_0/clk",
+              "rv32i_regfile_wrapper_0/clk"
             ]
           },
           "rst_1": {

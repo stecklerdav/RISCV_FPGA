@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 10 23:54:26 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Apr 11 14:44:07 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="RISCV_SystemVerilog" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -623,16 +623,16 @@
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="rs1" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_decoder_wrapper_0_rs1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rs1_addr"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="id_rs1"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_rs1"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rs1_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="rs2" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_decoder_wrapper_0_rs2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rs2_addr"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="id_rs2"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_rs2"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rs2_addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="rd" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_decoder_wrapper_0_rd">
@@ -4726,8 +4726,8 @@
             <CONNECTION INSTANCE="RV32I_IF_pc_unit_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="clk"/>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="clk"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_ram_datav_wrap_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="clk"/>

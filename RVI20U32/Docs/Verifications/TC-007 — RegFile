@@ -1,20 +1,48 @@
-
-
-TC-007 — RegFile
-Escenario: x0 permanece en cero
 .section .text.start
 .globl _start
 
 _start:
+    # 1) x0 debe ignorar escritura
     addi x0, x0, 123
-    addi x1, x0, 0
-    addi x2, x0, 5
+
+    # 2) verificar lectura de x0
+    addi x1, x0, 0          # x1 = 0
+    addi x2, x0, 5          # x2 = 5
+
+    # 3) escritura normal
+    addi x3, x0, 10         # x3 = 10
+    addi x4, x0, 20         # x4 = 20
+
+    # 4) lectura de dos operandos desde regfile
+    add  x5, x3, x4         # x5 = 30
+
+    # 5) verificar que registros previos conservan valor
+    addi x6, x3, 0          # x6 = 10
+    addi x7, x4, 0          # x7 = 20
+
+    # 6) probar reescritura de un registro
+    addi x3, x0, 99         # x3 = 99
+    add  x8, x3, x1         # x8 = 99 + 0 = 99
+
+    # 7) comprobar que x0 sigue siendo 0 incluso después
+    addi x9, x0, 0          # x9 = 0
 
 done:
     jal x0, done
 
-Esperado:
+resultado
 
-x0 = 0
-x1 = 0
-x2 = 5
+
+| Registro | Valor esperado |
+| -------- | -------------- |
+| x0       | 0              |
+| x1       | 0              |
+| x2       | 5              |
+| x3       | 99             |
+| x4       | 20             |
+| x5       | 30             |
+| x6       | 10             |
+| x7       | 20             |
+| x8       | 99             |
+| x9       | 0              |
+

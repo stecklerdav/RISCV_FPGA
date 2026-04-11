@@ -2,14 +2,14 @@
 import rv32i_regfile_types_pkg::*;
 
 module rv32i_regfile (
-    input  logic                  clk,
+    input  logic                   clk,
 
     // Lecturas
-    input  rv32i_regfile_rd_bus_t rd_in,
+    input  rv32i_regfile_rd_bus_t  rd_in,
     output rv32i_regfile_out_bus_t rd_out,
 
     // Escritura
-    input  rv32i_regfile_wr_bus_t wr_in
+    input  rv32i_regfile_wr_bus_t  wr_in
 );
 
     logic [31:0] regs [0:31];
@@ -23,10 +23,38 @@ module rv32i_regfile (
             regs[i] = 32'b0;
     end
 
-    // Lectura combinacional
+    // Lectura combinacional con bypass WB->ID (write-first behavior)
     always_comb begin
-        rd_out_r.rs1_rdata = (rd_in.rs1_addr == 5'd0) ? 32'b0 : regs[rd_in.rs1_addr];
-        rd_out_r.rs2_rdata = (rd_in.rs2_addr == 5'd0) ? 32'b0 : regs[rd_in.rs2_addr];
+        // -------------------------
+        // RS1
+        // x0 siempre vale 0
+        // Si en este mismo ciclo se está escribiendo el mismo registro,
+        // devolver directamente rd_wdata en lugar del valor viejo de regs[].
+        // -------------------------
+        if (rd_in.rs1_addr == 5'd0) begin
+            rd_out_r.rs1_rdata = 32'b0;
+        end else if (wr_in.rd_we &&
+                     (wr_in.rd_addr != 5'd0) &&
+                     (wr_in.rd_addr == rd_in.rs1_addr)) begin
+            rd_out_r.rs1_rdata = wr_in.rd_wdata;
+        end else begin
+            rd_out_r.rs1_rdata = regs[rd_in.rs1_addr];
+        end
+
+        // -------------------------
+        // RS2
+        // x0 siempre vale 0
+        // Mismo bypass para el segundo puerto de lectura.
+        // -------------------------
+        if (rd_in.rs2_addr == 5'd0) begin
+            rd_out_r.rs2_rdata = 32'b0;
+        end else if (wr_in.rd_we &&
+                     (wr_in.rd_addr != 5'd0) &&
+                     (wr_in.rd_addr == rd_in.rs2_addr)) begin
+            rd_out_r.rs2_rdata = wr_in.rd_wdata;
+        end else begin
+            rd_out_r.rs2_rdata = regs[rd_in.rs2_addr];
+        end
     end
 
     // Escritura síncrona

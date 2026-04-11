@@ -1,22 +1,20 @@
+
 .section .text.start
 .globl _start
 
 _start:
-    addi x1, x0, 5
-    addi x2, x0, 5
-    beq  x1, x2, target
+    addi x1, x0, -1          # I-type
+    lui  x2, 0x12345         # U-type
+    auipc x3, 0              # U-type relativo a PC
+    beq  x0, x0, label_b     # B-type
+    addi x4, x0, 99          # wrong-path
 
-    addi x10, x0, 0x0A
-    addi x11, x0, 0x0B
-    addi x12, x0, 0x0C
-    addi x13, x0, 0x0D
-    addi x14, x0, 0x0E
+label_b:
+    jal  x5, label_j         # J-type
+    addi x6, x0, 88          # wrong-path
 
-target:
-    addi x20, x0, 0x1A
-    addi x21, x0, 0x1B
-    addi x22, x0, 0x1C
-    addi x23, x0, 0x1D
-    addi x24, x0, 0x1E
+label_j:
+    addi x7, x0, 7
+
 done:
     jal x0, done

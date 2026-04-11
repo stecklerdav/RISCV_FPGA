@@ -1,25 +1,22 @@
 
-  prog_asm.elf:     file format elf32-littleriscv
+prog_asm.elf:     file format elf32-littleriscv
 
 
-  Disassembly of section .text:
+Disassembly of section .text:
 
-  00000000 <__text_start>:
-    0:	00500093          	addi	x1,x0,5
-    4:	00500113          	addi	x2,x0,5
-    8:	00208c63          	beq	x1,x2,20 <target>
-    c:	00a00513          	addi	x10,x0,10
-    10:	00b00593          	addi	x11,x0,11
-    14:	00c00613          	addi	x12,x0,12
-    18:	00d00693          	addi	x13,x0,13
-    1c:	00e00713          	addi	x14,x0,14
+00000000 <__text_start>:
+   0:	fff00093          	addi	x1,x0,-1
+   4:	12345137          	lui	x2,0x12345
+   8:	00000197          	auipc	x3,0x0
+   c:	00000463          	beq	x0,x0,14 <label_b>
+  10:	06300213          	addi	x4,x0,99
 
-  00000020 <target>:
-    20:	01a00a13          	addi	x20,x0,26
-    24:	01b00a93          	addi	x21,x0,27
-    28:	01c00b13          	addi	x22,x0,28
-    2c:	01d00b93          	addi	x23,x0,29
-    30:	01e00c13          	addi	x24,x0,30
+00000014 <label_b>:
+  14:	008002ef          	jal	x5,1c <label_j>
+  18:	05800313          	addi	x6,x0,88
 
-  00000034 <done>:
-    34:	0000006f          	jal	x0,34 <done>
+0000001c <label_j>:
+  1c:	00700393          	addi	x7,x0,7
+
+00000020 <done>:
+  20:	0000006f          	jal	x0,20 <done>
