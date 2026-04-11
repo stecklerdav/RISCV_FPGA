@@ -21,13 +21,13 @@
       },
       "RV32I_ID": {
         "rv32i_imm_mux_wrapper_0": "",
-        "rv32i_id_ex_reg_wrap_0": "",
         "rv32i_decoder_wrapper_0": "",
         "rv32i_control_full_w_0": "",
         "rv32i_hazard_detecti_0": "",
         "xlconstant_1": "",
         "xlconstant_2": "",
-        "rv32i_regfile_wrapper_0": ""
+        "rv32i_regfile_wrapper_0": "",
+        "rv32i_id_ex_reg_wrap_0": ""
       },
       "xlconstant_0": "",
       "RV32I_EX": {
@@ -753,243 +753,6 @@
               }
             }
           },
-          "rv32i_id_ex_reg_wrap_0": {
-            "vlnv": "xilinx.com:module_ref:rv32i_id_ex_reg_wrapper:1.0",
-            "xci_name": "RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "rv32i_id_ex_reg_wrapper",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "clk": {
-                "type": "clk",
-                "direction": "I",
-                "parameters": {
-                  "ASSOCIATED_RESET": {
-                    "value": "rst",
-                    "value_src": "constant"
-                  },
-                  "CLK_DOMAIN": {
-                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
-                    "value_src": "default_prop"
-                  },
-                  "FREQ_HZ": {
-                    "value": "9999900",
-                    "value_src": "user_prop"
-                  }
-                }
-              },
-              "rst": {
-                "type": "rst",
-                "direction": "I"
-              },
-              "stall": {
-                "direction": "I"
-              },
-              "flush": {
-                "direction": "I"
-              },
-              "id_valid": {
-                "direction": "I"
-              },
-              "id_pc": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "id_pc_plus4": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "id_rs1_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "id_rs2_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "id_imm": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "id_imm_u": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "id_rs1": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "id_rs2": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "id_rd": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "id_alu_op": {
-                "direction": "I",
-                "left": "3",
-                "right": "0"
-              },
-              "id_op_a_sel": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "id_op_b_sel": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "id_branch_en": {
-                "direction": "I"
-              },
-              "id_branch_funct3": {
-                "direction": "I",
-                "left": "2",
-                "right": "0"
-              },
-              "id_jal": {
-                "direction": "I"
-              },
-              "id_jalr": {
-                "direction": "I"
-              },
-              "id_mem_re": {
-                "direction": "I"
-              },
-              "id_mem_we": {
-                "direction": "I"
-              },
-              "id_mem_size": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "id_mem_unsigned": {
-                "direction": "I"
-              },
-              "id_rd_we": {
-                "direction": "I"
-              },
-              "id_wb_sel": {
-                "direction": "I",
-                "left": "1",
-                "right": "0"
-              },
-              "ex_valid": {
-                "direction": "O"
-              },
-              "ex_pc": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_pc_plus4": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_rs1_data": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_rs2_data": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_imm": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_imm_u": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              },
-              "ex_rs1": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "ex_rs2": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "ex_rd": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "ex_alu_op": {
-                "direction": "O",
-                "left": "3",
-                "right": "0"
-              },
-              "ex_op_a_sel": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              },
-              "ex_op_b_sel": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              },
-              "ex_branch_en": {
-                "direction": "O"
-              },
-              "ex_branch_funct3": {
-                "direction": "O",
-                "left": "2",
-                "right": "0"
-              },
-              "ex_jal": {
-                "direction": "O"
-              },
-              "ex_jalr": {
-                "direction": "O"
-              },
-              "ex_mem_re": {
-                "direction": "O"
-              },
-              "ex_mem_we": {
-                "direction": "O"
-              },
-              "ex_mem_size": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              },
-              "ex_mem_unsigned": {
-                "direction": "O"
-              },
-              "ex_rd_we": {
-                "direction": "O"
-              },
-              "ex_wb_sel": {
-                "direction": "O",
-                "left": "1",
-                "right": "0"
-              }
-            }
-          },
           "rv32i_decoder_wrapper_0": {
             "vlnv": "xilinx.com:module_ref:rv32i_decoder_wrapper:1.0",
             "xci_name": "RISCV_SystemVerilog_rv32i_decoder_wrapper_0_0",
@@ -1279,6 +1042,243 @@
                 "direction": "I"
               }
             }
+          },
+          "rv32i_id_ex_reg_wrap_0": {
+            "vlnv": "xilinx.com:module_ref:rv32i_id_ex_reg_wrapper:1.0",
+            "xci_name": "RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "rv32i_id_ex_reg_wrapper",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "ASSOCIATED_RESET": {
+                    "value": "rst",
+                    "value_src": "constant"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0",
+                    "value_src": "default_prop"
+                  },
+                  "FREQ_HZ": {
+                    "value": "9999900",
+                    "value_src": "user_prop"
+                  }
+                }
+              },
+              "rst": {
+                "type": "rst",
+                "direction": "I"
+              },
+              "stall": {
+                "direction": "I"
+              },
+              "bubble": {
+                "direction": "I"
+              },
+              "id_valid": {
+                "direction": "I"
+              },
+              "id_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_pc_plus4": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_rs1_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_rs2_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_imm": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_imm_u": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "id_rs1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "id_rs2": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "id_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "id_alu_op": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "id_op_a_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "id_op_b_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "id_branch_en": {
+                "direction": "I"
+              },
+              "id_branch_funct3": {
+                "direction": "I",
+                "left": "2",
+                "right": "0"
+              },
+              "id_jal": {
+                "direction": "I"
+              },
+              "id_jalr": {
+                "direction": "I"
+              },
+              "id_mem_re": {
+                "direction": "I"
+              },
+              "id_mem_we": {
+                "direction": "I"
+              },
+              "id_mem_size": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "id_mem_unsigned": {
+                "direction": "I"
+              },
+              "id_rd_we": {
+                "direction": "I"
+              },
+              "id_wb_sel": {
+                "direction": "I",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_valid": {
+                "direction": "O"
+              },
+              "ex_pc": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_pc_plus4": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs1_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs2_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_imm": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_imm_u": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_rs1": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_rs2": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_rd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_alu_op": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ex_op_a_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_op_b_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_branch_en": {
+                "direction": "O"
+              },
+              "ex_branch_funct3": {
+                "direction": "O",
+                "left": "2",
+                "right": "0"
+              },
+              "ex_jal": {
+                "direction": "O"
+              },
+              "ex_jalr": {
+                "direction": "O"
+              },
+              "ex_mem_re": {
+                "direction": "O"
+              },
+              "ex_mem_we": {
+                "direction": "O"
+              },
+              "ex_mem_size": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              },
+              "ex_mem_unsigned": {
+                "direction": "O"
+              },
+              "ex_rd_we": {
+                "direction": "O"
+              },
+              "ex_wb_sel": {
+                "direction": "O",
+                "left": "1",
+                "right": "0"
+              }
+            }
           }
         },
         "nets": {
@@ -1292,17 +1292,17 @@
           "rv32i_decoder_wrapper_0_rs1": {
             "ports": [
               "rv32i_decoder_wrapper_0/rs1",
-              "rv32i_id_ex_reg_wrap_0/id_rs1",
               "rv32i_hazard_detecti_0/if_id_rs1",
-              "rv32i_regfile_wrapper_0/rs1_addr"
+              "rv32i_regfile_wrapper_0/rs1_addr",
+              "rv32i_id_ex_reg_wrap_0/id_rs1"
             ]
           },
           "rv32i_decoder_wrapper_0_rs2": {
             "ports": [
               "rv32i_decoder_wrapper_0/rs2",
-              "rv32i_id_ex_reg_wrap_0/id_rs2",
               "rv32i_hazard_detecti_0/if_id_rs2",
-              "rv32i_regfile_wrapper_0/rs2_addr"
+              "rv32i_regfile_wrapper_0/rs2_addr",
+              "rv32i_id_ex_reg_wrap_0/id_rs2"
             ]
           },
           "rv32i_control_full_w_0_imm_sel": {
@@ -1488,8 +1488,8 @@
           "Net": {
             "ports": [
               "clk",
-              "rv32i_id_ex_reg_wrap_0/clk",
-              "rv32i_regfile_wrapper_0/clk"
+              "rv32i_regfile_wrapper_0/clk",
+              "rv32i_id_ex_reg_wrap_0/clk"
             ]
           },
           "rst_1": {
@@ -1671,8 +1671,7 @@
           },
           "flush_1": {
             "ports": [
-              "flush",
-              "rv32i_id_ex_reg_wrap_0/flush"
+              "flush"
             ]
           },
           "rv32i_hazard_detecti_0_id_ex_flush": {
@@ -1702,7 +1701,8 @@
           "xlconstant_2_dout": {
             "ports": [
               "xlconstant_2/dout",
-              "rv32i_id_ex_reg_wrap_0/stall"
+              "rv32i_id_ex_reg_wrap_0/stall",
+              "rv32i_id_ex_reg_wrap_0/bubble"
             ]
           }
         }

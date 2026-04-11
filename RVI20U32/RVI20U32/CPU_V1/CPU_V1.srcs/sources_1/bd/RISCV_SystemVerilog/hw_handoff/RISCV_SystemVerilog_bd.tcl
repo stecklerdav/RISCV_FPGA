@@ -742,7 +742,7 @@ proc create_hier_cell_RV32I_ID { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net Net [get_bd_pins clk] [get_bd_pins rv32i_id_ex_reg_wrap_0/clk] [get_bd_pins rv32i_regfile_wrapper_0/clk]
-  connect_bd_net -net flush_1 [get_bd_pins flush] [get_bd_pins rv32i_id_ex_reg_wrap_0/flush]
+  connect_bd_net -net flush_1 -boundary_type lower [get_bd_pins flush]
   connect_bd_net -net id_pc_1 [get_bd_pins id_pc] [get_bd_pins rv32i_id_ex_reg_wrap_0/id_pc]
   connect_bd_net -net id_pc_plus4_1 [get_bd_pins id_pc_plus4] [get_bd_pins rv32i_id_ex_reg_wrap_0/id_pc_plus4]
   connect_bd_net -net id_valid_1 [get_bd_pins id_valid] [get_bd_pins rv32i_id_ex_reg_wrap_0/id_valid]
@@ -809,7 +809,7 @@ proc create_hier_cell_RV32I_ID { parentCell nameHier } {
   connect_bd_net -net rv32i_regfile_wrapper_0_rs1_rdata [get_bd_pins rv32i_id_ex_reg_wrap_0/id_rs1_data] [get_bd_pins rv32i_regfile_wrapper_0/rs1_rdata]
   connect_bd_net -net rv32i_regfile_wrapper_0_rs2_rdata [get_bd_pins rv32i_id_ex_reg_wrap_0/id_rs2_data] [get_bd_pins rv32i_regfile_wrapper_0/rs2_rdata]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins rv32i_hazard_detecti_0/if_id_rs1_used] [get_bd_pins rv32i_hazard_detecti_0/if_id_rs2_used] [get_bd_pins xlconstant_1/dout]
-  connect_bd_net -net xlconstant_2_dout [get_bd_pins rv32i_id_ex_reg_wrap_0/stall] [get_bd_pins xlconstant_2/dout]
+  connect_bd_net -net xlconstant_2_dout [get_bd_pins rv32i_id_ex_reg_wrap_0/bubble] [get_bd_pins rv32i_id_ex_reg_wrap_0/stall] [get_bd_pins xlconstant_2/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst

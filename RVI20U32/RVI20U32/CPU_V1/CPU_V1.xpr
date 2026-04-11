@@ -36,20 +36,20 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="284"/>
+    <Option Name="WTXSimLaunchSim" Val="288"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="109"/>
-    <Option Name="WTModelSimExportSim" Val="109"/>
-    <Option Name="WTQuestaExportSim" Val="109"/>
-    <Option Name="WTIesExportSim" Val="109"/>
-    <Option Name="WTVcsExportSim" Val="109"/>
-    <Option Name="WTRivieraExportSim" Val="109"/>
-    <Option Name="WTActivehdlExportSim" Val="109"/>
+    <Option Name="WTXSimExportSim" Val="111"/>
+    <Option Name="WTModelSimExportSim" Val="111"/>
+    <Option Name="WTQuestaExportSim" Val="111"/>
+    <Option Name="WTIesExportSim" Val="111"/>
+    <Option Name="WTVcsExportSim" Val="111"/>
+    <Option Name="WTRivieraExportSim" Val="111"/>
+    <Option Name="WTActivehdlExportSim" Val="111"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -192,13 +192,6 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/rv32i_regfile_wrapper.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/rv32i_id_ex_types.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -480,6 +473,14 @@
       </File>
       <File Path="$PSRCDIR/sources_1/bd/RISCV_SystemVerilog/hdl/RISCV_SystemVerilog_wrapper.v">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/rv32i_id_ex_types.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat Apr 11 18:18:16 2026
+//Date        : Sat Apr 11 21:04:31 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_SystemVerilog.bd
 //Design      : RISCV_SystemVerilog
@@ -731,7 +731,8 @@ module RV32I_ID_imp_141HFYN
         .load_use_hazard(rv32i_hazard_detecti_0_load_use_hazard),
         .pc_en(rv32i_hazard_detecti_0_pc_en));
   RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0 rv32i_id_ex_reg_wrap_0
-       (.clk(Net),
+       (.bubble(xlconstant_2_dout),
+        .clk(Net),
         .ex_alu_op(rv32i_id_ex_reg_wrap_0_ex_alu_op),
         .ex_branch_en(rv32i_id_ex_reg_wrap_0_ex_branch_en),
         .ex_branch_funct3(rv32i_id_ex_reg_wrap_0_ex_branch_funct3),
@@ -755,7 +756,6 @@ module RV32I_ID_imp_141HFYN
         .ex_rs2_data(rv32i_id_ex_reg_wrap_0_ex_rs2_data),
         .ex_valid(rv32i_id_ex_reg_wrap_0_ex_valid),
         .ex_wb_sel(rv32i_id_ex_reg_wrap_0_ex_wb_sel),
-        .flush(flush_1),
         .id_alu_op(rv32i_control_full_w_0_alu_op),
         .id_branch_en(rv32i_control_full_w_0_branch_en),
         .id_branch_funct3(rv32i_control_full_w_0_branch_f3),

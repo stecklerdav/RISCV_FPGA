@@ -6,16 +6,10 @@ module rv32i_id_ex_reg_wrapper (
 
     // Control pipeline
     input  wire        stall,
-    input  wire        flush,
+    input  wire        bubble,
 
-    // =========================
     // Entradas desde ID
-    // =========================
-
-    // Validez pipelineada
     input  wire        id_valid,
-
-    // Datos
     input  wire [31:0] id_pc,
     input  wire [31:0] id_pc_plus4,
     input  wire [31:0] id_rs1_data,
@@ -45,14 +39,8 @@ module rv32i_id_ex_reg_wrapper (
     input  wire        id_rd_we,
     input  wire [1:0]  id_wb_sel,
 
-    // =========================
     // Salidas hacia EX
-    // =========================
-
-    // Validez pipelineada
     output wire        ex_valid,
-
-    // Datos
     output wire [31:0] ex_pc,
     output wire [31:0] ex_pc_plus4,
     output wire [31:0] ex_rs1_data,
@@ -83,73 +71,65 @@ module rv32i_id_ex_reg_wrapper (
     output wire [1:0]  ex_wb_sel
 );
 
-    // Total bits:
-    // 1 + 229 = 230 bits
-    wire [229:0] id_in_flat;
-    wire [229:0] ex_out_flat;
+    rv32i_id_ex_reg u_rv32i_id_ex_reg (
+        .clk(clk),
+        .rst(rst),
+        .stall(stall),
+        .bubble(bubble),
 
-    assign id_in_flat = {
-        id_valid,
-        id_pc,
-        id_pc_plus4,
-        id_rs1_data,
-        id_rs2_data,
-        id_imm,
-        id_imm_u,
-        id_rs1,
-        id_rs2,
-        id_rd,
-        id_alu_op,
-        id_op_a_sel,
-        id_op_b_sel,
-        id_branch_en,
-        id_branch_funct3,
-        id_jal,
-        id_jalr,
-        id_mem_re,
-        id_mem_we,
-        id_mem_size,
-        id_mem_unsigned,
-        id_rd_we,
-        id_wb_sel
-    };
+        .id_valid(id_valid),
+        .id_pc(id_pc),
+        .id_pc_plus4(id_pc_plus4),
+        .id_rs1_data(id_rs1_data),
+        .id_rs2_data(id_rs2_data),
+        .id_imm(id_imm),
+        .id_imm_u(id_imm_u),
+        .id_rs1(id_rs1),
+        .id_rs2(id_rs2),
+        .id_rd(id_rd),
 
-    rv32i_id_ex_reg #(
-        .WIDTH(230)
-    ) u_rv32i_id_ex_reg (
-        .clk    (clk),
-        .rst    (rst),
-        .stall  (stall),
-        .flush  (flush),
-        .id_in  (id_in_flat),
-        .ex_out (ex_out_flat)
+        .id_alu_op(id_alu_op),
+        .id_op_a_sel(id_op_a_sel),
+        .id_op_b_sel(id_op_b_sel),
+        .id_branch_en(id_branch_en),
+        .id_branch_funct3(id_branch_funct3),
+        .id_jal(id_jal),
+        .id_jalr(id_jalr),
+
+        .id_mem_re(id_mem_re),
+        .id_mem_we(id_mem_we),
+        .id_mem_size(id_mem_size),
+        .id_mem_unsigned(id_mem_unsigned),
+
+        .id_rd_we(id_rd_we),
+        .id_wb_sel(id_wb_sel),
+
+        .ex_valid(ex_valid),
+        .ex_pc(ex_pc),
+        .ex_pc_plus4(ex_pc_plus4),
+        .ex_rs1_data(ex_rs1_data),
+        .ex_rs2_data(ex_rs2_data),
+        .ex_imm(ex_imm),
+        .ex_imm_u(ex_imm_u),
+        .ex_rs1(ex_rs1),
+        .ex_rs2(ex_rs2),
+        .ex_rd(ex_rd),
+
+        .ex_alu_op(ex_alu_op),
+        .ex_op_a_sel(ex_op_a_sel),
+        .ex_op_b_sel(ex_op_b_sel),
+        .ex_branch_en(ex_branch_en),
+        .ex_branch_funct3(ex_branch_funct3),
+        .ex_jal(ex_jal),
+        .ex_jalr(ex_jalr),
+
+        .ex_mem_re(ex_mem_re),
+        .ex_mem_we(ex_mem_we),
+        .ex_mem_size(ex_mem_size),
+        .ex_mem_unsigned(ex_mem_unsigned),
+
+        .ex_rd_we(ex_rd_we),
+        .ex_wb_sel(ex_wb_sel)
     );
 
-    assign {
-        ex_valid,
-        ex_pc,
-        ex_pc_plus4,
-        ex_rs1_data,
-        ex_rs2_data,
-        ex_imm,
-        ex_imm_u,
-        ex_rs1,
-        ex_rs2,
-        ex_rd,
-        ex_alu_op,
-        ex_op_a_sel,
-        ex_op_b_sel,
-        ex_branch_en,
-        ex_branch_funct3,
-        ex_jal,
-        ex_jalr,
-        ex_mem_re,
-        ex_mem_we,
-        ex_mem_size,
-        ex_mem_unsigned,
-        ex_rd_we,
-        ex_wb_sel
-    } = ex_out_flat;
-
 endmodule
-            

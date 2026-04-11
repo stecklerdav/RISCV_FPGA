@@ -58,7 +58,7 @@ module RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0 (
   clk,
   rst,
   stall,
-  flush,
+  bubble,
   id_valid,
   id_pc,
   id_pc_plus4,
@@ -114,7 +114,7 @@ input wire clk;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
 input wire stall;
-input wire flush;
+input wire bubble;
 input wire id_valid;
 input wire [31 : 0] id_pc;
 input wire [31 : 0] id_pc_plus4;
@@ -166,7 +166,7 @@ output wire [1 : 0] ex_wb_sel;
     .clk(clk),
     .rst(rst),
     .stall(stall),
-    .flush(flush),
+    .bubble(bubble),
     .id_valid(id_valid),
     .id_pc(id_pc),
     .id_pc_plus4(id_pc_plus4),

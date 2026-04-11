@@ -5,8 +5,7 @@ Escenario: JALR alinea target correcto
 .globl _start
 
 _start:
-    auipc x10, 0
-    addi  x10, x10, target - _start
+    la    x10, target
     jalr  x1, x10, 0
     addi  x2, x0, 22         # wrong-path
 
@@ -15,7 +14,6 @@ target:
 
 done:
     jal x0, done
-
 Esperado:
 
 target correcto
