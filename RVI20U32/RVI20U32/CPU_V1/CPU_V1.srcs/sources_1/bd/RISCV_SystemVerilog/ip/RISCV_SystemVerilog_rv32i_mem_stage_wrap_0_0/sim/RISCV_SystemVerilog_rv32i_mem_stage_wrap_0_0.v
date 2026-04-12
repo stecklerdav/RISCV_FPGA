@@ -57,6 +57,7 @@
 module RISCV_SystemVerilog_rv32i_mem_stage_wrap_0_0 (
   clk,
   rst,
+  mem_valid,
   mem_alu_result,
   mem_store_data,
   mem_pc_plus4,
@@ -74,6 +75,8 @@ module RISCV_SystemVerilog_rv32i_mem_stage_wrap_0_0 (
   dmem_re,
   dmem_be,
   dmem_rdata,
+  wb_valid,
+  wb_data,
   wb_alu_result,
   wb_pc_plus4,
   wb_imm_u,
@@ -88,6 +91,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire mem_valid;
 input wire [31 : 0] mem_alu_result;
 input wire [31 : 0] mem_store_data;
 input wire [31 : 0] mem_pc_plus4;
@@ -105,6 +109,8 @@ output wire dmem_we;
 output wire dmem_re;
 output wire [3 : 0] dmem_be;
 input wire [31 : 0] dmem_rdata;
+output wire wb_valid;
+output wire [31 : 0] wb_data;
 output wire [31 : 0] wb_alu_result;
 output wire [31 : 0] wb_pc_plus4;
 output wire [31 : 0] wb_imm_u;
@@ -115,6 +121,7 @@ output wire [1 : 0] wb_sel;
   rv32i_mem_stage_wrapper inst (
     .clk(clk),
     .rst(rst),
+    .mem_valid(mem_valid),
     .mem_alu_result(mem_alu_result),
     .mem_store_data(mem_store_data),
     .mem_pc_plus4(mem_pc_plus4),
@@ -132,6 +139,8 @@ output wire [1 : 0] wb_sel;
     .dmem_re(dmem_re),
     .dmem_be(dmem_be),
     .dmem_rdata(dmem_rdata),
+    .wb_valid(wb_valid),
+    .wb_data(wb_data),
     .wb_alu_result(wb_alu_result),
     .wb_pc_plus4(wb_pc_plus4),
     .wb_imm_u(wb_imm_u),

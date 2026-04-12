@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat Apr 11 21:04:31 2026
+//Date        : Sun Apr 12 20:02:55 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_SystemVerilog.bd
 //Design      : RISCV_SystemVerilog
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_SystemVerilog,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=44,numReposBlks=38,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "RISCV_SystemVerilog.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_SystemVerilog,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_SystemVerilog,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=48,numReposBlks=42,numNonXlnxBlks=0,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=23,numPkgbdBlks=0,bdsource=USER,synth_mode=Global}" *) (* HW_HANDOFF = "RISCV_SystemVerilog.hwdef" *) 
 module RISCV_SystemVerilog
    ();
 
@@ -30,6 +30,7 @@ module RISCV_SystemVerilog
   wire [4:0]RV32I_EX_mem_rd;
   wire RV32I_EX_mem_rd_we;
   wire [31:0]RV32I_EX_mem_store_data;
+  wire RV32I_EX_mem_valid;
   wire [1:0]RV32I_EX_mem_wb_sel;
   wire [3:0]RV32I_ID_ex_alu_op;
   wire RV32I_ID_ex_branch_en;
@@ -62,11 +63,15 @@ module RISCV_SystemVerilog
   wire [31:0]RV32I_MEM_wb_pc_plus4;
   wire [4:0]RV32I_MEM_wb_rd;
   wire [1:0]RV32I_MEM_wb_sel;
+  wire RV32I_MEM_wb_valid;
   wire [31:0]RV32I_WB_rd_wdata;
   wire [4:0]ex_rs2_1;
   wire [0:0]flush_2;
   wire rd_we_1;
   wire [0:0]rst_1;
+  wire [0:0]util_vector_logic_2_Res;
+  wire [0:0]util_vector_logic_3_Res;
+  wire [0:0]util_vector_logic_4_Res;
   wire [0:0]vio_0_probe_out0;
   wire [0:0]xlconstant_0_dout;
   wire zynq_ultra_ps_e_1_pl_clk0;
@@ -104,7 +109,9 @@ module RISCV_SystemVerilog
         .mem_pc_plus4(RV32I_EX_mem_pc_plus4),
         .mem_rd(RV32I_EX_mem_rd),
         .mem_rd_we(RV32I_EX_mem_rd_we),
+        .mem_rd_we1(util_vector_logic_4_Res),
         .mem_store_data(RV32I_EX_mem_store_data),
+        .mem_valid(RV32I_EX_mem_valid),
         .mem_wb_data(RV32I_WB_rd_wdata),
         .mem_wb_sel(RV32I_EX_mem_wb_sel),
         .op_a_sel(RV32I_ID_ex_op_a_sel),
@@ -114,7 +121,7 @@ module RISCV_SystemVerilog
         .rs2_data(Net),
         .rst(rst_1),
         .wb_rd(RV32I_MEM_wb_rd),
-        .wb_rd_we(rd_we_1));
+        .wb_rd_we(util_vector_logic_3_Res));
   RV32I_ID_imp_141HFYN RV32I_ID
        (.clk(zynq_ultra_ps_e_1_pl_clk0),
         .ex_alu_op(RV32I_ID_ex_alu_op),
@@ -150,7 +157,7 @@ module RISCV_SystemVerilog
         .pc_en(Op2_1),
         .rd_addr(RV32I_MEM_wb_rd),
         .rd_wdata(RV32I_WB_rd_wdata),
-        .rd_we(rd_we_1),
+        .rd_we(util_vector_logic_2_Res),
         .rst(rst_1),
         .stall(Hold_1));
   RV32I_IF_imp_P41UV7 RV32I_IF
@@ -178,6 +185,7 @@ module RISCV_SystemVerilog
         .mem_rd(RV32I_EX_mem_rd),
         .mem_rd_we(RV32I_EX_mem_rd_we),
         .mem_store_data(RV32I_EX_mem_store_data),
+        .mem_valid(RV32I_EX_mem_valid),
         .mem_wb_sel(RV32I_EX_mem_wb_sel),
         .rst(rst_1),
         .wb_alu_result(RV32I_MEM_wb_alu_result),
@@ -186,7 +194,8 @@ module RISCV_SystemVerilog
         .wb_pc_plus4(RV32I_MEM_wb_pc_plus4),
         .wb_rd(RV32I_MEM_wb_rd),
         .wb_rd_we(rd_we_1),
-        .wb_sel(RV32I_MEM_wb_sel));
+        .wb_sel(RV32I_MEM_wb_sel),
+        .wb_valid(RV32I_MEM_wb_valid));
   RV32I_RESET_imp_M13CS2 RV32I_RESET
        (.Op2(vio_0_probe_out0),
         .Res(rst_1),
@@ -203,6 +212,18 @@ module RISCV_SystemVerilog
        (.Op1(RV32I_ID_id_ex_flush),
         .Op2(Flush_1),
         .Res(flush_2));
+  RISCV_SystemVerilog_util_vector_logic_1_1 util_vector_logic_2
+       (.Op1(RV32I_MEM_wb_valid),
+        .Op2(rd_we_1),
+        .Res(util_vector_logic_2_Res));
+  RISCV_SystemVerilog_util_vector_logic_1_2 util_vector_logic_3
+       (.Op1(rd_we_1),
+        .Op2(RV32I_MEM_wb_valid),
+        .Res(util_vector_logic_3_Res));
+  RISCV_SystemVerilog_util_vector_logic_3_0 util_vector_logic_4
+       (.Op1(RV32I_EX_mem_valid),
+        .Op2(RV32I_EX_mem_rd_we),
+        .Res(util_vector_logic_4_Res));
   RISCV_SystemVerilog_vio_0_0 vio_0
        (.clk(zynq_ultra_ps_e_1_pl_clk0),
         .probe_out0(vio_0_probe_out0));
@@ -261,7 +282,9 @@ module RV32I_EX_imp_159D1QK
     mem_pc_plus4,
     mem_rd,
     mem_rd_we,
+    mem_rd_we1,
     mem_store_data,
+    mem_valid,
     mem_wb_data,
     mem_wb_sel,
     op_a_sel,
@@ -303,7 +326,9 @@ module RV32I_EX_imp_159D1QK
   output [31:0]mem_pc_plus4;
   output [4:0]mem_rd;
   output mem_rd_we;
+  input mem_rd_we1;
   output [31:0]mem_store_data;
+  output mem_valid;
   input [31:0]mem_wb_data;
   output [1:0]mem_wb_sel;
   input [1:0]op_a_sel;
@@ -339,12 +364,10 @@ module RV32I_EX_imp_159D1QK
   wire clk_1;
   wire [4:0]ex_rs1_1;
   wire [4:0]ex_rs2_1;
+  wire mem_rd_we1_1;
   wire [31:0]mem_wb_data_1;
   wire rst_1;
   wire [31:0]rv32i_alu_wrapper_0_y;
-  wire [3:0]rv32i_branch_unit_wr_0_ex_exception_cause;
-  wire [31:0]rv32i_branch_unit_wr_0_ex_exception_tval;
-  wire rv32i_branch_unit_wr_0_ex_exception_valid;
   wire rv32i_branch_unit_wr_0_ex_flush_req;
   wire [31:0]rv32i_branch_unit_wr_0_pc_redirect_target;
   wire rv32i_branch_unit_wr_0_pc_redirect_valid;
@@ -358,6 +381,7 @@ module RV32I_EX_imp_159D1QK
   wire [4:0]rv32i_ex_mem_reg_wra_0_mem_rd;
   wire rv32i_ex_mem_reg_wra_0_mem_rd_we;
   wire [31:0]rv32i_ex_mem_reg_wra_0_mem_store_data;
+  wire rv32i_ex_mem_reg_wra_0_mem_valid;
   wire [1:0]rv32i_ex_mem_reg_wra_0_mem_wb_sel;
   wire [31:0]rv32i_forward_mux_wr_0_out_data;
   wire [31:0]rv32i_forward_mux_wr_1_out_data;
@@ -403,7 +427,9 @@ module RV32I_EX_imp_159D1QK
   assign mem_pc_plus4[31:0] = rv32i_ex_mem_reg_wra_0_mem_pc_plus4;
   assign mem_rd[4:0] = rv32i_ex_mem_reg_wra_0_mem_rd;
   assign mem_rd_we = rv32i_ex_mem_reg_wra_0_mem_rd_we;
+  assign mem_rd_we1_1 = mem_rd_we1;
   assign mem_store_data[31:0] = rv32i_ex_mem_reg_wra_0_mem_store_data;
+  assign mem_valid = rv32i_ex_mem_reg_wra_0_mem_valid;
   assign mem_wb_data_1 = mem_wb_data[31:0];
   assign mem_wb_sel[1:0] = rv32i_ex_mem_reg_wra_0_mem_wb_sel;
   assign pc_redirect_target[31:0] = rv32i_branch_unit_wr_0_pc_redirect_target;
@@ -419,9 +445,6 @@ module RV32I_EX_imp_159D1QK
   RISCV_SystemVerilog_rv32i_branch_unit_wr_0_0 rv32i_branch_unit_wr_0
        (.ex_branch_en(RV32I_ID_ex_branch_en),
         .ex_branch_funct3(RV32I_ID_ex_branch_funct3),
-        .ex_exception_cause(rv32i_branch_unit_wr_0_ex_exception_cause),
-        .ex_exception_tval(rv32i_branch_unit_wr_0_ex_exception_tval),
-        .ex_exception_valid(rv32i_branch_unit_wr_0_ex_exception_valid),
         .ex_flush_req(rv32i_branch_unit_wr_0_ex_flush_req),
         .ex_imm(RV32I_ID_ex_imm),
         .ex_jal(RV32I_ID_ex_jal),
@@ -435,9 +458,9 @@ module RV32I_EX_imp_159D1QK
   RISCV_SystemVerilog_rv32i_ex_mem_reg_wra_0_0 rv32i_ex_mem_reg_wra_0
        (.clk(clk_1),
         .ex_alu_result(rv32i_alu_wrapper_0_y),
-        .ex_exception_cause(rv32i_branch_unit_wr_0_ex_exception_cause),
-        .ex_exception_tval(rv32i_branch_unit_wr_0_ex_exception_tval),
-        .ex_exception_valid(rv32i_branch_unit_wr_0_ex_exception_valid),
+        .ex_exception_cause({1'b0,1'b0,1'b0,1'b0}),
+        .ex_exception_tval({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ex_exception_valid(1'b0),
         .ex_imm_u(RV32I_ID_ex_imm_u),
         .ex_mem_re(RV32I_ID_ex_mem_re),
         .ex_mem_size(RV32I_ID_ex_mem_size),
@@ -461,6 +484,7 @@ module RV32I_EX_imp_159D1QK
         .mem_rd(rv32i_ex_mem_reg_wra_0_mem_rd),
         .mem_rd_we(rv32i_ex_mem_reg_wra_0_mem_rd_we),
         .mem_store_data(rv32i_ex_mem_reg_wra_0_mem_store_data),
+        .mem_valid(rv32i_ex_mem_reg_wra_0_mem_valid),
         .mem_wb_sel(rv32i_ex_mem_reg_wra_0_mem_wb_sel),
         .rst(rst_1),
         .stall(xlconstant_1_dout));
@@ -477,12 +501,13 @@ module RV32I_EX_imp_159D1QK
         .mem_wb_data(mem_wb_data_1),
         .out_data(rv32i_forward_mux_wr_1_out_data));
   RISCV_SystemVerilog_rv32i_forwarding_uni_0_0 rv32i_forwarding_uni_0
-       (.ex_rs1(ex_rs1_1),
+       (.ex_op_b_sel(RV32I_ID_ex_op_b_sel),
+        .ex_rs1(ex_rs1_1),
         .ex_rs2(ex_rs2_1),
         .forward_a(rv32i_forwarding_uni_0_forward_a),
         .forward_b(rv32i_forwarding_uni_0_forward_b),
         .mem_rd(rv32i_ex_mem_reg_wra_0_mem_rd),
-        .mem_rd_we(rv32i_ex_mem_reg_wra_0_mem_rd_we),
+        .mem_rd_we(mem_rd_we1_1),
         .wb_rd(wb_rd_1),
         .wb_rd_we(wb_rd_we_1));
   RISCV_SystemVerilog_rv32i_operand_a_mux_0_0 rv32i_operand_a_mux_0
@@ -531,7 +556,6 @@ module RV32I_ID_imp_141HFYN
     id_valid,
     if_id_hold,
     instr,
-    load_use_hazard_0,
     pc_en,
     rd_addr,
     rd_wdata,
@@ -569,7 +593,6 @@ module RV32I_ID_imp_141HFYN
   input id_valid;
   output if_id_hold;
   input [31:0]instr;
-  output load_use_hazard_0;
   output [0:0]pc_en;
   input [4:0]rd_addr;
   input [31:0]rd_wdata;
@@ -616,7 +639,6 @@ module RV32I_ID_imp_141HFYN
   wire [4:0]rv32i_decoder_wrapper_0_rs2;
   wire rv32i_hazard_detecti_0_id_ex_flush;
   wire rv32i_hazard_detecti_0_if_id_hold;
-  wire rv32i_hazard_detecti_0_load_use_hazard;
   wire rv32i_hazard_detecti_0_pc_en;
   wire [3:0]rv32i_id_ex_reg_wrap_0_ex_alu_op;
   wire rv32i_id_ex_reg_wrap_0_ex_branch_en;
@@ -644,8 +666,8 @@ module RV32I_ID_imp_141HFYN
   wire [31:0]rv32i_imm_mux_wrapper_0_imm_out;
   wire [31:0]rv32i_regfile_wrapper_0_rs1_rdata;
   wire [31:0]rv32i_regfile_wrapper_0_rs2_rdata;
+  wire stall_1;
   wire [0:0]xlconstant_1_dout;
-  wire [0:0]xlconstant_2_dout;
 
   assign Net = clk;
   assign ex_alu_op[3:0] = rv32i_id_ex_reg_wrap_0_ex_alu_op;
@@ -678,12 +700,12 @@ module RV32I_ID_imp_141HFYN
   assign id_valid_1 = id_valid;
   assign if_id_hold = rv32i_hazard_detecti_0_if_id_hold;
   assign instr_1 = instr[31:0];
-  assign load_use_hazard_0 = rv32i_hazard_detecti_0_load_use_hazard;
   assign pc_en[0] = rv32i_hazard_detecti_0_pc_en;
   assign rd_addr_1 = rd_addr[4:0];
   assign rd_wdata_1 = rd_wdata[31:0];
   assign rd_we_1 = rd_we;
   assign rst_1 = rst;
+  assign stall_1 = stall;
   RISCV_SystemVerilog_rv32i_control_full_w_0_3 rv32i_control_full_w_0
        (.alu_op(rv32i_control_full_w_0_alu_op),
         .bit30(rv32i_decoder_wrapper_0_bit30),
@@ -720,7 +742,8 @@ module RV32I_ID_imp_141HFYN
         .rs1(rv32i_decoder_wrapper_0_rs1),
         .rs2(rv32i_decoder_wrapper_0_rs2));
   RISCV_SystemVerilog_rv32i_hazard_detecti_0_0 rv32i_hazard_detecti_0
-       (.id_ex_flush(rv32i_hazard_detecti_0_id_ex_flush),
+       (.clk(Net),
+        .id_ex_flush(rv32i_hazard_detecti_0_id_ex_flush),
         .id_ex_mem_re(rv32i_id_ex_reg_wrap_0_ex_mem_re),
         .id_ex_rd(rv32i_id_ex_reg_wrap_0_ex_rd),
         .if_id_hold(rv32i_hazard_detecti_0_if_id_hold),
@@ -728,10 +751,10 @@ module RV32I_ID_imp_141HFYN
         .if_id_rs1_used(xlconstant_1_dout),
         .if_id_rs2(rv32i_decoder_wrapper_0_rs2),
         .if_id_rs2_used(xlconstant_1_dout),
-        .load_use_hazard(rv32i_hazard_detecti_0_load_use_hazard),
-        .pc_en(rv32i_hazard_detecti_0_pc_en));
+        .pc_en(rv32i_hazard_detecti_0_pc_en),
+        .rst(rst_1));
   RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0 rv32i_id_ex_reg_wrap_0
-       (.bubble(xlconstant_2_dout),
+       (.bubble(flush_1),
         .clk(Net),
         .ex_alu_op(rv32i_id_ex_reg_wrap_0_ex_alu_op),
         .ex_branch_en(rv32i_id_ex_reg_wrap_0_ex_branch_en),
@@ -780,7 +803,7 @@ module RV32I_ID_imp_141HFYN
         .id_valid(id_valid_1),
         .id_wb_sel(rv32i_control_full_w_0_wb_sel),
         .rst(rst_1),
-        .stall(xlconstant_2_dout));
+        .stall(stall_1));
   RISCV_SystemVerilog_rv32i_imm_mux_wrapper_0_0 rv32i_imm_mux_wrapper_0
        (.imm_b(rv32i_decoder_wrapper_0_imm_b),
         .imm_i(rv32i_decoder_wrapper_0_imm_i),
@@ -801,7 +824,7 @@ module RV32I_ID_imp_141HFYN
   RISCV_SystemVerilog_xlconstant_0_2 xlconstant_1
        (.dout(xlconstant_1_dout));
   RISCV_SystemVerilog_xlconstant_1_2 xlconstant_2
-       (.dout(xlconstant_2_dout));
+       ();
 endmodule
 
 module RV32I_IF_imp_P41UV7
@@ -851,6 +874,7 @@ module RV32I_IF_imp_P41UV7
   wire [0:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_1_Res;
   wire valid_fetch_in_1;
+  wire [0:0]xlconstant_1_dout;
 
   assign Flush_1 = Flush;
   assign Instr_id_out[31:0] = rv32i_if_id_reg_wrap_0_instr_id_out;
@@ -868,9 +892,10 @@ module RV32I_IF_imp_P41UV7
        (.addra(pc_to_rom_addr_wrapp_0_a),
         .clka(Net),
         .douta(blk_mem_gen_0_douta),
-        .ena(Op2_1));
+        .ena(xlconstant_1_dout));
   RISCV_SystemVerilog_latency_align_0_0 latency_align_0
        (.clk(Net),
+        .hold(Net1),
         .instr_bram(blk_mem_gen_0_douta),
         .instr_exec(latency_align_0_instr_exec),
         .pc_exec(latency_align_0_pc_exec),
@@ -909,6 +934,8 @@ module RV32I_IF_imp_P41UV7
        (.Op1(util_vector_logic_0_Res),
         .Op2(Op2_1),
         .Res(util_vector_logic_1_Res));
+  RISCV_SystemVerilog_xlconstant_0_3 xlconstant_1
+       (.dout(xlconstant_1_dout));
 endmodule
 
 module RV32I_MEM_imp_4PECDB
@@ -923,6 +950,7 @@ module RV32I_MEM_imp_4PECDB
     mem_rd,
     mem_rd_we,
     mem_store_data,
+    mem_valid,
     mem_wb_sel,
     rst,
     wb_alu_result,
@@ -931,7 +959,8 @@ module RV32I_MEM_imp_4PECDB
     wb_pc_plus4,
     wb_rd,
     wb_rd_we,
-    wb_sel);
+    wb_sel,
+    wb_valid);
   input clk;
   input [31:0]mem_alu_result;
   input [31:0]mem_imm_u;
@@ -943,6 +972,7 @@ module RV32I_MEM_imp_4PECDB
   input [4:0]mem_rd;
   input mem_rd_we;
   input [31:0]mem_store_data;
+  input mem_valid;
   input [1:0]mem_wb_sel;
   input rst;
   output [31:0]wb_alu_result;
@@ -952,6 +982,7 @@ module RV32I_MEM_imp_4PECDB
   output [4:0]wb_rd;
   output wb_rd_we;
   output [1:0]wb_sel;
+  output wb_valid;
 
   wire Net2;
   wire Net3;
@@ -966,6 +997,7 @@ module RV32I_MEM_imp_4PECDB
   wire RV32I_EX_mem_rd_we;
   wire [31:0]RV32I_EX_mem_store_data;
   wire [1:0]RV32I_EX_mem_wb_sel;
+  wire mem_valid_1;
   wire [31:0]rv32i_load_extender_0_load_data;
   wire [31:0]rv32i_mem_stage_wrap_0_dmem_addr;
   wire [3:0]rv32i_mem_stage_wrap_0_dmem_be;
@@ -977,6 +1009,7 @@ module RV32I_MEM_imp_4PECDB
   wire [4:0]rv32i_mem_stage_wrap_0_wb_rd;
   wire rv32i_mem_stage_wrap_0_wb_rd_we;
   wire [1:0]rv32i_mem_stage_wrap_0_wb_sel;
+  wire rv32i_mem_stage_wrap_0_wb_valid;
   wire [31:0]rv32i_mem_wb_reg_wra_0_wb_alu_result;
   wire [31:0]rv32i_mem_wb_reg_wra_0_wb_data;
   wire [31:0]rv32i_mem_wb_reg_wra_0_wb_imm_u;
@@ -984,6 +1017,7 @@ module RV32I_MEM_imp_4PECDB
   wire [4:0]rv32i_mem_wb_reg_wra_0_wb_rd;
   wire rv32i_mem_wb_reg_wra_0_wb_rd_we;
   wire [1:0]rv32i_mem_wb_reg_wra_0_wb_sel;
+  wire rv32i_mem_wb_reg_wra_0_wb_valid;
   wire [31:0]rv32i_ram_datav_wrap_0_rdata;
   wire [0:0]xlconstant_1_dout;
   wire [1:0]xlslice_0_Dout;
@@ -1001,6 +1035,7 @@ module RV32I_MEM_imp_4PECDB
   assign RV32I_EX_mem_rd_we = mem_rd_we;
   assign RV32I_EX_mem_store_data = mem_store_data[31:0];
   assign RV32I_EX_mem_wb_sel = mem_wb_sel[1:0];
+  assign mem_valid_1 = mem_valid;
   assign wb_alu_result[31:0] = rv32i_mem_wb_reg_wra_0_wb_alu_result;
   assign wb_data[31:0] = rv32i_mem_wb_reg_wra_0_wb_data;
   assign wb_imm_u[31:0] = rv32i_mem_wb_reg_wra_0_wb_imm_u;
@@ -1008,6 +1043,7 @@ module RV32I_MEM_imp_4PECDB
   assign wb_rd[4:0] = rv32i_mem_wb_reg_wra_0_wb_rd;
   assign wb_rd_we = rv32i_mem_wb_reg_wra_0_wb_rd_we;
   assign wb_sel[1:0] = rv32i_mem_wb_reg_wra_0_wb_sel;
+  assign wb_valid = rv32i_mem_wb_reg_wra_0_wb_valid;
   RISCV_SystemVerilog_rv32i_load_extender_0_0 rv32i_load_extender_0
        (.addr_offset(xlslice_0_Dout),
         .load_data(rv32i_load_extender_0_load_data),
@@ -1031,6 +1067,7 @@ module RV32I_MEM_imp_4PECDB
         .mem_rd(RV32I_EX_mem_rd),
         .mem_rd_we(RV32I_EX_mem_rd_we),
         .mem_store_data(RV32I_EX_mem_store_data),
+        .mem_valid(mem_valid_1),
         .mem_wb_sel(RV32I_EX_mem_wb_sel),
         .rst(Net3),
         .wb_alu_result(rv32i_mem_stage_wrap_0_wb_alu_result),
@@ -1038,7 +1075,8 @@ module RV32I_MEM_imp_4PECDB
         .wb_pc_plus4(rv32i_mem_stage_wrap_0_wb_pc_plus4),
         .wb_rd(rv32i_mem_stage_wrap_0_wb_rd),
         .wb_rd_we(rv32i_mem_stage_wrap_0_wb_rd_we),
-        .wb_sel(rv32i_mem_stage_wrap_0_wb_sel));
+        .wb_sel(rv32i_mem_stage_wrap_0_wb_sel),
+        .wb_valid(rv32i_mem_stage_wrap_0_wb_valid));
   RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0 rv32i_mem_wb_reg_wra_0
        (.clk(Net2),
         .flush(xlconstant_1_dout),
@@ -1048,6 +1086,7 @@ module RV32I_MEM_imp_4PECDB
         .mem_pc_plus4(rv32i_mem_stage_wrap_0_wb_pc_plus4),
         .mem_rd(rv32i_mem_stage_wrap_0_wb_rd),
         .mem_rd_we(rv32i_mem_stage_wrap_0_wb_rd_we),
+        .mem_valid(rv32i_mem_stage_wrap_0_wb_valid),
         .mem_wb_sel(rv32i_mem_stage_wrap_0_wb_sel),
         .rst(Net3),
         .stall(xlconstant_1_dout),
@@ -1057,7 +1096,8 @@ module RV32I_MEM_imp_4PECDB
         .wb_pc_plus4(rv32i_mem_wb_reg_wra_0_wb_pc_plus4),
         .wb_rd(rv32i_mem_wb_reg_wra_0_wb_rd),
         .wb_rd_we(rv32i_mem_wb_reg_wra_0_wb_rd_we),
-        .wb_sel(rv32i_mem_wb_reg_wra_0_wb_sel));
+        .wb_sel(rv32i_mem_wb_reg_wra_0_wb_sel),
+        .wb_valid(rv32i_mem_wb_reg_wra_0_wb_valid));
   RISCV_SystemVerilog_rv32i_ram_datav_wrap_0_0 rv32i_ram_datav_wrap_0
        (.addr(rv32i_mem_stage_wrap_0_dmem_addr),
         .be(rv32i_mem_stage_wrap_0_dmem_be),

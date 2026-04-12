@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2026 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2019 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -46,43 +46,41 @@
 // 
 // DO NOT MODIFY THIS FILE.
 
+//------------------------------------------------------------------------------------
+// Filename:    xl_Constant_stub.sv
+// Description: This HDL file is intended to be used with following simulators only:
+//
+//   Vivado Simulator (XSim)
+//   Cadence Xcelium Simulator
+//   Aldec Riviera-PRO Simulator
+//
+//------------------------------------------------------------------------------------
+`ifdef XILINX_SIMULATOR
+`ifndef XILINX_SIMULATOR_BITASBOOL
+`define XILINX_SIMULATOR_BITASBOOL
+typedef bit bit_as_bool;
+`endif
 
-// IP VLNV: xilinx.com:module_ref:rv32i_forwarding_unit_wrapper:1.0
-// IP Revision: 1
-
-(* X_CORE_INFO = "rv32i_forwarding_unit_wrapper,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "RISCV_SystemVerilog_rv32i_forwarding_uni_0_0,rv32i_forwarding_unit_wrapper,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog_rv32i_forwarding_uni_0_0,rv32i_forwarding_unit_wrapper,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=rv32i_forwarding_unit_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
-(* IP_DEFINITION_SOURCE = "module_ref" *)
-(* DowngradeIPIdentifiedWarnings = "yes" *)
-module RISCV_SystemVerilog_rv32i_forwarding_uni_0_0 (
-  ex_rs1,
-  ex_rs2,
-  mem_rd,
-  mem_rd_we,
-  wb_rd,
-  wb_rd_we,
-  forward_a,
-  forward_b
+(* SC_MODULE_EXPORT *)
+module RISCV_SystemVerilog_xlconstant_0_3 (
+  output bit [0 : 0 ] dout
 );
-
-input wire [4 : 0] ex_rs1;
-input wire [4 : 0] ex_rs2;
-input wire [4 : 0] mem_rd;
-input wire mem_rd_we;
-input wire [4 : 0] wb_rd;
-input wire wb_rd_we;
-output wire [1 : 0] forward_a;
-output wire [1 : 0] forward_b;
-
-  rv32i_forwarding_unit_wrapper inst (
-    .ex_rs1(ex_rs1),
-    .ex_rs2(ex_rs2),
-    .mem_rd(mem_rd),
-    .mem_rd_we(mem_rd_we),
-    .wb_rd(wb_rd),
-    .wb_rd_we(wb_rd_we),
-    .forward_a(forward_a),
-    .forward_b(forward_b)
-  );
 endmodule
+`endif
+
+`ifdef XCELIUM
+(* XMSC_MODULE_EXPORT *)
+module RISCV_SystemVerilog_xlconstant_0_3 (dout)
+(* integer foreign = "SystemC";
+*);
+ output wire [0 : 0 ] dout;  
+endmodule
+`endif
+
+`ifdef RIVIERA
+(* SC_MODULE_EXPORT *)
+module RISCV_SystemVerilog_xlconstant_0_3 (dout)
+  output wire [0 : 0 ] dout;
+endmodule
+`endif
+

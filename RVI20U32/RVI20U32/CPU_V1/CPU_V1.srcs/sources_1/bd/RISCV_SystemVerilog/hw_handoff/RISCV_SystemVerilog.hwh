@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Apr 11 21:04:32 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Apr 12 20:02:56 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="RISCV_SystemVerilog" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -103,21 +103,9 @@
         </PORT>
         <PORT DIR="O" NAME="instr_addr_misaligned" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="instr_addr_misaligned_target" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="O" NAME="ex_exception_valid" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_exception_valid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="ex_exception_valid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="3" NAME="ex_exception_cause" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_exception_cause">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="ex_exception_cause"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="ex_exception_tval" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_exception_tval">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="ex_exception_tval"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="ex_exception_valid" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="ex_exception_cause" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="ex_exception_tval" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="ex_flush_req" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_flush_req">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="flush"/>
@@ -220,22 +208,15 @@
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="ex_wb_sel"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ex_exception_valid" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_exception_valid">
+        <PORT DIR="I" NAME="ex_exception_valid" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="3" NAME="ex_exception_cause" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="ex_exception_tval" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="mem_valid" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_branch_unit_wr_0" PORT="ex_exception_valid"/>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="mem_valid"/>
+            <CONNECTION INSTANCE="util_vector_logic_4" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="ex_exception_cause" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_exception_cause">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_branch_unit_wr_0" PORT="ex_exception_cause"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="ex_exception_tval" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_branch_unit_wr_0_ex_exception_tval">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_branch_unit_wr_0" PORT="ex_exception_tval"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="mem_valid" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="mem_pc" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="mem_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_alu_result">
           <CONNECTIONS>
@@ -277,20 +258,20 @@
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="mem_mem_size" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_mem_size">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="mem_mem_size"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_load_extender_0" PORT="size"/>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="mem_mem_size"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="mem_mem_unsigned" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_mem_unsigned">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="mem_mem_unsigned"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_load_extender_0" PORT="unsigned_load"/>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="mem_mem_unsigned"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="mem_rd_we" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_rd_we">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="mem_rd_we"/>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_forwarding_uni_0" PORT="mem_rd_we"/>
+            <CONNECTION INSTANCE="util_vector_logic_4" PORT="Op2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_wb_sel">
@@ -393,14 +374,19 @@
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="ex_rs2"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ex_op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_id_ex_reg_wrap_0_ex_op_b_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="ex_op_b_sel"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="4" NAME="mem_rd" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_rd">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="mem_rd"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="mem_rd_we" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_rd_we">
+        <PORT DIR="I" NAME="mem_rd_we" SIGIS="undef" SIGNAME="util_vector_logic_4_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="mem_rd_we"/>
+            <CONNECTION INSTANCE="util_vector_logic_4" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="4" NAME="wb_rd" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_rd">
@@ -408,9 +394,9 @@
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_rd"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="wb_rd_we" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_rd_we">
+        <PORT DIR="I" NAME="wb_rd_we" SIGIS="undef" SIGNAME="util_vector_logic_3_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_rd_we"/>
+            <CONNECTION INSTANCE="util_vector_logic_3" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="forward_a" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_forwarding_uni_0_forward_a">
@@ -623,16 +609,16 @@
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="rs1" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_decoder_wrapper_0_rs1">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_rs1"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rs1_addr"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="id_rs1"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_rs1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="rs2" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_decoder_wrapper_0_rs2">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_rs2"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rs2_addr"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="id_rs2"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_rs2"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="rd" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_decoder_wrapper_0_rd">
@@ -702,6 +688,16 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT CLKFREQUENCY="9999900" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_1_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_1" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RV32I_RESET_util_vector_logic_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RESET_util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="id_ex_mem_re" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_id_ex_reg_wrap_0_ex_mem_re">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="ex_mem_re"/>
@@ -736,13 +732,14 @@
         <PORT DIR="O" NAME="pc_en" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_hazard_detecti_0_pc_en">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_IF_util_vector_logic_1" PORT="Op2"/>
-            <CONNECTION INSTANCE="RV32I_IF_blk_mem_gen_0" PORT="ena"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="if_id_hold" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_hazard_detecti_0_if_id_hold">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_IF_util_vector_logic_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="hold"/>
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="hold"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="stall"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="id_ex_flush" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_hazard_detecti_0_id_ex_flush">
@@ -770,14 +767,14 @@
             <CONNECTION INSTANCE="RV32I_RESET_util_vector_logic_0" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="RV32I_ID_xlconstant_2_dout">
+        <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_hazard_detecti_0_if_id_hold">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_xlconstant_2" PORT="dout"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_hold"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="bubble" SIGIS="undef" SIGNAME="RV32I_ID_xlconstant_2_dout">
+        <PORT DIR="I" NAME="bubble" SIGIS="undef" SIGNAME="util_vector_logic_1_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_xlconstant_2" PORT="dout"/>
+            <CONNECTION INSTANCE="util_vector_logic_1" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="id_valid" SIGIS="undef" SIGNAME="RV32I_IF_rv32i_if_id_reg_wrap_0_valid_id_out">
@@ -964,6 +961,7 @@
         <PORT DIR="O" LEFT="1" NAME="ex_op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_id_ex_reg_wrap_0_ex_op_b_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_operand_b_mux_0" PORT="op_b_sel"/>
+            <CONNECTION INSTANCE="RV32I_EX_rv32i_forwarding_uni_0" PORT="ex_op_b_sel"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="ex_branch_en" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_id_ex_reg_wrap_0_ex_branch_en">
@@ -1107,9 +1105,9 @@
             <CONNECTION INSTANCE="RV32I_WB_rv32i_wb_mux_wrapper_0" PORT="rd_wdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rd_we" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_rd_we">
+        <PORT DIR="I" NAME="rd_we" SIGIS="undef" SIGNAME="util_vector_logic_2_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_rd_we"/>
+            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1142,12 +1140,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_ID_xlconstant_2_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="stall"/>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="bubble"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -1311,9 +1304,9 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_1" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_hazard_detecti_0_pc_en">
+        <PORT DIR="I" NAME="ena" SIGIS="undef" SIGNAME="RV32I_IF_xlconstant_1_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="pc_en"/>
+            <CONNECTION INSTANCE="RV32I_IF_xlconstant_1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="10" NAME="addra" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_to_rom_addr_wrapp_0_a">
@@ -1359,6 +1352,11 @@
         <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RV32I_RESET_util_vector_logic_0_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_RESET_util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="hold" SIGIS="undef" SIGNAME="RV32I_ID_rv32i_hazard_detecti_0_if_id_hold">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="if_id_hold"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="pc_fetch" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_pc_unit_wrapper_0_pc">
@@ -1583,6 +1581,23 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="7" FULLNAME="/RV32I_IF/xlconstant_1" HWVERSION="1.1" INSTANCE="RV32I_IF_xlconstant_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_SystemVerilog_xlconstant_0_3"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_IF_xlconstant_1_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_IF_blk_mem_gen_0" PORT="ena"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/RV32I_MEM/rv32i_load_extender_0" HWVERSION="1.0" INSTANCE="RV32I_MEM_rv32i_load_extender_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rv32i_load_extender_wrapper" VLNV="xilinx.com:module_ref:rv32i_load_extender_wrapper:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -1633,6 +1648,11 @@
         <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="RV32I_RESET_util_vector_logic_0_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_RESET_util_vector_logic_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_valid" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="mem_valid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="31" NAME="mem_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_alu_result">
@@ -1717,6 +1737,12 @@
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_ram_datav_wrap_0" PORT="rdata"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="wb_valid" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_stage_wrap_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="wb_data" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="wb_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_stage_wrap_0_wb_alu_result">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="mem_alu_result"/>
@@ -1777,6 +1803,11 @@
             <CONNECTION INSTANCE="RV32I_MEM_xlconstant_1" PORT="dout"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="mem_valid" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_stage_wrap_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="wb_valid"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" LEFT="31" NAME="mem_data" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_load_extender_0_load_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_load_extender_0" PORT="load_data"/>
@@ -1812,6 +1843,12 @@
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="wb_sel"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="wb_valid" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Op1"/>
+            <CONNECTION INSTANCE="util_vector_logic_3" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="wb_data" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_data">
           <CONNECTIONS>
             <CONNECTION INSTANCE="RV32I_WB_rv32i_wb_mux_wrapper_0" PORT="load_data"/>
@@ -1840,8 +1877,8 @@
         </PORT>
         <PORT DIR="O" NAME="wb_rd_we" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_rd_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rd_we"/>
-            <CONNECTION INSTANCE="RV32I_EX_rv32i_forwarding_uni_0" PORT="wb_rd_we"/>
+            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Op2"/>
+            <CONNECTION INSTANCE="util_vector_logic_3" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="1" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_sel">
@@ -2012,9 +2049,10 @@
             <CONNECTION INSTANCE="RV32I_IF_latency_align_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="rst"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="rst"/>
-            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="rst"/>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2099,7 +2137,95 @@
             <CONNECTION INSTANCE="RV32I_EX_rv32i_branch_unit_wr_0" PORT="ex_flush_req"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="bubble"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/util_vector_logic_2" HWVERSION="2.0" INSTANCE="util_vector_logic_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="and"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_SystemVerilog_util_vector_logic_1_1"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_andgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_2_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/util_vector_logic_3" HWVERSION="2.0" INSTANCE="util_vector_logic_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_SystemVerilog_util_vector_logic_1_2"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_MEM_rv32i_mem_wb_reg_wra_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="wb_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_3_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_EX_rv32i_forwarding_uni_0" PORT="wb_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/util_vector_logic_4" HWVERSION="2.0" INSTANCE="util_vector_logic_4" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_SystemVerilog_util_vector_logic_3_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_EX_rv32i_ex_mem_reg_wra_0_mem_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="mem_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_4_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_EX_rv32i_forwarding_uni_0" PORT="mem_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -4725,10 +4851,11 @@
             <CONNECTION INSTANCE="RV32I_IF_rv32i_if_id_reg_wrap_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_regfile_wrapper_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_ID_rv32i_id_ex_reg_wrap_0" PORT="clk"/>
+            <CONNECTION INSTANCE="RV32I_ID_rv32i_hazard_detecti_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_EX_rv32i_ex_mem_reg_wra_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_ram_datav_wrap_0" PORT="clk"/>
-            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_stage_wrap_0" PORT="clk"/>
+            <CONNECTION INSTANCE="RV32I_MEM_rv32i_mem_wb_reg_wra_0" PORT="clk"/>
             <CONNECTION INSTANCE="vio_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>

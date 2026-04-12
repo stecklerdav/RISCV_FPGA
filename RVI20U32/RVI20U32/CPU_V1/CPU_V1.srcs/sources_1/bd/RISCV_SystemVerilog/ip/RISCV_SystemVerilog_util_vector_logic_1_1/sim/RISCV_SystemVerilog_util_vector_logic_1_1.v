@@ -47,76 +47,28 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:rv32i_mem_wb_reg_wrapper:1.0
+// IP VLNV: xilinx.com:ip:util_vector_logic:2.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "rv32i_mem_wb_reg_wrapper,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0,rv32i_mem_wb_reg_wrapper,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0,rv32i_mem_wb_reg_wrapper,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=rv32i_mem_wb_reg_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
-(* IP_DEFINITION_SOURCE = "module_ref" *)
+`timescale 1ns/1ps
+
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0 (
-  clk,
-  rst,
-  stall,
-  flush,
-  mem_data,
-  mem_alu_result,
-  mem_pc_plus4,
-  mem_imm_u,
-  mem_rd,
-  mem_rd_we,
-  mem_wb_sel,
-  wb_data,
-  wb_alu_result,
-  wb_pc_plus4,
-  wb_imm_u,
-  wb_rd,
-  wb_rd_we,
-  wb_sel
+module RISCV_SystemVerilog_util_vector_logic_1_1 (
+  Op1,
+  Op2,
+  Res
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
-input wire clk;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
-input wire rst;
-input wire stall;
-input wire flush;
-input wire [31 : 0] mem_data;
-input wire [31 : 0] mem_alu_result;
-input wire [31 : 0] mem_pc_plus4;
-input wire [31 : 0] mem_imm_u;
-input wire [4 : 0] mem_rd;
-input wire mem_rd_we;
-input wire [1 : 0] mem_wb_sel;
-output wire [31 : 0] wb_data;
-output wire [31 : 0] wb_alu_result;
-output wire [31 : 0] wb_pc_plus4;
-output wire [31 : 0] wb_imm_u;
-output wire [4 : 0] wb_rd;
-output wire wb_rd_we;
-output wire [1 : 0] wb_sel;
+input wire [0 : 0] Op1;
+input wire [0 : 0] Op2;
+output wire [0 : 0] Res;
 
-  rv32i_mem_wb_reg_wrapper inst (
-    .clk(clk),
-    .rst(rst),
-    .stall(stall),
-    .flush(flush),
-    .mem_data(mem_data),
-    .mem_alu_result(mem_alu_result),
-    .mem_pc_plus4(mem_pc_plus4),
-    .mem_imm_u(mem_imm_u),
-    .mem_rd(mem_rd),
-    .mem_rd_we(mem_rd_we),
-    .mem_wb_sel(mem_wb_sel),
-    .wb_data(wb_data),
-    .wb_alu_result(wb_alu_result),
-    .wb_pc_plus4(wb_pc_plus4),
-    .wb_imm_u(wb_imm_u),
-    .wb_rd(wb_rd),
-    .wb_rd_we(wb_rd_we),
-    .wb_sel(wb_sel)
+  util_vector_logic_v2_0_1_util_vector_logic #(
+    .C_OPERATION("and"),
+    .C_SIZE(1)
+  ) inst (
+    .Op1(Op1),
+    .Op2(Op2),
+    .Res(Res)
   );
 endmodule

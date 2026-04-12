@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-import rv32i_control_types_pkg::*;
+
 module rv32i_wb_mux(
     input  logic [1:0]  wb_sel,
     input  logic [31:0] alu_y,

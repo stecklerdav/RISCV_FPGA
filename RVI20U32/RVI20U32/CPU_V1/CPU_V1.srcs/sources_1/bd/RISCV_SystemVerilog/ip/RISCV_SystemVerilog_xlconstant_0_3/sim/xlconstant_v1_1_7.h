@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2026 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2014 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -47,36 +47,23 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:rv32i_wb_mux_wrapper:1.0
+// IP VLNV: xilinx.com:ip:xlconstant:1.1
 // IP Revision: 1
 
-(* X_CORE_INFO = "rv32i_wb_mux_wrapper,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "RISCV_SystemVerilog_rv32i_wb_mux_wrapper_0_0,rv32i_wb_mux_wrapper,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog_rv32i_wb_mux_wrapper_0_0,rv32i_wb_mux_wrapper,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=rv32i_wb_mux_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
-(* IP_DEFINITION_SOURCE = "module_ref" *)
-(* DowngradeIPIdentifiedWarnings = "yes" *)
-module RISCV_SystemVerilog_rv32i_wb_mux_wrapper_0_0 (
-  wb_sel,
-  alu_y,
-  load_data,
-  pc_plus4,
-  imm_u,
-  rd_wdata
-);
+#ifndef _xlconstant_v1_1_7_H_
+#define _xlconstant_v1_1_7_H_
 
-input wire [1 : 0] wb_sel;
-input wire [31 : 0] alu_y;
-input wire [31 : 0] load_data;
-input wire [31 : 0] pc_plus4;
-input wire [31 : 0] imm_u;
-output wire [31 : 0] rd_wdata;
+#include "systemc.h"
+template<int CONST_WIDTH,int CONST_VAL>
+SC_MODULE(xlconstant_v1_1_7) {
+  public:
+  sc_out< sc_bv<CONST_WIDTH> > dout;
+  void init() {
+    dout.write(CONST_VAL);
+  }
+  SC_CTOR(xlconstant_v1_1_7) {
+    SC_METHOD(init);  
+  }
+};
 
-  rv32i_wb_mux_wrapper inst (
-    .wb_sel(wb_sel),
-    .alu_y(alu_y),
-    .load_data(load_data),
-    .pc_plus4(pc_plus4),
-    .imm_u(imm_u),
-    .rd_wdata(rd_wdata)
-  );
-endmodule
+#endif

@@ -124,6 +124,10 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../CPU_V1.srcs/sources_1/bd/R
 "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_1/sim/RISCV_SystemVerilog_xlconstant_1_1.v" \
 "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_0/sim/RISCV_SystemVerilog_xlconstant_1_0.v" \
 "../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_2/sim/RISCV_SystemVerilog_xlconstant_1_2.v" \
+"../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_1_1/sim/RISCV_SystemVerilog_util_vector_logic_1_1.v" \
+"../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_1_2/sim/RISCV_SystemVerilog_util_vector_logic_1_2.v" \
+"../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_3_0/sim/RISCV_SystemVerilog_util_vector_logic_3_0.v" \
+"../../../bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_3/sim/RISCV_SystemVerilog_xlconstant_0_3.v" \
 "../../../bd/RISCV_SystemVerilog/sim/RISCV_SystemVerilog.v" \
 
 vlog -work xil_defaultlib \

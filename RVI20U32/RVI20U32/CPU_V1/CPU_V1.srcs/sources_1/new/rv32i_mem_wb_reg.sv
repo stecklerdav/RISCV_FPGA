@@ -1,11 +1,14 @@
 `timescale 1ns/1ps
+
 import rv32i_mem_wb_reg_types_pkg::*;
+
 module rv32i_mem_wb_reg(
     input  logic        clk,
     input  logic        rst,
     input  logic        stall,
     input  logic        flush,
 
+    input  logic        mem_valid,
     input  logic [31:0] mem_data,
     input  logic [31:0] mem_alu_result,
     input  logic [31:0] mem_pc_plus4,
@@ -14,6 +17,7 @@ module rv32i_mem_wb_reg(
     input  logic        mem_rd_we,
     input  logic [1:0]  mem_wb_sel,
 
+    output logic        wb_valid,
     output logic [31:0] wb_data,
     output logic [31:0] wb_alu_result,
     output logic [31:0] wb_pc_plus4,
@@ -25,6 +29,7 @@ module rv32i_mem_wb_reg(
 
     always_ff @(posedge clk) begin
         if (rst || flush) begin
+            wb_valid      <= 1'b0;
             wb_data       <= 32'b0;
             wb_alu_result <= 32'b0;
             wb_pc_plus4   <= 32'b0;
@@ -34,6 +39,7 @@ module rv32i_mem_wb_reg(
             wb_sel        <= 2'b0;
         end
         else if (!stall) begin
+            wb_valid      <= mem_valid;
             wb_data       <= mem_data;
             wb_alu_result <= mem_alu_result;
             wb_pc_plus4   <= mem_pc_plus4;

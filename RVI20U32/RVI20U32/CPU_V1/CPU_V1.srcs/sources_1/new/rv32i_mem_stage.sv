@@ -1,4 +1,4 @@
-`timescale 1ns/1ps
+`timescale 1ns / 1ps
 
 import rv32i_mem_stage_types_pkg::*;
 
@@ -14,15 +14,21 @@ module rv32i_mem_stage (
     rv32i_dmem_req_t dmem_req_r;
     rv32i_mem_out_t  mem_out_r;
 
+    // Payload alineado con la lectura síncrona de RAM
+    rv32i_mem_in_t mem_in_q;
+
+    // ------------------------------------------------------------
+    // Request a memoria: se genera con la entrada actual
+    // ------------------------------------------------------------
     always_comb begin
         dmem_req_r       = '0;
         dmem_req_r.addr  = mem_in.alu_result;
-        dmem_req_r.we    = mem_in.mem_we;
-        dmem_req_r.re    = mem_in.mem_re;
+        dmem_req_r.we    = mem_in.valid & mem_in.mem_we;
+        dmem_req_r.re    = mem_in.valid & mem_in.mem_re;
         dmem_req_r.be    = 4'b0000;
         dmem_req_r.wdata = 32'b0;
 
-        if (mem_in.mem_we) begin
+        if (mem_in.valid && mem_in.mem_we) begin
             unique case (mem_in.mem_size)
                 2'b00: begin
                     unique case (mem_in.alu_result[1:0])
@@ -79,14 +85,31 @@ module rv32i_mem_stage (
         end
     end
 
+    // ------------------------------------------------------------
+    // Registrar el payload para alinearlo con dmem_rdata
+    // ------------------------------------------------------------
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            mem_in_q <= '0;
+        end
+        else begin
+            mem_in_q <= mem_in;
+        end
+    end
+
+    // ------------------------------------------------------------
+    // Salida hacia MEM/WB: usa payload retrasado + dmem_rdata actual
+    // ------------------------------------------------------------
     always_comb begin
         mem_out_r            = '0;
-        mem_out_r.alu_result = mem_in.alu_result;
-        mem_out_r.pc_plus4   = mem_in.pc_plus4;
-        mem_out_r.imm_u      = mem_in.imm_u;
-        mem_out_r.rd         = mem_in.rd;
-        mem_out_r.rd_we      = mem_in.rd_we;
-        mem_out_r.wb_sel     = mem_in.wb_sel;
+        mem_out_r.valid      = mem_in_q.valid;
+        mem_out_r.data       = dmem_rdata;
+        mem_out_r.alu_result = mem_in_q.alu_result;
+        mem_out_r.pc_plus4   = mem_in_q.pc_plus4;
+        mem_out_r.imm_u      = mem_in_q.imm_u;
+        mem_out_r.rd         = mem_in_q.rd;
+        mem_out_r.rd_we      = mem_in_q.rd_we;
+        mem_out_r.wb_sel     = mem_in_q.wb_sel;
     end
 
     assign dmem_req = dmem_req_r;

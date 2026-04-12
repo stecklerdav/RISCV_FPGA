@@ -59,6 +59,7 @@ module RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0 (
   rst,
   stall,
   flush,
+  mem_valid,
   mem_data,
   mem_alu_result,
   mem_pc_plus4,
@@ -66,6 +67,7 @@ module RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0 (
   mem_rd,
   mem_rd_we,
   mem_wb_sel,
+  wb_valid,
   wb_data,
   wb_alu_result,
   wb_pc_plus4,
@@ -83,6 +85,7 @@ input wire clk;
 input wire rst;
 input wire stall;
 input wire flush;
+input wire mem_valid;
 input wire [31 : 0] mem_data;
 input wire [31 : 0] mem_alu_result;
 input wire [31 : 0] mem_pc_plus4;
@@ -90,6 +93,7 @@ input wire [31 : 0] mem_imm_u;
 input wire [4 : 0] mem_rd;
 input wire mem_rd_we;
 input wire [1 : 0] mem_wb_sel;
+output wire wb_valid;
 output wire [31 : 0] wb_data;
 output wire [31 : 0] wb_alu_result;
 output wire [31 : 0] wb_pc_plus4;
@@ -103,6 +107,7 @@ output wire [1 : 0] wb_sel;
     .rst(rst),
     .stall(stall),
     .flush(flush),
+    .mem_valid(mem_valid),
     .mem_data(mem_data),
     .mem_alu_result(mem_alu_result),
     .mem_pc_plus4(mem_pc_plus4),
@@ -110,6 +115,7 @@ output wire [1 : 0] wb_sel;
     .mem_rd(mem_rd),
     .mem_rd_we(mem_rd_we),
     .mem_wb_sel(mem_wb_sel),
+    .wb_valid(wb_valid),
     .wb_data(wb_data),
     .wb_alu_result(wb_alu_result),
     .wb_pc_plus4(wb_pc_plus4),

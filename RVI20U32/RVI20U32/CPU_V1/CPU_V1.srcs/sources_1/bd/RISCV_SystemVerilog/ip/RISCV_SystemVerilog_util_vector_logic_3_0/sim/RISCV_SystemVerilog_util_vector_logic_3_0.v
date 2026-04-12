@@ -47,48 +47,28 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:rv32i_hazard_detection_unit_wrapper:1.0
+// IP VLNV: xilinx.com:ip:util_vector_logic:2.0
 // IP Revision: 1
 
-(* X_CORE_INFO = "rv32i_hazard_detection_unit_wrapper,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "RISCV_SystemVerilog_rv32i_hazard_detecti_0_0,rv32i_hazard_detection_unit_wrapper,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_SystemVerilog_rv32i_hazard_detecti_0_0,rv32i_hazard_detection_unit_wrapper,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=rv32i_hazard_detection_unit_wrapper,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED}" *)
-(* IP_DEFINITION_SOURCE = "module_ref" *)
+`timescale 1ns/1ps
+
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module RISCV_SystemVerilog_rv32i_hazard_detecti_0_0 (
-  id_ex_mem_re,
-  id_ex_rd,
-  if_id_rs1,
-  if_id_rs2,
-  if_id_rs1_used,
-  if_id_rs2_used,
-  load_use_hazard,
-  pc_en,
-  if_id_hold,
-  id_ex_flush
+module RISCV_SystemVerilog_util_vector_logic_3_0 (
+  Op1,
+  Op2,
+  Res
 );
 
-input wire id_ex_mem_re;
-input wire [4 : 0] id_ex_rd;
-input wire [4 : 0] if_id_rs1;
-input wire [4 : 0] if_id_rs2;
-input wire if_id_rs1_used;
-input wire if_id_rs2_used;
-output wire load_use_hazard;
-output wire pc_en;
-output wire if_id_hold;
-output wire id_ex_flush;
+input wire [0 : 0] Op1;
+input wire [0 : 0] Op2;
+output wire [0 : 0] Res;
 
-  rv32i_hazard_detection_unit_wrapper inst (
-    .id_ex_mem_re(id_ex_mem_re),
-    .id_ex_rd(id_ex_rd),
-    .if_id_rs1(if_id_rs1),
-    .if_id_rs2(if_id_rs2),
-    .if_id_rs1_used(if_id_rs1_used),
-    .if_id_rs2_used(if_id_rs2_used),
-    .load_use_hazard(load_use_hazard),
-    .pc_en(pc_en),
-    .if_id_hold(if_id_hold),
-    .id_ex_flush(id_ex_flush)
+  util_vector_logic_v2_0_1_util_vector_logic #(
+    .C_OPERATION("or"),
+    .C_SIZE(1)
+  ) inst (
+    .Op1(Op1),
+    .Op2(Op2),
+    .Res(Res)
   );
 endmodule

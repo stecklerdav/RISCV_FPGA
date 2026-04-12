@@ -8,6 +8,7 @@ module rv32i_mem_stage_flat (
     input  logic         rst,
 
     // from EX/MEM
+    input  logic         mem_valid,
     input  logic [31:0]  mem_alu_result,
     input  logic [31:0]  mem_store_data,
     input  logic [31:0]  mem_pc_plus4,
@@ -31,6 +32,8 @@ module rv32i_mem_stage_flat (
     input  logic [31:0]  dmem_rdata,
 
     // to MEM/WB
+    output logic         wb_valid,
+    output logic [31:0]  wb_data,
     output logic [31:0]  wb_alu_result,
     output logic [31:0]  wb_pc_plus4,
     output logic [31:0]  wb_imm_u,
@@ -43,6 +46,7 @@ module rv32i_mem_stage_flat (
     rv32i_dmem_req_t dmem_req_s;
     rv32i_mem_out_t  mem_out_s;
 
+    assign mem_in_s.valid        = mem_valid;
     assign mem_in_s.alu_result   = mem_alu_result;
     assign mem_in_s.store_data   = mem_store_data;
     assign mem_in_s.pc_plus4     = mem_pc_plus4;
@@ -56,12 +60,12 @@ module rv32i_mem_stage_flat (
     assign mem_in_s.wb_sel       = mem_wb_sel;
 
     rv32i_mem_stage u_rv32i_mem_stage (
-        .clk       (clk),
-        .rst       (rst),
-        .mem_in    (mem_in_s),
-        .dmem_req  (dmem_req_s),
-        .dmem_rdata(dmem_rdata),
-        .mem_out   (mem_out_s)
+        .clk        (clk),
+        .rst        (rst),
+        .mem_in     (mem_in_s),
+        .dmem_req   (dmem_req_s),
+        .dmem_rdata (dmem_rdata),
+        .mem_out    (mem_out_s)
     );
 
     assign dmem_addr     = dmem_req_s.addr;
@@ -70,6 +74,8 @@ module rv32i_mem_stage_flat (
     assign dmem_re       = dmem_req_s.re;
     assign dmem_be       = dmem_req_s.be;
 
+    assign wb_valid      = mem_out_s.valid;
+    assign wb_data       = mem_out_s.data;
     assign wb_alu_result = mem_out_s.alu_result;
     assign wb_pc_plus4   = mem_out_s.pc_plus4;
     assign wb_imm_u      = mem_out_s.imm_u;

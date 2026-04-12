@@ -10,12 +10,12 @@ module rv32i_wb_mux_wrapper(
 );
 
     rv32i_wb_mux u_rv32i_wb_mux (
-        .wb_sel   (wb_sel),
-        .alu_y    (alu_y),
-        .load_data(load_data),
-        .pc_plus4 (pc_plus4),
-        .imm_u    (imm_u),
-        .rd_wdata (rd_wdata)
+        .wb_sel    (wb_sel),
+        .alu_y     (alu_y),
+        .load_data (load_data),
+        .pc_plus4  (pc_plus4),
+        .imm_u     (imm_u),
+        .rd_wdata  (rd_wdata)
     );
 
 endmodule

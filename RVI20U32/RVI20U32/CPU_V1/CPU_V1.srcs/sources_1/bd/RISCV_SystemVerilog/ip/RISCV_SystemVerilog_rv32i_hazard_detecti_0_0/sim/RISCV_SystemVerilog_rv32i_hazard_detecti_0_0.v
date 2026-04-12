@@ -55,6 +55,8 @@
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module RISCV_SystemVerilog_rv32i_hazard_detecti_0_0 (
+  clk,
+  rst,
   id_ex_mem_re,
   id_ex_rd,
   if_id_rs1,
@@ -67,6 +69,12 @@ module RISCV_SystemVerilog_rv32i_hazard_detecti_0_0 (
   id_ex_flush
 );
 
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
+input wire clk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
+input wire rst;
 input wire id_ex_mem_re;
 input wire [4 : 0] id_ex_rd;
 input wire [4 : 0] if_id_rs1;
@@ -79,6 +87,8 @@ output wire if_id_hold;
 output wire id_ex_flush;
 
   rv32i_hazard_detection_unit_wrapper inst (
+    .clk(clk),
+    .rst(rst),
     .id_ex_mem_re(id_ex_mem_re),
     .id_ex_rd(id_ex_rd),
     .if_id_rs1(if_id_rs1),

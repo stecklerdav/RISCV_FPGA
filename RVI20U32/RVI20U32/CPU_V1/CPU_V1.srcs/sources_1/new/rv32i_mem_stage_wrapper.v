@@ -6,6 +6,7 @@ module rv32i_mem_stage_wrapper (
     input  wire         rst,
 
     // from EX/MEM
+    input  wire         mem_valid,
     input  wire [31:0]  mem_alu_result,
     input  wire [31:0]  mem_store_data,
     input  wire [31:0]  mem_pc_plus4,
@@ -29,6 +30,8 @@ module rv32i_mem_stage_wrapper (
     input  wire [31:0]  dmem_rdata,
 
     // to MEM/WB
+    output wire         wb_valid,
+    output wire [31:0]  wb_data,
     output wire [31:0]  wb_alu_result,
     output wire [31:0]  wb_pc_plus4,
     output wire [31:0]  wb_imm_u,
@@ -38,31 +41,38 @@ module rv32i_mem_stage_wrapper (
 );
 
     rv32i_mem_stage_flat u_rv32i_mem_stage_flat (
-        .clk            (clk),
-        .rst            (rst),
-        .mem_alu_result (mem_alu_result),
-        .mem_store_data (mem_store_data),
-        .mem_pc_plus4   (mem_pc_plus4),
-        .mem_imm_u      (mem_imm_u),
-        .mem_rd         (mem_rd),
-        .mem_rd_we      (mem_rd_we),
-        .mem_mem_re     (mem_mem_re),
-        .mem_mem_we     (mem_mem_we),
-        .mem_mem_size   (mem_mem_size),
+        .clk             (clk),
+        .rst             (rst),
+
+        .mem_valid       (mem_valid),
+        .mem_alu_result  (mem_alu_result),
+        .mem_store_data  (mem_store_data),
+        .mem_pc_plus4    (mem_pc_plus4),
+        .mem_imm_u       (mem_imm_u),
+        .mem_rd          (mem_rd),
+        .mem_rd_we       (mem_rd_we),
+
+        .mem_mem_re      (mem_mem_re),
+        .mem_mem_we      (mem_mem_we),
+        .mem_mem_size    (mem_mem_size),
         .mem_mem_unsigned(mem_mem_unsigned),
-        .mem_wb_sel     (mem_wb_sel),
-        .dmem_addr      (dmem_addr),
-        .dmem_wdata     (dmem_wdata),
-        .dmem_we        (dmem_we),
-        .dmem_re        (dmem_re),
-        .dmem_be        (dmem_be),
-        .dmem_rdata     (dmem_rdata),
-        .wb_alu_result  (wb_alu_result),
-        .wb_pc_plus4    (wb_pc_plus4),
-        .wb_imm_u       (wb_imm_u),
-        .wb_rd          (wb_rd),
-        .wb_rd_we       (wb_rd_we),
-        .wb_sel         (wb_sel)
+        .mem_wb_sel      (mem_wb_sel),
+
+        .dmem_addr       (dmem_addr),
+        .dmem_wdata      (dmem_wdata),
+        .dmem_we         (dmem_we),
+        .dmem_re         (dmem_re),
+        .dmem_be         (dmem_be),
+        .dmem_rdata      (dmem_rdata),
+
+        .wb_valid        (wb_valid),
+        .wb_data         (wb_data),
+        .wb_alu_result   (wb_alu_result),
+        .wb_pc_plus4     (wb_pc_plus4),
+        .wb_imm_u        (wb_imm_u),
+        .wb_rd           (wb_rd),
+        .wb_rd_we        (wb_rd_we),
+        .wb_sel          (wb_sel)
     );
 
 endmodule
