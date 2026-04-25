@@ -1,0 +1,29 @@
+#include "xil_cache.h"
+#include <stdint.h>
+#include <string.h>
+
+#define BRAM_BASE  0xA0000000U
+#define BRAM_WORDS 2048
+
+#include "prog_array.h"   // generado con: xxd -i prog.bin > prog_array.h
+
+extern unsigned char prog_bin[];
+extern unsigned int  prog_bin_len;
+
+int main(void)
+{
+    volatile uint32_t *bram = (uint32_t*)BRAM_BASE;
+
+    unsigned words = (prog_bin_len + 3) / 4;
+    if (words > BRAM_WORDS) words = BRAM_WORDS;
+
+    for (unsigned i = 0; i < words; i++) {
+        uint32_t w = 0;
+        memcpy(&w, &prog_bin[i*4], 4);
+        bram[i] = w;
+    }
+
+    Xil_DCacheFlushRange(BRAM_BASE, words * 4);
+
+    while(1);
+}

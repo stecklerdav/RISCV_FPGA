@@ -1,9 +1,0 @@
-{
-	"version": "1.0",
-	"modules": {
-		"RISCV_SystemVerilog": {
-			"proto_instances": {
-			}
-		}
-	}
-}
