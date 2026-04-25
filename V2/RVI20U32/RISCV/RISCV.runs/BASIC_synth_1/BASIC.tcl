@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.runs/BASIC_synth_1/BASIC.tcl"
+  variable script "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/BASIC.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "BASIC_synth_1" START { ROLLUP_AUTO }
-set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xczu5ev-sfvc784-2-i
@@ -79,27 +78,44 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.cache/wt [current_project]
-set_property parent.project_path /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.xpr [current_project]
+set_property webtalk.parent_dir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.cache/wt [current_project]
+set_property parent.project_path /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.xpr [current_project]
 set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.cache/ip [current_project]
+set_property ip_output_repo /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/new/pc_unit.v
-  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/new/pc_to_imem_addr.v
-  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/new/if_id_reg.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/pc_unit.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/pc_to_imem_addr.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/if_id_reg.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/decoder.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/control.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/regfile.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/imm_mux.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/id_ex_reg.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/alu.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/forwarding.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/forward_mux.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/operand_b_mux.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/operand_a_mux.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/branch.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/ex_mem_reg.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_stage.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/ram_data.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/load_extender.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_wb_reg.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/wb_mux.v
 }
-add_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC.bd
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/BASIC_proc_sys_reset_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/BASIC_proc_sys_reset_0_0.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/BASIC_blk_mem_gen_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_ooc.xdc]
+add_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC.bd
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/BASIC_proc_sys_reset_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/BASIC_proc_sys_reset_0_0.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/BASIC_blk_mem_gen_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -131,45 +147,45 @@ create_report "BASIC_synth_1_synth_report_utilization_0" "report_utilization -fi
 OPTRACE "synth reports" END { }
 
 if { [catch {
-  file copy -force /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.runs/BASIC_synth_1/BASIC.dcp /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC.dcp
+  file copy -force /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/BASIC.dcp /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC.dcp
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.v
+  write_verilog -force -mode synth_stub /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.vhdl
+  write_vhdl -force -mode synth_stub /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.v
+  write_verilog -force -mode funcsim /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.v
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.vhdl
+  write_vhdl -force -mode funcsim /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.vhdl
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
-if {[file isdir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.ip_user_files/bd/BASIC]} {
+if {[file isdir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC]} {
   catch { 
-    file copy -force /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.ip_user_files/bd/BASIC
+    file copy -force /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC
   }
 }
 
-if {[file isdir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.ip_user_files/bd/BASIC]} {
+if {[file isdir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC]} {
   catch { 
-    file copy -force /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.vhdl /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RISCV/RISCV.ip_user_files/bd/BASIC
+    file copy -force /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_stub.vhdl /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC
   }
 }
 file delete __synthesis_is_running__

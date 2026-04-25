@@ -1,4 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../bd/Debug_2/ip/Debug_2_proc_sys_reset_0_1/sim/Debug_2_proc_sys_reset_0_1.vhd" \
-
-nosort

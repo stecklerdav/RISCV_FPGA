@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "pc_to_imem_addr,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "BASIC_pc_to_imem_addr_0_0,pc_to_imem_addr,{}" *)
-(* CORE_GENERATION_INFO = "BASIC_pc_to_imem_addr_0_0,pc_to_imem_addr,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=pc_to_imem_addr,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ADDR_W=13}" *)
+(* CORE_GENERATION_INFO = "BASIC_pc_to_imem_addr_0_0,pc_to_imem_addr,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=pc_to_imem_addr,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ADDR_W=11}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module BASIC_pc_to_imem_addr_0_0 (
@@ -61,10 +61,10 @@ module BASIC_pc_to_imem_addr_0_0 (
 );
 
 input wire [31 : 0] pc;
-output wire [12 : 0] addr;
+output wire [10 : 0] addr;
 
   pc_to_imem_addr #(
-    .ADDR_W(13)
+    .ADDR_W(11)
   ) inst (
     .pc(pc),
     .addr(addr)

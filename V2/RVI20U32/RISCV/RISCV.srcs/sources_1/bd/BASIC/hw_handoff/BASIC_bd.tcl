@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# alu, branch, control, decoder, ex_mem_reg, forward_mux, forward_mux, forwarding, id_ex_reg, if_id_reg, imm_mux, load_extender, mem_stage, mem_wb_reg, operand_a_mux, operand_b_mux, pc_to_imem_addr, pc_unit, ram_data, regfile, wb_mux
+# alu, branch, ex_mem_reg, forward_mux, forward_mux, forwarding, operand_a_mux, operand_b_mux, control, decoder, id_ex_reg, imm_mux, regfile, if_id_reg, pc_to_imem_addr, pc_unit, load_extender, mem_stage, mem_wb_reg, ram_data, wb_mux
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -128,16 +128,14 @@ if { $nRet != 0 } {
 ##################################################################
 
 
-
-# Procedure to create entire design; Provide argument to make
-# procedure reusable. If parentCell is "", will use root.
-proc create_root_design { parentCell } {
+# Hierarchical cell: RV32I_WB
+proc create_hier_cell_RV32I_WB { parentCell nameHier } {
 
   variable script_folder
-  variable design_name
 
-  if { $parentCell eq "" } {
-     set parentCell [get_bd_cells /]
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_WB() - Empty argument(s)!"}
+     return
   }
 
   # Get object for parentCell
@@ -160,22 +158,85 @@ proc create_root_design { parentCell } {
   # Set parent object as current
   current_bd_instance $parentObj
 
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
 
-  # Create interface ports
+  # Create interface pins
 
-  # Create ports
+  # Create pins
+  create_bd_pin -dir I -from 31 -to 0 alu_y
+  create_bd_pin -dir I -from 31 -to 0 imm_u
+  create_bd_pin -dir I -from 31 -to 0 load_data
+  create_bd_pin -dir I -from 31 -to 0 pc_plus4
+  create_bd_pin -dir O -from 31 -to 0 rd_wdata
+  create_bd_pin -dir I -from 1 -to 0 wb_sel
 
-  # Create instance: alu_0, and set properties
-  set block_name alu
-  set block_cell_name alu_0
-  if { [catch {set alu_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create instance: wb_mux_0, and set properties
+  set block_name wb_mux
+  set block_cell_name wb_mux_0
+  if { [catch {set wb_mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $alu_0 eq "" } {
+   } elseif { $wb_mux_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
   
+  # Create port connections
+  connect_bd_net -net mem_wb_reg_0_wb_alu_result [get_bd_pins alu_y] [get_bd_pins wb_mux_0/alu_y]
+  connect_bd_net -net mem_wb_reg_0_wb_data [get_bd_pins load_data] [get_bd_pins wb_mux_0/load_data]
+  connect_bd_net -net mem_wb_reg_0_wb_imm_u [get_bd_pins imm_u] [get_bd_pins wb_mux_0/imm_u]
+  connect_bd_net -net mem_wb_reg_0_wb_pc_plus4 [get_bd_pins pc_plus4] [get_bd_pins wb_mux_0/pc_plus4]
+  connect_bd_net -net mem_wb_reg_0_wb_sel [get_bd_pins wb_sel] [get_bd_pins wb_mux_0/wb_sel]
+  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins rd_wdata] [get_bd_pins wb_mux_0/rd_wdata]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: RV32I_ROM_MEMORY
+proc create_hier_cell_RV32I_ROM_MEMORY { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_ROM_MEMORY() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -from 10 -to 0 addra
+  create_bd_pin -dir I -type clk clka
+  create_bd_pin -dir O -from 31 -to 0 douta
+  create_bd_pin -dir I ena
+
   # Create instance: blk_mem_gen_0, and set properties
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]
   set_property -dict [ list \
@@ -194,17 +255,447 @@ proc create_root_design { parentCell } {
    CONFIG.use_bram_block {Stand_Alone} \
  ] $blk_mem_gen_0
 
-  # Create instance: branch_0, and set properties
-  set block_name branch
-  set block_cell_name branch_0
-  if { [catch {set branch_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+  # Create port connections
+  connect_bd_net -net RV32I_IF_addr [get_bd_pins addra] [get_bd_pins blk_mem_gen_0/addra]
+  connect_bd_net -net RV32I_IF_dout [get_bd_pins ena] [get_bd_pins blk_mem_gen_0/ena]
+  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins douta] [get_bd_pins blk_mem_gen_0/douta]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clka] [get_bd_pins blk_mem_gen_0/clka]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: RV32I_RAM_MEMORY
+proc create_hier_cell_RV32I_RAM_MEMORY { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_RAM_MEMORY() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -from 31 -to 0 addr
+  create_bd_pin -dir I -from 3 -to 0 be
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir O -from 31 -to 0 rdata
+  create_bd_pin -dir I -from 31 -to 0 wdata
+  create_bd_pin -dir I we
+
+  # Create instance: ram_data_1, and set properties
+  set block_name ram_data
+  set block_cell_name ram_data_1
+  if { [catch {set ram_data_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
-   } elseif { $branch_0 eq "" } {
+   } elseif { $ram_data_1 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
   
+  # Create port connections
+  connect_bd_net -net RV32I_MEM_dmem_addr [get_bd_pins addr] [get_bd_pins ram_data_1/addr]
+  connect_bd_net -net RV32I_MEM_dmem_be [get_bd_pins be] [get_bd_pins ram_data_1/be]
+  connect_bd_net -net RV32I_MEM_dmem_wdata [get_bd_pins wdata] [get_bd_pins ram_data_1/wdata]
+  connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins we] [get_bd_pins ram_data_1/we]
+  connect_bd_net -net ram_data_1_rdata [get_bd_pins rdata] [get_bd_pins ram_data_1/rdata]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins ram_data_1/clk]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: RV32I_MEM
+proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_MEM() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir O -from 0 -to 0 Res
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir O -from 31 -to 0 dmem_addr
+  create_bd_pin -dir O -from 3 -to 0 dmem_be
+  create_bd_pin -dir O -from 31 -to 0 dmem_wdata
+  create_bd_pin -dir O dmem_we
+  create_bd_pin -dir I -from 31 -to 0 mem_data
+  create_bd_pin -dir O -from 31 -to 0 mem_forward_data
+  create_bd_pin -dir I -from 31 -to 0 mem_in_alu_result
+  create_bd_pin -dir I -from 31 -to 0 mem_in_imm_u
+  create_bd_pin -dir I mem_in_mem_re
+  create_bd_pin -dir I -from 1 -to 0 mem_in_mem_size
+  create_bd_pin -dir I mem_in_mem_unsigned
+  create_bd_pin -dir I mem_in_mem_we
+  create_bd_pin -dir I -from 31 -to 0 mem_in_pc_plus4
+  create_bd_pin -dir I -from 4 -to 0 mem_in_rd
+  create_bd_pin -dir I mem_in_rd_we
+  create_bd_pin -dir I -from 31 -to 0 mem_in_store_data
+  create_bd_pin -dir I mem_in_valid
+  create_bd_pin -dir I -from 1 -to 0 mem_in_wb_sel
+  create_bd_pin -dir O -from 4 -to 0 mem_rd
+  create_bd_pin -dir O mem_rd_we
+  create_bd_pin -dir O mem_valid
+  create_bd_pin -dir I -type rst rst
+  create_bd_pin -dir O -from 31 -to 0 wb_alu_result
+  create_bd_pin -dir O -from 31 -to 0 wb_data
+  create_bd_pin -dir O -from 31 -to 0 wb_imm_u
+  create_bd_pin -dir O -from 31 -to 0 wb_pc_plus4
+  create_bd_pin -dir O -from 4 -to 0 wb_rd
+  create_bd_pin -dir O -from 1 -to 0 wb_sel
+
+  # Create instance: load_extender_0, and set properties
+  set block_name load_extender
+  set block_cell_name load_extender_0
+  if { [catch {set load_extender_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $load_extender_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: mem_stage_0, and set properties
+  set block_name mem_stage
+  set block_cell_name mem_stage_0
+  if { [catch {set mem_stage_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mem_stage_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: mem_wb_reg_0, and set properties
+  set block_name mem_wb_reg
+  set block_cell_name mem_wb_reg_0
+  if { [catch {set mem_wb_reg_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mem_wb_reg_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: util_vector_logic_0, and set properties
+  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {and} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
+ ] $util_vector_logic_0
+
+  # Create instance: xlslice_0, and set properties
+  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {1} \
+   CONFIG.DOUT_WIDTH {2} \
+ ] $xlslice_0
+
+  # Create port connections
+  connect_bd_net -net ex_mem_reg_1_mem_alu_result [get_bd_pins mem_in_alu_result] [get_bd_pins mem_stage_0/mem_in_alu_result]
+  connect_bd_net -net ex_mem_reg_1_mem_imm_u [get_bd_pins mem_in_imm_u] [get_bd_pins mem_stage_0/mem_in_imm_u]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_re [get_bd_pins mem_in_mem_re] [get_bd_pins mem_stage_0/mem_in_mem_re]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_size [get_bd_pins mem_in_mem_size] [get_bd_pins mem_stage_0/mem_in_mem_size]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_unsigned [get_bd_pins mem_in_mem_unsigned] [get_bd_pins mem_stage_0/mem_in_mem_unsigned]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_we [get_bd_pins mem_in_mem_we] [get_bd_pins mem_stage_0/mem_in_mem_we]
+  connect_bd_net -net ex_mem_reg_1_mem_pc_plus4 [get_bd_pins mem_in_pc_plus4] [get_bd_pins mem_stage_0/mem_in_pc_plus4]
+  connect_bd_net -net ex_mem_reg_1_mem_rd [get_bd_pins mem_in_rd] [get_bd_pins mem_stage_0/mem_in_rd]
+  connect_bd_net -net ex_mem_reg_1_mem_rd_we [get_bd_pins mem_in_rd_we] [get_bd_pins mem_stage_0/mem_in_rd_we]
+  connect_bd_net -net ex_mem_reg_1_mem_store_data [get_bd_pins mem_in_store_data] [get_bd_pins mem_stage_0/mem_in_store_data]
+  connect_bd_net -net ex_mem_reg_1_mem_valid [get_bd_pins mem_in_valid] [get_bd_pins mem_stage_0/mem_in_valid]
+  connect_bd_net -net ex_mem_reg_1_mem_wb_sel [get_bd_pins mem_in_wb_sel] [get_bd_pins mem_stage_0/mem_in_wb_sel]
+  connect_bd_net -net load_extender_0_load_data [get_bd_pins load_extender_0/load_data] [get_bd_pins mem_wb_reg_0/mem_data]
+  connect_bd_net -net mem_stage_0_dmem_addr [get_bd_pins dmem_addr] [get_bd_pins mem_stage_0/dmem_addr]
+  connect_bd_net -net mem_stage_0_dmem_be [get_bd_pins dmem_be] [get_bd_pins mem_stage_0/dmem_be]
+  connect_bd_net -net mem_stage_0_dmem_wdata [get_bd_pins dmem_wdata] [get_bd_pins mem_stage_0/dmem_wdata]
+  connect_bd_net -net mem_stage_0_dmem_we [get_bd_pins dmem_we] [get_bd_pins mem_stage_0/dmem_we]
+  connect_bd_net -net mem_stage_0_mem_forward_data [get_bd_pins mem_forward_data] [get_bd_pins mem_stage_0/mem_forward_data]
+  connect_bd_net -net mem_stage_0_mem_out_alu_result [get_bd_pins mem_stage_0/mem_out_alu_result] [get_bd_pins mem_wb_reg_0/mem_alu_result] [get_bd_pins xlslice_0/Din]
+  connect_bd_net -net mem_stage_0_mem_out_imm_u [get_bd_pins mem_stage_0/mem_out_imm_u] [get_bd_pins mem_wb_reg_0/mem_imm_u]
+  connect_bd_net -net mem_stage_0_mem_out_mem_size [get_bd_pins load_extender_0/size] [get_bd_pins mem_stage_0/mem_out_mem_size]
+  connect_bd_net -net mem_stage_0_mem_out_mem_unsigned [get_bd_pins load_extender_0/unsigned_load] [get_bd_pins mem_stage_0/mem_out_mem_unsigned]
+  connect_bd_net -net mem_stage_0_mem_out_pc_plus4 [get_bd_pins mem_stage_0/mem_out_pc_plus4] [get_bd_pins mem_wb_reg_0/mem_pc_plus4]
+  connect_bd_net -net mem_stage_0_mem_out_rd [get_bd_pins mem_rd] [get_bd_pins mem_stage_0/mem_out_rd] [get_bd_pins mem_wb_reg_0/mem_rd]
+  connect_bd_net -net mem_stage_0_mem_out_rd_we [get_bd_pins mem_rd_we] [get_bd_pins mem_stage_0/mem_out_rd_we] [get_bd_pins mem_wb_reg_0/mem_rd_we]
+  connect_bd_net -net mem_stage_0_mem_out_valid [get_bd_pins mem_valid] [get_bd_pins mem_stage_0/mem_out_valid] [get_bd_pins mem_wb_reg_0/mem_valid]
+  connect_bd_net -net mem_stage_0_mem_out_wb_sel [get_bd_pins mem_stage_0/mem_out_wb_sel] [get_bd_pins mem_wb_reg_0/mem_wb_sel]
+  connect_bd_net -net mem_wb_reg_0_wb_alu_result [get_bd_pins wb_alu_result] [get_bd_pins mem_wb_reg_0/wb_alu_result]
+  connect_bd_net -net mem_wb_reg_0_wb_data [get_bd_pins wb_data] [get_bd_pins mem_wb_reg_0/wb_data]
+  connect_bd_net -net mem_wb_reg_0_wb_imm_u [get_bd_pins wb_imm_u] [get_bd_pins mem_wb_reg_0/wb_imm_u]
+  connect_bd_net -net mem_wb_reg_0_wb_pc_plus4 [get_bd_pins wb_pc_plus4] [get_bd_pins mem_wb_reg_0/wb_pc_plus4]
+  connect_bd_net -net mem_wb_reg_0_wb_rd [get_bd_pins wb_rd] [get_bd_pins mem_wb_reg_0/wb_rd]
+  connect_bd_net -net mem_wb_reg_0_wb_rd_we [get_bd_pins mem_wb_reg_0/wb_rd_we] [get_bd_pins util_vector_logic_0/Op2]
+  connect_bd_net -net mem_wb_reg_0_wb_sel [get_bd_pins wb_sel] [get_bd_pins mem_wb_reg_0/wb_sel]
+  connect_bd_net -net mem_wb_reg_0_wb_valid [get_bd_pins mem_wb_reg_0/wb_valid] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins mem_stage_0/rst] [get_bd_pins mem_wb_reg_0/rst]
+  connect_bd_net -net ram_data_1_rdata [get_bd_pins mem_data] [get_bd_pins load_extender_0/mem_data] [get_bd_pins mem_stage_0/dmem_rdata]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins Res] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins load_extender_0/addr_offset] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins mem_stage_0/clk] [get_bd_pins mem_wb_reg_0/clk]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: RV32I_IF
+proc create_hier_cell_RV32I_IF { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_IF() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -from 0 -to 0 Op1
+  create_bd_pin -dir I -from 0 -to 0 Op2
+  create_bd_pin -dir O -from 0 -to 0 Res
+  create_bd_pin -dir O -from 10 -to 0 addr
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir O -from 0 -to 0 dout
+  create_bd_pin -dir I flush
+  create_bd_pin -dir O -from 31 -to 0 id_instr_out
+  create_bd_pin -dir O -from 31 -to 0 id_pc4_out
+  create_bd_pin -dir O -from 31 -to 0 id_pc_out
+  create_bd_pin -dir O id_valid_out
+  create_bd_pin -dir I -from 31 -to 0 if_instr_in
+  create_bd_pin -dir I -from 31 -to 0 pc_redirect_target
+  create_bd_pin -dir I pc_redirect_valid
+  create_bd_pin -dir I -type rst rst
+
+  # Create instance: if_id_reg_0, and set properties
+  set block_name if_id_reg
+  set block_cell_name if_id_reg_0
+  if { [catch {set if_id_reg_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $if_id_reg_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: pc_to_imem_addr_0, and set properties
+  set block_name pc_to_imem_addr
+  set block_cell_name pc_to_imem_addr_0
+  if { [catch {set pc_to_imem_addr_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $pc_to_imem_addr_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.ADDR_W {11} \
+ ] $pc_to_imem_addr_0
+
+  # Create instance: pc_unit_0, and set properties
+  set block_name pc_unit
+  set block_cell_name pc_unit_0
+  if { [catch {set pc_unit_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $pc_unit_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: util_vector_logic_2, and set properties
+  set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {and} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
+ ] $util_vector_logic_2
+
+  # Create instance: xlconstant_1, and set properties
+  set xlconstant_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1 ]
+
+  # Create instance: xlconstant_2, and set properties
+  set xlconstant_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_2 ]
+
+  # Create instance: xlconstant_3, and set properties
+  set xlconstant_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_3 ]
+
+  # Create port connections
+  connect_bd_net -net branch_0_ex_flush_req [get_bd_pins flush] [get_bd_pins if_id_reg_0/flush]
+  connect_bd_net -net branch_0_pc_redirect_target [get_bd_pins pc_redirect_target] [get_bd_pins pc_unit_0/pc_redirect_target]
+  connect_bd_net -net branch_0_pc_redirect_valid [get_bd_pins pc_redirect_valid] [get_bd_pins pc_unit_0/pc_redirect_valid]
+  connect_bd_net -net if_id_reg_0_id_instr_out [get_bd_pins id_instr_out] [get_bd_pins if_id_reg_0/id_instr_out]
+  connect_bd_net -net if_id_reg_0_id_pc4_out [get_bd_pins id_pc4_out] [get_bd_pins if_id_reg_0/id_pc4_out]
+  connect_bd_net -net if_id_reg_0_id_pc_out [get_bd_pins id_pc_out] [get_bd_pins if_id_reg_0/id_pc_out]
+  connect_bd_net -net if_id_reg_0_id_valid_out [get_bd_pins id_valid_out] [get_bd_pins if_id_reg_0/id_valid_out]
+  connect_bd_net -net if_instr_in_1 [get_bd_pins if_instr_in] [get_bd_pins if_id_reg_0/if_instr_in]
+  connect_bd_net -net mem_stage_0_mem_out_rd_we [get_bd_pins Op2] [get_bd_pins util_vector_logic_2/Op2]
+  connect_bd_net -net mem_stage_0_mem_out_valid [get_bd_pins Op1] [get_bd_pins util_vector_logic_2/Op1]
+  connect_bd_net -net pc_to_imem_addr_0_addr [get_bd_pins addr] [get_bd_pins pc_to_imem_addr_0/addr]
+  connect_bd_net -net pc_unit_0_pc [get_bd_pins if_id_reg_0/if_pc_in] [get_bd_pins pc_to_imem_addr_0/pc] [get_bd_pins pc_unit_0/pc]
+  connect_bd_net -net pc_unit_0_pc_plus4 [get_bd_pins if_id_reg_0/if_pc4_in] [get_bd_pins pc_unit_0/pc_plus4]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins if_id_reg_0/rst] [get_bd_pins pc_unit_0/rst]
+  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins Res] [get_bd_pins util_vector_logic_2/Res]
+  connect_bd_net -net xlconstant_1_dout [get_bd_pins pc_unit_0/pc_en] [get_bd_pins xlconstant_1/dout]
+  connect_bd_net -net xlconstant_2_dout [get_bd_pins dout] [get_bd_pins xlconstant_2/dout]
+  connect_bd_net -net xlconstant_3_dout [get_bd_pins if_id_reg_0/if_valid_in] [get_bd_pins xlconstant_3/dout]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins if_id_reg_0/clk] [get_bd_pins pc_unit_0/clk]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: RV32I_ID
+proc create_hier_cell_RV32I_ID { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_ID() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I bubble
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir O -from 3 -to 0 ex_alu_op
+  create_bd_pin -dir O ex_branch_en
+  create_bd_pin -dir O -from 2 -to 0 ex_branch_funct3
+  create_bd_pin -dir O -from 31 -to 0 ex_imm
+  create_bd_pin -dir O -from 31 -to 0 ex_imm_u
+  create_bd_pin -dir O ex_jal
+  create_bd_pin -dir O ex_jalr
+  create_bd_pin -dir O ex_mem_re
+  create_bd_pin -dir O -from 1 -to 0 ex_mem_size
+  create_bd_pin -dir O ex_mem_unsigned
+  create_bd_pin -dir O ex_mem_we
+  create_bd_pin -dir O -from 1 -to 0 ex_op_a_sel
+  create_bd_pin -dir O -from 1 -to 0 ex_op_b_sel
+  create_bd_pin -dir O -from 31 -to 0 ex_pc
+  create_bd_pin -dir O -from 31 -to 0 ex_pc_plus4
+  create_bd_pin -dir O -from 4 -to 0 ex_rd
+  create_bd_pin -dir O ex_rd_we
+  create_bd_pin -dir O -from 4 -to 0 ex_rs1
+  create_bd_pin -dir O -from 31 -to 0 ex_rs1_data
+  create_bd_pin -dir O -from 4 -to 0 ex_rs2
+  create_bd_pin -dir O -from 31 -to 0 ex_rs2_data
+  create_bd_pin -dir O ex_valid
+  create_bd_pin -dir O -from 1 -to 0 ex_wb_sel
+  create_bd_pin -dir I -from 31 -to 0 id_pc
+  create_bd_pin -dir I -from 31 -to 0 id_pc_plus4
+  create_bd_pin -dir I id_valid
+  create_bd_pin -dir I -from 31 -to 0 instr
+  create_bd_pin -dir I -from 4 -to 0 rd_addr
+  create_bd_pin -dir I -from 31 -to 0 rd_wdata
+  create_bd_pin -dir I rd_we
+  create_bd_pin -dir I -type rst rst
+
   # Create instance: control_0, and set properties
   set block_name control
   set block_cell_name control_0
@@ -223,6 +714,214 @@ proc create_root_design { parentCell } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $decoder_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: id_ex_reg_0, and set properties
+  set block_name id_ex_reg
+  set block_cell_name id_ex_reg_0
+  if { [catch {set id_ex_reg_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $id_ex_reg_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: imm_mux_0, and set properties
+  set block_name imm_mux
+  set block_cell_name imm_mux_0
+  if { [catch {set imm_mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $imm_mux_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: regfile_0, and set properties
+  set block_name regfile
+  set block_cell_name regfile_0
+  if { [catch {set regfile_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $regfile_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create port connections
+  connect_bd_net -net Net [get_bd_pins ex_valid] [get_bd_pins id_ex_reg_0/ex_valid]
+  connect_bd_net -net branch_0_ex_flush_req [get_bd_pins bubble] [get_bd_pins id_ex_reg_0/bubble]
+  connect_bd_net -net control_0_alu_op [get_bd_pins control_0/alu_op] [get_bd_pins id_ex_reg_0/id_alu_op]
+  connect_bd_net -net control_0_branch_en [get_bd_pins control_0/branch_en] [get_bd_pins id_ex_reg_0/id_branch_en]
+  connect_bd_net -net control_0_branch_funct3 [get_bd_pins control_0/branch_funct3] [get_bd_pins id_ex_reg_0/id_branch_funct3]
+  connect_bd_net -net control_0_imm_sel [get_bd_pins control_0/imm_sel] [get_bd_pins imm_mux_0/imm_sel]
+  connect_bd_net -net control_0_jal [get_bd_pins control_0/jal] [get_bd_pins id_ex_reg_0/id_jal]
+  connect_bd_net -net control_0_jalr [get_bd_pins control_0/jalr] [get_bd_pins id_ex_reg_0/id_jalr]
+  connect_bd_net -net control_0_mem_re [get_bd_pins control_0/mem_re] [get_bd_pins id_ex_reg_0/id_mem_re]
+  connect_bd_net -net control_0_mem_sign_ext [get_bd_pins control_0/mem_sign_ext] [get_bd_pins id_ex_reg_0/id_mem_unsigned]
+  connect_bd_net -net control_0_mem_size [get_bd_pins control_0/mem_size] [get_bd_pins id_ex_reg_0/id_mem_size]
+  connect_bd_net -net control_0_mem_we [get_bd_pins control_0/mem_we] [get_bd_pins id_ex_reg_0/id_mem_we]
+  connect_bd_net -net control_0_op_a_sel [get_bd_pins control_0/op_a_sel] [get_bd_pins id_ex_reg_0/id_op_a_sel]
+  connect_bd_net -net control_0_op_b_sel [get_bd_pins control_0/op_b_sel] [get_bd_pins id_ex_reg_0/id_op_b_sel]
+  connect_bd_net -net control_0_rd_we [get_bd_pins control_0/rd_we] [get_bd_pins id_ex_reg_0/id_rd_we]
+  connect_bd_net -net control_0_wb_sel [get_bd_pins control_0/wb_sel] [get_bd_pins id_ex_reg_0/id_wb_sel]
+  connect_bd_net -net decoder_0_bit30 [get_bd_pins control_0/bit30] [get_bd_pins decoder_0/bit30]
+  connect_bd_net -net decoder_0_fmt [get_bd_pins control_0/fmt] [get_bd_pins decoder_0/fmt]
+  connect_bd_net -net decoder_0_funct3 [get_bd_pins control_0/funct3] [get_bd_pins decoder_0/funct3]
+  connect_bd_net -net decoder_0_funct7 [get_bd_pins control_0/funct7] [get_bd_pins decoder_0/funct7]
+  connect_bd_net -net decoder_0_imm_b [get_bd_pins decoder_0/imm_b] [get_bd_pins imm_mux_0/imm_b]
+  connect_bd_net -net decoder_0_imm_i [get_bd_pins decoder_0/imm_i] [get_bd_pins imm_mux_0/imm_i]
+  connect_bd_net -net decoder_0_imm_j [get_bd_pins decoder_0/imm_j] [get_bd_pins imm_mux_0/imm_j]
+  connect_bd_net -net decoder_0_imm_s [get_bd_pins decoder_0/imm_s] [get_bd_pins imm_mux_0/imm_s]
+  connect_bd_net -net decoder_0_imm_u [get_bd_pins decoder_0/imm_u] [get_bd_pins id_ex_reg_0/id_imm_u] [get_bd_pins imm_mux_0/imm_u]
+  connect_bd_net -net decoder_0_opcode [get_bd_pins control_0/opcode] [get_bd_pins decoder_0/opcode]
+  connect_bd_net -net decoder_0_rd [get_bd_pins decoder_0/rd] [get_bd_pins id_ex_reg_0/id_rd]
+  connect_bd_net -net decoder_0_rs1 [get_bd_pins decoder_0/rs1] [get_bd_pins id_ex_reg_0/id_rs1] [get_bd_pins regfile_0/rs1_addr]
+  connect_bd_net -net decoder_0_rs2 [get_bd_pins decoder_0/rs2] [get_bd_pins id_ex_reg_0/id_rs2] [get_bd_pins regfile_0/rs2_addr]
+  connect_bd_net -net id_ex_reg_0_ex_alu_op [get_bd_pins ex_alu_op] [get_bd_pins id_ex_reg_0/ex_alu_op]
+  connect_bd_net -net id_ex_reg_0_ex_branch_en [get_bd_pins ex_branch_en] [get_bd_pins id_ex_reg_0/ex_branch_en]
+  connect_bd_net -net id_ex_reg_0_ex_branch_funct3 [get_bd_pins ex_branch_funct3] [get_bd_pins id_ex_reg_0/ex_branch_funct3]
+  connect_bd_net -net id_ex_reg_0_ex_imm [get_bd_pins ex_imm] [get_bd_pins id_ex_reg_0/ex_imm]
+  connect_bd_net -net id_ex_reg_0_ex_imm_u [get_bd_pins ex_imm_u] [get_bd_pins id_ex_reg_0/ex_imm_u]
+  connect_bd_net -net id_ex_reg_0_ex_jal [get_bd_pins ex_jal] [get_bd_pins id_ex_reg_0/ex_jal]
+  connect_bd_net -net id_ex_reg_0_ex_jalr [get_bd_pins ex_jalr] [get_bd_pins id_ex_reg_0/ex_jalr]
+  connect_bd_net -net id_ex_reg_0_ex_mem_re [get_bd_pins ex_mem_re] [get_bd_pins id_ex_reg_0/ex_mem_re]
+  connect_bd_net -net id_ex_reg_0_ex_mem_size [get_bd_pins ex_mem_size] [get_bd_pins id_ex_reg_0/ex_mem_size]
+  connect_bd_net -net id_ex_reg_0_ex_mem_unsigned [get_bd_pins ex_mem_unsigned] [get_bd_pins id_ex_reg_0/ex_mem_unsigned]
+  connect_bd_net -net id_ex_reg_0_ex_mem_we [get_bd_pins ex_mem_we] [get_bd_pins id_ex_reg_0/ex_mem_we]
+  connect_bd_net -net id_ex_reg_0_ex_op_a_sel [get_bd_pins ex_op_a_sel] [get_bd_pins id_ex_reg_0/ex_op_a_sel]
+  connect_bd_net -net id_ex_reg_0_ex_op_b_sel [get_bd_pins ex_op_b_sel] [get_bd_pins id_ex_reg_0/ex_op_b_sel]
+  connect_bd_net -net id_ex_reg_0_ex_pc [get_bd_pins ex_pc] [get_bd_pins id_ex_reg_0/ex_pc]
+  connect_bd_net -net id_ex_reg_0_ex_pc_plus4 [get_bd_pins ex_pc_plus4] [get_bd_pins id_ex_reg_0/ex_pc_plus4]
+  connect_bd_net -net id_ex_reg_0_ex_rd [get_bd_pins ex_rd] [get_bd_pins id_ex_reg_0/ex_rd]
+  connect_bd_net -net id_ex_reg_0_ex_rd_we [get_bd_pins ex_rd_we] [get_bd_pins id_ex_reg_0/ex_rd_we]
+  connect_bd_net -net id_ex_reg_0_ex_rs1 [get_bd_pins ex_rs1] [get_bd_pins id_ex_reg_0/ex_rs1]
+  connect_bd_net -net id_ex_reg_0_ex_rs1_data [get_bd_pins ex_rs1_data] [get_bd_pins id_ex_reg_0/ex_rs1_data]
+  connect_bd_net -net id_ex_reg_0_ex_rs2 [get_bd_pins ex_rs2] [get_bd_pins id_ex_reg_0/ex_rs2]
+  connect_bd_net -net id_ex_reg_0_ex_rs2_data [get_bd_pins ex_rs2_data] [get_bd_pins id_ex_reg_0/ex_rs2_data]
+  connect_bd_net -net id_ex_reg_0_ex_wb_sel [get_bd_pins ex_wb_sel] [get_bd_pins id_ex_reg_0/ex_wb_sel]
+  connect_bd_net -net if_id_reg_0_id_instr_out [get_bd_pins instr] [get_bd_pins decoder_0/instr]
+  connect_bd_net -net if_id_reg_0_id_pc4_out [get_bd_pins id_pc_plus4] [get_bd_pins id_ex_reg_0/id_pc_plus4]
+  connect_bd_net -net if_id_reg_0_id_pc_out [get_bd_pins id_pc] [get_bd_pins id_ex_reg_0/id_pc]
+  connect_bd_net -net if_id_reg_0_id_valid_out [get_bd_pins id_valid] [get_bd_pins id_ex_reg_0/id_valid]
+  connect_bd_net -net imm_mux_0_imm_out [get_bd_pins id_ex_reg_0/id_imm] [get_bd_pins imm_mux_0/imm_out]
+  connect_bd_net -net mem_wb_reg_0_wb_rd [get_bd_pins rd_addr] [get_bd_pins regfile_0/rd_addr]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins id_ex_reg_0/rst]
+  connect_bd_net -net regfile_0_rs1_rdata [get_bd_pins id_ex_reg_0/id_rs1_data] [get_bd_pins regfile_0/rs1_rdata]
+  connect_bd_net -net regfile_0_rs2_rdata [get_bd_pins id_ex_reg_0/id_rs2_data] [get_bd_pins regfile_0/rs2_rdata]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins rd_we] [get_bd_pins regfile_0/rd_we]
+  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins rd_wdata] [get_bd_pins regfile_0/rd_wdata]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins id_ex_reg_0/clk] [get_bd_pins regfile_0/clk]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: RV32I_EX
+proc create_hier_cell_RV32I_EX { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2092 -severity "ERROR" "create_hier_cell_RV32I_EX() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I -from 3 -to 0 alu_op
+  create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir I ex_branch_en
+  create_bd_pin -dir I -from 2 -to 0 ex_branch_funct3
+  create_bd_pin -dir O ex_flush_req
+  create_bd_pin -dir I -from 31 -to 0 ex_imm
+  create_bd_pin -dir I -from 31 -to 0 ex_imm_u
+  create_bd_pin -dir I ex_jal
+  create_bd_pin -dir I ex_jalr
+  create_bd_pin -dir O -from 31 -to 0 ex_mem_data
+  create_bd_pin -dir I ex_mem_re
+  create_bd_pin -dir I -from 1 -to 0 ex_mem_size
+  create_bd_pin -dir I ex_mem_unsigned
+  create_bd_pin -dir I ex_mem_we
+  create_bd_pin -dir I -from 1 -to 0 ex_op_b_sel
+  create_bd_pin -dir I -from 31 -to 0 ex_pc_plus4
+  create_bd_pin -dir I -from 4 -to 0 ex_rd
+  create_bd_pin -dir I ex_rd_we
+  create_bd_pin -dir I -from 4 -to 0 ex_rs1
+  create_bd_pin -dir I -from 31 -to 0 ex_rs1_data
+  create_bd_pin -dir I -from 4 -to 0 ex_rs2
+  create_bd_pin -dir I -from 31 -to 0 ex_rs2_data
+  create_bd_pin -dir I ex_valid
+  create_bd_pin -dir I -from 1 -to 0 ex_wb_sel
+  create_bd_pin -dir O -from 31 -to 0 mem_imm_u
+  create_bd_pin -dir O mem_mem_re
+  create_bd_pin -dir O -from 1 -to 0 mem_mem_size
+  create_bd_pin -dir O mem_mem_unsigned
+  create_bd_pin -dir O mem_mem_we
+  create_bd_pin -dir O -from 31 -to 0 mem_pc_plus4
+  create_bd_pin -dir O -from 4 -to 0 mem_rd
+  create_bd_pin -dir O mem_rd_we
+  create_bd_pin -dir I -from 31 -to 0 mem_stage_data
+  create_bd_pin -dir I -from 4 -to 0 mem_stage_rd
+  create_bd_pin -dir I mem_stage_rd_we
+  create_bd_pin -dir O -from 31 -to 0 mem_store_data
+  create_bd_pin -dir O mem_valid
+  create_bd_pin -dir I -from 31 -to 0 mem_wb_data
+  create_bd_pin -dir O -from 1 -to 0 mem_wb_sel
+  create_bd_pin -dir I -from 1 -to 0 op_a_sel
+  create_bd_pin -dir I -from 31 -to 0 pc
+  create_bd_pin -dir O -from 31 -to 0 pc_redirect_target
+  create_bd_pin -dir O pc_redirect_valid
+  create_bd_pin -dir I -type rst rst
+  create_bd_pin -dir I -from 4 -to 0 wb_rd
+  create_bd_pin -dir I wb_rd_we
+
+  # Create instance: alu_0, and set properties
+  set block_name alu
+  set block_cell_name alu_0
+  if { [catch {set alu_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $alu_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: branch_0, and set properties
+  set block_name branch
+  set block_cell_name branch_0
+  if { [catch {set branch_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $branch_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -271,72 +970,6 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: id_ex_reg_0, and set properties
-  set block_name id_ex_reg
-  set block_cell_name id_ex_reg_0
-  if { [catch {set id_ex_reg_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $id_ex_reg_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: if_id_reg_0, and set properties
-  set block_name if_id_reg
-  set block_cell_name if_id_reg_0
-  if { [catch {set if_id_reg_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $if_id_reg_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: imm_mux_0, and set properties
-  set block_name imm_mux
-  set block_cell_name imm_mux_0
-  if { [catch {set imm_mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $imm_mux_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: load_extender_0, and set properties
-  set block_name load_extender
-  set block_cell_name load_extender_0
-  if { [catch {set load_extender_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $load_extender_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: mem_stage_0, and set properties
-  set block_name mem_stage
-  set block_cell_name mem_stage_0
-  if { [catch {set mem_stage_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $mem_stage_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: mem_wb_reg_0, and set properties
-  set block_name mem_wb_reg
-  set block_cell_name mem_wb_reg_0
-  if { [catch {set mem_wb_reg_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $mem_wb_reg_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
   # Create instance: operand_a_mux_0, and set properties
   set block_name operand_a_mux
   set block_cell_name operand_a_mux_0
@@ -359,64 +992,6 @@ proc create_root_design { parentCell } {
      return 1
    }
   
-  # Create instance: pc_to_imem_addr_0, and set properties
-  set block_name pc_to_imem_addr
-  set block_cell_name pc_to_imem_addr_0
-  if { [catch {set pc_to_imem_addr_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $pc_to_imem_addr_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-    set_property -dict [ list \
-   CONFIG.ADDR_W {11} \
- ] $pc_to_imem_addr_0
-
-  # Create instance: pc_unit_0, and set properties
-  set block_name pc_unit
-  set block_cell_name pc_unit_0
-  if { [catch {set pc_unit_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $pc_unit_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: proc_sys_reset_0, and set properties
-  set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
-
-  # Create instance: ram_data_1, and set properties
-  set block_name ram_data
-  set block_cell_name ram_data_1
-  if { [catch {set ram_data_1 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $ram_data_1 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: regfile_0, and set properties
-  set block_name regfile
-  set block_cell_name regfile_0
-  if { [catch {set regfile_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $regfile_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
-  # Create instance: util_vector_logic_0, and set properties
-  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {and} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_andgate.png} \
- ] $util_vector_logic_0
-
   # Create instance: util_vector_logic_1, and set properties
   set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
   set_property -dict [ list \
@@ -425,43 +1000,132 @@ proc create_root_design { parentCell } {
    CONFIG.LOGO_FILE {data/sym_andgate.png} \
  ] $util_vector_logic_1
 
-  # Create instance: util_vector_logic_2, and set properties
-  set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {and} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_andgate.png} \
- ] $util_vector_logic_2
+  # Create port connections
+  connect_bd_net -net Net [get_bd_pins ex_valid] [get_bd_pins branch_0/ex_valid] [get_bd_pins ex_mem_reg_1/ex_valid]
+  connect_bd_net -net alu_0_y [get_bd_pins alu_0/y] [get_bd_pins ex_mem_reg_1/ex_alu_result]
+  connect_bd_net -net branch_0_ex_exception_cause [get_bd_pins branch_0/ex_exception_cause] [get_bd_pins ex_mem_reg_1/ex_exception_cause]
+  connect_bd_net -net branch_0_ex_exception_tval [get_bd_pins branch_0/ex_exception_tval] [get_bd_pins ex_mem_reg_1/ex_exception_tval]
+  connect_bd_net -net branch_0_ex_exception_valid [get_bd_pins branch_0/ex_exception_valid] [get_bd_pins ex_mem_reg_1/ex_exception_valid]
+  connect_bd_net -net branch_0_ex_flush_req [get_bd_pins ex_flush_req] [get_bd_pins branch_0/ex_flush_req]
+  connect_bd_net -net branch_0_pc_redirect_target [get_bd_pins pc_redirect_target] [get_bd_pins branch_0/pc_redirect_target]
+  connect_bd_net -net branch_0_pc_redirect_valid [get_bd_pins pc_redirect_valid] [get_bd_pins branch_0/pc_redirect_valid]
+  connect_bd_net -net ex_mem_reg_1_mem_alu_result [get_bd_pins ex_mem_data] [get_bd_pins ex_mem_reg_1/mem_alu_result] [get_bd_pins forward_mux_0/ex_mem_data] [get_bd_pins forward_mux_1/ex_mem_data]
+  connect_bd_net -net ex_mem_reg_1_mem_imm_u [get_bd_pins mem_imm_u] [get_bd_pins ex_mem_reg_1/mem_imm_u]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_re [get_bd_pins mem_mem_re] [get_bd_pins ex_mem_reg_1/mem_mem_re]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_size [get_bd_pins mem_mem_size] [get_bd_pins ex_mem_reg_1/mem_mem_size]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_unsigned [get_bd_pins mem_mem_unsigned] [get_bd_pins ex_mem_reg_1/mem_mem_unsigned]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_we [get_bd_pins mem_mem_we] [get_bd_pins ex_mem_reg_1/mem_mem_we]
+  connect_bd_net -net ex_mem_reg_1_mem_pc_plus4 [get_bd_pins mem_pc_plus4] [get_bd_pins ex_mem_reg_1/mem_pc_plus4]
+  connect_bd_net -net ex_mem_reg_1_mem_rd [get_bd_pins mem_rd] [get_bd_pins ex_mem_reg_1/mem_rd] [get_bd_pins forwarding_0/mem_rd]
+  connect_bd_net -net ex_mem_reg_1_mem_rd_we [get_bd_pins mem_rd_we] [get_bd_pins ex_mem_reg_1/mem_rd_we] [get_bd_pins util_vector_logic_1/Op2]
+  connect_bd_net -net ex_mem_reg_1_mem_store_data [get_bd_pins mem_store_data] [get_bd_pins ex_mem_reg_1/mem_store_data]
+  connect_bd_net -net ex_mem_reg_1_mem_valid [get_bd_pins mem_valid] [get_bd_pins ex_mem_reg_1/mem_valid] [get_bd_pins util_vector_logic_1/Op1]
+  connect_bd_net -net ex_mem_reg_1_mem_wb_sel [get_bd_pins mem_wb_sel] [get_bd_pins ex_mem_reg_1/mem_wb_sel]
+  connect_bd_net -net forward_mux_0_out_data [get_bd_pins forward_mux_0/out_data] [get_bd_pins operand_a_mux_0/rs1_data]
+  connect_bd_net -net forward_mux_1_out_data [get_bd_pins ex_mem_reg_1/ex_store_data] [get_bd_pins forward_mux_1/out_data] [get_bd_pins operand_b_mux_0/rs2_data]
+  connect_bd_net -net forwarding_0_forward_a [get_bd_pins forward_mux_0/forward_sel] [get_bd_pins forwarding_0/forward_a]
+  connect_bd_net -net forwarding_0_forward_b [get_bd_pins forward_mux_1/forward_sel] [get_bd_pins forwarding_0/forward_b]
+  connect_bd_net -net id_ex_reg_0_ex_alu_op [get_bd_pins alu_op] [get_bd_pins alu_0/alu_op]
+  connect_bd_net -net id_ex_reg_0_ex_branch_en [get_bd_pins ex_branch_en] [get_bd_pins branch_0/ex_branch_en]
+  connect_bd_net -net id_ex_reg_0_ex_branch_funct3 [get_bd_pins ex_branch_funct3] [get_bd_pins branch_0/ex_branch_funct3]
+  connect_bd_net -net id_ex_reg_0_ex_imm [get_bd_pins ex_imm] [get_bd_pins branch_0/ex_imm] [get_bd_pins operand_b_mux_0/imm]
+  connect_bd_net -net id_ex_reg_0_ex_imm_u [get_bd_pins ex_imm_u] [get_bd_pins ex_mem_reg_1/ex_imm_u]
+  connect_bd_net -net id_ex_reg_0_ex_jal [get_bd_pins ex_jal] [get_bd_pins branch_0/ex_jal]
+  connect_bd_net -net id_ex_reg_0_ex_jalr [get_bd_pins ex_jalr] [get_bd_pins branch_0/ex_jalr]
+  connect_bd_net -net id_ex_reg_0_ex_mem_re [get_bd_pins ex_mem_re] [get_bd_pins ex_mem_reg_1/ex_mem_re]
+  connect_bd_net -net id_ex_reg_0_ex_mem_size [get_bd_pins ex_mem_size] [get_bd_pins ex_mem_reg_1/ex_mem_size]
+  connect_bd_net -net id_ex_reg_0_ex_mem_unsigned [get_bd_pins ex_mem_unsigned] [get_bd_pins ex_mem_reg_1/ex_mem_unsigned]
+  connect_bd_net -net id_ex_reg_0_ex_mem_we [get_bd_pins ex_mem_we] [get_bd_pins ex_mem_reg_1/ex_mem_we]
+  connect_bd_net -net id_ex_reg_0_ex_op_a_sel [get_bd_pins op_a_sel] [get_bd_pins operand_a_mux_0/op_a_sel]
+  connect_bd_net -net id_ex_reg_0_ex_op_b_sel [get_bd_pins ex_op_b_sel] [get_bd_pins forwarding_0/ex_op_b_sel] [get_bd_pins operand_b_mux_0/op_b_sel]
+  connect_bd_net -net id_ex_reg_0_ex_pc [get_bd_pins pc] [get_bd_pins branch_0/ex_pc] [get_bd_pins ex_mem_reg_1/ex_pc] [get_bd_pins operand_a_mux_0/pc]
+  connect_bd_net -net id_ex_reg_0_ex_pc_plus4 [get_bd_pins ex_pc_plus4] [get_bd_pins ex_mem_reg_1/ex_pc_plus4]
+  connect_bd_net -net id_ex_reg_0_ex_rd [get_bd_pins ex_rd] [get_bd_pins ex_mem_reg_1/ex_rd]
+  connect_bd_net -net id_ex_reg_0_ex_rd_we [get_bd_pins ex_rd_we] [get_bd_pins ex_mem_reg_1/ex_rd_we]
+  connect_bd_net -net id_ex_reg_0_ex_rs1 [get_bd_pins ex_rs1] [get_bd_pins forwarding_0/ex_rs1]
+  connect_bd_net -net id_ex_reg_0_ex_rs1_data [get_bd_pins ex_rs1_data] [get_bd_pins branch_0/ex_rs1_data] [get_bd_pins forward_mux_0/base_data]
+  connect_bd_net -net id_ex_reg_0_ex_rs2 [get_bd_pins ex_rs2] [get_bd_pins forwarding_0/ex_rs2]
+  connect_bd_net -net id_ex_reg_0_ex_rs2_data [get_bd_pins ex_rs2_data] [get_bd_pins branch_0/ex_rs2_data] [get_bd_pins forward_mux_1/base_data]
+  connect_bd_net -net id_ex_reg_0_ex_wb_sel [get_bd_pins ex_wb_sel] [get_bd_pins ex_mem_reg_1/ex_wb_sel]
+  connect_bd_net -net mem_stage_0_mem_forward_data [get_bd_pins mem_stage_data] [get_bd_pins forward_mux_0/mem_stage_data] [get_bd_pins forward_mux_1/mem_stage_data]
+  connect_bd_net -net mem_stage_0_mem_out_rd [get_bd_pins mem_stage_rd] [get_bd_pins forwarding_0/mem_stage_rd]
+  connect_bd_net -net mem_wb_reg_0_wb_rd [get_bd_pins wb_rd] [get_bd_pins forwarding_0/wb_rd]
+  connect_bd_net -net operand_a_mux_0_operand_a [get_bd_pins alu_0/a] [get_bd_pins operand_a_mux_0/operand_a]
+  connect_bd_net -net operand_b_mux_0_operand_b [get_bd_pins alu_0/b] [get_bd_pins operand_b_mux_0/operand_b]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins ex_mem_reg_1/rst]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins wb_rd_we] [get_bd_pins forwarding_0/wb_rd_we]
+  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins forwarding_0/mem_rd_we] [get_bd_pins util_vector_logic_1/Res]
+  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins mem_stage_rd_we] [get_bd_pins forwarding_0/mem_stage_rd_we]
+  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins mem_wb_data] [get_bd_pins forward_mux_0/mem_wb_data] [get_bd_pins forward_mux_1/mem_wb_data]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins ex_mem_reg_1/clk]
 
-  # Create instance: wb_mux_0, and set properties
-  set block_name wb_mux
-  set block_cell_name wb_mux_0
-  if { [catch {set wb_mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   } elseif { $wb_mux_0 eq "" } {
-     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
-     return 1
-   }
-  
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+
+# Procedure to create entire design; Provide argument to make
+# procedure reusable. If parentCell is "", will use root.
+proc create_root_design { parentCell } {
+
+  variable script_folder
+  variable design_name
+
+  if { $parentCell eq "" } {
+     set parentCell [get_bd_cells /]
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2090 -severity "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2091 -severity "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+
+  # Create interface ports
+
+  # Create ports
+
+  # Create instance: RV32I_EX
+  create_hier_cell_RV32I_EX [current_bd_instance .] RV32I_EX
+
+  # Create instance: RV32I_ID
+  create_hier_cell_RV32I_ID [current_bd_instance .] RV32I_ID
+
+  # Create instance: RV32I_IF
+  create_hier_cell_RV32I_IF [current_bd_instance .] RV32I_IF
+
+  # Create instance: RV32I_MEM
+  create_hier_cell_RV32I_MEM [current_bd_instance .] RV32I_MEM
+
+  # Create instance: RV32I_RAM_MEMORY
+  create_hier_cell_RV32I_RAM_MEMORY [current_bd_instance .] RV32I_RAM_MEMORY
+
+  # Create instance: RV32I_ROM_MEMORY
+  create_hier_cell_RV32I_ROM_MEMORY [current_bd_instance .] RV32I_ROM_MEMORY
+
+  # Create instance: RV32I_WB
+  create_hier_cell_RV32I_WB [current_bd_instance .] RV32I_WB
+
+  # Create instance: proc_sys_reset_0, and set properties
+  set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
+
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
-
-  # Create instance: xlconstant_1, and set properties
-  set xlconstant_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1 ]
-
-  # Create instance: xlconstant_2, and set properties
-  set xlconstant_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_2 ]
-
-  # Create instance: xlconstant_3, and set properties
-  set xlconstant_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_3 ]
-
-  # Create instance: xlslice_0, and set properties
-  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
-  set_property -dict [ list \
-   CONFIG.DIN_FROM {1} \
-   CONFIG.DOUT_WIDTH {2} \
- ] $xlslice_0
 
   # Create instance: zynq_ultra_ps_e_0, and set properties
   set zynq_ultra_ps_e_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.3 zynq_ultra_ps_e_0 ]
@@ -1980,127 +2644,72 @@ proc create_root_design { parentCell } {
  ] $zynq_ultra_ps_e_0
 
   # Create port connections
-  connect_bd_net -net Net [get_bd_pins branch_0/ex_valid] [get_bd_pins ex_mem_reg_1/ex_valid] [get_bd_pins id_ex_reg_0/ex_valid]
-  connect_bd_net -net alu_0_y [get_bd_pins alu_0/y] [get_bd_pins ex_mem_reg_1/ex_alu_result]
-  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins blk_mem_gen_0/douta] [get_bd_pins if_id_reg_0/if_instr_in]
-  connect_bd_net -net branch_0_ex_exception_cause [get_bd_pins branch_0/ex_exception_cause] [get_bd_pins ex_mem_reg_1/ex_exception_cause]
-  connect_bd_net -net branch_0_ex_exception_tval [get_bd_pins branch_0/ex_exception_tval] [get_bd_pins ex_mem_reg_1/ex_exception_tval]
-  connect_bd_net -net branch_0_ex_exception_valid [get_bd_pins branch_0/ex_exception_valid] [get_bd_pins ex_mem_reg_1/ex_exception_valid]
-  connect_bd_net -net branch_0_ex_flush_req [get_bd_pins branch_0/ex_flush_req] [get_bd_pins id_ex_reg_0/bubble] [get_bd_pins if_id_reg_0/flush]
-  connect_bd_net -net branch_0_pc_redirect_target [get_bd_pins branch_0/pc_redirect_target] [get_bd_pins pc_unit_0/pc_redirect_target]
-  connect_bd_net -net branch_0_pc_redirect_valid [get_bd_pins branch_0/pc_redirect_valid] [get_bd_pins pc_unit_0/pc_redirect_valid]
-  connect_bd_net -net control_0_alu_op [get_bd_pins control_0/alu_op] [get_bd_pins id_ex_reg_0/id_alu_op]
-  connect_bd_net -net control_0_branch_en [get_bd_pins control_0/branch_en] [get_bd_pins id_ex_reg_0/id_branch_en]
-  connect_bd_net -net control_0_branch_funct3 [get_bd_pins control_0/branch_funct3] [get_bd_pins id_ex_reg_0/id_branch_funct3]
-  connect_bd_net -net control_0_imm_sel [get_bd_pins control_0/imm_sel] [get_bd_pins imm_mux_0/imm_sel]
-  connect_bd_net -net control_0_jal [get_bd_pins control_0/jal] [get_bd_pins id_ex_reg_0/id_jal]
-  connect_bd_net -net control_0_jalr [get_bd_pins control_0/jalr] [get_bd_pins id_ex_reg_0/id_jalr]
-  connect_bd_net -net control_0_mem_re [get_bd_pins control_0/mem_re] [get_bd_pins id_ex_reg_0/id_mem_re]
-  connect_bd_net -net control_0_mem_sign_ext [get_bd_pins control_0/mem_sign_ext] [get_bd_pins id_ex_reg_0/id_mem_unsigned]
-  connect_bd_net -net control_0_mem_size [get_bd_pins control_0/mem_size] [get_bd_pins id_ex_reg_0/id_mem_size]
-  connect_bd_net -net control_0_mem_we [get_bd_pins control_0/mem_we] [get_bd_pins id_ex_reg_0/id_mem_we]
-  connect_bd_net -net control_0_op_a_sel [get_bd_pins control_0/op_a_sel] [get_bd_pins id_ex_reg_0/id_op_a_sel]
-  connect_bd_net -net control_0_op_b_sel [get_bd_pins control_0/op_b_sel] [get_bd_pins id_ex_reg_0/id_op_b_sel]
-  connect_bd_net -net control_0_rd_we [get_bd_pins control_0/rd_we] [get_bd_pins id_ex_reg_0/id_rd_we]
-  connect_bd_net -net control_0_wb_sel [get_bd_pins control_0/wb_sel] [get_bd_pins id_ex_reg_0/id_wb_sel]
-  connect_bd_net -net decoder_0_bit30 [get_bd_pins control_0/bit30] [get_bd_pins decoder_0/bit30]
-  connect_bd_net -net decoder_0_fmt [get_bd_pins control_0/fmt] [get_bd_pins decoder_0/fmt]
-  connect_bd_net -net decoder_0_funct3 [get_bd_pins control_0/funct3] [get_bd_pins decoder_0/funct3]
-  connect_bd_net -net decoder_0_funct7 [get_bd_pins control_0/funct7] [get_bd_pins decoder_0/funct7]
-  connect_bd_net -net decoder_0_imm_b [get_bd_pins decoder_0/imm_b] [get_bd_pins imm_mux_0/imm_b]
-  connect_bd_net -net decoder_0_imm_i [get_bd_pins decoder_0/imm_i] [get_bd_pins imm_mux_0/imm_i]
-  connect_bd_net -net decoder_0_imm_j [get_bd_pins decoder_0/imm_j] [get_bd_pins imm_mux_0/imm_j]
-  connect_bd_net -net decoder_0_imm_s [get_bd_pins decoder_0/imm_s] [get_bd_pins imm_mux_0/imm_s]
-  connect_bd_net -net decoder_0_imm_u [get_bd_pins decoder_0/imm_u] [get_bd_pins id_ex_reg_0/id_imm_u] [get_bd_pins imm_mux_0/imm_u]
-  connect_bd_net -net decoder_0_opcode [get_bd_pins control_0/opcode] [get_bd_pins decoder_0/opcode]
-  connect_bd_net -net decoder_0_rd [get_bd_pins decoder_0/rd] [get_bd_pins id_ex_reg_0/id_rd]
-  connect_bd_net -net decoder_0_rs1 [get_bd_pins decoder_0/rs1] [get_bd_pins id_ex_reg_0/id_rs1] [get_bd_pins regfile_0/rs1_addr]
-  connect_bd_net -net decoder_0_rs2 [get_bd_pins decoder_0/rs2] [get_bd_pins id_ex_reg_0/id_rs2] [get_bd_pins regfile_0/rs2_addr]
-  connect_bd_net -net ex_mem_reg_1_mem_alu_result [get_bd_pins ex_mem_reg_1/mem_alu_result] [get_bd_pins forward_mux_0/ex_mem_data] [get_bd_pins forward_mux_1/ex_mem_data] [get_bd_pins mem_stage_0/mem_in_alu_result]
-  connect_bd_net -net ex_mem_reg_1_mem_imm_u [get_bd_pins ex_mem_reg_1/mem_imm_u] [get_bd_pins mem_stage_0/mem_in_imm_u]
-  connect_bd_net -net ex_mem_reg_1_mem_mem_re [get_bd_pins ex_mem_reg_1/mem_mem_re] [get_bd_pins mem_stage_0/mem_in_mem_re]
-  connect_bd_net -net ex_mem_reg_1_mem_mem_size [get_bd_pins ex_mem_reg_1/mem_mem_size] [get_bd_pins mem_stage_0/mem_in_mem_size]
-  connect_bd_net -net ex_mem_reg_1_mem_mem_unsigned [get_bd_pins ex_mem_reg_1/mem_mem_unsigned] [get_bd_pins mem_stage_0/mem_in_mem_unsigned]
-  connect_bd_net -net ex_mem_reg_1_mem_mem_we [get_bd_pins ex_mem_reg_1/mem_mem_we] [get_bd_pins mem_stage_0/mem_in_mem_we]
-  connect_bd_net -net ex_mem_reg_1_mem_pc_plus4 [get_bd_pins ex_mem_reg_1/mem_pc_plus4] [get_bd_pins mem_stage_0/mem_in_pc_plus4]
-  connect_bd_net -net ex_mem_reg_1_mem_rd [get_bd_pins ex_mem_reg_1/mem_rd] [get_bd_pins forwarding_0/mem_rd] [get_bd_pins mem_stage_0/mem_in_rd]
-  connect_bd_net -net ex_mem_reg_1_mem_rd_we [get_bd_pins ex_mem_reg_1/mem_rd_we] [get_bd_pins mem_stage_0/mem_in_rd_we] [get_bd_pins util_vector_logic_1/Op2]
-  connect_bd_net -net ex_mem_reg_1_mem_store_data [get_bd_pins ex_mem_reg_1/mem_store_data] [get_bd_pins mem_stage_0/mem_in_store_data]
-  connect_bd_net -net ex_mem_reg_1_mem_valid [get_bd_pins ex_mem_reg_1/mem_valid] [get_bd_pins mem_stage_0/mem_in_valid] [get_bd_pins util_vector_logic_1/Op1]
-  connect_bd_net -net ex_mem_reg_1_mem_wb_sel [get_bd_pins ex_mem_reg_1/mem_wb_sel] [get_bd_pins mem_stage_0/mem_in_wb_sel]
-  connect_bd_net -net forward_mux_0_out_data [get_bd_pins forward_mux_0/out_data] [get_bd_pins operand_a_mux_0/rs1_data]
-  connect_bd_net -net forward_mux_1_out_data [get_bd_pins ex_mem_reg_1/ex_store_data] [get_bd_pins forward_mux_1/out_data] [get_bd_pins operand_b_mux_0/rs2_data]
-  connect_bd_net -net forwarding_0_forward_a [get_bd_pins forward_mux_0/forward_sel] [get_bd_pins forwarding_0/forward_a]
-  connect_bd_net -net forwarding_0_forward_b [get_bd_pins forward_mux_1/forward_sel] [get_bd_pins forwarding_0/forward_b]
-  connect_bd_net -net id_ex_reg_0_ex_alu_op [get_bd_pins alu_0/alu_op] [get_bd_pins id_ex_reg_0/ex_alu_op]
-  connect_bd_net -net id_ex_reg_0_ex_branch_en [get_bd_pins branch_0/ex_branch_en] [get_bd_pins id_ex_reg_0/ex_branch_en]
-  connect_bd_net -net id_ex_reg_0_ex_branch_funct3 [get_bd_pins branch_0/ex_branch_funct3] [get_bd_pins id_ex_reg_0/ex_branch_funct3]
-  connect_bd_net -net id_ex_reg_0_ex_imm [get_bd_pins branch_0/ex_imm] [get_bd_pins id_ex_reg_0/ex_imm] [get_bd_pins operand_b_mux_0/imm]
-  connect_bd_net -net id_ex_reg_0_ex_imm_u [get_bd_pins ex_mem_reg_1/ex_imm_u] [get_bd_pins id_ex_reg_0/ex_imm_u]
-  connect_bd_net -net id_ex_reg_0_ex_jal [get_bd_pins branch_0/ex_jal] [get_bd_pins id_ex_reg_0/ex_jal]
-  connect_bd_net -net id_ex_reg_0_ex_jalr [get_bd_pins branch_0/ex_jalr] [get_bd_pins id_ex_reg_0/ex_jalr]
-  connect_bd_net -net id_ex_reg_0_ex_mem_re [get_bd_pins ex_mem_reg_1/ex_mem_re] [get_bd_pins id_ex_reg_0/ex_mem_re]
-  connect_bd_net -net id_ex_reg_0_ex_mem_size [get_bd_pins ex_mem_reg_1/ex_mem_size] [get_bd_pins id_ex_reg_0/ex_mem_size]
-  connect_bd_net -net id_ex_reg_0_ex_mem_unsigned [get_bd_pins ex_mem_reg_1/ex_mem_unsigned] [get_bd_pins id_ex_reg_0/ex_mem_unsigned]
-  connect_bd_net -net id_ex_reg_0_ex_mem_we [get_bd_pins ex_mem_reg_1/ex_mem_we] [get_bd_pins id_ex_reg_0/ex_mem_we]
-  connect_bd_net -net id_ex_reg_0_ex_op_a_sel [get_bd_pins id_ex_reg_0/ex_op_a_sel] [get_bd_pins operand_a_mux_0/op_a_sel]
-  connect_bd_net -net id_ex_reg_0_ex_op_b_sel [get_bd_pins forwarding_0/ex_op_b_sel] [get_bd_pins id_ex_reg_0/ex_op_b_sel] [get_bd_pins operand_b_mux_0/op_b_sel]
-  connect_bd_net -net id_ex_reg_0_ex_pc [get_bd_pins branch_0/ex_pc] [get_bd_pins ex_mem_reg_1/ex_pc] [get_bd_pins id_ex_reg_0/ex_pc] [get_bd_pins operand_a_mux_0/pc]
-  connect_bd_net -net id_ex_reg_0_ex_pc_plus4 [get_bd_pins ex_mem_reg_1/ex_pc_plus4] [get_bd_pins id_ex_reg_0/ex_pc_plus4]
-  connect_bd_net -net id_ex_reg_0_ex_rd [get_bd_pins ex_mem_reg_1/ex_rd] [get_bd_pins id_ex_reg_0/ex_rd]
-  connect_bd_net -net id_ex_reg_0_ex_rd_we [get_bd_pins ex_mem_reg_1/ex_rd_we] [get_bd_pins id_ex_reg_0/ex_rd_we]
-  connect_bd_net -net id_ex_reg_0_ex_rs1 [get_bd_pins forwarding_0/ex_rs1] [get_bd_pins id_ex_reg_0/ex_rs1]
-  connect_bd_net -net id_ex_reg_0_ex_rs1_data [get_bd_pins branch_0/ex_rs1_data] [get_bd_pins forward_mux_0/base_data] [get_bd_pins id_ex_reg_0/ex_rs1_data]
-  connect_bd_net -net id_ex_reg_0_ex_rs2 [get_bd_pins forwarding_0/ex_rs2] [get_bd_pins id_ex_reg_0/ex_rs2]
-  connect_bd_net -net id_ex_reg_0_ex_rs2_data [get_bd_pins branch_0/ex_rs2_data] [get_bd_pins forward_mux_1/base_data] [get_bd_pins id_ex_reg_0/ex_rs2_data]
-  connect_bd_net -net id_ex_reg_0_ex_wb_sel [get_bd_pins ex_mem_reg_1/ex_wb_sel] [get_bd_pins id_ex_reg_0/ex_wb_sel]
-  connect_bd_net -net if_id_reg_0_id_instr_out [get_bd_pins decoder_0/instr] [get_bd_pins if_id_reg_0/id_instr_out]
-  connect_bd_net -net if_id_reg_0_id_pc4_out [get_bd_pins id_ex_reg_0/id_pc_plus4] [get_bd_pins if_id_reg_0/id_pc4_out]
-  connect_bd_net -net if_id_reg_0_id_pc_out [get_bd_pins id_ex_reg_0/id_pc] [get_bd_pins if_id_reg_0/id_pc_out]
-  connect_bd_net -net if_id_reg_0_id_valid_out [get_bd_pins id_ex_reg_0/id_valid] [get_bd_pins if_id_reg_0/id_valid_out]
-  connect_bd_net -net imm_mux_0_imm_out [get_bd_pins id_ex_reg_0/id_imm] [get_bd_pins imm_mux_0/imm_out]
-  connect_bd_net -net load_extender_0_load_data [get_bd_pins load_extender_0/load_data] [get_bd_pins mem_wb_reg_0/mem_data]
-  connect_bd_net -net mem_stage_0_dmem_addr [get_bd_pins mem_stage_0/dmem_addr] [get_bd_pins ram_data_1/addr]
-  connect_bd_net -net mem_stage_0_dmem_be [get_bd_pins mem_stage_0/dmem_be] [get_bd_pins ram_data_1/be]
-  connect_bd_net -net mem_stage_0_dmem_wdata [get_bd_pins mem_stage_0/dmem_wdata] [get_bd_pins ram_data_1/wdata]
-  connect_bd_net -net mem_stage_0_dmem_we [get_bd_pins mem_stage_0/dmem_we] [get_bd_pins ram_data_1/we]
-  connect_bd_net -net mem_stage_0_mem_forward_data [get_bd_pins forward_mux_0/mem_stage_data] [get_bd_pins forward_mux_1/mem_stage_data] [get_bd_pins mem_stage_0/mem_forward_data]
-  connect_bd_net -net mem_stage_0_mem_out_alu_result [get_bd_pins mem_stage_0/mem_out_alu_result] [get_bd_pins mem_wb_reg_0/mem_alu_result] [get_bd_pins xlslice_0/Din]
-  connect_bd_net -net mem_stage_0_mem_out_imm_u [get_bd_pins mem_stage_0/mem_out_imm_u] [get_bd_pins mem_wb_reg_0/mem_imm_u]
-  connect_bd_net -net mem_stage_0_mem_out_mem_size [get_bd_pins load_extender_0/size] [get_bd_pins mem_stage_0/mem_out_mem_size]
-  connect_bd_net -net mem_stage_0_mem_out_mem_unsigned [get_bd_pins load_extender_0/unsigned_load] [get_bd_pins mem_stage_0/mem_out_mem_unsigned]
-  connect_bd_net -net mem_stage_0_mem_out_pc_plus4 [get_bd_pins mem_stage_0/mem_out_pc_plus4] [get_bd_pins mem_wb_reg_0/mem_pc_plus4]
-  connect_bd_net -net mem_stage_0_mem_out_rd [get_bd_pins forwarding_0/mem_stage_rd] [get_bd_pins mem_stage_0/mem_out_rd] [get_bd_pins mem_wb_reg_0/mem_rd]
-  connect_bd_net -net mem_stage_0_mem_out_rd_we [get_bd_pins mem_stage_0/mem_out_rd_we] [get_bd_pins mem_wb_reg_0/mem_rd_we] [get_bd_pins util_vector_logic_2/Op2]
-  connect_bd_net -net mem_stage_0_mem_out_valid [get_bd_pins mem_stage_0/mem_out_valid] [get_bd_pins mem_wb_reg_0/mem_valid] [get_bd_pins util_vector_logic_2/Op1]
-  connect_bd_net -net mem_stage_0_mem_out_wb_sel [get_bd_pins mem_stage_0/mem_out_wb_sel] [get_bd_pins mem_wb_reg_0/mem_wb_sel]
-  connect_bd_net -net mem_wb_reg_0_wb_alu_result [get_bd_pins mem_wb_reg_0/wb_alu_result] [get_bd_pins wb_mux_0/alu_y]
-  connect_bd_net -net mem_wb_reg_0_wb_data [get_bd_pins mem_wb_reg_0/wb_data] [get_bd_pins wb_mux_0/load_data]
-  connect_bd_net -net mem_wb_reg_0_wb_imm_u [get_bd_pins mem_wb_reg_0/wb_imm_u] [get_bd_pins wb_mux_0/imm_u]
-  connect_bd_net -net mem_wb_reg_0_wb_pc_plus4 [get_bd_pins mem_wb_reg_0/wb_pc_plus4] [get_bd_pins wb_mux_0/pc_plus4]
-  connect_bd_net -net mem_wb_reg_0_wb_rd [get_bd_pins forwarding_0/wb_rd] [get_bd_pins mem_wb_reg_0/wb_rd] [get_bd_pins regfile_0/rd_addr]
-  connect_bd_net -net mem_wb_reg_0_wb_rd_we [get_bd_pins mem_wb_reg_0/wb_rd_we] [get_bd_pins util_vector_logic_0/Op2]
-  connect_bd_net -net mem_wb_reg_0_wb_sel [get_bd_pins mem_wb_reg_0/wb_sel] [get_bd_pins wb_mux_0/wb_sel]
-  connect_bd_net -net mem_wb_reg_0_wb_valid [get_bd_pins mem_wb_reg_0/wb_valid] [get_bd_pins util_vector_logic_0/Op1]
-  connect_bd_net -net operand_a_mux_0_operand_a [get_bd_pins alu_0/a] [get_bd_pins operand_a_mux_0/operand_a]
-  connect_bd_net -net operand_b_mux_0_operand_b [get_bd_pins alu_0/b] [get_bd_pins operand_b_mux_0/operand_b]
-  connect_bd_net -net pc_to_imem_addr_0_addr [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins pc_to_imem_addr_0/addr]
-  connect_bd_net -net pc_unit_0_pc [get_bd_pins if_id_reg_0/if_pc_in] [get_bd_pins pc_to_imem_addr_0/pc] [get_bd_pins pc_unit_0/pc]
-  connect_bd_net -net pc_unit_0_pc_plus4 [get_bd_pins if_id_reg_0/if_pc4_in] [get_bd_pins pc_unit_0/pc_plus4]
-  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins ex_mem_reg_1/rst] [get_bd_pins id_ex_reg_0/rst] [get_bd_pins if_id_reg_0/rst] [get_bd_pins mem_stage_0/rst] [get_bd_pins mem_wb_reg_0/rst] [get_bd_pins pc_unit_0/rst] [get_bd_pins proc_sys_reset_0/peripheral_reset]
-  connect_bd_net -net ram_data_1_rdata [get_bd_pins load_extender_0/mem_data] [get_bd_pins mem_stage_0/dmem_rdata] [get_bd_pins ram_data_1/rdata]
-  connect_bd_net -net regfile_0_rs1_rdata [get_bd_pins id_ex_reg_0/id_rs1_data] [get_bd_pins regfile_0/rs1_rdata]
-  connect_bd_net -net regfile_0_rs2_rdata [get_bd_pins id_ex_reg_0/id_rs2_data] [get_bd_pins regfile_0/rs2_rdata]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins forwarding_0/wb_rd_we] [get_bd_pins regfile_0/rd_we] [get_bd_pins util_vector_logic_0/Res]
-  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins forwarding_0/mem_rd_we] [get_bd_pins util_vector_logic_1/Res]
-  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins forwarding_0/mem_stage_rd_we] [get_bd_pins util_vector_logic_2/Res]
-  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins forward_mux_0/mem_wb_data] [get_bd_pins forward_mux_1/mem_wb_data] [get_bd_pins regfile_0/rd_wdata] [get_bd_pins wb_mux_0/rd_wdata]
+  connect_bd_net -net Net [get_bd_pins RV32I_EX/ex_valid] [get_bd_pins RV32I_ID/ex_valid]
+  connect_bd_net -net RV32I_IF_addr [get_bd_pins RV32I_IF/addr] [get_bd_pins RV32I_ROM_MEMORY/addra]
+  connect_bd_net -net RV32I_IF_dout [get_bd_pins RV32I_IF/dout] [get_bd_pins RV32I_ROM_MEMORY/ena]
+  connect_bd_net -net RV32I_MEM_dmem_addr [get_bd_pins RV32I_MEM/dmem_addr] [get_bd_pins RV32I_RAM_MEMORY/addr]
+  connect_bd_net -net RV32I_MEM_dmem_be [get_bd_pins RV32I_MEM/dmem_be] [get_bd_pins RV32I_RAM_MEMORY/be]
+  connect_bd_net -net RV32I_MEM_dmem_wdata [get_bd_pins RV32I_MEM/dmem_wdata] [get_bd_pins RV32I_RAM_MEMORY/wdata]
+  connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins RV32I_MEM/dmem_we] [get_bd_pins RV32I_RAM_MEMORY/we]
+  connect_bd_net -net blk_mem_gen_0_douta [get_bd_pins RV32I_IF/if_instr_in] [get_bd_pins RV32I_ROM_MEMORY/douta]
+  connect_bd_net -net branch_0_ex_flush_req [get_bd_pins RV32I_EX/ex_flush_req] [get_bd_pins RV32I_ID/bubble] [get_bd_pins RV32I_IF/flush]
+  connect_bd_net -net branch_0_pc_redirect_target [get_bd_pins RV32I_EX/pc_redirect_target] [get_bd_pins RV32I_IF/pc_redirect_target]
+  connect_bd_net -net branch_0_pc_redirect_valid [get_bd_pins RV32I_EX/pc_redirect_valid] [get_bd_pins RV32I_IF/pc_redirect_valid]
+  connect_bd_net -net ex_mem_reg_1_mem_alu_result [get_bd_pins RV32I_EX/ex_mem_data] [get_bd_pins RV32I_MEM/mem_in_alu_result]
+  connect_bd_net -net ex_mem_reg_1_mem_imm_u [get_bd_pins RV32I_EX/mem_imm_u] [get_bd_pins RV32I_MEM/mem_in_imm_u]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_re [get_bd_pins RV32I_EX/mem_mem_re] [get_bd_pins RV32I_MEM/mem_in_mem_re]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_size [get_bd_pins RV32I_EX/mem_mem_size] [get_bd_pins RV32I_MEM/mem_in_mem_size]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_unsigned [get_bd_pins RV32I_EX/mem_mem_unsigned] [get_bd_pins RV32I_MEM/mem_in_mem_unsigned]
+  connect_bd_net -net ex_mem_reg_1_mem_mem_we [get_bd_pins RV32I_EX/mem_mem_we] [get_bd_pins RV32I_MEM/mem_in_mem_we]
+  connect_bd_net -net ex_mem_reg_1_mem_pc_plus4 [get_bd_pins RV32I_EX/mem_pc_plus4] [get_bd_pins RV32I_MEM/mem_in_pc_plus4]
+  connect_bd_net -net ex_mem_reg_1_mem_rd [get_bd_pins RV32I_EX/mem_rd] [get_bd_pins RV32I_MEM/mem_in_rd]
+  connect_bd_net -net ex_mem_reg_1_mem_rd_we [get_bd_pins RV32I_EX/mem_rd_we] [get_bd_pins RV32I_MEM/mem_in_rd_we]
+  connect_bd_net -net ex_mem_reg_1_mem_store_data [get_bd_pins RV32I_EX/mem_store_data] [get_bd_pins RV32I_MEM/mem_in_store_data]
+  connect_bd_net -net ex_mem_reg_1_mem_valid [get_bd_pins RV32I_EX/mem_valid] [get_bd_pins RV32I_MEM/mem_in_valid]
+  connect_bd_net -net ex_mem_reg_1_mem_wb_sel [get_bd_pins RV32I_EX/mem_wb_sel] [get_bd_pins RV32I_MEM/mem_in_wb_sel]
+  connect_bd_net -net id_ex_reg_0_ex_alu_op [get_bd_pins RV32I_EX/alu_op] [get_bd_pins RV32I_ID/ex_alu_op]
+  connect_bd_net -net id_ex_reg_0_ex_branch_en [get_bd_pins RV32I_EX/ex_branch_en] [get_bd_pins RV32I_ID/ex_branch_en]
+  connect_bd_net -net id_ex_reg_0_ex_branch_funct3 [get_bd_pins RV32I_EX/ex_branch_funct3] [get_bd_pins RV32I_ID/ex_branch_funct3]
+  connect_bd_net -net id_ex_reg_0_ex_imm [get_bd_pins RV32I_EX/ex_imm] [get_bd_pins RV32I_ID/ex_imm]
+  connect_bd_net -net id_ex_reg_0_ex_imm_u [get_bd_pins RV32I_EX/ex_imm_u] [get_bd_pins RV32I_ID/ex_imm_u]
+  connect_bd_net -net id_ex_reg_0_ex_jal [get_bd_pins RV32I_EX/ex_jal] [get_bd_pins RV32I_ID/ex_jal]
+  connect_bd_net -net id_ex_reg_0_ex_jalr [get_bd_pins RV32I_EX/ex_jalr] [get_bd_pins RV32I_ID/ex_jalr]
+  connect_bd_net -net id_ex_reg_0_ex_mem_re [get_bd_pins RV32I_EX/ex_mem_re] [get_bd_pins RV32I_ID/ex_mem_re]
+  connect_bd_net -net id_ex_reg_0_ex_mem_size [get_bd_pins RV32I_EX/ex_mem_size] [get_bd_pins RV32I_ID/ex_mem_size]
+  connect_bd_net -net id_ex_reg_0_ex_mem_unsigned [get_bd_pins RV32I_EX/ex_mem_unsigned] [get_bd_pins RV32I_ID/ex_mem_unsigned]
+  connect_bd_net -net id_ex_reg_0_ex_mem_we [get_bd_pins RV32I_EX/ex_mem_we] [get_bd_pins RV32I_ID/ex_mem_we]
+  connect_bd_net -net id_ex_reg_0_ex_op_a_sel [get_bd_pins RV32I_EX/op_a_sel] [get_bd_pins RV32I_ID/ex_op_a_sel]
+  connect_bd_net -net id_ex_reg_0_ex_op_b_sel [get_bd_pins RV32I_EX/ex_op_b_sel] [get_bd_pins RV32I_ID/ex_op_b_sel]
+  connect_bd_net -net id_ex_reg_0_ex_pc [get_bd_pins RV32I_EX/pc] [get_bd_pins RV32I_ID/ex_pc]
+  connect_bd_net -net id_ex_reg_0_ex_pc_plus4 [get_bd_pins RV32I_EX/ex_pc_plus4] [get_bd_pins RV32I_ID/ex_pc_plus4]
+  connect_bd_net -net id_ex_reg_0_ex_rd [get_bd_pins RV32I_EX/ex_rd] [get_bd_pins RV32I_ID/ex_rd]
+  connect_bd_net -net id_ex_reg_0_ex_rd_we [get_bd_pins RV32I_EX/ex_rd_we] [get_bd_pins RV32I_ID/ex_rd_we]
+  connect_bd_net -net id_ex_reg_0_ex_rs1 [get_bd_pins RV32I_EX/ex_rs1] [get_bd_pins RV32I_ID/ex_rs1]
+  connect_bd_net -net id_ex_reg_0_ex_rs1_data [get_bd_pins RV32I_EX/ex_rs1_data] [get_bd_pins RV32I_ID/ex_rs1_data]
+  connect_bd_net -net id_ex_reg_0_ex_rs2 [get_bd_pins RV32I_EX/ex_rs2] [get_bd_pins RV32I_ID/ex_rs2]
+  connect_bd_net -net id_ex_reg_0_ex_rs2_data [get_bd_pins RV32I_EX/ex_rs2_data] [get_bd_pins RV32I_ID/ex_rs2_data]
+  connect_bd_net -net id_ex_reg_0_ex_wb_sel [get_bd_pins RV32I_EX/ex_wb_sel] [get_bd_pins RV32I_ID/ex_wb_sel]
+  connect_bd_net -net if_id_reg_0_id_instr_out [get_bd_pins RV32I_ID/instr] [get_bd_pins RV32I_IF/id_instr_out]
+  connect_bd_net -net if_id_reg_0_id_pc4_out [get_bd_pins RV32I_ID/id_pc_plus4] [get_bd_pins RV32I_IF/id_pc4_out]
+  connect_bd_net -net if_id_reg_0_id_pc_out [get_bd_pins RV32I_ID/id_pc] [get_bd_pins RV32I_IF/id_pc_out]
+  connect_bd_net -net if_id_reg_0_id_valid_out [get_bd_pins RV32I_ID/id_valid] [get_bd_pins RV32I_IF/id_valid_out]
+  connect_bd_net -net mem_stage_0_mem_forward_data [get_bd_pins RV32I_EX/mem_stage_data] [get_bd_pins RV32I_MEM/mem_forward_data]
+  connect_bd_net -net mem_stage_0_mem_out_rd [get_bd_pins RV32I_EX/mem_stage_rd] [get_bd_pins RV32I_MEM/mem_rd]
+  connect_bd_net -net mem_stage_0_mem_out_rd_we [get_bd_pins RV32I_IF/Op2] [get_bd_pins RV32I_MEM/mem_rd_we]
+  connect_bd_net -net mem_stage_0_mem_out_valid [get_bd_pins RV32I_IF/Op1] [get_bd_pins RV32I_MEM/mem_valid]
+  connect_bd_net -net mem_wb_reg_0_wb_alu_result [get_bd_pins RV32I_MEM/wb_alu_result] [get_bd_pins RV32I_WB/alu_y]
+  connect_bd_net -net mem_wb_reg_0_wb_data [get_bd_pins RV32I_MEM/wb_data] [get_bd_pins RV32I_WB/load_data]
+  connect_bd_net -net mem_wb_reg_0_wb_imm_u [get_bd_pins RV32I_MEM/wb_imm_u] [get_bd_pins RV32I_WB/imm_u]
+  connect_bd_net -net mem_wb_reg_0_wb_pc_plus4 [get_bd_pins RV32I_MEM/wb_pc_plus4] [get_bd_pins RV32I_WB/pc_plus4]
+  connect_bd_net -net mem_wb_reg_0_wb_rd [get_bd_pins RV32I_EX/wb_rd] [get_bd_pins RV32I_ID/rd_addr] [get_bd_pins RV32I_MEM/wb_rd]
+  connect_bd_net -net mem_wb_reg_0_wb_sel [get_bd_pins RV32I_MEM/wb_sel] [get_bd_pins RV32I_WB/wb_sel]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins RV32I_EX/rst] [get_bd_pins RV32I_ID/rst] [get_bd_pins RV32I_IF/rst] [get_bd_pins RV32I_MEM/rst] [get_bd_pins proc_sys_reset_0/peripheral_reset]
+  connect_bd_net -net ram_data_1_rdata [get_bd_pins RV32I_MEM/mem_data] [get_bd_pins RV32I_RAM_MEMORY/rdata]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins RV32I_EX/wb_rd_we] [get_bd_pins RV32I_ID/rd_we] [get_bd_pins RV32I_MEM/Res]
+  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins RV32I_EX/mem_stage_rd_we] [get_bd_pins RV32I_IF/Res]
+  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins RV32I_EX/mem_wb_data] [get_bd_pins RV32I_ID/rd_wdata] [get_bd_pins RV32I_WB/rd_wdata]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins proc_sys_reset_0/dcm_locked] [get_bd_pins xlconstant_0/dout]
-  connect_bd_net -net xlconstant_1_dout [get_bd_pins pc_unit_0/pc_en] [get_bd_pins xlconstant_1/dout]
-  connect_bd_net -net xlconstant_2_dout [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins xlconstant_2/dout]
-  connect_bd_net -net xlconstant_3_dout [get_bd_pins if_id_reg_0/if_valid_in] [get_bd_pins xlconstant_3/dout]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins load_extender_0/addr_offset] [get_bd_pins xlslice_0/Dout]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins ex_mem_reg_1/clk] [get_bd_pins id_ex_reg_0/clk] [get_bd_pins if_id_reg_0/clk] [get_bd_pins mem_stage_0/clk] [get_bd_pins mem_wb_reg_0/clk] [get_bd_pins pc_unit_0/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins ram_data_1/clk] [get_bd_pins regfile_0/clk] [get_bd_pins zynq_ultra_ps_e_0/maxihpm0_fpd_aclk] [get_bd_pins zynq_ultra_ps_e_0/pl_clk0]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins RV32I_EX/clk] [get_bd_pins RV32I_ID/clk] [get_bd_pins RV32I_IF/clk] [get_bd_pins RV32I_MEM/clk] [get_bd_pins RV32I_RAM_MEMORY/clk] [get_bd_pins RV32I_ROM_MEMORY/clka] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins zynq_ultra_ps_e_0/maxihpm0_fpd_aclk] [get_bd_pins zynq_ultra_ps_e_0/pl_clk0]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins zynq_ultra_ps_e_0/pl_resetn0]
 
   # Create address segments

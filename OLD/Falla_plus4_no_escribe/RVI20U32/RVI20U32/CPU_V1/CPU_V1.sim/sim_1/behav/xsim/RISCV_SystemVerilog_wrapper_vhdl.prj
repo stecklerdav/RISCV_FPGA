@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_proc_sys_reset_0_0/sim/RISCV_SystemVerilog_proc_sys_reset_0_0.vhd" \
-
-# Do not sort compile order
-nosort

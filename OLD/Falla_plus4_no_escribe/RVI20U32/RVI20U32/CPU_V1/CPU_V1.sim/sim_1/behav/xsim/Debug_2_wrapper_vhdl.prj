@@ -1,6 +1,0 @@
-# compile vhdl design source files
-vhdl xil_defaultlib  \
-"../../../../CPU_V1.ip_user_files/bd/Debug_2/ip/Debug_2_proc_sys_reset_0_1/sim/Debug_2_proc_sys_reset_0_1.vhd" \
-
-# Do not sort compile order
-nosort
