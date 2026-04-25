@@ -1,0 +1,190 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/pc_unit_.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/pc_unit_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/pc_to_rom_addr.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/pc_to_rom_addr_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_pipe_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_if_id_reg.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_if_id_reg_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_decode_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_decoder.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_decoder_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_control_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_control_full.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_control_full_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_imm_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_imm_mux.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_imm_mux_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_regfile_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_regfile.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_regfile_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_id_ex_reg.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_id_ex_reg_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_pkg.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_operand_a_mux.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_operand_a_mux_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_operand_b_mux.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_operand_b_mux_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_alu_types_pkg.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_alu.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_alu_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_branch_types_pkg.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_branch_unit.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_branch_unit_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ex_mem_reg_types.svh" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ex_mem_reg.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ex_mem_reg_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_stage_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_stage.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_stage_flat.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_stage_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ram_datav_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ram_datav.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_ram_datav_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_load_extender_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_load_extender.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_load_extender_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_wb_reg_types.sv" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_wb_reg.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_mem_wb_reg_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_wb_mux.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_wb_mux_wrapper.v" \
+"../../../../CPU_V1.srcs/sources_1/new/latency_align.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_forward_mux.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_forward_mux_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_forwarding_unit.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_forwarding_unit_wrapper.v" \
+
+sv xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_hazard_detection_unit.sv" \
+
+verilog xil_defaultlib  --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/ipshared/e257/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/ec67/hdl" --include "../../../../CPU_V1.srcs/sources_1/bd/debug/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../CPU_V1.srcs/sources_1/new/rv32i_hazard_detection_unit_wrapper.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_pc_unit_wrapper_0_0/sim/RISCV_SystemVerilog_pc_unit_wrapper_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_pc_to_rom_addr_wrapp_0_0/sim/RISCV_SystemVerilog_pc_to_rom_addr_wrapp_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_blk_mem_gen_0_0/sim/RISCV_SystemVerilog_blk_mem_gen_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_if_id_reg_wrap_0_0/sim/RISCV_SystemVerilog_rv32i_if_id_reg_wrap_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_0_0/sim/RISCV_SystemVerilog_util_vector_logic_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_decoder_wrapper_0_0/sim/RISCV_SystemVerilog_rv32i_decoder_wrapper_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_control_full_w_0_3/sim/RISCV_SystemVerilog_rv32i_control_full_w_0_3.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_imm_mux_wrapper_0_0/sim/RISCV_SystemVerilog_rv32i_imm_mux_wrapper_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_regfile_wrapper_0_0/sim/RISCV_SystemVerilog_rv32i_regfile_wrapper_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0/sim/RISCV_SystemVerilog_rv32i_id_ex_reg_wrap_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_operand_a_mux_0_0/sim/RISCV_SystemVerilog_rv32i_operand_a_mux_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_operand_b_mux_0_0/sim/RISCV_SystemVerilog_rv32i_operand_b_mux_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_alu_wrapper_0_0/sim/RISCV_SystemVerilog_rv32i_alu_wrapper_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_branch_unit_wr_0_0/sim/RISCV_SystemVerilog_rv32i_branch_unit_wr_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_ex_mem_reg_wra_0_0/sim/RISCV_SystemVerilog_rv32i_ex_mem_reg_wra_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_0/sim/RISCV_SystemVerilog_xlconstant_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_mem_stage_wrap_0_0/sim/RISCV_SystemVerilog_rv32i_mem_stage_wrap_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_ram_datav_wrap_0_0/sim/RISCV_SystemVerilog_rv32i_ram_datav_wrap_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_load_extender_0_0/sim/RISCV_SystemVerilog_rv32i_load_extender_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0/sim/RISCV_SystemVerilog_rv32i_mem_wb_reg_wra_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlslice_0_2/sim/RISCV_SystemVerilog_xlslice_0_2.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_wb_mux_wrapper_0_0/sim/RISCV_SystemVerilog_rv32i_wb_mux_wrapper_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_1/sim/RISCV_SystemVerilog_xlconstant_0_1.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_vio_0_0/sim/RISCV_SystemVerilog_vio_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_0_1/sim/RISCV_SystemVerilog_util_vector_logic_0_1.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0/sim/RISCV_SystemVerilog_zynq_ultra_ps_e_1_0_vip_wrapper.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_latency_align_0_0/sim/RISCV_SystemVerilog_latency_align_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_forward_mux_wr_0_0/sim/RISCV_SystemVerilog_rv32i_forward_mux_wr_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_forwarding_uni_0_0/sim/RISCV_SystemVerilog_rv32i_forwarding_uni_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_hazard_detecti_0_0/sim/RISCV_SystemVerilog_rv32i_hazard_detecti_0_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_rv32i_forward_mux_wr_0_1/sim/RISCV_SystemVerilog_rv32i_forward_mux_wr_0_1.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_2/sim/RISCV_SystemVerilog_xlconstant_0_2.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_0_2/sim/RISCV_SystemVerilog_util_vector_logic_0_2.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_1_0/sim/RISCV_SystemVerilog_util_vector_logic_1_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_1/sim/RISCV_SystemVerilog_xlconstant_1_1.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_0/sim/RISCV_SystemVerilog_xlconstant_1_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_1_2/sim/RISCV_SystemVerilog_xlconstant_1_2.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_1_1/sim/RISCV_SystemVerilog_util_vector_logic_1_1.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_1_2/sim/RISCV_SystemVerilog_util_vector_logic_1_2.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_util_vector_logic_3_0/sim/RISCV_SystemVerilog_util_vector_logic_3_0.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/ip/RISCV_SystemVerilog_xlconstant_0_3/sim/RISCV_SystemVerilog_xlconstant_0_3.v" \
+"../../../../CPU_V1.ip_user_files/bd/RISCV_SystemVerilog/sim/RISCV_SystemVerilog.v" \
+"../../../../CPU_V1.srcs/sources_1/bd/RISCV_SystemVerilog/hdl/RISCV_SystemVerilog_wrapper.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
