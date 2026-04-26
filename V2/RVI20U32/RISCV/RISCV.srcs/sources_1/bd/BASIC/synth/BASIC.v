@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun Apr 26 01:32:35 2026
+//Date        : Sun Apr 26 17:00:50 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=44,numReposBlks=37,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=24,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=42,numReposBlks=35,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=24,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
    ();
 
@@ -19,13 +19,11 @@ module BASIC
   wire RV32I_ID_rs1_used;
   wire [4:0]RV32I_ID_rs2;
   wire RV32I_ID_rs2_used;
-  wire [10:0]RV32I_IF_addr;
-  wire [0:0]RV32I_IF_dout;
   wire [31:0]RV32I_MEM_dmem_addr;
   wire [3:0]RV32I_MEM_dmem_be;
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
-  wire [31:0]blk_mem_gen_0_douta;
+  wire [31:0]RV32I_RAM_MEMORY_rdata;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
   wire [31:0]ex_mem_reg_1_mem_alu_result;
@@ -86,8 +84,7 @@ module BASIC
   wire priority_branch_OR_l_0_pc_en_final;
   wire [0:0]proc_sys_reset_0_peripheral_reset;
   wire [0:0]proc_sys_reset_0_peripheral_reset1;
-  wire [31:0]ram_data_1_rdata;
-  wire [0:0]util_vector_logic_0_Res;
+  wire [4:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_2_Res;
   wire [0:0]vio_0_probe_out0;
   wire [31:0]wb_mux_0_rd_wdata;
@@ -185,16 +182,13 @@ module BASIC
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(mem_stage_0_mem_out_rd_we),
         .Res(util_vector_logic_2_Res),
-        .addr(RV32I_IF_addr),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
-        .dout(RV32I_IF_dout),
         .flush(priority_branch_OR_l_0_if_id_flush_final),
         .hold(priority_branch_OR_l_0_if_id_hold_final),
         .id_instr_out(if_id_reg_0_id_instr_out),
         .id_pc4_out(if_id_reg_0_id_pc4_out),
         .id_pc_out(if_id_reg_0_id_pc_out),
         .id_valid_out(if_id_reg_0_id_valid_out),
-        .if_instr_in(blk_mem_gen_0_douta),
         .pc_en(priority_branch_OR_l_0_pc_en_final),
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(branch_0_pc_redirect_valid),
@@ -206,7 +200,7 @@ module BASIC
         .dmem_be(RV32I_MEM_dmem_be),
         .dmem_wdata(RV32I_MEM_dmem_wdata),
         .dmem_we(RV32I_MEM_dmem_we),
-        .mem_data(ram_data_1_rdata),
+        .mem_data(RV32I_RAM_MEMORY_rdata),
         .mem_forward_data(mem_stage_0_mem_forward_data),
         .mem_in_alu_result(ex_mem_reg_1_mem_alu_result),
         .mem_in_imm_u(ex_mem_reg_1_mem_imm_u),
@@ -234,14 +228,9 @@ module BASIC
        (.addr(RV32I_MEM_dmem_addr),
         .be(RV32I_MEM_dmem_be),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
-        .rdata(ram_data_1_rdata),
+        .rdata(RV32I_RAM_MEMORY_rdata),
         .wdata(RV32I_MEM_dmem_wdata),
         .we(RV32I_MEM_dmem_we));
-  RV32I_ROM_MEMORY_imp_UDZE0W RV32I_ROM_MEMORY
-       (.addra(RV32I_IF_addr),
-        .clka(zynq_ultra_ps_e_0_pl_clk0),
-        .douta(blk_mem_gen_0_douta),
-        .ena(RV32I_IF_dout));
   RV32I_WB_imp_1NJ77AP RV32I_WB
        (.alu_y(mem_wb_reg_0_wb_alu_result),
         .imm_u(mem_wb_reg_0_wb_imm_u),
@@ -408,7 +397,7 @@ module RV32I_EX_imp_10RN1RF
   output pc_redirect_valid;
   input rst;
   input [4:0]wb_rd;
-  input wb_rd_we;
+  input [4:0]wb_rd_we;
 
   wire Net;
   wire [31:0]alu_0_y;
@@ -464,7 +453,7 @@ module RV32I_EX_imp_10RN1RF
   wire [31:0]operand_a_mux_0_operand_a;
   wire [31:0]operand_b_mux_0_operand_b;
   wire proc_sys_reset_0_peripheral_reset;
-  wire util_vector_logic_0_Res;
+  wire [4:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_1_Res;
   wire util_vector_logic_2_Res;
   wire [31:0]wb_mux_0_rd_wdata;
@@ -512,7 +501,7 @@ module RV32I_EX_imp_10RN1RF
   assign pc_redirect_target[31:0] = branch_0_pc_redirect_target;
   assign pc_redirect_valid = branch_0_pc_redirect_valid;
   assign proc_sys_reset_0_peripheral_reset = rst;
-  assign util_vector_logic_0_Res = wb_rd_we;
+  assign util_vector_logic_0_Res = wb_rd_we[4:0];
   assign util_vector_logic_2_Res = mem_stage_rd_we;
   assign wb_mux_0_rd_wdata = mem_wb_data[31:0];
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
@@ -598,12 +587,13 @@ module RV32I_EX_imp_10RN1RF
         .forward_a(forwarding_0_forward_a),
         .forward_b(forwarding_0_forward_b),
         .forward_store(forwarding_0_forward_store),
+        .mem_is_load(ex_mem_reg_1_mem_mem_re),
         .mem_rd(ex_mem_reg_1_mem_rd),
         .mem_rd_we(util_vector_logic_1_Res),
         .mem_stage_rd(mem_stage_0_mem_out_rd),
         .mem_stage_rd_we(util_vector_logic_2_Res),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_rd_we(util_vector_logic_0_Res));
+        .wb_rd_we(util_vector_logic_0_Res[0]));
   BASIC_operand_a_mux_0_0 operand_a_mux_0
        (.op_a_sel(id_ex_reg_0_ex_op_a_sel),
         .operand_a(operand_a_mux_0_operand_a),
@@ -690,7 +680,7 @@ module RV32I_ID_imp_FBK4LB
   input [31:0]instr;
   input [4:0]rd_addr;
   input [31:0]rd_wdata;
-  input rd_we;
+  input [4:0]rd_we;
   output [4:0]rs1;
   output rs1_used;
   output [4:0]rs2;
@@ -760,7 +750,7 @@ module RV32I_ID_imp_FBK4LB
   wire proc_sys_reset_0_peripheral_reset;
   wire [31:0]regfile_0_rs1_rdata;
   wire [31:0]regfile_0_rs2_rdata;
-  wire util_vector_logic_0_Res;
+  wire [4:0]util_vector_logic_0_Res;
   wire [31:0]wb_mux_0_rd_wdata;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
@@ -798,7 +788,7 @@ module RV32I_ID_imp_FBK4LB
   assign rs1_used = decoder_0_rs1_used;
   assign rs2[4:0] = decoder_0_rs2;
   assign rs2_used = decoder_0_rs2_used;
-  assign util_vector_logic_0_Res = rd_we;
+  assign util_vector_logic_0_Res = rd_we[4:0];
   assign wb_mux_0_rd_wdata = rd_wdata[31:0];
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_control_0_0 control_0
@@ -901,7 +891,7 @@ module RV32I_ID_imp_FBK4LB
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .rd_addr(mem_wb_reg_0_wb_rd),
         .rd_wdata(wb_mux_0_rd_wdata),
-        .rd_we(util_vector_logic_0_Res),
+        .rd_we(util_vector_logic_0_Res[0]),
         .rs1_addr(decoder_0_rs1),
         .rs1_rdata(regfile_0_rs1_rdata),
         .rs2_addr(decoder_0_rs2),
@@ -912,16 +902,13 @@ module RV32I_IF_imp_Y4LBN8
    (Op1,
     Op2,
     Res,
-    addr,
     clk,
-    dout,
     flush,
     hold,
     id_instr_out,
     id_pc4_out,
     id_pc_out,
     id_valid_out,
-    if_instr_in,
     pc_en,
     pc_redirect_target,
     pc_redirect_valid,
@@ -929,21 +916,19 @@ module RV32I_IF_imp_Y4LBN8
   input [0:0]Op1;
   input [0:0]Op2;
   output [0:0]Res;
-  output [10:0]addr;
   input clk;
-  output [0:0]dout;
   input flush;
   input hold;
   output [31:0]id_instr_out;
   output [31:0]id_pc4_out;
   output [31:0]id_pc_out;
   output id_valid_out;
-  input [31:0]if_instr_in;
   input pc_en;
   input [31:0]pc_redirect_target;
   input pc_redirect_valid;
   input rst;
 
+  wire [31:0]RV32I_ROM_MEMORY_douta;
   wire branch_0_ex_flush_req;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
@@ -952,7 +937,6 @@ module RV32I_IF_imp_Y4LBN8
   wire [31:0]if_id_reg_0_id_pc4_out;
   wire [31:0]if_id_reg_0_id_pc_out;
   wire if_id_reg_0_id_valid_out;
-  wire [31:0]if_instr_in_1;
   wire [0:0]mem_stage_0_mem_out_rd_we;
   wire [0:0]mem_stage_0_mem_out_valid;
   wire pc_en_1;
@@ -961,27 +945,29 @@ module RV32I_IF_imp_Y4LBN8
   wire [31:0]pc_unit_0_pc_plus4;
   wire proc_sys_reset_0_peripheral_reset;
   wire [0:0]util_vector_logic_2_Res;
-  wire [0:0]xlconstant_2_dout;
+  wire [0:0]util_vector_logic_3_Res;
   wire [0:0]xlconstant_3_dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
   assign Res[0] = util_vector_logic_2_Res;
-  assign addr[10:0] = pc_to_imem_addr_0_addr;
   assign branch_0_ex_flush_req = flush;
   assign branch_0_pc_redirect_target = pc_redirect_target[31:0];
   assign branch_0_pc_redirect_valid = pc_redirect_valid;
-  assign dout[0] = xlconstant_2_dout;
   assign hold_1 = hold;
   assign id_instr_out[31:0] = if_id_reg_0_id_instr_out;
   assign id_pc4_out[31:0] = if_id_reg_0_id_pc4_out;
   assign id_pc_out[31:0] = if_id_reg_0_id_pc_out;
   assign id_valid_out = if_id_reg_0_id_valid_out;
-  assign if_instr_in_1 = if_instr_in[31:0];
   assign mem_stage_0_mem_out_rd_we = Op2[0];
   assign mem_stage_0_mem_out_valid = Op1[0];
   assign pc_en_1 = pc_en;
   assign proc_sys_reset_0_peripheral_reset = rst;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
+  RV32I_ROM_MEMORY_imp_ZEEBV6 RV32I_ROM_MEMORY
+       (.addra(pc_to_imem_addr_0_addr),
+        .clka(zynq_ultra_ps_e_0_pl_clk0),
+        .douta(RV32I_ROM_MEMORY_douta),
+        .ena(util_vector_logic_3_Res));
   BASIC_if_id_reg_0_0 if_id_reg_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .flush(branch_0_ex_flush_req),
@@ -990,7 +976,7 @@ module RV32I_IF_imp_Y4LBN8
         .id_pc4_out(if_id_reg_0_id_pc4_out),
         .id_pc_out(if_id_reg_0_id_pc_out),
         .id_valid_out(if_id_reg_0_id_valid_out),
-        .if_instr_in(if_instr_in_1),
+        .if_instr_in(RV32I_ROM_MEMORY_douta),
         .if_pc4_in(pc_unit_0_pc_plus4),
         .if_pc_in(pc_unit_0_pc),
         .if_valid_in(xlconstant_3_dout),
@@ -1010,8 +996,9 @@ module RV32I_IF_imp_Y4LBN8
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(mem_stage_0_mem_out_rd_we),
         .Res(util_vector_logic_2_Res));
-  BASIC_xlconstant_1_0 xlconstant_2
-       (.dout(xlconstant_2_dout));
+  BASIC_util_vector_logic_2_1 util_vector_logic_3
+       (.Op1(hold_1),
+        .Res(util_vector_logic_3_Res));
   BASIC_xlconstant_2_0 xlconstant_3
        (.dout(xlconstant_3_dout));
 endmodule
@@ -1047,7 +1034,7 @@ module RV32I_MEM_imp_3VZ702
     wb_pc_plus4,
     wb_rd,
     wb_sel);
-  output [0:0]Res;
+  output [4:0]Res;
   input clk;
   output [31:0]dmem_addr;
   output [3:0]dmem_be;
@@ -1090,16 +1077,15 @@ module RV32I_MEM_imp_3VZ702
   wire [31:0]ex_mem_reg_1_mem_store_data;
   wire ex_mem_reg_1_mem_valid;
   wire [1:0]ex_mem_reg_1_mem_wb_sel;
-  wire [31:0]load_extender_0_load_data;
+  wire [31:0]mem_data_1;
   wire [31:0]mem_stage_0_dmem_addr;
   wire [3:0]mem_stage_0_dmem_be;
   wire [31:0]mem_stage_0_dmem_wdata;
   wire mem_stage_0_dmem_we;
   wire [31:0]mem_stage_0_mem_forward_data;
   wire [31:0]mem_stage_0_mem_out_alu_result;
+  wire [31:0]mem_stage_0_mem_out_data;
   wire [31:0]mem_stage_0_mem_out_imm_u;
-  wire [1:0]mem_stage_0_mem_out_mem_size;
-  wire mem_stage_0_mem_out_mem_unsigned;
   wire [31:0]mem_stage_0_mem_out_pc_plus4;
   wire [4:0]mem_stage_0_mem_out_rd;
   wire mem_stage_0_mem_out_rd_we;
@@ -1114,12 +1100,10 @@ module RV32I_MEM_imp_3VZ702
   wire [1:0]mem_wb_reg_0_wb_sel;
   wire mem_wb_reg_0_wb_valid;
   wire proc_sys_reset_0_peripheral_reset;
-  wire [31:0]ram_data_1_rdata;
-  wire [0:0]util_vector_logic_0_Res;
-  wire [1:0]xlslice_0_Dout;
+  wire regfile_we_gen_0_regfile_we;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
-  assign Res[0] = util_vector_logic_0_Res;
+  assign Res[0] = regfile_we_gen_0_regfile_we;
   assign dmem_addr[31:0] = mem_stage_0_dmem_addr;
   assign dmem_be[3:0] = mem_stage_0_dmem_be;
   assign dmem_wdata[31:0] = mem_stage_0_dmem_wdata;
@@ -1136,12 +1120,12 @@ module RV32I_MEM_imp_3VZ702
   assign ex_mem_reg_1_mem_store_data = mem_in_store_data[31:0];
   assign ex_mem_reg_1_mem_valid = mem_in_valid;
   assign ex_mem_reg_1_mem_wb_sel = mem_in_wb_sel[1:0];
+  assign mem_data_1 = mem_data[31:0];
   assign mem_forward_data[31:0] = mem_stage_0_mem_forward_data;
   assign mem_rd[4:0] = mem_stage_0_mem_out_rd;
   assign mem_rd_we = mem_stage_0_mem_out_rd_we;
   assign mem_valid = mem_stage_0_mem_out_valid;
   assign proc_sys_reset_0_peripheral_reset = rst;
-  assign ram_data_1_rdata = mem_data[31:0];
   assign wb_alu_result[31:0] = mem_wb_reg_0_wb_alu_result;
   assign wb_data[31:0] = mem_wb_reg_0_wb_data;
   assign wb_imm_u[31:0] = mem_wb_reg_0_wb_imm_u;
@@ -1149,17 +1133,11 @@ module RV32I_MEM_imp_3VZ702
   assign wb_rd[4:0] = mem_wb_reg_0_wb_rd;
   assign wb_sel[1:0] = mem_wb_reg_0_wb_sel;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
-  BASIC_load_extender_0_0 load_extender_0
-       (.addr_offset(xlslice_0_Dout),
-        .load_data(load_extender_0_load_data),
-        .mem_data(ram_data_1_rdata),
-        .size(mem_stage_0_mem_out_mem_size),
-        .unsigned_load(mem_stage_0_mem_out_mem_unsigned));
   BASIC_mem_stage_0_0 mem_stage_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .dmem_addr(mem_stage_0_dmem_addr),
         .dmem_be(mem_stage_0_dmem_be),
-        .dmem_rdata(ram_data_1_rdata),
+        .dmem_rdata(mem_data_1),
         .dmem_wdata(mem_stage_0_dmem_wdata),
         .dmem_we(mem_stage_0_dmem_we),
         .kill(1'b0),
@@ -1177,9 +1155,8 @@ module RV32I_MEM_imp_3VZ702
         .mem_in_valid(ex_mem_reg_1_mem_valid),
         .mem_in_wb_sel(ex_mem_reg_1_mem_wb_sel),
         .mem_out_alu_result(mem_stage_0_mem_out_alu_result),
+        .mem_out_data(mem_stage_0_mem_out_data),
         .mem_out_imm_u(mem_stage_0_mem_out_imm_u),
-        .mem_out_mem_size(mem_stage_0_mem_out_mem_size),
-        .mem_out_mem_unsigned(mem_stage_0_mem_out_mem_unsigned),
         .mem_out_pc_plus4(mem_stage_0_mem_out_pc_plus4),
         .mem_out_rd(mem_stage_0_mem_out_rd),
         .mem_out_rd_we(mem_stage_0_mem_out_rd_we),
@@ -1191,7 +1168,7 @@ module RV32I_MEM_imp_3VZ702
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .flush(1'b0),
         .mem_alu_result(mem_stage_0_mem_out_alu_result),
-        .mem_data(load_extender_0_load_data),
+        .mem_data(mem_stage_0_mem_out_data),
         .mem_imm_u(mem_stage_0_mem_out_imm_u),
         .mem_pc_plus4(mem_stage_0_mem_out_pc_plus4),
         .mem_rd(mem_stage_0_mem_out_rd),
@@ -1208,13 +1185,11 @@ module RV32I_MEM_imp_3VZ702
         .wb_rd_we(mem_wb_reg_0_wb_rd_we),
         .wb_sel(mem_wb_reg_0_wb_sel),
         .wb_valid(mem_wb_reg_0_wb_valid));
-  BASIC_util_vector_logic_0_0 util_vector_logic_0
-       (.Op1(mem_wb_reg_0_wb_valid),
-        .Op2(mem_wb_reg_0_wb_rd_we),
-        .Res(util_vector_logic_0_Res));
-  BASIC_xlslice_0_0 xlslice_0
-       (.Din(mem_stage_0_mem_out_alu_result),
-        .Dout(xlslice_0_Dout));
+  BASIC_regfile_we_gen_0_0 regfile_we_gen_0
+       (.regfile_we(regfile_we_gen_0_regfile_we),
+        .wb_rd(mem_wb_reg_0_wb_rd),
+        .wb_rd_we(mem_wb_reg_0_wb_rd_we),
+        .wb_valid(mem_wb_reg_0_wb_valid));
 endmodule
 
 module RV32I_RAM_MEMORY_imp_1A3BT4W
@@ -1253,7 +1228,7 @@ module RV32I_RAM_MEMORY_imp_1A3BT4W
         .we(RV32I_MEM_dmem_we));
 endmodule
 
-module RV32I_ROM_MEMORY_imp_UDZE0W
+module RV32I_ROM_MEMORY_imp_ZEEBV6
    (addra,
     clka,
     douta,

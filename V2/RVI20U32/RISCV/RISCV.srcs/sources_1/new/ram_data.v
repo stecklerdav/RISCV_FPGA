@@ -24,7 +24,6 @@ module ram_data #(
 
     integer i;
 
-    // 🔹 Inicialización a 0
     initial begin
         for (i = 0; i < WORDS; i = i + 1) begin
             mem0[i] = 8'h00;
@@ -34,16 +33,34 @@ module ram_data #(
         end
     end
 
-    always @(posedge clk) begin
-        // synchronous read
-        rdata <= {mem3[wa], mem2[wa], mem1[wa], mem0[wa]};
+    reg [31:0] mem_read;
 
-        // synchronous write with byte enables
+    always @(*) begin
+        mem_read = {mem3[wa], mem2[wa], mem1[wa], mem0[wa]};
+    end
+
+    always @(posedge clk) begin
         if (we) begin
+            // escritura por byte
             if (be[0]) mem0[wa] <= wdata[7:0];
             if (be[1]) mem1[wa] <= wdata[15:8];
             if (be[2]) mem2[wa] <= wdata[23:16];
             if (be[3]) mem3[wa] <= wdata[31:24];
+
+            // WRITE-FIRST:
+            // si escribes y lees la misma dirección en este ciclo,
+            // rdata devuelve el dato nuevo en los bytes escritos
+            // y mantiene el dato viejo en los bytes no escritos.
+            rdata <= {
+                be[3] ? wdata[31:24] : mem_read[31:24],
+                be[2] ? wdata[23:16] : mem_read[23:16],
+                be[1] ? wdata[15:8]  : mem_read[15:8],
+                be[0] ? wdata[7:0]   : mem_read[7:0]
+            };
+
+        end else begin
+            // lectura síncrona normal
+            rdata <= mem_read;
         end
     end
 

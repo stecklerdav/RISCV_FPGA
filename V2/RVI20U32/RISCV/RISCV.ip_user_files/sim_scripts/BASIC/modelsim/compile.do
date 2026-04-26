@@ -11,7 +11,6 @@ vlib modelsim_lib/msim/lib_cdc_v1_0_2
 vlib modelsim_lib/msim/proc_sys_reset_v5_0_13
 vlib modelsim_lib/msim/xlconstant_v1_1_7
 vlib modelsim_lib/msim/blk_mem_gen_v8_4_4
-vlib modelsim_lib/msim/xlslice_v1_0_2
 vlib modelsim_lib/msim/util_vector_logic_v2_0_1
 
 vmap xilinx_vip modelsim_lib/msim/xilinx_vip
@@ -24,7 +23,6 @@ vmap lib_cdc_v1_0_2 modelsim_lib/msim/lib_cdc_v1_0_2
 vmap proc_sys_reset_v5_0_13 modelsim_lib/msim/proc_sys_reset_v5_0_13
 vmap xlconstant_v1_1_7 modelsim_lib/msim/xlconstant_v1_1_7
 vmap blk_mem_gen_v8_4_4 modelsim_lib/msim/blk_mem_gen_v8_4_4
-vmap xlslice_v1_0_2 modelsim_lib/msim/xlslice_v1_0_2
 vmap util_vector_logic_v2_0_1 modelsim_lib/msim/util_vector_logic_v2_0_1
 
 vlog -work xilinx_vip -64 -incr -sv -L axi_vip_v1_1_7 -L zynq_ultra_ps_e_vip_v1_0_7 -L xilinx_vip "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
@@ -80,7 +78,6 @@ vlog -work blk_mem_gen_v8_4_4 -64 -incr "+incdir+../../../../RISCV.srcs/sources_
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/1b7e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/122e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/b205/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/c968/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
 "../../../bd/BASIC/ip/BASIC_blk_mem_gen_0_0/sim/BASIC_blk_mem_gen_0_0.v" \
-"../../../bd/BASIC/ip/BASIC_xlconstant_1_0/sim/BASIC_xlconstant_1_0.v" \
 "../../../bd/BASIC/ip/BASIC_pc_to_imem_addr_0_0/sim/BASIC_pc_to_imem_addr_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_if_id_reg_0_0/sim/BASIC_if_id_reg_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_xlconstant_2_0/sim/BASIC_xlconstant_2_0.v" \
@@ -99,21 +96,13 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd
 "../../../bd/BASIC/ip/BASIC_ex_mem_reg_1_0/sim/BASIC_ex_mem_reg_1_0.v" \
 "../../../bd/BASIC/ip/BASIC_mem_stage_0_0/sim/BASIC_mem_stage_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_ram_data_1_0/sim/BASIC_ram_data_1_0.v" \
-"../../../bd/BASIC/ip/BASIC_load_extender_0_0/sim/BASIC_load_extender_0_0.v" \
-
-vlog -work xlslice_v1_0_2 -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/1b7e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/122e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/b205/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/c968/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
-"../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
-
-vlog -work xil_defaultlib -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/1b7e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/122e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/b205/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/c968/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
-"../../../bd/BASIC/ip/BASIC_xlslice_0_0/sim/BASIC_xlslice_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_mem_wb_reg_0_0/sim/BASIC_mem_wb_reg_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_wb_mux_0_0/sim/BASIC_wb_mux_0_0.v" \
 
 vlog -work util_vector_logic_v2_0_1 -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/1b7e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/122e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/b205/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/c968/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
 "../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v" \
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/1b7e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/122e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/b205/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/c968/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
-"../../../bd/BASIC/ip/BASIC_util_vector_logic_0_0/sim/BASIC_util_vector_logic_0_0.v" \
-"../../../bd/BASIC/ip/BASIC_wb_mux_0_0/sim/BASIC_wb_mux_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_util_vector_logic_0_1/sim/BASIC_util_vector_logic_0_1.v" \
 "../../../bd/BASIC/ip/BASIC_util_vector_logic_1_0/sim/BASIC_util_vector_logic_1_0.v" \
 "../../../bd/BASIC/ip/BASIC_load_use_detection_0_0/sim/BASIC_load_use_detection_0_0.v" \
@@ -122,7 +111,9 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd
 "../../../bd/BASIC/ip/BASIC_vio_0_0/sim/BASIC_vio_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_0/sim/BASIC_util_vector_logic_2_0.v" \
 "../../../bd/BASIC/ip/BASIC_forward_mux_1_0/sim/BASIC_forward_mux_1_0.v" \
+"../../../bd/BASIC/ip/BASIC_regfile_we_gen_0_0/sim/BASIC_regfile_we_gen_0_0.v" \
 "../../../bd/BASIC/sim/BASIC.v" \
+"../../../bd/BASIC/ip/BASIC_util_vector_logic_2_1/sim/BASIC_util_vector_logic_2_1.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"
