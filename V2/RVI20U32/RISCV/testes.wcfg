@@ -14,143 +14,70 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6218143fs"></ZoomStartTime>
-      <ZoomEndTime time="8890144fs"></ZoomEndTime>
-      <Cursor1Time time="7150143fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="283200001fs"></ZoomEndTime>
+      <Cursor1Time time="7304143fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="163"></NameColumnWidth>
-      <ValueColumnWidth column_width="70"></ValueColumnWidth>
+      <NameColumnWidth column_width="152"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="27" />
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/regfile_0/inst/clk">
+   <WVObjectSize size="12" />
+   <wave_markers>
+      <marker label="" time="7934143" />
+   </wave_markers>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/pc_unit_0/inst/rst">
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/pc_unit_0/inst/rst">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/regfile_0/inst/rd_addr">
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/be">
+      <obj_property name="ElementShortName">be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/we">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/wdata">
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/rdata">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_EX/ex_mem_reg_1/inst/mem_pc">
+      <obj_property name="ElementShortName">mem_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_pc[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/rd_we">
+      <obj_property name="ElementShortName">rd_we</obj_property>
+      <obj_property name="ObjectShortName">rd_we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/rd_addr">
       <obj_property name="ElementShortName">rd_addr[4:0]</obj_property>
       <obj_property name="ObjectShortName">rd_addr[4:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/regfile_0/inst/rd_wdata">
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/rd_wdata">
       <obj_property name="ElementShortName">rd_wdata[31:0]</obj_property>
       <obj_property name="ObjectShortName">rd_wdata[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/branch_0/inst/pc_redirect_valid">
-      <obj_property name="ElementShortName">pc_redirect_valid</obj_property>
-      <obj_property name="ObjectShortName">pc_redirect_valid</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/load_use_detection_0/inst/if_id_rs2_used">
+      <obj_property name="ElementShortName">if_id_rs2_used</obj_property>
+      <obj_property name="ObjectShortName">if_id_rs2_used</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/branch_0/inst/pc_redirect_target">
-      <obj_property name="ElementShortName">pc_redirect_target[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_redirect_target[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/regfile_0/inst/rd_we">
-      <obj_property name="ElementShortName">rd_we</obj_property>
-      <obj_property name="ObjectShortName">rd_we</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/id_ex_reg_0/inst/ex_pc">
-      <obj_property name="ElementShortName">ex_pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_pc[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_a_mux_0/inst/pc">
-      <obj_property name="ElementShortName">pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forwarding_0/inst/forward_a">
-      <obj_property name="ElementShortName">forward_a[1:0]</obj_property>
-      <obj_property name="ObjectShortName">forward_a[1:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forwarding_0/inst/forward_b">
-      <obj_property name="ElementShortName">forward_b[1:0]</obj_property>
-      <obj_property name="ObjectShortName">forward_b[1:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_a_mux_0/inst/rs1_data">
-      <obj_property name="ElementShortName">rs1_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rs1_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_b_mux_0/inst/rs2_data">
-      <obj_property name="ElementShortName">rs2_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rs2_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_a_mux_0/inst/op_a_sel">
-      <obj_property name="ElementShortName">op_a_sel[1:0]</obj_property>
-      <obj_property name="ObjectShortName">op_a_sel[1:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_a_mux_0/inst/operand_a">
-      <obj_property name="ElementShortName">operand_a[31:0]</obj_property>
-      <obj_property name="ObjectShortName">operand_a[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_b_mux_0/inst/op_b_sel">
-      <obj_property name="ElementShortName">op_b_sel[1:0]</obj_property>
-      <obj_property name="ObjectShortName">op_b_sel[1:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/operand_b_mux_0/inst/operand_b">
-      <obj_property name="ElementShortName">operand_b[31:0]</obj_property>
-      <obj_property name="ObjectShortName">operand_b[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/alu_0/inst/a">
-      <obj_property name="ElementShortName">a[31:0]</obj_property>
-      <obj_property name="ObjectShortName">a[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/alu_0/inst/b">
-      <obj_property name="ElementShortName">b[31:0]</obj_property>
-      <obj_property name="ObjectShortName">b[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/alu_0/inst/alu_op">
-      <obj_property name="ElementShortName">alu_op[3:0]</obj_property>
-      <obj_property name="ObjectShortName">alu_op[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/alu_0/inst/y">
-      <obj_property name="ElementShortName">y[31:0]</obj_property>
-      <obj_property name="ObjectShortName">y[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forward_mux_1/inst/base_data">
-      <obj_property name="ElementShortName">base_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">base_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forward_mux_1/inst/out_data">
-      <obj_property name="ElementShortName">out_data[31:0]</obj_property>
-      <obj_property name="ObjectShortName">out_data[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forwarding_0/inst/ex_rs2">
-      <obj_property name="ElementShortName">ex_rs2[4:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_rs2[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/forwarding_0/inst/wb_rd_we">
-      <obj_property name="ElementShortName">wb_rd_we</obj_property>
-      <obj_property name="ObjectShortName">wb_rd_we</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forwarding_0/inst/wb_rd">
-      <obj_property name="ElementShortName">wb_rd[4:0]</obj_property>
-      <obj_property name="ObjectShortName">wb_rd[4:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/forwarding_0/inst/ex_op_b_sel">
-      <obj_property name="ElementShortName">ex_op_b_sel[1:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_op_b_sel[1:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_EX/forwarding_0/inst/forward_store">
+      <obj_property name="ElementShortName">forward_store[1:0]</obj_property>
+      <obj_property name="ObjectShortName">forward_store[1:0]</obj_property>
    </wvobject>
 </wave_config>

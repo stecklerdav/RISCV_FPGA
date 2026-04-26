@@ -65,7 +65,8 @@ module BASIC_forwarding_0_0 (
   wb_rd,
   wb_rd_we,
   forward_a,
-  forward_b
+  forward_b,
+  forward_store
 );
 
 input wire [4 : 0] ex_rs1;
@@ -79,6 +80,7 @@ input wire [4 : 0] wb_rd;
 input wire wb_rd_we;
 output wire [1 : 0] forward_a;
 output wire [1 : 0] forward_b;
+output wire [1 : 0] forward_store;
 
   forwarding inst (
     .ex_rs1(ex_rs1),
@@ -91,6 +93,7 @@ output wire [1 : 0] forward_b;
     .wb_rd(wb_rd),
     .wb_rd_we(wb_rd_we),
     .forward_a(forward_a),
-    .forward_b(forward_b)
+    .forward_b(forward_b),
+    .forward_store(forward_store)
   );
 endmodule

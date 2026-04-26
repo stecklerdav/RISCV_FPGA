@@ -5,11 +5,12 @@ prog_asm.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <__text_start>:
-   0:	00000093          	addi	x1,x0,0
-   4:	00500113          	addi	x2,x0,5
-   8:	0000a283          	lw	x5,0(x1)
-   c:	00228333          	add	x6,x5,x2
-  10:	00100393          	addi	x7,x0,1
+   0:	01000093          	addi	x1,x0,16
+   4:	01900413          	addi	x8,x0,25
+   8:	0080a223          	sw	x8,4(x1)
+   c:	0040a403          	lw	x8,4(x1)
+  10:	0080a223          	sw	x8,4(x1)
+  14:	0040a403          	lw	x8,4(x1)
 
-00000014 <done>:
-  14:	0000006f          	jal	x0,14 <done>
+00000018 <done>:
+  18:	0000006f          	jal	x0,18 <done>

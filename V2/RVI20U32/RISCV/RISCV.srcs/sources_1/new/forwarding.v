@@ -18,7 +18,10 @@ module forwarding(
     input  wire       wb_rd_we,
 
     output reg  [1:0] forward_a,
-    output reg  [1:0] forward_b
+    output reg  [1:0] forward_b,
+
+    // NUEVO: forwarding para dato de store rs2
+    output reg  [1:0] forward_store
 );
 
     localparam [1:0] B_RS2 = 2'd0;
@@ -29,10 +32,13 @@ module forwarding(
     // 11 -> MEM/WB
 
     always @(*) begin
-        forward_a = 2'b00;
-        forward_b = 2'b00;
+        forward_a     = 2'b00;
+        forward_b     = 2'b00;
+        forward_store = 2'b00;
 
-        // A = rs1
+        // --------------------------------------------------------
+        // A = rs1, usado por ALU / branch / base address
+        // --------------------------------------------------------
         if (mem_rd_we && (mem_rd != 5'd0) && (mem_rd == ex_rs1))
             forward_a = 2'b01;
         else if (mem_stage_rd_we && (mem_stage_rd != 5'd0) && (mem_stage_rd == ex_rs1))
@@ -40,7 +46,9 @@ module forwarding(
         else if (wb_rd_we && (wb_rd != 5'd0) && (wb_rd == ex_rs1))
             forward_a = 2'b11;
 
-        // B = rs2
+        // --------------------------------------------------------
+        // B = rs2 solo cuando ALU realmente usa rs2
+        // --------------------------------------------------------
         if (ex_op_b_sel == B_RS2) begin
             if (mem_rd_we && (mem_rd != 5'd0) && (mem_rd == ex_rs2))
                 forward_b = 2'b01;
@@ -49,6 +57,21 @@ module forwarding(
             else if (wb_rd_we && (wb_rd != 5'd0) && (wb_rd == ex_rs2))
                 forward_b = 2'b11;
         end
+
+        // --------------------------------------------------------
+        // STORE DATA = rs2 SIEMPRE debe poder forwardearse
+        // aunque op_b_sel sea IMM.
+        //
+        // sw x17,4(x1):
+        //   ALU B usa IMM
+        //   store_data usa rs2=x17
+        // --------------------------------------------------------
+        if (mem_rd_we && (mem_rd != 5'd0) && (mem_rd == ex_rs2))
+            forward_store = 2'b01;
+        else if (mem_stage_rd_we && (mem_stage_rd != 5'd0) && (mem_stage_rd == ex_rs2))
+            forward_store = 2'b10;
+        else if (wb_rd_we && (wb_rd != 5'd0) && (wb_rd == ex_rs2))
+            forward_store = 2'b11;
     end
 
 endmodule

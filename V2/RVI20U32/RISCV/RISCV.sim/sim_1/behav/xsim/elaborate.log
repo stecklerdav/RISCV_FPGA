@@ -161,7 +161,7 @@ WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'rd_qos' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3805]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'wr_qos_1' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3818]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'rd_qos_1' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3825]
-WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/sim/BASIC.v:411]
+WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/sim/BASIC.v:282]
 WARNING: [VRFC 10-5021] port 'PSS_ALTO_CORE_PAD_CLK' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/sim/BASIC_zynq_ultra_ps_e_0_0_vip_wrapper.v:207]
 WARNING: [VRFC 10-3283] element index 4096 into 'wrp_strb' is out of bounds [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:6968]
 WARNING: [VRFC 10-3705] select index 2 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:7181]
@@ -192,44 +192,73 @@ Compiling package xilinx_vip.xil_common_vip_pkg
 Compiling package std.std
 Compiling module xil_defaultlib.alu
 Compiling module xil_defaultlib.BASIC_alu_0_0
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_softecc_outpu...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_mem_module(C_...
-Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4(C_FAMILY="zyn...
-Compiling module xil_defaultlib.BASIC_blk_mem_gen_0_0
 Compiling module xil_defaultlib.branch
 Compiling module xil_defaultlib.BASIC_branch_0_0
-Compiling module xil_defaultlib.control
-Compiling module xil_defaultlib.BASIC_control_0_0
-Compiling module xil_defaultlib.decoder
-Compiling module xil_defaultlib.BASIC_decoder_0_0
 Compiling module xil_defaultlib.ex_mem_reg
 Compiling module xil_defaultlib.BASIC_ex_mem_reg_1_0
 Compiling module xil_defaultlib.forward_mux
 Compiling module xil_defaultlib.BASIC_forward_mux_0_0
 Compiling module xil_defaultlib.BASIC_forward_mux_0_1
+Compiling module xil_defaultlib.BASIC_forward_mux_1_0
 Compiling module xil_defaultlib.forwarding
 Compiling module xil_defaultlib.BASIC_forwarding_0_0
+Compiling module xil_defaultlib.operand_a_mux
+Compiling module xil_defaultlib.BASIC_operand_a_mux_0_0
+Compiling module xil_defaultlib.operand_b_mux
+Compiling module xil_defaultlib.BASIC_operand_b_mux_0_0
+Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
+Compiling module xil_defaultlib.BASIC_util_vector_logic_0_1
+Compiling module xil_defaultlib.RV32I_EX_imp_10RN1RF
+Compiling module xil_defaultlib.control
+Compiling module xil_defaultlib.BASIC_control_0_0
+Compiling module xil_defaultlib.decoder
+Compiling module xil_defaultlib.BASIC_decoder_0_0
 Compiling module xil_defaultlib.id_ex_reg
 Compiling module xil_defaultlib.BASIC_id_ex_reg_0_0
-Compiling module xil_defaultlib.if_id_reg_default
-Compiling module xil_defaultlib.BASIC_if_id_reg_0_0
 Compiling module xil_defaultlib.imm_mux
 Compiling module xil_defaultlib.BASIC_imm_mux_0_0
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.BASIC_regfile_0_0
+Compiling module xil_defaultlib.RV32I_ID_imp_FBK4LB
+Compiling module xil_defaultlib.if_id_reg_default
+Compiling module xil_defaultlib.BASIC_if_id_reg_0_0
+Compiling module xil_defaultlib.pc_to_imem_addr(ADDR_W=11)
+Compiling module xil_defaultlib.BASIC_pc_to_imem_addr_0_0
+Compiling module xil_defaultlib.pc_unit
+Compiling module xil_defaultlib.BASIC_pc_unit_0_0
+Compiling module xil_defaultlib.BASIC_util_vector_logic_1_0
+Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
+Compiling module xil_defaultlib.BASIC_xlconstant_1_0
+Compiling module xil_defaultlib.BASIC_xlconstant_2_0
+Compiling module xil_defaultlib.RV32I_IF_imp_Y4LBN8
 Compiling module xil_defaultlib.load_extender
 Compiling module xil_defaultlib.BASIC_load_extender_0_0
 Compiling module xil_defaultlib.mem_stage
 Compiling module xil_defaultlib.BASIC_mem_stage_0_0
 Compiling module xil_defaultlib.mem_wb_reg
 Compiling module xil_defaultlib.BASIC_mem_wb_reg_0_0
-Compiling module xil_defaultlib.operand_a_mux
-Compiling module xil_defaultlib.BASIC_operand_a_mux_0_0
-Compiling module xil_defaultlib.operand_b_mux
-Compiling module xil_defaultlib.BASIC_operand_b_mux_0_0
-Compiling module xil_defaultlib.pc_to_imem_addr(ADDR_W=11)
-Compiling module xil_defaultlib.BASIC_pc_to_imem_addr_0_0
-Compiling module xil_defaultlib.pc_unit
-Compiling module xil_defaultlib.BASIC_pc_unit_0_0
+Compiling module xil_defaultlib.BASIC_util_vector_logic_0_0
+Compiling module xlslice_v1_0_2.xlslice_v1_0_2_xlslice(DIN_FROM=...
+Compiling module xil_defaultlib.BASIC_xlslice_0_0
+Compiling module xil_defaultlib.RV32I_MEM_imp_3VZ702
+Compiling module xil_defaultlib.ram_data(WORDS=1024)
+Compiling module xil_defaultlib.BASIC_ram_data_1_0
+Compiling module xil_defaultlib.RV32I_RAM_MEMORY_imp_1A3BT4W
+Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
+Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_output_stage(...
+Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_softecc_outpu...
+Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_mem_module(C_...
+Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4(C_FAMILY="zyn...
+Compiling module xil_defaultlib.BASIC_blk_mem_gen_0_0
+Compiling module xil_defaultlib.RV32I_ROM_MEMORY_imp_UDZE0W
+Compiling module xil_defaultlib.wb_mux
+Compiling module xil_defaultlib.BASIC_wb_mux_0_0
+Compiling module xil_defaultlib.RV32I_WB_imp_1NJ77AP
+Compiling module xil_defaultlib.BASIC_ila_0_0
+Compiling module xil_defaultlib.load_use_detection
+Compiling module xil_defaultlib.BASIC_load_use_detection_0_0
+Compiling module xil_defaultlib.priority_branch_OR_load_use
+Compiling module xil_defaultlib.BASIC_priority_branch_OR_l_0_0
 Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]
 Compiling architecture fdre_v of entity unisim.FDRE [\FDRE(init='1')\]
 Compiling architecture fdr_v of entity unisim.FDR [fdr_default]
@@ -241,23 +270,10 @@ Compiling architecture imp of entity proc_sys_reset_v5_0_13.upcnt_n [\upcnt_n(c_
 Compiling architecture imp of entity proc_sys_reset_v5_0_13.sequence_psr [sequence_psr_default]
 Compiling architecture imp of entity proc_sys_reset_v5_0_13.proc_sys_reset [\proc_sys_reset(c_family="zynqup...]
 Compiling architecture basic_proc_sys_reset_0_0_arch of entity xil_defaultlib.BASIC_proc_sys_reset_0_0 [basic_proc_sys_reset_0_0_default]
-Compiling module xil_defaultlib.ram_data(WORDS=1024)
-Compiling module xil_defaultlib.BASIC_ram_data_1_0
-Compiling module xil_defaultlib.regfile
-Compiling module xil_defaultlib.BASIC_regfile_0_0
 Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
-Compiling module xil_defaultlib.BASIC_util_vector_logic_0_0
-Compiling module xil_defaultlib.BASIC_util_vector_logic_0_1
-Compiling module xil_defaultlib.BASIC_util_vector_logic_1_0
-Compiling module xil_defaultlib.wb_mux
-Compiling module xil_defaultlib.BASIC_wb_mux_0_0
-Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
+Compiling module xil_defaultlib.BASIC_util_vector_logic_2_0
+Compiling module xil_defaultlib.BASIC_vio_0_0
 Compiling module xil_defaultlib.BASIC_xlconstant_0_0
-Compiling module xil_defaultlib.BASIC_xlconstant_0_1
-Compiling module xil_defaultlib.BASIC_xlconstant_1_0
-Compiling module xil_defaultlib.BASIC_xlconstant_2_0
-Compiling module xlslice_v1_0_2.xlslice_v1_0_2_xlslice(DIN_FROM=...
-Compiling module xil_defaultlib.BASIC_xlslice_0_0
 Compiling module zynq_ultra_ps_e_vip_v1_0_7.zynq_ultra_ps_e_vip_v1_0_7_gen_r...
 Compiling module zynq_ultra_ps_e_vip_v1_0_7.zynq_ultra_ps_e_vip_v1_0_7_gen_c...
 Compiling module zynq_ultra_ps_e_vip_v1_0_7.zynq_ultra_ps_e_vip_v1_0_7_arb_w...

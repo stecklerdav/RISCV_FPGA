@@ -14,7 +14,6 @@ module ram_data #(
 
     // Word index = byte_addr[ADDR_WIDTH+1:2]
     wire [ADDR_WIDTH-1:0] wa;
-
     assign wa = addr[ADDR_WIDTH+1:2];
 
     // 4 byte lanes
@@ -22,6 +21,18 @@ module ram_data #(
     (* ram_style = "block" *) reg [7:0] mem1 [0:WORDS-1];
     (* ram_style = "block" *) reg [7:0] mem2 [0:WORDS-1];
     (* ram_style = "block" *) reg [7:0] mem3 [0:WORDS-1];
+
+    integer i;
+
+    // 🔹 Inicialización a 0
+    initial begin
+        for (i = 0; i < WORDS; i = i + 1) begin
+            mem0[i] = 8'h00;
+            mem1[i] = 8'h00;
+            mem2[i] = 8'h00;
+            mem3[i] = 8'h00;
+        end
+    end
 
     always @(posedge clk) begin
         // synchronous read

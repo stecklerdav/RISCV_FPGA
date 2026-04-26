@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat Apr 25 13:27:57 2026
+//Date        : Sun Apr 26 01:32:35 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,11 +9,16 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=39,numReposBlks=32,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=21,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=44,numReposBlks=37,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=24,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
    ();
 
   wire Net;
+  wire RV32I_EX_ex_flush_req;
+  wire [4:0]RV32I_ID_rs1;
+  wire RV32I_ID_rs1_used;
+  wire [4:0]RV32I_ID_rs2;
+  wire RV32I_ID_rs2_used;
   wire [10:0]RV32I_IF_addr;
   wire [0:0]RV32I_IF_dout;
   wire [31:0]RV32I_MEM_dmem_addr;
@@ -21,7 +26,6 @@ module BASIC
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
   wire [31:0]blk_mem_gen_0_douta;
-  wire branch_0_ex_flush_req;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
   wire [31:0]ex_mem_reg_1_mem_alu_result;
@@ -62,6 +66,10 @@ module BASIC
   wire [31:0]if_id_reg_0_id_pc4_out;
   wire [31:0]if_id_reg_0_id_pc_out;
   wire if_id_reg_0_id_valid_out;
+  wire load_use_detection_0_id_ex_flush;
+  wire load_use_detection_0_if_id_hold;
+  wire load_use_detection_0_load_use_hazard;
+  wire load_use_detection_0_pc_en;
   wire [31:0]mem_stage_0_mem_forward_data;
   wire [4:0]mem_stage_0_mem_out_rd;
   wire mem_stage_0_mem_out_rd_we;
@@ -72,10 +80,16 @@ module BASIC
   wire [31:0]mem_wb_reg_0_wb_pc_plus4;
   wire [4:0]mem_wb_reg_0_wb_rd;
   wire [1:0]mem_wb_reg_0_wb_sel;
+  wire priority_branch_OR_l_0_id_ex_flush_final;
+  wire priority_branch_OR_l_0_if_id_flush_final;
+  wire priority_branch_OR_l_0_if_id_hold_final;
+  wire priority_branch_OR_l_0_pc_en_final;
   wire [0:0]proc_sys_reset_0_peripheral_reset;
+  wire [0:0]proc_sys_reset_0_peripheral_reset1;
   wire [31:0]ram_data_1_rdata;
   wire [0:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_2_Res;
+  wire [0:0]vio_0_probe_out0;
   wire [31:0]wb_mux_0_rd_wdata;
   wire [0:0]xlconstant_0_dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
@@ -86,7 +100,7 @@ module BASIC
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .ex_branch_en(id_ex_reg_0_ex_branch_en),
         .ex_branch_funct3(id_ex_reg_0_ex_branch_funct3),
-        .ex_flush_req(branch_0_ex_flush_req),
+        .ex_flush_req(RV32I_EX_ex_flush_req),
         .ex_imm(id_ex_reg_0_ex_imm),
         .ex_imm_u(id_ex_reg_0_ex_imm_u),
         .ex_jal(id_ex_reg_0_ex_jal),
@@ -129,7 +143,7 @@ module BASIC
         .wb_rd(mem_wb_reg_0_wb_rd),
         .wb_rd_we(util_vector_logic_0_Res));
   RV32I_ID_imp_FBK4LB RV32I_ID
-       (.bubble(branch_0_ex_flush_req),
+       (.bubble(priority_branch_OR_l_0_id_ex_flush_final),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .ex_alu_op(id_ex_reg_0_ex_alu_op),
         .ex_branch_en(id_ex_reg_0_ex_branch_en),
@@ -161,7 +175,12 @@ module BASIC
         .rd_addr(mem_wb_reg_0_wb_rd),
         .rd_wdata(wb_mux_0_rd_wdata),
         .rd_we(util_vector_logic_0_Res),
-        .rst(proc_sys_reset_0_peripheral_reset));
+        .rs1(RV32I_ID_rs1),
+        .rs1_used(RV32I_ID_rs1_used),
+        .rs2(RV32I_ID_rs2),
+        .rs2_used(RV32I_ID_rs2_used),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .stall(load_use_detection_0_load_use_hazard));
   RV32I_IF_imp_Y4LBN8 RV32I_IF
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(mem_stage_0_mem_out_rd_we),
@@ -169,12 +188,14 @@ module BASIC
         .addr(RV32I_IF_addr),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .dout(RV32I_IF_dout),
-        .flush(branch_0_ex_flush_req),
+        .flush(priority_branch_OR_l_0_if_id_flush_final),
+        .hold(priority_branch_OR_l_0_if_id_hold_final),
         .id_instr_out(if_id_reg_0_id_instr_out),
         .id_pc4_out(if_id_reg_0_id_pc4_out),
         .id_pc_out(if_id_reg_0_id_pc_out),
         .id_valid_out(if_id_reg_0_id_valid_out),
         .if_instr_in(blk_mem_gen_0_douta),
+        .pc_en(priority_branch_OR_l_0_pc_en_final),
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(branch_0_pc_redirect_valid),
         .rst(proc_sys_reset_0_peripheral_reset));
@@ -228,13 +249,50 @@ module BASIC
         .pc_plus4(mem_wb_reg_0_wb_pc_plus4),
         .rd_wdata(wb_mux_0_rd_wdata),
         .wb_sel(mem_wb_reg_0_wb_sel));
+  BASIC_ila_0_0 ila_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .probe0(proc_sys_reset_0_peripheral_reset),
+        .probe1(util_vector_logic_0_Res),
+        .probe2(mem_wb_reg_0_wb_rd),
+        .probe3(wb_mux_0_rd_wdata),
+        .probe4(load_use_detection_0_load_use_hazard));
+  BASIC_load_use_detection_0_0 load_use_detection_0
+       (.ex_flush_req(RV32I_EX_ex_flush_req),
+        .id_ex_flush(load_use_detection_0_id_ex_flush),
+        .id_ex_mem_re(id_ex_reg_0_ex_mem_re),
+        .id_ex_rd(id_ex_reg_0_ex_rd),
+        .id_ex_valid(Net),
+        .if_id_hold(load_use_detection_0_if_id_hold),
+        .if_id_rs1(RV32I_ID_rs1),
+        .if_id_rs1_used(RV32I_ID_rs1_used),
+        .if_id_rs2(RV32I_ID_rs2),
+        .if_id_rs2_used(RV32I_ID_rs2_used),
+        .if_id_valid(if_id_reg_0_id_valid_out),
+        .load_use_hazard(load_use_detection_0_load_use_hazard),
+        .pc_en(load_use_detection_0_pc_en));
+  BASIC_priority_branch_OR_l_0_0 priority_branch_OR_l_0
+       (.ex_flush_req(RV32I_EX_ex_flush_req),
+        .id_ex_flush_final(priority_branch_OR_l_0_id_ex_flush_final),
+        .if_id_flush_final(priority_branch_OR_l_0_if_id_flush_final),
+        .if_id_hold_final(priority_branch_OR_l_0_if_id_hold_final),
+        .load_use_id_ex_flush(load_use_detection_0_id_ex_flush),
+        .load_use_if_id_hold(load_use_detection_0_if_id_hold),
+        .load_use_pc_en(load_use_detection_0_pc_en),
+        .pc_en_final(priority_branch_OR_l_0_pc_en_final));
   BASIC_proc_sys_reset_0_0 proc_sys_reset_0
        (.aux_reset_in(1'b1),
         .dcm_locked(xlconstant_0_dout),
         .ext_reset_in(zynq_ultra_ps_e_0_pl_resetn0),
         .mb_debug_sys_rst(1'b0),
-        .peripheral_reset(proc_sys_reset_0_peripheral_reset),
+        .peripheral_reset(proc_sys_reset_0_peripheral_reset1),
         .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
+  BASIC_util_vector_logic_2_0 util_vector_logic_2
+       (.Op1(proc_sys_reset_0_peripheral_reset1),
+        .Op2(vio_0_probe_out0),
+        .Res(proc_sys_reset_0_peripheral_reset));
+  BASIC_vio_0_0 vio_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .probe_out0(vio_0_probe_out0));
   BASIC_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   BASIC_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
@@ -374,8 +432,10 @@ module RV32I_EX_imp_10RN1RF
   wire [1:0]ex_mem_reg_1_mem_wb_sel;
   wire [31:0]forward_mux_0_out_data;
   wire [31:0]forward_mux_1_out_data;
+  wire [31:0]forward_mux_2_out_data;
   wire [1:0]forwarding_0_forward_a;
   wire [1:0]forwarding_0_forward_b;
+  wire [1:0]forwarding_0_forward_store;
   wire [3:0]id_ex_reg_0_ex_alu_op;
   wire id_ex_reg_0_ex_branch_en;
   wire [2:0]id_ex_reg_0_ex_branch_funct3;
@@ -492,7 +552,7 @@ module RV32I_EX_imp_10RN1RF
         .ex_pc_plus4(id_ex_reg_0_ex_pc_plus4),
         .ex_rd(id_ex_reg_0_ex_rd),
         .ex_rd_we(id_ex_reg_0_ex_rd_we),
-        .ex_store_data(forward_mux_1_out_data),
+        .ex_store_data(forward_mux_2_out_data),
         .ex_valid(Net),
         .ex_wb_sel(id_ex_reg_0_ex_wb_sel),
         .flush(1'b0),
@@ -524,12 +584,20 @@ module RV32I_EX_imp_10RN1RF
         .mem_stage_data(mem_stage_0_mem_forward_data),
         .mem_wb_data(wb_mux_0_rd_wdata),
         .out_data(forward_mux_1_out_data));
+  BASIC_forward_mux_1_0 forward_mux_2
+       (.base_data(id_ex_reg_0_ex_rs2_data),
+        .ex_mem_data(ex_mem_reg_1_mem_alu_result),
+        .forward_sel(forwarding_0_forward_store),
+        .mem_stage_data(mem_stage_0_mem_forward_data),
+        .mem_wb_data(wb_mux_0_rd_wdata),
+        .out_data(forward_mux_2_out_data));
   BASIC_forwarding_0_0 forwarding_0
        (.ex_op_b_sel(id_ex_reg_0_ex_op_b_sel),
         .ex_rs1(id_ex_reg_0_ex_rs1),
         .ex_rs2(id_ex_reg_0_ex_rs2),
         .forward_a(forwarding_0_forward_a),
         .forward_b(forwarding_0_forward_b),
+        .forward_store(forwarding_0_forward_store),
         .mem_rd(ex_mem_reg_1_mem_rd),
         .mem_rd_we(util_vector_logic_1_Res),
         .mem_stage_rd(mem_stage_0_mem_out_rd),
@@ -585,7 +653,12 @@ module RV32I_ID_imp_FBK4LB
     rd_addr,
     rd_wdata,
     rd_we,
-    rst);
+    rs1,
+    rs1_used,
+    rs2,
+    rs2_used,
+    rst,
+    stall);
   input bubble;
   input clk;
   output [3:0]ex_alu_op;
@@ -618,10 +691,15 @@ module RV32I_ID_imp_FBK4LB
   input [4:0]rd_addr;
   input [31:0]rd_wdata;
   input rd_we;
+  output [4:0]rs1;
+  output rs1_used;
+  output [4:0]rs2;
+  output rs2_used;
   input rst;
+  input stall;
 
   wire Net;
-  wire branch_0_ex_flush_req;
+  wire bubble_1;
   wire [3:0]control_0_alu_op;
   wire control_0_branch_en;
   wire [2:0]control_0_branch_funct3;
@@ -648,7 +726,9 @@ module RV32I_ID_imp_FBK4LB
   wire [6:0]decoder_0_opcode;
   wire [4:0]decoder_0_rd;
   wire [4:0]decoder_0_rs1;
+  wire decoder_0_rs1_used;
   wire [4:0]decoder_0_rs2;
+  wire decoder_0_rs2_used;
   wire [3:0]id_ex_reg_0_ex_alu_op;
   wire id_ex_reg_0_ex_branch_en;
   wire [2:0]id_ex_reg_0_ex_branch_funct3;
@@ -684,7 +764,7 @@ module RV32I_ID_imp_FBK4LB
   wire [31:0]wb_mux_0_rd_wdata;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
-  assign branch_0_ex_flush_req = bubble;
+  assign bubble_1 = bubble;
   assign ex_alu_op[3:0] = id_ex_reg_0_ex_alu_op;
   assign ex_branch_en = id_ex_reg_0_ex_branch_en;
   assign ex_branch_funct3[2:0] = id_ex_reg_0_ex_branch_funct3;
@@ -714,6 +794,10 @@ module RV32I_ID_imp_FBK4LB
   assign if_id_reg_0_id_valid_out = id_valid;
   assign mem_wb_reg_0_wb_rd = rd_addr[4:0];
   assign proc_sys_reset_0_peripheral_reset = rst;
+  assign rs1[4:0] = decoder_0_rs1;
+  assign rs1_used = decoder_0_rs1_used;
+  assign rs2[4:0] = decoder_0_rs2;
+  assign rs2_used = decoder_0_rs2_used;
   assign util_vector_logic_0_Res = rd_we;
   assign wb_mux_0_rd_wdata = rd_wdata[31:0];
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
@@ -751,9 +835,11 @@ module RV32I_ID_imp_FBK4LB
         .opcode(decoder_0_opcode),
         .rd(decoder_0_rd),
         .rs1(decoder_0_rs1),
-        .rs2(decoder_0_rs2));
+        .rs1_used(decoder_0_rs1_used),
+        .rs2(decoder_0_rs2),
+        .rs2_used(decoder_0_rs2_used));
   BASIC_id_ex_reg_0_0 id_ex_reg_0
-       (.bubble(branch_0_ex_flush_req),
+       (.bubble(bubble_1),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .ex_alu_op(id_ex_reg_0_ex_alu_op),
         .ex_branch_en(id_ex_reg_0_ex_branch_en),
@@ -830,11 +916,13 @@ module RV32I_IF_imp_Y4LBN8
     clk,
     dout,
     flush,
+    hold,
     id_instr_out,
     id_pc4_out,
     id_pc_out,
     id_valid_out,
     if_instr_in,
+    pc_en,
     pc_redirect_target,
     pc_redirect_valid,
     rst);
@@ -845,11 +933,13 @@ module RV32I_IF_imp_Y4LBN8
   input clk;
   output [0:0]dout;
   input flush;
+  input hold;
   output [31:0]id_instr_out;
   output [31:0]id_pc4_out;
   output [31:0]id_pc_out;
   output id_valid_out;
   input [31:0]if_instr_in;
+  input pc_en;
   input [31:0]pc_redirect_target;
   input pc_redirect_valid;
   input rst;
@@ -857,6 +947,7 @@ module RV32I_IF_imp_Y4LBN8
   wire branch_0_ex_flush_req;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
+  wire hold_1;
   wire [31:0]if_id_reg_0_id_instr_out;
   wire [31:0]if_id_reg_0_id_pc4_out;
   wire [31:0]if_id_reg_0_id_pc_out;
@@ -864,12 +955,12 @@ module RV32I_IF_imp_Y4LBN8
   wire [31:0]if_instr_in_1;
   wire [0:0]mem_stage_0_mem_out_rd_we;
   wire [0:0]mem_stage_0_mem_out_valid;
+  wire pc_en_1;
   wire [10:0]pc_to_imem_addr_0_addr;
   wire [31:0]pc_unit_0_pc;
   wire [31:0]pc_unit_0_pc_plus4;
   wire proc_sys_reset_0_peripheral_reset;
   wire [0:0]util_vector_logic_2_Res;
-  wire [0:0]xlconstant_1_dout;
   wire [0:0]xlconstant_2_dout;
   wire [0:0]xlconstant_3_dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
@@ -880,6 +971,7 @@ module RV32I_IF_imp_Y4LBN8
   assign branch_0_pc_redirect_target = pc_redirect_target[31:0];
   assign branch_0_pc_redirect_valid = pc_redirect_valid;
   assign dout[0] = xlconstant_2_dout;
+  assign hold_1 = hold;
   assign id_instr_out[31:0] = if_id_reg_0_id_instr_out;
   assign id_pc4_out[31:0] = if_id_reg_0_id_pc4_out;
   assign id_pc_out[31:0] = if_id_reg_0_id_pc_out;
@@ -887,12 +979,13 @@ module RV32I_IF_imp_Y4LBN8
   assign if_instr_in_1 = if_instr_in[31:0];
   assign mem_stage_0_mem_out_rd_we = Op2[0];
   assign mem_stage_0_mem_out_valid = Op1[0];
+  assign pc_en_1 = pc_en;
   assign proc_sys_reset_0_peripheral_reset = rst;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_if_id_reg_0_0 if_id_reg_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .flush(branch_0_ex_flush_req),
-        .hold(1'b0),
+        .hold(hold_1),
         .id_instr_out(if_id_reg_0_id_instr_out),
         .id_pc4_out(if_id_reg_0_id_pc4_out),
         .id_pc_out(if_id_reg_0_id_pc_out),
@@ -908,7 +1001,7 @@ module RV32I_IF_imp_Y4LBN8
   BASIC_pc_unit_0_0 pc_unit_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .pc(pc_unit_0_pc),
-        .pc_en(xlconstant_1_dout),
+        .pc_en(pc_en_1),
         .pc_plus4(pc_unit_0_pc_plus4),
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(branch_0_pc_redirect_valid),
@@ -917,8 +1010,6 @@ module RV32I_IF_imp_Y4LBN8
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(mem_stage_0_mem_out_rd_we),
         .Res(util_vector_logic_2_Res));
-  BASIC_xlconstant_0_1 xlconstant_1
-       (.dout(xlconstant_1_dout));
   BASIC_xlconstant_1_0 xlconstant_2
        (.dout(xlconstant_2_dout));
   BASIC_xlconstant_2_0 xlconstant_3

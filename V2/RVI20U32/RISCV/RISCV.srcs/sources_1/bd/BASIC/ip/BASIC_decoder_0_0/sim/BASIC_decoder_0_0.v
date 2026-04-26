@@ -69,7 +69,9 @@ module BASIC_decoder_0_0 (
   illegal_opcode,
   rd,
   rs1,
-  rs2
+  rs2,
+  rs1_used,
+  rs2_used
 );
 
 input wire [31 : 0] instr;
@@ -87,6 +89,8 @@ output wire illegal_opcode;
 output wire [4 : 0] rd;
 output wire [4 : 0] rs1;
 output wire [4 : 0] rs2;
+output wire rs1_used;
+output wire rs2_used;
 
   decoder inst (
     .instr(instr),
@@ -103,6 +107,8 @@ output wire [4 : 0] rs2;
     .illegal_opcode(illegal_opcode),
     .rd(rd),
     .rs1(rs1),
-    .rs2(rs2)
+    .rs2(rs2),
+    .rs1_used(rs1_used),
+    .rs2_used(rs2_used)
   );
 endmodule
