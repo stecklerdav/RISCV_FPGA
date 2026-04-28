@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun Apr 26 17:00:50 2026
+//Date        : Tue Apr 28 00:42:06 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=42,numReposBlks=35,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=24,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=43,numReposBlks=36,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=24,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
    ();
 
@@ -23,6 +23,7 @@ module BASIC
   wire [3:0]RV32I_MEM_dmem_be;
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
+  wire RV32I_MEM_wb_valid;
   wire [31:0]RV32I_RAM_MEMORY_rdata;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
@@ -128,6 +129,7 @@ module BASIC
         .mem_stage_data(mem_stage_0_mem_forward_data),
         .mem_stage_rd(mem_stage_0_mem_out_rd),
         .mem_stage_rd_we(util_vector_logic_2_Res),
+        .mem_stage_valid(mem_stage_0_mem_out_valid),
         .mem_store_data(ex_mem_reg_1_mem_store_data),
         .mem_valid(ex_mem_reg_1_mem_valid),
         .mem_wb_data(wb_mux_0_rd_wdata),
@@ -138,7 +140,8 @@ module BASIC
         .pc_redirect_valid(branch_0_pc_redirect_valid),
         .rst(proc_sys_reset_0_peripheral_reset),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_rd_we(util_vector_logic_0_Res));
+        .wb_rd_we(util_vector_logic_0_Res),
+        .wb_valid(RV32I_MEM_wb_valid));
   RV32I_ID_imp_FBK4LB RV32I_ID
        (.bubble(priority_branch_OR_l_0_id_ex_flush_final),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -223,7 +226,8 @@ module BASIC
         .wb_imm_u(mem_wb_reg_0_wb_imm_u),
         .wb_pc_plus4(mem_wb_reg_0_wb_pc_plus4),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_sel(mem_wb_reg_0_wb_sel));
+        .wb_sel(mem_wb_reg_0_wb_sel),
+        .wb_valid(RV32I_MEM_wb_valid));
   RV32I_RAM_MEMORY_imp_1A3BT4W RV32I_RAM_MEMORY
        (.addr(RV32I_MEM_dmem_addr),
         .be(RV32I_MEM_dmem_be),
@@ -246,8 +250,7 @@ module BASIC
         .probe3(wb_mux_0_rd_wdata),
         .probe4(load_use_detection_0_load_use_hazard));
   BASIC_load_use_detection_0_0 load_use_detection_0
-       (.ex_flush_req(RV32I_EX_ex_flush_req),
-        .id_ex_flush(load_use_detection_0_id_ex_flush),
+       (.id_ex_flush(load_use_detection_0_id_ex_flush),
         .id_ex_mem_re(id_ex_reg_0_ex_mem_re),
         .id_ex_rd(id_ex_reg_0_ex_rd),
         .id_ex_valid(Net),
@@ -341,6 +344,7 @@ module RV32I_EX_imp_10RN1RF
     mem_stage_data,
     mem_stage_rd,
     mem_stage_rd_we,
+    mem_stage_valid,
     mem_store_data,
     mem_valid,
     mem_wb_data,
@@ -351,7 +355,8 @@ module RV32I_EX_imp_10RN1RF
     pc_redirect_valid,
     rst,
     wb_rd,
-    wb_rd_we);
+    wb_rd_we,
+    wb_valid);
   input [3:0]alu_op;
   input clk;
   input ex_branch_en;
@@ -387,6 +392,7 @@ module RV32I_EX_imp_10RN1RF
   input [31:0]mem_stage_data;
   input [4:0]mem_stage_rd;
   input mem_stage_rd_we;
+  input mem_stage_valid;
   output [31:0]mem_store_data;
   output mem_valid;
   input [31:0]mem_wb_data;
@@ -398,6 +404,7 @@ module RV32I_EX_imp_10RN1RF
   input rst;
   input [4:0]wb_rd;
   input [4:0]wb_rd_we;
+  input wb_valid;
 
   wire Net;
   wire [31:0]alu_0_y;
@@ -449,6 +456,7 @@ module RV32I_EX_imp_10RN1RF
   wire [1:0]id_ex_reg_0_ex_wb_sel;
   wire [31:0]mem_stage_0_mem_forward_data;
   wire [4:0]mem_stage_0_mem_out_rd;
+  wire mem_stage_valid_1;
   wire [4:0]mem_wb_reg_0_wb_rd;
   wire [31:0]operand_a_mux_0_operand_a;
   wire [31:0]operand_b_mux_0_operand_b;
@@ -457,6 +465,7 @@ module RV32I_EX_imp_10RN1RF
   wire [0:0]util_vector_logic_1_Res;
   wire util_vector_logic_2_Res;
   wire [31:0]wb_mux_0_rd_wdata;
+  wire wb_valid_1;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
   assign Net = ex_valid;
@@ -494,6 +503,7 @@ module RV32I_EX_imp_10RN1RF
   assign mem_rd_we = ex_mem_reg_1_mem_rd_we;
   assign mem_stage_0_mem_forward_data = mem_stage_data[31:0];
   assign mem_stage_0_mem_out_rd = mem_stage_rd[4:0];
+  assign mem_stage_valid_1 = mem_stage_valid;
   assign mem_store_data[31:0] = ex_mem_reg_1_mem_store_data;
   assign mem_valid = ex_mem_reg_1_mem_valid;
   assign mem_wb_reg_0_wb_rd = wb_rd[4:0];
@@ -504,6 +514,7 @@ module RV32I_EX_imp_10RN1RF
   assign util_vector_logic_0_Res = wb_rd_we[4:0];
   assign util_vector_logic_2_Res = mem_stage_rd_we;
   assign wb_mux_0_rd_wdata = mem_wb_data[31:0];
+  assign wb_valid_1 = wb_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_alu_0_0 alu_0
        (.a(operand_a_mux_0_operand_a),
@@ -521,8 +532,8 @@ module RV32I_EX_imp_10RN1RF
         .ex_jal(id_ex_reg_0_ex_jal),
         .ex_jalr(id_ex_reg_0_ex_jalr),
         .ex_pc(id_ex_reg_0_ex_pc),
-        .ex_rs1_data(id_ex_reg_0_ex_rs1_data),
-        .ex_rs2_data(id_ex_reg_0_ex_rs2_data),
+        .ex_rs1_data(forward_mux_0_out_data),
+        .ex_rs2_data(forward_mux_1_out_data),
         .ex_valid(Net),
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(branch_0_pc_redirect_valid));
@@ -592,8 +603,11 @@ module RV32I_EX_imp_10RN1RF
         .mem_rd_we(util_vector_logic_1_Res),
         .mem_stage_rd(mem_stage_0_mem_out_rd),
         .mem_stage_rd_we(util_vector_logic_2_Res),
+        .mem_stage_valid(mem_stage_valid_1),
+        .mem_valid(ex_mem_reg_1_mem_valid),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_rd_we(util_vector_logic_0_Res[0]));
+        .wb_rd_we(util_vector_logic_0_Res[0]),
+        .wb_valid(wb_valid_1));
   BASIC_operand_a_mux_0_0 operand_a_mux_0
        (.op_a_sel(id_ex_reg_0_ex_op_a_sel),
         .operand_a(operand_a_mux_0_operand_a),
@@ -1033,7 +1047,8 @@ module RV32I_MEM_imp_3VZ702
     wb_imm_u,
     wb_pc_plus4,
     wb_rd,
-    wb_sel);
+    wb_sel,
+    wb_valid);
   output [4:0]Res;
   input clk;
   output [31:0]dmem_addr;
@@ -1064,6 +1079,7 @@ module RV32I_MEM_imp_3VZ702
   output [31:0]wb_pc_plus4;
   output [4:0]wb_rd;
   output [1:0]wb_sel;
+  output wb_valid;
 
   wire [31:0]ex_mem_reg_1_mem_alu_result;
   wire [31:0]ex_mem_reg_1_mem_imm_u;
@@ -1101,6 +1117,7 @@ module RV32I_MEM_imp_3VZ702
   wire mem_wb_reg_0_wb_valid;
   wire proc_sys_reset_0_peripheral_reset;
   wire regfile_we_gen_0_regfile_we;
+  wire [0:0]xlconstant_3_dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
   assign Res[0] = regfile_we_gen_0_regfile_we;
@@ -1132,6 +1149,7 @@ module RV32I_MEM_imp_3VZ702
   assign wb_pc_plus4[31:0] = mem_wb_reg_0_wb_pc_plus4;
   assign wb_rd[4:0] = mem_wb_reg_0_wb_rd;
   assign wb_sel[1:0] = mem_wb_reg_0_wb_sel;
+  assign wb_valid = mem_wb_reg_0_wb_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_mem_stage_0_0 mem_stage_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -1140,7 +1158,7 @@ module RV32I_MEM_imp_3VZ702
         .dmem_rdata(mem_data_1),
         .dmem_wdata(mem_stage_0_dmem_wdata),
         .dmem_we(mem_stage_0_dmem_we),
-        .kill(1'b0),
+        .kill(xlconstant_3_dout),
         .mem_forward_data(mem_stage_0_mem_forward_data),
         .mem_in_alu_result(ex_mem_reg_1_mem_alu_result),
         .mem_in_imm_u(ex_mem_reg_1_mem_imm_u),
@@ -1190,6 +1208,8 @@ module RV32I_MEM_imp_3VZ702
         .wb_rd(mem_wb_reg_0_wb_rd),
         .wb_rd_we(mem_wb_reg_0_wb_rd_we),
         .wb_valid(mem_wb_reg_0_wb_valid));
+  BASIC_xlconstant_3_0 xlconstant_3
+       (.dout(xlconstant_3_dout));
 endmodule
 
 module RV32I_RAM_MEMORY_imp_1A3BT4W

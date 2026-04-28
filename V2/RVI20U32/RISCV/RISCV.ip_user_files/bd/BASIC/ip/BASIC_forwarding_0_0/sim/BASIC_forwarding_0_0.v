@@ -58,11 +58,14 @@ module BASIC_forwarding_0_0 (
   ex_rs1,
   ex_rs2,
   ex_op_b_sel,
+  mem_valid,
   mem_rd,
   mem_rd_we,
   mem_is_load,
+  mem_stage_valid,
   mem_stage_rd,
   mem_stage_rd_we,
+  wb_valid,
   wb_rd,
   wb_rd_we,
   forward_a,
@@ -73,11 +76,14 @@ module BASIC_forwarding_0_0 (
 input wire [4 : 0] ex_rs1;
 input wire [4 : 0] ex_rs2;
 input wire [1 : 0] ex_op_b_sel;
+input wire mem_valid;
 input wire [4 : 0] mem_rd;
 input wire mem_rd_we;
 input wire mem_is_load;
+input wire mem_stage_valid;
 input wire [4 : 0] mem_stage_rd;
 input wire mem_stage_rd_we;
+input wire wb_valid;
 input wire [4 : 0] wb_rd;
 input wire wb_rd_we;
 output wire [1 : 0] forward_a;
@@ -88,11 +94,14 @@ output wire [1 : 0] forward_store;
     .ex_rs1(ex_rs1),
     .ex_rs2(ex_rs2),
     .ex_op_b_sel(ex_op_b_sel),
+    .mem_valid(mem_valid),
     .mem_rd(mem_rd),
     .mem_rd_we(mem_rd_we),
     .mem_is_load(mem_is_load),
+    .mem_stage_valid(mem_stage_valid),
     .mem_stage_rd(mem_stage_rd),
     .mem_stage_rd_we(mem_stage_rd_we),
+    .wb_valid(wb_valid),
     .wb_rd(wb_rd),
     .wb_rd_we(wb_rd_we),
     .forward_a(forward_a),

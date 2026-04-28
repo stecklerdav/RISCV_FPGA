@@ -13,6 +13,7 @@ module priority_branch_OR_load_use (
     output wire id_ex_flush_final
 );
 
+    // Branch/JAL/JALR tomado tiene prioridad sobre load-use.
     assign pc_en_final =
         ex_flush_req ? 1'b1 : load_use_pc_en;
 

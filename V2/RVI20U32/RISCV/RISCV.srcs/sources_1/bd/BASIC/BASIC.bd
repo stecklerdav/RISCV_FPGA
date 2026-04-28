@@ -45,8 +45,9 @@
       },
       "RV32I_MEM": {
         "mem_wb_reg_0": "",
+        "regfile_we_gen_0": "",
         "mem_stage_0": "",
-        "regfile_we_gen_0": ""
+        "xlconstant_3": ""
       },
       "RV32I_WB": {
         "wb_mux_0": ""
@@ -54,11 +55,11 @@
       "RV32I_RAM_MEMORY": {
         "ram_data_1": ""
       },
-      "load_use_detection_0": "",
-      "priority_branch_OR_l_0": "",
       "ila_0": "",
       "vio_0": "",
-      "util_vector_logic_2": ""
+      "util_vector_logic_2": "",
+      "load_use_detection_0": "",
+      "priority_branch_OR_l_0": ""
     },
     "components": {
       "zynq_ultra_ps_e_0": {
@@ -4770,6 +4771,12 @@
           },
           "ex_flush_req": {
             "direction": "O"
+          },
+          "mem_stage_valid": {
+            "direction": "I"
+          },
+          "wb_valid": {
+            "direction": "I"
           }
         },
         "components": {
@@ -5286,6 +5293,9 @@
                 "left": "1",
                 "right": "0"
               },
+              "mem_valid": {
+                "direction": "I"
+              },
               "mem_rd": {
                 "direction": "I",
                 "left": "4",
@@ -5297,12 +5307,18 @@
               "mem_is_load": {
                 "direction": "I"
               },
+              "mem_stage_valid": {
+                "direction": "I"
+              },
               "mem_stage_rd": {
                 "direction": "I",
                 "left": "4",
                 "right": "0"
               },
               "mem_stage_rd_we": {
+                "direction": "I"
+              },
+              "wb_valid": {
                 "direction": "I"
               },
               "wb_rd": {
@@ -5353,7 +5369,8 @@
           "forward_mux_1_out_data": {
             "ports": [
               "forward_mux_1/out_data",
-              "operand_b_mux_0/rs2_data"
+              "operand_b_mux_0/rs2_data",
+              "branch_0/ex_rs2_data"
             ]
           },
           "branch_0_ex_exception_valid": {
@@ -5377,7 +5394,8 @@
           "forward_mux_0_out_data": {
             "ports": [
               "forward_mux_0/out_data",
-              "operand_a_mux_0/rs1_data"
+              "operand_a_mux_0/rs1_data",
+              "branch_0/ex_rs1_data"
             ]
           },
           "forwarding_0_forward_a": {
@@ -5483,7 +5501,8 @@
             "ports": [
               "ex_mem_reg_1/mem_valid",
               "mem_valid",
-              "util_vector_logic_1/Op1"
+              "util_vector_logic_1/Op1",
+              "forwarding_0/mem_valid"
             ]
           },
           "ex_mem_reg_1_mem_alu_result": {
@@ -5581,7 +5600,6 @@
           "id_ex_reg_0_ex_rs1_data": {
             "ports": [
               "ex_rs1_data",
-              "branch_0/ex_rs1_data",
               "forward_mux_0/base_data"
             ]
           },
@@ -5596,7 +5614,6 @@
           "id_ex_reg_0_ex_rs2_data": {
             "ports": [
               "ex_rs2_data",
-              "branch_0/ex_rs2_data",
               "forward_mux_1/base_data",
               "forward_mux_2/base_data"
             ]
@@ -5703,6 +5720,18 @@
             "ports": [
               "forward_mux_2/out_data",
               "ex_mem_reg_1/ex_store_data"
+            ]
+          },
+          "mem_stage_valid_1": {
+            "ports": [
+              "mem_stage_valid",
+              "forwarding_0/mem_stage_valid"
+            ]
+          },
+          "wb_valid_1": {
+            "ports": [
+              "wb_valid",
+              "forwarding_0/wb_valid"
             ]
           }
         }
@@ -5840,6 +5869,9 @@
           },
           "dmem_we": {
             "direction": "O"
+          },
+          "wb_valid": {
+            "direction": "O"
           }
         },
         "components": {
@@ -5951,6 +5983,31 @@
                 "direction": "O",
                 "left": "1",
                 "right": "0"
+              }
+            }
+          },
+          "regfile_we_gen_0": {
+            "vlnv": "xilinx.com:module_ref:regfile_we_gen:1.0",
+            "xci_name": "BASIC_regfile_we_gen_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "regfile_we_gen",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "wb_valid": {
+                "direction": "I"
+              },
+              "wb_rd_we": {
+                "direction": "I"
+              },
+              "wb_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "regfile_we": {
+                "direction": "O"
               }
             }
           },
@@ -6118,28 +6175,12 @@
               }
             }
           },
-          "regfile_we_gen_0": {
-            "vlnv": "xilinx.com:module_ref:regfile_we_gen:1.0",
-            "xci_name": "BASIC_regfile_we_gen_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "regfile_we_gen",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "wb_valid": {
-                "direction": "I"
-              },
-              "wb_rd_we": {
-                "direction": "I"
-              },
-              "wb_rd": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "regfile_we": {
-                "direction": "O"
+          "xlconstant_3": {
+            "vlnv": "xilinx.com:ip:xlconstant:1.1",
+            "xci_name": "BASIC_xlconstant_3_0",
+            "parameters": {
+              "CONST_VAL": {
+                "value": "0"
               }
             }
           }
@@ -6352,7 +6393,8 @@
           "mem_wb_reg_0_wb_valid": {
             "ports": [
               "mem_wb_reg_0/wb_valid",
-              "regfile_we_gen_0/wb_valid"
+              "regfile_we_gen_0/wb_valid",
+              "wb_valid"
             ]
           },
           "mem_wb_reg_0_wb_rd_we": {
@@ -6371,6 +6413,12 @@
             "ports": [
               "mem_data",
               "mem_stage_0/dmem_rdata"
+            ]
+          },
+          "xlconstant_3_dout": {
+            "ports": [
+              "xlconstant_3/dout",
+              "mem_stage_0/kill"
             ]
           }
         }
@@ -6609,6 +6657,48 @@
           }
         }
       },
+      "ila_0": {
+        "vlnv": "xilinx.com:ip:ila:6.2",
+        "xci_name": "BASIC_ila_0_0",
+        "parameters": {
+          "C_ENABLE_ILA_AXI_MON": {
+            "value": "false"
+          },
+          "C_MONITOR_TYPE": {
+            "value": "Native"
+          },
+          "C_NUM_OF_PROBES": {
+            "value": "5"
+          },
+          "C_PROBE2_WIDTH": {
+            "value": "5"
+          },
+          "C_PROBE3_WIDTH": {
+            "value": "32"
+          }
+        }
+      },
+      "vio_0": {
+        "vlnv": "xilinx.com:ip:vio:3.0",
+        "xci_name": "BASIC_vio_0_0",
+        "parameters": {
+          "C_NUM_PROBE_IN": {
+            "value": "0"
+          }
+        }
+      },
+      "util_vector_logic_2": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "BASIC_util_vector_logic_2_0",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "or"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      },
       "load_use_detection_0": {
         "vlnv": "xilinx.com:module_ref:load_use_detection:1.0",
         "xci_name": "BASIC_load_use_detection_0_0",
@@ -6646,9 +6736,6 @@
             "direction": "I"
           },
           "if_id_rs2_used": {
-            "direction": "I"
-          },
-          "ex_flush_req": {
             "direction": "I"
           },
           "load_use_hazard": {
@@ -6697,48 +6784,6 @@
           },
           "id_ex_flush_final": {
             "direction": "O"
-          }
-        }
-      },
-      "ila_0": {
-        "vlnv": "xilinx.com:ip:ila:6.2",
-        "xci_name": "BASIC_ila_0_0",
-        "parameters": {
-          "C_ENABLE_ILA_AXI_MON": {
-            "value": "false"
-          },
-          "C_MONITOR_TYPE": {
-            "value": "Native"
-          },
-          "C_NUM_OF_PROBES": {
-            "value": "5"
-          },
-          "C_PROBE2_WIDTH": {
-            "value": "5"
-          },
-          "C_PROBE3_WIDTH": {
-            "value": "32"
-          }
-        }
-      },
-      "vio_0": {
-        "vlnv": "xilinx.com:ip:vio:3.0",
-        "xci_name": "BASIC_vio_0_0",
-        "parameters": {
-          "C_NUM_PROBE_IN": {
-            "value": "0"
-          }
-        }
-      },
-      "util_vector_logic_2": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "BASIC_util_vector_logic_2_0",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "or"
-          },
-          "C_SIZE": {
-            "value": "1"
           }
         }
       }
@@ -7039,7 +7084,8 @@
       "mem_stage_0_mem_out_valid": {
         "ports": [
           "RV32I_MEM/mem_valid",
-          "RV32I_IF/Op1"
+          "RV32I_IF/Op1",
+          "RV32I_EX/mem_stage_valid"
         ]
       },
       "mem_stage_0_mem_out_rd": {
@@ -7171,8 +7217,7 @@
       "RV32I_EX_ex_flush_req": {
         "ports": [
           "RV32I_EX/ex_flush_req",
-          "priority_branch_OR_l_0/ex_flush_req",
-          "load_use_detection_0/ex_flush_req"
+          "priority_branch_OR_l_0/ex_flush_req"
         ]
       },
       "priority_branch_OR_l_0_id_ex_flush_final": {
@@ -7234,6 +7279,12 @@
         "ports": [
           "RV32I_RAM_MEMORY/rdata",
           "RV32I_MEM/mem_data"
+        ]
+      },
+      "RV32I_MEM_wb_valid": {
+        "ports": [
+          "RV32I_MEM/wb_valid",
+          "RV32I_EX/wb_valid"
         ]
       }
     },

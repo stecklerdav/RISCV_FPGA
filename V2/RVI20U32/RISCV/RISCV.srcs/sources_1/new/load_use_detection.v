@@ -3,7 +3,7 @@
 module load_use_detection (
     // Instrucción que está en ID/EX
     input  wire        id_ex_valid,
-    input  wire        id_ex_mem_re,      // 1 si la instrucción en EX es load
+    input  wire        id_ex_mem_re,
     input  wire [4:0]  id_ex_rd,
 
     // Instrucción que está en IF/ID
@@ -13,10 +13,7 @@ module load_use_detection (
     input  wire        if_id_rs1_used,
     input  wire        if_id_rs2_used,
 
-    // Flush por branch/jal/jalr tomado en EX
-    input  wire        ex_flush_req,
-
-    // Salidas de control
+    // Salidas de control solo para load-use
     output reg         load_use_hazard,
     output reg         pc_en,
     output reg         if_id_hold,
@@ -54,16 +51,6 @@ module load_use_detection (
             if_id_hold = 1'b1;
 
             // Meter burbuja en ID/EX
-            id_ex_flush = 1'b1;
-        end
-
-        // ------------------------------------------------------------
-        // Flush por branch/jump tomado.
-        // Prioridad sobre load-use.
-        // ------------------------------------------------------------
-        if (ex_flush_req) begin
-            pc_en       = 1'b1;
-            if_id_hold  = 1'b0;
             id_ex_flush = 1'b1;
         end
     end

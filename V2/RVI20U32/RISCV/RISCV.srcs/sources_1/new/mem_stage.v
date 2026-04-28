@@ -4,6 +4,10 @@ module mem_stage (
     input  wire        clk,
     input  wire        rst,
     input  wire        stall,
+
+    // IMPORTANTE:
+    // kill NO debe ser el flush normal de branch/jal/jalr.
+    // Solo úsalo para matar una instrucción en MEM por excepción o evento especial.
     input  wire        kill,
 
     input  wire        mem_in_valid,
@@ -70,14 +74,17 @@ module mem_stage (
 
     reg [31:0] load_data_aligned;
 
+    // ============================================================
+    // Interfaz hacia RAM de datos
+    // ============================================================
     always @(*) begin
         dmem_addr  = mem_in_alu_result;
-        dmem_we    = mem_in_valid & mem_in_mem_we & ~stall;
-        dmem_re    = mem_in_valid & mem_in_mem_re & ~stall;
+        dmem_we    = mem_in_valid & mem_in_mem_we & ~stall & ~kill;
+        dmem_re    = mem_in_valid & mem_in_mem_re & ~stall & ~kill;
         dmem_be    = 4'b0000;
         dmem_wdata = 32'b0;
 
-        if (mem_in_valid && mem_in_mem_we) begin
+        if (mem_in_valid && mem_in_mem_we && !stall && !kill) begin
             case (mem_in_mem_size)
 
                 SZ_B: begin
@@ -86,17 +93,25 @@ module mem_stage (
                             dmem_be    = 4'b0001;
                             dmem_wdata = {24'b0, mem_in_store_data[7:0]};
                         end
+
                         2'b01: begin
                             dmem_be    = 4'b0010;
                             dmem_wdata = {16'b0, mem_in_store_data[7:0], 8'b0};
                         end
+
                         2'b10: begin
                             dmem_be    = 4'b0100;
                             dmem_wdata = {8'b0, mem_in_store_data[7:0], 16'b0};
                         end
+
                         2'b11: begin
                             dmem_be    = 4'b1000;
                             dmem_wdata = {mem_in_store_data[7:0], 24'b0};
+                        end
+
+                        default: begin
+                            dmem_be    = 4'b0000;
+                            dmem_wdata = 32'b0;
                         end
                     endcase
                 end
@@ -124,8 +139,20 @@ module mem_stage (
         end
     end
 
+    // ============================================================
+    // Registro de alineación MEM
+    //
+    // Este registro alinea:
+    //   - rd
+    //   - wb_sel
+    //   - rd_we
+    //   - dirección ALU
+    //   - size/sign
+    //
+    // con dmem_rdata, que llega 1 ciclo después si la RAM es síncrona.
+    // ============================================================
     always @(posedge clk) begin
-        if (rst || kill) begin
+        if (rst) begin
             mem_q_valid        <= 1'b0;
             mem_q_alu_result   <= 32'b0;
             mem_q_pc_plus4     <= 32'b0;
@@ -141,7 +168,7 @@ module mem_stage (
             mem_q_wb_sel       <= 2'b0;
         end
         else if (!stall) begin
-            mem_q_valid        <= mem_in_valid;
+            mem_q_valid        <= mem_in_valid & ~kill;
             mem_q_alu_result   <= mem_in_alu_result;
             mem_q_pc_plus4     <= mem_in_pc_plus4;
             mem_q_imm_u        <= mem_in_imm_u;
@@ -157,24 +184,60 @@ module mem_stage (
         end
     end
 
+    // ============================================================
+    // Alineación / extensión de loads
+    // ============================================================
     always @(*) begin
         case (mem_q_mem_size)
 
             SZ_B: begin
                 case (mem_q_alu_result[1:0])
-                    2'b00: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[7:0]}   : {{24{dmem_rdata[7]}},  dmem_rdata[7:0]};
-                    2'b01: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[15:8]}  : {{24{dmem_rdata[15]}}, dmem_rdata[15:8]};
-                    2'b10: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[23:16]} : {{24{dmem_rdata[23]}}, dmem_rdata[23:16]};
-                    2'b11: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[31:24]} : {{24{dmem_rdata[31]}}, dmem_rdata[31:24]};
-                    default: load_data_aligned = 32'b0;
+                    2'b00: begin
+                        load_data_aligned =
+                            mem_q_mem_unsigned ?
+                            {24'b0, dmem_rdata[7:0]} :
+                            {{24{dmem_rdata[7]}}, dmem_rdata[7:0]};
+                    end
+
+                    2'b01: begin
+                        load_data_aligned =
+                            mem_q_mem_unsigned ?
+                            {24'b0, dmem_rdata[15:8]} :
+                            {{24{dmem_rdata[15]}}, dmem_rdata[15:8]};
+                    end
+
+                    2'b10: begin
+                        load_data_aligned =
+                            mem_q_mem_unsigned ?
+                            {24'b0, dmem_rdata[23:16]} :
+                            {{24{dmem_rdata[23]}}, dmem_rdata[23:16]};
+                    end
+
+                    2'b11: begin
+                        load_data_aligned =
+                            mem_q_mem_unsigned ?
+                            {24'b0, dmem_rdata[31:24]} :
+                            {{24{dmem_rdata[31]}}, dmem_rdata[31:24]};
+                    end
+
+                    default: begin
+                        load_data_aligned = 32'b0;
+                    end
                 endcase
             end
 
             SZ_H: begin
-                if (mem_q_alu_result[1] == 1'b0)
-                    load_data_aligned = mem_q_mem_unsigned ? {16'b0, dmem_rdata[15:0]} : {{16{dmem_rdata[15]}}, dmem_rdata[15:0]};
-                else
-                    load_data_aligned = mem_q_mem_unsigned ? {16'b0, dmem_rdata[31:16]} : {{16{dmem_rdata[31]}}, dmem_rdata[31:16]};
+                if (mem_q_alu_result[1] == 1'b0) begin
+                    load_data_aligned =
+                        mem_q_mem_unsigned ?
+                        {16'b0, dmem_rdata[15:0]} :
+                        {{16{dmem_rdata[15]}}, dmem_rdata[15:0]};
+                end else begin
+                    load_data_aligned =
+                        mem_q_mem_unsigned ?
+                        {16'b0, dmem_rdata[31:16]} :
+                        {{16{dmem_rdata[31]}}, dmem_rdata[31:16]};
+                end
             end
 
             SZ_W: begin
@@ -187,6 +250,9 @@ module mem_stage (
         endcase
     end
 
+    // ============================================================
+    // Salidas hacia MEM/WB y forwarding desde MEM stage
+    // ============================================================
     always @(*) begin
         mem_out_valid        = mem_q_valid;
         mem_out_data         = load_data_aligned;
@@ -202,11 +268,25 @@ module mem_stage (
         mem_out_wb_sel       = mem_q_wb_sel;
 
         case (mem_q_wb_sel)
-            WB_ALU:   mem_forward_data = mem_q_alu_result;
-            WB_MEM:   mem_forward_data = load_data_aligned;
-            WB_PC4:   mem_forward_data = mem_q_pc_plus4;
-            WB_IMM_U: mem_forward_data = mem_q_imm_u;
-            default:  mem_forward_data = mem_q_alu_result;
+            WB_ALU: begin
+                mem_forward_data = mem_q_alu_result;
+            end
+
+            WB_MEM: begin
+                mem_forward_data = load_data_aligned;
+            end
+
+            WB_PC4: begin
+                mem_forward_data = mem_q_pc_plus4;
+            end
+
+            WB_IMM_U: begin
+                mem_forward_data = mem_q_imm_u;
+            end
+
+            default: begin
+                mem_forward_data = mem_q_alu_result;
+            end
         endcase
     end
 

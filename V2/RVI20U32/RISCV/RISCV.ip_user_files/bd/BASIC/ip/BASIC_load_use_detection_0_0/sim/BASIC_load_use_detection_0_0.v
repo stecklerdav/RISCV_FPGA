@@ -63,7 +63,6 @@ module BASIC_load_use_detection_0_0 (
   if_id_rs2,
   if_id_rs1_used,
   if_id_rs2_used,
-  ex_flush_req,
   load_use_hazard,
   pc_en,
   if_id_hold,
@@ -78,7 +77,6 @@ input wire [4 : 0] if_id_rs1;
 input wire [4 : 0] if_id_rs2;
 input wire if_id_rs1_used;
 input wire if_id_rs2_used;
-input wire ex_flush_req;
 output wire load_use_hazard;
 output wire pc_en;
 output wire if_id_hold;
@@ -93,7 +91,6 @@ output wire id_ex_flush;
     .if_id_rs2(if_id_rs2),
     .if_id_rs1_used(if_id_rs1_used),
     .if_id_rs2_used(if_id_rs2_used),
-    .ex_flush_req(ex_flush_req),
     .load_use_hazard(load_use_hazard),
     .pc_en(pc_en),
     .if_id_hold(if_id_hold),

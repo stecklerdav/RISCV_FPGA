@@ -1,6 +1,6 @@
 Vivado Simulator 2020.1
 Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 665df9eb1049412aba2015d1f4da0e51 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_7 -L zynq_ultra_ps_e_vip_v1_0_7 -L lib_cdc_v1_0_2 -L proc_sys_reset_v5_0_13 -L xlconstant_v1_1_7 -L blk_mem_gen_v8_4_4 -L util_vector_logic_v2_0_1 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot BASIC_wrapper_behav xil_defaultlib.BASIC_wrapper xil_defaultlib.glbl -log elaborate.log 
+Running: /media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 665df9eb1049412aba2015d1f4da0e51 --incr --debug all --relax --mt 8 -L xil_defaultlib -L axi_infrastructure_v1_1_0 -L axi_vip_v1_1_7 -L zynq_ultra_ps_e_vip_v1_0_7 -L lib_cdc_v1_0_2 -L proc_sys_reset_v5_0_13 -L xlconstant_v1_1_7 -L blk_mem_gen_v8_4_4 -L util_vector_logic_v2_0_1 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot BASIC_wrapper_behav xil_defaultlib.BASIC_wrapper xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
@@ -161,7 +161,7 @@ WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'rd_qos' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3805]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'wr_qos_1' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3818]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'rd_qos_1' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3825]
-WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/sim/BASIC.v:271]
+WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/sim/BASIC.v:274]
 WARNING: [VRFC 10-5021] port 'PSS_ALTO_CORE_PAD_CLK' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/sim/BASIC_zynq_ultra_ps_e_0_0_vip_wrapper.v:207]
 WARNING: [VRFC 10-3283] element index 4096 into 'wrp_strb' is out of bounds [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:6968]
 WARNING: [VRFC 10-3705] select index 2 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:7181]
@@ -245,6 +245,7 @@ Compiling module xil_defaultlib.mem_wb_reg
 Compiling module xil_defaultlib.BASIC_mem_wb_reg_0_0
 Compiling module xil_defaultlib.regfile_we_gen
 Compiling module xil_defaultlib.BASIC_regfile_we_gen_0_0
+Compiling module xil_defaultlib.BASIC_xlconstant_3_0
 Compiling module xil_defaultlib.RV32I_MEM_imp_3VZ702
 Compiling module xil_defaultlib.ram_data(WORDS=1024)
 Compiling module xil_defaultlib.BASIC_ram_data_1_0
