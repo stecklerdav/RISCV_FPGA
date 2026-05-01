@@ -109,6 +109,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_regfile_w
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_1/BASIC_util_vector_logic_2_1.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_2_1 || ORIG_REF_NAME==BASIC_util_vector_logic_2_1} -quiet] -quiet
 
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_0/BASIC_xlconstant_3_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_0 || ORIG_REF_NAME==BASIC_xlconstant_3_0} -quiet] -quiet
+
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0.xdc
@@ -132,8 +135,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_vio_0_0 || ORIG_REF_NAME==BASIC_vio_0_0} -quiet] -quiet
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'BASIC'. Do not add the DONT_TOUCH constraint.
@@ -246,6 +247,9 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_1/BASIC_util_vector_logic_2_1.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_2_1 || ORIG_REF_NAME==BASIC_util_vector_logic_2_1} -quiet] -quiet
 
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_0/BASIC_xlconstant_3_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_0 || ORIG_REF_NAME==BASIC_xlconstant_3_0} -quiet] -quiet
+
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0.xdc
@@ -269,8 +273,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_vio_0_0 || ORIG_REF_NAME==BASIC_vio_0_0} -quiet] -quiet
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'BASIC'. Do not add the DONT_TOUCH constraint.

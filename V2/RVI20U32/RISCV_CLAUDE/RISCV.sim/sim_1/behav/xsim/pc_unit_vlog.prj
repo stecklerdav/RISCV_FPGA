@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" --include "../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" --include "/media/steckler/xilinx_linux/vivado_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
+"../../../../RISCV.srcs/sources_1/new/pc_unit.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
