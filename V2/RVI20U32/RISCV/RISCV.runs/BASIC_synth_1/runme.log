@@ -86,13 +86,29 @@ INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'cpu'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'gpio'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'ram'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
 INFO: [IP_Flow 19-5107] Inferred bus interface 'rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
 INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
 INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rst'.
 WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-add_files: Time (s): cpu = 00:00:31 ; elapsed = 00:00:16 . Memory (MB): peak = 2448.984 ; gain = 288.141 ; free physical = 463 ; free virtual = 20399
+INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'interface_aximm'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rst'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rst'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+add_files: Time (s): cpu = 00:00:40 ; elapsed = 00:00:20 . Memory (MB): peak = 2512.113 ; gain = 360.176 ; free physical = 1580 ; free virtual = 20170
 Command: synth_design -top BASIC -part xczu5ev-sfvc784-2-i -mode out_of_context
 Starting synth_design
 WARNING: [Vivado_Tcl 4-393] The 'Synthesis' target of the following IPs are stale, please generate the output products using the generate_target or synth_ip command before running synth_design.
@@ -106,12 +122,12 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu5ev
 INFO: [Device 21-403] Loading part xczu5ev-sfvc784-2-i
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 16343
+INFO: [Synth 8-7075] Helper process launched with PID 20574
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:18 . Memory (MB): peak = 2672.164 ; gain = 21.902 ; free physical = 725 ; free virtual = 19587
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:20 . Memory (MB): peak = 2673.258 ; gain = 22.902 ; free physical = 688 ; free virtual = 19189
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'BASIC' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:13]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_EX_imp_10RN1RF' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:311]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_EX_imp_10RN1RF' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:374]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_alu_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_alu_0_0/synth/BASIC_alu_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'alu' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/alu.v:3]
 	Parameter ALU_ADD bound to: 4'b0000 
@@ -139,20 +155,20 @@ INFO: [Synth 8-6157] synthesizing module 'branch' [/media/steckler/xilinx_linux/
 	Parameter EXC_INSTR_ADDR_MISALIGNED bound to: 4'b0000 
 INFO: [Synth 8-6155] done synthesizing module 'branch' (3#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/branch.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_branch_0_0' (4#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_branch_0_0/synth/BASIC_branch_0_0.v:58]
-WARNING: [Synth 8-7071] port 'branch_taken' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:524]
-WARNING: [Synth 8-7071] port 'instr_addr_misaligned' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:524]
-WARNING: [Synth 8-7071] port 'instr_addr_misaligned_target' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:524]
-WARNING: [Synth 8-7071] port 'ex_control_flow_change' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:524]
-WARNING: [Synth 8-7023] instance 'branch_0' of module 'BASIC_branch_0_0' has 19 connections declared, but only 15 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:524]
+WARNING: [Synth 8-7071] port 'branch_taken' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:587]
+WARNING: [Synth 8-7071] port 'instr_addr_misaligned' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:587]
+WARNING: [Synth 8-7071] port 'instr_addr_misaligned_target' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:587]
+WARNING: [Synth 8-7071] port 'ex_control_flow_change' of module 'BASIC_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:587]
+WARNING: [Synth 8-7023] instance 'branch_0' of module 'BASIC_branch_0_0' has 19 connections declared, but only 15 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:587]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_ex_mem_reg_1_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ex_mem_reg_1_0/synth/BASIC_ex_mem_reg_1_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'ex_mem_reg' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/ex_mem_reg.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'ex_mem_reg' (5#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/ex_mem_reg.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_ex_mem_reg_1_0' (6#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ex_mem_reg_1_0/synth/BASIC_ex_mem_reg_1_0.v:58]
-WARNING: [Synth 8-7071] port 'mem_pc' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:540]
-WARNING: [Synth 8-7071] port 'mem_exception_valid' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:540]
-WARNING: [Synth 8-7071] port 'mem_exception_cause' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:540]
-WARNING: [Synth 8-7071] port 'mem_exception_tval' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:540]
-WARNING: [Synth 8-7023] instance 'ex_mem_reg_1' of module 'BASIC_ex_mem_reg_1_0' has 36 connections declared, but only 32 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:540]
+WARNING: [Synth 8-7071] port 'mem_pc' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:603]
+WARNING: [Synth 8-7071] port 'mem_exception_valid' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:603]
+WARNING: [Synth 8-7071] port 'mem_exception_cause' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:603]
+WARNING: [Synth 8-7071] port 'mem_exception_tval' of module 'BASIC_ex_mem_reg_1_0' is unconnected for instance 'ex_mem_reg_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:603]
+WARNING: [Synth 8-7023] instance 'ex_mem_reg_1' of module 'BASIC_ex_mem_reg_1_0' has 36 connections declared, but only 32 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:603]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_forward_mux_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_forward_mux_0_0/synth/BASIC_forward_mux_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'forward_mux' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/forward_mux.v:3]
 INFO: [Synth 8-226] default block is never used [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/forward_mux.v:15]
@@ -187,8 +203,8 @@ INFO: [Synth 8-6157] synthesizing module 'util_vector_logic_v2_0_1_util_vector_l
 	Parameter C_SIZE bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'util_vector_logic_v2_0_1_util_vector_logic' (17#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_util_vector_logic_0_1' (18#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_0_1/synth/BASIC_util_vector_logic_0_1.v:57]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_EX_imp_10RN1RF' (19#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:311]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_ID_imp_FBK4LB' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:627]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_EX_imp_10RN1RF' (19#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:374]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_ID_imp_FBK4LB' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:690]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_control_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_control_0_0/synth/BASIC_control_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'control' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/control.v:3]
 	Parameter IMM_I bound to: 3'b000 
@@ -234,8 +250,8 @@ INFO: [Synth 8-6157] synthesizing module 'decoder' [/media/steckler/xilinx_linux
 	Parameter FMT_UNKNOWN bound to: 3'b111 
 INFO: [Synth 8-6155] done synthesizing module 'decoder' (22#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/decoder.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_decoder_0_0' (23#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_decoder_0_0/synth/BASIC_decoder_0_0.v:58]
-WARNING: [Synth 8-7071] port 'illegal_opcode' of module 'BASIC_decoder_0_0' is unconnected for instance 'decoder_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:828]
-WARNING: [Synth 8-7023] instance 'decoder_0' of module 'BASIC_decoder_0_0' has 17 connections declared, but only 16 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:828]
+WARNING: [Synth 8-7071] port 'illegal_opcode' of module 'BASIC_decoder_0_0' is unconnected for instance 'decoder_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:891]
+WARNING: [Synth 8-7023] instance 'decoder_0' of module 'BASIC_decoder_0_0' has 17 connections declared, but only 16 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:891]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_id_ex_reg_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_id_ex_reg_0_0/synth/BASIC_id_ex_reg_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'id_ex_reg' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/id_ex_reg.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'id_ex_reg' (24#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/id_ex_reg.v:3]
@@ -253,9 +269,9 @@ INFO: [Synth 8-6157] synthesizing module 'BASIC_regfile_0_0' [/media/steckler/xi
 INFO: [Synth 8-6157] synthesizing module 'regfile' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/regfile.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'regfile' (28#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/regfile.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_regfile_0_0' (29#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_regfile_0_0/synth/BASIC_regfile_0_0.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_ID_imp_FBK4LB' (30#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:627]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_IF_imp_Y4LBN8' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:915]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_ROM_MEMORY_imp_ZEEBV6' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1251]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_ID_imp_FBK4LB' (30#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:690]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_IF_imp_Y4LBN8' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:978]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_ROM_MEMORY_imp_ZEEBV6' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1319]
 INFO: [Synth 8-638] synthesizing module 'BASIC_blk_mem_gen_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/synth/BASIC_blk_mem_gen_0_0.vhd:68]
 	Parameter C_FAMILY bound to: zynquplus - type: string 
 	Parameter C_XDEVICEFAMILY bound to: zynquplus - type: string 
@@ -334,7 +350,7 @@ INFO: [Synth 8-638] synthesizing module 'BASIC_blk_mem_gen_0_0' [/media/steckler
 	Parameter C_EST_POWER_SUMMARY bound to: Estimated Power for IP     :     3.35575 mW - type: string 
 INFO: [Synth 8-3491] module 'blk_mem_gen_v8_4_4' declared at '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/2985/hdl/blk_mem_gen_v8_4_vhsyn_rfs.vhd:195321' bound to instance 'U0' of component 'blk_mem_gen_v8_4_4' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/synth/BASIC_blk_mem_gen_0_0.vhd:232]
 INFO: [Synth 8-256] done synthesizing module 'BASIC_blk_mem_gen_0_0' (39#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/synth/BASIC_blk_mem_gen_0_0.vhd:68]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_ROM_MEMORY_imp_ZEEBV6' (40#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1251]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_ROM_MEMORY_imp_ZEEBV6' (40#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1319]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_if_id_reg_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_if_id_reg_0_0/synth/BASIC_if_id_reg_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'if_id_reg' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/if_id_reg.v:3]
 	Parameter RV32I_NOP bound to: 19 - type: integer 
@@ -352,9 +368,9 @@ INFO: [Synth 8-6157] synthesizing module 'pc_unit' [/media/steckler/xilinx_linux
 	Parameter RESET_PC bound to: 0 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'pc_unit' (45#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/pc_unit.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_pc_unit_0_0' (46#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_pc_unit_0_0/synth/BASIC_pc_unit_0_0.v:58]
-WARNING: [Synth 8-7071] port 'pc_debug_last_redirect' of module 'BASIC_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1001]
-WARNING: [Synth 8-7071] port 'pc_debug_redirect_pulse' of module 'BASIC_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1001]
-WARNING: [Synth 8-7023] instance 'pc_unit_0' of module 'BASIC_pc_unit_0_0' has 9 connections declared, but only 7 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1001]
+WARNING: [Synth 8-7071] port 'pc_debug_last_redirect' of module 'BASIC_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1064]
+WARNING: [Synth 8-7071] port 'pc_debug_redirect_pulse' of module 'BASIC_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1064]
+WARNING: [Synth 8-7023] instance 'pc_unit_0' of module 'BASIC_pc_unit_0_0' has 9 connections declared, but only 7 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1064]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_util_vector_logic_1_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_1_0/synth/BASIC_util_vector_logic_1_0.v:57]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_util_vector_logic_1_0' (47#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_1_0/synth/BASIC_util_vector_logic_1_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_util_vector_logic_2_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_1/synth/BASIC_util_vector_logic_2_1.v:57]
@@ -369,8 +385,8 @@ INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [/media/
 	Parameter CONST_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (49#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_xlconstant_2_0' (50#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_2_0/synth/BASIC_xlconstant_2_0.v:57]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_IF_imp_Y4LBN8' (51#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:915]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_MEM_imp_3VZ702' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1020]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_IF_imp_Y4LBN8' (51#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:978]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_MEM_imp_3VZ702' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1083]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_mem_stage_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mem_stage_0_0/synth/BASIC_mem_stage_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'mem_stage' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_stage.v:3]
 	Parameter SZ_B bound to: 2'b00 
@@ -385,10 +401,9 @@ INFO: [Synth 8-226] default block is never used [/media/steckler/xilinx_linux/RI
 INFO: [Synth 8-226] default block is never used [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_stage.v:264]
 INFO: [Synth 8-6155] done synthesizing module 'mem_stage' (52#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_stage.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_mem_stage_0_0' (53#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mem_stage_0_0/synth/BASIC_mem_stage_0_0.v:58]
-WARNING: [Synth 8-7071] port 'dmem_re' of module 'BASIC_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1154]
-WARNING: [Synth 8-7071] port 'mem_out_mem_size' of module 'BASIC_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1154]
-WARNING: [Synth 8-7071] port 'mem_out_mem_unsigned' of module 'BASIC_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1154]
-WARNING: [Synth 8-7023] instance 'mem_stage_0' of module 'BASIC_mem_stage_0_0' has 33 connections declared, but only 30 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1154]
+WARNING: [Synth 8-7071] port 'mem_out_mem_size' of module 'BASIC_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1221]
+WARNING: [Synth 8-7071] port 'mem_out_mem_unsigned' of module 'BASIC_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1221]
+WARNING: [Synth 8-7023] instance 'mem_stage_0' of module 'BASIC_mem_stage_0_0' has 33 connections declared, but only 31 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1221]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_mem_wb_reg_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mem_wb_reg_0_0/synth/BASIC_mem_wb_reg_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'mem_wb_reg' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_wb_reg.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'mem_wb_reg' (54#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mem_wb_reg.v:3]
@@ -403,16 +418,16 @@ INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant__paramete
 	Parameter CONST_WIDTH bound to: 1 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant__parameterized0' (57#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_xlconstant_3_0' (58#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_0/synth/BASIC_xlconstant_3_0.v:57]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_MEM_imp_3VZ702' (59#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1020]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_RAM_MEMORY_imp_1A3BT4W' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1215]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_MEM_imp_3VZ702' (59#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1083]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_RAM_MEMORY_imp_1A3BT4W' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1283]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_ram_data_1_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ram_data_1_0/synth/BASIC_ram_data_1_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'ram_data' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/ram_data.v:3]
 	Parameter ADDR_WIDTH bound to: 10 - type: integer 
 	Parameter WORDS bound to: 1024 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'ram_data' (60#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/ram_data.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_ram_data_1_0' (61#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ram_data_1_0/synth/BASIC_ram_data_1_0.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_RAM_MEMORY_imp_1A3BT4W' (62#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1215]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_WB_imp_1NJ77AP' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1277]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_RAM_MEMORY_imp_1A3BT4W' (62#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1283]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_WB_imp_1NJ77AP' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1345]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_wb_mux_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_wb_mux_0_0/synth/BASIC_wb_mux_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'wb_mux' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/wb_mux.v:3]
 	Parameter WB_ALU bound to: 2'b00 
@@ -422,21 +437,27 @@ INFO: [Synth 8-6157] synthesizing module 'wb_mux' [/media/steckler/xilinx_linux/
 INFO: [Synth 8-226] default block is never used [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/wb_mux.v:18]
 INFO: [Synth 8-6155] done synthesizing module 'wb_mux' (63#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/wb_mux.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'BASIC_wb_mux_0_0' (64#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_wb_mux_0_0/synth/BASIC_wb_mux_0_0.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_WB_imp_1NJ77AP' (65#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1277]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:245]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_WB_imp_1NJ77AP' (65#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:1345]
+INFO: [Synth 8-6157] synthesizing module 'BASIC_gpio_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_gpio_0_0/synth/BASIC_gpio_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'gpio' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/gpio.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'gpio' (66#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/gpio.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_gpio_0_0' (67#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_gpio_0_0/synth/BASIC_gpio_0_0.v:58]
+WARNING: [Synth 8-7071] port 'gpio_dir' of module 'BASIC_gpio_0_0' is unconnected for instance 'gpio_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:265]
+WARNING: [Synth 8-7023] instance 'gpio_0' of module 'BASIC_gpio_0_0' has 12 connections declared, but only 11 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:265]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:277]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_ila_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:84]
 INFO: [Synth 8-6157] synthesizing module 'CFGLUT5' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1524]
-INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (73#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1524]
+INFO: [Synth 8-6155] done synthesizing module 'CFGLUT5' (75#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1524]
 INFO: [Synth 8-6157] synthesizing module 'CARRY4' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1487]
-INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (74#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1487]
+INFO: [Synth 8-6155] done synthesizing module 'CARRY4' (76#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1487]
 INFO: [Synth 8-6157] synthesizing module 'SRLC32E' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78209]
-INFO: [Synth 8-6155] done synthesizing module 'SRLC32E' (84#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78209]
+INFO: [Synth 8-6155] done synthesizing module 'SRLC32E' (86#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78209]
 INFO: [Synth 8-6157] synthesizing module 'SRL16E' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78059]
-INFO: [Synth 8-6155] done synthesizing module 'SRL16E' (86#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78059]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16E' (88#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78059]
 INFO: [Synth 8-6157] synthesizing module 'SRLC16E' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78148]
-INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (88#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78148]
+INFO: [Synth 8-6155] done synthesizing module 'SRLC16E' (90#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78148]
 INFO: [Synth 8-6157] synthesizing module 'FDRE' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724]
-INFO: [Synth 8-6155] done synthesizing module 'FDRE' (93#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724]
+INFO: [Synth 8-6155] done synthesizing module 'FDRE' (95#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:13724]
 WARNING: [Synth 8-7071] port 'clk_nobuf' of module 'ila_v6_2_11_ila' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:3217]
 WARNING: [Synth 8-7071] port 'clkdiv_out' of module 'ila_v6_2_11_ila' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:3217]
 WARNING: [Synth 8-7071] port 'trig_in' of module 'ila_v6_2_11_ila' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:3217]
@@ -444,15 +465,27 @@ WARNING: [Synth 8-7071] port 'trig_in_ack' of module 'ila_v6_2_11_ila' is unconn
 WARNING: [Synth 8-7071] port 'trig_out' of module 'ila_v6_2_11_ila' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:3217]
 WARNING: [Synth 8-7071] port 'trig_out_ack' of module 'ila_v6_2_11_ila' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:3217]
 WARNING: [Synth 8-7023] instance 'inst' of module 'ila_v6_2_11_ila' has 1033 connections declared, but only 1027 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:3217]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_ila_0_0' (104#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:84]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_ila_0_0' (106#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/synth/BASIC_ila_0_0.v:84]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_load_use_detection_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_load_use_detection_0_0/synth/BASIC_load_use_detection_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'load_use_detection' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/load_use_detection.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'load_use_detection' (105#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/load_use_detection.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_load_use_detection_0_0' (106#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_load_use_detection_0_0/synth/BASIC_load_use_detection_0_0.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'load_use_detection' (107#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/load_use_detection.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_load_use_detection_0_0' (108#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_load_use_detection_0_0/synth/BASIC_load_use_detection_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'BASIC_mmio_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mmio_0_0/synth/BASIC_mmio_0_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'mmio' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mmio.v:6]
+	Parameter RAM_BASE bound to: 8192 - type: integer 
+	Parameter RAM_SIZE bound to: 4096 - type: integer 
+	Parameter GPIO_BASE bound to: 12288 - type: integer 
+	Parameter GPIO_SIZE bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mmio' (109#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/mmio.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_mmio_0_0' (110#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mmio_0_0/synth/BASIC_mmio_0_0.v:58]
+WARNING: [Synth 8-7071] port 'cpu_ready' of module 'BASIC_mmio_0_0' is unconnected for instance 'mmio_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:297]
+WARNING: [Synth 8-7071] port 'cpu_error' of module 'BASIC_mmio_0_0' is unconnected for instance 'mmio_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:297]
+WARNING: [Synth 8-7071] port 'ram_valid' of module 'BASIC_mmio_0_0' is unconnected for instance 'mmio_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:297]
+WARNING: [Synth 8-7023] instance 'mmio_0' of module 'BASIC_mmio_0_0' has 24 connections declared, but only 21 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:297]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_priority_branch_OR_l_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_priority_branch_OR_l_0_0/synth/BASIC_priority_branch_OR_l_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'priority_branch_OR_load_use' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/priority_branch_OR_load_use.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'priority_branch_OR_load_use' (107#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/priority_branch_OR_load_use.v:3]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_priority_branch_OR_l_0_0' (108#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_priority_branch_OR_l_0_0/synth/BASIC_priority_branch_OR_l_0_0.v:58]
+INFO: [Synth 8-6155] done synthesizing module 'priority_branch_OR_load_use' (111#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/new/priority_branch_OR_load_use.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_priority_branch_OR_l_0_0' (112#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_priority_branch_OR_l_0_0/synth/BASIC_priority_branch_OR_l_0_0.v:58]
 INFO: [Synth 8-638] synthesizing module 'BASIC_proc_sys_reset_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/synth/BASIC_proc_sys_reset_0_0.vhd:74]
 	Parameter C_FAMILY bound to: zynquplus - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
@@ -507,7 +540,7 @@ INFO: [Synth 8-638] synthesizing module 'lpf' [/media/steckler/xilinx_linux/RISC
 INFO: [Synth 8-3491] module 'SRL16' declared at '/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78043' bound to instance 'POR_SRL_I' of component 'SRL16' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:868]
 INFO: [Synth 8-6157] synthesizing module 'SRL16' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78043]
 	Parameter INIT bound to: 16'b0000000000000000 
-INFO: [Synth 8-6155] done synthesizing module 'SRL16' (109#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78043]
+INFO: [Synth 8-6155] done synthesizing module 'SRL16' (113#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:78043]
 INFO: [Synth 8-638] synthesizing module 'cdc_sync' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
 	Parameter C_CDC_TYPE bound to: 1 - type: integer 
 	Parameter C_RESET_STATE bound to: 0 - type: integer 
@@ -527,30 +560,41 @@ INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_o
 INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d5' to cell 'FDR' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:574]
 	Parameter INIT bound to: 1'b0 
 INFO: [Synth 8-113] binding component instance 'CROSS_PLEVEL_IN2SCNDRY_s_level_out_d6' to cell 'FDR' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:584]
-INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (110#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
-INFO: [Synth 8-256] done synthesizing module 'lpf' (111#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (114#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (115#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
 INFO: [Synth 8-638] synthesizing module 'sequence_psr' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
 INFO: [Synth 8-638] synthesizing module 'upcnt_n' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
 	Parameter C_SIZE bound to: 6 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (112#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
-INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (113#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
-INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (114#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
-INFO: [Synth 8-256] done synthesizing module 'BASIC_proc_sys_reset_0_0' (115#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/synth/BASIC_proc_sys_reset_0_0.vhd:74]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:274]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:274]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:274]
-WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:274]
-WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'BASIC_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:274]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (116#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (117#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (118#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
+INFO: [Synth 8-256] done synthesizing module 'BASIC_proc_sys_reset_0_0' (119#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/synth/BASIC_proc_sys_reset_0_0.vhd:74]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:328]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:328]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:328]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'BASIC_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:328]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'BASIC_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:328]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_util_vector_logic_2_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_0/synth/BASIC_util_vector_logic_2_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'util_vector_logic_v2_0_1_util_vector_logic__parameterized1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
 	Parameter C_OPERATION bound to: or - type: string 
 	Parameter C_SIZE bound to: 1 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'util_vector_logic_v2_0_1_util_vector_logic__parameterized1' (115#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_util_vector_logic_2_0' (116#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_0/synth/BASIC_util_vector_logic_2_0.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'util_vector_logic_v2_0_1_util_vector_logic__parameterized1' (119#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v:45]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_util_vector_logic_2_0' (120#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_0/synth/BASIC_util_vector_logic_2_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'BASIC_util_vector_logic_2_2' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_2/synth/BASIC_util_vector_logic_2_2.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_util_vector_logic_2_2' (121#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_2/synth/BASIC_util_vector_logic_2_2.v:57]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_vio_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/synth/BASIC_vio_0_0.v:59]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_vio_0_0' (121#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/synth/BASIC_vio_0_0.v:59]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_vio_0_0' (126#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/synth/BASIC_vio_0_0.v:59]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_xlconstant_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_0_0/synth/BASIC_xlconstant_0_0.v:57]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_xlconstant_0_0' (122#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_0_0/synth/BASIC_xlconstant_0_0.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_xlconstant_0_0' (127#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_0_0/synth/BASIC_xlconstant_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'BASIC_xlconstant_3_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_1/synth/BASIC_xlconstant_3_1.v:57]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_xlconstant_3_1' (128#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_1/synth/BASIC_xlconstant_3_1.v:57]
+INFO: [Synth 8-6157] synthesizing module 'BASIC_xlslice_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlslice_0_0/synth/BASIC_xlslice_0_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlslice_v1_0_2_xlslice' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v:13]
+	Parameter DIN_WIDTH bound to: 8 - type: integer 
+	Parameter DIN_FROM bound to: 1 - type: integer 
+	Parameter DIN_TO bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlslice_v1_0_2_xlslice' (129#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_xlslice_0_0' (130#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlslice_0_0/synth/BASIC_xlslice_0_0.v:57]
 INFO: [Synth 8-6157] synthesizing module 'BASIC_zynq_ultra_ps_e_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:59]
 INFO: [Synth 8-6157] synthesizing module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:335]
 	Parameter C_MAXIGP0_DATA_WIDTH bound to: 32 - type: integer 
@@ -593,9 +637,9 @@ INFO: [Synth 8-6157] synthesizing module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e
 INFO: [Synth 8-6157] synthesizing module 'BUFG_PS' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1307]
 	Parameter SIM_DEVICE bound to: ULTRASCALE_PLUS - type: string 
 	Parameter STARTUP_SYNC bound to: FALSE - type: string 
-INFO: [Synth 8-6155] done synthesizing module 'BUFG_PS' (123#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1307]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG_PS' (131#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:1307]
 INFO: [Synth 8-6157] synthesizing module 'PS8' [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:63273]
-INFO: [Synth 8-6155] done synthesizing module 'PS8' (124#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:63273]
+INFO: [Synth 8-6155] done synthesizing module 'PS8' (132#1) [/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/scripts/rt/data/unisim_comp.v:63273]
 WARNING: [Synth 8-689] width (4) of port connection 'EMIOSDIO1DATAOUT' does not match port width (8) of module 'PS8' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:4712]
 WARNING: [Synth 8-689] width (4) of port connection 'EMIOSDIO1DATAENA' does not match port width (8) of module 'PS8' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:4713]
 WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_MGTTXN0OUT' of module 'PS8' is unconnected for instance 'PS8_i' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:3889]
@@ -657,52 +701,51 @@ WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP1IN' of module 'PS8' is unco
 WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP2IN' of module 'PS8' is unconnected for instance 'PS8_i' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:3889]
 WARNING: [Synth 8-7071] port 'PSS_ALTO_CORE_PAD_REFP3IN' of module 'PS8' is unconnected for instance 'PS8_i' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:3889]
 WARNING: [Synth 8-7023] instance 'PS8_i' of module 'PS8' has 1015 connections declared, but only 957 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:3889]
-INFO: [Synth 8-6155] done synthesizing module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' (125#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:335]
+INFO: [Synth 8-6155] done synthesizing module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' (133#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/hdl/zynq_ultra_ps_e_v3_3_2.v:335]
 WARNING: [Synth 8-7071] port 'emio_enet0_signal_detect' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:269]
 WARNING: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:269]
 WARNING: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:269]
 WARNING: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:269]
 WARNING: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' has 1491 connections declared, but only 1487 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:269]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC_zynq_ultra_ps_e_0_0' (126#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:59]
-WARNING: [Synth 8-7071] port 'maxigp0_awid' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awaddr' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awlen' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awsize' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awburst' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awlock' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awcache' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awprot' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awvalid' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_awuser' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_wdata' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_wstrb' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_wlast' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-WARNING: [Synth 8-7071] port 'maxigp0_wvalid' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC_zynq_ultra_ps_e_0_0' (134#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/synth/BASIC_zynq_ultra_ps_e_0_0.v:59]
+WARNING: [Synth 8-7071] port 'maxigp0_awid' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awaddr' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awlen' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awsize' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awburst' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awlock' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awcache' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awprot' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awvalid' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_awuser' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+WARNING: [Synth 8-7071] port 'maxigp0_wdata' of module 'BASIC_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
 INFO: [Common 17-14] Message 'Synth 8-7071' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-WARNING: [Synth 8-7023] instance 'zynq_ultra_ps_e_0' of module 'BASIC_zynq_ultra_ps_e_0_0' has 54 connections declared, but only 18 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:290]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:285]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'util_vector_logic_2'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:281]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:245]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_MEM'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:199]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_IF'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:184]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_ID'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:145]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_EX'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:96]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_WB'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:238]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'load_use_detection_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:252]
-INFO: [Synth 8-6155] done synthesizing module 'BASIC' (127#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:13]
+WARNING: [Synth 8-7023] instance 'zynq_ultra_ps_e_0' of module 'BASIC_zynq_ultra_ps_e_0_0' has 54 connections declared, but only 18 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:353]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:343]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'util_vector_logic_2'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:335]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'mmio_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:297]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'ila_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:277]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'gpio_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:265]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_MEM'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:218]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_IF'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:203]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_ID'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:164]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_EX'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:115]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'RV32I_WB'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:258]
+INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'load_use_detection_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:284]
+INFO: [Synth 8-6155] done synthesizing module 'BASIC' (135#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/synth/BASIC.v:13]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:35 ; elapsed = 00:00:54 . Memory (MB): peak = 3087.023 ; gain = 436.762 ; free physical = 5619 ; free virtual = 24674
+Finished RTL Elaboration : Time (s): cpu = 00:00:42 ; elapsed = 00:01:04 . Memory (MB): peak = 3087.422 ; gain = 437.066 ; free physical = 698 ; free virtual = 19140
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:55 . Memory (MB): peak = 3087.023 ; gain = 436.762 ; free physical = 5514 ; free virtual = 24574
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:01:05 . Memory (MB): peak = 3087.422 ; gain = 437.066 ; free physical = 722 ; free virtual = 19164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:55 . Memory (MB): peak = 3087.023 ; gain = 436.762 ; free physical = 5514 ; free virtual = 24574
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:44 ; elapsed = 00:01:05 . Memory (MB): peak = 3087.422 ; gain = 437.066 ; free physical = 722 ; free virtual = 19164
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.15 . Memory (MB): peak = 3087.023 ; gain = 0.000 ; free physical = 5450 ; free virtual = 24513
+Netlist sorting complete. Time (s): cpu = 00:00:00.21 ; elapsed = 00:00:00.21 . Memory (MB): peak = 3087.422 ; gain = 0.000 ; free physical = 703 ; free virtual = 19143
 INFO: [Netlist 29-17] Analyzing 106 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -727,7 +770,7 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/BASIC_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3119.039 ; gain = 0.000 ; free physical = 4804 ; free virtual = 23892
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3119.438 ; gain = 0.000 ; free physical = 621 ; free virtual = 19066
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 82 instances were transformed.
   CFGLUT5 => CFGLUT5 (SRL16E, SRLC32E): 60 instances
@@ -735,9 +778,9 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   FDR => FDRE: 12 instances
   SRL16 => SRL16E: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.10 . Memory (MB): peak = 3119.039 ; gain = 0.000 ; free physical = 4803 ; free virtual = 23891
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.21 ; elapsed = 00:00:00.16 . Memory (MB): peak = 3119.438 ; gain = 0.000 ; free physical = 621 ; free virtual = 19066
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:47 ; elapsed = 00:01:08 . Memory (MB): peak = 3119.039 ; gain = 468.777 ; free physical = 4879 ; free virtual = 23968
+Finished Constraint Validation : Time (s): cpu = 00:00:57 ; elapsed = 00:01:22 . Memory (MB): peak = 3119.438 ; gain = 469.082 ; free physical = 620 ; free virtual = 19089
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -745,15 +788,15 @@ Start Loading Part and Timing Information
 Loading part: xczu5ev-sfvc784-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:47 ; elapsed = 00:01:08 . Memory (MB): peak = 3119.039 ; gain = 468.777 ; free physical = 4879 ; free virtual = 23968
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:57 ; elapsed = 00:01:22 . Memory (MB): peak = 3119.438 ; gain = 469.082 ; free physical = 620 ; free virtual = 19089
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for zynq_ultra_ps_e_0/inst/PS8_i. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0.xdc, line 26).
-Applied set_property DONT_TOUCH = true for zynq_ultra_ps_e_0/inst. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/dont_touch.xdc, line 118).
-Applied set_property DONT_TOUCH = true for proc_sys_reset_0/U0. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/dont_touch.xdc, line 121).
-Applied set_property DONT_TOUCH = true for ila_0/inst. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/dont_touch.xdc, line 129).
+Applied set_property DONT_TOUCH = true for zynq_ultra_ps_e_0/inst. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/dont_touch.xdc, line 133).
+Applied set_property DONT_TOUCH = true for proc_sys_reset_0/U0. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/dont_touch.xdc, line 136).
+Applied set_property DONT_TOUCH = true for ila_0/inst. (constraint file  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/dont_touch.xdc, line 144).
 Applied set_property DONT_TOUCH = true for RV32I_IF/pc_unit_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for zynq_ultra_ps_e_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for proc_sys_reset_0. (constraint file  auto generated constraint, line ).
@@ -790,8 +833,13 @@ Applied set_property DONT_TOUCH = true for RV32I_EX/forward_mux_2. (constraint f
 Applied set_property DONT_TOUCH = true for RV32I_MEM/regfile_we_gen_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for RV32I_IF/util_vector_logic_3. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for RV32I_MEM/xlconstant_3. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for mmio_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for gpio_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for util_vector_logic_3. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for xlconstant_3. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for xlslice_0. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:47 ; elapsed = 00:01:08 . Memory (MB): peak = 3119.039 ; gain = 468.777 ; free physical = 4878 ; free virtual = 23967
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:58 ; elapsed = 00:01:22 . Memory (MB): peak = 3119.438 ; gain = 469.082 ; free physical = 619 ; free virtual = 19089
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized5'
 INFO: [Synth 8-802] inferred FSM for state register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s'
@@ -872,7 +920,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in m
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3898] No Re-encoding of one hot register 'current_state_reg' in module 'xsdbs_v1_0_2_reg_p2s__parameterized4'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:49 ; elapsed = 00:01:12 . Memory (MB): peak = 3119.039 ; gain = 468.777 ; free physical = 4854 ; free virtual = 23945
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:01 ; elapsed = 00:01:26 . Memory (MB): peak = 3119.438 ; gain = 469.082 ; free physical = 604 ; free virtual = 19076
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -894,25 +942,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6904] The RAM "RV32I_ID/regfile_0/inst/regs_reg" of size (depth=32 x width=32) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:00 ; elapsed = 00:01:23 . Memory (MB): peak = 3119.039 ; gain = 468.777 ; free physical = 4731 ; free virtual = 23848
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:14 ; elapsed = 00:01:41 . Memory (MB): peak = 3119.438 ; gain = 469.082 ; free physical = 590 ; free virtual = 19090
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:23 ; elapsed = 00:02:04 . Memory (MB): peak = 4438.773 ; gain = 1788.512 ; free physical = 200 ; free virtual = 17951
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:38 ; elapsed = 00:02:22 . Memory (MB): peak = 4439.164 ; gain = 1788.809 ; free physical = 420 ; free virtual = 17720
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:25 ; elapsed = 00:02:11 . Memory (MB): peak = 4489.805 ; gain = 1839.543 ; free physical = 258 ; free virtual = 16148
+Finished Timing Optimization : Time (s): cpu = 00:01:41 ; elapsed = 00:02:25 . Memory (MB): peak = 4484.203 ; gain = 1833.848 ; free physical = 392 ; free virtual = 17692
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:32 ; elapsed = 00:02:35 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 186 ; free virtual = 14238
+Finished Technology Mapping : Time (s): cpu = 00:01:52 ; elapsed = 00:02:37 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 258 ; free virtual = 17604
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1031,37 +1079,37 @@ WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[0]_inferred:in0[11] t
 WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[0]_inferred:in0[10] to constant 0
 INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:38 ; elapsed = 00:02:41 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 253 ; free virtual = 14224
+Finished IO Insertion : Time (s): cpu = 00:02:01 ; elapsed = 00:02:46 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 282 ; free virtual = 17631
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:38 ; elapsed = 00:02:41 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 253 ; free virtual = 14224
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:01 ; elapsed = 00:02:46 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 282 ; free virtual = 17631
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:38 ; elapsed = 00:02:42 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 251 ; free virtual = 14223
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:01 ; elapsed = 00:02:47 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 292 ; free virtual = 17640
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:38 ; elapsed = 00:02:42 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 251 ; free virtual = 14223
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:02 ; elapsed = 00:02:47 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 292 ; free virtual = 17640
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:38 ; elapsed = 00:02:42 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 250 ; free virtual = 14222
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:02 ; elapsed = 00:02:47 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 283 ; free virtual = 17633
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:38 ; elapsed = 00:02:42 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 250 ; free virtual = 14222
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:02 ; elapsed = 00:02:47 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 283 ; free virtual = 17634
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1081,12 +1129,12 @@ Report Cell Usage:
 |2     |CARRY4    |    24|
 |3     |CARRY8    |    34|
 |4     |CFGLUT5   |    69|
-|5     |LUT1      |   437|
+|5     |LUT1      |   442|
 |6     |LUT2      |   220|
-|7     |LUT3      |   195|
-|8     |LUT4      |   481|
-|9     |LUT5      |   346|
-|10    |LUT6      |  1109|
+|7     |LUT3      |   200|
+|8     |LUT4      |   486|
+|9     |LUT5      |   345|
+|10    |LUT6      |  1158|
 |11    |MUXF7     |    45|
 |12    |PS8       |     1|
 |13    |RAM32M16  |     6|
@@ -1099,24 +1147,24 @@ Report Cell Usage:
 |22    |SRLC32E   |    17|
 |23    |FDCE      |    65|
 |24    |FDR       |     8|
-|25    |FDRE      |  2555|
+|25    |FDRE      |  2571|
 |26    |FDSE      |    17|
 +------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:38 ; elapsed = 00:02:42 . Memory (MB): peak = 4497.812 ; gain = 1847.551 ; free physical = 250 ; free virtual = 14222
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:02 ; elapsed = 00:02:47 . Memory (MB): peak = 4495.227 ; gain = 1844.871 ; free physical = 283 ; free virtual = 17634
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 345 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:31 ; elapsed = 00:02:33 . Memory (MB): peak = 4497.812 ; gain = 1815.535 ; free physical = 287 ; free virtual = 14263
-Synthesis Optimization Complete : Time (s): cpu = 00:01:39 ; elapsed = 00:02:42 . Memory (MB): peak = 4497.820 ; gain = 1847.551 ; free physical = 283 ; free virtual = 14263
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:52 ; elapsed = 00:02:36 . Memory (MB): peak = 4495.227 ; gain = 1812.855 ; free physical = 319 ; free virtual = 17670
+Synthesis Optimization Complete : Time (s): cpu = 00:02:02 ; elapsed = 00:02:47 . Memory (MB): peak = 4495.234 ; gain = 1844.871 ; free physical = 319 ; free virtual = 17670
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.15 . Memory (MB): peak = 4500.781 ; gain = 0.000 ; free physical = 129 ; free virtual = 13803
+Netlist sorting complete. Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.17 . Memory (MB): peak = 4498.195 ; gain = 0.000 ; free physical = 388 ; free virtual = 17740
 INFO: [Netlist 29-17] Analyzing 251 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 4 CPU seconds
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell RV32I_IF/RV32I_ROM_MEMORY/blk_mem_gen_0/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_8SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
 INFO: [Opt 31-422] The CLOCK_DOMAINS attribute on the BRAM cell RV32I_IF/RV32I_ROM_MEMORY/blk_mem_gen_0/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/prim_init.ram/DEVICE_8SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram has been changed from INDEPENDENT to COMMON to match the clocking topology used for the BRAM.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4928.672 ; gain = 0.000 ; free physical = 195 ; free virtual = 12488
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 4951.086 ; gain = 0.000 ; free physical = 250 ; free virtual = 17614
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 162 instances were transformed.
   (CARRY4) => CARRY8: 14 instances
@@ -1128,11 +1176,12 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   SRL16 => SRL16E: 1 instance 
 
 INFO: [Common 17-83] Releasing license: Synthesis
-314 Infos, 232 Warnings, 0 Critical Warnings and 0 Errors encountered.
+346 Infos, 238 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:37 ; elapsed = 00:03:37 . Memory (MB): peak = 4928.672 ; gain = 2479.688 ; free physical = 1359 ; free virtual = 13699
-INFO: [Coretcl 2-1174] Renamed 209 cell refs.
-INFO: [Timing 38-35] Done setting XDC timing constraints.
+synth_design: Time (s): cpu = 00:03:16 ; elapsed = 00:03:29 . Memory (MB): peak = 4951.086 ; gain = 2438.973 ; free physical = 1456 ; free virtual = 18820
+INFO: [Common 17-600] The following parameters have non-default value.
+tcl.collectionResultDisplayLimit
+INFO: [Coretcl 2-1174] Renamed 215 cell refs.
 INFO: [Common 17-1381] The checkpoint '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/BASIC.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file BASIC_utilization_synth.rpt -pb BASIC_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun May  3 11:35:21 2026...
+INFO: [Common 17-206] Exiting Vivado at Sun May  3 19:36:16 2026...

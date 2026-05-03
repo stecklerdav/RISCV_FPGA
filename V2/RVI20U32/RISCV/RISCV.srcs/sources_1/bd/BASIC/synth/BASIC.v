@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun May  3 11:30:40 2026
+//Date        : Sun May  3 19:31:28 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,9 +9,10 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=43,numReposBlks=36,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=24,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=48,numReposBlks=41,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=26,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
-   ();
+   (gpio_out_0);
+  output [1:0]gpio_out_0;
 
   wire Net;
   wire RV32I_EX_ex_flush_req;
@@ -21,10 +22,13 @@ module BASIC
   wire RV32I_ID_rs2_used;
   wire [31:0]RV32I_MEM_dmem_addr;
   wire [3:0]RV32I_MEM_dmem_be;
+  wire RV32I_MEM_dmem_re;
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
   wire RV32I_MEM_wb_valid;
   wire [31:0]RV32I_RAM_MEMORY_rdata;
+  wire [31:0]addr_1;
+  wire [3:0]be_1;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
   wire [31:0]ex_mem_reg_1_mem_alu_result;
@@ -39,6 +43,9 @@ module BASIC
   wire [31:0]ex_mem_reg_1_mem_store_data;
   wire ex_mem_reg_1_mem_valid;
   wire [1:0]ex_mem_reg_1_mem_wb_sel;
+  wire [7:0]gpio_0_gpio_out;
+  wire [31:0]gpio_0_rdata;
+  wire gpio_0_ready;
   wire [3:0]id_ex_reg_0_ex_alu_op;
   wire id_ex_reg_0_ex_branch_en;
   wire [2:0]id_ex_reg_0_ex_branch_funct3;
@@ -79,6 +86,12 @@ module BASIC
   wire [31:0]mem_wb_reg_0_wb_pc_plus4;
   wire [4:0]mem_wb_reg_0_wb_rd;
   wire [1:0]mem_wb_reg_0_wb_sel;
+  wire [31:0]mmio_0_cpu_rdata;
+  wire [31:0]mmio_0_gpio_addr;
+  wire [3:0]mmio_0_gpio_be;
+  wire mmio_0_gpio_valid;
+  wire [31:0]mmio_0_gpio_wdata;
+  wire mmio_0_gpio_we;
   wire priority_branch_OR_l_0_id_ex_flush_final;
   wire priority_branch_OR_l_0_if_id_flush_final;
   wire priority_branch_OR_l_0_if_id_hold_final;
@@ -87,12 +100,18 @@ module BASIC
   wire [0:0]proc_sys_reset_0_peripheral_reset1;
   wire [4:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_2_Res;
+  wire [0:0]util_vector_logic_3_Res;
   wire [0:0]vio_0_probe_out0;
   wire [31:0]wb_mux_0_rd_wdata;
+  wire [31:0]wdata_1;
+  wire we_1;
   wire [0:0]xlconstant_0_dout;
+  wire [0:0]xlconstant_3_dout;
+  wire [1:0]xlslice_0_Dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
   wire zynq_ultra_ps_e_0_pl_resetn0;
 
+  assign gpio_out_0[1:0] = xlslice_0_Dout;
   RV32I_EX_imp_10RN1RF RV32I_EX
        (.alu_op(id_ex_reg_0_ex_alu_op),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -201,9 +220,10 @@ module BASIC
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .dmem_addr(RV32I_MEM_dmem_addr),
         .dmem_be(RV32I_MEM_dmem_be),
+        .dmem_re(RV32I_MEM_dmem_re),
         .dmem_wdata(RV32I_MEM_dmem_wdata),
         .dmem_we(RV32I_MEM_dmem_we),
-        .mem_data(RV32I_RAM_MEMORY_rdata),
+        .mem_data(mmio_0_cpu_rdata),
         .mem_forward_data(mem_stage_0_mem_forward_data),
         .mem_in_alu_result(ex_mem_reg_1_mem_alu_result),
         .mem_in_imm_u(ex_mem_reg_1_mem_imm_u),
@@ -229,12 +249,12 @@ module BASIC
         .wb_sel(mem_wb_reg_0_wb_sel),
         .wb_valid(RV32I_MEM_wb_valid));
   RV32I_RAM_MEMORY_imp_1A3BT4W RV32I_RAM_MEMORY
-       (.addr(RV32I_MEM_dmem_addr),
-        .be(RV32I_MEM_dmem_be),
+       (.addr(addr_1),
+        .be(be_1),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .rdata(RV32I_RAM_MEMORY_rdata),
-        .wdata(RV32I_MEM_dmem_wdata),
-        .we(RV32I_MEM_dmem_we));
+        .wdata(wdata_1),
+        .we(we_1));
   RV32I_WB_imp_1NJ77AP RV32I_WB
        (.alu_y(mem_wb_reg_0_wb_alu_result),
         .imm_u(mem_wb_reg_0_wb_imm_u),
@@ -242,6 +262,18 @@ module BASIC
         .pc_plus4(mem_wb_reg_0_wb_pc_plus4),
         .rd_wdata(wb_mux_0_rd_wdata),
         .wb_sel(mem_wb_reg_0_wb_sel));
+  BASIC_gpio_0_0 gpio_0
+       (.addr(mmio_0_gpio_addr),
+        .be(mmio_0_gpio_be),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .gpio_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .gpio_out(gpio_0_gpio_out),
+        .rdata(gpio_0_rdata),
+        .ready(gpio_0_ready),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .valid(mmio_0_gpio_valid),
+        .wdata(mmio_0_gpio_wdata),
+        .we(mmio_0_gpio_we));
   BASIC_ila_0_0 ila_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .probe0(proc_sys_reset_0_peripheral_reset),
@@ -262,6 +294,28 @@ module BASIC
         .if_id_valid(if_id_reg_0_id_valid_out),
         .load_use_hazard(load_use_detection_0_load_use_hazard),
         .pc_en(load_use_detection_0_pc_en));
+  BASIC_mmio_0_0 mmio_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .cpu_addr(RV32I_MEM_dmem_addr),
+        .cpu_be(RV32I_MEM_dmem_be),
+        .cpu_rdata(mmio_0_cpu_rdata),
+        .cpu_valid(util_vector_logic_3_Res),
+        .cpu_wdata(RV32I_MEM_dmem_wdata),
+        .cpu_we(RV32I_MEM_dmem_we),
+        .gpio_addr(mmio_0_gpio_addr),
+        .gpio_be(mmio_0_gpio_be),
+        .gpio_rdata(gpio_0_rdata),
+        .gpio_ready(gpio_0_ready),
+        .gpio_valid(mmio_0_gpio_valid),
+        .gpio_wdata(mmio_0_gpio_wdata),
+        .gpio_we(mmio_0_gpio_we),
+        .ram_addr(addr_1),
+        .ram_be(be_1),
+        .ram_rdata(RV32I_RAM_MEMORY_rdata),
+        .ram_ready(xlconstant_3_dout),
+        .ram_wdata(wdata_1),
+        .ram_we(we_1),
+        .rst(proc_sys_reset_0_peripheral_reset));
   BASIC_priority_branch_OR_l_0_0 priority_branch_OR_l_0
        (.ex_flush_req(RV32I_EX_ex_flush_req),
         .id_ex_flush_final(priority_branch_OR_l_0_id_ex_flush_final),
@@ -282,11 +336,20 @@ module BASIC
        (.Op1(proc_sys_reset_0_peripheral_reset1),
         .Op2(vio_0_probe_out0),
         .Res(proc_sys_reset_0_peripheral_reset));
+  BASIC_util_vector_logic_2_2 util_vector_logic_3
+       (.Op1(RV32I_MEM_dmem_we),
+        .Op2(RV32I_MEM_dmem_re),
+        .Res(util_vector_logic_3_Res));
   BASIC_vio_0_0 vio_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .probe_out0(vio_0_probe_out0));
   BASIC_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
+  BASIC_xlconstant_3_1 xlconstant_3
+       (.dout(xlconstant_3_dout));
+  BASIC_xlslice_0_0 xlslice_0
+       (.Din(gpio_0_gpio_out),
+        .Dout(xlslice_0_Dout));
   BASIC_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
        (.emio_can0_phy_rx(1'b0),
         .emio_gpio_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
@@ -1022,6 +1085,7 @@ module RV32I_MEM_imp_3VZ702
     clk,
     dmem_addr,
     dmem_be,
+    dmem_re,
     dmem_wdata,
     dmem_we,
     mem_data,
@@ -1053,6 +1117,7 @@ module RV32I_MEM_imp_3VZ702
   input clk;
   output [31:0]dmem_addr;
   output [3:0]dmem_be;
+  output dmem_re;
   output [31:0]dmem_wdata;
   output dmem_we;
   input [31:0]mem_data;
@@ -1096,6 +1161,7 @@ module RV32I_MEM_imp_3VZ702
   wire [31:0]mem_data_1;
   wire [31:0]mem_stage_0_dmem_addr;
   wire [3:0]mem_stage_0_dmem_be;
+  wire mem_stage_0_dmem_re;
   wire [31:0]mem_stage_0_dmem_wdata;
   wire mem_stage_0_dmem_we;
   wire [31:0]mem_stage_0_mem_forward_data;
@@ -1123,6 +1189,7 @@ module RV32I_MEM_imp_3VZ702
   assign Res[0] = regfile_we_gen_0_regfile_we;
   assign dmem_addr[31:0] = mem_stage_0_dmem_addr;
   assign dmem_be[3:0] = mem_stage_0_dmem_be;
+  assign dmem_re = mem_stage_0_dmem_re;
   assign dmem_wdata[31:0] = mem_stage_0_dmem_wdata;
   assign dmem_we = mem_stage_0_dmem_we;
   assign ex_mem_reg_1_mem_alu_result = mem_in_alu_result[31:0];
@@ -1156,6 +1223,7 @@ module RV32I_MEM_imp_3VZ702
         .dmem_addr(mem_stage_0_dmem_addr),
         .dmem_be(mem_stage_0_dmem_be),
         .dmem_rdata(mem_data_1),
+        .dmem_re(mem_stage_0_dmem_re),
         .dmem_wdata(mem_stage_0_dmem_wdata),
         .dmem_we(mem_stage_0_dmem_we),
         .kill(xlconstant_3_dout),

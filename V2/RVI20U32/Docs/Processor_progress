@@ -1,0 +1,75 @@
+
+
+
+03/05/2026
+
+* RV32I is done + add one MMIO + GPIO module and RAM get outside MEM stage to independent data RAM.
+* into RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode has a Led program test to see 2 LEDs oscilating each other
+
+
+03/02/2026
+
+* Created another Block Design (BD) with ILA and VIO for IF stage verification.
+
+02/23/2026
+
+* Generated blocks with sub-blocks to improve readability.
+* Fixed MMIO because address mapping was incorrect: the decoder was using relative addressing with offsets, and RAM was not aligned with that.
+* GPIO was also not correctly referenced.
+* Simulated ILA in a separate BD to avoid modifying the original RISC-V design.
+* Obtained consistent values; further testing required for MMIO GPIO.
+* Generated documentation for industrial-level hardware verification.
+
+02/22/2026
+
+* No software application is required at this stage.
+* Only need to generate the bitstream, load it via JTAG, and observe using ILA and test points.
+
+02/20/2026
+
+* Generated the hardware_app using the XSA.
+* Next step: load the riscv_app using Run As..., then return to Vivado and reload the bitstream to activate the ILA.
+
+02/17/2026
+
+* Generated full bitstream + hardware for a RISC-V RV32I + ZynqMP system in Vivado.
+* Loaded the XSA into Vitis.
+* Need to generate a .c file in Vitis to enable the ZynqMP clock, which will drive the RISC-V core.
+
+12/15/2025
+
+* Studied videos about RISC-V architecture.
+
+12/13/2025
+
+* Completed CPU connections and added a Zynq block to provide the clock (CPU without branches, only ALU instructions).
+* Ran simulation using program_sin_saltos.mem, read by iROM.
+* Created a simulation folder and saved tb_cpu_behav_iROM.wcfg.
+
+12/10/2025
+
+* Always review the latest conclusion files.
+* Moved CPU project from Pluto directory to a shorter path:
+  /media/steckler/xilinx_linux/SDR_custom/SDR/Software
+* Interconnected most blocks; some connections still pending.
+* Observed that add, sub, mul, div instructions are executed by the ALU block, while store, load, jump, etc., are handled by other blocks.
+* This leads to R, I, S instruction formats, involving multiplexers to pack registers and execute operations.
+
+12/02/2025 - David Steckler
+
+* Created project CPU_N1 at:
+  /media/steckler/xilinx_linux/SDR_custom/SDR/Software/plutosdr-fw/hdl/projects/CPU_N1/CPU_V1
+* Processor-only project for simulation; still needs interconnection and simulation.
+
+12/01/2025 - David Steckler
+
+* Added a processor to the Block Design (BD):
+
+  * No pipeline
+  * No FSM
+  * Single-cycle architecture
+  * Integrated with PlutoSDR
+* Created folder "Processor" in:
+  /media/steckler/xilinx_linux/SDR_custom/SDR/Software/plutosdr-fw/hdl/projects/pluto
+* Folder contains all processor documentation.
+

@@ -87,6 +87,16 @@
   "../../../bd/BASIC/ip/BASIC_regfile_we_gen_0_0/sim/BASIC_regfile_we_gen_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_1/sim/BASIC_util_vector_logic_2_1.v" \
   "../../../bd/BASIC/ip/BASIC_xlconstant_3_0/sim/BASIC_xlconstant_3_0.v" \
+  "../../../bd/BASIC/ip/BASIC_mmio_0_0/sim/BASIC_mmio_0_0.v" \
+  "../../../bd/BASIC/ip/BASIC_gpio_0_0/sim/BASIC_gpio_0_0.v" \
+  "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_2/sim/BASIC_util_vector_logic_2_2.v" \
+  "../../../bd/BASIC/ip/BASIC_xlconstant_3_1/sim/BASIC_xlconstant_3_1.v" \
+-endlib
+-makelib ies_lib/xlslice_v1_0_2 \
+  "../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/BASIC/ip/BASIC_xlslice_0_0/sim/BASIC_xlslice_0_0.v" \
   "../../../bd/BASIC/sim/BASIC.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
