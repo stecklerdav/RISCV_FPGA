@@ -1,0 +1,217 @@
+
+
+
+
+# =========================================
+# VCD T25-T30 - RV32I
+# =========================================
+
+catch { close_sim -force }
+
+set_property xsim.elaborate.debug_level all [get_filesets sim_1]
+
+launch_simulation
+restart
+
+run 1 ns
+
+set VCD_FILE "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/t25_t30_check.vcd"
+
+catch { file delete -force $VCD_FILE }
+
+puts "Generando VCD en: $VCD_FILE"
+
+open_vcd $VCD_FILE
+
+# Top principal
+log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/*]
+
+# Core / memoria / stages críticos
+log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/*]
+log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/mem_stage_0/*]
+log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/mem_wb_reg_0/*]
+
+# Si existen estos módulos, también los captura
+catch { log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/ex_mem_reg_0/*] }
+catch { log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/id_ex_reg_0/*] }
+catch { log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/if_id_reg_0/*] }
+catch { log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/regfile_0/*] }
+catch { log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/forwarding_unit_0/*] }
+catch { log_vcd [get_objects -r /BASIC_wrapper/BASIC_i/RV32I_MEM/hazard_unit_0/*] }
+
+# Corre suficiente para T25-T30
+run 25 us
+
+close_vcd
+
+puts "======================="
+puts "VCD GENERADO:"
+puts $VCD_FILE
+puts "======================="
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ .option norvc
+.section .text.start
+.globl _start
+.align 2
+
+_start:
+    # ============================================================
+    # BASES
+    # ============================================================
+    addi x1,  x0, 64
+    addi x2,  x0, 128
+    addi x3,  x0, 192
+    addi x30, x0, 0
+    addi x31, x0, 0
+
+    # ============================================================
+    # T25: SW/LW + forwarding + load-use
+    # ============================================================
+
+    addi x30, x0, 25
+
+    addi x14, x0, 5
+    sw   x14, 0(x3)          # MEM[192] = 5
+    lw   x15, 0(x3)          # x15 = 5
+    addi x16, x15, 1         # x16 = 6
+    sw   x16, 4(x3)          # MEM[196] = 6
+    lw   x17, 4(x3)          # x17 = 6
+    add  x18, x17, x16       # x18 = 12
+
+    addi x4, x0, 12
+    bne  x18, x4, fail
+
+    # ============================================================
+    # T26: SB / LB / LBU
+    # ============================================================
+
+    addi x30, x0, 26
+
+    addi x4, x0, -1
+    sb   x4, 16(x1)          # MEM[80] = 0xFF
+
+    lb   x5, 16(x1)          # -> -1
+    lbu  x6, 16(x1)          # -> 255
+
+    addi x7, x0, -1
+    bne  x5, x7, fail
+
+    addi x7, x0, 255
+    bne  x6, x7, fail
+
+    # segundo byte
+    addi x4, x0, 127
+    sb   x4, 17(x1)
+
+    lb   x5, 17(x1)
+    addi x7, x0, 127
+    bne  x5, x7, fail
+
+    # ============================================================
+    # T27: SH / LH / LHU
+    # ============================================================
+
+    addi x30, x0, 27
+
+    addi x4, x0, -1
+    sh   x4, 20(x1)          # MEM[84..85] = FFFF
+
+    lh   x5, 20(x1)          # -> -1
+    lhu  x6, 20(x1)          # -> 65535
+
+    addi x7, x0, -1
+    bne  x5, x7, fail
+
+    lui  x7, 0x10
+    addi x7, x7, -1          # 0x0000FFFF
+    bne  x6, x7, fail
+
+    # ============================================================
+    # T28: LUI + forwarding
+    # ============================================================
+
+    addi x30, x0, 28
+
+    lui  x8, 0x1             # 0x00001000
+    srli x9, x8, 12          # 1
+
+    addi x4, x0, 1
+    bne  x9, x4, fail
+
+    # ============================================================
+    # T29: cadena dependencias ALU
+    # ============================================================
+
+    addi x30, x0, 29
+
+    addi x10, x0, 3
+    add  x11, x10, x10       # 6
+    add  x12, x11, x10       # 9
+    addi x13, x12, 1         # 10
+    add  x14, x13, x12       # 19
+    sub  x15, x14, x10       # 16
+    xor  x16, x15, x13       # 26
+    and  x17, x16, x14       # 18
+    or   x18, x17, x10       # 19
+
+    addi x4, x0, 19
+    bne  x18, x4, fail
+
+    # ============================================================
+    # T30: branch final + flush
+    # ============================================================
+
+    addi x30, x0, 30
+
+    addi x25, x0, 0
+    addi x26, x0, 0
+
+    addi x4, x0, 9
+    addi x5, x0, 9
+
+    beq  x4, x5, pass
+
+    addi x25, x0, 200        # WRONG PATH
+    addi x26, x0, 201        # WRONG PATH
+
+# ================================================================
+# FAIL
+# ================================================================
+
+fail:
+    addi x31, x0, 0
+    sw   x30, 60(x1)
+    jal  x0, done
+
+# ================================================================
+# PASS
+# ================================================================
+
+pass:
+    bne  x25, x0, fail
+    bne  x26, x0, fail
+
+    addi x30, x0, 0
+    addi x31, x0, 127
+    sw   x31, 60(x1)
+
+# ================================================================
+# DONE
+# ================================================================
+
+done:
+    jal  x0, done	
