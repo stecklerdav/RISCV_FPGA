@@ -126,6 +126,7 @@ vlog -work xlslice_v1_0_2 -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/ec67/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/e257/hdl" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/1b7e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/122e/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/b205/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/c968/hdl/verilog" "+incdir+../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/46fd/hdl" "+incdir+/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/include" \
 "../../../bd/BASIC/ip/BASIC_xlslice_0_0/sim/BASIC_xlslice_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_uart_tx_0_0/sim/BASIC_uart_tx_0_0.v" \
 "../../../bd/BASIC/sim/BASIC.v" \
 
 vlog -work xil_defaultlib \

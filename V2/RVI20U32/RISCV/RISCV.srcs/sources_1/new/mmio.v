@@ -1,14 +1,14 @@
 `timescale 1ns/1ps
 
-
-//  RAM_BASE/GPIO_BASE del hardware deben coincidir con el link.ld y con tus .equ/#define del software.
-
 module mmio #(
     parameter [31:0] RAM_BASE   = 32'h0000_2000,
-    parameter [31:0] RAM_SIZE   = 32'h0000_1000, // 4 KB
+    parameter [31:0] RAM_SIZE   = 32'h0000_1000,
 
     parameter [31:0] GPIO_BASE  = 32'h0000_3000,
-    parameter [31:0] GPIO_SIZE  = 32'h0000_0010  // 16 bytes
+    parameter [31:0] GPIO_SIZE  = 32'h0000_0010,
+
+    parameter [31:0] UART_BASE  = 32'h0000_3010,
+    parameter [31:0] UART_SIZE  = 32'h0000_0010
 )(
     input         clk,
     input         rst,
@@ -39,17 +39,53 @@ module mmio #(
     output reg [3:0]  gpio_be,
 
     input  [31:0]     gpio_rdata,
-    input             gpio_ready
+    input             gpio_ready,
+
+    output reg        uart_valid,
+    output reg        uart_we,
+    output reg [31:0] uart_addr,
+    output reg [31:0] uart_wdata,
+    output reg [3:0]  uart_be,
+
+    input  [31:0]     uart_rdata,
+    input             uart_ready
 );
 
     wire sel_ram;
     wire sel_gpio;
+    wire sel_uart;
 
-    assign sel_ram  = (cpu_addr >= RAM_BASE) &&
-                      (cpu_addr <  RAM_BASE + RAM_SIZE);
+    assign sel_ram  = (cpu_addr >= RAM_BASE)  && (cpu_addr < RAM_BASE  + RAM_SIZE);
+    assign sel_gpio = (cpu_addr >= GPIO_BASE) && (cpu_addr < GPIO_BASE + GPIO_SIZE);
+    assign sel_uart = (cpu_addr >= UART_BASE) && (cpu_addr < UART_BASE + UART_SIZE);
 
-    assign sel_gpio = (cpu_addr >= GPIO_BASE) &&
-                      (cpu_addr <  GPIO_BASE + GPIO_SIZE);
+    reg [31:0] mmio_rdata_q;
+    reg        mmio_ready_q;
+    reg        mmio_error_q;
+
+    always @(posedge clk) begin
+        if (rst) begin
+            mmio_rdata_q <= 32'h0000_0000;
+            mmio_ready_q <= 1'b1;
+            mmio_error_q <= 1'b0;
+        end else begin
+            if (cpu_valid && sel_gpio) begin
+                mmio_rdata_q <= gpio_rdata;
+                mmio_ready_q <= gpio_ready;
+                mmio_error_q <= 1'b0;
+            end
+            else if (cpu_valid && sel_uart) begin
+                mmio_rdata_q <= uart_rdata;
+                mmio_ready_q <= uart_ready;
+                mmio_error_q <= 1'b0;
+            end
+            else if (cpu_valid && !sel_ram && !sel_gpio && !sel_uart) begin
+                mmio_rdata_q <= 32'hDEAD_BEEF;
+                mmio_ready_q <= 1'b1;
+                mmio_error_q <= 1'b1;
+            end
+        end
+    end
 
     always @(*) begin
         ram_valid  = 1'b0;
@@ -60,30 +96,31 @@ module mmio #(
 
         gpio_valid = 1'b0;
         gpio_we    = cpu_we;
-        gpio_addr  = cpu_addr;
+        gpio_addr  = cpu_addr - GPIO_BASE;
         gpio_wdata = cpu_wdata;
         gpio_be    = cpu_be;
 
-        cpu_rdata  = 32'h0000_0000;
-        cpu_ready  = 1'b1;
-        cpu_error  = 1'b0;
+        uart_valid = 1'b0;
+        uart_we    = cpu_we;
+        uart_addr  = cpu_addr - UART_BASE;
+        uart_wdata = cpu_wdata;
+        uart_be    = cpu_be;
 
-        if (cpu_valid) begin
-            if (sel_ram) begin
-                ram_valid = 1'b1;
-                cpu_rdata = ram_rdata;
-                cpu_ready = ram_ready;
-            end
-            else if (sel_gpio) begin
-                gpio_valid = 1'b1;
-                cpu_rdata  = gpio_rdata;
-                cpu_ready  = gpio_ready;
-            end
-            else begin
-                cpu_rdata = 32'hDEAD_BEEF;
-                cpu_ready = 1'b1;
-                cpu_error = 1'b1;
-            end
+        cpu_rdata  = mmio_rdata_q;
+        cpu_ready  = mmio_ready_q;
+        cpu_error  = mmio_error_q;
+
+        if (cpu_valid && sel_ram) begin
+            ram_valid = 1'b1;
+            cpu_rdata = ram_rdata;
+            cpu_ready = ram_ready;
+            cpu_error = 1'b0;
+        end
+        else if (cpu_valid && sel_gpio) begin
+            gpio_valid = 1'b1;
+        end
+        else if (cpu_valid && sel_uart) begin
+            uart_valid = 1'b1;
         end
     end
 

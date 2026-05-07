@@ -131,6 +131,8 @@ public:
   sc_core::sc_in< bool > emio_i2c0_sda_i;
   sc_core::sc_out< bool > emio_i2c0_sda_o;
   sc_core::sc_out< bool > emio_i2c0_sda_t;
+  sc_core::sc_out< bool > emio_uart1_txd;
+  sc_core::sc_in< bool > emio_uart1_rxd;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
   sc_core::sc_out< bool > pl_clk1;
@@ -211,6 +213,8 @@ public:
   sc_core::sc_in< bool > emio_i2c0_sda_i;
   sc_core::sc_out< bool > emio_i2c0_sda_o;
   sc_core::sc_out< bool > emio_i2c0_sda_t;
+  sc_core::sc_out< bool > emio_uart1_txd;
+  sc_core::sc_in< bool > emio_uart1_rxd;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
   sc_core::sc_out< bool > pl_clk1;
@@ -291,6 +295,8 @@ public:
   sc_core::sc_in< bool > emio_i2c0_sda_i;
   sc_core::sc_out< bool > emio_i2c0_sda_o;
   sc_core::sc_out< bool > emio_i2c0_sda_t;
+  sc_core::sc_out< bool > emio_uart1_txd;
+  sc_core::sc_in< bool > emio_uart1_rxd;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
   sc_core::sc_out< bool > pl_clk1;
@@ -373,6 +379,8 @@ public:
   sc_core::sc_in< bool > emio_i2c0_sda_i;
   sc_core::sc_out< bool > emio_i2c0_sda_o;
   sc_core::sc_out< bool > emio_i2c0_sda_t;
+  sc_core::sc_out< bool > emio_uart1_txd;
+  sc_core::sc_in< bool > emio_uart1_rxd;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
   sc_core::sc_out< bool > pl_clk1;
@@ -461,6 +469,8 @@ public:
   sc_core::sc_in< bool > emio_i2c0_sda_i;
   sc_core::sc_out< bool > emio_i2c0_sda_o;
   sc_core::sc_out< bool > emio_i2c0_sda_t;
+  sc_core::sc_out< bool > emio_uart1_txd;
+  sc_core::sc_in< bool > emio_uart1_rxd;
   sc_core::sc_out< bool > pl_resetn0;
   sc_core::sc_out< bool > pl_clk0;
   sc_core::sc_out< bool > pl_clk1;

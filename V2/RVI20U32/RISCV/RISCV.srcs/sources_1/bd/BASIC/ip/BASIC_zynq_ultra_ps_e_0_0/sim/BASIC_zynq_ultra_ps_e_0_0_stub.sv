@@ -116,6 +116,8 @@ module BASIC_zynq_ultra_ps_e_0_0 (
   input bit_as_bool emio_i2c0_sda_i,
   output bit_as_bool emio_i2c0_sda_o,
   output bit_as_bool emio_i2c0_sda_t,
+  output bit_as_bool emio_uart1_txd,
+  input bit_as_bool emio_uart1_rxd,
   output bit_as_bool pl_resetn0,
   output bit_as_bool pl_clk0,
   output bit_as_bool pl_clk1
@@ -125,7 +127,7 @@ endmodule
 
 `ifdef XCELIUM
 (* XMSC_MODULE_EXPORT *)
-module BASIC_zynq_ultra_ps_e_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,maxigp0_awlen,maxigp0_awsize,maxigp0_awburst,maxigp0_awlock,maxigp0_awcache,maxigp0_awprot,maxigp0_awvalid,maxigp0_awuser,maxigp0_awready,maxigp0_wdata,maxigp0_wstrb,maxigp0_wlast,maxigp0_wvalid,maxigp0_wready,maxigp0_bid,maxigp0_bresp,maxigp0_bvalid,maxigp0_bready,maxigp0_arid,maxigp0_araddr,maxigp0_arlen,maxigp0_arsize,maxigp0_arburst,maxigp0_arlock,maxigp0_arcache,maxigp0_arprot,maxigp0_arvalid,maxigp0_aruser,maxigp0_arready,maxigp0_rid,maxigp0_rdata,maxigp0_rresp,maxigp0_rlast,maxigp0_rvalid,maxigp0_rready,maxigp0_awqos,maxigp0_arqos,emio_can0_phy_tx,emio_can0_phy_rx,emio_gpio_i,emio_gpio_o,emio_gpio_t,emio_i2c0_scl_i,emio_i2c0_scl_o,emio_i2c0_scl_t,emio_i2c0_sda_i,emio_i2c0_sda_o,emio_i2c0_sda_t,pl_resetn0,pl_clk0,pl_clk1)
+module BASIC_zynq_ultra_ps_e_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,maxigp0_awlen,maxigp0_awsize,maxigp0_awburst,maxigp0_awlock,maxigp0_awcache,maxigp0_awprot,maxigp0_awvalid,maxigp0_awuser,maxigp0_awready,maxigp0_wdata,maxigp0_wstrb,maxigp0_wlast,maxigp0_wvalid,maxigp0_wready,maxigp0_bid,maxigp0_bresp,maxigp0_bvalid,maxigp0_bready,maxigp0_arid,maxigp0_araddr,maxigp0_arlen,maxigp0_arsize,maxigp0_arburst,maxigp0_arlock,maxigp0_arcache,maxigp0_arprot,maxigp0_arvalid,maxigp0_aruser,maxigp0_arready,maxigp0_rid,maxigp0_rdata,maxigp0_rresp,maxigp0_rlast,maxigp0_rvalid,maxigp0_rready,maxigp0_awqos,maxigp0_arqos,emio_can0_phy_tx,emio_can0_phy_rx,emio_gpio_i,emio_gpio_o,emio_gpio_t,emio_i2c0_scl_i,emio_i2c0_scl_o,emio_i2c0_scl_t,emio_i2c0_sda_i,emio_i2c0_sda_o,emio_i2c0_sda_t,emio_uart1_txd,emio_uart1_rxd,pl_resetn0,pl_clk0,pl_clk1)
 (* integer foreign = "SystemC";
 *);
   input bit maxihpm0_fpd_aclk;
@@ -179,6 +181,8 @@ module BASIC_zynq_ultra_ps_e_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,
   input bit emio_i2c0_sda_i;
   output wire emio_i2c0_sda_o;
   output wire emio_i2c0_sda_t;
+  output wire emio_uart1_txd;
+  input bit emio_uart1_rxd;
   output wire pl_resetn0;
   output wire pl_clk0;
   output wire pl_clk1;
@@ -187,7 +191,7 @@ endmodule
 
 `ifdef RIVIERA
 (* SC_MODULE_EXPORT *)
-module BASIC_zynq_ultra_ps_e_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,maxigp0_awlen,maxigp0_awsize,maxigp0_awburst,maxigp0_awlock,maxigp0_awcache,maxigp0_awprot,maxigp0_awvalid,maxigp0_awuser,maxigp0_awready,maxigp0_wdata,maxigp0_wstrb,maxigp0_wlast,maxigp0_wvalid,maxigp0_wready,maxigp0_bid,maxigp0_bresp,maxigp0_bvalid,maxigp0_bready,maxigp0_arid,maxigp0_araddr,maxigp0_arlen,maxigp0_arsize,maxigp0_arburst,maxigp0_arlock,maxigp0_arcache,maxigp0_arprot,maxigp0_arvalid,maxigp0_aruser,maxigp0_arready,maxigp0_rid,maxigp0_rdata,maxigp0_rresp,maxigp0_rlast,maxigp0_rvalid,maxigp0_rready,maxigp0_awqos,maxigp0_arqos,emio_can0_phy_tx,emio_can0_phy_rx,emio_gpio_i,emio_gpio_o,emio_gpio_t,emio_i2c0_scl_i,emio_i2c0_scl_o,emio_i2c0_scl_t,emio_i2c0_sda_i,emio_i2c0_sda_o,emio_i2c0_sda_t,pl_resetn0,pl_clk0,pl_clk1)
+module BASIC_zynq_ultra_ps_e_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,maxigp0_awlen,maxigp0_awsize,maxigp0_awburst,maxigp0_awlock,maxigp0_awcache,maxigp0_awprot,maxigp0_awvalid,maxigp0_awuser,maxigp0_awready,maxigp0_wdata,maxigp0_wstrb,maxigp0_wlast,maxigp0_wvalid,maxigp0_wready,maxigp0_bid,maxigp0_bresp,maxigp0_bvalid,maxigp0_bready,maxigp0_arid,maxigp0_araddr,maxigp0_arlen,maxigp0_arsize,maxigp0_arburst,maxigp0_arlock,maxigp0_arcache,maxigp0_arprot,maxigp0_arvalid,maxigp0_aruser,maxigp0_arready,maxigp0_rid,maxigp0_rdata,maxigp0_rresp,maxigp0_rlast,maxigp0_rvalid,maxigp0_rready,maxigp0_awqos,maxigp0_arqos,emio_can0_phy_tx,emio_can0_phy_rx,emio_gpio_i,emio_gpio_o,emio_gpio_t,emio_i2c0_scl_i,emio_i2c0_scl_o,emio_i2c0_scl_t,emio_i2c0_sda_i,emio_i2c0_sda_o,emio_i2c0_sda_t,emio_uart1_txd,emio_uart1_rxd,pl_resetn0,pl_clk0,pl_clk1)
   input bit maxihpm0_fpd_aclk;
   output wire [15 : 0] maxigp0_awid;
   output wire [39 : 0] maxigp0_awaddr;
@@ -239,6 +243,8 @@ module BASIC_zynq_ultra_ps_e_0_0 (maxihpm0_fpd_aclk,maxigp0_awid,maxigp0_awaddr,
   input bit emio_i2c0_sda_i;
   output wire emio_i2c0_sda_o;
   output wire emio_i2c0_sda_t;
+  output wire emio_uart1_txd;
+  input bit emio_uart1_rxd;
   output wire pl_resetn0;
   output wire pl_clk0;
   output wire pl_clk1;

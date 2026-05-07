@@ -78,7 +78,14 @@ module BASIC_mmio_0_0 (
   gpio_wdata,
   gpio_be,
   gpio_rdata,
-  gpio_ready
+  gpio_ready,
+  uart_valid,
+  uart_we,
+  uart_addr,
+  uart_wdata,
+  uart_be,
+  uart_rdata,
+  uart_ready
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -109,12 +116,21 @@ output wire [31 : 0] gpio_wdata;
 output wire [3 : 0] gpio_be;
 input wire [31 : 0] gpio_rdata;
 input wire gpio_ready;
+output wire uart_valid;
+output wire uart_we;
+output wire [31 : 0] uart_addr;
+output wire [31 : 0] uart_wdata;
+output wire [3 : 0] uart_be;
+input wire [31 : 0] uart_rdata;
+input wire uart_ready;
 
   mmio #(
     .RAM_BASE(32'H00002000),
     .RAM_SIZE(32'H00001000),
     .GPIO_BASE(32'H00003000),
-    .GPIO_SIZE(32'H00000010)
+    .GPIO_SIZE(32'H00000010),
+    .UART_BASE(32'H00003010),
+    .UART_SIZE(32'H00000010)
   ) inst (
     .clk(clk),
     .rst(rst),
@@ -139,6 +155,13 @@ input wire gpio_ready;
     .gpio_wdata(gpio_wdata),
     .gpio_be(gpio_be),
     .gpio_rdata(gpio_rdata),
-    .gpio_ready(gpio_ready)
+    .gpio_ready(gpio_ready),
+    .uart_valid(uart_valid),
+    .uart_we(uart_we),
+    .uart_addr(uart_addr),
+    .uart_wdata(uart_wdata),
+    .uart_be(uart_be),
+    .uart_rdata(uart_rdata),
+    .uart_ready(uart_ready)
   );
 endmodule

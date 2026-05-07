@@ -109,6 +109,8 @@ emio_i2c0_scl_t,
 emio_i2c0_sda_i, 
 emio_i2c0_sda_o, 
 emio_i2c0_sda_t, 
+emio_uart1_txd, 
+emio_uart1_rxd, 
 pl_resetn0, 
 pl_clk0, 
 pl_clk1 
@@ -164,6 +166,8 @@ output emio_i2c0_scl_t;
 input emio_i2c0_sda_i;
 output emio_i2c0_sda_o;
 output emio_i2c0_sda_t;
+output emio_uart1_txd;
+input emio_uart1_rxd;
 output pl_resetn0;
 output pl_clk0;
 output pl_clk1;

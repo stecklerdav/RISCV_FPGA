@@ -97,6 +97,7 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/BASIC/ip/BASIC_xlslice_0_0/sim/BASIC_xlslice_0_0.v" \
+  "../../../bd/BASIC/ip/BASIC_uart_tx_0_0/sim/BASIC_uart_tx_0_0.v" \
   "../../../bd/BASIC/sim/BASIC.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \

@@ -15,59 +15,118 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6197796fs"></ZoomStartTime>
-      <ZoomEndTime time="7141797fs"></ZoomEndTime>
-      <Cursor1Time time="6450129fs"></Cursor1Time>
+      <ZoomStartTime time="6235144fs"></ZoomStartTime>
+      <ZoomEndTime time="7824145fs"></ZoomEndTime>
+      <Cursor1Time time="6499977fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="215"></NameColumnWidth>
-      <ValueColumnWidth column_width="100"></ValueColumnWidth>
+      <NameColumnWidth column_width="152"></NameColumnWidth>
+      <ValueColumnWidth column_width="88"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="23" />
    <wave_markers>
       <marker label="" time="7934143" />
    </wave_markers>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/clk">
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/pc_unit_0/inst/rst">
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/rst">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/rd_we">
-      <obj_property name="ElementShortName">rd_we</obj_property>
-      <obj_property name="ObjectShortName">rd_we</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/valid">
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/rd_addr">
-      <obj_property name="ElementShortName">rd_addr[4:0]</obj_property>
-      <obj_property name="ObjectShortName">rd_addr[4:0]</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/we">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/addr">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_ID/regfile_0/inst/rd_wdata">
-      <obj_property name="ElementShortName">rd_wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rd_wdata[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/wdata">
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/pc_unit_0/inst/pc">
-      <obj_property name="ElementShortName">pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/be">
+      <obj_property name="ElementShortName">be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/pc_unit_0/inst/pc_redirect_valid">
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/rdata">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/ready">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/tx">
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/tx_busy">
+      <obj_property name="ElementShortName">tx_busy</obj_property>
+      <obj_property name="ObjectShortName">tx_busy</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0/inst/tx_ready">
+      <obj_property name="ElementShortName">tx_ready</obj_property>
+      <obj_property name="ObjectShortName">tx_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mmio_0/inst/cpu_valid">
+      <obj_property name="ElementShortName">cpu_valid</obj_property>
+      <obj_property name="ObjectShortName">cpu_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mmio_0/inst/cpu_we">
+      <obj_property name="ElementShortName">cpu_we</obj_property>
+      <obj_property name="ObjectShortName">cpu_we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mmio_0/inst/cpu_addr">
+      <obj_property name="ElementShortName">cpu_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mmio_0/inst/cpu_wdata">
+      <obj_property name="ElementShortName">cpu_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mmio_0/inst/cpu_be">
+      <obj_property name="ElementShortName">cpu_be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mmio_0/inst/cpu_rdata">
+      <obj_property name="ElementShortName">cpu_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cpu_rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_redirect_valid">
       <obj_property name="ElementShortName">pc_redirect_valid</obj_property>
       <obj_property name="ObjectShortName">pc_redirect_valid</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/pc_unit_0/inst/pc_redirect_target">
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_redirect_target">
       <obj_property name="ElementShortName">pc_redirect_target[31:0]</obj_property>
       <obj_property name="ObjectShortName">pc_redirect_target[31:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/if_id_reg_0/inst/id_pc_out">
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/id_pc_out">
       <obj_property name="ElementShortName">id_pc_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">id_pc_out[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_IF/if_id_reg_0/inst/id_instr_out">
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/id_instr_out">
       <obj_property name="ElementShortName">id_instr_out[31:0]</obj_property>
       <obj_property name="ObjectShortName">id_instr_out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/id_valid_out">
+      <obj_property name="ElementShortName">id_valid_out</obj_property>
+      <obj_property name="ObjectShortName">id_valid_out</obj_property>
    </wvobject>
 </wave_config>

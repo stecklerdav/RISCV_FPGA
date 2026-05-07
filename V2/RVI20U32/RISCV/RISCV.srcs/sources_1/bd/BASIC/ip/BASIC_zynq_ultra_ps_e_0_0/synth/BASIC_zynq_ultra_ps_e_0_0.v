@@ -108,6 +108,8 @@ module BASIC_zynq_ultra_ps_e_0_0 (
   emio_i2c0_sda_i,
   emio_i2c0_sda_o,
   emio_i2c0_sda_t,
+  emio_uart1_txd,
+  emio_uart1_rxd,
   pl_resetn0,
   pl_clk0,
   pl_clk1
@@ -218,6 +220,10 @@ input wire emio_i2c0_sda_i;
 output wire emio_i2c0_sda_o;
 (* X_INTERFACE_INFO = "xilinx.com:interface:iic:1.0 IIC_0 SDA_T" *)
 output wire emio_i2c0_sda_t;
+(* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART_1 TxD" *)
+output wire emio_uart1_txd;
+(* X_INTERFACE_INFO = "xilinx.com:interface:uart:1.0 UART_1 RxD" *)
+input wire emio_uart1_rxd;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME PL_RESETN0, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 PL_RESETN0 RST" *)
 output wire pl_resetn0;
@@ -1060,8 +1066,8 @@ output wire pl_clk1;
     .emio_uart0_dcdn(1'B0),
     .emio_uart0_rin(1'B0),
     .emio_uart0_dtrn(),
-    .emio_uart1_txd(),
-    .emio_uart1_rxd(1'B0),
+    .emio_uart1_txd(emio_uart1_txd),
+    .emio_uart1_rxd(emio_uart1_rxd),
     .emio_uart1_ctsn(1'B0),
     .emio_uart1_rtsn(),
     .emio_uart1_dsrn(1'B0),

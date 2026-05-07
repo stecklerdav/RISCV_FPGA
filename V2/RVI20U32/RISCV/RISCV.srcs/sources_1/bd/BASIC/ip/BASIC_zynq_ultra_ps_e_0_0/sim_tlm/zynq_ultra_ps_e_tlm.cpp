@@ -154,6 +154,8 @@ void add_extensions_to_tlm(const xtlm::aximm_payload* xtlm_pay, tlm::tlm_generic
         ,emio_i2c0_sda_i("emio_i2c0_sda_i")
         ,emio_i2c0_sda_o("emio_i2c0_sda_o")
         ,emio_i2c0_sda_t("emio_i2c0_sda_t")
+        ,emio_uart1_txd("emio_uart1_txd")
+        ,emio_uart1_rxd("emio_uart1_rxd")
         ,pl_resetn0("pl_resetn0")
         ,pl_clk0("pl_clk0")
         ,pl_clk1("pl_clk1")

@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun May  3 19:31:28 2026
+//Date        : Thu May  7 00:51:54 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,10 +9,172 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=48,numReposBlks=41,numNonXlnxBlks=0,numHierBlks=7,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=26,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=52,numReposBlks=42,numNonXlnxBlks=0,numHierBlks=10,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=27,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
    (gpio_out_0);
   output [1:0]gpio_out_0;
+
+  wire [31:0]MMIO_uart_addr;
+  wire [3:0]MMIO_uart_be;
+  wire MMIO_uart_valid;
+  wire [31:0]MMIO_uart_wdata;
+  wire MMIO_uart_we;
+  wire [31:0]RV32I_MEM_dmem_addr;
+  wire [3:0]RV32I_MEM_dmem_be;
+  wire RV32I_MEM_dmem_re;
+  wire [31:0]RV32I_MEM_dmem_wdata;
+  wire RV32I_MEM_dmem_we;
+  wire [31:0]RV32I_RAM_MEMORY_rdata;
+  wire [31:0]addr_1;
+  wire [3:0]be_1;
+  wire [7:0]gpio_0_gpio_out;
+  wire [31:0]gpio_0_rdata;
+  wire gpio_0_ready;
+  wire [31:0]mmio_0_cpu_rdata;
+  wire [31:0]mmio_0_gpio_addr;
+  wire [3:0]mmio_0_gpio_be;
+  wire mmio_0_gpio_valid;
+  wire [31:0]mmio_0_gpio_wdata;
+  wire mmio_0_gpio_we;
+  wire [0:0]proc_sys_reset_0_peripheral_reset;
+  wire [0:0]proc_sys_reset_0_peripheral_reset1;
+  wire [31:0]uart_tx_0_rdata;
+  wire uart_tx_0_ready;
+  wire uart_tx_0_tx;
+  wire [0:0]vio_0_probe_out0;
+  wire [31:0]wdata_1;
+  wire we_1;
+  wire [0:0]xlconstant_0_dout;
+  wire [1:0]xlslice_0_Dout;
+  wire zynq_ultra_ps_e_0_pl_clk0;
+  wire zynq_ultra_ps_e_0_pl_resetn0;
+
+  assign gpio_out_0[1:0] = xlslice_0_Dout;
+  Core_RV32I_imp_1VYNK5M Core_RV32I
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .dmem_addr(RV32I_MEM_dmem_addr),
+        .dmem_be(RV32I_MEM_dmem_be),
+        .dmem_re(RV32I_MEM_dmem_re),
+        .dmem_wdata(RV32I_MEM_dmem_wdata),
+        .dmem_we(RV32I_MEM_dmem_we),
+        .mem_data(mmio_0_cpu_rdata),
+        .rst(proc_sys_reset_0_peripheral_reset));
+  GPIO_imp_GTDX3I GPIO
+       (.addr(mmio_0_gpio_addr),
+        .be(mmio_0_gpio_be),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .gpio_out(gpio_0_gpio_out),
+        .rdata(gpio_0_rdata),
+        .ready(gpio_0_ready),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .valid(mmio_0_gpio_valid),
+        .wdata(mmio_0_gpio_wdata),
+        .we(mmio_0_gpio_we));
+  MMIO_imp_LNKWBU MMIO
+       (.Op1(RV32I_MEM_dmem_we),
+        .Op2(RV32I_MEM_dmem_re),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .cpu_addr(RV32I_MEM_dmem_addr),
+        .cpu_be(RV32I_MEM_dmem_be),
+        .cpu_rdata(mmio_0_cpu_rdata),
+        .cpu_wdata(RV32I_MEM_dmem_wdata),
+        .gpio_addr(mmio_0_gpio_addr),
+        .gpio_be(mmio_0_gpio_be),
+        .gpio_rdata(gpio_0_rdata),
+        .gpio_ready(gpio_0_ready),
+        .gpio_valid(mmio_0_gpio_valid),
+        .gpio_wdata(mmio_0_gpio_wdata),
+        .gpio_we(mmio_0_gpio_we),
+        .ram_addr(addr_1),
+        .ram_be(be_1),
+        .ram_rdata(RV32I_RAM_MEMORY_rdata),
+        .ram_wdata(wdata_1),
+        .ram_we(we_1),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .uart_addr(MMIO_uart_addr),
+        .uart_be(MMIO_uart_be),
+        .uart_rdata(uart_tx_0_rdata),
+        .uart_ready(1'b0),
+        .uart_ready1(uart_tx_0_ready),
+        .uart_valid(MMIO_uart_valid),
+        .uart_wdata(MMIO_uart_wdata),
+        .uart_we(MMIO_uart_we));
+  RV32I_RAM_MEMORY_imp_1A3BT4W RV32I_RAM_MEMORY
+       (.addr(addr_1),
+        .be(be_1),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .rdata(RV32I_RAM_MEMORY_rdata),
+        .wdata(wdata_1),
+        .we(we_1));
+  BASIC_proc_sys_reset_0_0 proc_sys_reset_0
+       (.aux_reset_in(1'b1),
+        .dcm_locked(xlconstant_0_dout),
+        .ext_reset_in(zynq_ultra_ps_e_0_pl_resetn0),
+        .mb_debug_sys_rst(1'b0),
+        .peripheral_reset(proc_sys_reset_0_peripheral_reset1),
+        .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
+  BASIC_uart_tx_0_0 uart_tx_0
+       (.addr(MMIO_uart_addr),
+        .be(MMIO_uart_be),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .rdata(uart_tx_0_rdata),
+        .ready(uart_tx_0_ready),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .tx(uart_tx_0_tx),
+        .valid(MMIO_uart_valid),
+        .wdata(MMIO_uart_wdata),
+        .we(MMIO_uart_we));
+  BASIC_util_vector_logic_2_0 util_vector_logic_2
+       (.Op1(proc_sys_reset_0_peripheral_reset1),
+        .Op2(vio_0_probe_out0),
+        .Res(proc_sys_reset_0_peripheral_reset));
+  BASIC_vio_0_0 vio_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .probe_out0(vio_0_probe_out0));
+  BASIC_xlconstant_0_0 xlconstant_0
+       (.dout(xlconstant_0_dout));
+  BASIC_xlslice_0_0 xlslice_0
+       (.Din(gpio_0_gpio_out),
+        .Dout(xlslice_0_Dout));
+  BASIC_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
+       (.emio_can0_phy_rx(1'b0),
+        .emio_gpio_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .emio_i2c0_scl_i(1'b0),
+        .emio_i2c0_sda_i(1'b0),
+        .emio_uart1_rxd(uart_tx_0_tx),
+        .maxigp0_arready(1'b0),
+        .maxigp0_awready(1'b0),
+        .maxigp0_bid({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .maxigp0_bresp({1'b0,1'b0}),
+        .maxigp0_bvalid(1'b0),
+        .maxigp0_rdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .maxigp0_rid({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .maxigp0_rlast(1'b0),
+        .maxigp0_rresp({1'b0,1'b0}),
+        .maxigp0_rvalid(1'b0),
+        .maxigp0_wready(1'b0),
+        .maxihpm0_fpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .pl_clk0(zynq_ultra_ps_e_0_pl_clk0),
+        .pl_resetn0(zynq_ultra_ps_e_0_pl_resetn0));
+endmodule
+
+module Core_RV32I_imp_1VYNK5M
+   (clk,
+    dmem_addr,
+    dmem_be,
+    dmem_re,
+    dmem_wdata,
+    dmem_we,
+    mem_data,
+    rst);
+  input clk;
+  output [31:0]dmem_addr;
+  output [3:0]dmem_be;
+  output dmem_re;
+  output [31:0]dmem_wdata;
+  output dmem_we;
+  input [31:0]mem_data;
+  input rst;
 
   wire Net;
   wire RV32I_EX_ex_flush_req;
@@ -26,9 +188,6 @@ module BASIC
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
   wire RV32I_MEM_wb_valid;
-  wire [31:0]RV32I_RAM_MEMORY_rdata;
-  wire [31:0]addr_1;
-  wire [3:0]be_1;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
   wire [31:0]ex_mem_reg_1_mem_alu_result;
@@ -43,9 +202,6 @@ module BASIC
   wire [31:0]ex_mem_reg_1_mem_store_data;
   wire ex_mem_reg_1_mem_valid;
   wire [1:0]ex_mem_reg_1_mem_wb_sel;
-  wire [7:0]gpio_0_gpio_out;
-  wire [31:0]gpio_0_rdata;
-  wire gpio_0_ready;
   wire [3:0]id_ex_reg_0_ex_alu_op;
   wire id_ex_reg_0_ex_branch_en;
   wire [2:0]id_ex_reg_0_ex_branch_funct3;
@@ -87,32 +243,25 @@ module BASIC
   wire [4:0]mem_wb_reg_0_wb_rd;
   wire [1:0]mem_wb_reg_0_wb_sel;
   wire [31:0]mmio_0_cpu_rdata;
-  wire [31:0]mmio_0_gpio_addr;
-  wire [3:0]mmio_0_gpio_be;
-  wire mmio_0_gpio_valid;
-  wire [31:0]mmio_0_gpio_wdata;
-  wire mmio_0_gpio_we;
   wire priority_branch_OR_l_0_id_ex_flush_final;
   wire priority_branch_OR_l_0_if_id_flush_final;
   wire priority_branch_OR_l_0_if_id_hold_final;
   wire priority_branch_OR_l_0_pc_en_final;
-  wire [0:0]proc_sys_reset_0_peripheral_reset;
-  wire [0:0]proc_sys_reset_0_peripheral_reset1;
+  wire proc_sys_reset_0_peripheral_reset;
   wire [4:0]util_vector_logic_0_Res;
   wire [0:0]util_vector_logic_2_Res;
-  wire [0:0]util_vector_logic_3_Res;
-  wire [0:0]vio_0_probe_out0;
   wire [31:0]wb_mux_0_rd_wdata;
-  wire [31:0]wdata_1;
-  wire we_1;
-  wire [0:0]xlconstant_0_dout;
-  wire [0:0]xlconstant_3_dout;
-  wire [1:0]xlslice_0_Dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
-  wire zynq_ultra_ps_e_0_pl_resetn0;
 
-  assign gpio_out_0[1:0] = xlslice_0_Dout;
-  RV32I_EX_imp_10RN1RF RV32I_EX
+  assign dmem_addr[31:0] = RV32I_MEM_dmem_addr;
+  assign dmem_be[3:0] = RV32I_MEM_dmem_be;
+  assign dmem_re = RV32I_MEM_dmem_re;
+  assign dmem_wdata[31:0] = RV32I_MEM_dmem_wdata;
+  assign dmem_we = RV32I_MEM_dmem_we;
+  assign mmio_0_cpu_rdata = mem_data[31:0];
+  assign proc_sys_reset_0_peripheral_reset = rst;
+  assign zynq_ultra_ps_e_0_pl_clk0 = clk;
+  RV32I_EX_imp_VZHXQ1 RV32I_EX
        (.alu_op(id_ex_reg_0_ex_alu_op),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .ex_branch_en(id_ex_reg_0_ex_branch_en),
@@ -161,7 +310,7 @@ module BASIC
         .wb_rd(mem_wb_reg_0_wb_rd),
         .wb_rd_we(util_vector_logic_0_Res),
         .wb_valid(RV32I_MEM_wb_valid));
-  RV32I_ID_imp_FBK4LB RV32I_ID
+  RV32I_ID_imp_1HJBFQL RV32I_ID
        (.bubble(priority_branch_OR_l_0_id_ex_flush_final),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .ex_alu_op(id_ex_reg_0_ex_alu_op),
@@ -200,7 +349,7 @@ module BASIC
         .rs2_used(RV32I_ID_rs2_used),
         .rst(proc_sys_reset_0_peripheral_reset),
         .stall(load_use_detection_0_load_use_hazard));
-  RV32I_IF_imp_Y4LBN8 RV32I_IF
+  RV32I_IF_imp_136QK4M RV32I_IF
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(mem_stage_0_mem_out_rd_we),
         .Res(util_vector_logic_2_Res),
@@ -215,7 +364,7 @@ module BASIC
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(branch_0_pc_redirect_valid),
         .rst(proc_sys_reset_0_peripheral_reset));
-  RV32I_MEM_imp_3VZ702 RV32I_MEM
+  RV32I_MEM_imp_12Q40FU RV32I_MEM
        (.Res(util_vector_logic_0_Res),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .dmem_addr(RV32I_MEM_dmem_addr),
@@ -248,32 +397,13 @@ module BASIC
         .wb_rd(mem_wb_reg_0_wb_rd),
         .wb_sel(mem_wb_reg_0_wb_sel),
         .wb_valid(RV32I_MEM_wb_valid));
-  RV32I_RAM_MEMORY_imp_1A3BT4W RV32I_RAM_MEMORY
-       (.addr(addr_1),
-        .be(be_1),
-        .clk(zynq_ultra_ps_e_0_pl_clk0),
-        .rdata(RV32I_RAM_MEMORY_rdata),
-        .wdata(wdata_1),
-        .we(we_1));
-  RV32I_WB_imp_1NJ77AP RV32I_WB
+  RV32I_WB_imp_98K1CZ RV32I_WB
        (.alu_y(mem_wb_reg_0_wb_alu_result),
         .imm_u(mem_wb_reg_0_wb_imm_u),
         .load_data(mem_wb_reg_0_wb_data),
         .pc_plus4(mem_wb_reg_0_wb_pc_plus4),
         .rd_wdata(wb_mux_0_rd_wdata),
         .wb_sel(mem_wb_reg_0_wb_sel));
-  BASIC_gpio_0_0 gpio_0
-       (.addr(mmio_0_gpio_addr),
-        .be(mmio_0_gpio_be),
-        .clk(zynq_ultra_ps_e_0_pl_clk0),
-        .gpio_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .gpio_out(gpio_0_gpio_out),
-        .rdata(gpio_0_rdata),
-        .ready(gpio_0_ready),
-        .rst(proc_sys_reset_0_peripheral_reset),
-        .valid(mmio_0_gpio_valid),
-        .wdata(mmio_0_gpio_wdata),
-        .we(mmio_0_gpio_we));
   BASIC_ila_0_0 ila_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .probe0(proc_sys_reset_0_peripheral_reset),
@@ -294,6 +424,189 @@ module BASIC
         .if_id_valid(if_id_reg_0_id_valid_out),
         .load_use_hazard(load_use_detection_0_load_use_hazard),
         .pc_en(load_use_detection_0_pc_en));
+  BASIC_priority_branch_OR_l_0_0 priority_branch_OR_l_0
+       (.ex_flush_req(RV32I_EX_ex_flush_req),
+        .id_ex_flush_final(priority_branch_OR_l_0_id_ex_flush_final),
+        .if_id_flush_final(priority_branch_OR_l_0_if_id_flush_final),
+        .if_id_hold_final(priority_branch_OR_l_0_if_id_hold_final),
+        .load_use_id_ex_flush(load_use_detection_0_id_ex_flush),
+        .load_use_if_id_hold(load_use_detection_0_if_id_hold),
+        .load_use_pc_en(load_use_detection_0_pc_en),
+        .pc_en_final(priority_branch_OR_l_0_pc_en_final));
+endmodule
+
+module GPIO_imp_GTDX3I
+   (addr,
+    be,
+    clk,
+    gpio_out,
+    rdata,
+    ready,
+    rst,
+    valid,
+    wdata,
+    we);
+  input [31:0]addr;
+  input [3:0]be;
+  input clk;
+  output [7:0]gpio_out;
+  output [31:0]rdata;
+  output ready;
+  input rst;
+  input valid;
+  input [31:0]wdata;
+  input we;
+
+  wire [7:0]gpio_0_gpio_out;
+  wire [31:0]gpio_0_rdata;
+  wire gpio_0_ready;
+  wire [31:0]mmio_0_gpio_addr;
+  wire [3:0]mmio_0_gpio_be;
+  wire mmio_0_gpio_valid;
+  wire [31:0]mmio_0_gpio_wdata;
+  wire mmio_0_gpio_we;
+  wire proc_sys_reset_0_peripheral_reset;
+  wire zynq_ultra_ps_e_0_pl_clk0;
+
+  assign gpio_out[7:0] = gpio_0_gpio_out;
+  assign mmio_0_gpio_addr = addr[31:0];
+  assign mmio_0_gpio_be = be[3:0];
+  assign mmio_0_gpio_valid = valid;
+  assign mmio_0_gpio_wdata = wdata[31:0];
+  assign mmio_0_gpio_we = we;
+  assign proc_sys_reset_0_peripheral_reset = rst;
+  assign rdata[31:0] = gpio_0_rdata;
+  assign ready = gpio_0_ready;
+  assign zynq_ultra_ps_e_0_pl_clk0 = clk;
+  BASIC_gpio_0_0 gpio_0
+       (.addr(mmio_0_gpio_addr),
+        .be(mmio_0_gpio_be),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .gpio_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .gpio_out(gpio_0_gpio_out),
+        .rdata(gpio_0_rdata),
+        .ready(gpio_0_ready),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .valid(mmio_0_gpio_valid),
+        .wdata(mmio_0_gpio_wdata),
+        .we(mmio_0_gpio_we));
+endmodule
+
+module MMIO_imp_LNKWBU
+   (Op1,
+    Op2,
+    clk,
+    cpu_addr,
+    cpu_be,
+    cpu_rdata,
+    cpu_wdata,
+    gpio_addr,
+    gpio_be,
+    gpio_rdata,
+    gpio_ready,
+    gpio_valid,
+    gpio_wdata,
+    gpio_we,
+    ram_addr,
+    ram_be,
+    ram_rdata,
+    ram_wdata,
+    ram_we,
+    rst,
+    uart_addr,
+    uart_be,
+    uart_rdata,
+    uart_ready,
+    uart_ready1,
+    uart_valid,
+    uart_wdata,
+    uart_we);
+  input [0:0]Op1;
+  input [0:0]Op2;
+  input clk;
+  input [31:0]cpu_addr;
+  input [3:0]cpu_be;
+  output [31:0]cpu_rdata;
+  input [31:0]cpu_wdata;
+  output [31:0]gpio_addr;
+  output [3:0]gpio_be;
+  input [31:0]gpio_rdata;
+  input gpio_ready;
+  output gpio_valid;
+  output [31:0]gpio_wdata;
+  output gpio_we;
+  output [31:0]ram_addr;
+  output [3:0]ram_be;
+  input [31:0]ram_rdata;
+  output [31:0]ram_wdata;
+  output ram_we;
+  input rst;
+  output [31:0]uart_addr;
+  output [3:0]uart_be;
+  input [31:0]uart_rdata;
+  input uart_ready;
+  input uart_ready1;
+  output uart_valid;
+  output [31:0]uart_wdata;
+  output uart_we;
+
+  wire [31:0]RV32I_MEM_dmem_addr;
+  wire [3:0]RV32I_MEM_dmem_be;
+  wire [0:0]RV32I_MEM_dmem_re;
+  wire [31:0]RV32I_MEM_dmem_wdata;
+  wire [0:0]RV32I_MEM_dmem_we;
+  wire [31:0]RV32I_RAM_MEMORY_rdata;
+  wire [31:0]addr_1;
+  wire [3:0]be_1;
+  wire [31:0]gpio_0_rdata;
+  wire gpio_0_ready;
+  wire [31:0]mmio_0_cpu_rdata;
+  wire [31:0]mmio_0_gpio_addr;
+  wire [3:0]mmio_0_gpio_be;
+  wire mmio_0_gpio_valid;
+  wire [31:0]mmio_0_gpio_wdata;
+  wire mmio_0_gpio_we;
+  wire [31:0]mmio_0_uart_addr;
+  wire [3:0]mmio_0_uart_be;
+  wire mmio_0_uart_valid;
+  wire [31:0]mmio_0_uart_wdata;
+  wire mmio_0_uart_we;
+  wire proc_sys_reset_0_peripheral_reset;
+  wire [31:0]uart_rdata_1;
+  wire uart_ready1_1;
+  wire [0:0]util_vector_logic_3_Res;
+  wire [31:0]wdata_1;
+  wire we_1;
+  wire [0:0]xlconstant_3_dout;
+  wire zynq_ultra_ps_e_0_pl_clk0;
+
+  assign RV32I_MEM_dmem_addr = cpu_addr[31:0];
+  assign RV32I_MEM_dmem_be = cpu_be[3:0];
+  assign RV32I_MEM_dmem_re = Op2[0];
+  assign RV32I_MEM_dmem_wdata = cpu_wdata[31:0];
+  assign RV32I_MEM_dmem_we = Op1[0];
+  assign RV32I_RAM_MEMORY_rdata = ram_rdata[31:0];
+  assign cpu_rdata[31:0] = mmio_0_cpu_rdata;
+  assign gpio_0_rdata = gpio_rdata[31:0];
+  assign gpio_0_ready = gpio_ready;
+  assign gpio_addr[31:0] = mmio_0_gpio_addr;
+  assign gpio_be[3:0] = mmio_0_gpio_be;
+  assign gpio_valid = mmio_0_gpio_valid;
+  assign gpio_wdata[31:0] = mmio_0_gpio_wdata;
+  assign gpio_we = mmio_0_gpio_we;
+  assign proc_sys_reset_0_peripheral_reset = rst;
+  assign ram_addr[31:0] = addr_1;
+  assign ram_be[3:0] = be_1;
+  assign ram_wdata[31:0] = wdata_1;
+  assign ram_we = we_1;
+  assign uart_addr[31:0] = mmio_0_uart_addr;
+  assign uart_be[3:0] = mmio_0_uart_be;
+  assign uart_rdata_1 = uart_rdata[31:0];
+  assign uart_ready1_1 = uart_ready1;
+  assign uart_valid = mmio_0_uart_valid;
+  assign uart_wdata[31:0] = mmio_0_uart_wdata;
+  assign uart_we = mmio_0_uart_we;
+  assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_mmio_0_0 mmio_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .cpu_addr(RV32I_MEM_dmem_addr),
@@ -315,63 +628,23 @@ module BASIC
         .ram_ready(xlconstant_3_dout),
         .ram_wdata(wdata_1),
         .ram_we(we_1),
-        .rst(proc_sys_reset_0_peripheral_reset));
-  BASIC_priority_branch_OR_l_0_0 priority_branch_OR_l_0
-       (.ex_flush_req(RV32I_EX_ex_flush_req),
-        .id_ex_flush_final(priority_branch_OR_l_0_id_ex_flush_final),
-        .if_id_flush_final(priority_branch_OR_l_0_if_id_flush_final),
-        .if_id_hold_final(priority_branch_OR_l_0_if_id_hold_final),
-        .load_use_id_ex_flush(load_use_detection_0_id_ex_flush),
-        .load_use_if_id_hold(load_use_detection_0_if_id_hold),
-        .load_use_pc_en(load_use_detection_0_pc_en),
-        .pc_en_final(priority_branch_OR_l_0_pc_en_final));
-  BASIC_proc_sys_reset_0_0 proc_sys_reset_0
-       (.aux_reset_in(1'b1),
-        .dcm_locked(xlconstant_0_dout),
-        .ext_reset_in(zynq_ultra_ps_e_0_pl_resetn0),
-        .mb_debug_sys_rst(1'b0),
-        .peripheral_reset(proc_sys_reset_0_peripheral_reset1),
-        .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
-  BASIC_util_vector_logic_2_0 util_vector_logic_2
-       (.Op1(proc_sys_reset_0_peripheral_reset1),
-        .Op2(vio_0_probe_out0),
-        .Res(proc_sys_reset_0_peripheral_reset));
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .uart_addr(mmio_0_uart_addr),
+        .uart_be(mmio_0_uart_be),
+        .uart_rdata(uart_rdata_1),
+        .uart_ready(uart_ready1_1),
+        .uart_valid(mmio_0_uart_valid),
+        .uart_wdata(mmio_0_uart_wdata),
+        .uart_we(mmio_0_uart_we));
   BASIC_util_vector_logic_2_2 util_vector_logic_3
        (.Op1(RV32I_MEM_dmem_we),
         .Op2(RV32I_MEM_dmem_re),
         .Res(util_vector_logic_3_Res));
-  BASIC_vio_0_0 vio_0
-       (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .probe_out0(vio_0_probe_out0));
-  BASIC_xlconstant_0_0 xlconstant_0
-       (.dout(xlconstant_0_dout));
   BASIC_xlconstant_3_1 xlconstant_3
        (.dout(xlconstant_3_dout));
-  BASIC_xlslice_0_0 xlslice_0
-       (.Din(gpio_0_gpio_out),
-        .Dout(xlslice_0_Dout));
-  BASIC_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
-       (.emio_can0_phy_rx(1'b0),
-        .emio_gpio_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .emio_i2c0_scl_i(1'b0),
-        .emio_i2c0_sda_i(1'b0),
-        .maxigp0_arready(1'b0),
-        .maxigp0_awready(1'b0),
-        .maxigp0_bid({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .maxigp0_bresp({1'b0,1'b0}),
-        .maxigp0_bvalid(1'b0),
-        .maxigp0_rdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .maxigp0_rid({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .maxigp0_rlast(1'b0),
-        .maxigp0_rresp({1'b0,1'b0}),
-        .maxigp0_rvalid(1'b0),
-        .maxigp0_wready(1'b0),
-        .maxihpm0_fpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
-        .pl_clk0(zynq_ultra_ps_e_0_pl_clk0),
-        .pl_resetn0(zynq_ultra_ps_e_0_pl_resetn0));
 endmodule
 
-module RV32I_EX_imp_10RN1RF
+module RV32I_EX_imp_VZHXQ1
    (alu_op,
     clk,
     ex_branch_en,
@@ -687,7 +960,7 @@ module RV32I_EX_imp_10RN1RF
         .Res(util_vector_logic_1_Res));
 endmodule
 
-module RV32I_ID_imp_FBK4LB
+module RV32I_ID_imp_1HJBFQL
    (bubble,
     clk,
     ex_alu_op,
@@ -975,7 +1248,7 @@ module RV32I_ID_imp_FBK4LB
         .rs2_rdata(regfile_0_rs2_rdata));
 endmodule
 
-module RV32I_IF_imp_Y4LBN8
+module RV32I_IF_imp_136QK4M
    (Op1,
     Op2,
     Res,
@@ -1040,7 +1313,7 @@ module RV32I_IF_imp_Y4LBN8
   assign pc_en_1 = pc_en;
   assign proc_sys_reset_0_peripheral_reset = rst;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
-  RV32I_ROM_MEMORY_imp_ZEEBV6 RV32I_ROM_MEMORY
+  RV32I_ROM_MEMORY_imp_X8L5SE RV32I_ROM_MEMORY
        (.addra(pc_to_imem_addr_0_addr),
         .clka(zynq_ultra_ps_e_0_pl_clk0),
         .douta(RV32I_ROM_MEMORY_douta),
@@ -1080,7 +1353,7 @@ module RV32I_IF_imp_Y4LBN8
        (.dout(xlconstant_3_dout));
 endmodule
 
-module RV32I_MEM_imp_3VZ702
+module RV32I_MEM_imp_12Q40FU
    (Res,
     clk,
     dmem_addr,
@@ -1316,7 +1589,7 @@ module RV32I_RAM_MEMORY_imp_1A3BT4W
         .we(RV32I_MEM_dmem_we));
 endmodule
 
-module RV32I_ROM_MEMORY_imp_ZEEBV6
+module RV32I_ROM_MEMORY_imp_X8L5SE
    (addra,
     clka,
     douta,
@@ -1342,7 +1615,7 @@ module RV32I_ROM_MEMORY_imp_ZEEBV6
         .ena(RV32I_IF_dout));
 endmodule
 
-module RV32I_WB_imp_1NJ77AP
+module RV32I_WB_imp_98K1CZ
    (alu_y,
     imm_u,
     load_data,
