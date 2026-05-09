@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Sun May  3 19:42:14 2026
+| Date             : Sat May  9 21:58:10 2026
 | Host             : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file BASIC_wrapper_power_routed.rpt -pb BASIC_wrapper_power_summary_routed.pb -rpx BASIC_wrapper_power_routed.rpx
 | Design           : BASIC_wrapper
@@ -33,7 +33,7 @@ Table of Contents
 | Total On-Chip Power (W)  | 3.302        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.847        |
+| Dynamic (W)              | 2.846        |
 | Device Static (W)        | 0.456        |
 | Effective TJA (C/W)      | 2.3          |
 | Max Ambient (C)          | 92.3         |
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |     0.002 |        5 |       --- |             --- |
-| CLB Logic                |     0.001 |     7777 |       --- |             --- |
-|   LUT as Logic           |    <0.001 |     2417 |    117120 |            2.06 |
+| CLB Logic                |     0.001 |     8151 |       --- |             --- |
+|   LUT as Logic           |    <0.001 |     2581 |    117120 |            2.20 |
 |   LUT as Distributed RAM |    <0.001 |      592 |     57600 |            1.03 |
 |   LUT as Shift Register  |    <0.001 |      117 |     57600 |            0.20 |
-|   Register               |    <0.001 |     3198 |    234240 |            1.37 |
-|   CARRY8                 |    <0.001 |       55 |     14640 |            0.38 |
-|   Others                 |     0.000 |      293 |       --- |             --- |
+|   Register               |    <0.001 |     3336 |    234240 |            1.42 |
+|   CARRY8                 |    <0.001 |       64 |     14640 |            0.44 |
+|   Others                 |     0.000 |      299 |       --- |             --- |
 |   F7/F8 Muxes            |     0.000 |      429 |    117120 |            0.37 |
-| Signals                  |     0.002 |     5217 |       --- |             --- |
+| Signals                  |     0.002 |     5516 |       --- |             --- |
 | Block RAM                |    <0.001 |      3.5 |       144 |            2.43 |
 | I/O                      |    <0.001 |        2 |       252 |            0.79 |
 | PS8                      |     2.841 |        1 |       --- |             --- |
@@ -167,9 +167,10 @@ Table of Contents
 +-----------------------+-----------+
 | Name                  | Power (W) |
 +-----------------------+-----------+
-| BASIC_wrapper         |     2.847 |
+| BASIC_wrapper         |     2.846 |
 |   BASIC_i             |     2.845 |
-|     RV32I_EX          |     0.002 |
+|     Core_RV32I        |     0.004 |
+|       RV32I_EX        |     0.002 |
 |     zynq_ultra_ps_e_0 |     2.841 |
 |       inst            |     2.841 |
 +-----------------------+-----------+

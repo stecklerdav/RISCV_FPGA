@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat May  9 20:31:57 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat May  9 21:49:22 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="BASIC" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -1707,8 +1707,8 @@
         </PORT>
         <PORT DIR="O" NAME="mem_out_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_2" PORT="Op1"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_stage_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_2" PORT="Op1"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_valid"/>
           </CONNECTIONS>
         </PORT>
@@ -1848,9 +1848,9 @@
         </PORT>
         <PORT DIR="O" LEFT="4" NAME="wb_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_addr"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_rd"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe2"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_addr"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="wb_rd"/>
           </CONNECTIONS>
         </PORT>
@@ -1891,9 +1891,9 @@
         </PORT>
         <PORT DIR="O" NAME="regfile_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_we"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_rd_we"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe1"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_we"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1950,11 +1950,11 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_wdata"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="mem_wb_data"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="mem_wb_data"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="mem_wb_data"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe3"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_wdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5439,37 +5439,37 @@
         </PORT>
         <PORT DIR="O" NAME="uart_valid" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="valid"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="valid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="uart_we" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="we"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="we"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="uart_addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_addr">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="addr"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="addr"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="uart_wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="wdata"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="wdata"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="3" NAME="uart_be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_be">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="be"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="be"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="uart_rdata" RIGHT="0" SIGIS="undef" SIGNAME="uart_tx_0_rdata">
+        <PORT DIR="I" LEFT="31" NAME="uart_rdata" RIGHT="0" SIGIS="undef" SIGNAME="UART_uart_tx_0_rdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="rdata"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="rdata"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="uart_ready" SIGIS="undef" SIGNAME="uart_tx_0_ready">
+        <PORT DIR="I" NAME="uart_ready" SIGIS="undef" SIGNAME="UART_uart_tx_0_ready">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="ready"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="ready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5562,6 +5562,77 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/UART/uart_tx_0" HWVERSION="1.0" INSTANCE="UART_uart_tx_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="uart_tx" VLNV="xilinx.com:module_ref:uart_tx:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CLK_FREQ" VALUE="10000000"/>
+        <PARAMETER NAME="BAUD" VALUE="115200"/>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_uart_tx_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="9999900" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="UART_uart_tx_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="UART_uart_tx_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx" SIGIS="undef" SIGNAME="UART_uart_tx_0_tx">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="rx"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rx" SIGIS="undef" SIGNAME="UART_uart_tx_0_tx">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="tx"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx_busy" SIGIS="undef"/>
+        <PORT DIR="O" NAME="tx_ready" SIGIS="undef"/>
+        <PORT DIR="O" NAME="rx_busy" SIGIS="undef"/>
+        <PORT DIR="O" NAME="rx_ready" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="13" FULLNAME="/proc_sys_reset_0" HWVERSION="5.0" INSTANCE="proc_sys_reset_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=proc_sys_reset;v=v5_0;d=pg164-proc-sys-reset.pdf"/>
@@ -5611,77 +5682,6 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="1" FULLNAME="/uart_tx_0" HWVERSION="1.0" INSTANCE="uart_tx_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="uart_tx" VLNV="xilinx.com:module_ref:uart_tx:1.0">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="CLK_FREQ" VALUE="10000000"/>
-        <PARAMETER NAME="BAUD" VALUE="5000000"/>
-        <PARAMETER NAME="Component_Name" VALUE="BASIC_uart_tx_0_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT CLKFREQUENCY="9999900" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="valid" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_valid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_valid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_we">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_we"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_addr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_addr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="3" NAME="be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mmio_0_uart_be">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_be"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="uart_tx_0_rdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_rdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="uart_tx_0_ready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="MMIO_mmio_0" PORT="uart_ready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="tx" SIGIS="undef" SIGNAME="uart_tx_0_tx">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="rx"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="rx" SIGIS="undef" SIGNAME="uart_tx_0_tx">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="tx"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="tx_busy" SIGIS="undef"/>
-        <PORT DIR="O" NAME="tx_ready" SIGIS="undef"/>
-        <PORT DIR="O" NAME="rx_busy" SIGIS="undef"/>
-        <PORT DIR="O" NAME="rx_ready" SIGIS="undef"/>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/util_vector_logic_2" HWVERSION="2.0" INSTANCE="util_vector_logic_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -5705,15 +5705,15 @@
         <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="util_vector_logic_2_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="MMIO_mmio_0" PORT="rst"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="rst"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="rst"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe0"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="rst"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="rst"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="rst"/>
             <CONNECTION INSTANCE="GPIO_gpio_0" PORT="rst"/>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="rst"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -8364,17 +8364,17 @@
             <CONNECTION INSTANCE="vio_0" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data_1" PORT="clk"/>
             <CONNECTION INSTANCE="MMIO_mmio_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="clk"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_RV32I_ROM_MEMORY_blk_mem_gen_0" PORT="clka"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="clk"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="clk"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="clk"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="clk"/>
-            <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="clk"/>
             <CONNECTION INSTANCE="GPIO_gpio_0" PORT="clk"/>
-            <CONNECTION INSTANCE="uart_tx_0" PORT="clk"/>
+            <CONNECTION INSTANCE="UART_uart_tx_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="149998505" DIR="O" NAME="pl_clk1" SIGIS="clk"/>

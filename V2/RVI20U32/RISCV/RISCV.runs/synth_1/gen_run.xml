@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1777833224">
+<GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1778359779">
+  <File Type="VDS-TIMINGSUMMARY" Name="BASIC_wrapper_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="BASIC_wrapper.dcp"/>
   <File Type="RDS-UTIL-PB" Name="BASIC_wrapper_utilization_synth.pb"/>
-  <File Type="PA-TCL" Name="BASIC_wrapper.tcl"/>
   <File Type="RDS-UTIL" Name="BASIC_wrapper_utilization_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="BASIC_wrapper_reports.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="BASIC_wrapper_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="BASIC_wrapper.vds"/>
+  <File Type="REPORTS-TCL" Name="BASIC_wrapper_reports.tcl"/>
+  <File Type="VDS-TIMING-PB" Name="BASIC_wrapper_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="BASIC_wrapper.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/pc_unit.v">
@@ -51,13 +54,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/imm_mux.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/id_ex_reg.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -170,6 +166,20 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/gpio.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/uart_tx.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/id_ex_reg.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>

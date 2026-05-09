@@ -1,24 +1,24 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.916892",
-   "Default View_TopLeft":"1189,37",
+   "Default View_ScaleFactor":"0.390692",
+   "Default View_TopLeft":"-210,-207",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"/zynq_ultra_ps_e_0|/xlconstant_0|/proc_sys_reset_0|/RV32I_RAM_MEMORY|/MMIO|/util_vector_logic_2|/vio_0|/Core_RV32I|/GPIO|/xlslice_0|/UART|",
    "PinnedPorts":"gpio_out_0|",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace portBus gpio_out_0 -pg 1 -lvl 8 -x 3570 -y 300 -defaultsOSRD
+preplace portBus gpio_out_0 -pg 1 -lvl 8 -x 2680 -y 300 -defaultsOSRD
 preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x 120 -y 150 -defaultsOSRD
 preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 630 -y 160 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 1 -x 120 -y 350 -defaultsOSRD
-preplace inst RV32I_RAM_MEMORY -pg 1 -lvl 6 -x 2240 -y 150 -defaultsOSRD
+preplace inst RV32I_RAM_MEMORY -pg 1 -lvl 6 -x 2250 -y 150 -defaultsOSRD
 preplace inst vio_0 -pg 1 -lvl 2 -x 630 -y 320 -defaultsOSRD
 preplace inst util_vector_logic_2 -pg 1 -lvl 3 -x 970 -y 310 -defaultsOSRD
 preplace inst MMIO -pg 1 -lvl 5 -x 1750 -y 280 -defaultsOSRD
 preplace inst Core_RV32I -pg 1 -lvl 4 -x 1340 -y 310 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 7 -x 2550 -y 300 -defaultsOSRD
-preplace inst GPIO -pg 1 -lvl 6 -x 2240 -y 340 -defaultsOSRD
-preplace inst UART -pg 1 -lvl 6 -x 2240 -y 570 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 7 -x 2560 -y 300 -defaultsOSRD
+preplace inst GPIO -pg 1 -lvl 6 -x 2250 -y 340 -defaultsOSRD
+preplace inst UART -pg 1 -lvl 6 -x 2250 -y 570 -defaultsOSRD
 preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 -190 280 440 260 810 380 1130 410 1500 500 2010
 preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 1 1 430 140n
 preplace netloc xlconstant_0_dout 1 1 1 450 200n
@@ -34,17 +34,17 @@ preplace netloc wdata_1 1 5 1 1980 110n
 preplace netloc addr_1 1 5 1 1990 130n
 preplace netloc be_1 1 5 1 2000 150n
 preplace netloc we_1 1 5 1 2010 160n
-preplace netloc RV32I_RAM_MEMORY_rdata 1 4 3 1550 690 N 690 2400
-preplace netloc gpio_0_gpio_out 1 6 1 2410 300n
-preplace netloc uart_tx_0_ready 1 4 3 1570 700 N 700 2380
-preplace netloc uart_tx_0_rdata 1 4 3 1590 680 N 680 2370
+preplace netloc RV32I_RAM_MEMORY_rdata 1 4 3 1550 690 N 690 2410
+preplace netloc gpio_0_gpio_out 1 6 1 2420 300n
+preplace netloc uart_tx_0_ready 1 4 3 1570 700 N 700 2390
+preplace netloc uart_tx_0_rdata 1 4 3 1590 680 N 680 2380
 preplace netloc MMIO_uart_be 1 5 1 1910 420n
 preplace netloc MMIO_uart_wdata 1 5 1 1920 400n
 preplace netloc MMIO_uart_addr 1 5 1 1930 380n
 preplace netloc MMIO_uart_we 1 5 1 1940 360n
 preplace netloc MMIO_uart_valid 1 5 1 1950 340n
-preplace netloc gpio_0_ready 1 4 3 1560 710 N 710 2390
-preplace netloc gpio_0_rdata 1 4 3 1580 470 1980 450 2370
+preplace netloc gpio_0_ready 1 4 3 1560 710 N 710 2400
+preplace netloc gpio_0_rdata 1 4 3 1580 470 1980 450 2380
 preplace netloc mmio_0_gpio_be 1 5 1 1960 320n
 preplace netloc mmio_0_gpio_wdata 1 5 1 1970 300n
 preplace netloc mmio_0_gpio_addr 1 5 1 1980 280n
@@ -52,8 +52,8 @@ preplace netloc mmio_0_gpio_we 1 5 1 1990 260n
 preplace netloc mmio_0_gpio_valid 1 5 1 2000 240n
 preplace netloc xlslice_0_Dout 1 7 1 N 300
 preplace netloc RV32I_MEM_dmem_re 1 4 1 N 350
-levelinfo -pg 1 -210 120 630 970 1340 1750 2240 2550 3570
-pagesize -pg 1 -db -bbox -sgen -210 -2580 3740 2770
+levelinfo -pg 1 -210 120 630 970 1340 1750 2250 2560 2680
+pagesize -pg 1 -db -bbox -sgen -210 -2580 2850 2770
 "
 }
 0

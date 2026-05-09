@@ -15,7 +15,7 @@
                     },
                     {
                         "type": "ILA_V3",
-                        "name": "BASIC_i/ila_0",
+                        "name": "BASIC_i/Core_RV32I/ila_0",
                         "spec": "labtools_ila_v6",
                         "ipName": "ila",
                         "core_location": {
@@ -23,7 +23,7 @@
                             "slave_index": 0,
                             "bscan_switch_index": 0
                         },
-                        "uuid": "9BC2906A20775FC0B672C8A2CB05369F",
+                        "uuid": "83B8B461FC9C55CF865D6204FFFB7F90",
                         "pins": [
                             {
                                 "name": "probe0",
@@ -36,8 +36,9 @@
                                 "portIndex": 0,
                                 "nets": [
                                     {
-                                        "name": "BASIC_i/proc_sys_reset_0_peripheral_reset",
-                                        "isBus": false
+                                        "name": "BASIC_i/Core_RV32I/proc_sys_reset_0_peripheral_reset",
+                                        "isBus": false,
+                                        "parentNetId": 0
                                     }
                                 ]
                             },
@@ -52,23 +53,23 @@
                                 "portIndex": 1,
                                 "nets": [
                                     {
-                                        "name": "BASIC_i/util_vector_logic_0_Res",
+                                        "name": "BASIC_i/Core_RV32I/util_vector_logic_0_Res",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "BASIC_i/util_vector_logic_0_Res[4]"
+                                                "name": "BASIC_i/Core_RV32I/util_vector_logic_0_Res[4]"
                                             },
                                             {
-                                                "name": "BASIC_i/util_vector_logic_0_Res[3]"
+                                                "name": "BASIC_i/Core_RV32I/util_vector_logic_0_Res[3]"
                                             },
                                             {
-                                                "name": "BASIC_i/util_vector_logic_0_Res[2]"
+                                                "name": "BASIC_i/Core_RV32I/util_vector_logic_0_Res[2]"
                                             },
                                             {
-                                                "name": "BASIC_i/util_vector_logic_0_Res[1]"
+                                                "name": "BASIC_i/Core_RV32I/util_vector_logic_0_Res[1]"
                                             },
                                             {
-                                                "name": "BASIC_i/util_vector_logic_0_Res[0]"
+                                                "name": "BASIC_i/Core_RV32I/util_vector_logic_0_Res[0]"
                                             }
                                         ]
                                     }
@@ -85,23 +86,23 @@
                                 "portIndex": 2,
                                 "nets": [
                                     {
-                                        "name": "BASIC_i/mem_wb_reg_0_wb_rd",
+                                        "name": "BASIC_i/Core_RV32I/mem_wb_reg_0_wb_rd",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "BASIC_i/mem_wb_reg_0_wb_rd[4]"
+                                                "name": "BASIC_i/Core_RV32I/mem_wb_reg_0_wb_rd[4]"
                                             },
                                             {
-                                                "name": "BASIC_i/mem_wb_reg_0_wb_rd[3]"
+                                                "name": "BASIC_i/Core_RV32I/mem_wb_reg_0_wb_rd[3]"
                                             },
                                             {
-                                                "name": "BASIC_i/mem_wb_reg_0_wb_rd[2]"
+                                                "name": "BASIC_i/Core_RV32I/mem_wb_reg_0_wb_rd[2]"
                                             },
                                             {
-                                                "name": "BASIC_i/mem_wb_reg_0_wb_rd[1]"
+                                                "name": "BASIC_i/Core_RV32I/mem_wb_reg_0_wb_rd[1]"
                                             },
                                             {
-                                                "name": "BASIC_i/mem_wb_reg_0_wb_rd[0]"
+                                                "name": "BASIC_i/Core_RV32I/mem_wb_reg_0_wb_rd[0]"
                                             }
                                         ]
                                     }
@@ -118,104 +119,104 @@
                                 "portIndex": 3,
                                 "nets": [
                                     {
-                                        "name": "BASIC_i/wb_mux_0_rd_wdata",
+                                        "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata",
                                         "isBus": true,
                                         "subnets": [
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[31]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[31]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[30]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[30]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[29]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[29]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[28]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[28]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[27]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[27]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[26]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[26]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[25]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[25]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[24]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[24]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[23]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[23]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[22]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[22]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[21]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[21]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[20]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[20]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[19]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[19]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[18]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[18]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[17]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[17]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[16]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[16]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[15]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[15]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[14]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[14]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[13]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[13]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[12]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[12]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[11]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[11]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[10]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[10]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[9]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[9]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[8]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[8]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[7]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[7]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[6]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[6]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[5]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[5]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[4]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[4]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[3]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[3]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[2]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[2]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[1]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[1]"
                                             },
                                             {
-                                                "name": "BASIC_i/wb_mux_0_rd_wdata[0]"
+                                                "name": "BASIC_i/Core_RV32I/wb_mux_0_rd_wdata[0]"
                                             }
                                         ]
                                     }
@@ -232,7 +233,7 @@
                                 "portIndex": 4,
                                 "nets": [
                                     {
-                                        "name": "BASIC_i/load_use_detection_0_load_use_hazard",
+                                        "name": "BASIC_i/Core_RV32I/load_use_detection_0_load_use_hazard",
                                         "isBus": false
                                     }
                                 ]
@@ -264,6 +265,35 @@
                                     {
                                         "name": "BASIC_i/vio_0_probe_out0",
                                         "isBus": false
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 0,
+                        "name": "BASIC_i/util_vector_logic_2/Res[0]",
+                        "state_reg": [
+                            {
+                                "name": "BASIC_i/UART/uart_tx_0/inst/FSM_sequential_rx_state_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "RX_START",
+                                        "val": "01"
+                                    },
+                                    {
+                                        "name": "RX_STOP",
+                                        "val": "11"
+                                    },
+                                    {
+                                        "name": "RX_IDLE",
+                                        "val": "00"
+                                    },
+                                    {
+                                        "name": "RX_DATA",
+                                        "val": "10"
                                     }
                                 ]
                             }

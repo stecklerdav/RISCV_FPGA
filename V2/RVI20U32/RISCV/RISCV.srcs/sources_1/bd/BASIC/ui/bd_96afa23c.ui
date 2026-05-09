@@ -1,0 +1,32 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-450,-91",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x -10 -y 70 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -10 -y 90 -defaultsOSRD
+preplace port valid -pg 1 -lvl 0 -x -10 -y 110 -defaultsOSRD
+preplace port we -pg 1 -lvl 0 -x -10 -y 130 -defaultsOSRD
+preplace port ready -pg 1 -lvl 2 -x 310 -y 100 -defaultsOSRD
+preplace portBus addr -pg 1 -lvl 0 -x -10 -y 150 -defaultsOSRD
+preplace portBus wdata -pg 1 -lvl 0 -x -10 -y 170 -defaultsOSRD
+preplace portBus be -pg 1 -lvl 0 -x -10 -y 190 -defaultsOSRD
+preplace portBus rdata -pg 1 -lvl 2 -x 310 -y 80 -defaultsOSRD
+preplace inst uart_tx_0 -pg 1 -lvl 1 -x 150 -y 140 -defaultsOSRD
+preplace netloc uart_tx_0_tx 1 0 2 10 10 290
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 1 NJ 70
+preplace netloc proc_sys_reset_0_peripheral_reset 1 0 1 NJ 90
+preplace netloc MMIO_uart_valid 1 0 1 NJ 110
+preplace netloc MMIO_uart_we 1 0 1 NJ 130
+preplace netloc MMIO_uart_addr 1 0 1 NJ 150
+preplace netloc MMIO_uart_wdata 1 0 1 NJ 170
+preplace netloc MMIO_uart_be 1 0 1 NJ 190
+preplace netloc uart_tx_0_rdata 1 1 1 NJ 80
+preplace netloc uart_tx_0_ready 1 1 1 NJ 100
+levelinfo -pg 1 -10 150 310
+pagesize -pg 1 -db -bbox -sgen -150 0 440 270
+"
+}
+

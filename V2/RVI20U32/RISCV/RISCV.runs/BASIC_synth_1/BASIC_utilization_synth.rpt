@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Sat May  9 18:46:41 2026
+| Date         : Sat May  9 21:53:03 2026
 | Host         : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_utilization -file BASIC_utilization_synth.rpt -pb BASIC_utilization_synth.pb
 | Design       : BASIC
@@ -31,13 +31,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| CLB LUTs*                  | 3418 |     0 |    117120 |  2.92 |
-|   LUT as Logic             | 2721 |     0 |    117120 |  2.32 |
+| CLB LUTs*                  | 3458 |     0 |    117120 |  2.95 |
+|   LUT as Logic             | 2761 |     0 |    117120 |  2.36 |
 |   LUT as Memory            |  697 |     0 |     57600 |  1.21 |
 |     LUT as Distributed RAM |  560 |     0 |           |       |
 |     LUT as Shift Register  |  137 |     0 |           |       |
-| CLB Registers              | 2767 |     0 |    234240 |  1.18 |
-|   Register as Flip Flop    | 2767 |     0 |    234240 |  1.18 |
+| CLB Registers              | 2800 |     0 |    234240 |  1.20 |
+|   Register as Flip Flop    | 2800 |     0 |    234240 |  1.20 |
 |   Register as Latch        |    0 |     0 |    234240 |  0.00 |
 | CARRY8                     |   63 |     0 |     14640 |  0.43 |
 | F7 Muxes                   |  301 |     0 |     58560 |  0.51 |
@@ -62,7 +62,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 65    |          Yes |           - |        Reset |
 | 19    |          Yes |         Set |            - |
-| 2683  |          Yes |       Reset |            - |
+| 2716  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -159,15 +159,15 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 2683 |            Register |
-| LUT6     | 1235 |                 CLB |
-| LUT4     |  515 |                 CLB |
+| FDRE     | 2716 |            Register |
+| LUT6     | 1227 |                 CLB |
+| LUT4     |  530 |                 CLB |
 | RAMS64E1 |  512 |                 CLB |
 | LUT1     |  490 |                 CLB |
-| LUT5     |  354 |                 CLB |
+| LUT5     |  366 |                 CLB |
 | MUXF7    |  301 |                 CLB |
-| LUT2     |  255 |                 CLB |
-| LUT3     |  208 |                 CLB |
+| LUT2     |  297 |                 CLB |
+| LUT3     |  209 |                 CLB |
 | MUXF8    |  128 |                 CLB |
 | SRL16E   |  109 |                 CLB |
 | SRLC32E  |   86 |                 CLB |

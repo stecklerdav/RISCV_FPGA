@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Sun May  3 19:42:08 2026
+| Date         : Sat May  9 21:58:05 2026
 | Host         : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_methodology -file BASIC_wrapper_methodology_drc_routed.rpt -pb BASIC_wrapper_methodology_drc_routed.pb -rpx BASIC_wrapper_methodology_drc_routed.rpx
 | Design       : BASIC_wrapper
@@ -35,21 +35,21 @@ Table of Contents
 -----------------
 LUTAR-1#1 Warning
 LUT drives async reset alert  
-LUT cell BASIC_i/util_vector_logic_2/Res[0]_INST_0, with 2 or more inputs, drives asynchronous preset/clear pin(s) BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[0]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[10]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[11]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[12]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[13]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[14]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[15]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[16]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[17]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[18]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[19]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[1]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[20]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[21]/CLR,
-BASIC_i/RV32I_IF/pc_unit_0/inst/pc_reg[22]/CLR (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+LUT cell BASIC_i/util_vector_logic_2/Res[0]_INST_0, with 2 or more inputs, drives asynchronous preset/clear pin(s) BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[0]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[10]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[11]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[12]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[13]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[14]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[15]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[16]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[17]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[18]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[19]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[1]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[20]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[21]/CLR,
+BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_reg[22]/CLR (the first 15 of 32 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
 Related violations: <none>
 
 LUTAR-1#2 Warning
