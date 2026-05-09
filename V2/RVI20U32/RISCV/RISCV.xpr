@@ -37,20 +37,20 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="207"/>
+    <Option Name="WTXSimLaunchSim" Val="250"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="91"/>
-    <Option Name="WTModelSimExportSim" Val="91"/>
-    <Option Name="WTQuestaExportSim" Val="90"/>
-    <Option Name="WTIesExportSim" Val="90"/>
-    <Option Name="WTVcsExportSim" Val="90"/>
-    <Option Name="WTRivieraExportSim" Val="90"/>
-    <Option Name="WTActivehdlExportSim" Val="90"/>
+    <Option Name="WTXSimExportSim" Val="99"/>
+    <Option Name="WTModelSimExportSim" Val="99"/>
+    <Option Name="WTQuestaExportSim" Val="98"/>
+    <Option Name="WTIesExportSim" Val="98"/>
+    <Option Name="WTVcsExportSim" Val="98"/>
+    <Option Name="WTRivieraExportSim" Val="98"/>
+    <Option Name="WTActivehdlExportSim" Val="98"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -109,13 +109,6 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/imm_mux.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/new/id_ex_reg.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -235,6 +228,13 @@
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/new/uart_tx.v">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/id_ex_reg.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>

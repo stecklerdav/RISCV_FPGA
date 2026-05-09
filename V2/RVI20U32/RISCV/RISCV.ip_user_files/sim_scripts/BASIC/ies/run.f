@@ -58,7 +58,6 @@
   "../../../bd/BASIC/ip/BASIC_control_0_0/sim/BASIC_control_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_regfile_0_0/sim/BASIC_regfile_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_imm_mux_0_0/sim/BASIC_imm_mux_0_0.v" \
-  "../../../bd/BASIC/ip/BASIC_id_ex_reg_0_0/sim/BASIC_id_ex_reg_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_alu_0_0/sim/BASIC_alu_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_forwarding_0_0/sim/BASIC_forwarding_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_forward_mux_0_0/sim/BASIC_forward_mux_0_0.v" \
@@ -98,6 +97,8 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/BASIC/ip/BASIC_xlslice_0_0/sim/BASIC_xlslice_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_uart_tx_0_0/sim/BASIC_uart_tx_0_0.v" \
+  "../../../bd/BASIC/ip/BASIC_xlconstant_3_2/sim/BASIC_xlconstant_3_2.v" \
+  "../../../bd/BASIC/ip/BASIC_id_ex_reg_0_1/sim/BASIC_id_ex_reg_0_1.v" \
   "../../../bd/BASIC/sim/BASIC.v" \
 -endlib
 -makelib ies_lib/xil_defaultlib \

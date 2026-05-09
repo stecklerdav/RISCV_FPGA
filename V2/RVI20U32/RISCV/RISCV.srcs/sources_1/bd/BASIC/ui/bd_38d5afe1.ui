@@ -1,0 +1,87 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.29853",
+   "Default View_TopLeft":"369,39",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x -20 -y 390 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -20 -y 440 -defaultsOSRD
+preplace port mem_in_valid -pg 1 -lvl 0 -x -20 -y 130 -defaultsOSRD
+preplace port mem_in_mem_re -pg 1 -lvl 0 -x -20 -y 250 -defaultsOSRD
+preplace port mem_in_mem_we -pg 1 -lvl 0 -x -20 -y 270 -defaultsOSRD
+preplace port mem_in_mem_unsigned -pg 1 -lvl 0 -x -20 -y 310 -defaultsOSRD
+preplace port mem_in_rd_we -pg 1 -lvl 0 -x -20 -y 330 -defaultsOSRD
+preplace port mem_valid -pg 1 -lvl 3 -x 1030 -y 160 -defaultsOSRD
+preplace port mem_rd_we -pg 1 -lvl 3 -x 1030 -y 320 -defaultsOSRD
+preplace port dmem_we -pg 1 -lvl 3 -x 1030 -y 80 -defaultsOSRD
+preplace port wb_valid -pg 1 -lvl 3 -x 1030 -y 890 -defaultsOSRD
+preplace port dmem_re -pg 1 -lvl 3 -x 1030 -y 100 -defaultsOSRD
+preplace portBus mem_in_alu_result -pg 1 -lvl 0 -x -20 -y 150 -defaultsOSRD
+preplace portBus mem_in_store_data -pg 1 -lvl 0 -x -20 -y 170 -defaultsOSRD
+preplace portBus mem_in_pc_plus4 -pg 1 -lvl 0 -x -20 -y 190 -defaultsOSRD
+preplace portBus mem_in_imm_u -pg 1 -lvl 0 -x -20 -y 210 -defaultsOSRD
+preplace portBus mem_in_rd -pg 1 -lvl 0 -x -20 -y 230 -defaultsOSRD
+preplace portBus mem_in_mem_size -pg 1 -lvl 0 -x -20 -y 290 -defaultsOSRD
+preplace portBus mem_in_wb_sel -pg 1 -lvl 0 -x -20 -y 350 -defaultsOSRD
+preplace portBus mem_rd -pg 1 -lvl 3 -x 1030 -y 260 -defaultsOSRD
+preplace portBus mem_forward_data -pg 1 -lvl 3 -x 1030 -y 360 -defaultsOSRD
+preplace portBus wb_data -pg 1 -lvl 3 -x 1030 -y 620 -defaultsOSRD
+preplace portBus wb_alu_result -pg 1 -lvl 3 -x 1030 -y 640 -defaultsOSRD
+preplace portBus wb_pc_plus4 -pg 1 -lvl 3 -x 1030 -y 660 -defaultsOSRD
+preplace portBus wb_imm_u -pg 1 -lvl 3 -x 1030 -y 680 -defaultsOSRD
+preplace portBus wb_rd -pg 1 -lvl 3 -x 1030 -y 850 -defaultsOSRD
+preplace portBus wb_sel -pg 1 -lvl 3 -x 1030 -y 870 -defaultsOSRD
+preplace portBus Res -pg 1 -lvl 3 -x 1030 -y 760 -defaultsOSRD
+preplace portBus mem_data -pg 1 -lvl 0 -x -20 -y 370 -defaultsOSRD
+preplace portBus dmem_be -pg 1 -lvl 3 -x 1030 -y 120 -defaultsOSRD
+preplace portBus dmem_addr -pg 1 -lvl 3 -x 1030 -y 60 -defaultsOSRD
+preplace portBus dmem_wdata -pg 1 -lvl 3 -x 1030 -y 140 -defaultsOSRD
+preplace inst mem_wb_reg_0 -pg 1 -lvl 1 -x 280 -y 670 -defaultsOSRD
+preplace inst regfile_we_gen_0 -pg 1 -lvl 2 -x 720 -y 760 -defaultsOSRD
+preplace inst xlconstant_3 -pg 1 -lvl 1 -x 280 -y 70 -defaultsOSRD
+preplace inst mem_stage_0 -pg 1 -lvl 2 -x 720 -y 210 -defaultsOSRD
+preplace netloc mem_stage_0_mem_out_alu_result 1 0 3 40 450 NJ 450 950
+preplace netloc mem_stage_0_mem_out_pc_plus4 1 0 3 80 480 NJ 480 970
+preplace netloc mem_stage_0_mem_out_imm_u 1 0 3 50 470 NJ 470 940
+preplace netloc mem_stage_0_mem_out_wb_sel 1 0 3 60 500 NJ 500 960
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 2 0 380 480J
+preplace netloc proc_sys_reset_0_peripheral_reset 1 0 2 10 390 500
+preplace netloc ex_mem_reg_1_mem_valid 1 0 2 NJ 130 NJ
+preplace netloc ex_mem_reg_1_mem_alu_result 1 0 2 NJ 150 NJ
+preplace netloc ex_mem_reg_1_mem_store_data 1 0 2 NJ 170 NJ
+preplace netloc ex_mem_reg_1_mem_pc_plus4 1 0 2 NJ 190 NJ
+preplace netloc ex_mem_reg_1_mem_imm_u 1 0 2 NJ 210 NJ
+preplace netloc ex_mem_reg_1_mem_rd 1 0 2 NJ 230 NJ
+preplace netloc ex_mem_reg_1_mem_mem_re 1 0 2 NJ 250 NJ
+preplace netloc ex_mem_reg_1_mem_mem_we 1 0 2 NJ 270 NJ
+preplace netloc ex_mem_reg_1_mem_mem_size 1 0 2 NJ 290 NJ
+preplace netloc ex_mem_reg_1_mem_mem_unsigned 1 0 2 NJ 310 NJ
+preplace netloc ex_mem_reg_1_mem_rd_we 1 0 2 NJ 330 NJ
+preplace netloc ex_mem_reg_1_mem_wb_sel 1 0 2 NJ 350 NJ
+preplace netloc mem_stage_0_mem_out_valid 1 0 3 90 490 NJ 490 1010
+preplace netloc mem_stage_0_mem_out_rd 1 0 3 30 440 NJ 440 1000
+preplace netloc mem_stage_0_mem_out_rd_we 1 0 3 20 430 NJ 430 990
+preplace netloc mem_stage_0_mem_forward_data 1 2 1 NJ 360
+preplace netloc mem_wb_reg_0_wb_data 1 1 2 NJ 620 NJ
+preplace netloc mem_wb_reg_0_wb_alu_result 1 1 2 NJ 640 NJ
+preplace netloc mem_wb_reg_0_wb_pc_plus4 1 1 2 NJ 660 NJ
+preplace netloc mem_wb_reg_0_wb_imm_u 1 1 2 NJ 680 NJ
+preplace netloc mem_wb_reg_0_wb_rd 1 1 2 500 850 NJ
+preplace netloc mem_wb_reg_0_wb_sel 1 1 2 470J 870 NJ
+preplace netloc mem_stage_0_dmem_be 1 2 1 NJ 120
+preplace netloc mem_stage_0_dmem_addr 1 2 1 NJ 60
+preplace netloc mem_stage_0_dmem_wdata 1 2 1 NJ 140
+preplace netloc mem_stage_0_dmem_we 1 2 1 NJ 80
+preplace netloc mem_stage_0_mem_out_data 1 0 3 70 460 NJ 460 980
+preplace netloc mem_wb_reg_0_wb_valid 1 1 2 480 890 NJ
+preplace netloc mem_wb_reg_0_wb_rd_we 1 1 1 490 720n
+preplace netloc regfile_we_gen_0_regfile_we 1 2 1 NJ 760
+preplace netloc mem_data_1 1 0 2 NJ 370 NJ
+preplace netloc xlconstant_3_dout 1 1 1 470J 70n
+preplace netloc mem_stage_0_dmem_re 1 2 1 NJ 100
+levelinfo -pg 1 -20 280 720 1030
+pagesize -pg 1 -db -bbox -sgen -260 -10 1270 910
+"
+}
+

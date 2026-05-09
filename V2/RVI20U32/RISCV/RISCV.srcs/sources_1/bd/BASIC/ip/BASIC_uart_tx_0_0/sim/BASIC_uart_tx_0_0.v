@@ -65,8 +65,11 @@ module BASIC_uart_tx_0_0 (
   rdata,
   ready,
   tx,
+  rx,
   tx_busy,
-  tx_ready
+  tx_ready,
+  rx_busy,
+  rx_ready
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -83,12 +86,15 @@ input wire [3 : 0] be;
 output wire [31 : 0] rdata;
 output wire ready;
 output wire tx;
+input wire rx;
 output wire tx_busy;
 output wire tx_ready;
+output wire rx_busy;
+output wire rx_ready;
 
   uart_tx #(
     .CLK_FREQ(10000000),
-    .BAUD(1000000)
+    .BAUD(5000000)
   ) inst (
     .clk(clk),
     .rst(rst),
@@ -100,7 +106,10 @@ output wire tx_ready;
     .rdata(rdata),
     .ready(ready),
     .tx(tx),
+    .rx(rx),
     .tx_busy(tx_busy),
-    .tx_ready(tx_ready)
+    .tx_ready(tx_ready),
+    .rx_busy(rx_busy),
+    .rx_ready(rx_ready)
   );
 endmodule
