@@ -130,7 +130,8 @@ input wire uart_ready;
     .GPIO_BASE(32'H00003000),
     .GPIO_SIZE(32'H00000010),
     .UART_BASE(32'H00003010),
-    .UART_SIZE(32'H00000010)
+    .UART_SIZE(32'H00000010),
+    .RAM_ADDR_LOCAL(1'B1)
   ) inst (
     .clk(clk),
     .rst(rst),

@@ -146,5 +146,6 @@ INFO: [VRFC 10-311] analyzing module RV32I_MEM_imp_12Q40FU
 INFO: [VRFC 10-311] analyzing module RV32I_RAM_MEMORY_imp_1A3BT4W
 INFO: [VRFC 10-311] analyzing module RV32I_ROM_MEMORY_imp_X8L5SE
 INFO: [VRFC 10-311] analyzing module RV32I_WB_imp_98K1CZ
+INFO: [VRFC 10-311] analyzing module UART_imp_OI5LS
 INFO: [VRFC 10-2263] Analyzing Verilog file "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/hdl/BASIC_wrapper.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module BASIC_wrapper

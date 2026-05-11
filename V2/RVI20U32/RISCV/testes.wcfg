@@ -15,156 +15,100 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="3464143fs"></ZoomStartTime>
-      <ZoomEndTime time="18884144fs"></ZoomEndTime>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="345000001fs"></ZoomEndTime>
       <Cursor1Time time="7934143fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="315"></NameColumnWidth>
-      <ValueColumnWidth column_width="173"></ValueColumnWidth>
+      <NameColumnWidth column_width="186"></NameColumnWidth>
+      <ValueColumnWidth column_width="123"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="35" />
+   <WVObjectSize size="18" />
    <wave_markers>
       <marker label="" time="7934143" />
    </wave_markers>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/gpio_out_0">
-      <obj_property name="ElementShortName">gpio_out_0[1:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_out_0[1:0]</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO_uart_addr">
-      <obj_property name="ElementShortName">MMIO_uart_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">MMIO_uart_addr[31:0]</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO_uart_be">
-      <obj_property name="ElementShortName">MMIO_uart_be[3:0]</obj_property>
-      <obj_property name="ObjectShortName">MMIO_uart_be[3:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_addr">
+      <obj_property name="ElementShortName">dmem_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO_uart_valid">
-      <obj_property name="ElementShortName">MMIO_uart_valid</obj_property>
-      <obj_property name="ObjectShortName">MMIO_uart_valid</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_we">
+      <obj_property name="ElementShortName">dmem_we</obj_property>
+      <obj_property name="ObjectShortName">dmem_we</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO_uart_wdata">
-      <obj_property name="ElementShortName">MMIO_uart_wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">MMIO_uart_wdata[31:0]</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_re">
+      <obj_property name="ElementShortName">dmem_re</obj_property>
+      <obj_property name="ObjectShortName">dmem_re</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO_uart_we">
-      <obj_property name="ElementShortName">MMIO_uart_we</obj_property>
-      <obj_property name="ObjectShortName">MMIO_uart_we</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_be">
+      <obj_property name="ElementShortName">dmem_be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_MEM_dmem_addr">
-      <obj_property name="ElementShortName">RV32I_MEM_dmem_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RV32I_MEM_dmem_addr[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_wdata">
+      <obj_property name="ElementShortName">dmem_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_MEM_dmem_be">
-      <obj_property name="ElementShortName">RV32I_MEM_dmem_be[3:0]</obj_property>
-      <obj_property name="ObjectShortName">RV32I_MEM_dmem_be[3:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_rdata">
+      <obj_property name="ElementShortName">dmem_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_MEM_dmem_re">
-      <obj_property name="ElementShortName">RV32I_MEM_dmem_re</obj_property>
-      <obj_property name="ObjectShortName">RV32I_MEM_dmem_re</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/be">
+      <obj_property name="ElementShortName">be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_MEM_dmem_wdata">
-      <obj_property name="ElementShortName">RV32I_MEM_dmem_wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RV32I_MEM_dmem_wdata[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/addr">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_MEM_dmem_we">
-      <obj_property name="ElementShortName">RV32I_MEM_dmem_we</obj_property>
-      <obj_property name="ObjectShortName">RV32I_MEM_dmem_we</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/wdata">
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY_rdata">
-      <obj_property name="ElementShortName">RV32I_RAM_MEMORY_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">RV32I_RAM_MEMORY_rdata[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/rdata">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/addr_1">
-      <obj_property name="ElementShortName">addr_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_1[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/addr">
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/be_1">
-      <obj_property name="ElementShortName">be_1[3:0]</obj_property>
-      <obj_property name="ObjectShortName">be_1[3:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/wdata">
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/gpio_0_gpio_out">
-      <obj_property name="ElementShortName">gpio_0_gpio_out[7:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_0_gpio_out[7:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/be">
+      <obj_property name="ElementShortName">be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/gpio_0_rdata">
-      <obj_property name="ElementShortName">gpio_0_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">gpio_0_rdata[31:0]</obj_property>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/rdata">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/gpio_0_ready">
-      <obj_property name="ElementShortName">gpio_0_ready</obj_property>
-      <obj_property name="ObjectShortName">gpio_0_ready</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/tx">
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/mmio_0_cpu_rdata">
-      <obj_property name="ElementShortName">mmio_0_cpu_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">mmio_0_cpu_rdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/mmio_0_gpio_addr">
-      <obj_property name="ElementShortName">mmio_0_gpio_addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">mmio_0_gpio_addr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/mmio_0_gpio_be">
-      <obj_property name="ElementShortName">mmio_0_gpio_be[3:0]</obj_property>
-      <obj_property name="ObjectShortName">mmio_0_gpio_be[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/mmio_0_gpio_valid">
-      <obj_property name="ElementShortName">mmio_0_gpio_valid</obj_property>
-      <obj_property name="ObjectShortName">mmio_0_gpio_valid</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/mmio_0_gpio_wdata">
-      <obj_property name="ElementShortName">mmio_0_gpio_wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">mmio_0_gpio_wdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/mmio_0_gpio_we">
-      <obj_property name="ElementShortName">mmio_0_gpio_we</obj_property>
-      <obj_property name="ObjectShortName">mmio_0_gpio_we</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/proc_sys_reset_0_peripheral_reset">
-      <obj_property name="ElementShortName">proc_sys_reset_0_peripheral_reset[0:0]</obj_property>
-      <obj_property name="ObjectShortName">proc_sys_reset_0_peripheral_reset[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/proc_sys_reset_0_peripheral_reset1">
-      <obj_property name="ElementShortName">proc_sys_reset_0_peripheral_reset1[0:0]</obj_property>
-      <obj_property name="ObjectShortName">proc_sys_reset_0_peripheral_reset1[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0_rdata">
-      <obj_property name="ElementShortName">uart_tx_0_rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">uart_tx_0_rdata[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0_ready">
-      <obj_property name="ElementShortName">uart_tx_0_ready</obj_property>
-      <obj_property name="ObjectShortName">uart_tx_0_ready</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/uart_tx_0_tx">
-      <obj_property name="ElementShortName">uart_tx_0_tx</obj_property>
-      <obj_property name="ObjectShortName">uart_tx_0_tx</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/vio_0_probe_out0">
-      <obj_property name="ElementShortName">vio_0_probe_out0[0:0]</obj_property>
-      <obj_property name="ObjectShortName">vio_0_probe_out0[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/wdata_1">
-      <obj_property name="ElementShortName">wdata_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">wdata_1[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/we_1">
-      <obj_property name="ElementShortName">we_1</obj_property>
-      <obj_property name="ObjectShortName">we_1</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/xlconstant_0_dout">
-      <obj_property name="ElementShortName">xlconstant_0_dout[0:0]</obj_property>
-      <obj_property name="ObjectShortName">xlconstant_0_dout[0:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/xlslice_0_Dout">
-      <obj_property name="ElementShortName">xlslice_0_Dout[1:0]</obj_property>
-      <obj_property name="ObjectShortName">xlslice_0_Dout[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0_pl_clk0">
-      <obj_property name="ElementShortName">zynq_ultra_ps_e_0_pl_clk0</obj_property>
-      <obj_property name="ObjectShortName">zynq_ultra_ps_e_0_pl_clk0</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0_pl_resetn0">
-      <obj_property name="ElementShortName">zynq_ultra_ps_e_0_pl_resetn0</obj_property>
-      <obj_property name="ObjectShortName">zynq_ultra_ps_e_0_pl_resetn0</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/rx">
+      <obj_property name="ElementShortName">rx</obj_property>
+      <obj_property name="ObjectShortName">rx</obj_property>
    </wvobject>
 </wave_config>

@@ -1084,7 +1084,7 @@ proc create_hier_cell_UART { parentCell nameHier } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.BAUD {115200} \
+   CONFIG.BAUD {5000000} \
    CONFIG.CLK_FREQ {10000000} \
  ] $uart_tx_0
 

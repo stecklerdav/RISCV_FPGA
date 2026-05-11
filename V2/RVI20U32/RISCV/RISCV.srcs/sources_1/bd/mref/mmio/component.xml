@@ -55,7 +55,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>dade90ac</spirit:value>
+            <spirit:value>1ab40d48</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +68,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>dade90ac</spirit:value>
+            <spirit:value>1ab40d48</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -581,6 +581,11 @@
         <spirit:displayName>Uart Size</spirit:displayName>
         <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.UART_SIZE" spirit:bitStringLength="32">0x00000010</spirit:value>
       </spirit:modelParameter>
+      <spirit:modelParameter spirit:dataType="integer">
+        <spirit:name>RAM_ADDR_LOCAL</spirit:name>
+        <spirit:displayName>Ram Addr Local</spirit:displayName>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_ADDR_LOCAL" spirit:bitStringLength="1">&quot;1&quot;</spirit:value>
+      </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
   <spirit:fileSets>
@@ -589,7 +594,7 @@
       <spirit:file>
         <spirit:name>xgui/mmio_v1_0.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_65827ec1</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_65631d01</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
@@ -627,6 +632,11 @@
       <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.UART_SIZE" spirit:bitStringLength="32">0x00000010</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
+      <spirit:name>RAM_ADDR_LOCAL</spirit:name>
+      <spirit:displayName>Ram Addr Local</spirit:displayName>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_ADDR_LOCAL" spirit:bitStringLength="1">&quot;1&quot;</spirit:value>
+    </spirit:parameter>
+    <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
       <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">mmio_v1_0</spirit:value>
     </spirit:parameter>
@@ -646,7 +656,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-05-09T19:31:40Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-05-11T23:10:26Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
