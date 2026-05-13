@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="BASIC" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1778541415"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1778541415"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1778542061"/>
-    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1778542061"/>
+    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1778712609"/>
+    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1778712609"/>
+    <Generation Name="SIMULATION" State="STALE" Timestamp="1778713472"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1778713472"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="BASIC.dcp" Type="DCP">
         <Properties IsEditable="true" IsVisible="true" Timestamp="1778361124" IsTrackable="true" IsStatusTracked="false"/>
@@ -366,6 +366,30 @@
       <File Name="sim/BASIC.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/BASIC_branch_predictor_btb_0_0/BASIC_branch_predictor_btb_0_0.xci" Type="IP">
+        <Instance HierarchyPath="Core_RV32I/RV32I_IF/branch_predictor_btb_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/BASIC_util_vector_logic_2_3/BASIC_util_vector_logic_2_3.xci" Type="IP">
+        <Instance HierarchyPath="Core_RV32I/RV32I_IF/util_vector_logic_5"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/BASIC_util_vector_logic_2_4/BASIC_util_vector_logic_2_4.xci" Type="IP">
+        <Instance HierarchyPath="Core_RV32I/RV32I_IF/util_vector_logic_4"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="BASIC_ooc.xdc" Type="XDC">

@@ -229,6 +229,8 @@ Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4_mem_module(C_...
 Compiling module blk_mem_gen_v8_4_4.blk_mem_gen_v8_4_4(C_FAMILY="zyn...
 Compiling module xil_defaultlib.BASIC_blk_mem_gen_0_0
 Compiling module xil_defaultlib.RV32I_ROM_MEMORY_imp_X8L5SE
+Compiling module xil_defaultlib.branch_predictor_btb_bht(ENTRY_N...
+Compiling module xil_defaultlib.BASIC_branch_predictor_btb_0_0
 Compiling module xil_defaultlib.if_id_reg_default
 Compiling module xil_defaultlib.BASIC_if_id_reg_0_0
 Compiling module xil_defaultlib.pc_to_imem_addr(ADDR_W=11)
@@ -238,6 +240,8 @@ Compiling module xil_defaultlib.BASIC_pc_unit_0_0
 Compiling module xil_defaultlib.BASIC_util_vector_logic_1_0
 Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
 Compiling module xil_defaultlib.BASIC_util_vector_logic_2_1
+Compiling module xil_defaultlib.BASIC_util_vector_logic_2_4
+Compiling module xil_defaultlib.BASIC_util_vector_logic_2_3
 Compiling module xlconstant_v1_1_7.xlconstant_v1_1_7_xlconstant(CON...
 Compiling module xil_defaultlib.BASIC_xlconstant_2_0
 Compiling module xil_defaultlib.RV32I_IF_imp_136QK4M
@@ -270,7 +274,7 @@ Compiling module xil_defaultlib.MMIO_imp_LNKWBU
 Compiling module xil_defaultlib.ram_data(WORDS=1024)
 Compiling module xil_defaultlib.BASIC_ram_data_1_0
 Compiling module xil_defaultlib.RV32I_RAM_MEMORY_imp_1A3BT4W
-Compiling module xil_defaultlib.uart_tx(CLK_FREQ=10000000,BAUD=5...
+Compiling module xil_defaultlib.uart_tx(CLK_FREQ=10000000)
 Compiling module xil_defaultlib.BASIC_uart_tx_0_0
 Compiling module xil_defaultlib.UART_imp_OI5LS
 Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]

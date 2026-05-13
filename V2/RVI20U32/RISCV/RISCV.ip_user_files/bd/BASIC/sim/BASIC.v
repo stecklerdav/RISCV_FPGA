@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Tue May 12 00:16:55 2026
+//Date        : Wed May 13 23:50:09 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,7 +9,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=54,numReposBlks=43,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=27,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=57,numReposBlks=46,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=28,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
    (gpio_out_0);
   output [1:0]gpio_out_0;
@@ -349,6 +349,9 @@ module Core_RV32I_imp_1VYNK5M
   RV32I_IF_imp_136QK4M RV32I_IF
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(RV32I_MEM_mem_rd_we),
+        .Op3(ex_branch_en_1),
+        .Op4(ex_jal_1),
+        .Op5(ex_jalr_1),
         .Res(mem_stage_rd_we_1),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .flush(flush_1),
@@ -360,7 +363,9 @@ module Core_RV32I_imp_1VYNK5M
         .pc_en(pc_en_1),
         .pc_redirect_target(RV32I_EX_pc_redirect_target),
         .pc_redirect_valid(RV32I_EX_pc_redirect_valid),
-        .rst(proc_sys_reset_0_peripheral_reset));
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .update_pc(pc_1),
+        .update_valid(ex_valid_1));
   RV32I_MEM_imp_12Q40FU RV32I_MEM
        (.Res(util_vector_logic_0_Res),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -1253,6 +1258,9 @@ endmodule
 module RV32I_IF_imp_136QK4M
    (Op1,
     Op2,
+    Op3,
+    Op4,
+    Op5,
     Res,
     clk,
     flush,
@@ -1264,9 +1272,14 @@ module RV32I_IF_imp_136QK4M
     pc_en,
     pc_redirect_target,
     pc_redirect_valid,
-    rst);
+    rst,
+    update_pc,
+    update_valid);
   input [0:0]Op1;
   input [0:0]Op2;
+  input [0:0]Op3;
+  input [0:0]Op4;
+  input [0:0]Op5;
   output [0:0]Res;
   input clk;
   input flush;
@@ -1279,7 +1292,12 @@ module RV32I_IF_imp_136QK4M
   input [31:0]pc_redirect_target;
   input pc_redirect_valid;
   input rst;
+  input [31:0]update_pc;
+  input update_valid;
 
+  wire [0:0]Op3_1;
+  wire [0:0]Op4_1;
+  wire [0:0]Op5_1;
   wire [31:0]RV32I_ROM_MEMORY_douta;
   wire branch_0_ex_flush_req;
   wire [31:0]branch_0_pc_redirect_target;
@@ -1296,11 +1314,18 @@ module RV32I_IF_imp_136QK4M
   wire [31:0]pc_unit_0_pc;
   wire [31:0]pc_unit_0_pc_plus4;
   wire proc_sys_reset_0_peripheral_reset;
+  wire [31:0]update_pc_1;
+  wire update_valid_1;
   wire [0:0]util_vector_logic_2_Res;
   wire [0:0]util_vector_logic_3_Res;
+  wire [0:0]util_vector_logic_4_Res;
+  wire [0:0]util_vector_logic_5_Res;
   wire [0:0]xlconstant_3_dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
+  assign Op3_1 = Op3[0];
+  assign Op4_1 = Op4[0];
+  assign Op5_1 = Op5[0];
   assign Res[0] = util_vector_logic_2_Res;
   assign branch_0_ex_flush_req = flush;
   assign branch_0_pc_redirect_target = pc_redirect_target[31:0];
@@ -1314,12 +1339,23 @@ module RV32I_IF_imp_136QK4M
   assign mem_stage_0_mem_out_valid = Op1[0];
   assign pc_en_1 = pc_en;
   assign proc_sys_reset_0_peripheral_reset = rst;
+  assign update_pc_1 = update_pc[31:0];
+  assign update_valid_1 = update_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   RV32I_ROM_MEMORY_imp_X8L5SE RV32I_ROM_MEMORY
        (.addra(pc_to_imem_addr_0_addr),
         .clka(zynq_ultra_ps_e_0_pl_clk0),
         .douta(RV32I_ROM_MEMORY_douta),
         .ena(util_vector_logic_3_Res));
+  BASIC_branch_predictor_btb_0_0 branch_predictor_btb_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .if_pc(pc_unit_0_pc),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .update_is_control(util_vector_logic_5_Res),
+        .update_pc(update_pc_1),
+        .update_taken(branch_0_pc_redirect_valid),
+        .update_target(branch_0_pc_redirect_target),
+        .update_valid(update_valid_1));
   BASIC_if_id_reg_0_0 if_id_reg_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .flush(branch_0_ex_flush_req),
@@ -1351,6 +1387,14 @@ module RV32I_IF_imp_136QK4M
   BASIC_util_vector_logic_2_1 util_vector_logic_3
        (.Op1(hold_1),
         .Res(util_vector_logic_3_Res));
+  BASIC_util_vector_logic_2_4 util_vector_logic_4
+       (.Op1(Op3_1),
+        .Op2(Op4_1),
+        .Res(util_vector_logic_4_Res));
+  BASIC_util_vector_logic_2_3 util_vector_logic_5
+       (.Op1(util_vector_logic_4_Res),
+        .Op2(Op5_1),
+        .Res(util_vector_logic_5_Res));
   BASIC_xlconstant_2_0 xlconstant_3
        (.dout(xlconstant_3_dout));
 endmodule

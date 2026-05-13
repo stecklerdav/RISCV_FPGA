@@ -129,6 +129,9 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../RISCV.srcs/sources_1/bd/BA
 "../../../bd/BASIC/ip/BASIC_xlconstant_3_2/sim/BASIC_xlconstant_3_2.v" \
 "../../../bd/BASIC/ip/BASIC_id_ex_reg_0_1/sim/BASIC_id_ex_reg_0_1.v" \
 "../../../bd/BASIC/sim/BASIC.v" \
+"../../../bd/BASIC/ip/BASIC_branch_predictor_btb_0_0/sim/BASIC_branch_predictor_btb_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_util_vector_logic_2_3/sim/BASIC_util_vector_logic_2_3.v" \
+"../../../bd/BASIC/ip/BASIC_util_vector_logic_2_4/sim/BASIC_util_vector_logic_2_4.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

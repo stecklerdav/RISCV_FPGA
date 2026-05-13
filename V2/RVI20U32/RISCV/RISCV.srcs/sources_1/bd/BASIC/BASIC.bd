@@ -54,7 +54,10 @@
             "blk_mem_gen_0": ""
           },
           "if_id_reg_0": "",
-          "util_vector_logic_3": ""
+          "util_vector_logic_3": "",
+          "branch_predictor_btb_0": "",
+          "util_vector_logic_5": "",
+          "util_vector_logic_4": ""
         },
         "RV32I_ID": {
           "regfile_0": "",
@@ -5703,6 +5706,29 @@
               },
               "hold": {
                 "direction": "I"
+              },
+              "update_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "update_valid": {
+                "direction": "I"
+              },
+              "Op3": {
+                "direction": "I",
+                "left": "0",
+                "right": "0"
+              },
+              "Op4": {
+                "direction": "I",
+                "left": "0",
+                "right": "0"
+              },
+              "Op5": {
+                "direction": "I",
+                "left": "0",
+                "right": "0"
               }
             },
             "components": {
@@ -5953,6 +5979,89 @@
                     "value": "1"
                   }
                 }
+              },
+              "branch_predictor_btb_0": {
+                "vlnv": "xilinx.com:module_ref:branch_predictor_btb_bht:1.0",
+                "xci_name": "BASIC_branch_predictor_btb_0_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "branch_predictor_btb_bht",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I"
+                  },
+                  "rst": {
+                    "type": "rst",
+                    "direction": "I"
+                  },
+                  "if_pc": {
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "pred_valid": {
+                    "direction": "O"
+                  },
+                  "pred_taken": {
+                    "direction": "O"
+                  },
+                  "pred_target": {
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "pred_next_pc": {
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "update_valid": {
+                    "direction": "I"
+                  },
+                  "update_pc": {
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
+                  "update_is_control": {
+                    "direction": "I"
+                  },
+                  "update_taken": {
+                    "direction": "I"
+                  },
+                  "update_target": {
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  }
+                }
+              },
+              "util_vector_logic_5": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "BASIC_util_vector_logic_2_3",
+                "parameters": {
+                  "C_OPERATION": {
+                    "value": "or"
+                  },
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
+              },
+              "util_vector_logic_4": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "BASIC_util_vector_logic_2_4",
+                "parameters": {
+                  "C_OPERATION": {
+                    "value": "or"
+                  },
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
               }
             },
             "nets": {
@@ -5960,7 +6069,8 @@
                 "ports": [
                   "pc_unit_0/pc",
                   "pc_to_imem_addr_0/pc",
-                  "if_id_reg_0/if_pc_in"
+                  "if_id_reg_0/if_pc_in",
+                  "branch_predictor_btb_0/if_pc"
                 ]
               },
               "xlconstant_3_dout": {
@@ -5998,26 +6108,30 @@
                   "clk",
                   "pc_unit_0/clk",
                   "RV32I_ROM_MEMORY/clka",
-                  "if_id_reg_0/clk"
+                  "if_id_reg_0/clk",
+                  "branch_predictor_btb_0/clk"
                 ]
               },
               "proc_sys_reset_0_peripheral_reset": {
                 "ports": [
                   "rst",
                   "pc_unit_0/rst",
-                  "if_id_reg_0/rst"
+                  "if_id_reg_0/rst",
+                  "branch_predictor_btb_0/rst"
                 ]
               },
               "branch_0_pc_redirect_valid": {
                 "ports": [
                   "pc_redirect_valid",
-                  "pc_unit_0/pc_redirect_valid"
+                  "pc_unit_0/pc_redirect_valid",
+                  "branch_predictor_btb_0/update_taken"
                 ]
               },
               "branch_0_pc_redirect_target": {
                 "ports": [
                   "pc_redirect_target",
-                  "pc_unit_0/pc_redirect_target"
+                  "pc_unit_0/pc_redirect_target",
+                  "branch_predictor_btb_0/update_target"
                 ]
               },
               "branch_0_ex_flush_req": {
@@ -6079,6 +6193,48 @@
                 "ports": [
                   "util_vector_logic_3/Res",
                   "RV32I_ROM_MEMORY/ena"
+                ]
+              },
+              "update_pc_1": {
+                "ports": [
+                  "update_pc",
+                  "branch_predictor_btb_0/update_pc"
+                ]
+              },
+              "update_valid_1": {
+                "ports": [
+                  "update_valid",
+                  "branch_predictor_btb_0/update_valid"
+                ]
+              },
+              "util_vector_logic_4_Res": {
+                "ports": [
+                  "util_vector_logic_4/Res",
+                  "util_vector_logic_5/Op1"
+                ]
+              },
+              "util_vector_logic_5_Res": {
+                "ports": [
+                  "util_vector_logic_5/Res",
+                  "branch_predictor_btb_0/update_is_control"
+                ]
+              },
+              "Op3_1": {
+                "ports": [
+                  "Op3",
+                  "util_vector_logic_4/Op1"
+                ]
+              },
+              "Op4_1": {
+                "ports": [
+                  "Op4",
+                  "util_vector_logic_4/Op2"
+                ]
+              },
+              "Op5_1": {
+                "ports": [
+                  "Op5",
+                  "util_vector_logic_5/Op2"
                 ]
               }
             }
@@ -7527,7 +7683,8 @@
           "pc_1": {
             "ports": [
               "RV32I_ID/ex_pc",
-              "RV32I_EX/pc"
+              "RV32I_EX/pc",
+              "RV32I_IF/update_pc"
             ]
           },
           "ex_mem_size_1": {
@@ -7599,7 +7756,8 @@
           "ex_branch_en_1": {
             "ports": [
               "RV32I_ID/ex_branch_en",
-              "RV32I_EX/ex_branch_en"
+              "RV32I_EX/ex_branch_en",
+              "RV32I_IF/Op3"
             ]
           },
           "ex_branch_funct3_1": {
@@ -7611,13 +7769,15 @@
           "ex_jal_1": {
             "ports": [
               "RV32I_ID/ex_jal",
-              "RV32I_EX/ex_jal"
+              "RV32I_EX/ex_jal",
+              "RV32I_IF/Op4"
             ]
           },
           "ex_jalr_1": {
             "ports": [
               "RV32I_ID/ex_jalr",
-              "RV32I_EX/ex_jalr"
+              "RV32I_EX/ex_jalr",
+              "RV32I_IF/Op5"
             ]
           },
           "ex_imm_u_1": {
@@ -7630,7 +7790,8 @@
             "ports": [
               "RV32I_ID/ex_valid",
               "RV32I_EX/ex_valid",
-              "load_use_detection_0/id_ex_valid"
+              "load_use_detection_0/id_ex_valid",
+              "RV32I_IF/update_valid"
             ]
           },
           "alu_op_1": {

@@ -5,124 +5,181 @@ prog_asm.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <__text_start>:
-   0:	00002537          	lui	x10,0x2
-   4:	00500593          	addi	x11,x0,5
+   0:	00002a37          	lui	x20,0x2
+   4:	00000f93          	addi	x31,x0,0
+   8:	01fa2023          	sw	x31,0(x20) # 2000 <__end>
+   c:	00000f13          	addi	x30,x0,0
+  10:	01ea2223          	sw	x30,4(x20)
 
-00000008 <write_david_loop>:
-   8:	06400293          	addi	x5,x0,100
-   c:	00550023          	sb	x5,0(x10) # 2000 <__end>
-  10:	06100293          	addi	x5,x0,97
-  14:	005500a3          	sb	x5,1(x10)
-  18:	07600293          	addi	x5,x0,118
-  1c:	00550123          	sb	x5,2(x10)
-  20:	06900293          	addi	x5,x0,105
-  24:	005501a3          	sb	x5,3(x10)
-  28:	06400293          	addi	x5,x0,100
-  2c:	00550223          	sb	x5,4(x10)
-  30:	00550513          	addi	x10,x10,5
-  34:	fff58593          	addi	x11,x11,-1
-  38:	fc0598e3          	bne	x11,x0,8 <write_david_loop>
-  3c:	00002537          	lui	x10,0x2
-  40:	00050513          	addi	x10,x10,0 # 2000 <__end>
-  44:	00002637          	lui	x12,0x2
-  48:	04060613          	addi	x12,x12,64 # 2040 <__end+0x40>
-  4c:	01900593          	addi	x11,x0,25
+00000014 <test_beq_taken>:
+  14:	00100f93          	addi	x31,x0,1
+  18:	00500093          	addi	x1,x0,5
+  1c:	00500113          	addi	x2,x0,5
+  20:	00208463          	beq	x1,x2,28 <beq_taken_ok>
+  24:	1ac0006f          	jal	x0,1d0 <fail>
 
-00000050 <copy_ram_loop>:
-  50:	00054283          	lbu	x5,0(x10)
-  54:	00560023          	sb	x5,0(x12)
-  58:	00150513          	addi	x10,x10,1
-  5c:	00160613          	addi	x12,x12,1
-  60:	fff58593          	addi	x11,x11,-1
-  64:	fe0596e3          	bne	x11,x0,50 <copy_ram_loop>
-  68:	00002537          	lui	x10,0x2
-  6c:	04050513          	addi	x10,x10,64 # 2040 <__end+0x40>
-  70:	00002637          	lui	x12,0x2
-  74:	08060613          	addi	x12,x12,128 # 2080 <__end+0x80>
-  78:	000036b7          	lui	x13,0x3
-  7c:	01068693          	addi	x13,x13,16 # 3010 <__ram_end+0x10>
-  80:	00003737          	lui	x14,0x3
-  84:	01470713          	addi	x14,x14,20 # 3014 <__ram_end+0x14>
-  88:	000037b7          	lui	x15,0x3
-  8c:	01878793          	addi	x15,x15,24 # 3018 <__ram_end+0x18>
-  90:	01900593          	addi	x11,x0,25
+00000028 <beq_taken_ok>:
+  28:	00100f13          	addi	x30,x0,1
+  2c:	01ea2223          	sw	x30,4(x20)
 
-00000094 <uart_tx_rx_loop>:
-  94:	00054283          	lbu	x5,0(x10)
-  98:	0bc000ef          	jal	x1,154 <wait_tx_ready>
-  9c:	0056a023          	sw	x5,0(x13)
-  a0:	0c4000ef          	jal	x1,164 <wait_rx_ready>
-  a4:	0007a303          	lw	x6,0(x15)
-  a8:	0ff37313          	andi	x6,x6,255
-  ac:	00660023          	sb	x6,0(x12)
-  b0:	00150513          	addi	x10,x10,1
-  b4:	00160613          	addi	x12,x12,1
-  b8:	fff58593          	addi	x11,x11,-1
-  bc:	fc059ce3          	bne	x11,x0,94 <uart_tx_rx_loop>
-  c0:	00002537          	lui	x10,0x2
-  c4:	08050513          	addi	x10,x10,128 # 2080 <__end+0x80>
-  c8:	00500593          	addi	x11,x0,5
-  cc:	00000a13          	addi	x20,x0,0
+00000030 <test_beq_not_taken>:
+  30:	00200f93          	addi	x31,x0,2
+  34:	00500093          	addi	x1,x0,5
+  38:	00600113          	addi	x2,x0,6
+  3c:	18208a63          	beq	x1,x2,1d0 <fail>
+  40:	00200f13          	addi	x30,x0,2
+  44:	01ea2223          	sw	x30,4(x20)
 
-000000d0 <verify_loop>:
-  d0:	00054303          	lbu	x6,0(x10)
-  d4:	06400393          	addi	x7,x0,100
-  d8:	00730463          	beq	x6,x7,e0 <ok_d1>
-  dc:	001a0a13          	addi	x20,x20,1
+00000048 <test_bne_taken>:
+  48:	00300f93          	addi	x31,x0,3
+  4c:	00500093          	addi	x1,x0,5
+  50:	00600113          	addi	x2,x0,6
+  54:	00209463          	bne	x1,x2,5c <bne_taken_ok>
+  58:	1780006f          	jal	x0,1d0 <fail>
 
-000000e0 <ok_d1>:
-  e0:	00154303          	lbu	x6,1(x10)
-  e4:	06100393          	addi	x7,x0,97
-  e8:	00730463          	beq	x6,x7,f0 <ok_a>
-  ec:	001a0a13          	addi	x20,x20,1
+0000005c <bne_taken_ok>:
+  5c:	00300f13          	addi	x30,x0,3
+  60:	01ea2223          	sw	x30,4(x20)
 
-000000f0 <ok_a>:
-  f0:	00254303          	lbu	x6,2(x10)
-  f4:	07600393          	addi	x7,x0,118
-  f8:	00730463          	beq	x6,x7,100 <ok_v>
-  fc:	001a0a13          	addi	x20,x20,1
+00000064 <test_bne_not_taken>:
+  64:	00400f93          	addi	x31,x0,4
+  68:	00700093          	addi	x1,x0,7
+  6c:	00700113          	addi	x2,x0,7
+  70:	16209063          	bne	x1,x2,1d0 <fail>
+  74:	00400f13          	addi	x30,x0,4
+  78:	01ea2223          	sw	x30,4(x20)
 
-00000100 <ok_v>:
- 100:	00354303          	lbu	x6,3(x10)
- 104:	06900393          	addi	x7,x0,105
- 108:	00730463          	beq	x6,x7,110 <ok_i>
- 10c:	001a0a13          	addi	x20,x20,1
+0000007c <test_blt_taken>:
+  7c:	00500f93          	addi	x31,x0,5
+  80:	fff00093          	addi	x1,x0,-1
+  84:	00100113          	addi	x2,x0,1
+  88:	0020c463          	blt	x1,x2,90 <blt_taken_ok>
+  8c:	1440006f          	jal	x0,1d0 <fail>
 
-00000110 <ok_i>:
- 110:	00454303          	lbu	x6,4(x10)
- 114:	06400393          	addi	x7,x0,100
- 118:	00730463          	beq	x6,x7,120 <ok_d2>
- 11c:	001a0a13          	addi	x20,x20,1
+00000090 <blt_taken_ok>:
+  90:	00500f13          	addi	x30,x0,5
+  94:	01ea2223          	sw	x30,4(x20)
 
-00000120 <ok_d2>:
- 120:	00550513          	addi	x10,x10,5
- 124:	fff58593          	addi	x11,x11,-1
- 128:	fa0594e3          	bne	x11,x0,d0 <verify_loop>
- 12c:	00002f37          	lui	x30,0x2
- 130:	100f0f13          	addi	x30,x30,256 # 2100 <__end+0x100>
- 134:	014f2023          	sw	x20,0(x30)
- 138:	000a1863          	bne	x20,x0,148 <fail>
+00000098 <test_blt_not_taken>:
+  98:	00600f93          	addi	x31,x0,6
+  9c:	00100093          	addi	x1,x0,1
+  a0:	fff00113          	addi	x2,x0,-1
+  a4:	1220c663          	blt	x1,x2,1d0 <fail>
+  a8:	00600f13          	addi	x30,x0,6
+  ac:	01ea2223          	sw	x30,4(x20)
 
-0000013c <pass>:
- 13c:	00100a93          	addi	x21,x0,1
- 140:	015f2223          	sw	x21,4(x30)
- 144:	00c0006f          	jal	x0,150 <done>
+000000b0 <test_bge_taken>:
+  b0:	00700f93          	addi	x31,x0,7
+  b4:	00100093          	addi	x1,x0,1
+  b8:	fff00113          	addi	x2,x0,-1
+  bc:	0020d463          	bge	x1,x2,c4 <bge_taken_ok>
+  c0:	1100006f          	jal	x0,1d0 <fail>
 
-00000148 <fail>:
- 148:	0ee00a93          	addi	x21,x0,238
- 14c:	015f2223          	sw	x21,4(x30)
+000000c4 <bge_taken_ok>:
+  c4:	00700f13          	addi	x30,x0,7
+  c8:	01ea2223          	sw	x30,4(x20)
 
-00000150 <done>:
- 150:	0000006f          	jal	x0,150 <done>
+000000cc <test_bge_not_taken>:
+  cc:	00800f93          	addi	x31,x0,8
+  d0:	fff00093          	addi	x1,x0,-1
+  d4:	00100113          	addi	x2,x0,1
+  d8:	0e20dc63          	bge	x1,x2,1d0 <fail>
+  dc:	00800f13          	addi	x30,x0,8
+  e0:	01ea2223          	sw	x30,4(x20)
 
-00000154 <wait_tx_ready>:
- 154:	00072303          	lw	x6,0(x14)
- 158:	00137313          	andi	x6,x6,1
- 15c:	fe030ce3          	beq	x6,x0,154 <wait_tx_ready>
- 160:	00008067          	jalr	x0,0(x1)
+000000e4 <test_bltu_taken>:
+  e4:	00900f93          	addi	x31,x0,9
+  e8:	00100093          	addi	x1,x0,1
+  ec:	00200113          	addi	x2,x0,2
+  f0:	0020e463          	bltu	x1,x2,f8 <bltu_taken_ok>
+  f4:	0dc0006f          	jal	x0,1d0 <fail>
 
-00000164 <wait_rx_ready>:
- 164:	00072303          	lw	x6,0(x14)
- 168:	00437313          	andi	x6,x6,4
- 16c:	fe030ce3          	beq	x6,x0,164 <wait_rx_ready>
- 170:	00008067          	jalr	x0,0(x1)
+000000f8 <bltu_taken_ok>:
+  f8:	00900f13          	addi	x30,x0,9
+  fc:	01ea2223          	sw	x30,4(x20)
+
+00000100 <test_bltu_not_taken>:
+ 100:	00a00f93          	addi	x31,x0,10
+ 104:	fff00093          	addi	x1,x0,-1
+ 108:	00100113          	addi	x2,x0,1
+ 10c:	0c20e263          	bltu	x1,x2,1d0 <fail>
+ 110:	00a00f13          	addi	x30,x0,10
+ 114:	01ea2223          	sw	x30,4(x20)
+
+00000118 <test_bgeu_taken>:
+ 118:	00b00f93          	addi	x31,x0,11
+ 11c:	fff00093          	addi	x1,x0,-1
+ 120:	00100113          	addi	x2,x0,1
+ 124:	0020f463          	bgeu	x1,x2,12c <bgeu_taken_ok>
+ 128:	0a80006f          	jal	x0,1d0 <fail>
+
+0000012c <bgeu_taken_ok>:
+ 12c:	00b00f13          	addi	x30,x0,11
+ 130:	01ea2223          	sw	x30,4(x20)
+
+00000134 <test_bgeu_not_taken>:
+ 134:	00c00f93          	addi	x31,x0,12
+ 138:	00100093          	addi	x1,x0,1
+ 13c:	fff00113          	addi	x2,x0,-1
+ 140:	0820f863          	bgeu	x1,x2,1d0 <fail>
+ 144:	00c00f13          	addi	x30,x0,12
+ 148:	01ea2223          	sw	x30,4(x20)
+
+0000014c <test_jal>:
+ 14c:	00d00f93          	addi	x31,x0,13
+ 150:	0080056f          	jal	x10,158 <jal_target>
+ 154:	07c0006f          	jal	x0,1d0 <fail>
+
+00000158 <jal_target>:
+ 158:	04aa2023          	sw	x10,64(x20)
+ 15c:	00d00f13          	addi	x30,x0,13
+ 160:	01ea2223          	sw	x30,4(x20)
+
+00000164 <test_jal_x0>:
+ 164:	00e00f93          	addi	x31,x0,14
+ 168:	03700293          	addi	x5,x0,55
+ 16c:	0080006f          	jal	x0,174 <jal_x0_target>
+ 170:	0600006f          	jal	x0,1d0 <fail>
+
+00000174 <jal_x0_target>:
+ 174:	03700313          	addi	x6,x0,55
+ 178:	04629c63          	bne	x5,x6,1d0 <fail>
+ 17c:	00e00f13          	addi	x30,x0,14
+ 180:	01ea2223          	sw	x30,4(x20)
+
+00000184 <test_jalr>:
+ 184:	00f00f93          	addi	x31,x0,15
+ 188:	19400293          	addi	x5,x0,404
+ 18c:	000285e7          	jalr	x11,0(x5)
+ 190:	0400006f          	jal	x0,1d0 <fail>
+
+00000194 <jalr_target>:
+ 194:	04ba2223          	sw	x11,68(x20)
+ 198:	00f00f13          	addi	x30,x0,15
+ 19c:	01ea2223          	sw	x30,4(x20)
+
+000001a0 <test_jalr_clear_bit0>:
+ 1a0:	01000f93          	addi	x31,x0,16
+ 1a4:	1b400293          	addi	x5,x0,436
+ 1a8:	00128293          	addi	x5,x5,1
+ 1ac:	00028667          	jalr	x12,0(x5)
+ 1b0:	0200006f          	jal	x0,1d0 <fail>
+
+000001b4 <jalr_odd_target>:
+ 1b4:	04ca2423          	sw	x12,72(x20)
+ 1b8:	01000f13          	addi	x30,x0,16
+ 1bc:	01ea2223          	sw	x30,4(x20)
+
+000001c0 <pass>:
+ 1c0:	12345fb7          	lui	x31,0x12345
+ 1c4:	678f8f93          	addi	x31,x31,1656 # 12345678 <__ram_end+0x12342678>
+ 1c8:	01fa2023          	sw	x31,0(x20)
+
+000001cc <pass_loop>:
+ 1cc:	0000006f          	jal	x0,1cc <pass_loop>
+
+000001d0 <fail>:
+ 1d0:	01fa2023          	sw	x31,0(x20)
+
+000001d4 <fail_loop>:
+ 1d4:	0000006f          	jal	x0,1d4 <fail_loop>
