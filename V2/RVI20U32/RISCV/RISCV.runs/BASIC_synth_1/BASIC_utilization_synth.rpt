@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Sat May  9 21:53:03 2026
+| Date         : Sat May 16 21:41:29 2026
 | Host         : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_utilization -file BASIC_utilization_synth.rpt -pb BASIC_utilization_synth.pb
 | Design       : BASIC
@@ -31,17 +31,17 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| CLB LUTs*                  | 3458 |     0 |    117120 |  2.95 |
-|   LUT as Logic             | 2761 |     0 |    117120 |  2.36 |
+| CLB LUTs*                  | 4852 |     0 |    117120 |  4.14 |
+|   LUT as Logic             | 4155 |     0 |    117120 |  3.55 |
 |   LUT as Memory            |  697 |     0 |     57600 |  1.21 |
 |     LUT as Distributed RAM |  560 |     0 |           |       |
 |     LUT as Shift Register  |  137 |     0 |           |       |
-| CLB Registers              | 2800 |     0 |    234240 |  1.20 |
-|   Register as Flip Flop    | 2800 |     0 |    234240 |  1.20 |
+| CLB Registers              | 6848 |     0 |    234240 |  2.92 |
+|   Register as Flip Flop    | 6848 |     0 |    234240 |  2.92 |
 |   Register as Latch        |    0 |     0 |    234240 |  0.00 |
-| CARRY8                     |   63 |     0 |     14640 |  0.43 |
-| F7 Muxes                   |  301 |     0 |     58560 |  0.51 |
-| F8 Muxes                   |  128 |     0 |     29280 |  0.44 |
+| CARRY8                     |   73 |     0 |     14640 |  0.50 |
+| F7 Muxes                   |  784 |     0 |     58560 |  1.34 |
+| F8 Muxes                   |  368 |     0 |     29280 |  1.26 |
 | F9 Muxes                   |   64 |     0 |     14640 |  0.44 |
 +----------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -60,9 +60,9 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
-| 65    |          Yes |           - |        Reset |
-| 19    |          Yes |         Set |            - |
-| 2716  |          Yes |       Reset |            - |
+| 98    |          Yes |           - |        Reset |
+| 89    |          Yes |         Set |            - |
+| 6661  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -159,23 +159,23 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     | 2716 |            Register |
-| LUT6     | 1227 |                 CLB |
-| LUT4     |  530 |                 CLB |
+| FDRE     | 6661 |            Register |
+| LUT6     | 2443 |                 CLB |
+| MUXF7    |  784 |                 CLB |
+| LUT4     |  569 |                 CLB |
+| LUT5     |  514 |                 CLB |
 | RAMS64E1 |  512 |                 CLB |
-| LUT1     |  490 |                 CLB |
-| LUT5     |  366 |                 CLB |
-| MUXF7    |  301 |                 CLB |
-| LUT2     |  297 |                 CLB |
-| LUT3     |  209 |                 CLB |
-| MUXF8    |  128 |                 CLB |
+| LUT1     |  450 |                 CLB |
+| MUXF8    |  368 |                 CLB |
+| LUT2     |  330 |                 CLB |
+| LUT3     |  175 |                 CLB |
 | SRL16E   |  109 |                 CLB |
+| FDCE     |   98 |            Register |
+| FDSE     |   89 |            Register |
 | SRLC32E  |   86 |                 CLB |
 | RAMD32   |   84 |                 CLB |
-| FDCE     |   65 |            Register |
+| CARRY8   |   73 |                 CLB |
 | MUXF9    |   64 |                 CLB |
-| CARRY8   |   63 |                 CLB |
-| FDSE     |   19 |            Register |
 | RAMS32   |   12 |                 CLB |
 | RAMB36E2 |    3 |           Block Ram |
 | SRLC16E  |    2 |                 CLB |

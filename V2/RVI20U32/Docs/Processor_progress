@@ -1,10 +1,26 @@
 
 
 
+16/05/2026
+
+* se incluyo wait-states a la interfaz RISCV Core -> MMIO para tener la capacidad de esperar memorias y perifericos N ciclos. 
+* Actualizacion de diagrama de bloques en pdf. 
+* se incluyo un archivo gen_bp_torture.py el cual genera codigo asm aleatorio Ese gen_bp_torture.py genera automáticamente un .S de RISC-V con tests pseudoaleatorios para estresar:
+
+>>> python3 gen_bp_torture.py --seed 1234 --tests 50
+
+	branches (BEQ, BNE)
+	loops backward
+	JAL
+	JALR
+	branches consecutivos
+	hazards load-use antes de branch
+
+
 03/05/2026
 
 * RV32I is done + add one MMIO + GPIO module and RAM get outside MEM stage to independent data RAM.
-* into RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode has a Led program test to see 2 LEDs oscilating each other
+* into RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode has a Led program test to see 2 LEDs oscilating each other.
 
 
 03/02/2026

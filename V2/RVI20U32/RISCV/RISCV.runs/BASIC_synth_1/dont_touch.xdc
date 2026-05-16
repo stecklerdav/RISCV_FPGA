@@ -109,17 +109,11 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vect
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_0/BASIC_xlconstant_3_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_0 || ORIG_REF_NAME==BASIC_xlconstant_3_0} -quiet] -quiet
 
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mmio_0_0/BASIC_mmio_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_mmio_0_0 || ORIG_REF_NAME==BASIC_mmio_0_0} -quiet] -quiet
-
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_gpio_0_0/BASIC_gpio_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_gpio_0_0 || ORIG_REF_NAME==BASIC_gpio_0_0} -quiet] -quiet
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_2/BASIC_util_vector_logic_2_2.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_2_2 || ORIG_REF_NAME==BASIC_util_vector_logic_2_2} -quiet] -quiet
-
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_1/BASIC_xlconstant_3_1.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_1 || ORIG_REF_NAME==BASIC_xlconstant_3_1} -quiet] -quiet
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlslice_0_0/BASIC_xlslice_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlslice_0_0 || ORIG_REF_NAME==BASIC_xlslice_0_0} -quiet] -quiet
@@ -127,11 +121,41 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlslice_0
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_uart_tx_0_0/BASIC_uart_tx_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_uart_tx_0_0 || ORIG_REF_NAME==BASIC_uart_tx_0_0} -quiet] -quiet
 
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_2/BASIC_xlconstant_3_2.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_2 || ORIG_REF_NAME==BASIC_xlconstant_3_2} -quiet] -quiet
-
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_id_ex_reg_0_1/BASIC_id_ex_reg_0_1.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_id_ex_reg_0_1 || ORIG_REF_NAME==BASIC_id_ex_reg_0_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_branch_predictor_btb_0_0/BASIC_branch_predictor_btb_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_branch_predictor_btb_0_0 || ORIG_REF_NAME==BASIC_branch_predictor_btb_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_3_0/BASIC_util_vector_logic_3_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_3_0 || ORIG_REF_NAME==BASIC_util_vector_logic_3_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_timer_0_0/BASIC_timer_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_timer_0_0 || ORIG_REF_NAME==BASIC_timer_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mem_bus_registered_0_0/BASIC_mem_bus_registered_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_mem_bus_registered_0_0 || ORIG_REF_NAME==BASIC_mem_bus_registered_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_3/BASIC_util_vector_logic_2_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_2_3 || ORIG_REF_NAME==BASIC_util_vector_logic_2_3} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconcat_0_0/BASIC_xlconcat_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconcat_0_0 || ORIG_REF_NAME==BASIC_xlconcat_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_0_1/BASIC_xlconstant_0_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_0_1 || ORIG_REF_NAME==BASIC_xlconstant_0_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_6_0/BASIC_util_vector_logic_6_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_6_0 || ORIG_REF_NAME==BASIC_util_vector_logic_6_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_3/BASIC_xlconstant_3_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_3 || ORIG_REF_NAME==BASIC_xlconstant_3_3} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_6_1/BASIC_util_vector_logic_6_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_6_1 || ORIG_REF_NAME==BASIC_util_vector_logic_6_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_8_0/BASIC_util_vector_logic_8_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_8_0 || ORIG_REF_NAME==BASIC_util_vector_logic_8_0} -quiet] -quiet
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc
 
@@ -268,17 +292,11 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_0/BASIC_xlconstant_3_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_0 || ORIG_REF_NAME==BASIC_xlconstant_3_0} -quiet] -quiet
 
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mmio_0_0/BASIC_mmio_0_0.xci
-#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_mmio_0_0 || ORIG_REF_NAME==BASIC_mmio_0_0} -quiet] -quiet
-
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_gpio_0_0/BASIC_gpio_0_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_gpio_0_0 || ORIG_REF_NAME==BASIC_gpio_0_0} -quiet] -quiet
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_2/BASIC_util_vector_logic_2_2.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_2_2 || ORIG_REF_NAME==BASIC_util_vector_logic_2_2} -quiet] -quiet
-
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_1/BASIC_xlconstant_3_1.xci
-#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_1 || ORIG_REF_NAME==BASIC_xlconstant_3_1} -quiet] -quiet
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlslice_0_0/BASIC_xlslice_0_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlslice_0_0 || ORIG_REF_NAME==BASIC_xlslice_0_0} -quiet] -quiet
@@ -286,11 +304,41 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_uart_tx_0_0/BASIC_uart_tx_0_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_uart_tx_0_0 || ORIG_REF_NAME==BASIC_uart_tx_0_0} -quiet] -quiet
 
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_2/BASIC_xlconstant_3_2.xci
-#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_2 || ORIG_REF_NAME==BASIC_xlconstant_3_2} -quiet] -quiet
-
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_id_ex_reg_0_1/BASIC_id_ex_reg_0_1.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_id_ex_reg_0_1 || ORIG_REF_NAME==BASIC_id_ex_reg_0_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_branch_predictor_btb_0_0/BASIC_branch_predictor_btb_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_branch_predictor_btb_0_0 || ORIG_REF_NAME==BASIC_branch_predictor_btb_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_3_0/BASIC_util_vector_logic_3_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_3_0 || ORIG_REF_NAME==BASIC_util_vector_logic_3_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_timer_0_0/BASIC_timer_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_timer_0_0 || ORIG_REF_NAME==BASIC_timer_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_mem_bus_registered_0_0/BASIC_mem_bus_registered_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_mem_bus_registered_0_0 || ORIG_REF_NAME==BASIC_mem_bus_registered_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_2_3/BASIC_util_vector_logic_2_3.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_2_3 || ORIG_REF_NAME==BASIC_util_vector_logic_2_3} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconcat_0_0/BASIC_xlconcat_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconcat_0_0 || ORIG_REF_NAME==BASIC_xlconcat_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_0_1/BASIC_xlconstant_0_1.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_0_1 || ORIG_REF_NAME==BASIC_xlconstant_0_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_6_0/BASIC_util_vector_logic_6_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_6_0 || ORIG_REF_NAME==BASIC_util_vector_logic_6_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_xlconstant_3_3/BASIC_xlconstant_3_3.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_xlconstant_3_3 || ORIG_REF_NAME==BASIC_xlconstant_3_3} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_6_1/BASIC_util_vector_logic_6_1.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_6_1 || ORIG_REF_NAME==BASIC_util_vector_logic_6_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_8_0/BASIC_util_vector_logic_8_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_8_0 || ORIG_REF_NAME==BASIC_util_vector_logic_8_0} -quiet] -quiet
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc
 

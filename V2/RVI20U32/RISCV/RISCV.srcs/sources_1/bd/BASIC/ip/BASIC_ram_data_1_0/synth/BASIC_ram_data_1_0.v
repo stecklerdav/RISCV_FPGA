@@ -57,31 +57,42 @@
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module BASIC_ram_data_1_0 (
   clk,
+  rst,
+  valid,
   we,
   be,
   addr,
   wdata,
-  rdata
+  rdata,
+  ready
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
+input wire rst;
+input wire valid;
 input wire we;
 input wire [3 : 0] be;
 input wire [31 : 0] addr;
 input wire [31 : 0] wdata;
 output wire [31 : 0] rdata;
+output wire ready;
 
   ram_data #(
     .ADDR_WIDTH(10),
     .WORDS(1024)
   ) inst (
     .clk(clk),
+    .rst(rst),
+    .valid(valid),
     .we(we),
     .be(be),
     .addr(addr),
     .wdata(wdata),
-    .rdata(rdata)
+    .rdata(rdata),
+    .ready(ready)
   );
 endmodule

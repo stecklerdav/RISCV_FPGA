@@ -18,7 +18,7 @@
 ############################################################################
 # Clock constraints                                                        #
 ############################################################################
-create_clock -name clk_pl_0 -period "100.001" [get_pins "PS8_i/PLCLK[0]"]
+create_clock -name clk_pl_0 -period "5" [get_pins "PS8_i/PLCLK[0]"]
 create_clock -name clk_pl_1 -period "6.666" [get_pins "PS8_i/PLCLK[1]"]
 
 

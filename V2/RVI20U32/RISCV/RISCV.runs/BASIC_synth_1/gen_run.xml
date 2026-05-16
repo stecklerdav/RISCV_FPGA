@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="BASIC_synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1778359771">
+<GenRun Id="BASIC_synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1778963819">
+  <File Type="VDS-TIMINGSUMMARY" Name="BASIC_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="BASIC.dcp"/>
   <File Type="RDS-UTIL-PB" Name="BASIC_utilization_synth.pb"/>
-  <File Type="PA-TCL" Name="BASIC.tcl"/>
   <File Type="RDS-UTIL" Name="BASIC_utilization_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="BASIC_timing_summary_synth.pb"/>
+  <File Type="PA-TCL" Name="BASIC.tcl"/>
   <File Type="REPORTS-TCL" Name="BASIC_reports.tcl"/>
   <File Type="RDS-RDS" Name="BASIC.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="BASIC_drc_synth.rpt"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/BASIC">
     <File Path="$PSRCDIR/sources_1/bd/BASIC/BASIC.bd">
       <FileInfo>
@@ -39,7 +42,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

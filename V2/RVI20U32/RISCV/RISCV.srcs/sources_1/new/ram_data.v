@@ -5,18 +5,21 @@ module ram_data #(
     parameter WORDS      = (1 << ADDR_WIDTH)
 )(
     input  wire        clk,
+    input  wire        rst,
+
+    input  wire        valid,
     input  wire        we,
-    input  wire [3:0]  be,      // byte enable
-    input  wire [31:0] addr,    // byte address
+    input  wire [3:0]  be,
+    input  wire [31:0] addr,
     input  wire [31:0] wdata,
-    output reg  [31:0] rdata
+
+    output reg  [31:0] rdata,
+    output reg         ready
 );
 
-    // Word index = byte_addr[ADDR_WIDTH+1:2]
     wire [ADDR_WIDTH-1:0] wa;
     assign wa = addr[ADDR_WIDTH+1:2];
 
-    // 4 byte lanes
     (* ram_style = "block" *) reg [7:0] mem0 [0:WORDS-1];
     (* ram_style = "block" *) reg [7:0] mem1 [0:WORDS-1];
     (* ram_style = "block" *) reg [7:0] mem2 [0:WORDS-1];
@@ -40,27 +43,32 @@ module ram_data #(
     end
 
     always @(posedge clk) begin
-        if (we) begin
-            // escritura por byte
-            if (be[0]) mem0[wa] <= wdata[7:0];
-            if (be[1]) mem1[wa] <= wdata[15:8];
-            if (be[2]) mem2[wa] <= wdata[23:16];
-            if (be[3]) mem3[wa] <= wdata[31:24];
-
-            // WRITE-FIRST:
-            // si escribes y lees la misma dirección en este ciclo,
-            // rdata devuelve el dato nuevo en los bytes escritos
-            // y mantiene el dato viejo en los bytes no escritos.
-            rdata <= {
-                be[3] ? wdata[31:24] : mem_read[31:24],
-                be[2] ? wdata[23:16] : mem_read[23:16],
-                be[1] ? wdata[15:8]  : mem_read[15:8],
-                be[0] ? wdata[7:0]   : mem_read[7:0]
-            };
-
+        if (rst) begin
+            rdata <= 32'h0000_0000;
+            ready <= 1'b0;
         end else begin
-            // lectura síncrona normal
-            rdata <= mem_read;
+            ready <= 1'b0;
+
+            if (valid) begin
+                ready <= 1'b1;
+
+                if (we) begin
+                    if (be[0]) mem0[wa] <= wdata[7:0];
+                    if (be[1]) mem1[wa] <= wdata[15:8];
+                    if (be[2]) mem2[wa] <= wdata[23:16];
+                    if (be[3]) mem3[wa] <= wdata[31:24];
+
+                    rdata <= {
+                        be[3] ? wdata[31:24] : mem_read[31:24],
+                        be[2] ? wdata[23:16] : mem_read[23:16],
+                        be[1] ? wdata[15:8]  : mem_read[15:8],
+                        be[0] ? wdata[7:0]   : mem_read[7:0]
+                    };
+
+                end else begin
+                    rdata <= mem_read;
+                end
+            end
         end
     end
 

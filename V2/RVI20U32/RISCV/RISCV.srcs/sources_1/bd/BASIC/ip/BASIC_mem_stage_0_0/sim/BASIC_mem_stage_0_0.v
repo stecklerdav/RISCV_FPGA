@@ -72,11 +72,14 @@ module BASIC_mem_stage_0_0 (
   mem_in_rd_we,
   mem_in_wb_sel,
   dmem_addr,
+  dmem_valid,
   dmem_we,
   dmem_re,
   dmem_be,
   dmem_wdata,
   dmem_rdata,
+  dmem_ready,
+  mem_stall_req,
   mem_out_valid,
   mem_out_data,
   mem_out_alu_result,
@@ -90,7 +93,7 @@ module BASIC_mem_stage_0_0 (
   mem_forward_data
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -111,11 +114,14 @@ input wire mem_in_mem_unsigned;
 input wire mem_in_rd_we;
 input wire [1 : 0] mem_in_wb_sel;
 output wire [31 : 0] dmem_addr;
+output wire dmem_valid;
 output wire dmem_we;
 output wire dmem_re;
 output wire [3 : 0] dmem_be;
 output wire [31 : 0] dmem_wdata;
 input wire [31 : 0] dmem_rdata;
+input wire dmem_ready;
+output wire mem_stall_req;
 output wire mem_out_valid;
 output wire [31 : 0] mem_out_data;
 output wire [31 : 0] mem_out_alu_result;
@@ -146,11 +152,14 @@ output wire [31 : 0] mem_forward_data;
     .mem_in_rd_we(mem_in_rd_we),
     .mem_in_wb_sel(mem_in_wb_sel),
     .dmem_addr(dmem_addr),
+    .dmem_valid(dmem_valid),
     .dmem_we(dmem_we),
     .dmem_re(dmem_re),
     .dmem_be(dmem_be),
     .dmem_wdata(dmem_wdata),
     .dmem_rdata(dmem_rdata),
+    .dmem_ready(dmem_ready),
+    .mem_stall_req(mem_stall_req),
     .mem_out_valid(mem_out_valid),
     .mem_out_data(mem_out_data),
     .mem_out_alu_result(mem_out_alu_result),

@@ -16,140 +16,15 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="38200001fs"></ZoomEndTime>
-      <Cursor1Time time="30000000fs"></Cursor1Time>
+      <ZoomEndTime time="48015280fs"></ZoomEndTime>
+      <Cursor1Time time="1000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="599"></NameColumnWidth>
-      <ValueColumnWidth column_width="223"></ValueColumnWidth>
+      <ValueColumnWidth column_width="219"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="23" />
+   <WVObjectSize size="0" />
    <wave_markers>
       <marker label="" time="7934143" />
    </wave_markers>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/clk">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/rst">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/we">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">we</obj_property>
-      <obj_property name="ObjectShortName">we</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/be">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">be[3:0]</obj_property>
-      <obj_property name="ObjectShortName">be[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/addr">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">addr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/wdata">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/RV32I_RAM_MEMORY/ram_data_1/inst/rdata">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
-      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_en">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc_en</obj_property>
-      <obj_property name="ObjectShortName">pc_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_redirect_valid">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc_redirect_valid</obj_property>
-      <obj_property name="ObjectShortName">pc_redirect_valid</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_redirect_target">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc_redirect_target[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_redirect_target[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_plus4">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc_plus4[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_plus4[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_debug_last_redirect">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc_debug_last_redirect[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pc_debug_last_redirect[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc_debug_redirect_pulse">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pc_debug_redirect_pulse</obj_property>
-      <obj_property name="ObjectShortName">pc_debug_redirect_pulse</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/load_use_detection_0/inst/if_id_valid">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">if_id_valid</obj_property>
-      <obj_property name="ObjectShortName">if_id_valid</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/load_use_detection_0/inst/id_ex_valid">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">id_ex_valid</obj_property>
-      <obj_property name="ObjectShortName">id_ex_valid</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/priority_branch_OR_l_0/inst/id_ex_flush_final">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">id_ex_flush_final</obj_property>
-      <obj_property name="ObjectShortName">id_ex_flush_final</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/priority_branch_OR_l_0/inst/if_id_hold_final">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">if_id_hold_final</obj_property>
-      <obj_property name="ObjectShortName">if_id_hold_final</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/priority_branch_OR_l_0/inst/if_id_flush_final">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">if_id_flush_final</obj_property>
-      <obj_property name="ObjectShortName">if_id_flush_final</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/pred_valid">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pred_valid</obj_property>
-      <obj_property name="ObjectShortName">pred_valid</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/pred_taken">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pred_taken</obj_property>
-      <obj_property name="ObjectShortName">pred_taken</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/pred_target">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pred_target[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pred_target[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/pred_next_pc">
-      <obj_property name="DisplayName">FullPathName</obj_property>
-      <obj_property name="ElementShortName">pred_next_pc[31:0]</obj_property>
-      <obj_property name="ObjectShortName">pred_next_pc[31:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
 </wave_config>

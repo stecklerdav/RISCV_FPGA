@@ -17,22 +17,22 @@ module mem_stage (
     input  wire        mem_in_mem_we,
     input  wire [1:0]  mem_in_mem_size,
 
-    // OJO:
-    // En tu diseño actual este pin parece significar:
-    // 1 = sign extend  -> LB/LH
-    // 0 = zero extend  -> LBU/LHU
     input  wire        mem_in_mem_unsigned,
 
     input  wire        mem_in_rd_we,
     input  wire [1:0]  mem_in_wb_sel,
 
     output reg  [31:0] dmem_addr,
+    output reg         dmem_valid,
     output reg         dmem_we,
     output reg         dmem_re,
     output reg  [3:0]  dmem_be,
     output reg  [31:0] dmem_wdata,
 
     input  wire [31:0] dmem_rdata,
+    input  wire        dmem_ready,
+
+    output wire        mem_stall_req,
 
     output reg         mem_out_valid,
     output reg  [31:0] mem_out_data,
@@ -60,19 +60,19 @@ module mem_stage (
     localparam [1:0] WB_IMM_U = 2'd3;
 
     wire mem_req_valid;
-    assign mem_req_valid = mem_in_valid && !stall && !kill;
+    assign mem_req_valid = mem_in_valid && !kill && (mem_in_mem_re || mem_in_mem_we);
 
-    // Tu nombre es "unsigned", pero por lo que has usado significa sign_extend.
-    // Si tu decoder realmente manda 1 para LBU/LHU, cambia esta línea por:
-    // assign mem_in_mem_sign_ext = ~mem_in_mem_unsigned;
+    assign mem_stall_req = dmem_valid && !dmem_ready;
+
+    wire mem_can_advance;
+    assign mem_can_advance = !stall && (!dmem_valid || dmem_ready);
+
     wire mem_in_mem_sign_ext;
     assign mem_in_mem_sign_ext = mem_in_mem_unsigned;
 
-    // ============================================================
-    // REQUEST HACIA MMIO / RAM
-    // ============================================================
     always @(*) begin
         dmem_addr  = mem_in_alu_result;
+        dmem_valid = mem_req_valid;
         dmem_we    = mem_req_valid && mem_in_mem_we;
         dmem_re    = mem_req_valid && mem_in_mem_re;
         dmem_be    = 4'b0000;
@@ -102,11 +102,6 @@ module mem_stage (
                             dmem_be    = 4'b1000;
                             dmem_wdata = {mem_in_store_data[7:0], 24'b0};
                         end
-
-                        default: begin
-                            dmem_be    = 4'b0000;
-                            dmem_wdata = 32'h0000_0000;
-                        end
                     endcase
                 end
 
@@ -134,13 +129,6 @@ module mem_stage (
         end
     end
 
-    // ============================================================
-    // PAYLOAD REGISTRADO 1 CICLO
-    // IMPORTANTE:
-    // Esto asume que dmem_rdata llega 1 ciclo después del request.
-    // Si MMIO registra cpu_rdata otra vez, esto queda desalineado.
-    // ============================================================
-
     reg        mem_q_valid;
     reg [31:0] mem_q_alu_result;
     reg [31:0] mem_q_pc_plus4;
@@ -164,7 +152,7 @@ module mem_stage (
             mem_q_mem_re       <= 1'b0;
             mem_q_rd_we        <= 1'b0;
             mem_q_wb_sel       <= WB_ALU;
-        end else if (!stall) begin
+        end else if (mem_can_advance) begin
             mem_q_valid        <= mem_in_valid && !kill;
             mem_q_alu_result   <= mem_in_alu_result;
             mem_q_pc_plus4     <= mem_in_pc_plus4;
@@ -178,11 +166,6 @@ module mem_stage (
         end
     end
 
-    // ============================================================
-    // LOAD ALIGNMENT
-    // Usa dirección registrada: mem_q_alu_result[1:0]
-    // ============================================================
-
     reg [31:0] load_data_aligned;
 
     always @(*) begin
@@ -192,33 +175,21 @@ module mem_stage (
 
             SZ_B: begin
                 case (mem_q_alu_result[1:0])
-                    2'b00: begin
-                        load_data_aligned = mem_q_mem_sign_ext ?
-                            {{24{dmem_rdata[7]}}, dmem_rdata[7:0]} :
-                            {24'b0, dmem_rdata[7:0]};
-                    end
+                    2'b00: load_data_aligned = mem_q_mem_sign_ext ?
+                        {{24{dmem_rdata[7]}}, dmem_rdata[7:0]} :
+                        {24'b0, dmem_rdata[7:0]};
 
-                    2'b01: begin
-                        load_data_aligned = mem_q_mem_sign_ext ?
-                            {{24{dmem_rdata[15]}}, dmem_rdata[15:8]} :
-                            {24'b0, dmem_rdata[15:8]};
-                    end
+                    2'b01: load_data_aligned = mem_q_mem_sign_ext ?
+                        {{24{dmem_rdata[15]}}, dmem_rdata[15:8]} :
+                        {24'b0, dmem_rdata[15:8]};
 
-                    2'b10: begin
-                        load_data_aligned = mem_q_mem_sign_ext ?
-                            {{24{dmem_rdata[23]}}, dmem_rdata[23:16]} :
-                            {24'b0, dmem_rdata[23:16]};
-                    end
+                    2'b10: load_data_aligned = mem_q_mem_sign_ext ?
+                        {{24{dmem_rdata[23]}}, dmem_rdata[23:16]} :
+                        {24'b0, dmem_rdata[23:16]};
 
-                    2'b11: begin
-                        load_data_aligned = mem_q_mem_sign_ext ?
-                            {{24{dmem_rdata[31]}}, dmem_rdata[31:24]} :
-                            {24'b0, dmem_rdata[31:24]};
-                    end
-
-                    default: begin
-                        load_data_aligned = 32'h0000_0000;
-                    end
+                    2'b11: load_data_aligned = mem_q_mem_sign_ext ?
+                        {{24{dmem_rdata[31]}}, dmem_rdata[31:24]} :
+                        {24'b0, dmem_rdata[31:24]};
                 endcase
             end
 
@@ -244,10 +215,6 @@ module mem_stage (
 
         endcase
     end
-
-    // ============================================================
-    // SALIDA HACIA MEM/WB
-    // ============================================================
 
     always @(*) begin
         mem_out_valid        = mem_q_valid;

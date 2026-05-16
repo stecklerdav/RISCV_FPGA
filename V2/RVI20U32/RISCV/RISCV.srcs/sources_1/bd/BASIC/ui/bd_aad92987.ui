@@ -1,0 +1,149 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"944,194",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x -90 -y 480 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -90 -y 930 -defaultsOSRD
+preplace port ex_valid -pg 1 -lvl 0 -x -90 -y 110 -defaultsOSRD
+preplace port ex_mem_re -pg 1 -lvl 0 -x -90 -y 400 -defaultsOSRD
+preplace port ex_mem_we -pg 1 -lvl 0 -x -90 -y 850 -defaultsOSRD
+preplace port ex_mem_unsigned -pg 1 -lvl 0 -x -90 -y 460 -defaultsOSRD
+preplace port ex_rd_we -pg 1 -lvl 0 -x -90 -y 890 -defaultsOSRD
+preplace port mem_valid -pg 1 -lvl 7 -x 2730 -y 540 -defaultsOSRD
+preplace port mem_mem_re -pg 1 -lvl 7 -x 2730 -y 680 -defaultsOSRD
+preplace port mem_mem_we -pg 1 -lvl 7 -x 2730 -y 700 -defaultsOSRD
+preplace port mem_mem_unsigned -pg 1 -lvl 7 -x 2730 -y 740 -defaultsOSRD
+preplace port mem_rd_we -pg 1 -lvl 7 -x 2730 -y 760 -defaultsOSRD
+preplace port mem_stage_rd_we -pg 1 -lvl 0 -x -90 -y 1380 -defaultsOSRD
+preplace port ex_branch_en -pg 1 -lvl 0 -x -90 -y 190 -defaultsOSRD
+preplace port ex_jal -pg 1 -lvl 0 -x -90 -y 380 -defaultsOSRD
+preplace port ex_jalr -pg 1 -lvl 0 -x -90 -y 230 -defaultsOSRD
+preplace port pc_redirect_valid -pg 1 -lvl 7 -x 2730 -y 70 -defaultsOSRD
+preplace port ex_flush_req -pg 1 -lvl 7 -x 2730 -y 210 -defaultsOSRD
+preplace port mem_stage_valid -pg 1 -lvl 0 -x -90 -y 1340 -defaultsOSRD
+preplace port wb_valid -pg 1 -lvl 0 -x -90 -y 1400 -defaultsOSRD
+preplace port bp_update_taken -pg 1 -lvl 7 -x 2730 -y 330 -defaultsOSRD
+preplace port bp_update_is_control -pg 1 -lvl 7 -x 2730 -y 310 -defaultsOSRD
+preplace port bp_update_valid -pg 1 -lvl 7 -x 2730 -y 290 -defaultsOSRD
+preplace port stall -pg 1 -lvl 0 -x -90 -y 1100 -defaultsOSRD
+preplace portBus alu_op -pg 1 -lvl 0 -x -90 -y 420 -defaultsOSRD
+preplace portBus pc -pg 1 -lvl 0 -x -90 -y 950 -defaultsOSRD
+preplace portBus ex_pc_plus4 -pg 1 -lvl 0 -x -90 -y 630 -defaultsOSRD
+preplace portBus ex_imm_u -pg 1 -lvl 0 -x -90 -y 650 -defaultsOSRD
+preplace portBus ex_rd -pg 1 -lvl 0 -x -90 -y 870 -defaultsOSRD
+preplace portBus ex_mem_size -pg 1 -lvl 0 -x -90 -y 440 -defaultsOSRD
+preplace portBus ex_wb_sel -pg 1 -lvl 0 -x -90 -y 910 -defaultsOSRD
+preplace portBus ex_mem_data -pg 1 -lvl 7 -x 2730 -y 580 -defaultsOSRD
+preplace portBus mem_store_data -pg 1 -lvl 7 -x 2730 -y 600 -defaultsOSRD
+preplace portBus mem_pc_plus4 -pg 1 -lvl 7 -x 2730 -y 620 -defaultsOSRD
+preplace portBus mem_imm_u -pg 1 -lvl 7 -x 2730 -y 640 -defaultsOSRD
+preplace portBus mem_rd -pg 1 -lvl 7 -x 2730 -y 660 -defaultsOSRD
+preplace portBus mem_mem_size -pg 1 -lvl 7 -x 2730 -y 720 -defaultsOSRD
+preplace portBus mem_wb_sel -pg 1 -lvl 7 -x 2730 -y 780 -defaultsOSRD
+preplace portBus ex_imm -pg 1 -lvl 0 -x -90 -y 270 -defaultsOSRD
+preplace portBus ex_op_b_sel -pg 1 -lvl 0 -x -90 -y 1120 -defaultsOSRD
+preplace portBus op_a_sel -pg 1 -lvl 0 -x -90 -y 1040 -defaultsOSRD
+preplace portBus ex_rs1_data -pg 1 -lvl 0 -x -90 -y 520 -defaultsOSRD
+preplace portBus mem_stage_data -pg 1 -lvl 0 -x -90 -y 730 -defaultsOSRD
+preplace portBus mem_wb_data -pg 1 -lvl 0 -x -90 -y 770 -defaultsOSRD
+preplace portBus ex_rs2_data -pg 1 -lvl 0 -x -90 -y 710 -defaultsOSRD
+preplace portBus ex_rs1 -pg 1 -lvl 0 -x -90 -y 1170 -defaultsOSRD
+preplace portBus ex_rs2 -pg 1 -lvl 0 -x -90 -y 1190 -defaultsOSRD
+preplace portBus mem_stage_rd -pg 1 -lvl 0 -x -90 -y 1360 -defaultsOSRD
+preplace portBus wb_rd -pg 1 -lvl 0 -x -90 -y 1420 -defaultsOSRD
+preplace portBus wb_rd_we -pg 1 -lvl 0 -x -90 -y 1440 -defaultsOSRD
+preplace portBus ex_branch_funct3 -pg 1 -lvl 0 -x -90 -y 210 -defaultsOSRD
+preplace portBus pc_redirect_target -pg 1 -lvl 7 -x 2730 -y 90 -defaultsOSRD
+preplace portBus branch_taken -pg 1 -lvl 7 -x 2730 -y 50 -defaultsOSRD
+preplace portBus ex_pred_next_pc -pg 1 -lvl 0 -x -90 -y 250 -defaultsOSRD
+preplace portBus bp_update_target -pg 1 -lvl 7 -x 2730 -y 350 -defaultsOSRD
+preplace portBus ex_actual_next_pc -pg 1 -lvl 7 -x 2730 -y 270 -defaultsOSRD
+preplace inst alu_0 -pg 1 -lvl 5 -x 1790 -y 360 -defaultsOSRD
+preplace inst ex_mem_reg_1 -pg 1 -lvl 6 -x 2410 -y 690 -defaultsOSRD
+preplace inst operand_b_mux_0 -pg 1 -lvl 4 -x 1380 -y 310 -defaultsOSRD
+preplace inst operand_a_mux_0 -pg 1 -lvl 4 -x 1380 -y 1020 -defaultsOSRD
+preplace inst forward_mux_0 -pg 1 -lvl 5 -x 1790 -y 560 -defaultsOSRD
+preplace inst forward_mux_1 -pg 1 -lvl 3 -x 980 -y 750 -defaultsOSRD
+preplace inst util_vector_logic_1 -pg 1 -lvl 1 -x 180 -y 1270 -defaultsOSRD
+preplace inst forward_mux_2 -pg 1 -lvl 5 -x 1790 -y 770 -defaultsOSRD
+preplace inst forwarding_0 -pg 1 -lvl 2 -x 560 -y 1320 -defaultsOSRD
+preplace inst branch_0 -pg 1 -lvl 6 -x 2410 -y 200 -defaultsOSRD
+preplace inst xlconstant_3 -pg 1 -lvl 4 -x 1380 -y 780 -defaultsOSRD
+preplace netloc operand_a_mux_0_operand_a 1 4 1 1560 340n
+preplace netloc operand_b_mux_0_operand_b 1 4 1 1610 310n
+preplace netloc alu_0_y 1 5 1 2020 360n
+preplace netloc forward_mux_1_out_data 1 3 3 1180 170 NJ 170 NJ
+preplace netloc branch_0_ex_exception_valid 1 5 2 2080 960 2670
+preplace netloc branch_0_ex_exception_cause 1 5 2 2110 940 2660
+preplace netloc branch_0_ex_exception_tval 1 5 2 2150 950 2650
+preplace netloc forward_mux_0_out_data 1 3 3 1210 160 NJ 160 2000
+preplace netloc forwarding_0_forward_a 1 2 3 740J 610 NJ 610 1590
+preplace netloc forwarding_0_forward_b 1 2 1 760 790n
+preplace netloc id_ex_reg_0_ex_alu_op 1 0 5 NJ 420 NJ 420 NJ 420 NJ 420 1550J
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 20J 460 NJ 460 NJ 460 NJ 460 NJ 460 2030J
+preplace netloc proc_sys_reset_0_peripheral_reset 1 0 6 -40J 80 NJ 80 NJ 80 NJ 80 NJ 80 2140J
+preplace netloc Net 1 0 6 -70J 100 NJ 100 NJ 100 NJ 100 NJ 100 2100
+preplace netloc id_ex_reg_0_ex_pc 1 0 6 NJ 950 NJ 950 NJ 950 1170 150 NJ 150 1990
+preplace netloc id_ex_reg_0_ex_pc_plus4 1 0 6 NJ 630 NJ 630 NJ 630 NJ 630 1570J 660 NJ
+preplace netloc id_ex_reg_0_ex_imm_u 1 0 6 NJ 650 NJ 650 750J 640 1160J 670 NJ 670 1990J
+preplace netloc id_ex_reg_0_ex_rd 1 0 6 -10J 130 NJ 130 NJ 130 NJ 130 NJ 130 1980J
+preplace netloc id_ex_reg_0_ex_mem_re 1 0 6 -30J 440 NJ 440 NJ 440 NJ 440 NJ 440 2010J
+preplace netloc id_ex_reg_0_ex_mem_size 1 0 6 -50J 120 NJ 120 NJ 120 NJ 120 NJ 120 2060J
+preplace netloc id_ex_reg_0_ex_mem_unsigned 1 0 6 10J 450 NJ 450 NJ 450 NJ 450 NJ 450 1970J
+preplace netloc id_ex_reg_0_ex_rd_we 1 0 6 NJ 890 NJ 890 NJ 890 NJ 890 NJ 890 2010J
+preplace netloc id_ex_reg_0_ex_wb_sel 1 0 6 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 2040J
+preplace netloc ex_mem_reg_1_mem_valid 1 0 7 20 1200 350 1120 NJ 1120 NJ 1120 NJ 1120 NJ 1120 2710
+preplace netloc ex_mem_reg_1_mem_alu_result 1 2 5 780 600 NJ 600 1580 270 2070J 410 2690
+preplace netloc ex_mem_reg_1_mem_store_data 1 6 1 NJ 600
+preplace netloc ex_mem_reg_1_mem_pc_plus4 1 6 1 NJ 620
+preplace netloc ex_mem_reg_1_mem_imm_u 1 6 1 NJ 640
+preplace netloc ex_mem_reg_1_mem_rd 1 1 6 370 70 NJ 70 NJ 70 NJ 70 2160J 430 2680
+preplace netloc ex_mem_reg_1_mem_mem_re 1 1 6 380 180 NJ 180 NJ 180 NJ 180 2110J 420 2700
+preplace netloc ex_mem_reg_1_mem_mem_size 1 6 1 NJ 720
+preplace netloc ex_mem_reg_1_mem_mem_unsigned 1 6 1 NJ 740
+preplace netloc ex_mem_reg_1_mem_rd_we 1 0 7 10 940 NJ 940 NJ 940 NJ 940 1540J 970 NJ 970 2690
+preplace netloc ex_mem_reg_1_mem_wb_sel 1 6 1 NJ 780
+preplace netloc id_ex_reg_0_ex_imm 1 0 6 NJ 270 NJ 270 NJ 270 1200 190 NJ 190 NJ
+preplace netloc id_ex_reg_0_ex_op_b_sel 1 0 4 NJ 1120 340 330 NJ 330 NJ
+preplace netloc id_ex_reg_0_ex_op_a_sel 1 0 4 NJ 1040 NJ 1040 NJ 1040 NJ
+preplace netloc id_ex_reg_0_ex_rs1_data 1 0 5 NJ 520 NJ 520 NJ 520 NJ 520 NJ
+preplace netloc mem_stage_0_mem_forward_data 1 0 5 NJ 730 NJ 730 760 620 NJ 620 1610
+preplace netloc id_ex_reg_0_ex_rs2_data 1 0 5 NJ 710 NJ 710 770 650 NJ 650 1550J
+preplace netloc id_ex_reg_0_ex_rs1 1 0 2 NJ 1170 360J
+preplace netloc id_ex_reg_0_ex_rs2 1 0 2 NJ 1190 330J
+preplace netloc mem_stage_0_mem_out_rd 1 0 2 NJ 1360 NJ
+preplace netloc util_vector_logic_2_Res 1 0 2 NJ 1380 NJ
+preplace netloc mem_wb_reg_0_wb_rd 1 0 2 NJ 1420 NJ
+preplace netloc util_vector_logic_0_Res 1 0 2 NJ 1440 NJ
+preplace netloc id_ex_reg_0_ex_branch_en 1 0 6 NJ 190 NJ 190 NJ 190 1190J 200 NJ 200 2150J
+preplace netloc id_ex_reg_0_ex_branch_funct3 1 0 6 NJ 210 NJ 210 NJ 210 NJ 210 NJ 210 2130J
+preplace netloc id_ex_reg_0_ex_jal 1 0 6 -60J 110 NJ 110 NJ 110 NJ 110 NJ 110 2070J
+preplace netloc id_ex_reg_0_ex_jalr 1 0 6 NJ 230 NJ 230 NJ 230 NJ 230 NJ 230 2080J
+preplace netloc branch_0_pc_redirect_valid 1 6 1 NJ 70
+preplace netloc branch_0_pc_redirect_target 1 6 1 NJ 90
+preplace netloc branch_0_ex_flush_req 1 6 1 NJ 210
+preplace netloc util_vector_logic_1_Res 1 1 1 340 1270n
+preplace netloc wb_mux_0_rd_wdata 1 0 5 NJ 770 NJ 770 750 850 NJ 850 1600
+preplace netloc forwarding_0_forward_store 1 2 3 780J 900 NJ 900 1610
+preplace netloc forward_mux_2_out_data 1 5 1 2150 640n
+preplace netloc mem_stage_valid_1 1 0 2 NJ 1340 NJ
+preplace netloc wb_valid_1 1 0 2 NJ 1400 NJ
+preplace netloc id_ex_reg_0_ex_mem_we 1 0 6 0J 140 NJ 140 NJ 140 NJ 140 NJ 140 2050J
+preplace netloc ex_mem_reg_1_mem_mem_we 1 6 1 NJ 700
+preplace netloc branch_0_branch_taken 1 6 1 NJ 50
+preplace netloc ex_pred_next_pc_1 1 0 6 -30J 220 NJ 220 NJ 220 NJ 220 NJ 220 2090J
+preplace netloc branch_0_bp_update_target 1 6 1 NJ 350
+preplace netloc branch_0_bp_update_taken 1 6 1 NJ 330
+preplace netloc branch_0_bp_update_is_control 1 6 1 NJ 310
+preplace netloc branch_0_bp_update_valid 1 6 1 NJ 290
+preplace netloc branch_0_ex_actual_next_pc 1 6 1 NJ 270
+preplace netloc stall_1 1 0 6 -20J 90 NJ 90 NJ 90 NJ 90 NJ 90 2120J
+preplace netloc xlconstant_3_dout 1 4 2 1540 280 2040J
+levelinfo -pg 1 -90 180 560 980 1380 1790 2410 2730
+pagesize -pg 1 -db -bbox -sgen -310 -10 2960 1500
+"
+}
+
