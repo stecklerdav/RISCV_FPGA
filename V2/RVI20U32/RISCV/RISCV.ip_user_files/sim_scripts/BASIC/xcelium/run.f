@@ -99,10 +99,9 @@
   "../../../bd/BASIC/ip/BASIC_uart_tx_0_0/sim/BASIC_uart_tx_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_xlconstant_3_2/sim/BASIC_xlconstant_3_2.v" \
   "../../../bd/BASIC/ip/BASIC_id_ex_reg_0_1/sim/BASIC_id_ex_reg_0_1.v" \
-  "../../../bd/BASIC/sim/BASIC.v" \
   "../../../bd/BASIC/ip/BASIC_branch_predictor_btb_0_0/sim/BASIC_branch_predictor_btb_0_0.v" \
-  "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_3/sim/BASIC_util_vector_logic_2_3.v" \
-  "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_4/sim/BASIC_util_vector_logic_2_4.v" \
+  "../../../bd/BASIC/ip/BASIC_util_vector_logic_3_0/sim/BASIC_util_vector_logic_3_0.v" \
+  "../../../bd/BASIC/sim/BASIC.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   glbl.v

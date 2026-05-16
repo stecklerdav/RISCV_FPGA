@@ -64,6 +64,7 @@ module BASIC_branch_0_0 (
   ex_branch_funct3,
   ex_jal,
   ex_jalr,
+  ex_pred_next_pc,
   branch_taken,
   pc_redirect_valid,
   pc_redirect_target,
@@ -73,7 +74,13 @@ module BASIC_branch_0_0 (
   ex_exception_cause,
   ex_exception_tval,
   ex_flush_req,
-  ex_control_flow_change
+  ex_control_flow_change,
+  ex_mispredict,
+  ex_actual_next_pc,
+  bp_update_valid,
+  bp_update_is_control,
+  bp_update_taken,
+  bp_update_target
 );
 
 input wire ex_valid;
@@ -85,6 +92,7 @@ input wire ex_branch_en;
 input wire [2 : 0] ex_branch_funct3;
 input wire ex_jal;
 input wire ex_jalr;
+input wire [31 : 0] ex_pred_next_pc;
 output wire branch_taken;
 output wire pc_redirect_valid;
 output wire [31 : 0] pc_redirect_target;
@@ -95,6 +103,12 @@ output wire [3 : 0] ex_exception_cause;
 output wire [31 : 0] ex_exception_tval;
 output wire ex_flush_req;
 output wire ex_control_flow_change;
+output wire ex_mispredict;
+output wire [31 : 0] ex_actual_next_pc;
+output wire bp_update_valid;
+output wire bp_update_is_control;
+output wire bp_update_taken;
+output wire [31 : 0] bp_update_target;
 
   branch inst (
     .ex_valid(ex_valid),
@@ -106,6 +120,7 @@ output wire ex_control_flow_change;
     .ex_branch_funct3(ex_branch_funct3),
     .ex_jal(ex_jal),
     .ex_jalr(ex_jalr),
+    .ex_pred_next_pc(ex_pred_next_pc),
     .branch_taken(branch_taken),
     .pc_redirect_valid(pc_redirect_valid),
     .pc_redirect_target(pc_redirect_target),
@@ -115,6 +130,12 @@ output wire ex_control_flow_change;
     .ex_exception_cause(ex_exception_cause),
     .ex_exception_tval(ex_exception_tval),
     .ex_flush_req(ex_flush_req),
-    .ex_control_flow_change(ex_control_flow_change)
+    .ex_control_flow_change(ex_control_flow_change),
+    .ex_mispredict(ex_mispredict),
+    .ex_actual_next_pc(ex_actual_next_pc),
+    .bp_update_valid(bp_update_valid),
+    .bp_update_is_control(bp_update_is_control),
+    .bp_update_taken(bp_update_taken),
+    .bp_update_target(bp_update_target)
   );
 endmodule

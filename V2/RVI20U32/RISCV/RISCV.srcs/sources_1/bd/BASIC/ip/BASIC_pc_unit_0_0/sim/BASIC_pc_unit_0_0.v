@@ -60,13 +60,17 @@ module BASIC_pc_unit_0_0 (
   pc_en,
   pc_redirect_valid,
   pc_redirect_target,
+  pc_predict_valid,
+  pc_predict_next,
   pc,
   pc_plus4,
   pc_debug_last_redirect,
-  pc_debug_redirect_pulse
+  pc_debug_redirect_pulse,
+  pc_debug_last_predict,
+  pc_debug_predict_pulse
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -75,10 +79,14 @@ input wire clk;
 input wire pc_en;
 input wire pc_redirect_valid;
 input wire [31 : 0] pc_redirect_target;
+input wire pc_predict_valid;
+input wire [31 : 0] pc_predict_next;
 output wire [31 : 0] pc;
 output wire [31 : 0] pc_plus4;
 output wire [31 : 0] pc_debug_last_redirect;
 output wire pc_debug_redirect_pulse;
+output wire [31 : 0] pc_debug_last_predict;
+output wire pc_debug_predict_pulse;
 
   pc_unit #(
     .RESET_PC(32'H00000000)
@@ -88,9 +96,13 @@ output wire pc_debug_redirect_pulse;
     .pc_en(pc_en),
     .pc_redirect_valid(pc_redirect_valid),
     .pc_redirect_target(pc_redirect_target),
+    .pc_predict_valid(pc_predict_valid),
+    .pc_predict_next(pc_predict_next),
     .pc(pc),
     .pc_plus4(pc_plus4),
     .pc_debug_last_redirect(pc_debug_last_redirect),
-    .pc_debug_redirect_pulse(pc_debug_redirect_pulse)
+    .pc_debug_redirect_pulse(pc_debug_redirect_pulse),
+    .pc_debug_last_predict(pc_debug_last_predict),
+    .pc_debug_predict_pulse(pc_debug_predict_pulse)
   );
 endmodule

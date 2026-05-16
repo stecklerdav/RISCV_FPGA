@@ -18,6 +18,9 @@ module id_ex_reg (
     input  wire [31:0] id_pc,
     input  wire [31:0] id_pc_plus4,
 
+    // Predicción arrastrada desde IF/ID
+    input  wire [31:0] id_pred_next_pc,
+
     // ------------------------------------------------------------
     // Señales generadas / usadas en ID
     // ------------------------------------------------------------
@@ -61,6 +64,10 @@ module id_ex_reg (
     output reg  [31:0] ex_pc,
     output reg  [31:0] ex_pc_plus4,
 
+    // Predicción arrastrada hasta EX.
+    // Esta señal va a branch_0/ex_pred_next_pc.
+    output reg  [31:0] ex_pred_next_pc,
+
     // Generadas / usadas en ID
     output reg  [31:0] ex_rs1_data,
     output reg  [31:0] ex_rs2_data,
@@ -95,6 +102,7 @@ module id_ex_reg (
             ex_valid         <= 1'b0;
             ex_pc            <= 32'b0;
             ex_pc_plus4      <= 32'b0;
+            ex_pred_next_pc  <= 32'b0;
 
             ex_rs1_data      <= 32'b0;
             ex_rs2_data      <= 32'b0;
@@ -124,6 +132,7 @@ module id_ex_reg (
             ex_valid         <= 1'b0;
             ex_pc            <= 32'b0;
             ex_pc_plus4      <= 32'b0;
+            ex_pred_next_pc  <= 32'b0;
 
             ex_rs1_data      <= 32'b0;
             ex_rs2_data      <= 32'b0;
@@ -153,6 +162,7 @@ module id_ex_reg (
             ex_valid         <= id_valid;
             ex_pc            <= id_pc;
             ex_pc_plus4      <= id_pc_plus4;
+            ex_pred_next_pc  <= id_pred_next_pc;
 
             ex_rs1_data      <= id_rs1_data;
             ex_rs2_data      <= id_rs2_data;

@@ -62,6 +62,7 @@ module BASIC_id_ex_reg_0_1 (
   id_valid,
   id_pc,
   id_pc_plus4,
+  id_pred_next_pc,
   id_rs1_data,
   id_rs2_data,
   id_imm,
@@ -85,6 +86,7 @@ module BASIC_id_ex_reg_0_1 (
   ex_valid,
   ex_pc,
   ex_pc_plus4,
+  ex_pred_next_pc,
   ex_rs1_data,
   ex_rs2_data,
   ex_imm,
@@ -118,6 +120,7 @@ input wire bubble;
 input wire id_valid;
 input wire [31 : 0] id_pc;
 input wire [31 : 0] id_pc_plus4;
+input wire [31 : 0] id_pred_next_pc;
 input wire [31 : 0] id_rs1_data;
 input wire [31 : 0] id_rs2_data;
 input wire [31 : 0] id_imm;
@@ -141,6 +144,7 @@ input wire [1 : 0] id_wb_sel;
 output wire ex_valid;
 output wire [31 : 0] ex_pc;
 output wire [31 : 0] ex_pc_plus4;
+output wire [31 : 0] ex_pred_next_pc;
 output wire [31 : 0] ex_rs1_data;
 output wire [31 : 0] ex_rs2_data;
 output wire [31 : 0] ex_imm;
@@ -170,6 +174,7 @@ output wire [1 : 0] ex_wb_sel;
     .id_valid(id_valid),
     .id_pc(id_pc),
     .id_pc_plus4(id_pc_plus4),
+    .id_pred_next_pc(id_pred_next_pc),
     .id_rs1_data(id_rs1_data),
     .id_rs2_data(id_rs2_data),
     .id_imm(id_imm),
@@ -193,6 +198,7 @@ output wire [1 : 0] ex_wb_sel;
     .ex_valid(ex_valid),
     .ex_pc(ex_pc),
     .ex_pc_plus4(ex_pc_plus4),
+    .ex_pred_next_pc(ex_pred_next_pc),
     .ex_rs1_data(ex_rs1_data),
     .ex_rs2_data(ex_rs2_data),
     .ex_imm(ex_imm),

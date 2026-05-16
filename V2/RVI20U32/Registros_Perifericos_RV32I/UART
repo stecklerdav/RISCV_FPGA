@@ -1,0 +1,18 @@
+UART_BASE = 0x0000_3010
+
+| Registro      | Offset | Dirección absoluta | R/W | Descripción                 |
+| ------------- | -----: | -----------------: | --- | --------------------------- |
+| `UART_TXDATA` | `0x00` |      `0x0000_3010` | W   | Escribir byte TX en `[7:0]` |
+| `UART_STATUS` | `0x04` |      `0x0000_3014` | R   | Estado UART                 |
+| `UART_RXDATA` | `0x08` |      `0x0000_3018` | R   | Byte RX recibido en `[7:0]` |
+
+
+| Bit | Nombre       | Descripción                              |
+| --: | ------------ | ---------------------------------------- |
+| `0` | `tx_ready`   | `1 = UART lista para transmitir`         |
+| `1` | `tx_busy`    | `1 = transmitiendo`                      |
+| `2` | `rx_ready`   | `1 = dato RX disponible`                 |
+| `3` | `rx_busy`    | `1 = recibiendo trama`                   |
+| `4` | `rx_overrun` | `1 = llegó dato nuevo sin leer anterior` |
+| `5` | `rx_framing` | `1 = error de stop bit`                  |
+

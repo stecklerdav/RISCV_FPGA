@@ -1,0 +1,20 @@
+TIMER_BASE = 0x0000_3020
+
+
+| Registro       | Offset | Dirección absoluta | R/W   | Descripción          |
+| -------------- | -----: | -----------------: | ----- | -------------------- |
+| `TIMER_VALUE`  | `0x00` |      `0x0000_3020` | R/W   | Contador actual      |
+| `TIMER_CMP`    | `0x04` |      `0x0000_3024` | R/W   | Valor de comparación |
+| `TIMER_CTRL`   | `0x08` |      `0x0000_3028` | R/W   | Control del timer    |
+| `TIMER_STATUS` | `0x0C` |      `0x0000_302C` | R/W1C | Estado del timer     |
+
+| Bit | Nombre         | Descripción                                 |
+| --: | -------------- | ------------------------------------------- |
+| `0` | `timer_enable` | `1 = contador activo`                       |
+| `1` | `irq_enable`   | `1 = habilita salida timer_irq`             |
+| `2` | `auto_reload`  | `1 = reinicia contador al llegar a compare` |
+
+| Bit | Nombre        | Descripción             |
+| --: | ------------- | ----------------------- |
+| `0` | `irq_pending` | `1 = compare alcanzado` |
+

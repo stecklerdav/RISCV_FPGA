@@ -75,125 +75,14 @@ INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/bu
 INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_valid is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_tag is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_target is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/bht_ctr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_target is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
- Block Memory Generator module loading initial data...
- Block Memory Generator data initialization complete.
-Block Memory Generator module BASIC_wrapper.BASIC_i.Core_RV32I.RV32I_IF.RV32I_ROM_MEMORY.blk_mem_gen_0.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_ACP.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_ACP : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_ACE.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_ACE : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HPC0_FPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP0 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HPC1_FPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP1 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HP0_FPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP2 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HP1_FPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP3 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HP2_FPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP4 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HP3_FPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP5 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.S_AXI_HPM0_LPD.slave
-[0] : *ZYNQ_MPSoC_BFM_INFO : S_AXI_GP6 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.M_AXI_HPM0_FPD.master
-[0] : *ZYNQ_MPSoC_BFM_INFO : M_AXI_GP0 : Port is ENABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.M_AXI_HPM1_FPD.master
-[0] : *ZYNQ_MPSoC_BFM_INFO : M_AXI_GP1 : Port is DISABLED.
-XilinxAXIVIP: Found at Path: BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.M_AXI_HPM0_LPD.master
-[0] : *ZYNQ_MPSoC_BFM_INFO : M_AXI_GP2 : Port is DISABLED.
-WARNING: 50 ns BASIC_wrapper.BASIC_i.zynq_ultra_ps_e_0.inst.M_AXI_HPM0_FPD.master.IF : ARESET_N can't be X/Z after 1 cycle of clock. To downgrade, use <hierarchy_path to VIP>.IF.set_enable_xchecks_to_warn(), or filter using clr_enable_xchecks.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/pl_clk_t is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/awbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/burst_data is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/burst_strb is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/burst_valid_bytes is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/arbrst is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_valid is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_tag is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_target is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/bht_ctr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_valid is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_tag is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
 INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/btb_target is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACP/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_ACE/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC0_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPC1_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP0_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP1_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP2_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HP3_FPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/awaddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
-INFO: HDL object /BASIC_wrapper/BASIC_i/zynq_ultra_ps_e_0/inst/S_AXI_HPM0_LPD/araddr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
+INFO: HDL object /BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/branch_predictor_btb_0/inst/bht_ctr is an unpacked array. VCD does not support unpacked array type according to IEEE LRM 1800-2009, section21.7.5.
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
 Block Memory Generator module BASIC_wrapper.BASIC_i.Core_RV32I.RV32I_IF.RV32I_ROM_MEMORY.blk_mem_gen_0.inst.\native_mem_module.blk_mem_gen_v8_4_4_inst  is using a behavioral model for simulation which will not precisely model memory collision behavior.

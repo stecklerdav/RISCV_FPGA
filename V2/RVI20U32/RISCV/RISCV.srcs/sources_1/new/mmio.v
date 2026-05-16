@@ -10,6 +10,9 @@ module mmio #(
     parameter [31:0] UART_BASE  = 32'h0000_3010,
     parameter [31:0] UART_SIZE  = 32'h0000_0010,
 
+    parameter [31:0] TIMER_BASE = 32'h0000_3020,
+    parameter [31:0] TIMER_SIZE = 32'h0000_0010,
+
     parameter        RAM_ADDR_LOCAL = 1'b1
 )(
     input         clk,
@@ -50,7 +53,16 @@ module mmio #(
     output reg [3:0]  uart_be,
 
     input  [31:0]     uart_rdata,
-    input             uart_ready
+    input             uart_ready,
+
+    output reg        timer_valid,
+    output reg        timer_we,
+    output reg [31:0] timer_addr,
+    output reg [31:0] timer_wdata,
+    output reg [3:0]  timer_be,
+
+    input  [31:0]     timer_rdata,
+    input             timer_ready
 );
 
     // ============================================================
@@ -60,12 +72,15 @@ module mmio #(
     wire sel_ram;
     wire sel_gpio;
     wire sel_uart;
+    wire sel_timer;
     wire sel_none;
 
-    assign sel_ram  = (cpu_addr >= RAM_BASE)  && (cpu_addr < (RAM_BASE  + RAM_SIZE));
-    assign sel_gpio = (cpu_addr >= GPIO_BASE) && (cpu_addr < (GPIO_BASE + GPIO_SIZE));
-    assign sel_uart = (cpu_addr >= UART_BASE) && (cpu_addr < (UART_BASE + UART_SIZE));
-    assign sel_none = !(sel_ram || sel_gpio || sel_uart);
+    assign sel_ram   = (cpu_addr >= RAM_BASE)   && (cpu_addr < (RAM_BASE   + RAM_SIZE));
+    assign sel_gpio  = (cpu_addr >= GPIO_BASE)  && (cpu_addr < (GPIO_BASE  + GPIO_SIZE));
+    assign sel_uart  = (cpu_addr >= UART_BASE)  && (cpu_addr < (UART_BASE  + UART_SIZE));
+    assign sel_timer = (cpu_addr >= TIMER_BASE) && (cpu_addr < (TIMER_BASE + TIMER_SIZE));
+
+    assign sel_none = !(sel_ram || sel_gpio || sel_uart || sel_timer);
 
     wire cpu_read;
     assign cpu_read = cpu_valid && !cpu_we;
@@ -75,9 +90,11 @@ module mmio #(
 
     wire [31:0] gpio_addr_mapped;
     wire [31:0] uart_addr_mapped;
+    wire [31:0] timer_addr_mapped;
 
-    assign gpio_addr_mapped = cpu_addr - GPIO_BASE;
-    assign uart_addr_mapped = cpu_addr - UART_BASE;
+    assign gpio_addr_mapped  = cpu_addr - GPIO_BASE;
+    assign uart_addr_mapped  = cpu_addr - UART_BASE;
+    assign timer_addr_mapped = cpu_addr - TIMER_BASE;
 
     // ============================================================
     // REQUEST HACIA PERIFÉRICOS
@@ -102,6 +119,12 @@ module mmio #(
         uart_wdata = cpu_wdata;
         uart_be    = cpu_be;
 
+        timer_valid = 1'b0;
+        timer_we    = 1'b0;
+        timer_addr  = 32'h0000_0000;
+        timer_wdata = cpu_wdata;
+        timer_be    = cpu_be;
+
         if (cpu_valid && sel_ram) begin
             ram_valid = 1'b1;
             ram_we    = cpu_we;
@@ -119,66 +142,72 @@ module mmio #(
             uart_we    = cpu_we;
             uart_addr  = uart_addr_mapped;
         end
+
+        else if (cpu_valid && sel_timer) begin
+            timer_valid = 1'b1;
+            timer_we    = cpu_we;
+            timer_addr  = timer_addr_mapped;
+        end
     end
 
     // ============================================================
     // REGISTRO DE SELECTOR DE RESPUESTA
-    //
-    // RAM:
-    //   RAM es síncrona. No registramos ram_rdata aquí.
-    //   Solo registramos que la respuesta viene de RAM.
-    //
-    // UART/GPIO:
-    //   rdata es combinacional.
-    //   Hay que capturarlo durante el ciclo del request.
     // ============================================================
 
     reg read_sel_ram_q;
     reg read_sel_gpio_q;
     reg read_sel_uart_q;
+    reg read_sel_timer_q;
     reg read_error_q;
 
     reg [31:0] gpio_rdata_q;
     reg [31:0] uart_rdata_q;
+    reg [31:0] timer_rdata_q;
 
     always @(posedge clk) begin
         if (rst) begin
-            read_sel_ram_q  <= 1'b0;
-            read_sel_gpio_q <= 1'b0;
-            read_sel_uart_q <= 1'b0;
-            read_error_q    <= 1'b0;
+            read_sel_ram_q   <= 1'b0;
+            read_sel_gpio_q  <= 1'b0;
+            read_sel_uart_q  <= 1'b0;
+            read_sel_timer_q <= 1'b0;
+            read_error_q     <= 1'b0;
 
-            gpio_rdata_q    <= 32'h0000_0000;
-            uart_rdata_q    <= 32'h0000_0000;
+            gpio_rdata_q     <= 32'h0000_0000;
+            uart_rdata_q     <= 32'h0000_0000;
+            timer_rdata_q    <= 32'h0000_0000;
         end else begin
             if (cpu_read) begin
-                read_sel_ram_q  <= sel_ram;
-                read_sel_gpio_q <= sel_gpio;
-                read_sel_uart_q <= sel_uart;
-                read_error_q    <= sel_none;
+                read_sel_ram_q   <= sel_ram;
+                read_sel_gpio_q  <= sel_gpio;
+                read_sel_uart_q  <= sel_uart;
+                read_sel_timer_q <= sel_timer;
+                read_error_q     <= sel_none;
 
-                // GPIO/UART son lecturas combinacionales:
-                // se capturan aquí para entregarlas alineadas al mem_stage.
-                if (sel_gpio) begin
+                if (sel_gpio)
                     gpio_rdata_q <= gpio_rdata;
-                end else begin
+                else
                     gpio_rdata_q <= 32'h0000_0000;
-                end
 
-                if (sel_uart) begin
+                if (sel_uart)
                     uart_rdata_q <= uart_rdata;
-                end else begin
+                else
                     uart_rdata_q <= 32'h0000_0000;
-                end
+
+                if (sel_timer)
+                    timer_rdata_q <= timer_rdata;
+                else
+                    timer_rdata_q <= 32'h0000_0000;
 
             end else begin
-                read_sel_ram_q  <= 1'b0;
-                read_sel_gpio_q <= 1'b0;
-                read_sel_uart_q <= 1'b0;
-                read_error_q    <= 1'b0;
+                read_sel_ram_q   <= 1'b0;
+                read_sel_gpio_q  <= 1'b0;
+                read_sel_uart_q  <= 1'b0;
+                read_sel_timer_q <= 1'b0;
+                read_error_q     <= 1'b0;
 
-                gpio_rdata_q    <= 32'h0000_0000;
-                uart_rdata_q    <= 32'h0000_0000;
+                gpio_rdata_q     <= 32'h0000_0000;
+                uart_rdata_q     <= 32'h0000_0000;
+                timer_rdata_q    <= 32'h0000_0000;
             end
         end
     end
@@ -192,20 +221,22 @@ module mmio #(
         cpu_error = 1'b0;
 
         if (read_sel_ram_q) begin
-            // RAM síncrona: dato válido 1 ciclo después del request.
             cpu_rdata = ram_rdata;
             cpu_error = 1'b0;
         end
 
         else if (read_sel_gpio_q) begin
-            // GPIO combinacional: dato capturado.
             cpu_rdata = gpio_rdata_q;
             cpu_error = 1'b0;
         end
 
         else if (read_sel_uart_q) begin
-            // UART combinacional: dato capturado.
             cpu_rdata = uart_rdata_q;
+            cpu_error = 1'b0;
+        end
+
+        else if (read_sel_timer_q) begin
+            cpu_rdata = timer_rdata_q;
             cpu_error = 1'b0;
         end
 
@@ -232,6 +263,10 @@ module mmio #(
 
         else if (cpu_valid && sel_uart) begin
             cpu_ready = uart_ready;
+        end
+
+        else if (cpu_valid && sel_timer) begin
+            cpu_ready = timer_ready;
         end
 
         else begin

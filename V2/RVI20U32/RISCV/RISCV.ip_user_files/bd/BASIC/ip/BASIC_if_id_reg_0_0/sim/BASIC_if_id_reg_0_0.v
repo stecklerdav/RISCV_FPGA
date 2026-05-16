@@ -61,12 +61,14 @@ module BASIC_if_id_reg_0_0 (
   if_pc4_in,
   if_instr_in,
   if_valid_in,
+  if_pred_next_pc_in,
   flush,
   hold,
   id_pc_out,
   id_pc4_out,
   id_instr_out,
-  id_valid_out
+  id_valid_out,
+  id_pred_next_pc_out
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 9999900, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -79,12 +81,14 @@ input wire [31 : 0] if_pc_in;
 input wire [31 : 0] if_pc4_in;
 input wire [31 : 0] if_instr_in;
 input wire if_valid_in;
+input wire [31 : 0] if_pred_next_pc_in;
 input wire flush;
 input wire hold;
 output wire [31 : 0] id_pc_out;
 output wire [31 : 0] id_pc4_out;
 output wire [31 : 0] id_instr_out;
 output wire id_valid_out;
+output wire [31 : 0] id_pred_next_pc_out;
 
   if_id_reg inst (
     .clk(clk),
@@ -93,11 +97,13 @@ output wire id_valid_out;
     .if_pc4_in(if_pc4_in),
     .if_instr_in(if_instr_in),
     .if_valid_in(if_valid_in),
+    .if_pred_next_pc_in(if_pred_next_pc_in),
     .flush(flush),
     .hold(hold),
     .id_pc_out(id_pc_out),
     .id_pc4_out(id_pc4_out),
     .id_instr_out(id_instr_out),
-    .id_valid_out(id_valid_out)
+    .id_valid_out(id_valid_out),
+    .id_pred_next_pc_out(id_pred_next_pc_out)
   );
 endmodule
