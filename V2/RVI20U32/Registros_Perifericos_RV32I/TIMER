@@ -18,3 +18,11 @@ TIMER_BASE = 0x0000_3020
 | --: | ------------- | ----------------------- |
 | `0` | `irq_pending` | `1 = compare alcanzado` |
 
+
+Para limpiar irq_pending:
+
+li t0, 0x0000302C
+li t1, 1
+sw t1, 0(t0)
+
+Es tipo W1C: write 1 clear.
