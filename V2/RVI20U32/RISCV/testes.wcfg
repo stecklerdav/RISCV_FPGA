@@ -15,16 +15,163 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="48015280fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomStartTime time="196834fs"></ZoomStartTime>
+      <ZoomEndTime time="1910835fs"></ZoomEndTime>
+      <Cursor1Time time="482500fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="599"></NameColumnWidth>
-      <ValueColumnWidth column_width="219"></ValueColumnWidth>
+      <NameColumnWidth column_width="501"></NameColumnWidth>
+      <ValueColumnWidth column_width="211"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="0" />
+   <WVObjectSize size="27" />
    <wave_markers>
       <marker label="" time="7934143" />
    </wave_markers>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/clk">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/rst">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/valid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/we">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/addr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/wdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/be">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/ready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/tx">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/UART/uart_tx_0/inst/rx">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">rx</obj_property>
+      <obj_property name="ObjectShortName">rx</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_valid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_valid</obj_property>
+      <obj_property name="ObjectShortName">uart_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_we">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_we</obj_property>
+      <obj_property name="ObjectShortName">uart_we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_addr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_wdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_be">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">uart_rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/uart_ready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">uart_ready</obj_property>
+      <obj_property name="ObjectShortName">uart_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_req_valid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_req_valid</obj_property>
+      <obj_property name="ObjectShortName">mem_req_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_req_ready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_req_ready</obj_property>
+      <obj_property name="ObjectShortName">mem_req_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_req_we">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_req_we</obj_property>
+      <obj_property name="ObjectShortName">mem_req_we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_req_addr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_req_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_req_addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_req_wdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_req_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_req_wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_req_be">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_req_be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_req_be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_rsp_valid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_rsp_valid</obj_property>
+      <obj_property name="ObjectShortName">mem_rsp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_rsp_rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_rsp_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_rsp_rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_rsp_error">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_rsp_error</obj_property>
+      <obj_property name="ObjectShortName">mem_rsp_error</obj_property>
+   </wvobject>
 </wave_config>

@@ -94,7 +94,7 @@ output wire rx_ready;
 
   uart_tx #(
     .CLK_FREQ(200000000),
-    .BAUD(115200)
+    .BAUD(10000000)
   ) inst (
     .clk(clk),
     .rst(rst),

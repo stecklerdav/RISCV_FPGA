@@ -274,10 +274,10 @@ Compiling module xil_defaultlib.MMIO_imp_LNKWBU
 Compiling module xil_defaultlib.ram_data(WORDS=1024)
 Compiling module xil_defaultlib.BASIC_ram_data_1_0
 Compiling module xil_defaultlib.RV32I_RAM_MEMORY_imp_1A3BT4W
-Compiling module xil_defaultlib.timer
+Compiling module xil_defaultlib.timer(RESET_CMP=32'b011000011010...
 Compiling module xil_defaultlib.BASIC_timer_0_0
 Compiling module xil_defaultlib.TIMER_imp_1X1AELV
-Compiling module xil_defaultlib.uart_tx(CLK_FREQ=200000000)
+Compiling module xil_defaultlib.uart_tx(CLK_FREQ=200000000,BAUD=...
 Compiling module xil_defaultlib.BASIC_uart_tx_0_0
 Compiling module xil_defaultlib.UART_imp_OI5LS
 Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]

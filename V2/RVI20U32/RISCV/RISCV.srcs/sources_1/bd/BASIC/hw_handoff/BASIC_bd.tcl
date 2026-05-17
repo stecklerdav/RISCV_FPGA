@@ -1173,7 +1173,7 @@ proc create_hier_cell_UART { parentCell nameHier } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.BAUD {115200} \
+   CONFIG.BAUD {10000000} \
    CONFIG.CLK_FREQ {200000000} \
  ] $uart_tx_0
 
@@ -1250,7 +1250,10 @@ proc create_hier_cell_TIMER { parentCell nameHier } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
-  
+    set_property -dict [ list \
+   CONFIG.RESET_CMP {0x00030D40} \
+ ] $timer_0
+
   # Create port connections
   connect_bd_net -net MMIO_timer_addr [get_bd_pins addr] [get_bd_pins timer_0/addr]
   connect_bd_net -net MMIO_timer_be [get_bd_pins be] [get_bd_pins timer_0/be]

@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "timer,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "BASIC_timer_0_0,timer,{}" *)
-(* CORE_GENERATION_INFO = "BASIC_timer_0_0,timer,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=timer,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RESET_CMP=0x000186A0}" *)
+(* CORE_GENERATION_INFO = "BASIC_timer_0_0,timer,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=timer,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RESET_CMP=0x00030D40}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module BASIC_timer_0_0 (
@@ -88,7 +88,7 @@ output wire error;
 output wire timer_irq;
 
   timer #(
-    .RESET_CMP(32'H000186A0)
+    .RESET_CMP(32'H00030D40)
   ) inst (
     .clk(clk),
     .rst(rst),
