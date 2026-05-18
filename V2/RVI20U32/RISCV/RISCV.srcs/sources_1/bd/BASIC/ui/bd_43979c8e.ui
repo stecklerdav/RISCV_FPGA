@@ -1,81 +1,78 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.287175",
-   "Default View_TopLeft":"-247,-373",
+   "Default View_ScaleFactor":"0.394711",
+   "Default View_TopLeft":"-735,-628",
    "ExpandedHierarchyInLayout":"",
    "PinnedBlocks":"/zynq_ultra_ps_e_0|/xlconstant_0|/proc_sys_reset_0|/RV32I_RAM_MEMORY|/MMIO|/util_vector_logic_2|/vio_0|/Core_RV32I|/GPIO|/xlslice_0|/UART|/TIMER|/xlconcat_0|/util_vector_logic_3|/xlconstant_1|",
    "PinnedPorts":"gpio_out_0|SW1|",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace portBus gpio_out_0 -pg 1 -lvl 9 -x 3570 -y 250 -defaultsOSRD
+preplace portBus gpio_out_0 -pg 1 -lvl 9 -x 3150 -y 170 -defaultsOSRD
 preplace portBus SW1 -pg 1 -lvl 0 -x -620 -y 520 -defaultsOSRD
 preplace inst zynq_ultra_ps_e_0 -pg 1 -lvl 1 -x -290 -y -20 -defaultsOSRD
 preplace inst proc_sys_reset_0 -pg 1 -lvl 3 -x 380 -y 160 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 2 -x 100 -y 200 -defaultsOSRD
-preplace inst RV32I_RAM_MEMORY -pg 1 -lvl 7 -x 2130 -y 400 -defaultsOSRD
+preplace inst RV32I_RAM_MEMORY -pg 1 -lvl 7 -x 2290 -y 392 -defaultsOSRD
 preplace inst vio_0 -pg 1 -lvl 3 -x 380 -y 320 -defaultsOSRD
 preplace inst util_vector_logic_2 -pg 1 -lvl 4 -x 720 -y 310 -defaultsOSRD
-preplace inst MMIO -pg 1 -lvl 6 -x 1590 -y 220 -defaultsOSRD
-preplace inst Core_RV32I -pg 1 -lvl 5 -x 1100 -y 320 -defaultsOSRD
-preplace inst xlslice_0 -pg 1 -lvl 8 -x 2870 -y 250 -defaultsOSRD
-preplace inst GPIO -pg 1 -lvl 7 -x 2130 -y 150 -defaultsOSRD
-preplace inst UART -pg 1 -lvl 7 -x 2130 -y 610 -defaultsOSRD
-preplace inst TIMER -pg 1 -lvl 7 -x 2130 -y -70 -defaultsOSRD
+preplace inst MMIO -pg 1 -lvl 6 -x 1684 -y 220 -defaultsOSRD
+preplace inst Core_RV32I -pg 1 -lvl 5 -x 1170 -y 320 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 8 -x 3030 -y 170 -defaultsOSRD
+preplace inst GPIO -pg 1 -lvl 7 -x 2290 -y 150 -defaultsOSRD
+preplace inst UART -pg 1 -lvl 7 -x 2290 -y 610 -defaultsOSRD
+preplace inst TIMER -pg 1 -lvl 7 -x 2290 -y -78 -defaultsOSRD
 preplace inst util_vector_logic_3 -pg 1 -lvl 1 -x -290 -y 520 -defaultsOSRD
 preplace inst xlconcat_0 -pg 1 -lvl 3 -x 380 -y 590 -defaultsOSRD
 preplace inst xlconstant_1 -pg 1 -lvl 2 -x 100 -y 580 -defaultsOSRD
-preplace inst csr_file_0 -pg 1 -lvl 8 -x 2870 -y -4380 -defaultsOSRD
-preplace inst system_decoder_0 -pg 1 -lvl 4 -x 720 -y -4410 -defaultsOSRD
-preplace inst trap_controller_0 -pg 1 -lvl 5 -x 1100 -y -4380 -defaultsOSRD
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 7 -600 -150 20 30 180 260 570 240 870 220 1290 520 1930
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 7 -600 -150 20 30 180 260 560 240 870 220 1340 520 2020
 preplace netloc zynq_ultra_ps_e_0_pl_resetn0 1 1 2 N 10 190
 preplace netloc xlconstant_0_dout 1 2 1 N 200
-preplace netloc proc_sys_reset_0_peripheral_reset 1 4 3 870 410 1330 510 1940
-preplace netloc proc_sys_reset_0_peripheral_reset1 1 3 1 560 160n
+preplace netloc proc_sys_reset_0_peripheral_reset 1 4 3 870 410 1380 510 2030
+preplace netloc proc_sys_reset_0_peripheral_reset1 1 3 1 570 160n
 preplace netloc vio_0_probe_out0 1 3 1 N 320
-preplace netloc RV32I_MEM_dmem_addr 1 5 1 1280 140n
-preplace netloc RV32I_MEM_dmem_we 1 5 1 1300 120n
-preplace netloc RV32I_MEM_dmem_wdata 1 5 1 1320 160n
-preplace netloc RV32I_MEM_dmem_be 1 5 1 1310 180n
-preplace netloc RV32I_RAM_MEMORY_rdata 1 5 3 1390 480 1980 280 2260
-preplace netloc gpio_0_gpio_out 1 7 1 2300 170n
-preplace netloc uart_tx_0_rdata 1 5 3 1410 740 N 740 2280
-preplace netloc gpio_0_ready 1 5 3 1360 730 N 730 2290
-preplace netloc gpio_0_rdata 1 5 3 1400 490 1970 270 2260
-preplace netloc xlslice_0_Dout 1 8 1 N 250
-preplace netloc RV32I_MEM_dmem_re 1 5 1 1340 260n
-preplace netloc timer_0_rdata 1 5 3 1370 -200 N -200 2300
-preplace netloc timer_0_ready 1 5 3 1380 -190 N -190 2290
-preplace netloc mem_data_1 1 4 3 880 -50 NJ -50 1770
-preplace netloc MMIO_ram_valid 1 6 1 1920 30n
-preplace netloc we_1 1 6 1 1910 50n
-preplace netloc addr_1 1 6 1 1960 70n
-preplace netloc wdata_1 1 6 1 1950 90n
-preplace netloc be_1 1 6 1 1900 110n
-preplace netloc valid_1 1 6 1 1820 120n
-preplace netloc we_2 1 6 1 1840 140n
-preplace netloc addr_2 1 6 1 1840 160n
-preplace netloc wdata_2 1 6 1 1870 180n
-preplace netloc be_2 1 6 1 1890 200n
-preplace netloc valid_2 1 6 1 1840 230n
-preplace netloc we_3 1 6 1 1820 250n
-preplace netloc addr_3 1 6 1 1800 270n
-preplace netloc wdata_3 1 6 1 1790 290n
-preplace netloc be_3 1 6 1 1780 310n
-preplace netloc valid_3 1 6 1 1810 -90n
-preplace netloc we_4 1 6 1 1830 -70n
-preplace netloc addr_4 1 6 1 1850 -30n
-preplace netloc wdata_4 1 6 1 1880 -10n
-preplace netloc be_4 1 6 1 1860 -50n
+preplace netloc RV32I_MEM_dmem_addr 1 5 1 1330 140n
+preplace netloc RV32I_MEM_dmem_we 1 5 1 1350 120n
+preplace netloc RV32I_MEM_dmem_wdata 1 5 1 1370 160n
+preplace netloc RV32I_MEM_dmem_be 1 5 1 1360 180n
+preplace netloc RV32I_RAM_MEMORY_rdata 1 5 3 1410 812 N 812 2420
+preplace netloc gpio_0_gpio_out 1 7 1 N 170
+preplace netloc uart_tx_0_rdata 1 5 3 1450 842 N 842 2440
+preplace netloc gpio_0_ready 1 5 3 1460 480 2070 272 2420
+preplace netloc gpio_0_rdata 1 5 3 1420 822 N 822 2460
+preplace netloc xlslice_0_Dout 1 8 1 N 170
+preplace netloc RV32I_MEM_dmem_re 1 5 1 1390 260n
+preplace netloc timer_0_rdata 1 5 3 1430 -208 N -208 2460
+preplace netloc timer_0_ready 1 5 3 1440 -198 N -198 2420
+preplace netloc mem_data_1 1 4 3 880 -50 NJ -50 1870
+preplace netloc MMIO_ram_valid 1 6 1 2010 30n
+preplace netloc we_1 1 6 1 2000 50n
+preplace netloc addr_1 1 6 1 2050 70n
+preplace netloc wdata_1 1 6 1 2040 90n
+preplace netloc be_1 1 6 1 1990 110n
+preplace netloc valid_1 1 6 1 1910 120n
+preplace netloc we_2 1 6 1 1930 140n
+preplace netloc addr_2 1 6 1 1930 160n
+preplace netloc wdata_2 1 6 1 1960 180n
+preplace netloc be_2 1 6 1 1980 200n
+preplace netloc valid_2 1 6 1 1930 230n
+preplace netloc we_3 1 6 1 1910 250n
+preplace netloc addr_3 1 6 1 1890 270n
+preplace netloc wdata_3 1 6 1 1880 290n
+preplace netloc be_3 1 6 1 1870 310n
+preplace netloc valid_3 1 6 1 1900 -98n
+preplace netloc we_4 1 6 1 1920 -78n
+preplace netloc addr_4 1 6 1 1940 -38n
+preplace netloc wdata_4 1 6 1 1970 -18n
+preplace netloc be_4 1 6 1 1950 -58n
 preplace netloc SW1_1 1 0 1 N 520
-preplace netloc xlconcat_0_dout 1 3 4 N 590 NJ 590 NJ 590 1770
+preplace netloc xlconcat_0_dout 1 3 4 560 500 NJ 500 NJ 500 2060
 preplace netloc xlconstant_1_dout 1 2 1 190 540n
 preplace netloc util_vector_logic_3_Res 1 1 2 NJ 520 N
-preplace netloc ram_ready_1 1 5 3 1420 720 N 720 2260
-preplace netloc dmem_ready_1 1 4 3 880 500 NJ 500 1760
-preplace netloc uart_tx_0_ready 1 5 3 1350 750 NJ 750 2270
-levelinfo -pg 1 -620 -290 100 380 720 1100 1590 2130 2870 3570
-pagesize -pg 1 -db -bbox -sgen -740 -4570 3740 2860
+preplace netloc ram_ready_1 1 5 3 1470 832 N 832 2450
+preplace netloc dmem_ready_1 1 4 3 880 490 NJ 490 1860
+preplace netloc uart_tx_0_ready 1 5 3 1400 852 NJ 852 2430
+levelinfo -pg 1 -620 -290 100 380 720 1170 1684 2290 3030 3150
+pagesize -pg 1 -db -bbox -sgen -740 -4570 3320 2860
 "
 }
 0

@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Sun May 17 22:21:41 2026
-# Process ID: 26651
+# Start of session at: Mon May 18 10:12:48 2026
+# Process ID: 19545
 # Current directory: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1
 # Command line: vivado -log BASIC.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source BASIC.tcl
 # Log file: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/BASIC_synth_1/BASIC.vds
