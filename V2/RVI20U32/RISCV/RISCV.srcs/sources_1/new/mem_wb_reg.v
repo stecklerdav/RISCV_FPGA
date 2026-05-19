@@ -13,7 +13,7 @@ module mem_wb_reg (
     input  wire [31:0] mem_imm_u,
     input  wire [4:0]  mem_rd,
     input  wire        mem_rd_we,
-    input  wire [1:0]  mem_wb_sel,
+    input  wire [2:0]  mem_wb_sel,
 
     output reg         wb_valid,
     output reg  [31:0] wb_data,
@@ -22,7 +22,7 @@ module mem_wb_reg (
     output reg  [31:0] wb_imm_u,
     output reg  [4:0]  wb_rd,
     output reg         wb_rd_we,
-    output reg  [1:0]  wb_sel
+    output reg  [2:0]  wb_sel
 );
 
     always @(posedge clk) begin
@@ -34,7 +34,7 @@ module mem_wb_reg (
             wb_imm_u      <= 32'b0;
             wb_rd         <= 5'b0;
             wb_rd_we      <= 1'b0;
-            wb_sel        <= 2'b0;
+            wb_sel        <= 3'b0;
         end
         else if (flush) begin
             wb_valid      <= 1'b0;
@@ -44,7 +44,7 @@ module mem_wb_reg (
             wb_imm_u      <= 32'b0;
             wb_rd         <= 5'b0;
             wb_rd_we      <= 1'b0;
-            wb_sel        <= 2'b0;
+            wb_sel        <= 3'b0;
         end
         else if (!stall) begin
             wb_valid      <= mem_valid;

@@ -1,18 +1,22 @@
 `timescale 1ns / 1ps
 
 module wb_mux(
-    input  [1:0]  wb_sel,
+    input  [2:0]  wb_sel,
+
     input  [31:0] alu_y,
     input  [31:0] load_data,
     input  [31:0] pc_plus4,
     input  [31:0] imm_u,
+    input  [31:0] csr_data,
+
     output reg [31:0] rd_wdata
 );
 
-    localparam [1:0] WB_ALU = 2'd0;
-    localparam [1:0] WB_MEM = 2'd1;
-    localparam [1:0] WB_PC4 = 2'd2;
-    localparam [1:0] WB_IMM = 2'd3;
+    localparam [2:0] WB_ALU = 3'd0;
+    localparam [2:0] WB_MEM = 3'd1;
+    localparam [2:0] WB_PC4 = 3'd2;
+    localparam [2:0] WB_IMM = 3'd3;
+    localparam [2:0] WB_CSR = 3'd4;
 
     always @(*) begin
         case (wb_sel)
@@ -20,6 +24,7 @@ module wb_mux(
             WB_MEM: rd_wdata = load_data;
             WB_PC4: rd_wdata = pc_plus4;
             WB_IMM: rd_wdata = imm_u;
+            WB_CSR: rd_wdata = csr_data;
             default: rd_wdata = alu_y;
         endcase
     end

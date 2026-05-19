@@ -8,8 +8,8 @@ module control (
     input  wire       bit30,
 
     output reg        rd_we,
-    output reg [1:0]  wb_sel,
-    
+    output reg [2:0]  wb_sel,
+
     output reg [1:0]  op_a_sel,
     output reg [1:0]  op_b_sel,
     output reg [3:0]  alu_op,
@@ -26,40 +26,26 @@ module control (
     output reg [2:0]  imm_sel
 );
 
-    // ------------------------------------------------------------
-    // Immediate select
-    // ------------------------------------------------------------
     localparam [2:0] IMM_I = 3'd0;
     localparam [2:0] IMM_S = 3'd1;
     localparam [2:0] IMM_B = 3'd2;
     localparam [2:0] IMM_U = 3'd3;
     localparam [2:0] IMM_J = 3'd4;
 
-    // ------------------------------------------------------------
-    // Operand A select
-    // ------------------------------------------------------------
     localparam [1:0] A_RS1  = 2'd0;
     localparam [1:0] A_PC   = 2'd1;
     localparam [1:0] A_ZERO = 2'd2;
 
-    // ------------------------------------------------------------
-    // Operand B select
-    // ------------------------------------------------------------
     localparam [1:0] B_RS2  = 2'd0;
     localparam [1:0] B_IMM  = 2'd1;
     localparam [1:0] B_4    = 2'd2;
 
-    // ------------------------------------------------------------
-    // Writeback select
-    // ------------------------------------------------------------
-    localparam [1:0] WB_ALU = 2'd0;
-    localparam [1:0] WB_MEM = 2'd1;
-    localparam [1:0] WB_PC4 = 2'd2;
-    localparam [1:0] WB_IMM = 2'd3;
+    localparam [2:0] WB_ALU = 3'd0;
+    localparam [2:0] WB_MEM = 3'd1;
+    localparam [2:0] WB_PC4 = 3'd2;
+    localparam [2:0] WB_IMM = 3'd3;
+    localparam [2:0] WB_CSR = 3'd4;
 
-    // ------------------------------------------------------------
-    // ALU ops
-    // ------------------------------------------------------------
     localparam [3:0] ALU_ADD  = 4'd0;
     localparam [3:0] ALU_SUB  = 4'd1;
     localparam [3:0] ALU_AND  = 4'd2;
@@ -71,17 +57,11 @@ module control (
     localparam [3:0] ALU_SLT  = 4'd8;
     localparam [3:0] ALU_SLTU = 4'd9;
 
-    // ------------------------------------------------------------
-    // Memory access size
-    // ------------------------------------------------------------
     localparam [1:0] SZ_B = 2'd0;
     localparam [1:0] SZ_H = 2'd1;
     localparam [1:0] SZ_W = 2'd2;
 
     always @(*) begin
-        // --------------------------------------------------------
-        // Defaults
-        // --------------------------------------------------------
         rd_we         = 1'b0;
         wb_sel        = WB_ALU;
         imm_sel       = IMM_I;
@@ -101,9 +81,6 @@ module control (
 
         case (opcode)
 
-            // ----------------------------------------------------
-            // R-type
-            // ----------------------------------------------------
             7'b0110011: begin
                 rd_we    = 1'b1;
                 wb_sel   = WB_ALU;
@@ -123,9 +100,6 @@ module control (
                 endcase
             end
 
-            // ----------------------------------------------------
-            // I-type ALU
-            // ----------------------------------------------------
             7'b0010011: begin
                 rd_we    = 1'b1;
                 wb_sel   = WB_ALU;
@@ -146,9 +120,6 @@ module control (
                 endcase
             end
 
-            // ----------------------------------------------------
-            // LOAD
-            // ----------------------------------------------------
             7'b0000011: begin
                 rd_we    = 1'b1;
                 wb_sel   = WB_MEM;
@@ -168,9 +139,6 @@ module control (
                 endcase
             end
 
-            // ----------------------------------------------------
-            // STORE
-            // ----------------------------------------------------
             7'b0100011: begin
                 rd_we    = 1'b0;
                 mem_we   = 1'b1;
@@ -187,9 +155,6 @@ module control (
                 endcase
             end
 
-            // ----------------------------------------------------
-            // BRANCH
-            // ----------------------------------------------------
             7'b1100011: begin
                 branch_en     = 1'b1;
                 branch_funct3 = funct3;
@@ -199,9 +164,6 @@ module control (
                 op_b_sel      = B_RS2;
             end
 
-            // ----------------------------------------------------
-            // JAL
-            // ----------------------------------------------------
             7'b1101111: begin
                 jal      = 1'b1;
                 imm_sel  = IMM_J;
@@ -212,9 +174,6 @@ module control (
                 op_b_sel = B_4;
             end
 
-            // ----------------------------------------------------
-            // JALR
-            // ----------------------------------------------------
             7'b1100111: begin
                 jalr     = 1'b1;
                 imm_sel  = IMM_I;
@@ -225,9 +184,6 @@ module control (
                 op_b_sel = B_IMM;
             end
 
-            // ----------------------------------------------------
-            // LUI
-            // ----------------------------------------------------
             7'b0110111: begin
                 rd_we    = 1'b1;
                 wb_sel   = WB_IMM;
@@ -237,9 +193,6 @@ module control (
                 op_b_sel = B_IMM;
             end
 
-            // ----------------------------------------------------
-            // AUIPC
-            // ----------------------------------------------------
             7'b0010111: begin
                 rd_we    = 1'b1;
                 wb_sel   = WB_ALU;
@@ -249,8 +202,33 @@ module control (
                 op_b_sel = B_IMM;
             end
 
+            7'b1110011: begin
+                imm_sel  = IMM_I;
+                op_a_sel = A_RS1;
+                op_b_sel = B_IMM;
+                alu_op   = ALU_ADD;
+
+                mem_re        = 1'b0;
+                mem_we        = 1'b0;
+                branch_en     = 1'b0;
+                branch_funct3 = funct3;
+                jal           = 1'b0;
+                jalr          = 1'b0;
+
+                if ((funct3 == 3'b001) ||
+                    (funct3 == 3'b010) ||
+                    (funct3 == 3'b011)) begin
+                    rd_we  = 1'b1;
+                    wb_sel = WB_CSR;
+                end else begin
+                    rd_we  = 1'b0;
+                    wb_sel = WB_ALU;
+                end
+            end
+
             default: begin
             end
+
         endcase
     end
 

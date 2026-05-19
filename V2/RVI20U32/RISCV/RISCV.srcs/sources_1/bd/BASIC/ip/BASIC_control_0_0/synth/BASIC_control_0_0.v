@@ -83,7 +83,7 @@ input wire [6 : 0] funct7;
 input wire [2 : 0] fmt;
 input wire bit30;
 output wire rd_we;
-output wire [1 : 0] wb_sel;
+output wire [2 : 0] wb_sel;
 output wire [1 : 0] op_a_sel;
 output wire [1 : 0] op_b_sel;
 output wire [3 : 0] alu_op;

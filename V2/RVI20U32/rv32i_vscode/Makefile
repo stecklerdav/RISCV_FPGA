@@ -11,7 +11,7 @@ XXD     := xxd
 # Fuente ensamblador escrita a mano
 ASM_SRC ?= prog_user.S
 
-CFLAGS  := -march=rv32i -mabi=ilp32 -Os -ffreestanding -nostartfiles -fno-pic \
+CFLAGS  := -march=rv32izicsr -mabi=ilp32 -Os -ffreestanding -nostartfiles -fno-pic \
           -fno-asynchronous-unwind-tables -fno-unwind-tables \
           -ffunction-sections -fdata-sections \
           -Wall -Wextra

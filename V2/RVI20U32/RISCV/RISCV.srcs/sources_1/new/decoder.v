@@ -9,7 +9,6 @@ module decoder (
     output reg  [2:0]  fmt,
     output wire        bit30,
 
-    // Inmediatos
     output wire [31:0] imm_i,
     output wire [31:0] imm_s,
     output wire [31:0] imm_b,
@@ -21,14 +20,10 @@ module decoder (
     output wire [4:0]  rs1,
     output wire [4:0]  rs2,
 
-    // NUEVO: uso real de registros fuente
     output wire        rs1_used,
     output wire        rs2_used
 );
 
-    // -----------------------------
-    // Formatos
-    // -----------------------------
     localparam [2:0] FMT_R       = 3'b000;
     localparam [2:0] FMT_I       = 3'b001;
     localparam [2:0] FMT_S       = 3'b010;
@@ -37,9 +32,6 @@ module decoder (
     localparam [2:0] FMT_J       = 3'b101;
     localparam [2:0] FMT_UNKNOWN = 3'b111;
 
-    // -----------------------------
-    // Campos básicos
-    // -----------------------------
     assign opcode = instr[6:0];
     assign rd     = instr[11:7];
     assign funct3 = instr[14:12];
@@ -48,37 +40,36 @@ module decoder (
     assign funct7 = instr[31:25];
     assign bit30  = instr[30];
 
-    // -----------------------------
-    // Clasificación por opcode
-    // -----------------------------
-    wire is_r_type = (opcode == 7'b0110011); // OP
-    wire is_i_type = (opcode == 7'b0010011); // OP-IMM
-    wire is_load   = (opcode == 7'b0000011); // LOAD
-    wire is_store  = (opcode == 7'b0100011); // STORE
-    wire is_branch = (opcode == 7'b1100011); // BRANCH
-    wire is_jalr   = (opcode == 7'b1100111); // JALR
-    wire is_system = (opcode == 7'b1110011); // SYSTEM
-    wire is_lui    = (opcode == 7'b0110111); // LUI
-    wire is_auipc  = (opcode == 7'b0010111); // AUIPC
-    wire is_jal    = (opcode == 7'b1101111); // JAL
+    wire is_r_type = (opcode == 7'b0110011);
+    wire is_i_type = (opcode == 7'b0010011);
+    wire is_load   = (opcode == 7'b0000011);
+    wire is_store  = (opcode == 7'b0100011);
+    wire is_branch = (opcode == 7'b1100011);
+    wire is_jalr   = (opcode == 7'b1100111);
+    wire is_system = (opcode == 7'b1110011);
+    wire is_lui    = (opcode == 7'b0110111);
+    wire is_auipc  = (opcode == 7'b0010111);
+    wire is_jal    = (opcode == 7'b1101111);
 
-    // -----------------------------
-    // Uso real de rs1 / rs2
-    // -----------------------------
+    wire is_csr_reg;
+
+    assign is_csr_reg = is_system &&
+                        ((funct3 == 3'b001) ||
+                         (funct3 == 3'b010) ||
+                         (funct3 == 3'b011));
+
     assign rs1_used = is_r_type |
                       is_i_type |
                       is_load   |
                       is_store  |
                       is_branch |
-                      is_jalr;
+                      is_jalr   |
+                      is_csr_reg;
 
     assign rs2_used = is_r_type |
                       is_store  |
                       is_branch;
 
-    // -----------------------------
-    // Inmediatos RV32I
-    // -----------------------------
     assign imm_i = {{20{instr[31]}}, instr[31:20]};
 
     assign imm_s = {{20{instr[31]}}, instr[31:25], instr[11:7]};
@@ -92,9 +83,6 @@ module decoder (
                     instr[19:12], instr[20],
                     instr[30:21], 1'b0};
 
-    // -----------------------------
-    // Formato + detección opcode ilegal
-    // -----------------------------
     always @(*) begin
         fmt            = FMT_UNKNOWN;
         illegal_opcode = 1'b0;
@@ -109,8 +97,10 @@ module decoder (
 
             7'b0100011: fmt = FMT_S; // STORE
             7'b1100011: fmt = FMT_B; // BRANCH
+
             7'b0110111: fmt = FMT_U; // LUI
             7'b0010111: fmt = FMT_U; // AUIPC
+
             7'b1101111: fmt = FMT_J; // JAL
 
             default: begin

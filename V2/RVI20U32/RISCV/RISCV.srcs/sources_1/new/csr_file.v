@@ -62,7 +62,7 @@ end
 always @(posedge clk) begin
     if (rst) begin
         mstatus <= 32'h0000_0000;
-        mtvec   <= 32'h0000_0000;
+        mtvec   <= 32'h0000_0100;//0100 solo para test luego colocarlo a 0000 mtvec   <= 32'h0000_0000; (direccion original)
         mie     <= 32'h0000_0000;
         mepc    <= 32'h0000_0000;
         mcause  <= 32'h0000_0000;

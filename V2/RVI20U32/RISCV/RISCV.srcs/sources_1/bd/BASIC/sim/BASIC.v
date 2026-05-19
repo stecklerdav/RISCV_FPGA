@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Mon May 18 10:12:15 2026
+//Date        : Tue May 19 00:21:19 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target BASIC.bd
 //Design      : BASIC
@@ -9,13 +9,22 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=63,numReposBlks=51,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=29,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
+(* CORE_GENERATION_INFO = "BASIC,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=BASIC,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=73,numReposBlks=60,numNonXlnxBlks=0,numHierBlks=13,maxHierDepth=3,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=35,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "BASIC.hwdef" *) 
 module BASIC
    (SW1,
     gpio_out_0);
   input [0:0]SW1;
   output [1:0]gpio_out_0;
 
+  wire [4:0]Core_RV32I_Res;
+  wire Core_RV32I_ex_illegal_instr;
+  wire [31:0]Core_RV32I_ex_instr;
+  wire [31:0]Core_RV32I_ex_pc;
+  wire Core_RV32I_ex_valid;
+  wire [0:0]Core_RV32I_mem_stall_req;
+  wire [31:0]Core_RV32I_out_data;
+  wire [31:0]Core_RV32I_rd_wdata1;
+  wire [4:0]Core_RV32I_wb_rd;
   wire MMIO_ram_valid;
   wire [31:0]RV32I_MEM_dmem_addr;
   wire [3:0]RV32I_MEM_dmem_be;
@@ -24,6 +33,7 @@ module BASIC
   wire RV32I_MEM_dmem_we;
   wire [31:0]RV32I_RAM_MEMORY_rdata;
   wire [0:0]SW1_1;
+  wire TIMER_timer_irq;
   wire [31:0]addr_1;
   wire [31:0]addr_2;
   wire [31:0]addr_3;
@@ -32,16 +42,23 @@ module BASIC
   wire [3:0]be_2;
   wire [3:0]be_3;
   wire [3:0]be_4;
+  wire [31:0]csr_access_unit_0_csr_rd_data;
+  wire [4:0]csr_regfile_wb_mux_0_final_rd;
+  wire [31:0]csr_regfile_wb_mux_0_final_wdata;
+  wire csr_regfile_wb_mux_0_final_we;
   wire dmem_ready_1;
   wire [7:0]gpio_0_gpio_out;
   wire [31:0]gpio_0_rdata;
   wire gpio_0_ready;
   wire [31:0]mem_data_1;
+  wire [31:0]privileged_pc_redire_0_priv_redirect_target;
+  wire privileged_pc_redire_0_priv_redirect_valid;
   wire [0:0]proc_sys_reset_0_peripheral_reset;
   wire [0:0]proc_sys_reset_0_peripheral_reset1;
   wire ram_ready_1;
   wire [31:0]timer_0_rdata;
   wire timer_0_ready;
+  wire trap_controller_0_trap_flush;
   wire [31:0]uart_tx_0_rdata;
   wire uart_tx_0_ready;
   wire [0:0]util_vector_logic_3_Res;
@@ -67,15 +84,31 @@ module BASIC
   assign SW1_1 = SW1[0];
   assign gpio_out_0[1:0] = xlslice_0_Dout;
   Core_RV32I_imp_1VYNK5M Core_RV32I
-       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+       (.Op2(trap_controller_0_trap_flush),
+        .Res(Core_RV32I_Res),
+        .clk(zynq_ultra_ps_e_0_pl_clk0),
+        .csr_data(csr_access_unit_0_csr_rd_data),
         .dmem_addr(RV32I_MEM_dmem_addr),
         .dmem_be(RV32I_MEM_dmem_be),
         .dmem_re(RV32I_MEM_dmem_re),
         .dmem_ready(dmem_ready_1),
         .dmem_wdata(RV32I_MEM_dmem_wdata),
         .dmem_we(RV32I_MEM_dmem_we),
+        .ex_illegal_instr(Core_RV32I_ex_illegal_instr),
+        .ex_instr(Core_RV32I_ex_instr),
+        .ex_pc(Core_RV32I_ex_pc),
+        .ex_valid(Core_RV32I_ex_valid),
         .mem_data(mem_data_1),
-        .rst(proc_sys_reset_0_peripheral_reset));
+        .mem_stall_req(Core_RV32I_mem_stall_req),
+        .out_data(Core_RV32I_out_data),
+        .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
+        .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
+        .rd_addr(csr_regfile_wb_mux_0_final_rd),
+        .rd_wdata(csr_regfile_wb_mux_0_final_wdata),
+        .rd_wdata1(Core_RV32I_rd_wdata1),
+        .rd_we(csr_regfile_wb_mux_0_final_we),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .wb_rd(Core_RV32I_wb_rd));
   GPIO_imp_GTDX3I GPIO
        (.addr(addr_2),
         .be(be_2),
@@ -126,6 +159,26 @@ module BASIC
         .uart_valid1(valid_2),
         .uart_wdata1(wdata_3),
         .uart_we1(we_3));
+  PRIVILEGED_imp_TDUXP9 PRIVILEGED
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .csr_rd_data(csr_access_unit_0_csr_rd_data),
+        .current_pc(Core_RV32I_ex_pc),
+        .final_rd(csr_regfile_wb_mux_0_final_rd),
+        .final_wdata(csr_regfile_wb_mux_0_final_wdata),
+        .final_we(csr_regfile_wb_mux_0_final_we),
+        .illegal_instr(Core_RV32I_ex_illegal_instr),
+        .instr(Core_RV32I_ex_instr),
+        .instr_valid(Core_RV32I_ex_valid),
+        .mem_stall_req(Core_RV32I_mem_stall_req),
+        .normal_rd(Core_RV32I_wb_rd),
+        .normal_wdata(Core_RV32I_rd_wdata1),
+        .normal_we(Core_RV32I_Res[0]),
+        .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
+        .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
+        .rs1_data1(Core_RV32I_out_data),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .timer_irq(TIMER_timer_irq),
+        .trap_flush(trap_controller_0_trap_flush));
   RV32I_RAM_MEMORY_imp_1A3BT4W RV32I_RAM_MEMORY
        (.addr(addr_1),
         .be(be_1),
@@ -143,6 +196,7 @@ module BASIC
         .rdata(timer_0_rdata),
         .ready(timer_0_ready),
         .rst(proc_sys_reset_0_peripheral_reset),
+        .timer_irq(TIMER_timer_irq),
         .valid(valid_3),
         .wdata(wdata_4),
         .we(we_4));
@@ -213,32 +267,70 @@ module BASIC
 endmodule
 
 module Core_RV32I_imp_1VYNK5M
-   (clk,
+   (Op2,
+    Res,
+    clk,
+    csr_data,
     dmem_addr,
     dmem_be,
     dmem_re,
     dmem_ready,
     dmem_wdata,
     dmem_we,
+    ex_illegal_instr,
+    ex_instr,
+    ex_pc,
+    ex_rs1_data,
+    ex_valid,
     mem_data,
-    rst);
+    mem_stall_req,
+    out_data,
+    priv_redirect_target,
+    priv_redirect_valid,
+    rd_addr,
+    rd_wdata,
+    rd_wdata1,
+    rd_we,
+    rst,
+    wb_rd);
+  input [0:0]Op2;
+  output [4:0]Res;
   input clk;
+  input [31:0]csr_data;
   output [31:0]dmem_addr;
   output [3:0]dmem_be;
   output dmem_re;
   input dmem_ready;
   output [31:0]dmem_wdata;
   output dmem_we;
+  output ex_illegal_instr;
+  output [31:0]ex_instr;
+  output [31:0]ex_pc;
+  output [31:0]ex_rs1_data;
+  output ex_valid;
   input [31:0]mem_data;
+  output [0:0]mem_stall_req;
+  output [31:0]out_data;
+  input [31:0]priv_redirect_target;
+  input priv_redirect_valid;
+  input [4:0]rd_addr;
+  input [31:0]rd_wdata;
+  output [31:0]rd_wdata1;
+  input rd_we;
   input rst;
+  output [4:0]wb_rd;
 
   wire [0:0]Op3_1;
+  wire [0:0]Op4_1;
   wire RV32I_EX_bp_update_taken;
   wire [31:0]RV32I_EX_bp_update_target;
   wire RV32I_EX_bp_update_valid;
   wire RV32I_EX_ex_flush_req;
+  wire [31:0]RV32I_EX_out_data;
   wire [31:0]RV32I_EX_pc_redirect_target;
   wire RV32I_EX_pc_redirect_valid;
+  wire RV32I_ID_ex_illegal_instr;
+  wire [31:0]RV32I_ID_ex_instr;
   wire [31:0]RV32I_ID_ex_pred_next_pc;
   wire [4:0]RV32I_ID_ex_rd;
   wire [4:0]RV32I_ID_rs1;
@@ -256,9 +348,15 @@ module Core_RV32I_imp_1VYNK5M
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
   wire RV32I_MEM_mem_rd_we;
+  wire [31:0]RV32I_MEM_wb_alu_result;
+  wire [31:0]RV32I_MEM_wb_data;
+  wire [31:0]RV32I_MEM_wb_imm_u;
+  wire [31:0]RV32I_MEM_wb_pc_plus4;
+  wire [2:0]RV32I_MEM_wb_sel;
   wire RV32I_MEM_wb_valid;
   wire [3:0]alu_op_1;
   wire bubble_1;
+  wire [31:0]csr_data_1;
   wire dmem_ready_1;
   wire ex_branch_en_1;
   wire [2:0]ex_branch_funct3_1;
@@ -278,7 +376,7 @@ module Core_RV32I_imp_1VYNK5M
   wire ex_mem_reg_1_mem_rd_we;
   wire [31:0]ex_mem_reg_1_mem_store_data;
   wire ex_mem_reg_1_mem_valid;
-  wire [1:0]ex_mem_reg_1_mem_wb_sel;
+  wire [2:0]ex_mem_reg_1_mem_wb_sel;
   wire [1:0]ex_mem_size_1;
   wire ex_mem_unsigned_1;
   wire ex_mem_we_1;
@@ -290,7 +388,7 @@ module Core_RV32I_imp_1VYNK5M
   wire [4:0]ex_rs2_1;
   wire [31:0]ex_rs2_data_1;
   wire ex_valid_1;
-  wire [1:0]ex_wb_sel_1;
+  wire [2:0]ex_wb_sel_1;
   wire flush_1;
   wire hold_1;
   wire load_use_detection_0_id_ex_flush;
@@ -301,30 +399,47 @@ module Core_RV32I_imp_1VYNK5M
   wire [4:0]mem_stage_0_mem_out_rd;
   wire mem_stage_0_mem_out_valid;
   wire [0:0]mem_stage_rd_we_1;
-  wire [31:0]mem_wb_reg_0_wb_alu_result;
-  wire [31:0]mem_wb_reg_0_wb_data;
-  wire [31:0]mem_wb_reg_0_wb_imm_u;
-  wire [31:0]mem_wb_reg_0_wb_pc_plus4;
   wire [4:0]mem_wb_reg_0_wb_rd;
-  wire [1:0]mem_wb_reg_0_wb_sel;
   wire [31:0]mmio_0_cpu_rdata;
   wire [1:0]op_a_sel_1;
   wire [31:0]pc_1;
   wire pc_en_1;
+  wire [31:0]priv_redirect_target_1;
+  wire priv_redirect_valid_1;
   wire proc_sys_reset_0_peripheral_reset;
+  wire [4:0]rd_addr1_1;
+  wire [31:0]rd_wdata1_1;
+  wire rd_we1_1;
   wire update_is_control_1;
   wire [4:0]util_vector_logic_0_Res;
   wire [31:0]wb_mux_0_rd_wdata;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
+  assign Op4_1 = Op2[0];
+  assign Res[4:0] = util_vector_logic_0_Res;
+  assign csr_data_1 = csr_data[31:0];
   assign dmem_addr[31:0] = RV32I_MEM_dmem_addr;
   assign dmem_be[3:0] = RV32I_MEM_dmem_be;
   assign dmem_re = RV32I_MEM_dmem_re;
   assign dmem_ready_1 = dmem_ready;
   assign dmem_wdata[31:0] = RV32I_MEM_dmem_wdata;
   assign dmem_we = RV32I_MEM_dmem_we;
+  assign ex_illegal_instr = RV32I_ID_ex_illegal_instr;
+  assign ex_instr[31:0] = RV32I_ID_ex_instr;
+  assign ex_pc[31:0] = pc_1;
+  assign ex_rs1_data[31:0] = ex_rs1_data_1;
+  assign ex_valid = ex_valid_1;
+  assign mem_stall_req[0] = Op3_1;
   assign mmio_0_cpu_rdata = mem_data[31:0];
+  assign out_data[31:0] = RV32I_EX_out_data;
+  assign priv_redirect_target_1 = priv_redirect_target[31:0];
+  assign priv_redirect_valid_1 = priv_redirect_valid;
   assign proc_sys_reset_0_peripheral_reset = rst;
+  assign rd_addr1_1 = rd_addr[4:0];
+  assign rd_wdata1[31:0] = wb_mux_0_rd_wdata;
+  assign rd_wdata1_1 = rd_wdata[31:0];
+  assign rd_we1_1 = rd_we;
+  assign wb_rd[4:0] = mem_wb_reg_0_wb_rd;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   RV32I_EX_imp_VZHXQ1 RV32I_EX
        (.alu_op(alu_op_1),
@@ -373,6 +488,7 @@ module Core_RV32I_imp_1VYNK5M
         .mem_wb_data(wb_mux_0_rd_wdata),
         .mem_wb_sel(ex_mem_reg_1_mem_wb_sel),
         .op_a_sel(op_a_sel_1),
+        .out_data(RV32I_EX_out_data),
         .pc(pc_1),
         .pc_redirect_target(RV32I_EX_pc_redirect_target),
         .pc_redirect_valid(RV32I_EX_pc_redirect_valid),
@@ -387,8 +503,10 @@ module Core_RV32I_imp_1VYNK5M
         .ex_alu_op(alu_op_1),
         .ex_branch_en(ex_branch_en_1),
         .ex_branch_funct3(ex_branch_funct3_1),
+        .ex_illegal_instr(RV32I_ID_ex_illegal_instr),
         .ex_imm(ex_imm_1),
         .ex_imm_u(ex_imm_u_1),
+        .ex_instr(RV32I_ID_ex_instr),
         .ex_jal(ex_jal_1),
         .ex_jalr(ex_jalr_1),
         .ex_mem_re(ex_mem_re_1),
@@ -414,19 +532,20 @@ module Core_RV32I_imp_1VYNK5M
         .id_valid(RV32I_IF_id_valid_out),
         .instr(RV32I_IF_id_instr_out),
         .rd_addr(mem_wb_reg_0_wb_rd),
-        .rd_wdata(wb_mux_0_rd_wdata),
-        .rd_we(util_vector_logic_0_Res),
+        .rd_addr1(rd_addr1_1),
+        .rd_wdata1(rd_wdata1_1),
+        .rd_we1(rd_we1_1),
         .rs1(RV32I_ID_rs1),
         .rs1_used(RV32I_ID_rs1_used),
         .rs2(RV32I_ID_rs2),
         .rs2_used(RV32I_ID_rs2_used),
         .rst(proc_sys_reset_0_peripheral_reset),
-        .stall(load_use_detection_0_load_use_hazard),
         .stall1(Op3_1));
   RV32I_IF_imp_136QK4M RV32I_IF
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(RV32I_MEM_mem_rd_we),
         .Op3(Op3_1),
+        .Op4(Op4_1),
         .Res(mem_stage_rd_we_1),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .flush(flush_1),
@@ -439,6 +558,8 @@ module Core_RV32I_imp_1VYNK5M
         .pc_en(pc_en_1),
         .pc_redirect_target(RV32I_EX_pc_redirect_target),
         .pc_redirect_valid(RV32I_EX_pc_redirect_valid),
+        .priv_redirect_target(priv_redirect_target_1),
+        .priv_redirect_valid(priv_redirect_valid_1),
         .rst(proc_sys_reset_0_peripheral_reset),
         .update_is_control(update_is_control_1),
         .update_pc(pc_1),
@@ -473,20 +594,21 @@ module Core_RV32I_imp_1VYNK5M
         .mem_stall_req(Op3_1),
         .mem_valid(mem_stage_0_mem_out_valid),
         .rst(proc_sys_reset_0_peripheral_reset),
-        .wb_alu_result(mem_wb_reg_0_wb_alu_result),
-        .wb_data(mem_wb_reg_0_wb_data),
-        .wb_imm_u(mem_wb_reg_0_wb_imm_u),
-        .wb_pc_plus4(mem_wb_reg_0_wb_pc_plus4),
+        .wb_alu_result(RV32I_MEM_wb_alu_result),
+        .wb_data(RV32I_MEM_wb_data),
+        .wb_imm_u(RV32I_MEM_wb_imm_u),
+        .wb_pc_plus4(RV32I_MEM_wb_pc_plus4),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_sel(mem_wb_reg_0_wb_sel),
+        .wb_sel(RV32I_MEM_wb_sel),
         .wb_valid(RV32I_MEM_wb_valid));
   RV32I_WB_imp_98K1CZ RV32I_WB
-       (.alu_y(mem_wb_reg_0_wb_alu_result),
-        .imm_u(mem_wb_reg_0_wb_imm_u),
-        .load_data(mem_wb_reg_0_wb_data),
-        .pc_plus4(mem_wb_reg_0_wb_pc_plus4),
-        .rd_wdata(wb_mux_0_rd_wdata),
-        .wb_sel(mem_wb_reg_0_wb_sel));
+       (.alu_y(RV32I_MEM_wb_alu_result),
+        .csr_data(csr_data_1),
+        .imm_u(RV32I_MEM_wb_imm_u),
+        .load_data(RV32I_MEM_wb_data),
+        .pc_plus4(RV32I_MEM_wb_pc_plus4),
+        .rd_wdata1(wb_mux_0_rd_wdata),
+        .wb_sel(RV32I_MEM_wb_sel));
   BASIC_ila_0_0 ila_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .probe0(proc_sys_reset_0_peripheral_reset),
@@ -515,7 +637,8 @@ module Core_RV32I_imp_1VYNK5M
         .load_use_id_ex_flush(load_use_detection_0_id_ex_flush),
         .load_use_if_id_hold(load_use_detection_0_if_id_hold),
         .load_use_pc_en(load_use_detection_0_pc_en),
-        .pc_en_final(pc_en_1));
+        .pc_en_final(pc_en_1),
+        .priv_redirect_valid(priv_redirect_valid_1));
 endmodule
 
 module GPIO_imp_GTDX3I
@@ -775,6 +898,202 @@ module MMIO_imp_LNKWBU
         .Res(util_vector_logic_3_Res));
 endmodule
 
+module PRIVILEGED_imp_TDUXP9
+   (clk,
+    csr_rd_data,
+    current_pc,
+    final_rd,
+    final_wdata,
+    final_we,
+    illegal_instr,
+    instr,
+    instr_valid,
+    mem_stall_req,
+    normal_rd,
+    normal_wdata,
+    normal_we,
+    priv_redirect_target,
+    priv_redirect_valid,
+    rs1_data1,
+    rst,
+    timer_irq,
+    trap_flush);
+  input clk;
+  output [31:0]csr_rd_data;
+  input [31:0]current_pc;
+  output [4:0]final_rd;
+  output [31:0]final_wdata;
+  output final_we;
+  input illegal_instr;
+  input [31:0]instr;
+  input instr_valid;
+  input mem_stall_req;
+  input [4:0]normal_rd;
+  input [31:0]normal_wdata;
+  input normal_we;
+  output [31:0]priv_redirect_target;
+  output priv_redirect_valid;
+  input [31:0]rs1_data1;
+  input rst;
+  input timer_irq;
+  output trap_flush;
+
+  wire Core_RV32I_Res;
+  wire [31:0]Core_RV32I_ex_instr;
+  wire [31:0]Core_RV32I_ex_pc;
+  wire Core_RV32I_ex_valid;
+  wire Core_RV32I_mem_stall_req;
+  wire [31:0]Core_RV32I_rd_wdata1;
+  wire [4:0]Core_RV32I_wb_rd;
+  wire TIMER_timer_irq;
+  wire [4:0]csr_access_unit_0_csr_rd_addr;
+  wire [31:0]csr_access_unit_0_csr_rd_data;
+  wire csr_access_unit_0_csr_rd_we;
+  wire [31:0]csr_access_unit_0_csr_wdata;
+  wire csr_access_unit_0_csr_we;
+  wire [31:0]csr_file_0_csr_mepc;
+  wire [31:0]csr_file_0_csr_mie;
+  wire [31:0]csr_file_0_csr_mip;
+  wire [31:0]csr_file_0_csr_mstatus;
+  wire [31:0]csr_file_0_csr_mtvec;
+  wire [31:0]csr_file_0_csr_rdata;
+  wire [4:0]csr_regfile_wb_mux_0_final_rd;
+  wire [31:0]csr_regfile_wb_mux_0_final_wdata;
+  wire csr_regfile_wb_mux_0_final_we;
+  wire illegal_instr_1;
+  wire [31:0]privileged_pc_redire_0_priv_redirect_target;
+  wire privileged_pc_redire_0_priv_redirect_valid;
+  wire proc_sys_reset_0_peripheral_reset;
+  wire [31:0]rs1_data1_1;
+  wire [11:0]system_decoder_0_csr_addr;
+  wire [4:0]system_decoder_0_csr_rd;
+  wire [4:0]system_decoder_0_csr_rs1;
+  wire system_decoder_0_is_csrrc;
+  wire system_decoder_0_is_csrrs;
+  wire system_decoder_0_is_csrrw;
+  wire system_decoder_0_is_ecall;
+  wire system_decoder_0_is_mret;
+  wire system_decoder_0_is_system;
+  wire trap_controller_0_mret_taken;
+  wire [31:0]trap_controller_0_mret_target;
+  wire trap_controller_0_trap_enter;
+  wire trap_controller_0_trap_flush;
+  wire [31:0]trap_controller_0_trap_mcause;
+  wire [31:0]trap_controller_0_trap_mepc;
+  wire [31:0]trap_controller_0_trap_target;
+  wire [0:0]util_vector_logic_10_Res;
+  wire [0:0]util_vector_logic_11_Res;
+  wire zynq_ultra_ps_e_0_pl_clk0;
+
+  assign Core_RV32I_Res = normal_we;
+  assign Core_RV32I_ex_instr = instr[31:0];
+  assign Core_RV32I_ex_pc = current_pc[31:0];
+  assign Core_RV32I_ex_valid = instr_valid;
+  assign Core_RV32I_mem_stall_req = mem_stall_req;
+  assign Core_RV32I_rd_wdata1 = normal_wdata[31:0];
+  assign Core_RV32I_wb_rd = normal_rd[4:0];
+  assign TIMER_timer_irq = timer_irq;
+  assign csr_rd_data[31:0] = csr_access_unit_0_csr_rd_data;
+  assign final_rd[4:0] = csr_regfile_wb_mux_0_final_rd;
+  assign final_wdata[31:0] = csr_regfile_wb_mux_0_final_wdata;
+  assign final_we = csr_regfile_wb_mux_0_final_we;
+  assign illegal_instr_1 = illegal_instr;
+  assign priv_redirect_target[31:0] = privileged_pc_redire_0_priv_redirect_target;
+  assign priv_redirect_valid = privileged_pc_redire_0_priv_redirect_valid;
+  assign proc_sys_reset_0_peripheral_reset = rst;
+  assign rs1_data1_1 = rs1_data1[31:0];
+  assign trap_flush = trap_controller_0_trap_flush;
+  assign zynq_ultra_ps_e_0_pl_clk0 = clk;
+  BASIC_csr_access_unit_0_0 csr_access_unit_0
+       (.csr_rd(system_decoder_0_csr_rd),
+        .csr_rd_addr(csr_access_unit_0_csr_rd_addr),
+        .csr_rd_data(csr_access_unit_0_csr_rd_data),
+        .csr_rd_we(csr_access_unit_0_csr_rd_we),
+        .csr_rdata(csr_file_0_csr_rdata),
+        .csr_rs1(system_decoder_0_csr_rs1),
+        .csr_wdata(csr_access_unit_0_csr_wdata),
+        .csr_we(csr_access_unit_0_csr_we),
+        .ex_valid(Core_RV32I_ex_valid),
+        .is_csrrc(system_decoder_0_is_csrrc),
+        .is_csrrs(system_decoder_0_is_csrrs),
+        .is_csrrw(system_decoder_0_is_csrrw),
+        .rs1_data(rs1_data1_1));
+  BASIC_csr_file_0_0 csr_file_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .csr_addr(system_decoder_0_csr_addr),
+        .csr_mepc(csr_file_0_csr_mepc),
+        .csr_mie(csr_file_0_csr_mie),
+        .csr_mip(csr_file_0_csr_mip),
+        .csr_mstatus(csr_file_0_csr_mstatus),
+        .csr_mtvec(csr_file_0_csr_mtvec),
+        .csr_rdata(csr_file_0_csr_rdata),
+        .csr_wdata(csr_access_unit_0_csr_wdata),
+        .csr_we(csr_access_unit_0_csr_we),
+        .mret(trap_controller_0_mret_taken),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .timer_irq(TIMER_timer_irq),
+        .trap_enter(trap_controller_0_trap_enter),
+        .trap_mcause(trap_controller_0_trap_mcause),
+        .trap_mepc(trap_controller_0_trap_mepc));
+  BASIC_csr_regfile_wb_mux_0_0 csr_regfile_wb_mux_0
+       (.csr_rd_addr(csr_access_unit_0_csr_rd_addr),
+        .csr_rd_data(csr_access_unit_0_csr_rd_data),
+        .csr_rd_we(csr_access_unit_0_csr_rd_we),
+        .final_rd(csr_regfile_wb_mux_0_final_rd),
+        .final_wdata(csr_regfile_wb_mux_0_final_wdata),
+        .final_we(csr_regfile_wb_mux_0_final_we),
+        .normal_rd(Core_RV32I_wb_rd),
+        .normal_wdata(Core_RV32I_rd_wdata1),
+        .normal_we(Core_RV32I_Res));
+  BASIC_privileged_pc_redire_0_0 privileged_pc_redire_0
+       (.mret_taken(trap_controller_0_mret_taken),
+        .mret_target(trap_controller_0_mret_target),
+        .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
+        .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
+        .trap_enter(trap_controller_0_trap_enter),
+        .trap_target(trap_controller_0_trap_target));
+  BASIC_system_decoder_0_0 system_decoder_0
+       (.csr_addr(system_decoder_0_csr_addr),
+        .csr_rd(system_decoder_0_csr_rd),
+        .csr_rs1(system_decoder_0_csr_rs1),
+        .instr(Core_RV32I_ex_instr),
+        .is_csrrc(system_decoder_0_is_csrrc),
+        .is_csrrs(system_decoder_0_is_csrrs),
+        .is_csrrw(system_decoder_0_is_csrrw),
+        .is_ecall(system_decoder_0_is_ecall),
+        .is_mret(system_decoder_0_is_mret),
+        .is_system(system_decoder_0_is_system));
+  BASIC_trap_controller_0_0 trap_controller_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .csr_mepc(csr_file_0_csr_mepc),
+        .csr_mie(csr_file_0_csr_mie),
+        .csr_mip(csr_file_0_csr_mip),
+        .csr_mstatus(csr_file_0_csr_mstatus),
+        .csr_mtvec(csr_file_0_csr_mtvec),
+        .current_pc(Core_RV32I_ex_pc),
+        .ecall(system_decoder_0_is_ecall),
+        .illegal_instr(util_vector_logic_10_Res),
+        .instr_valid(Core_RV32I_ex_valid),
+        .mem_stall_req(Core_RV32I_mem_stall_req),
+        .mret(system_decoder_0_is_mret),
+        .mret_taken(trap_controller_0_mret_taken),
+        .mret_target(trap_controller_0_mret_target),
+        .rst(proc_sys_reset_0_peripheral_reset),
+        .timer_irq(TIMER_timer_irq),
+        .trap_enter(trap_controller_0_trap_enter),
+        .trap_flush(trap_controller_0_trap_flush),
+        .trap_mcause(trap_controller_0_trap_mcause),
+        .trap_mepc(trap_controller_0_trap_mepc),
+        .trap_target(trap_controller_0_trap_target));
+  BASIC_util_vector_logic_10_1 util_vector_logic_10
+       (.Op1(illegal_instr_1),
+        .Op2(util_vector_logic_11_Res),
+        .Res(util_vector_logic_10_Res));
+  BASIC_util_vector_logic_10_2 util_vector_logic_11
+       (.Op1(system_decoder_0_is_system),
+        .Res(util_vector_logic_11_Res));
+endmodule
+
 module RV32I_EX_imp_VZHXQ1
    (alu_op,
     bp_update_is_control,
@@ -824,6 +1143,7 @@ module RV32I_EX_imp_VZHXQ1
     mem_wb_data,
     mem_wb_sel,
     op_a_sel,
+    out_data,
     pc,
     pc_redirect_target,
     pc_redirect_valid,
@@ -862,7 +1182,7 @@ module RV32I_EX_imp_VZHXQ1
   input [4:0]ex_rs2;
   input [31:0]ex_rs2_data;
   input ex_valid;
-  input [1:0]ex_wb_sel;
+  input [2:0]ex_wb_sel;
   output [31:0]mem_imm_u;
   output mem_mem_re;
   output [1:0]mem_mem_size;
@@ -878,8 +1198,9 @@ module RV32I_EX_imp_VZHXQ1
   output [31:0]mem_store_data;
   output mem_valid;
   input [31:0]mem_wb_data;
-  output [1:0]mem_wb_sel;
+  output [2:0]mem_wb_sel;
   input [1:0]op_a_sel;
+  output [31:0]out_data;
   input [31:0]pc;
   output [31:0]pc_redirect_target;
   output pc_redirect_valid;
@@ -895,7 +1216,6 @@ module RV32I_EX_imp_VZHXQ1
   wire branch_0_bp_update_taken;
   wire [31:0]branch_0_bp_update_target;
   wire branch_0_bp_update_valid;
-  wire branch_0_branch_taken;
   wire [31:0]branch_0_ex_actual_next_pc;
   wire [3:0]branch_0_ex_exception_cause;
   wire [31:0]branch_0_ex_exception_tval;
@@ -914,7 +1234,7 @@ module RV32I_EX_imp_VZHXQ1
   wire ex_mem_reg_1_mem_rd_we;
   wire [31:0]ex_mem_reg_1_mem_store_data;
   wire ex_mem_reg_1_mem_valid;
-  wire [1:0]ex_mem_reg_1_mem_wb_sel;
+  wire [2:0]ex_mem_reg_1_mem_wb_sel;
   wire [31:0]ex_pred_next_pc_1;
   wire [31:0]forward_mux_0_out_data;
   wire [31:0]forward_mux_1_out_data;
@@ -943,7 +1263,7 @@ module RV32I_EX_imp_VZHXQ1
   wire [31:0]id_ex_reg_0_ex_rs1_data;
   wire [4:0]id_ex_reg_0_ex_rs2;
   wire [31:0]id_ex_reg_0_ex_rs2_data;
-  wire [1:0]id_ex_reg_0_ex_wb_sel;
+  wire [2:0]id_ex_reg_0_ex_wb_sel;
   wire [31:0]mem_stage_0_mem_forward_data;
   wire [4:0]mem_stage_0_mem_out_rd;
   wire mem_stage_valid_1;
@@ -965,7 +1285,6 @@ module RV32I_EX_imp_VZHXQ1
   assign bp_update_taken = branch_0_bp_update_taken;
   assign bp_update_target[31:0] = branch_0_bp_update_target;
   assign bp_update_valid = branch_0_bp_update_valid;
-  assign branch_taken[0] = branch_0_branch_taken;
   assign ex_actual_next_pc[31:0] = branch_0_ex_actual_next_pc;
   assign ex_flush_req = branch_0_ex_flush_req;
   assign ex_mem_data[31:0] = ex_mem_reg_1_mem_alu_result;
@@ -991,7 +1310,7 @@ module RV32I_EX_imp_VZHXQ1
   assign id_ex_reg_0_ex_rs1_data = ex_rs1_data[31:0];
   assign id_ex_reg_0_ex_rs2 = ex_rs2[4:0];
   assign id_ex_reg_0_ex_rs2_data = ex_rs2_data[31:0];
-  assign id_ex_reg_0_ex_wb_sel = ex_wb_sel[1:0];
+  assign id_ex_reg_0_ex_wb_sel = ex_wb_sel[2:0];
   assign mem_imm_u[31:0] = ex_mem_reg_1_mem_imm_u;
   assign mem_mem_re = ex_mem_reg_1_mem_mem_re;
   assign mem_mem_size[1:0] = ex_mem_reg_1_mem_mem_size;
@@ -1006,7 +1325,8 @@ module RV32I_EX_imp_VZHXQ1
   assign mem_store_data[31:0] = ex_mem_reg_1_mem_store_data;
   assign mem_valid = ex_mem_reg_1_mem_valid;
   assign mem_wb_reg_0_wb_rd = wb_rd[4:0];
-  assign mem_wb_sel[1:0] = ex_mem_reg_1_mem_wb_sel;
+  assign mem_wb_sel[2:0] = ex_mem_reg_1_mem_wb_sel;
+  assign out_data[31:0] = forward_mux_0_out_data;
   assign pc_redirect_target[31:0] = branch_0_pc_redirect_target;
   assign pc_redirect_valid = branch_0_pc_redirect_valid;
   assign proc_sys_reset_0_peripheral_reset = rst;
@@ -1026,7 +1346,6 @@ module RV32I_EX_imp_VZHXQ1
         .bp_update_taken(branch_0_bp_update_taken),
         .bp_update_target(branch_0_bp_update_target),
         .bp_update_valid(branch_0_bp_update_valid),
-        .branch_taken(branch_0_branch_taken),
         .ex_actual_next_pc(branch_0_ex_actual_next_pc),
         .ex_branch_en(id_ex_reg_0_ex_branch_en),
         .ex_branch_funct3(id_ex_reg_0_ex_branch_funct3),
@@ -1139,8 +1458,10 @@ module RV32I_ID_imp_1HJBFQL
     ex_alu_op,
     ex_branch_en,
     ex_branch_funct3,
+    ex_illegal_instr,
     ex_imm,
     ex_imm_u,
+    ex_instr,
     ex_jal,
     ex_jalr,
     ex_mem_re,
@@ -1165,24 +1486,25 @@ module RV32I_ID_imp_1HJBFQL
     id_pred_next_pc,
     id_valid,
     instr,
-    mem_we,
     rd_addr,
-    rd_wdata,
-    rd_we,
+    rd_addr1,
+    rd_wdata1,
+    rd_we1,
     rs1,
     rs1_used,
     rs2,
     rs2_used,
     rst,
-    stall,
     stall1);
   input bubble;
   input clk;
   output [3:0]ex_alu_op;
   output ex_branch_en;
   output [2:0]ex_branch_funct3;
+  output ex_illegal_instr;
   output [31:0]ex_imm;
   output [31:0]ex_imm_u;
+  output [31:0]ex_instr;
   output ex_jal;
   output ex_jalr;
   output ex_mem_re;
@@ -1201,22 +1523,21 @@ module RV32I_ID_imp_1HJBFQL
   output [4:0]ex_rs2;
   output [31:0]ex_rs2_data;
   output ex_valid;
-  output [1:0]ex_wb_sel;
+  output [2:0]ex_wb_sel;
   input [31:0]id_pc;
   input [31:0]id_pc_plus4;
   input [31:0]id_pred_next_pc;
   input id_valid;
   input [31:0]instr;
-  output mem_we;
   input [4:0]rd_addr;
-  input [31:0]rd_wdata;
-  input [4:0]rd_we;
+  input [4:0]rd_addr1;
+  input [31:0]rd_wdata1;
+  input rd_we1;
   output [4:0]rs1;
   output rs1_used;
   output [4:0]rs2;
   output rs2_used;
   input rst;
-  input stall;
   input stall1;
 
   wire bubble_1;
@@ -1233,11 +1554,12 @@ module RV32I_ID_imp_1HJBFQL
   wire [1:0]control_0_op_a_sel;
   wire [1:0]control_0_op_b_sel;
   wire control_0_rd_we;
-  wire [1:0]control_0_wb_sel;
+  wire [2:0]control_0_wb_sel;
   wire decoder_0_bit30;
   wire [2:0]decoder_0_fmt;
   wire [2:0]decoder_0_funct3;
   wire [6:0]decoder_0_funct7;
+  wire decoder_0_illegal_opcode;
   wire [31:0]decoder_0_imm_b;
   wire [31:0]decoder_0_imm_i;
   wire [31:0]decoder_0_imm_j;
@@ -1252,8 +1574,10 @@ module RV32I_ID_imp_1HJBFQL
   wire [3:0]id_ex_reg_1_ex_alu_op;
   wire id_ex_reg_1_ex_branch_en;
   wire [2:0]id_ex_reg_1_ex_branch_funct3;
+  wire id_ex_reg_1_ex_illegal_instr;
   wire [31:0]id_ex_reg_1_ex_imm;
   wire [31:0]id_ex_reg_1_ex_imm_u;
+  wire [31:0]id_ex_reg_1_ex_instr;
   wire id_ex_reg_1_ex_jal;
   wire id_ex_reg_1_ex_jalr;
   wire id_ex_reg_1_ex_mem_re;
@@ -1272,28 +1596,30 @@ module RV32I_ID_imp_1HJBFQL
   wire [4:0]id_ex_reg_1_ex_rs2;
   wire [31:0]id_ex_reg_1_ex_rs2_data;
   wire id_ex_reg_1_ex_valid;
-  wire [1:0]id_ex_reg_1_ex_wb_sel;
+  wire [2:0]id_ex_reg_1_ex_wb_sel;
   wire [31:0]id_pred_next_pc_1;
   wire [31:0]if_id_reg_0_id_instr_out;
   wire [31:0]if_id_reg_0_id_pc4_out;
   wire [31:0]if_id_reg_0_id_pc_out;
   wire if_id_reg_0_id_valid_out;
   wire [31:0]imm_mux_0_imm_out;
-  wire [4:0]mem_wb_reg_0_wb_rd;
   wire proc_sys_reset_0_peripheral_reset;
+  wire [4:0]rd_addr1_1;
+  wire [31:0]rd_wdata1_1;
+  wire rd_we1_1;
   wire [31:0]regfile_0_rs1_rdata;
   wire [31:0]regfile_0_rs2_rdata;
   wire stall1_1;
-  wire [4:0]util_vector_logic_0_Res;
-  wire [31:0]wb_mux_0_rd_wdata;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
   assign bubble_1 = bubble;
   assign ex_alu_op[3:0] = id_ex_reg_1_ex_alu_op;
   assign ex_branch_en = id_ex_reg_1_ex_branch_en;
   assign ex_branch_funct3[2:0] = id_ex_reg_1_ex_branch_funct3;
+  assign ex_illegal_instr = id_ex_reg_1_ex_illegal_instr;
   assign ex_imm[31:0] = id_ex_reg_1_ex_imm;
   assign ex_imm_u[31:0] = id_ex_reg_1_ex_imm_u;
+  assign ex_instr[31:0] = id_ex_reg_1_ex_instr;
   assign ex_jal = id_ex_reg_1_ex_jal;
   assign ex_jalr = id_ex_reg_1_ex_jalr;
   assign ex_mem_re = id_ex_reg_1_ex_mem_re;
@@ -1312,22 +1638,21 @@ module RV32I_ID_imp_1HJBFQL
   assign ex_rs2[4:0] = id_ex_reg_1_ex_rs2;
   assign ex_rs2_data[31:0] = id_ex_reg_1_ex_rs2_data;
   assign ex_valid = id_ex_reg_1_ex_valid;
-  assign ex_wb_sel[1:0] = id_ex_reg_1_ex_wb_sel;
+  assign ex_wb_sel[2:0] = id_ex_reg_1_ex_wb_sel;
   assign id_pred_next_pc_1 = id_pred_next_pc[31:0];
   assign if_id_reg_0_id_instr_out = instr[31:0];
   assign if_id_reg_0_id_pc4_out = id_pc_plus4[31:0];
   assign if_id_reg_0_id_pc_out = id_pc[31:0];
   assign if_id_reg_0_id_valid_out = id_valid;
-  assign mem_wb_reg_0_wb_rd = rd_addr[4:0];
-  assign mem_we = control_0_mem_we;
   assign proc_sys_reset_0_peripheral_reset = rst;
+  assign rd_addr1_1 = rd_addr1[4:0];
+  assign rd_wdata1_1 = rd_wdata1[31:0];
+  assign rd_we1_1 = rd_we1;
   assign rs1[4:0] = decoder_0_rs1;
   assign rs1_used = decoder_0_rs1_used;
   assign rs2[4:0] = decoder_0_rs2;
   assign rs2_used = decoder_0_rs2_used;
   assign stall1_1 = stall1;
-  assign util_vector_logic_0_Res = rd_we[4:0];
-  assign wb_mux_0_rd_wdata = rd_wdata[31:0];
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_control_0_0 control_0
        (.alu_op(control_0_alu_op),
@@ -1354,6 +1679,7 @@ module RV32I_ID_imp_1HJBFQL
         .fmt(decoder_0_fmt),
         .funct3(decoder_0_funct3),
         .funct7(decoder_0_funct7),
+        .illegal_opcode(decoder_0_illegal_opcode),
         .imm_b(decoder_0_imm_b),
         .imm_i(decoder_0_imm_i),
         .imm_j(decoder_0_imm_j),
@@ -1372,8 +1698,10 @@ module RV32I_ID_imp_1HJBFQL
         .ex_alu_op(id_ex_reg_1_ex_alu_op),
         .ex_branch_en(id_ex_reg_1_ex_branch_en),
         .ex_branch_funct3(id_ex_reg_1_ex_branch_funct3),
+        .ex_illegal_instr(id_ex_reg_1_ex_illegal_instr),
         .ex_imm(id_ex_reg_1_ex_imm),
         .ex_imm_u(id_ex_reg_1_ex_imm_u),
+        .ex_instr(id_ex_reg_1_ex_instr),
         .ex_jal(id_ex_reg_1_ex_jal),
         .ex_jalr(id_ex_reg_1_ex_jalr),
         .ex_mem_re(id_ex_reg_1_ex_mem_re),
@@ -1396,8 +1724,10 @@ module RV32I_ID_imp_1HJBFQL
         .id_alu_op(control_0_alu_op),
         .id_branch_en(control_0_branch_en),
         .id_branch_funct3(control_0_branch_funct3),
+        .id_illegal_instr(decoder_0_illegal_opcode),
         .id_imm(imm_mux_0_imm_out),
         .id_imm_u(decoder_0_imm_u),
+        .id_instr(if_id_reg_0_id_instr_out),
         .id_jal(control_0_jal),
         .id_jalr(control_0_jalr),
         .id_mem_re(control_0_mem_re),
@@ -1429,9 +1759,9 @@ module RV32I_ID_imp_1HJBFQL
         .imm_u(decoder_0_imm_u));
   BASIC_regfile_0_0 regfile_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .rd_addr(mem_wb_reg_0_wb_rd),
-        .rd_wdata(wb_mux_0_rd_wdata),
-        .rd_we(util_vector_logic_0_Res[0]),
+        .rd_addr(rd_addr1_1),
+        .rd_wdata(rd_wdata1_1),
+        .rd_we(rd_we1_1),
         .rs1_addr(decoder_0_rs1),
         .rs1_rdata(regfile_0_rs1_rdata),
         .rs2_addr(decoder_0_rs2),
@@ -1442,6 +1772,7 @@ module RV32I_IF_imp_136QK4M
    (Op1,
     Op2,
     Op3,
+    Op4,
     Res,
     clk,
     flush,
@@ -1454,6 +1785,8 @@ module RV32I_IF_imp_136QK4M
     pc_en,
     pc_redirect_target,
     pc_redirect_valid,
+    priv_redirect_target,
+    priv_redirect_valid,
     rst,
     update_is_control,
     update_pc,
@@ -1463,6 +1796,7 @@ module RV32I_IF_imp_136QK4M
   input [0:0]Op1;
   input [0:0]Op2;
   input [0:0]Op3;
+  input [0:0]Op4;
   output [0:0]Res;
   input clk;
   input flush;
@@ -1475,6 +1809,8 @@ module RV32I_IF_imp_136QK4M
   input pc_en;
   input [31:0]pc_redirect_target;
   input pc_redirect_valid;
+  input [31:0]priv_redirect_target;
+  input priv_redirect_valid;
   input rst;
   input update_is_control;
   input [31:0]update_pc;
@@ -1483,12 +1819,13 @@ module RV32I_IF_imp_136QK4M
   input update_valid1;
 
   wire [0:0]Op3_1;
+  wire [0:0]Op4_1;
   wire [31:0]RV32I_ROM_MEMORY_douta;
-  wire branch_0_ex_flush_req;
   wire [31:0]branch_0_pc_redirect_target;
   wire [31:0]branch_predictor_btb_0_pred_next_pc;
   wire branch_predictor_btb_0_pred_taken;
   wire branch_predictor_btb_0_pred_valid;
+  wire flush_1;
   wire hold_1;
   wire [31:0]if_id_reg_0_id_instr_out;
   wire [31:0]if_id_reg_0_id_pc4_out;
@@ -1502,12 +1839,15 @@ module RV32I_IF_imp_136QK4M
   wire [10:0]pc_to_imem_addr_0_addr;
   wire [31:0]pc_unit_0_pc;
   wire [31:0]pc_unit_0_pc_plus4;
+  wire [31:0]priv_redirect_target_1;
+  wire priv_redirect_valid_1;
   wire proc_sys_reset_0_peripheral_reset;
   wire update_is_control_1;
   wire [31:0]update_pc_1;
   wire update_taken_1;
   wire [31:0]update_target_1;
   wire update_valid1_1;
+  wire [0:0]util_vector_logic_10_Res;
   wire [0:0]util_vector_logic_2_Res;
   wire [0:0]util_vector_logic_3_Res;
   wire [0:0]util_vector_logic_6_Res;
@@ -1518,9 +1858,10 @@ module RV32I_IF_imp_136QK4M
   wire zynq_ultra_ps_e_0_pl_clk0;
 
   assign Op3_1 = Op3[0];
+  assign Op4_1 = Op4[0];
   assign Res[0] = util_vector_logic_2_Res;
-  assign branch_0_ex_flush_req = flush;
   assign branch_0_pc_redirect_target = pc_redirect_target[31:0];
+  assign flush_1 = flush;
   assign hold_1 = hold;
   assign id_instr_out[31:0] = if_id_reg_0_id_instr_out;
   assign id_pc4_out[31:0] = if_id_reg_0_id_pc4_out;
@@ -1531,6 +1872,8 @@ module RV32I_IF_imp_136QK4M
   assign mem_stage_0_mem_out_valid = Op1[0];
   assign pc_en_1 = pc_en;
   assign pc_redirect_valid_1 = pc_redirect_valid;
+  assign priv_redirect_target_1 = priv_redirect_target[31:0];
+  assign priv_redirect_valid_1 = priv_redirect_valid;
   assign proc_sys_reset_0_peripheral_reset = rst;
   assign update_is_control_1 = update_is_control;
   assign update_pc_1 = update_pc[31:0];
@@ -1557,7 +1900,7 @@ module RV32I_IF_imp_136QK4M
         .update_valid(update_valid1_1));
   BASIC_if_id_reg_0_0 if_id_reg_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .flush(branch_0_ex_flush_req),
+        .flush(util_vector_logic_10_Res),
         .hold(util_vector_logic_7_Res),
         .id_instr_out(if_id_reg_0_id_instr_out),
         .id_pc4_out(if_id_reg_0_id_pc4_out),
@@ -1582,7 +1925,13 @@ module RV32I_IF_imp_136QK4M
         .pc_predict_valid(util_vector_logic_6_Res),
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(pc_redirect_valid_1),
+        .priv_redirect_target(priv_redirect_target_1),
+        .priv_redirect_valid(priv_redirect_valid_1),
         .rst(proc_sys_reset_0_peripheral_reset));
+  BASIC_util_vector_logic_7_0 util_vector_logic_10
+       (.Op1(flush_1),
+        .Op2(Op4_1),
+        .Res(util_vector_logic_10_Res));
   BASIC_util_vector_logic_1_0 util_vector_logic_2
        (.Op1(mem_stage_0_mem_out_valid),
         .Op2(mem_stage_0_mem_out_rd_we),
@@ -1665,7 +2014,7 @@ module RV32I_MEM_imp_12Q40FU
   input mem_in_rd_we;
   input [31:0]mem_in_store_data;
   input mem_in_valid;
-  input [1:0]mem_in_wb_sel;
+  input [2:0]mem_in_wb_sel;
   output [4:0]mem_rd;
   output mem_rd_we;
   output [0:0]mem_stall_req;
@@ -1676,7 +2025,7 @@ module RV32I_MEM_imp_12Q40FU
   output [31:0]wb_imm_u;
   output [31:0]wb_pc_plus4;
   output [4:0]wb_rd;
-  output [1:0]wb_sel;
+  output [2:0]wb_sel;
   output wb_valid;
 
   wire dmem_ready_1;
@@ -1690,7 +2039,7 @@ module RV32I_MEM_imp_12Q40FU
   wire ex_mem_reg_1_mem_rd_we;
   wire [31:0]ex_mem_reg_1_mem_store_data;
   wire ex_mem_reg_1_mem_valid;
-  wire [1:0]ex_mem_reg_1_mem_wb_sel;
+  wire [2:0]ex_mem_reg_1_mem_wb_sel;
   wire [31:0]mem_data_1;
   wire mem_in_mem_we_1;
   wire [31:0]mem_stage_0_dmem_addr;
@@ -1706,7 +2055,7 @@ module RV32I_MEM_imp_12Q40FU
   wire [4:0]mem_stage_0_mem_out_rd;
   wire mem_stage_0_mem_out_rd_we;
   wire mem_stage_0_mem_out_valid;
-  wire [1:0]mem_stage_0_mem_out_wb_sel;
+  wire [2:0]mem_stage_0_mem_out_wb_sel;
   wire mem_stage_0_mem_stall_req;
   wire [31:0]mem_wb_reg_0_wb_alu_result;
   wire [31:0]mem_wb_reg_0_wb_data;
@@ -1714,7 +2063,7 @@ module RV32I_MEM_imp_12Q40FU
   wire [31:0]mem_wb_reg_0_wb_pc_plus4;
   wire [4:0]mem_wb_reg_0_wb_rd;
   wire mem_wb_reg_0_wb_rd_we;
-  wire [1:0]mem_wb_reg_0_wb_sel;
+  wire [2:0]mem_wb_reg_0_wb_sel;
   wire mem_wb_reg_0_wb_valid;
   wire proc_sys_reset_0_peripheral_reset;
   wire regfile_we_gen_0_regfile_we;
@@ -1738,7 +2087,7 @@ module RV32I_MEM_imp_12Q40FU
   assign ex_mem_reg_1_mem_rd_we = mem_in_rd_we;
   assign ex_mem_reg_1_mem_store_data = mem_in_store_data[31:0];
   assign ex_mem_reg_1_mem_valid = mem_in_valid;
-  assign ex_mem_reg_1_mem_wb_sel = mem_in_wb_sel[1:0];
+  assign ex_mem_reg_1_mem_wb_sel = mem_in_wb_sel[2:0];
   assign mem_data_1 = mem_data[31:0];
   assign mem_forward_data[31:0] = mem_stage_0_mem_forward_data;
   assign mem_in_mem_we_1 = mem_in_mem_we;
@@ -1752,7 +2101,7 @@ module RV32I_MEM_imp_12Q40FU
   assign wb_imm_u[31:0] = mem_wb_reg_0_wb_imm_u;
   assign wb_pc_plus4[31:0] = mem_wb_reg_0_wb_pc_plus4;
   assign wb_rd[4:0] = mem_wb_reg_0_wb_rd;
-  assign wb_sel[1:0] = mem_wb_reg_0_wb_sel;
+  assign wb_sel[2:0] = mem_wb_reg_0_wb_sel;
   assign wb_valid = mem_wb_reg_0_wb_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_mem_stage_0_0 mem_stage_0
@@ -1898,38 +2247,43 @@ endmodule
 
 module RV32I_WB_imp_98K1CZ
    (alu_y,
+    csr_data,
     imm_u,
     load_data,
     pc_plus4,
-    rd_wdata,
+    rd_wdata1,
     wb_sel);
   input [31:0]alu_y;
+  input [31:0]csr_data;
   input [31:0]imm_u;
   input [31:0]load_data;
   input [31:0]pc_plus4;
-  output [31:0]rd_wdata;
-  input [1:0]wb_sel;
+  output [31:0]rd_wdata1;
+  input [2:0]wb_sel;
 
-  wire [31:0]mem_wb_reg_0_wb_alu_result;
-  wire [31:0]mem_wb_reg_0_wb_data;
-  wire [31:0]mem_wb_reg_0_wb_imm_u;
-  wire [31:0]mem_wb_reg_0_wb_pc_plus4;
-  wire [1:0]mem_wb_reg_0_wb_sel;
+  wire [31:0]alu_y_1;
+  wire [31:0]csr_data_1;
+  wire [31:0]imm_u_1;
+  wire [31:0]load_data_1;
+  wire [31:0]pc_plus4_1;
   wire [31:0]wb_mux_0_rd_wdata;
+  wire [2:0]wb_sel_1;
 
-  assign mem_wb_reg_0_wb_alu_result = alu_y[31:0];
-  assign mem_wb_reg_0_wb_data = load_data[31:0];
-  assign mem_wb_reg_0_wb_imm_u = imm_u[31:0];
-  assign mem_wb_reg_0_wb_pc_plus4 = pc_plus4[31:0];
-  assign mem_wb_reg_0_wb_sel = wb_sel[1:0];
-  assign rd_wdata[31:0] = wb_mux_0_rd_wdata;
+  assign alu_y_1 = alu_y[31:0];
+  assign csr_data_1 = csr_data[31:0];
+  assign imm_u_1 = imm_u[31:0];
+  assign load_data_1 = load_data[31:0];
+  assign pc_plus4_1 = pc_plus4[31:0];
+  assign rd_wdata1[31:0] = wb_mux_0_rd_wdata;
+  assign wb_sel_1 = wb_sel[2:0];
   BASIC_wb_mux_0_0 wb_mux_0
-       (.alu_y(mem_wb_reg_0_wb_alu_result),
-        .imm_u(mem_wb_reg_0_wb_imm_u),
-        .load_data(mem_wb_reg_0_wb_data),
-        .pc_plus4(mem_wb_reg_0_wb_pc_plus4),
+       (.alu_y(alu_y_1),
+        .csr_data(csr_data_1),
+        .imm_u(imm_u_1),
+        .load_data(load_data_1),
+        .pc_plus4(pc_plus4_1),
         .rd_wdata(wb_mux_0_rd_wdata),
-        .wb_sel(mem_wb_reg_0_wb_sel));
+        .wb_sel(wb_sel_1));
 endmodule
 
 module TIMER_imp_1X1AELV
@@ -1939,6 +2293,7 @@ module TIMER_imp_1X1AELV
     rdata,
     ready,
     rst,
+    timer_irq,
     valid,
     wdata,
     we);
@@ -1948,6 +2303,7 @@ module TIMER_imp_1X1AELV
   output [31:0]rdata;
   output ready;
   input rst;
+  output timer_irq;
   input valid;
   input [31:0]wdata;
   input we;
@@ -1960,6 +2316,7 @@ module TIMER_imp_1X1AELV
   wire proc_sys_reset_0_peripheral_reset;
   wire [31:0]timer_0_rdata;
   wire timer_0_ready;
+  wire timer_0_timer_irq;
   wire zynq_ultra_ps_e_0_pl_clk0;
 
   assign MMIO_timer_addr = addr[31:0];
@@ -1970,6 +2327,7 @@ module TIMER_imp_1X1AELV
   assign proc_sys_reset_0_peripheral_reset = rst;
   assign rdata[31:0] = timer_0_rdata;
   assign ready = timer_0_ready;
+  assign timer_irq = timer_0_timer_irq;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   BASIC_timer_0_0 timer_0
        (.addr(MMIO_timer_addr),
@@ -1978,6 +2336,7 @@ module TIMER_imp_1X1AELV
         .rdata(timer_0_rdata),
         .ready(timer_0_ready),
         .rst(proc_sys_reset_0_peripheral_reset),
+        .timer_irq(timer_0_timer_irq),
         .valid(MMIO_timer_valid),
         .wdata(MMIO_timer_wdata),
         .we(MMIO_timer_we));

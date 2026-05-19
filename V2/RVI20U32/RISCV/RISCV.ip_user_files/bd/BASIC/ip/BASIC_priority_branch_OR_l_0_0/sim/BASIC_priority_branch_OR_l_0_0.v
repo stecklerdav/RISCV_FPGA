@@ -59,6 +59,7 @@ module BASIC_priority_branch_OR_l_0_0 (
   load_use_if_id_hold,
   load_use_id_ex_flush,
   ex_flush_req,
+  priv_redirect_valid,
   pc_en_final,
   if_id_hold_final,
   if_id_flush_final,
@@ -69,6 +70,7 @@ input wire load_use_pc_en;
 input wire load_use_if_id_hold;
 input wire load_use_id_ex_flush;
 input wire ex_flush_req;
+input wire priv_redirect_valid;
 output wire pc_en_final;
 output wire if_id_hold_final;
 output wire if_id_flush_final;
@@ -79,6 +81,7 @@ output wire id_ex_flush_final;
     .load_use_if_id_hold(load_use_if_id_hold),
     .load_use_id_ex_flush(load_use_id_ex_flush),
     .ex_flush_req(ex_flush_req),
+    .priv_redirect_valid(priv_redirect_valid),
     .pc_en_final(pc_en_final),
     .if_id_hold_final(if_id_hold_final),
     .if_id_flush_final(if_id_flush_final),

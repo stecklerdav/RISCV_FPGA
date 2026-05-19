@@ -58,12 +58,16 @@ module BASIC_pc_unit_0_0 (
   rst,
   clk,
   pc_en,
+  priv_redirect_valid,
+  priv_redirect_target,
   pc_redirect_valid,
   pc_redirect_target,
   pc_predict_valid,
   pc_predict_next,
   pc,
   pc_plus4,
+  pc_debug_last_priv_redirect,
+  pc_debug_priv_redirect_pulse,
   pc_debug_last_redirect,
   pc_debug_redirect_pulse,
   pc_debug_last_predict,
@@ -77,12 +81,16 @@ input wire rst;
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 input wire pc_en;
+input wire priv_redirect_valid;
+input wire [31 : 0] priv_redirect_target;
 input wire pc_redirect_valid;
 input wire [31 : 0] pc_redirect_target;
 input wire pc_predict_valid;
 input wire [31 : 0] pc_predict_next;
 output wire [31 : 0] pc;
 output wire [31 : 0] pc_plus4;
+output wire [31 : 0] pc_debug_last_priv_redirect;
+output wire pc_debug_priv_redirect_pulse;
 output wire [31 : 0] pc_debug_last_redirect;
 output wire pc_debug_redirect_pulse;
 output wire [31 : 0] pc_debug_last_predict;
@@ -94,12 +102,16 @@ output wire pc_debug_predict_pulse;
     .rst(rst),
     .clk(clk),
     .pc_en(pc_en),
+    .priv_redirect_valid(priv_redirect_valid),
+    .priv_redirect_target(priv_redirect_target),
     .pc_redirect_valid(pc_redirect_valid),
     .pc_redirect_target(pc_redirect_target),
     .pc_predict_valid(pc_predict_valid),
     .pc_predict_next(pc_predict_next),
     .pc(pc),
     .pc_plus4(pc_plus4),
+    .pc_debug_last_priv_redirect(pc_debug_last_priv_redirect),
+    .pc_debug_priv_redirect_pulse(pc_debug_priv_redirect_pulse),
     .pc_debug_last_redirect(pc_debug_last_redirect),
     .pc_debug_redirect_pulse(pc_debug_redirect_pulse),
     .pc_debug_last_predict(pc_debug_last_predict),

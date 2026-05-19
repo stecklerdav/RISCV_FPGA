@@ -112,7 +112,7 @@ input wire mem_in_mem_we;
 input wire [1 : 0] mem_in_mem_size;
 input wire mem_in_mem_unsigned;
 input wire mem_in_rd_we;
-input wire [1 : 0] mem_in_wb_sel;
+input wire [2 : 0] mem_in_wb_sel;
 output wire [31 : 0] dmem_addr;
 output wire dmem_valid;
 output wire dmem_we;
@@ -131,7 +131,7 @@ output wire [4 : 0] mem_out_rd;
 output wire [1 : 0] mem_out_mem_size;
 output wire mem_out_mem_unsigned;
 output wire mem_out_rd_we;
-output wire [1 : 0] mem_out_wb_sel;
+output wire [2 : 0] mem_out_wb_sel;
 output wire [31 : 0] mem_forward_data;
 
   mem_stage inst (

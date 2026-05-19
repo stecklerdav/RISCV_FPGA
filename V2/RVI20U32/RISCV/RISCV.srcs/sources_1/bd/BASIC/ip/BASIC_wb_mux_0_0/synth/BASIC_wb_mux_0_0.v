@@ -61,14 +61,16 @@ module BASIC_wb_mux_0_0 (
   load_data,
   pc_plus4,
   imm_u,
+  csr_data,
   rd_wdata
 );
 
-input wire [1 : 0] wb_sel;
+input wire [2 : 0] wb_sel;
 input wire [31 : 0] alu_y;
 input wire [31 : 0] load_data;
 input wire [31 : 0] pc_plus4;
 input wire [31 : 0] imm_u;
+input wire [31 : 0] csr_data;
 output wire [31 : 0] rd_wdata;
 
   wb_mux inst (
@@ -77,6 +79,7 @@ output wire [31 : 0] rd_wdata;
     .load_data(load_data),
     .pc_plus4(pc_plus4),
     .imm_u(imm_u),
+    .csr_data(csr_data),
     .rd_wdata(rd_wdata)
   );
 endmodule

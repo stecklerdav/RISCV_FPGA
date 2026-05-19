@@ -24,7 +24,7 @@ module ex_mem_reg (
 
     // Control WB
     input  wire        ex_rd_we,
-    input  wire [1:0]  ex_wb_sel,
+    input  wire [2:0]  ex_wb_sel,
 
     // Excepciones
     input  wire        ex_exception_valid,
@@ -49,7 +49,7 @@ module ex_mem_reg (
 
     // Control WB
     output reg         mem_rd_we,
-    output reg  [1:0]  mem_wb_sel,
+    output reg  [2:0]  mem_wb_sel,
 
     // Excepciones
     output reg         mem_exception_valid,
@@ -74,7 +74,7 @@ module ex_mem_reg (
             mem_mem_unsigned    <= 1'b0;
 
             mem_rd_we           <= 1'b0;
-            mem_wb_sel          <= 2'b0;
+            mem_wb_sel          <= 3'b0;
 
             mem_exception_valid <= 1'b0;
             mem_exception_cause <= 4'b0;
@@ -96,7 +96,7 @@ module ex_mem_reg (
             mem_mem_unsigned    <= 1'b0;
 
             mem_rd_we           <= 1'b0;
-            mem_wb_sel          <= 2'b0;
+            mem_wb_sel          <= 3'b0;
 
             mem_exception_valid <= 1'b0;
             mem_exception_cause <= 4'b0;

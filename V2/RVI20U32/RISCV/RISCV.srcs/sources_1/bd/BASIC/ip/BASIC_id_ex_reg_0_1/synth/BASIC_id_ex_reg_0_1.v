@@ -58,6 +58,7 @@
 module BASIC_id_ex_reg_0_1 (
   clk,
   rst,
+  id_instr,
   stall,
   bubble,
   id_valid,
@@ -84,6 +85,7 @@ module BASIC_id_ex_reg_0_1 (
   id_mem_unsigned,
   id_rd_we,
   id_wb_sel,
+  id_illegal_instr,
   ex_valid,
   ex_pc,
   ex_pc_plus4,
@@ -107,6 +109,8 @@ module BASIC_id_ex_reg_0_1 (
   ex_mem_size,
   ex_mem_unsigned,
   ex_rd_we,
+  ex_instr,
+  ex_illegal_instr,
   ex_wb_sel
 );
 
@@ -116,6 +120,7 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire [31 : 0] id_instr;
 input wire stall;
 input wire bubble;
 input wire id_valid;
@@ -141,7 +146,8 @@ input wire id_mem_we;
 input wire [1 : 0] id_mem_size;
 input wire id_mem_unsigned;
 input wire id_rd_we;
-input wire [1 : 0] id_wb_sel;
+input wire [2 : 0] id_wb_sel;
+input wire id_illegal_instr;
 output wire ex_valid;
 output wire [31 : 0] ex_pc;
 output wire [31 : 0] ex_pc_plus4;
@@ -165,11 +171,14 @@ output wire ex_mem_we;
 output wire [1 : 0] ex_mem_size;
 output wire ex_mem_unsigned;
 output wire ex_rd_we;
-output wire [1 : 0] ex_wb_sel;
+output wire [31 : 0] ex_instr;
+output wire ex_illegal_instr;
+output wire [2 : 0] ex_wb_sel;
 
   id_ex_reg inst (
     .clk(clk),
     .rst(rst),
+    .id_instr(id_instr),
     .stall(stall),
     .bubble(bubble),
     .id_valid(id_valid),
@@ -196,6 +205,7 @@ output wire [1 : 0] ex_wb_sel;
     .id_mem_unsigned(id_mem_unsigned),
     .id_rd_we(id_rd_we),
     .id_wb_sel(id_wb_sel),
+    .id_illegal_instr(id_illegal_instr),
     .ex_valid(ex_valid),
     .ex_pc(ex_pc),
     .ex_pc_plus4(ex_pc_plus4),
@@ -219,6 +229,8 @@ output wire [1 : 0] ex_wb_sel;
     .ex_mem_size(ex_mem_size),
     .ex_mem_unsigned(ex_mem_unsigned),
     .ex_rd_we(ex_rd_we),
+    .ex_instr(ex_instr),
+    .ex_illegal_instr(ex_illegal_instr),
     .ex_wb_sel(ex_wb_sel)
   );
 endmodule

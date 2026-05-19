@@ -161,7 +161,7 @@ WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'rd_qos' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3805]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'wr_qos_1' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3818]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 4 for port 'rd_qos_1' [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:3825]
-WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/sim/BASIC.v:159]
+WARNING: [VRFC 10-5021] port 'mb_reset' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/sim/BASIC.v:213]
 WARNING: [VRFC 10-5021] port 'PSS_ALTO_CORE_PAD_CLK' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.ip_user_files/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/sim/BASIC_zynq_ultra_ps_e_0_0_vip_wrapper.v:211]
 WARNING: [VRFC 10-3283] element index 4096 into 'wrp_strb' is out of bounds [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:6968]
 WARNING: [VRFC 10-3705] select index 2 into 'wr_fifo_rd_ptr' is out of bounds [/wrk/2020.1/nightly/2020_05_27_2902540/packages/customer/vivado/data/ip/xilinx/zynq_ultra_ps_e_vip_v1_0/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv:7181]
@@ -237,11 +237,12 @@ Compiling module xil_defaultlib.pc_to_imem_addr(ADDR_W=11)
 Compiling module xil_defaultlib.BASIC_pc_to_imem_addr_0_0
 Compiling module xil_defaultlib.pc_unit
 Compiling module xil_defaultlib.BASIC_pc_unit_0_0
+Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
+Compiling module xil_defaultlib.BASIC_util_vector_logic_7_0
 Compiling module xil_defaultlib.BASIC_util_vector_logic_1_0
 Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
 Compiling module xil_defaultlib.BASIC_util_vector_logic_2_1
 Compiling module xil_defaultlib.BASIC_util_vector_logic_3_0
-Compiling module util_vector_logic_v2_0_1.util_vector_logic_v2_0_1_util_ve...
 Compiling module xil_defaultlib.BASIC_util_vector_logic_6_0
 Compiling module xil_defaultlib.BASIC_util_vector_logic_6_1
 Compiling module xil_defaultlib.BASIC_util_vector_logic_8_0
@@ -271,13 +272,28 @@ Compiling module xil_defaultlib.mem_bus_registered
 Compiling module xil_defaultlib.BASIC_mem_bus_registered_0_0
 Compiling module xil_defaultlib.BASIC_util_vector_logic_2_2
 Compiling module xil_defaultlib.MMIO_imp_LNKWBU
+Compiling module xil_defaultlib.csr_access_unit
+Compiling module xil_defaultlib.BASIC_csr_access_unit_0_0
+Compiling module xil_defaultlib.csr_file
+Compiling module xil_defaultlib.BASIC_csr_file_0_0
+Compiling module xil_defaultlib.csr_regfile_wb_mux
+Compiling module xil_defaultlib.BASIC_csr_regfile_wb_mux_0_0
+Compiling module xil_defaultlib.privileged_pc_redirect_mux
+Compiling module xil_defaultlib.BASIC_privileged_pc_redire_0_0
+Compiling module xil_defaultlib.system_decoder
+Compiling module xil_defaultlib.BASIC_system_decoder_0_0
+Compiling module xil_defaultlib.trap_controller
+Compiling module xil_defaultlib.BASIC_trap_controller_0_0
+Compiling module xil_defaultlib.BASIC_util_vector_logic_10_1
+Compiling module xil_defaultlib.BASIC_util_vector_logic_10_2
+Compiling module xil_defaultlib.PRIVILEGED_imp_TDUXP9
 Compiling module xil_defaultlib.ram_data(WORDS=1024)
 Compiling module xil_defaultlib.BASIC_ram_data_1_0
 Compiling module xil_defaultlib.RV32I_RAM_MEMORY_imp_1A3BT4W
 Compiling module xil_defaultlib.timer(RESET_CMP=32'b011000011010...
 Compiling module xil_defaultlib.BASIC_timer_0_0
 Compiling module xil_defaultlib.TIMER_imp_1X1AELV
-Compiling module xil_defaultlib.uart_tx(CLK_FREQ=200000000,BAUD=...
+Compiling module xil_defaultlib.uart_tx(CLK_FREQ=200000000)
 Compiling module xil_defaultlib.BASIC_uart_tx_0_0
 Compiling module xil_defaultlib.UART_imp_OI5LS
 Compiling architecture fdre_v of entity unisim.FDRE [fdre_default]

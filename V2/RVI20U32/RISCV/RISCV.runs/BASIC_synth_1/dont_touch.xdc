@@ -157,6 +157,33 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vect
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_8_0/BASIC_util_vector_logic_8_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_8_0 || ORIG_REF_NAME==BASIC_util_vector_logic_8_0} -quiet] -quiet
 
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_trap_controller_0_0/BASIC_trap_controller_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_trap_controller_0_0 || ORIG_REF_NAME==BASIC_trap_controller_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_system_decoder_0_0/BASIC_system_decoder_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_system_decoder_0_0 || ORIG_REF_NAME==BASIC_system_decoder_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_csr_file_0_0/BASIC_csr_file_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_csr_file_0_0 || ORIG_REF_NAME==BASIC_csr_file_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_privileged_pc_redire_0_0/BASIC_privileged_pc_redire_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_privileged_pc_redire_0_0 || ORIG_REF_NAME==BASIC_privileged_pc_redire_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_7_0/BASIC_util_vector_logic_7_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_7_0 || ORIG_REF_NAME==BASIC_util_vector_logic_7_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_csr_access_unit_0_0/BASIC_csr_access_unit_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_csr_access_unit_0_0 || ORIG_REF_NAME==BASIC_csr_access_unit_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_csr_regfile_wb_mux_0_0/BASIC_csr_regfile_wb_mux_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_csr_regfile_wb_mux_0_0 || ORIG_REF_NAME==BASIC_csr_regfile_wb_mux_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_10_1/BASIC_util_vector_logic_10_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_10_1 || ORIG_REF_NAME==BASIC_util_vector_logic_10_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_10_2/BASIC_util_vector_logic_10_2.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_10_2 || ORIG_REF_NAME==BASIC_util_vector_logic_10_2} -quiet] -quiet
+
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0.xdc
@@ -339,6 +366,33 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_8_0/BASIC_util_vector_logic_8_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_8_0 || ORIG_REF_NAME==BASIC_util_vector_logic_8_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_trap_controller_0_0/BASIC_trap_controller_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_trap_controller_0_0 || ORIG_REF_NAME==BASIC_trap_controller_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_system_decoder_0_0/BASIC_system_decoder_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_system_decoder_0_0 || ORIG_REF_NAME==BASIC_system_decoder_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_csr_file_0_0/BASIC_csr_file_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_csr_file_0_0 || ORIG_REF_NAME==BASIC_csr_file_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_privileged_pc_redire_0_0/BASIC_privileged_pc_redire_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_privileged_pc_redire_0_0 || ORIG_REF_NAME==BASIC_privileged_pc_redire_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_7_0/BASIC_util_vector_logic_7_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_7_0 || ORIG_REF_NAME==BASIC_util_vector_logic_7_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_csr_access_unit_0_0/BASIC_csr_access_unit_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_csr_access_unit_0_0 || ORIG_REF_NAME==BASIC_csr_access_unit_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_csr_regfile_wb_mux_0_0/BASIC_csr_regfile_wb_mux_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_csr_regfile_wb_mux_0_0 || ORIG_REF_NAME==BASIC_csr_regfile_wb_mux_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_10_1/BASIC_util_vector_logic_10_1.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_10_1 || ORIG_REF_NAME==BASIC_util_vector_logic_10_1} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_util_vector_logic_10_2/BASIC_util_vector_logic_10_2.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_util_vector_logic_10_2 || ORIG_REF_NAME==BASIC_util_vector_logic_10_2} -quiet] -quiet
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_zynq_ultra_ps_e_0_0/BASIC_zynq_ultra_ps_e_0_0_ooc.xdc
 

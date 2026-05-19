@@ -96,7 +96,7 @@ module BASIC_ex_mem_reg_1_0 (
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
 input wire stall;
@@ -113,7 +113,7 @@ input wire ex_mem_we;
 input wire [1 : 0] ex_mem_size;
 input wire ex_mem_unsigned;
 input wire ex_rd_we;
-input wire [1 : 0] ex_wb_sel;
+input wire [2 : 0] ex_wb_sel;
 input wire ex_exception_valid;
 input wire [3 : 0] ex_exception_cause;
 input wire [31 : 0] ex_exception_tval;
@@ -129,7 +129,7 @@ output wire mem_mem_we;
 output wire [1 : 0] mem_mem_size;
 output wire mem_mem_unsigned;
 output wire mem_rd_we;
-output wire [1 : 0] mem_wb_sel;
+output wire [2 : 0] mem_wb_sel;
 output wire mem_exception_valid;
 output wire [3 : 0] mem_exception_cause;
 output wire [31 : 0] mem_exception_tval;

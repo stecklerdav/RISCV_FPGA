@@ -20,7 +20,7 @@ module mem_stage (
     input  wire        mem_in_mem_unsigned,
 
     input  wire        mem_in_rd_we,
-    input  wire [1:0]  mem_in_wb_sel,
+    input  wire [2:0]  mem_in_wb_sel,
 
     output reg  [31:0] dmem_addr,
     output reg         dmem_valid,
@@ -45,7 +45,7 @@ module mem_stage (
     output reg         mem_out_mem_unsigned,
 
     output reg         mem_out_rd_we,
-    output reg  [1:0]  mem_out_wb_sel,
+    output reg  [2:0]  mem_out_wb_sel,
 
     output reg  [31:0] mem_forward_data
 );
@@ -54,10 +54,12 @@ module mem_stage (
     localparam [1:0] SZ_H = 2'b01;
     localparam [1:0] SZ_W = 2'b10;
 
-    localparam [1:0] WB_ALU   = 2'd0;
-    localparam [1:0] WB_MEM   = 2'd1;
-    localparam [1:0] WB_PC4   = 2'd2;
-    localparam [1:0] WB_IMM_U = 2'd3;
+    localparam [2:0] WB_ALU = 3'd0;
+    localparam [2:0] WB_MEM = 3'd1;
+    localparam [2:0] WB_PC4 = 3'd2;
+    localparam [2:0] WB_IMM = 3'd3;
+    localparam [2:0] WB_CSR = 3'd4;
+
 
     wire mem_req_valid;
     assign mem_req_valid = mem_in_valid && !kill && (mem_in_mem_re || mem_in_mem_we);
@@ -138,7 +140,7 @@ module mem_stage (
     reg        mem_q_mem_sign_ext;
     reg        mem_q_mem_re;
     reg        mem_q_rd_we;
-    reg [1:0]  mem_q_wb_sel;
+    reg [2:0]  mem_q_wb_sel;
 
     always @(posedge clk) begin
         if (rst) begin
@@ -234,7 +236,7 @@ module mem_stage (
             WB_ALU:   mem_forward_data = mem_q_alu_result;
             WB_MEM:   mem_forward_data = load_data_aligned;
             WB_PC4:   mem_forward_data = mem_q_pc_plus4;
-            WB_IMM_U: mem_forward_data = mem_q_imm_u;
+            WB_IMM: mem_forward_data = mem_q_imm_u;
             default:  mem_forward_data = mem_q_alu_result;
         endcase
     end

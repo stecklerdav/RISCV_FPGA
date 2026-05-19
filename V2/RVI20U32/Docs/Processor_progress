@@ -1,6 +1,14 @@
 
 
 
+
+19/05/2026
+
+* RV32I privileged mode: traps, CSRs, MRET redirect and pipeline flush.  -march=rv32izicsr
+
+
+
+
 16/05/2026
 
 * se incluyo wait-states a la interfaz RISCV Core -> MMIO para tener la capacidad de esperar memorias y perifericos N ciclos. 

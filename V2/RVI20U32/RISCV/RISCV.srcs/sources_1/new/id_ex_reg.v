@@ -3,6 +3,8 @@
 module id_ex_reg (
     input  wire        clk,
     input  wire        rst,
+    input  wire [31:0] id_instr,
+
 
     // ------------------------------------------------------------
     // Control pipeline
@@ -53,7 +55,8 @@ module id_ex_reg (
 
     // Control WB
     input  wire        id_rd_we,
-    input  wire [1:0]  id_wb_sel,
+    input  wire [2:0]  id_wb_sel,
+    input  wire        id_illegal_instr,
 
     // ------------------------------------------------------------
     // Salida hacia EX
@@ -94,7 +97,9 @@ module id_ex_reg (
 
     // Control WB
     output reg         ex_rd_we,
-    output reg  [1:0]  ex_wb_sel
+    output reg  [31:0] ex_instr,
+    output reg         ex_illegal_instr,
+    output reg  [2:0]  ex_wb_sel
 );
 
     always @(posedge clk) begin
@@ -126,7 +131,9 @@ module id_ex_reg (
             ex_mem_unsigned  <= 1'b0;
 
             ex_rd_we         <= 1'b0;
-            ex_wb_sel        <= 2'b0;
+            ex_wb_sel        <= 3'b0;
+            ex_illegal_instr <= 1'b0;
+            ex_instr         <= 32'h0000_0013; // NOP
         end
         else if (bubble) begin
             ex_valid         <= 1'b0;
@@ -156,7 +163,9 @@ module id_ex_reg (
             ex_mem_unsigned  <= 1'b0;
 
             ex_rd_we         <= 1'b0;
-            ex_wb_sel        <= 2'b0;
+            ex_wb_sel        <= 3'b0;
+            ex_illegal_instr <= 1'b0;
+            ex_instr         <= 32'h0000_0013; // NOP
         end
         else if (!stall) begin
             ex_valid         <= id_valid;
@@ -187,6 +196,8 @@ module id_ex_reg (
 
             ex_rd_we         <= id_rd_we;
             ex_wb_sel        <= id_wb_sel;
+            ex_illegal_instr <= id_illegal_instr;
+            ex_instr         <= id_instr;
         end
     end
 

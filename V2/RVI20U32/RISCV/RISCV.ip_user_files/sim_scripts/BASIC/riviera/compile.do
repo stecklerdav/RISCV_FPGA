@@ -143,6 +143,15 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+../../../../RISCV.srcs/sources_1/bd/BA
 "../../../bd/BASIC/ip/BASIC_xlconstant_3_3/sim/BASIC_xlconstant_3_3.v" \
 "../../../bd/BASIC/ip/BASIC_util_vector_logic_6_1/sim/BASIC_util_vector_logic_6_1.v" \
 "../../../bd/BASIC/ip/BASIC_util_vector_logic_8_0/sim/BASIC_util_vector_logic_8_0.v" \
+"../../../bd/BASIC/ip/BASIC_trap_controller_0_0/sim/BASIC_trap_controller_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_system_decoder_0_0/sim/BASIC_system_decoder_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_csr_file_0_0/sim/BASIC_csr_file_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_privileged_pc_redire_0_0/sim/BASIC_privileged_pc_redire_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_util_vector_logic_7_0/sim/BASIC_util_vector_logic_7_0.v" \
+"../../../bd/BASIC/ip/BASIC_csr_access_unit_0_0/sim/BASIC_csr_access_unit_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_csr_regfile_wb_mux_0_0/sim/BASIC_csr_regfile_wb_mux_0_0.v" \
+"../../../bd/BASIC/ip/BASIC_util_vector_logic_10_1/sim/BASIC_util_vector_logic_10_1.v" \
+"../../../bd/BASIC/ip/BASIC_util_vector_logic_10_2/sim/BASIC_util_vector_logic_10_2.v" \
 "../../../bd/BASIC/sim/BASIC.v" \
 
 vlog -work xil_defaultlib \

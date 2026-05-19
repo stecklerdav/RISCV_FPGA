@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon May 18 10:12:17 2026" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue May 19 00:21:58 2026" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="BASIC" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
 
@@ -177,7 +177,7 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
           </CONNECTIONS>
@@ -252,7 +252,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="ex_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_wb_sel">
+        <PORT DIR="I" LEFT="2" NAME="ex_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_wb_sel"/>
           </CONNECTIONS>
@@ -336,7 +336,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_logic_1" PORT="Op2"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_1_mem_wb_sel">
+        <PORT DIR="O" LEFT="2" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_1_mem_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_wb_sel"/>
           </CONNECTIONS>
@@ -383,6 +383,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" PORT="rs1_data"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_rs1_data"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="rs1_data"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -701,7 +702,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="id_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_wb_sel">
+        <PORT DIR="O" LEFT="2" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="id_wb_sel"/>
           </CONNECTIONS>
@@ -832,7 +833,11 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_j"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="illegal_opcode" SIGIS="undef"/>
+        <PORT DIR="O" NAME="illegal_opcode" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_illegal_opcode">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="id_illegal_instr"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="4" NAME="rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rd">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="id_rd"/>
@@ -880,6 +885,11 @@
         <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_instr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_instr_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_instr_out"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
@@ -1007,24 +1017,32 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="id_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_wb_sel">
+        <PORT DIR="I" LEFT="2" NAME="id_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="wb_sel"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="id_illegal_instr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_illegal_opcode">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="illegal_opcode"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="ex_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_valid">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="ex_valid"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="ex_valid"/>
             <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="id_ex_valid"/>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="instr_valid"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="ex_valid"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="ex_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_pc">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" PORT="pc"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="ex_pc"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_pc"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="ex_pc"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="update_pc"/>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="current_pc"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="ex_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_pc_plus4">
@@ -1137,7 +1155,17 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="ex_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="ex_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_wb_sel">
+        <PORT DIR="O" LEFT="31" NAME="ex_instr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_instr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="instr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_illegal_instr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_illegal_instr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_util_vector_logic_10" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="ex_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="ex_wb_sel"/>
           </CONNECTIONS>
@@ -1222,19 +1250,19 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="id_rs2_data"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
+        <PORT DIR="I" NAME="rd_we" SIGIS="undef" SIGNAME="PRIVILEGED_csr_regfile_wb_mux_0_final_we">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="regfile_we"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="final_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="4" NAME="rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+        <PORT DIR="I" LEFT="4" NAME="rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_regfile_wb_mux_0_final_rd">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="final_rd"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+        <PORT DIR="I" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_regfile_wb_mux_0_final_wdata">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="final_wdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -1470,8 +1498,8 @@
         <PORT DIR="O" LEFT="31" NAME="pred_target" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="pred_next_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_next_pc">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_predict_next"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_pred_next_pc_in"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_predict_next"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="update_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_valid">
@@ -1544,9 +1572,9 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="pred_next_pc"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_flush_final">
+        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_logic_10_Res">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="if_id_flush_final"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_10" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="hold" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_logic_7_Res">
@@ -1566,6 +1594,7 @@
         </PORT>
         <PORT DIR="O" LEFT="31" NAME="id_instr_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_instr_out">
           <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="id_instr"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="instr"/>
           </CONNECTIONS>
         </PORT>
@@ -1627,6 +1656,16 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_8" PORT="Res"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="priv_redirect_valid" SIGIS="undef" SIGNAME="PRIVILEGED_privileged_pc_redire_0_priv_redirect_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="priv_redirect_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="priv_redirect_target" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_privileged_pc_redire_0_priv_redirect_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="priv_redirect_target"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="I" NAME="pc_redirect_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_pc_redirect_valid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="pc_redirect_valid"/>
@@ -1659,10 +1698,40 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_pc4_in"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_debug_last_priv_redirect" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="pc_debug_priv_redirect_pulse" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="pc_debug_last_redirect" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="pc_debug_redirect_pulse" SIGIS="undef"/>
         <PORT DIR="O" LEFT="31" NAME="pc_debug_last_predict" RIGHT="0" SIGIS="undef"/>
         <PORT DIR="O" NAME="pc_debug_predict_pulse" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/util_vector_logic_10" HWVERSION="2.0" INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_10" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="or"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_util_vector_logic_7_0"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_orgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_flush_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="if_id_flush_final"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_flush">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="trap_flush"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_logic_10_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="flush"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -1924,7 +1993,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="mem_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="mem_in_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_1_mem_wb_sel">
+        <PORT DIR="I" LEFT="2" NAME="mem_in_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_1_mem_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="mem_wb_sel"/>
           </CONNECTIONS>
@@ -1972,6 +2041,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_9" PORT="Op1"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="stall"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg_1" PORT="stall"/>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="mem_stall_req"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="mem_out_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_valid">
@@ -2015,7 +2085,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="mem_out_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_wb_sel">
+        <PORT DIR="O" LEFT="2" NAME="mem_out_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_wb_sel"/>
           </CONNECTIONS>
@@ -2042,7 +2112,7 @@
             <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
           <CONNECTIONS>
             <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
           </CONNECTIONS>
@@ -2092,7 +2162,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="1" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_wb_sel">
+        <PORT DIR="I" LEFT="2" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_wb_sel"/>
           </CONNECTIONS>
@@ -2127,7 +2197,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_rd"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe2"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_addr"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="normal_rd"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="wb_rd"/>
           </CONNECTIONS>
         </PORT>
@@ -2136,7 +2206,7 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="wb_rd_we"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="1" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_sel">
+        <PORT DIR="O" LEFT="2" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="wb_sel"/>
           </CONNECTIONS>
@@ -2170,7 +2240,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_rd_we"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe1"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_we"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="normal_we"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2187,10 +2257,10 @@
       <PORTS>
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_xlconstant_3_dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="kill"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="stall"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="stall"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="flush"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="stall"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="kill"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -2203,7 +2273,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="1" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_sel">
+        <PORT DIR="I" LEFT="2" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_sel">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_sel"/>
           </CONNECTIONS>
@@ -2228,13 +2298,18 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_imm_u"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_data" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rd_data"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="mem_wb_data"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="mem_wb_data"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="mem_wb_data"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe3"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_wdata"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="normal_wdata"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -5510,6 +5585,11 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_flush_req"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="I" NAME="priv_redirect_valid" SIGIS="undef" SIGNAME="PRIVILEGED_privileged_pc_redire_0_priv_redirect_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="priv_redirect_valid"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" NAME="pc_en_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_pc_en_final">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_8" PORT="Op1"/>
@@ -5522,7 +5602,7 @@
         </PORT>
         <PORT DIR="O" NAME="if_id_flush_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_flush_final">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="flush"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_10" PORT="Op1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="id_ex_flush_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_id_ex_flush_final">
@@ -5832,6 +5912,497 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/csr_access_unit_0" HWVERSION="1.0" INSTANCE="PRIVILEGED_csr_access_unit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="csr_access_unit" VLNV="xilinx.com:module_ref:csr_access_unit:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_csr_access_unit_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="ex_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="is_csrrw" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_csrrw">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="is_csrrw"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="is_csrrs" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_csrrs">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="is_csrrs"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="is_csrrc" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_csrrc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="is_csrrc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="csr_rs1" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_csr_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="csr_rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="csr_rd" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_csr_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="csr_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="rs1_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_0_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="csr_we" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="csr_rd_we" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="csr_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="csr_rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="csr_rd_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_rd_data" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="csr_data"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" PORT="csr_rd_data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/csr_file_0" HWVERSION="1.0" INSTANCE="PRIVILEGED_csr_file_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="csr_file" VLNV="xilinx.com:module_ref:csr_file:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_csr_file_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="csr_we" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="11" NAME="csr_addr" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_csr_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="csr_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_rdata" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="trap_enter" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_enter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="trap_enter"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="trap_mepc" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_mepc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="trap_mepc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="trap_mcause" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_mcause">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="trap_mcause"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mret" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_mret_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="mret_taken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="timer_irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="TIMER_timer_0_timer_irq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="timer_irq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_mstatus" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mstatus">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="csr_mstatus"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_mtvec" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mtvec">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="csr_mtvec"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_mepc" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mepc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="csr_mepc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_mcause" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="csr_mie" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mie">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="csr_mie"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="csr_mip" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mip">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="csr_mip"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/csr_regfile_wb_mux_0" HWVERSION="1.0" INSTANCE="PRIVILEGED_csr_regfile_wb_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="csr_regfile_wb_mux" VLNV="xilinx.com:module_ref:csr_regfile_wb_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_csr_regfile_wb_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="normal_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="regfile_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="normal_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="normal_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="csr_rd_we" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="csr_rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rd_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_rd_data" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_access_unit_0_csr_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rd_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="final_we" SIGIS="undef" SIGNAME="PRIVILEGED_csr_regfile_wb_mux_0_final_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="final_rd" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_regfile_wb_mux_0_final_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="final_wdata" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_regfile_wb_mux_0_final_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/privileged_pc_redire_0" HWVERSION="1.0" INSTANCE="PRIVILEGED_privileged_pc_redire_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="privileged_pc_redirect_mux" VLNV="xilinx.com:module_ref:privileged_pc_redirect_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_privileged_pc_redire_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="trap_enter" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_enter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="trap_enter"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="trap_target" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="trap_target"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mret_taken" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_mret_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="mret_taken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mret_target" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_mret_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="mret_target"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="priv_redirect_valid" SIGIS="undef" SIGNAME="PRIVILEGED_privileged_pc_redire_0_priv_redirect_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="priv_redirect_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="priv_redirect_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="priv_redirect_target" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_privileged_pc_redire_0_priv_redirect_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="priv_redirect_target"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/system_decoder_0" HWVERSION="1.0" INSTANCE="PRIVILEGED_system_decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="system_decoder" VLNV="xilinx.com:module_ref:system_decoder:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_system_decoder_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="instr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_instr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_instr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="is_system" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_system">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_util_vector_logic_11" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="is_ecall" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_ecall">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="ecall"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="is_mret" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_mret">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="mret"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="is_csrrw" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_csrrw">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="is_csrrw"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="is_csrrs" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_csrrs">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="is_csrrs"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="is_csrrc" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_csrrc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="is_csrrc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="11" NAME="csr_addr" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_csr_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="csr_rs1" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_csr_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="csr_rd" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_csr_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_access_unit_0" PORT="csr_rd"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/trap_controller_0" HWVERSION="1.0" INSTANCE="PRIVILEGED_trap_controller_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="trap_controller" VLNV="xilinx.com:module_ref:trap_controller:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_trap_controller_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="199998001" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="zynq_ultra_ps_e_0_pl_clk0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="zynq_ultra_ps_e_0" PORT="pl_clk0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="util_vector_logic_2_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="util_vector_logic_2" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="instr_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="current_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ecall" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_ecall">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="is_ecall"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="illegal_instr" SIGIS="undef" SIGNAME="PRIVILEGED_util_vector_logic_10_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_util_vector_logic_10" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mret" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_mret">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="is_mret"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="timer_irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="TIMER_timer_0_timer_irq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="timer_irq"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_mstatus" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mstatus">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_mstatus"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_mtvec" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mtvec">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_mtvec"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_mepc" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mepc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_mepc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_mie" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mie">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_mie"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="csr_mip" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_csr_file_0_csr_mip">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="csr_mip"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_stall_req" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="trap_enter" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_enter">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="trap_enter"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="trap_enter"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="trap_flush" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_flush">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_logic_10" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="trap_target" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="trap_target"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="trap_mepc" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_mepc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="trap_mepc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="trap_mcause" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_trap_mcause">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="trap_mcause"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mret_taken" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_mret_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="mret_taken"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="mret"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mret_target" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_trap_controller_0_mret_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_privileged_pc_redire_0" PORT="mret_target"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/util_vector_logic_10" HWVERSION="2.0" INSTANCE="PRIVILEGED_util_vector_logic_10" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="and"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_util_vector_logic_10_1"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_andgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_1_ex_illegal_instr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="ex_illegal_instr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_util_vector_logic_11_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_util_vector_logic_11" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_util_vector_logic_10_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="illegal_instr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/PRIVILEGED/util_vector_logic_11" HWVERSION="2.0" INSTANCE="PRIVILEGED_util_vector_logic_11" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_logic" VLNV="xilinx.com:ip:util_vector_logic:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="C_OPERATION" VALUE="not"/>
+        <PARAMETER NAME="C_SIZE" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="BASIC_util_vector_logic_10_2"/>
+        <PARAMETER NAME="LOGO_FILE" VALUE="data/sym_notgate.png"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_system_decoder_0_is_system">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_system_decoder_0" PORT="is_system"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="PRIVILEGED_util_vector_logic_11_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_util_vector_logic_10" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE COREREVISION="1" FULLNAME="/RV32I_RAM_MEMORY/ram_data_1" HWVERSION="1.0" INSTANCE="RV32I_RAM_MEMORY_ram_data_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ram_data" VLNV="xilinx.com:module_ref:ram_data:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
@@ -5943,7 +6514,12 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="error" SIGIS="undef"/>
-        <PORT DIR="O" NAME="timer_irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
+        <PORT DIR="O" NAME="timer_irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="TIMER_timer_0_timer_irq">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="timer_irq"/>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="timer_irq"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
@@ -6095,13 +6671,15 @@
             <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="probe0"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="rst"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="rst"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="rst"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="rst"/>
             <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data_1" PORT="rst"/>
             <CONNECTION INSTANCE="GPIO_gpio_0" PORT="rst"/>
             <CONNECTION INSTANCE="UART_uart_tx_0" PORT="rst"/>
             <CONNECTION INSTANCE="TIMER_timer_0" PORT="rst"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="rst"/>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="rst"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -8892,14 +9470,16 @@
             <CONNECTION INSTANCE="Core_RV32I_ila_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_RV32I_ROM_MEMORY_blk_mem_gen_0" PORT="clka"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="clk"/>
-            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="clk"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="clk"/>
             <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg_1" PORT="clk"/>
             <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data_1" PORT="clk"/>
             <CONNECTION INSTANCE="GPIO_gpio_0" PORT="clk"/>
             <CONNECTION INSTANCE="UART_uart_tx_0" PORT="clk"/>
             <CONNECTION INSTANCE="TIMER_timer_0" PORT="clk"/>
+            <CONNECTION INSTANCE="PRIVILEGED_csr_file_0" PORT="clk"/>
+            <CONNECTION INSTANCE="PRIVILEGED_trap_controller_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="149998505" DIR="O" NAME="pl_clk1" SIGIS="clk"/>
