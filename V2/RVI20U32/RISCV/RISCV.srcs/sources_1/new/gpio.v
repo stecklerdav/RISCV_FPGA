@@ -49,17 +49,19 @@ module gpio (
         end
     end
 
-    // READ
-    always @(*) begin
-        rdata = 32'h0000_0000;
-
-        if (valid && !we) begin
-            case (reg_addr)
-                4'h0: rdata = {24'b0, gpio_out}; // GPIO_OUT
-                4'h4: rdata = {24'b0, gpio_in};  // GPIO_IN
-                4'h8: rdata = {24'b0, gpio_dir}; // GPIO_DIR
-                default: rdata = 32'h0000_0000;
-            endcase
+    // READ REGISTRADO
+    always @(posedge clk) begin
+        if (rst) begin
+            rdata <= 32'h0000_0000;
+        end else begin
+            if (valid && !we) begin
+                case (reg_addr)
+                    4'h0: rdata <= {24'b0, gpio_out}; // GPIO_OUT
+                    4'h4: rdata <= {24'b0, gpio_in};  // GPIO_IN
+                    4'h8: rdata <= {24'b0, gpio_dir}; // GPIO_DIR
+                    default: rdata <= 32'h0000_0000;
+                endcase
+            end
         end
     end
 

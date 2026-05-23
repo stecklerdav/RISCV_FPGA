@@ -4,7 +4,7 @@
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.        -->
 
 <hwsession version="1" minor="2">
-  <device name="xczu5_0" gui_info="dashboard1=hw_ila_1[xczu5_0/hw_ila_1/Trigger Setup=ILA_TRIGGER_1;xczu5_0/hw_ila_1/Status=ILA_STATUS_1;xczu5_0/hw_ila_1/Settings=ILA_SETTINGS_1;xczu5_0/hw_ila_1/Capture Setup=ILA_CAPTURE_1;],dashboard2=dashboard_1[xczu5_0/hw_ila_1/Trigger Setup=ILA_TRIGGER_1;xczu5_0/hw_ila_1/Waveform=ILA_WAVE_1;xczu5_0/hw_vio_1=VIO_PROBES_1;xczu5_0/hw_ila_1/Status=ILA_STATUS_1;xczu5_0/hw_ila_1/Settings=ILA_SETTINGS_1;xczu5_0/hw_ila_1/Capture Setup=ILA_CAPTURE_1;]"/>
+  <device name="xczu5_0" gui_info="dashboard1=hw_vios[xczu5_0/hw_vio_1=VIO_PROBES_1;]"/>
   <ObjectList object_type="hw_device" gui_info="">
     <Object name="xczu5_0" gui_info="">
       <Properties Property="FULL_PROBES.FILE" value="$_project_name_.runs/impl_1/BASIC_wrapper.ltx"/>
@@ -25,7 +25,10 @@
   </ObjectList>
   <ObjectList object_type="hw_probe" gui_info="">
     <Object name="BASIC_i/proc_sys_reset_0_peripheral_reset" gui_info="Trigger Setup=0"/>
-    <Object name="BASIC_i/vio_0_probe_out0" gui_info="dashboard_1/hw_vio_1=0_exp"/>
+    <Object name="BASIC_i/vio_0_probe_out0" gui_info="dashboard_1/hw_vio_1=0_exp,hw_vios/hw_vio_1=0"/>
+  </ObjectList>
+  <ObjectList object_type="hw_vio" gui_info="">
+    <Object name="hw_vio_1" gui_info="hw_vios/hw_vio_1/TablePreference=5	508	Name	0	2147483647	15	208	208	Value	1	2147483647	15	75	75	Activity	2	2147483647	15	71	71	Direction	3	2147483647	15	84	84	VIO	4	2147483647	15	70	70			1	6	1	Name	Value	Activity	Direction	VIO"/>
   </ObjectList>
   <probeset name="hw project" active="false">
     <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
@@ -49,7 +52,7 @@
         <net name="BASIC_i/load_use_detection_0_load_use_hazard"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq5&apos;hXX"/>
         <Option Id="COMPARE_VALUE.0" value="eq5&apos;hXX"/>
@@ -116,7 +119,7 @@
         <net name="BASIC_i/util_vector_logic_0_Res"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq5&apos;hXX"/>
         <Option Id="COMPARE_VALUE.0" value="eq5&apos;hXX"/>
@@ -141,7 +144,7 @@
         <net name="BASIC_i/util_vector_logic_0_Res[0]"/>
       </nets>
     </probe>
-    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
       <probeOptions Id="DebugProbeParams">
         <Option Id="CAPTURE_COMPARE_VALUE" value="eq32&apos;hXXXX_XXXX"/>
         <Option Id="COMPARE_VALUE.0" value="eq32&apos;hXXXX_XXXX"/>
@@ -191,6 +194,21 @@
         <net name="BASIC_i/wb_mux_0_rd_wdata[2]"/>
         <net name="BASIC_i/wb_mux_0_rd_wdata[1]"/>
         <net name="BASIC_i/wb_mux_0_rd_wdata[0]"/>
+      </nets>
+    </probe>
+    <probe type="vio_output" busType="bus" source="netlist" spec="VIO_OUTPUT_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="DISPLAY_HINT" value=""/>
+        <Option Id="DISPLAY_VISIBILITY" value=""/>
+        <Option Id="HW_VIO" value="hw_vio_1"/>
+        <Option Id="NAME.CUSTOM" value=""/>
+        <Option Id="NAME.SELECT" value="Long"/>
+        <Option Id="OUTPUT_VALUE" value="0"/>
+        <Option Id="OUTPUT_VALUE_RADIX" value="BINARY"/>
+        <Option Id="SOURCE" value="netlist"/>
+      </probeOptions>
+      <nets>
+        <net name="BASIC_i/vio_0/probe_out1[0]"/>
       </nets>
     </probe>
     <probe type="vio_output" busType="net" source="netlist" spec="VIO_OUTPUT_V2_RT">

@@ -94,7 +94,8 @@ module BASIC_mem_bus_registered_0_0 (
   timer_wdata,
   timer_be,
   timer_rdata,
-  timer_ready
+  timer_ready,
+  timer_error
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -140,6 +141,7 @@ output wire [31 : 0] timer_wdata;
 output wire [3 : 0] timer_be;
 input wire [31 : 0] timer_rdata;
 input wire timer_ready;
+input wire timer_error;
 
   mem_bus_registered #(
     .RAM_BASE(32'H00002000),
@@ -190,6 +192,7 @@ input wire timer_ready;
     .timer_wdata(timer_wdata),
     .timer_be(timer_be),
     .timer_rdata(timer_rdata),
-    .timer_ready(timer_ready)
+    .timer_ready(timer_ready),
+    .timer_error(timer_error)
   );
 endmodule

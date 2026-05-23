@@ -11,13 +11,11 @@ module mem_bus_registered #(
     parameter [31:0] TIMER_BASE = 32'h0000_3020,
     parameter [31:0] TIMER_SIZE = 32'h0000_0010,
 
-    // Timeout para evitar ready=0 infinito
     parameter [31:0] TIMEOUT_CYCLES = 32'd100000
 )(
     input  wire        clk,
     input  wire        rst,
 
-    // Request desde core
     input  wire        mem_req_valid,
     output wire        mem_req_ready,
     input  wire        mem_req_we,
@@ -25,12 +23,10 @@ module mem_bus_registered #(
     input  wire [31:0] mem_req_wdata,
     input  wire [3:0]  mem_req_be,
 
-    // Response hacia core
     output reg         mem_rsp_valid,
     output reg  [31:0] mem_rsp_rdata,
     output reg         mem_rsp_error,
 
-    // RAM side
     output reg         ram_valid,
     output reg         ram_we,
     output reg  [31:0] ram_addr,
@@ -39,7 +35,6 @@ module mem_bus_registered #(
     input  wire [31:0] ram_rdata,
     input  wire        ram_ready,
 
-    // GPIO side
     output reg         gpio_valid,
     output reg         gpio_we,
     output reg  [31:0] gpio_addr,
@@ -48,7 +43,6 @@ module mem_bus_registered #(
     input  wire [31:0] gpio_rdata,
     input  wire        gpio_ready,
 
-    // UART side
     output reg         uart_valid,
     output reg         uart_we,
     output reg  [31:0] uart_addr,
@@ -57,14 +51,14 @@ module mem_bus_registered #(
     input  wire [31:0] uart_rdata,
     input  wire        uart_ready,
 
-    // TIMER side
     output reg         timer_valid,
     output reg         timer_we,
     output reg  [31:0] timer_addr,
     output reg  [31:0] timer_wdata,
     output reg  [3:0]  timer_be,
     input  wire [31:0] timer_rdata,
-    input  wire        timer_ready
+    input  wire        timer_ready,
+    input  wire        timer_error
 );
 
     localparam SEL_NONE  = 3'd0;
@@ -79,27 +73,15 @@ module mem_bus_registered #(
     reg [31:0] addr_q;
     reg [31:0] wdata_q;
     reg [3:0]  be_q;
-
     reg [31:0] timeout_cnt_q;
 
     wire timeout_hit;
     assign timeout_hit = busy_q && (timeout_cnt_q >= TIMEOUT_CYCLES);
 
-    wire addr_is_ram =
-        (mem_req_addr >= RAM_BASE) &&
-        (mem_req_addr <  RAM_BASE + RAM_SIZE);
-
-    wire addr_is_gpio =
-        (mem_req_addr >= GPIO_BASE) &&
-        (mem_req_addr <  GPIO_BASE + GPIO_SIZE);
-
-    wire addr_is_uart =
-        (mem_req_addr >= UART_BASE) &&
-        (mem_req_addr <  UART_BASE + UART_SIZE);
-
-    wire addr_is_timer =
-        (mem_req_addr >= TIMER_BASE) &&
-        (mem_req_addr <  TIMER_BASE + TIMER_SIZE);
+    wire addr_is_ram   = (mem_req_addr >= RAM_BASE)   && (mem_req_addr < RAM_BASE   + RAM_SIZE);
+    wire addr_is_gpio  = (mem_req_addr >= GPIO_BASE)  && (mem_req_addr < GPIO_BASE  + GPIO_SIZE);
+    wire addr_is_uart  = (mem_req_addr >= UART_BASE)  && (mem_req_addr < UART_BASE  + UART_SIZE);
+    wire addr_is_timer = (mem_req_addr >= TIMER_BASE) && (mem_req_addr < TIMER_BASE + TIMER_SIZE);
 
     assign mem_req_ready = ~busy_q;
 
@@ -193,13 +175,10 @@ module mem_bus_registered #(
                         sel_q <= SEL_NONE;
                 end
             end else begin
-
-                // Contador de timeout mientras una transacción está pendiente
                 if (!timeout_hit)
                     timeout_cnt_q <= timeout_cnt_q + 1'b1;
 
                 case (sel_q)
-
                     SEL_RAM: begin
                         if (ram_ready) begin
                             mem_rsp_valid <= 1'b1;
@@ -258,7 +237,7 @@ module mem_bus_registered #(
                         if (timer_ready) begin
                             mem_rsp_valid <= 1'b1;
                             mem_rsp_rdata <= timer_rdata;
-                            mem_rsp_error <= 1'b0;
+                            mem_rsp_error <= timer_error;
                             busy_q        <= 1'b0;
                             sel_q         <= SEL_NONE;
                             timeout_cnt_q <= 32'd0;

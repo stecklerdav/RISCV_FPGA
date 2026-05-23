@@ -5,26 +5,23 @@ prog_asm.elf:     file format elf32-littleriscv
 Disassembly of section .text:
 
 00000000 <__text_start>:
-   0:	000023b7          	lui	x7,0x2
-   4:	00000297          	auipc	x5,0x0
-   8:	02428293          	addi	x5,x5,36 # 28 <trap_handler>
-   c:	30529073          	csrrw	x0,mtvec,x5
-  10:	11100313          	addi	x6,x0,273
-  14:	0063a023          	sw	x6,0(x7) # 2000 <__end>
-  18:	00000073          	ecall
+   0:	000030b7          	lui	x1,0x3
+   4:	00600113          	addi	x2,x0,6
+   8:	0020a423          	sw	x2,8(x1) # 3008 <__ram_end+0x8>
 
-0000001c <after_ecall>:
-  1c:	77700313          	addi	x6,x0,1911
-  20:	0063a623          	sw	x6,12(x7)
+0000000c <loop>:
+   c:	0040a183          	lw	x3,4(x1)
+  10:	00000013          	addi	x0,x0,0
+  14:	00000013          	addi	x0,x0,0
+  18:	0011f213          	andi	x4,x3,1
+  1c:	00020863          	beq	x4,x0,2c <switch_off>
 
-00000024 <done>:
-  24:	0000006f          	jal	x0,24 <done>
+00000020 <switch_on>:
+  20:	00200293          	addi	x5,x0,2
+  24:	0050a023          	sw	x5,0(x1)
+  28:	fe5ff06f          	jal	x0,c <loop>
 
-00000028 <trap_handler>:
-  28:	341022f3          	csrrs	x5,mepc,x0
-  2c:	0053a223          	sw	x5,4(x7)
-  30:	34202373          	csrrs	x6,mcause,x0
-  34:	0063a423          	sw	x6,8(x7)
-  38:	00428293          	addi	x5,x5,4
-  3c:	34129073          	csrrw	x0,mepc,x5
-  40:	30200073          	mret
+0000002c <switch_off>:
+  2c:	00400293          	addi	x5,x0,4
+  30:	0050a023          	sw	x5,0(x1)
+  34:	fd9ff06f          	jal	x0,c <loop>

@@ -57,14 +57,16 @@
 module BASIC_trap_controller_0_0 (
   clk,
   rst,
+  exception_valid,
+  exception_pc,
+  exception_cause,
+  exception_tval,
   instr_valid,
   current_pc,
   ecall,
   illegal_instr,
   mret,
   timer_irq,
-  load_access_fault,
-  store_access_fault,
   csr_mstatus,
   csr_mtvec,
   csr_mepc,
@@ -87,6 +89,10 @@ input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
+input wire exception_valid;
+input wire [31 : 0] exception_pc;
+input wire [3 : 0] exception_cause;
+input wire [31 : 0] exception_tval;
 input wire instr_valid;
 input wire [31 : 0] current_pc;
 input wire ecall;
@@ -95,8 +101,6 @@ input wire mret;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME timer_irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 timer_irq INTERRUPT" *)
 input wire timer_irq;
-input wire load_access_fault;
-input wire store_access_fault;
 input wire [31 : 0] csr_mstatus;
 input wire [31 : 0] csr_mtvec;
 input wire [31 : 0] csr_mepc;
@@ -115,14 +119,16 @@ output wire [31 : 0] mret_target;
   trap_controller inst (
     .clk(clk),
     .rst(rst),
+    .exception_valid(exception_valid),
+    .exception_pc(exception_pc),
+    .exception_cause(exception_cause),
+    .exception_tval(exception_tval),
     .instr_valid(instr_valid),
     .current_pc(current_pc),
     .ecall(ecall),
     .illegal_instr(illegal_instr),
     .mret(mret),
     .timer_irq(timer_irq),
-    .load_access_fault(load_access_fault),
-    .store_access_fault(store_access_fault),
     .csr_mstatus(csr_mstatus),
     .csr_mtvec(csr_mtvec),
     .csr_mepc(csr_mepc),

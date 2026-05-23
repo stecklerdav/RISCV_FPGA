@@ -14,13 +14,18 @@ module csr_regfile_wb_mux (
     output wire [31:0] final_wdata
 );
 
+    wire csr_write_valid;
+
+    assign csr_write_valid =
+        csr_rd_we && (csr_rd_addr != 5'd0);
+
     assign final_we =
-        csr_rd_we ? 1'b1 : normal_we;
+        csr_write_valid || normal_we;
 
     assign final_rd =
-        csr_rd_we ? csr_rd_addr : normal_rd;
+        csr_write_valid ? csr_rd_addr : normal_rd;
 
     assign final_wdata =
-        csr_rd_we ? csr_rd_data : normal_wdata;
+        csr_write_valid ? csr_rd_data : normal_wdata;
 
 endmodule

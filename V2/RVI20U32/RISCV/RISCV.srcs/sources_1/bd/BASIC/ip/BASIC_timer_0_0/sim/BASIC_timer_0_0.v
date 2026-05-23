@@ -87,7 +87,7 @@ output wire error;
 output wire timer_irq;
 
   timer #(
-    .RESET_CMP(32'H00030D40)
+    .RESET_CMP(32'H0002E7CA)
   ) inst (
     .clk(clk),
     .rst(rst),

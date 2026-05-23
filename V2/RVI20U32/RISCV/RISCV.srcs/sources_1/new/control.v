@@ -44,7 +44,6 @@ module control (
     localparam [2:0] WB_MEM = 3'd1;
     localparam [2:0] WB_PC4 = 3'd2;
     localparam [2:0] WB_IMM = 3'd3;
-    localparam [2:0] WB_CSR = 3'd4;
 
     localparam [3:0] ALU_ADD  = 4'd0;
     localparam [3:0] ALU_SUB  = 4'd1;
@@ -215,15 +214,11 @@ module control (
                 jal           = 1'b0;
                 jalr          = 1'b0;
 
-                if ((funct3 == 3'b001) ||
-                    (funct3 == 3'b010) ||
-                    (funct3 == 3'b011)) begin
-                    rd_we  = 1'b1;
-                    wb_sel = WB_CSR;
-                end else begin
-                    rd_we  = 1'b0;
-                    wb_sel = WB_ALU;
-                end
+                // CSR ya NO escribe por el camino normal WB.
+                // El writeback CSR ahora va por:
+                // csr_access_unit -> ex_mem_reg -> mem_wb_reg -> csr_regfile_wb_mux -> regfile
+                rd_we  = 1'b0;
+                wb_sel = WB_ALU;
             end
 
             default: begin

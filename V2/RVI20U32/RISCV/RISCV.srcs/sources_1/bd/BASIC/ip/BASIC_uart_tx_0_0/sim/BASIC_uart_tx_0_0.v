@@ -93,7 +93,7 @@ output wire rx_busy;
 output wire rx_ready;
 
   uart_tx #(
-    .CLK_FREQ(190000000),
+    .CLK_FREQ(190474289),
     .BAUD(115200)
   ) inst (
     .clk(clk),

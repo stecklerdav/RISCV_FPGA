@@ -2,34 +2,51 @@
 .section .text.start
 .global _start
 
-.equ RAM_BASE, 0x00002000
+.equ GPIO_BASE,  0x00003000
+.equ GPIO_OUT,   0x00
+.equ GPIO_IN,    0x04
+.equ GPIO_DIR,   0x08
 
 _start:
-    lui  t2, 0x2              # t2 = 0x00002000
 
-    la   t0, trap_handler
-    csrw mtvec, t0            # mtvec = handler
+    # x1 = GPIO_BASE
+    li x1, GPIO_BASE
 
-    li   t1, 0x111
-    sw   t1, 0(t2)            # marca antes del ecall
+    # bit0 = input
+    # bit1 = output
+    # bit2 = output
+    li x2, 0x06
+    sw x2, GPIO_DIR(x1)
 
-    ecall                     # DEBE generar trap
+loop:
 
-after_ecall:
-    li   t1, 0x777
-    sw   t1, 12(t2)           # si vuelve bien, escribe OK
+    # leer GPIO input
+    lw   x3, GPIO_IN(x1)
 
-done:
-    j done
+    # evitar load-use hazard
+    nop
+    nop
 
-trap_handler:
-    csrr t0, mepc
-    sw   t0, 4(t2)            # guardar mepc
+    # aislar bit0
+    andi x4, x3, 0x01
 
-    csrr t1, mcause
-    sw   t1, 8(t2)            # guardar mcause
+    # si bit0 == 0 -> switch_off
+    beq  x4, x0, switch_off
 
-    addi t0, t0, 4
-    csrw mepc, t0             # saltar después del ecall
+switch_on:
 
-    mret
+    # LED0 ON
+    # LED1 OFF
+    li   x5, 0x02
+    sw   x5, GPIO_OUT(x1)
+
+    jal  x0, loop
+
+switch_off:
+
+    # LED0 OFF
+    # LED1 ON
+    li   x5, 0x04
+    sw   x5, GPIO_OUT(x1)
+
+    jal  x0, loop

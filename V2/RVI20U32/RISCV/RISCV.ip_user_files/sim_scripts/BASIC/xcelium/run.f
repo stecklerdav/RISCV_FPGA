@@ -85,7 +85,6 @@
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_1/sim/BASIC_util_vector_logic_2_1.v" \
   "../../../bd/BASIC/ip/BASIC_xlconstant_3_0/sim/BASIC_xlconstant_3_0.v" \
   "../../../bd/BASIC/ip/BASIC_gpio_0_0/sim/BASIC_gpio_0_0.v" \
-  "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_2/sim/BASIC_util_vector_logic_2_2.v" \
 -endlib
 -makelib xcelium_lib/xlslice_v1_0_2 \
   "../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/11d0/hdl/xlslice_v1_0_vl_rfs.v" \
@@ -98,14 +97,12 @@
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_3_0/sim/BASIC_util_vector_logic_3_0.v" \
   "../../../bd/BASIC/ip/BASIC_timer_0_0/sim/BASIC_timer_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_mem_bus_registered_0_0/sim/BASIC_mem_bus_registered_0_0.v" \
-  "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_3/sim/BASIC_util_vector_logic_2_3.v" \
 -endlib
 -makelib xcelium_lib/xlconcat_v2_1_3 \
   "../../../../RISCV.srcs/sources_1/bd/BASIC/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \
   "../../../bd/BASIC/ip/BASIC_xlconcat_0_0/sim/BASIC_xlconcat_0_0.v" \
-  "../../../bd/BASIC/ip/BASIC_xlconstant_0_1/sim/BASIC_xlconstant_0_1.v" \
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_6_0/sim/BASIC_util_vector_logic_6_0.v" \
   "../../../bd/BASIC/ip/BASIC_xlconstant_3_3/sim/BASIC_xlconstant_3_3.v" \
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_6_1/sim/BASIC_util_vector_logic_6_1.v" \
@@ -119,6 +116,8 @@
   "../../../bd/BASIC/ip/BASIC_csr_regfile_wb_mux_0_0/sim/BASIC_csr_regfile_wb_mux_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_10_1/sim/BASIC_util_vector_logic_10_1.v" \
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_10_2/sim/BASIC_util_vector_logic_10_2.v" \
+  "../../../bd/BASIC/ip/BASIC_exception_mux_0_0/sim/BASIC_exception_mux_0_0.v" \
+  "../../../bd/BASIC/ip/BASIC_mem_exception_merge_0_0/sim/BASIC_mem_exception_merge_0_0.v" \
   "../../../bd/BASIC/sim/BASIC.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \

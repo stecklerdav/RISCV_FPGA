@@ -72,6 +72,9 @@ module BASIC_ex_mem_reg_1_0 (
   ex_mem_unsigned,
   ex_rd_we,
   ex_wb_sel,
+  ex_csr_rd_we,
+  ex_csr_rd_addr,
+  ex_csr_rd_data,
   ex_exception_valid,
   ex_exception_cause,
   ex_exception_tval,
@@ -88,6 +91,9 @@ module BASIC_ex_mem_reg_1_0 (
   mem_mem_unsigned,
   mem_rd_we,
   mem_wb_sel,
+  mem_csr_rd_we,
+  mem_csr_rd_addr,
+  mem_csr_rd_data,
   mem_exception_valid,
   mem_exception_cause,
   mem_exception_tval
@@ -114,6 +120,9 @@ input wire [1 : 0] ex_mem_size;
 input wire ex_mem_unsigned;
 input wire ex_rd_we;
 input wire [2 : 0] ex_wb_sel;
+input wire ex_csr_rd_we;
+input wire [4 : 0] ex_csr_rd_addr;
+input wire [31 : 0] ex_csr_rd_data;
 input wire ex_exception_valid;
 input wire [3 : 0] ex_exception_cause;
 input wire [31 : 0] ex_exception_tval;
@@ -130,6 +139,9 @@ output wire [1 : 0] mem_mem_size;
 output wire mem_mem_unsigned;
 output wire mem_rd_we;
 output wire [2 : 0] mem_wb_sel;
+output wire mem_csr_rd_we;
+output wire [4 : 0] mem_csr_rd_addr;
+output wire [31 : 0] mem_csr_rd_data;
 output wire mem_exception_valid;
 output wire [3 : 0] mem_exception_cause;
 output wire [31 : 0] mem_exception_tval;
@@ -152,6 +164,9 @@ output wire [31 : 0] mem_exception_tval;
     .ex_mem_unsigned(ex_mem_unsigned),
     .ex_rd_we(ex_rd_we),
     .ex_wb_sel(ex_wb_sel),
+    .ex_csr_rd_we(ex_csr_rd_we),
+    .ex_csr_rd_addr(ex_csr_rd_addr),
+    .ex_csr_rd_data(ex_csr_rd_data),
     .ex_exception_valid(ex_exception_valid),
     .ex_exception_cause(ex_exception_cause),
     .ex_exception_tval(ex_exception_tval),
@@ -168,6 +183,9 @@ output wire [31 : 0] mem_exception_tval;
     .mem_mem_unsigned(mem_mem_unsigned),
     .mem_rd_we(mem_rd_we),
     .mem_wb_sel(mem_wb_sel),
+    .mem_csr_rd_we(mem_csr_rd_we),
+    .mem_csr_rd_addr(mem_csr_rd_addr),
+    .mem_csr_rd_data(mem_csr_rd_data),
     .mem_exception_valid(mem_exception_valid),
     .mem_exception_cause(mem_exception_cause),
     .mem_exception_tval(mem_exception_tval)

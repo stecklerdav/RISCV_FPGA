@@ -68,6 +68,9 @@ module BASIC_mem_wb_reg_0_0 (
   mem_rd,
   mem_rd_we,
   mem_wb_sel,
+  mem_csr_rd_we,
+  mem_csr_rd_addr,
+  mem_csr_rd_data,
   wb_valid,
   wb_data,
   wb_alu_result,
@@ -75,7 +78,10 @@ module BASIC_mem_wb_reg_0_0 (
   wb_imm_u,
   wb_rd,
   wb_rd_we,
-  wb_sel
+  wb_sel,
+  wb_csr_rd_we,
+  wb_csr_rd_addr,
+  wb_csr_rd_data
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
@@ -94,6 +100,9 @@ input wire [31 : 0] mem_imm_u;
 input wire [4 : 0] mem_rd;
 input wire mem_rd_we;
 input wire [2 : 0] mem_wb_sel;
+input wire mem_csr_rd_we;
+input wire [4 : 0] mem_csr_rd_addr;
+input wire [31 : 0] mem_csr_rd_data;
 output wire wb_valid;
 output wire [31 : 0] wb_data;
 output wire [31 : 0] wb_alu_result;
@@ -102,6 +111,9 @@ output wire [31 : 0] wb_imm_u;
 output wire [4 : 0] wb_rd;
 output wire wb_rd_we;
 output wire [2 : 0] wb_sel;
+output wire wb_csr_rd_we;
+output wire [4 : 0] wb_csr_rd_addr;
+output wire [31 : 0] wb_csr_rd_data;
 
   mem_wb_reg inst (
     .clk(clk),
@@ -116,6 +128,9 @@ output wire [2 : 0] wb_sel;
     .mem_rd(mem_rd),
     .mem_rd_we(mem_rd_we),
     .mem_wb_sel(mem_wb_sel),
+    .mem_csr_rd_we(mem_csr_rd_we),
+    .mem_csr_rd_addr(mem_csr_rd_addr),
+    .mem_csr_rd_data(mem_csr_rd_data),
     .wb_valid(wb_valid),
     .wb_data(wb_data),
     .wb_alu_result(wb_alu_result),
@@ -123,6 +138,9 @@ output wire [2 : 0] wb_sel;
     .wb_imm_u(wb_imm_u),
     .wb_rd(wb_rd),
     .wb_rd_we(wb_rd_we),
-    .wb_sel(wb_sel)
+    .wb_sel(wb_sel),
+    .wb_csr_rd_we(wb_csr_rd_we),
+    .wb_csr_rd_addr(wb_csr_rd_addr),
+    .wb_csr_rd_data(wb_csr_rd_data)
   );
 endmodule

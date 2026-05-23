@@ -19,7 +19,6 @@
       "vio_0": "",
       "util_vector_logic_2": "",
       "MMIO": {
-        "util_vector_logic_3": "",
         "mem_bus_registered_0": ""
       },
       "Core_RV32I": {
@@ -40,8 +39,8 @@
           "forwarding_0": "",
           "branch_0": "",
           "xlconstant_3": "",
-          "ex_mem_reg": "",
-          "util_vector_logic_4": ""
+          "util_vector_logic_4": "",
+          "ex_mem_reg": ""
         },
         "RV32I_WB": {
           "wb_mux_0": ""
@@ -82,18 +81,18 @@
       "TIMER": {
         "timer_0": ""
       },
-      "util_vector_logic_3": "",
       "xlconcat_0": "",
-      "xlconstant_1": "",
       "PRIVILEGED": {
         "csr_access_unit_0": "",
-        "csr_regfile_wb_mux_0": "",
         "privileged_pc_redire_0": "",
         "util_vector_logic_10": "",
         "util_vector_logic_11": "",
         "system_decoder_0": "",
         "csr_file_0": "",
-        "trap_controller_0": ""
+        "csr_regfile_wb_mux_0": "",
+        "trap_controller_0": "",
+        "exception_mux_0": "",
+        "mem_exception_merge_0": ""
       }
     },
     "ports": {
@@ -3253,6 +3252,9 @@
         "parameters": {
           "C_NUM_PROBE_IN": {
             "value": "0"
+          },
+          "C_NUM_PROBE_OUT": {
+            "value": "2"
           }
         }
       },
@@ -3310,11 +3312,6 @@
           },
           "gpio_ready": {
             "direction": "I"
-          },
-          "dmem_re": {
-            "direction": "I",
-            "left": "0",
-            "right": "0"
           },
           "uart_ready": {
             "direction": "I"
@@ -3429,21 +3426,18 @@
           },
           "mem_rsp_error": {
             "direction": "O"
+          },
+          "mem_req_valid": {
+            "direction": "I"
+          },
+          "mem_req_ready": {
+            "direction": "O"
+          },
+          "timer_error": {
+            "direction": "I"
           }
         },
         "components": {
-          "util_vector_logic_3": {
-            "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-            "xci_name": "BASIC_util_vector_logic_2_2",
-            "parameters": {
-              "C_OPERATION": {
-                "value": "or"
-              },
-              "C_SIZE": {
-                "value": "1"
-              }
-            }
-          },
           "mem_bus_registered_0": {
             "vlnv": "xilinx.com:module_ref:mem_bus_registered:1.0",
             "xci_name": "BASIC_mem_bus_registered_0_0",
@@ -3625,6 +3619,9 @@
               },
               "timer_ready": {
                 "direction": "I"
+              },
+              "timer_error": {
+                "direction": "I"
               }
             }
           }
@@ -3633,14 +3630,7 @@
           "RV32I_MEM_dmem_we": {
             "ports": [
               "cpu_we",
-              "util_vector_logic_3/Op1",
               "mem_bus_registered_0/mem_req_we"
-            ]
-          },
-          "RV32I_MEM_dmem_re": {
-            "ports": [
-              "dmem_re",
-              "util_vector_logic_3/Op2"
             ]
           },
           "cpu_addr_1": {
@@ -3695,12 +3685,6 @@
             "ports": [
               "gpio_rdata",
               "mem_bus_registered_0/gpio_rdata"
-            ]
-          },
-          "util_vector_logic_3_Res": {
-            "ports": [
-              "util_vector_logic_3/Res",
-              "mem_bus_registered_0/mem_req_valid"
             ]
           },
           "uart_ready1_1": {
@@ -3864,6 +3848,24 @@
               "mem_bus_registered_0/mem_rsp_error",
               "mem_rsp_error"
             ]
+          },
+          "mem_req_valid_1": {
+            "ports": [
+              "mem_req_valid",
+              "mem_bus_registered_0/mem_req_valid"
+            ]
+          },
+          "mem_bus_registered_0_mem_req_ready": {
+            "ports": [
+              "mem_bus_registered_0/mem_req_ready",
+              "mem_req_ready"
+            ]
+          },
+          "timer_error_1": {
+            "ports": [
+              "timer_error",
+              "mem_bus_registered_0/timer_error"
+            ]
           }
         }
       },
@@ -3900,9 +3902,6 @@
           "dmem_we": {
             "direction": "O"
           },
-          "dmem_re": {
-            "direction": "O"
-          },
           "dmem_ready": {
             "direction": "I"
           },
@@ -3921,16 +3920,6 @@
           },
           "priv_redirect_valid": {
             "direction": "I"
-          },
-          "csr_data": {
-            "direction": "I",
-            "left": "31",
-            "right": "0"
-          },
-          "Res": {
-            "direction": "O",
-            "left": "4",
-            "right": "0"
           },
           "rd_we": {
             "direction": "I"
@@ -3981,11 +3970,84 @@
           "dmem_error": {
             "direction": "I"
           },
-          "load_access_fault": {
+          "regfile_we": {
             "direction": "O"
           },
-          "store_access_fault": {
+          "dmem_valid": {
             "direction": "O"
+          },
+          "dmem_req_ready": {
+            "direction": "I"
+          },
+          "ex_csr_rd_we": {
+            "direction": "I"
+          },
+          "ex_csr_rd_addr": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "ex_csr_rd_data": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "wb_csr_rd_we": {
+            "direction": "O"
+          },
+          "wb_csr_rd_addr": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "wb_csr_rd_data": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_exception_valid": {
+            "direction": "O"
+          },
+          "ex_exception_valid": {
+            "direction": "O"
+          },
+          "ex_exception_cause": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "ex_exception_tval": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_pc": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_exception_cause": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "mem_exception_tval": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_fault_valid": {
+            "direction": "O"
+          },
+          "mem_fault_cause": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "mem_fault_tval": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
           }
         },
         "components": {
@@ -4095,11 +4157,6 @@
                 "left": "2",
                 "right": "0"
               },
-              "Res": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
               "mem_data": {
                 "direction": "I",
                 "left": "31",
@@ -4145,6 +4202,54 @@
               },
               "store_access_fault": {
                 "direction": "O"
+              },
+              "regfile_we": {
+                "direction": "O"
+              },
+              "dmem_valid": {
+                "direction": "O"
+              },
+              "dmem_req_ready": {
+                "direction": "I"
+              },
+              "mem_csr_rd_we": {
+                "direction": "I"
+              },
+              "mem_csr_rd_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "mem_csr_rd_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "wb_csr_rd_we": {
+                "direction": "O"
+              },
+              "wb_csr_rd_addr": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "wb_csr_rd_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_fault_valid": {
+                "direction": "O"
+              },
+              "mem_fault_cause": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "mem_fault_tval": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
               }
             },
             "components": {
@@ -4255,6 +4360,19 @@
                     "left": "2",
                     "right": "0"
                   },
+                  "mem_csr_rd_we": {
+                    "direction": "I"
+                  },
+                  "mem_csr_rd_addr": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "mem_csr_rd_data": {
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
                   "wb_valid": {
                     "direction": "O"
                   },
@@ -4289,6 +4407,19 @@
                   "wb_sel": {
                     "direction": "O",
                     "left": "2",
+                    "right": "0"
+                  },
+                  "wb_csr_rd_we": {
+                    "direction": "O"
+                  },
+                  "wb_csr_rd_addr": {
+                    "direction": "O",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "wb_csr_rd_data": {
+                    "direction": "O",
+                    "left": "31",
                     "right": "0"
                   }
                 }
@@ -4388,6 +4519,9 @@
                   "dmem_valid": {
                     "direction": "O"
                   },
+                  "dmem_req_ready": {
+                    "direction": "I"
+                  },
                   "dmem_we": {
                     "direction": "O"
                   },
@@ -4420,6 +4554,19 @@
                   },
                   "store_access_fault": {
                     "direction": "O"
+                  },
+                  "mem_fault_valid": {
+                    "direction": "O"
+                  },
+                  "mem_fault_cause": {
+                    "direction": "O",
+                    "left": "3",
+                    "right": "0"
+                  },
+                  "mem_fault_tval": {
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
                   },
                   "mem_stall_req": {
                     "direction": "O"
@@ -4688,12 +4835,6 @@
                   "regfile_we_gen_0/wb_rd_we"
                 ]
               },
-              "regfile_we_gen_0_regfile_we": {
-                "ports": [
-                  "regfile_we_gen_0/regfile_we",
-                  "Res"
-                ]
-              },
               "mem_data_1": {
                 "ports": [
                   "mem_data",
@@ -4739,16 +4880,76 @@
                   "mem_stage_0/dmem_error"
                 ]
               },
-              "mem_stage_0_load_access_fault": {
+              "regfile_we_gen_0_regfile_we": {
                 "ports": [
-                  "mem_stage_0/load_access_fault",
-                  "load_access_fault"
+                  "regfile_we_gen_0/regfile_we",
+                  "regfile_we"
                 ]
               },
-              "mem_stage_0_store_access_fault": {
+              "mem_stage_0_dmem_valid": {
                 "ports": [
-                  "mem_stage_0/store_access_fault",
-                  "store_access_fault"
+                  "mem_stage_0/dmem_valid",
+                  "dmem_valid"
+                ]
+              },
+              "dmem_req_ready_1": {
+                "ports": [
+                  "dmem_req_ready",
+                  "mem_stage_0/dmem_req_ready"
+                ]
+              },
+              "mem_csr_rd_we_1": {
+                "ports": [
+                  "mem_csr_rd_we",
+                  "mem_wb_reg_0/mem_csr_rd_we"
+                ]
+              },
+              "mem_csr_rd_addr_1": {
+                "ports": [
+                  "mem_csr_rd_addr",
+                  "mem_wb_reg_0/mem_csr_rd_addr"
+                ]
+              },
+              "mem_csr_rd_data_1": {
+                "ports": [
+                  "mem_csr_rd_data",
+                  "mem_wb_reg_0/mem_csr_rd_data"
+                ]
+              },
+              "mem_wb_reg_0_wb_csr_rd_we": {
+                "ports": [
+                  "mem_wb_reg_0/wb_csr_rd_we",
+                  "wb_csr_rd_we"
+                ]
+              },
+              "mem_wb_reg_0_wb_csr_rd_addr": {
+                "ports": [
+                  "mem_wb_reg_0/wb_csr_rd_addr",
+                  "wb_csr_rd_addr"
+                ]
+              },
+              "mem_wb_reg_0_wb_csr_rd_data": {
+                "ports": [
+                  "mem_wb_reg_0/wb_csr_rd_data",
+                  "wb_csr_rd_data"
+                ]
+              },
+              "mem_stage_0_mem_fault_valid": {
+                "ports": [
+                  "mem_stage_0/mem_fault_valid",
+                  "mem_fault_valid"
+                ]
+              },
+              "mem_stage_0_mem_fault_cause": {
+                "ports": [
+                  "mem_stage_0/mem_fault_cause",
+                  "mem_fault_cause"
+                ]
+              },
+              "mem_stage_0_mem_fault_tval": {
+                "ports": [
+                  "mem_stage_0/mem_fault_tval",
+                  "mem_fault_tval"
                 ]
               }
             }
@@ -4918,11 +5119,6 @@
                 "left": "4",
                 "right": "0"
               },
-              "wb_rd_we": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
               "ex_branch_en": {
                 "direction": "I"
               },
@@ -4953,11 +5149,6 @@
               },
               "wb_valid": {
                 "direction": "I"
-              },
-              "branch_taken": {
-                "direction": "O",
-                "left": "0",
-                "right": "0"
               },
               "ex_pred_next_pc": {
                 "direction": "I",
@@ -4994,6 +5185,66 @@
               "mem_stage_rd_out_we": {
                 "direction": "I",
                 "left": "0",
+                "right": "0"
+              },
+              "wb_rd_we": {
+                "direction": "I"
+              },
+              "ex_csr_rd_we": {
+                "direction": "I"
+              },
+              "ex_csr_rd_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "ex_csr_rd_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_csr_rd_we": {
+                "direction": "O"
+              },
+              "mem_csr_rd_addr": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "mem_csr_rd_data": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_exception_valid": {
+                "direction": "O"
+              },
+              "ex_exception_valid": {
+                "direction": "O"
+              },
+              "ex_exception_cause": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "ex_exception_tval": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_pc": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_exception_cause": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "mem_exception_tval": {
+                "direction": "O",
+                "left": "31",
                 "right": "0"
               }
             },
@@ -5425,6 +5676,18 @@
                   }
                 }
               },
+              "util_vector_logic_4": {
+                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+                "xci_name": "BASIC_util_vector_logic_1_0",
+                "parameters": {
+                  "C_OPERATION": {
+                    "value": "and"
+                  },
+                  "C_SIZE": {
+                    "value": "1"
+                  }
+                }
+              },
               "ex_mem_reg": {
                 "vlnv": "xilinx.com:module_ref:ex_mem_reg:1.0",
                 "xci_name": "BASIC_ex_mem_reg_1_0",
@@ -5517,6 +5780,19 @@
                     "left": "2",
                     "right": "0"
                   },
+                  "ex_csr_rd_we": {
+                    "direction": "I"
+                  },
+                  "ex_csr_rd_addr": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "ex_csr_rd_data": {
+                    "direction": "I",
+                    "left": "31",
+                    "right": "0"
+                  },
                   "ex_exception_valid": {
                     "direction": "I"
                   },
@@ -5585,6 +5861,19 @@
                     "left": "2",
                     "right": "0"
                   },
+                  "mem_csr_rd_we": {
+                    "direction": "O"
+                  },
+                  "mem_csr_rd_addr": {
+                    "direction": "O",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "mem_csr_rd_data": {
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  },
                   "mem_exception_valid": {
                     "direction": "O"
                   },
@@ -5597,18 +5886,6 @@
                     "direction": "O",
                     "left": "31",
                     "right": "0"
-                  }
-                }
-              },
-              "util_vector_logic_4": {
-                "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-                "xci_name": "BASIC_util_vector_logic_1_0",
-                "parameters": {
-                  "C_OPERATION": {
-                    "value": "and"
-                  },
-                  "C_SIZE": {
-                    "value": "1"
                   }
                 }
               }
@@ -5642,19 +5919,22 @@
               "branch_0_ex_exception_valid": {
                 "ports": [
                   "branch_0/ex_exception_valid",
-                  "ex_mem_reg/ex_exception_valid"
+                  "ex_mem_reg/ex_exception_valid",
+                  "ex_exception_valid"
                 ]
               },
               "branch_0_ex_exception_cause": {
                 "ports": [
                   "branch_0/ex_exception_cause",
-                  "ex_mem_reg/ex_exception_cause"
+                  "ex_mem_reg/ex_exception_cause",
+                  "ex_exception_cause"
                 ]
               },
               "branch_0_ex_exception_tval": {
                 "ports": [
                   "branch_0/ex_exception_tval",
-                  "ex_mem_reg/ex_exception_tval"
+                  "ex_mem_reg/ex_exception_tval",
+                  "ex_exception_tval"
                 ]
               },
               "forward_mux_0_out_data": {
@@ -6038,12 +6318,6 @@
                   "ex_mem_reg/flush"
                 ]
               },
-              "util_vector_logic_0_Res": {
-                "ports": [
-                  "wb_rd_we",
-                  "forwarding_0/wb_rd_we"
-                ]
-              },
               "util_vector_logic_4_Res": {
                 "ports": [
                   "util_vector_logic_4/Res",
@@ -6055,12 +6329,78 @@
                   "mem_stage_rd_out_we",
                   "util_vector_logic_4/Op2"
                 ]
+              },
+              "wb_rd_we1_1": {
+                "ports": [
+                  "wb_rd_we",
+                  "forwarding_0/wb_rd_we"
+                ]
+              },
+              "ex_csr_rd_we_1": {
+                "ports": [
+                  "ex_csr_rd_we",
+                  "ex_mem_reg/ex_csr_rd_we"
+                ]
+              },
+              "ex_csr_rd_addr_1": {
+                "ports": [
+                  "ex_csr_rd_addr",
+                  "ex_mem_reg/ex_csr_rd_addr"
+                ]
+              },
+              "ex_csr_rd_data_1": {
+                "ports": [
+                  "ex_csr_rd_data",
+                  "ex_mem_reg/ex_csr_rd_data"
+                ]
+              },
+              "ex_mem_reg_mem_csr_rd_we": {
+                "ports": [
+                  "ex_mem_reg/mem_csr_rd_we",
+                  "mem_csr_rd_we"
+                ]
+              },
+              "ex_mem_reg_mem_csr_rd_addr": {
+                "ports": [
+                  "ex_mem_reg/mem_csr_rd_addr",
+                  "mem_csr_rd_addr"
+                ]
+              },
+              "ex_mem_reg_mem_csr_rd_data": {
+                "ports": [
+                  "ex_mem_reg/mem_csr_rd_data",
+                  "mem_csr_rd_data"
+                ]
+              },
+              "ex_mem_reg_mem_exception_valid": {
+                "ports": [
+                  "ex_mem_reg/mem_exception_valid",
+                  "mem_exception_valid"
+                ]
+              },
+              "ex_mem_reg_mem_pc": {
+                "ports": [
+                  "ex_mem_reg/mem_pc",
+                  "mem_pc"
+                ]
+              },
+              "ex_mem_reg_mem_exception_cause": {
+                "ports": [
+                  "ex_mem_reg/mem_exception_cause",
+                  "mem_exception_cause"
+                ]
+              },
+              "ex_mem_reg_mem_exception_tval": {
+                "ports": [
+                  "ex_mem_reg/mem_exception_tval",
+                  "mem_exception_tval"
+                ]
               }
             }
           },
           "RV32I_WB": {
             "ports": {
-              "rd_wdata1": {
+              "rd_wdata": {
                 "direction": "O",
                 "left": "31",
                 "right": "0"
@@ -6086,11 +6426,6 @@
                 "right": "0"
               },
               "imm_u": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "csr_data": {
                 "direction": "I",
                 "left": "31",
                 "right": "0"
@@ -6131,11 +6466,6 @@
                     "left": "31",
                     "right": "0"
                   },
-                  "csr_data": {
-                    "direction": "I",
-                    "left": "31",
-                    "right": "0"
-                  },
                   "rd_wdata": {
                     "direction": "O",
                     "left": "31",
@@ -6148,7 +6478,7 @@
               "wb_mux_0_rd_wdata": {
                 "ports": [
                   "wb_mux_0/rd_wdata",
-                  "rd_wdata1"
+                  "rd_wdata"
                 ]
               },
               "wb_sel_1": {
@@ -6179,12 +6509,6 @@
                 "ports": [
                   "imm_u",
                   "wb_mux_0/imm_u"
-                ]
-              },
-              "csr_data_1": {
-                "ports": [
-                  "csr_data",
-                  "wb_mux_0/csr_data"
                 ]
               }
             }
@@ -8207,7 +8531,7 @@
           },
           "wb_mux_0_rd_wdata": {
             "ports": [
-              "RV32I_WB/rd_wdata1",
+              "RV32I_WB/rd_wdata",
               "RV32I_EX/mem_wb_data",
               "rd_wdata1"
             ]
@@ -8348,12 +8672,6 @@
             "ports": [
               "RV32I_MEM/dmem_we",
               "dmem_we"
-            ]
-          },
-          "RV32I_MEM_dmem_re": {
-            "ports": [
-              "RV32I_MEM/dmem_re",
-              "dmem_re"
             ]
           },
           "ex_mem_reg_1_mem_mem_we": {
@@ -8595,13 +8913,6 @@
               "RV32I_IF/priv_redirect_valid"
             ]
           },
-          "util_vector_logic_0_Res": {
-            "ports": [
-              "RV32I_MEM/Res",
-              "RV32I_EX/wb_rd_we",
-              "Res"
-            ]
-          },
           "rd_we1_1": {
             "ports": [
               "rd_we",
@@ -8648,12 +8959,6 @@
             "ports": [
               "RV32I_MEM/wb_imm_u",
               "RV32I_WB/imm_u"
-            ]
-          },
-          "csr_data_1": {
-            "ports": [
-              "csr_data",
-              "RV32I_WB/csr_data"
             ]
           },
           "RV32I_EX_out_data": {
@@ -8776,16 +9081,137 @@
               "RV32I_MEM/dmem_error"
             ]
           },
-          "RV32I_MEM_load_access_fault": {
+          "RV32I_MEM_regfile_we": {
             "ports": [
-              "RV32I_MEM/load_access_fault",
-              "load_access_fault"
+              "RV32I_MEM/regfile_we",
+              "RV32I_EX/wb_rd_we",
+              "regfile_we"
             ]
           },
-          "RV32I_MEM_store_access_fault": {
+          "RV32I_MEM_dmem_valid": {
             "ports": [
-              "RV32I_MEM/store_access_fault",
-              "store_access_fault"
+              "RV32I_MEM/dmem_valid",
+              "dmem_valid"
+            ]
+          },
+          "dmem_req_ready_1": {
+            "ports": [
+              "dmem_req_ready",
+              "RV32I_MEM/dmem_req_ready"
+            ]
+          },
+          "ex_csr_rd_we_1": {
+            "ports": [
+              "ex_csr_rd_we",
+              "RV32I_EX/ex_csr_rd_we"
+            ]
+          },
+          "ex_csr_rd_addr_1": {
+            "ports": [
+              "ex_csr_rd_addr",
+              "RV32I_EX/ex_csr_rd_addr"
+            ]
+          },
+          "ex_csr_rd_data_1": {
+            "ports": [
+              "ex_csr_rd_data",
+              "RV32I_EX/ex_csr_rd_data"
+            ]
+          },
+          "RV32I_EX_mem_csr_rd_we": {
+            "ports": [
+              "RV32I_EX/mem_csr_rd_we",
+              "RV32I_MEM/mem_csr_rd_we"
+            ]
+          },
+          "mem_csr_rd_addr_1": {
+            "ports": [
+              "RV32I_EX/mem_csr_rd_addr",
+              "RV32I_MEM/mem_csr_rd_addr"
+            ]
+          },
+          "RV32I_EX_mem_csr_rd_data": {
+            "ports": [
+              "RV32I_EX/mem_csr_rd_data",
+              "RV32I_MEM/mem_csr_rd_data"
+            ]
+          },
+          "RV32I_MEM_wb_csr_rd_we": {
+            "ports": [
+              "RV32I_MEM/wb_csr_rd_we",
+              "wb_csr_rd_we"
+            ]
+          },
+          "RV32I_MEM_wb_csr_rd_addr": {
+            "ports": [
+              "RV32I_MEM/wb_csr_rd_addr",
+              "wb_csr_rd_addr"
+            ]
+          },
+          "RV32I_MEM_wb_csr_rd_data": {
+            "ports": [
+              "RV32I_MEM/wb_csr_rd_data",
+              "wb_csr_rd_data"
+            ]
+          },
+          "RV32I_EX_mem_exception_valid": {
+            "ports": [
+              "RV32I_EX/mem_exception_valid",
+              "mem_exception_valid"
+            ]
+          },
+          "RV32I_EX_ex_exception_valid": {
+            "ports": [
+              "RV32I_EX/ex_exception_valid",
+              "ex_exception_valid"
+            ]
+          },
+          "RV32I_EX_ex_exception_cause": {
+            "ports": [
+              "RV32I_EX/ex_exception_cause",
+              "ex_exception_cause"
+            ]
+          },
+          "RV32I_EX_ex_exception_tval": {
+            "ports": [
+              "RV32I_EX/ex_exception_tval",
+              "ex_exception_tval"
+            ]
+          },
+          "RV32I_EX_mem_pc": {
+            "ports": [
+              "RV32I_EX/mem_pc",
+              "mem_pc"
+            ]
+          },
+          "RV32I_EX_mem_exception_cause": {
+            "ports": [
+              "RV32I_EX/mem_exception_cause",
+              "mem_exception_cause"
+            ]
+          },
+          "RV32I_EX_mem_exception_tval": {
+            "ports": [
+              "RV32I_EX/mem_exception_tval",
+              "mem_exception_tval"
+            ]
+          },
+          "RV32I_MEM_mem_fault_valid": {
+            "ports": [
+              "RV32I_MEM/mem_fault_valid",
+              "mem_fault_valid"
+            ]
+          },
+          "RV32I_MEM_mem_fault_cause": {
+            "ports": [
+              "RV32I_MEM/mem_fault_cause",
+              "mem_fault_cause"
+            ]
+          },
+          "RV32I_MEM_mem_fault_tval": {
+            "ports": [
+              "RV32I_MEM/mem_fault_tval",
+              "mem_fault_tval"
             ]
           }
         }
@@ -9050,6 +9476,12 @@
           },
           "ready": {
             "direction": "O"
+          },
+          "tx": {
+            "direction": "O"
+          },
+          "rx": {
+            "direction": "I"
           }
         },
         "components": {
@@ -9061,7 +9493,7 @@
                 "value": "115200"
               },
               "CLK_FREQ": {
-                "value": "190000000"
+                "value": "190474289"
               }
             },
             "reference_info": {
@@ -9200,6 +9632,12 @@
           "uart_tx_0_tx": {
             "ports": [
               "uart_tx_0/tx",
+              "tx"
+            ]
+          },
+          "rx_1": {
+            "ports": [
+              "rx",
               "uart_tx_0/rx"
             ]
           }
@@ -9247,6 +9685,9 @@
           "timer_irq": {
             "type": "intr",
             "direction": "O"
+          },
+          "error": {
+            "direction": "O"
           }
         },
         "components": {
@@ -9255,7 +9696,7 @@
             "xci_name": "BASIC_timer_0_0",
             "parameters": {
               "RESET_CMP": {
-                "value": "0x00030D40"
+                "value": "0x0002E7CA"
               }
             },
             "reference_info": {
@@ -9391,18 +9832,12 @@
               "timer_0/timer_irq",
               "timer_irq"
             ]
-          }
-        }
-      },
-      "util_vector_logic_3": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "BASIC_util_vector_logic_2_3",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "not"
           },
-          "C_SIZE": {
-            "value": "1"
+          "timer_0_error": {
+            "ports": [
+              "timer_0/error",
+              "error"
+            ]
           }
         }
       },
@@ -9439,15 +9874,6 @@
           }
         }
       },
-      "xlconstant_1": {
-        "vlnv": "xilinx.com:ip:xlconstant:1.1",
-        "xci_name": "BASIC_xlconstant_0_1",
-        "parameters": {
-          "CONST_VAL": {
-            "value": "0"
-          }
-        }
-      },
       "PRIVILEGED": {
         "ports": {
           "instr": {
@@ -9457,11 +9883,6 @@
           },
           "instr_valid": {
             "direction": "I"
-          },
-          "csr_rd_data": {
-            "direction": "O",
-            "left": "31",
-            "right": "0"
           },
           "clk": {
             "type": "clk",
@@ -9488,9 +9909,6 @@
           },
           "trap_flush": {
             "direction": "O"
-          },
-          "normal_we": {
-            "direction": "I"
           },
           "normal_rd": {
             "direction": "I",
@@ -9528,11 +9946,78 @@
             "left": "31",
             "right": "0"
           },
-          "load_access_fault": {
+          "normal_we": {
             "direction": "I"
           },
-          "store_access_fault": {
+          "csr_rd_we": {
+            "direction": "O"
+          },
+          "csr_rd_addr": {
+            "direction": "O",
+            "left": "4",
+            "right": "0"
+          },
+          "csr_rd_data1": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "csr_rd_we1": {
             "direction": "I"
+          },
+          "csr_rd_addr1": {
+            "direction": "I",
+            "left": "4",
+            "right": "0"
+          },
+          "csr_rd_data2": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "ex_exception_valid": {
+            "direction": "I"
+          },
+          "ex_exception_cause": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "ex_exception_tval": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_fault_tval": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_fault_valid": {
+            "direction": "I"
+          },
+          "mem_fault_cause": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "mem_exception_valid": {
+            "direction": "I"
+          },
+          "mem_exception_cause": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "mem_exception_tval": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "mem_exception_pc": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
           }
         },
         "components": {
@@ -9594,56 +10079,6 @@
                 "right": "0"
               },
               "csr_rd_data": {
-                "direction": "O",
-                "left": "31",
-                "right": "0"
-              }
-            }
-          },
-          "csr_regfile_wb_mux_0": {
-            "vlnv": "xilinx.com:module_ref:csr_regfile_wb_mux:1.0",
-            "xci_name": "BASIC_csr_regfile_wb_mux_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "csr_regfile_wb_mux",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "normal_we": {
-                "direction": "I"
-              },
-              "normal_rd": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "normal_wdata": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "csr_rd_we": {
-                "direction": "I"
-              },
-              "csr_rd_addr": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "csr_rd_data": {
-                "direction": "I",
-                "left": "31",
-                "right": "0"
-              },
-              "final_we": {
-                "direction": "O"
-              },
-              "final_rd": {
-                "direction": "O",
-                "left": "4",
-                "right": "0"
-              },
-              "final_wdata": {
                 "direction": "O",
                 "left": "31",
                 "right": "0"
@@ -9875,6 +10310,56 @@
               }
             }
           },
+          "csr_regfile_wb_mux_0": {
+            "vlnv": "xilinx.com:module_ref:csr_regfile_wb_mux:1.0",
+            "xci_name": "BASIC_csr_regfile_wb_mux_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "csr_regfile_wb_mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "normal_we": {
+                "direction": "I"
+              },
+              "normal_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "normal_wdata": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "csr_rd_we": {
+                "direction": "I"
+              },
+              "csr_rd_addr": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "csr_rd_data": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "final_we": {
+                "direction": "O"
+              },
+              "final_rd": {
+                "direction": "O",
+                "left": "4",
+                "right": "0"
+              },
+              "final_wdata": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
           "trap_controller_0": {
             "vlnv": "xilinx.com:module_ref:trap_controller:1.0",
             "xci_name": "BASIC_trap_controller_0_0",
@@ -9906,6 +10391,24 @@
                 "type": "rst",
                 "direction": "I"
               },
+              "exception_valid": {
+                "direction": "I"
+              },
+              "exception_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "exception_cause": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "exception_tval": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
               "instr_valid": {
                 "direction": "I"
               },
@@ -9932,12 +10435,6 @@
                     "value_src": "constant"
                   }
                 }
-              },
-              "load_access_fault": {
-                "direction": "I"
-              },
-              "store_access_fault": {
-                "direction": "I"
               },
               "csr_mstatus": {
                 "direction": "I",
@@ -9997,6 +10494,131 @@
                 "direction": "O"
               },
               "mret_target": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "exception_mux_0": {
+            "vlnv": "xilinx.com:module_ref:exception_mux:1.0",
+            "xci_name": "BASIC_exception_mux_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "exception_mux",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "ex_exception_valid": {
+                "direction": "I"
+              },
+              "ex_exception_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "ex_exception_cause": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "ex_exception_tval": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_exception_valid": {
+                "direction": "I"
+              },
+              "mem_exception_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_exception_cause": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "mem_exception_tval": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "exception_valid": {
+                "direction": "O"
+              },
+              "exception_pc": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "exception_cause": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "exception_tval": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              }
+            }
+          },
+          "mem_exception_merge_0": {
+            "vlnv": "xilinx.com:module_ref:mem_exception_merge:1.0",
+            "xci_name": "BASIC_mem_exception_merge_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "mem_exception_merge",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "mem_exception_valid": {
+                "direction": "I"
+              },
+              "mem_exception_pc": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_exception_cause": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "mem_exception_tval": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "mem_fault_valid": {
+                "direction": "I"
+              },
+              "mem_fault_cause": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "mem_fault_tval": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "final_mem_exception_valid": {
+                "direction": "O"
+              },
+              "final_mem_exception_pc": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "final_mem_exception_cause": {
+                "direction": "O",
+                "left": "3",
+                "right": "0"
+              },
+              "final_mem_exception_tval": {
                 "direction": "O",
                 "left": "31",
                 "right": "0"
@@ -10069,18 +10691,6 @@
             "ports": [
               "csr_access_unit_0/csr_wdata",
               "csr_file_0/csr_wdata"
-            ]
-          },
-          "csr_access_unit_0_csr_rd_we": {
-            "ports": [
-              "csr_access_unit_0/csr_rd_we",
-              "csr_regfile_wb_mux_0/csr_rd_we"
-            ]
-          },
-          "csr_access_unit_0_csr_rd_addr": {
-            "ports": [
-              "csr_access_unit_0/csr_rd_addr",
-              "csr_regfile_wb_mux_0/csr_rd_addr"
             ]
           },
           "csr_file_0_csr_mstatus": {
@@ -10164,13 +10774,6 @@
               "trap_controller_0/instr_valid"
             ]
           },
-          "csr_access_unit_0_csr_rd_data": {
-            "ports": [
-              "csr_access_unit_0/csr_rd_data",
-              "csr_rd_data",
-              "csr_regfile_wb_mux_0/csr_rd_data"
-            ]
-          },
           "zynq_ultra_ps_e_0_pl_clk0": {
             "ports": [
               "clk",
@@ -10188,7 +10791,8 @@
           "Core_RV32I_ex_pc": {
             "ports": [
               "current_pc",
-              "trap_controller_0/current_pc"
+              "trap_controller_0/current_pc",
+              "exception_mux_0/ex_exception_pc"
             ]
           },
           "TIMER_timer_irq": {
@@ -10208,12 +10812,6 @@
             "ports": [
               "trap_controller_0/trap_flush",
               "trap_flush"
-            ]
-          },
-          "Core_RV32I_Res": {
-            "ports": [
-              "normal_we",
-              "csr_regfile_wb_mux_0/normal_we"
             ]
           },
           "Core_RV32I_wb_rd": {
@@ -10288,22 +10886,160 @@
               "csr_access_unit_0/rs1_data"
             ]
           },
-          "load_access_fault_1": {
-            "ports": [
-              "load_access_fault",
-              "trap_controller_0/load_access_fault"
-            ]
-          },
-          "store_access_fault_1": {
-            "ports": [
-              "store_access_fault",
-              "trap_controller_0/store_access_fault"
-            ]
-          },
           "trap_controller_0_trap_mtval": {
             "ports": [
               "trap_controller_0/trap_mtval",
               "csr_file_0/trap_mtval"
+            ]
+          },
+          "normal_we1_1": {
+            "ports": [
+              "normal_we",
+              "csr_regfile_wb_mux_0/normal_we"
+            ]
+          },
+          "csr_access_unit_0_csr_rd_we": {
+            "ports": [
+              "csr_access_unit_0/csr_rd_we",
+              "csr_rd_we"
+            ]
+          },
+          "csr_access_unit_0_csr_rd_addr": {
+            "ports": [
+              "csr_access_unit_0/csr_rd_addr",
+              "csr_rd_addr"
+            ]
+          },
+          "csr_access_unit_0_csr_rd_data": {
+            "ports": [
+              "csr_access_unit_0/csr_rd_data",
+              "csr_rd_data1"
+            ]
+          },
+          "csr_rd_we1_1": {
+            "ports": [
+              "csr_rd_we1",
+              "csr_regfile_wb_mux_0/csr_rd_we"
+            ]
+          },
+          "csr_rd_addr1_1": {
+            "ports": [
+              "csr_rd_addr1",
+              "csr_regfile_wb_mux_0/csr_rd_addr"
+            ]
+          },
+          "csr_rd_data2_1": {
+            "ports": [
+              "csr_rd_data2",
+              "csr_regfile_wb_mux_0/csr_rd_data"
+            ]
+          },
+          "exception_mux_0_exception_valid": {
+            "ports": [
+              "exception_mux_0/exception_valid",
+              "trap_controller_0/exception_valid"
+            ]
+          },
+          "exception_mux_0_exception_pc": {
+            "ports": [
+              "exception_mux_0/exception_pc",
+              "trap_controller_0/exception_pc"
+            ]
+          },
+          "exception_mux_0_exception_tval": {
+            "ports": [
+              "exception_mux_0/exception_tval",
+              "trap_controller_0/exception_tval"
+            ]
+          },
+          "exception_mux_0_exception_cause": {
+            "ports": [
+              "exception_mux_0/exception_cause",
+              "trap_controller_0/exception_cause"
+            ]
+          },
+          "ex_exception_valid_1": {
+            "ports": [
+              "ex_exception_valid",
+              "exception_mux_0/ex_exception_valid"
+            ]
+          },
+          "ex_exception_cause_1": {
+            "ports": [
+              "ex_exception_cause",
+              "exception_mux_0/ex_exception_cause"
+            ]
+          },
+          "ex_exception_tval_1": {
+            "ports": [
+              "ex_exception_tval",
+              "exception_mux_0/ex_exception_tval"
+            ]
+          },
+          "mem_fault_tval_1": {
+            "ports": [
+              "mem_fault_tval",
+              "mem_exception_merge_0/mem_fault_tval"
+            ]
+          },
+          "mem_fault_valid_1": {
+            "ports": [
+              "mem_fault_valid",
+              "mem_exception_merge_0/mem_fault_valid"
+            ]
+          },
+          "mem_fault_cause_1": {
+            "ports": [
+              "mem_fault_cause",
+              "mem_exception_merge_0/mem_fault_cause"
+            ]
+          },
+          "mem_exception_valid_1": {
+            "ports": [
+              "mem_exception_valid",
+              "mem_exception_merge_0/mem_exception_valid"
+            ]
+          },
+          "mem_exception_cause_1": {
+            "ports": [
+              "mem_exception_cause",
+              "mem_exception_merge_0/mem_exception_cause"
+            ]
+          },
+          "mem_exception_tval_1": {
+            "ports": [
+              "mem_exception_tval",
+              "mem_exception_merge_0/mem_exception_tval"
+            ]
+          },
+          "mem_exception_pc_1": {
+            "ports": [
+              "mem_exception_pc",
+              "mem_exception_merge_0/mem_exception_pc"
+            ]
+          },
+          "mem_exception_merge_0_final_mem_exception_valid": {
+            "ports": [
+              "mem_exception_merge_0/final_mem_exception_valid",
+              "exception_mux_0/mem_exception_valid"
+            ]
+          },
+          "mem_exception_merge_0_final_mem_exception_cause": {
+            "ports": [
+              "mem_exception_merge_0/final_mem_exception_cause",
+              "exception_mux_0/mem_exception_cause"
+            ]
+          },
+          "mem_exception_merge_0_final_mem_exception_tval": {
+            "ports": [
+              "mem_exception_merge_0/final_mem_exception_tval",
+              "exception_mux_0/mem_exception_tval"
+            ]
+          },
+          "mem_exception_merge_0_final_mem_exception_pc": {
+            "ports": [
+              "mem_exception_merge_0/final_mem_exception_pc",
+              "exception_mux_0/mem_exception_pc"
             ]
           }
         }
@@ -10413,12 +11149,6 @@
         "ports": [
           "GPIO/rdata",
           "MMIO/gpio_rdata"
-        ]
-      },
-      "RV32I_MEM_dmem_re": {
-        "ports": [
-          "Core_RV32I/dmem_re",
-          "MMIO/dmem_re"
         ]
       },
       "timer_0_rdata": {
@@ -10559,34 +11289,10 @@
           "TIMER/be"
         ]
       },
-      "SW1_1": {
-        "ports": [
-          "SW1",
-          "util_vector_logic_3/Op1"
-        ]
-      },
       "xlconcat_0_dout": {
         "ports": [
           "xlconcat_0/dout",
           "GPIO/gpio_in"
-        ]
-      },
-      "xlconstant_1_dout": {
-        "ports": [
-          "xlconstant_1/dout",
-          "xlconcat_0/In7",
-          "xlconcat_0/In6",
-          "xlconcat_0/In5",
-          "xlconcat_0/In4",
-          "xlconcat_0/In3",
-          "xlconcat_0/In2",
-          "xlconcat_0/In1"
-        ]
-      },
-      "util_vector_logic_3_Res": {
-        "ports": [
-          "util_vector_logic_3/Res",
-          "xlconcat_0/In0"
         ]
       },
       "ram_ready_1": {
@@ -10629,24 +11335,6 @@
         "ports": [
           "PRIVILEGED/priv_redirect_valid",
           "Core_RV32I/priv_redirect_valid"
-        ]
-      },
-      "TIMER_timer_irq": {
-        "ports": [
-          "TIMER/timer_irq",
-          "PRIVILEGED/timer_irq"
-        ]
-      },
-      "csr_access_unit_0_csr_rd_data": {
-        "ports": [
-          "PRIVILEGED/csr_rd_data",
-          "Core_RV32I/csr_data"
-        ]
-      },
-      "Core_RV32I_Res": {
-        "ports": [
-          "Core_RV32I/Res",
-          "PRIVILEGED/normal_we"
         ]
       },
       "csr_regfile_wb_mux_0_final_we": {
@@ -10721,16 +11409,155 @@
           "Core_RV32I/dmem_error"
         ]
       },
-      "load_access_fault_1": {
+      "Core_RV32I_regfile_we": {
         "ports": [
-          "Core_RV32I/load_access_fault",
-          "PRIVILEGED/load_access_fault"
+          "Core_RV32I/regfile_we",
+          "PRIVILEGED/normal_we"
         ]
       },
-      "Core_RV32I_store_access_fault": {
+      "mem_req_valid_1": {
         "ports": [
-          "Core_RV32I/store_access_fault",
-          "PRIVILEGED/store_access_fault"
+          "Core_RV32I/dmem_valid",
+          "MMIO/mem_req_valid"
+        ]
+      },
+      "dmem_req_ready_1": {
+        "ports": [
+          "MMIO/mem_req_ready",
+          "Core_RV32I/dmem_req_ready"
+        ]
+      },
+      "PRIVILEGED_csr_rd_we": {
+        "ports": [
+          "PRIVILEGED/csr_rd_we",
+          "Core_RV32I/ex_csr_rd_we"
+        ]
+      },
+      "ex_csr_rd_addr_1": {
+        "ports": [
+          "PRIVILEGED/csr_rd_addr",
+          "Core_RV32I/ex_csr_rd_addr"
+        ]
+      },
+      "PRIVILEGED_csr_rd_data1": {
+        "ports": [
+          "PRIVILEGED/csr_rd_data1",
+          "Core_RV32I/ex_csr_rd_data"
+        ]
+      },
+      "Core_RV32I_wb_csr_rd_we": {
+        "ports": [
+          "Core_RV32I/wb_csr_rd_we",
+          "PRIVILEGED/csr_rd_we1"
+        ]
+      },
+      "csr_rd_addr1_1": {
+        "ports": [
+          "Core_RV32I/wb_csr_rd_addr",
+          "PRIVILEGED/csr_rd_addr1"
+        ]
+      },
+      "Core_RV32I_wb_csr_rd_data": {
+        "ports": [
+          "Core_RV32I/wb_csr_rd_data",
+          "PRIVILEGED/csr_rd_data2"
+        ]
+      },
+      "UART_tx": {
+        "ports": [
+          "UART/tx",
+          "zynq_ultra_ps_e_0/emio_uart1_rxd"
+        ]
+      },
+      "zynq_ultra_ps_e_0_emio_uart1_txd": {
+        "ports": [
+          "zynq_ultra_ps_e_0/emio_uart1_txd",
+          "UART/rx"
+        ]
+      },
+      "Core_RV32I_ex_exception_valid": {
+        "ports": [
+          "Core_RV32I/ex_exception_valid",
+          "PRIVILEGED/ex_exception_valid"
+        ]
+      },
+      "Core_RV32I_ex_exception_cause": {
+        "ports": [
+          "Core_RV32I/ex_exception_cause",
+          "PRIVILEGED/ex_exception_cause"
+        ]
+      },
+      "Core_RV32I_ex_exception_tval": {
+        "ports": [
+          "Core_RV32I/ex_exception_tval",
+          "PRIVILEGED/ex_exception_tval"
+        ]
+      },
+      "Core_RV32I_mem_fault_tval": {
+        "ports": [
+          "Core_RV32I/mem_fault_tval",
+          "PRIVILEGED/mem_fault_tval"
+        ]
+      },
+      "Core_RV32I_mem_fault_valid": {
+        "ports": [
+          "Core_RV32I/mem_fault_valid",
+          "PRIVILEGED/mem_fault_valid"
+        ]
+      },
+      "Core_RV32I_mem_fault_cause": {
+        "ports": [
+          "Core_RV32I/mem_fault_cause",
+          "PRIVILEGED/mem_fault_cause"
+        ]
+      },
+      "Core_RV32I_mem_exception_valid": {
+        "ports": [
+          "Core_RV32I/mem_exception_valid",
+          "PRIVILEGED/mem_exception_valid"
+        ]
+      },
+      "Core_RV32I_mem_exception_cause": {
+        "ports": [
+          "Core_RV32I/mem_exception_cause",
+          "PRIVILEGED/mem_exception_cause"
+        ]
+      },
+      "Core_RV32I_mem_exception_tval": {
+        "ports": [
+          "Core_RV32I/mem_exception_tval",
+          "PRIVILEGED/mem_exception_tval"
+        ]
+      },
+      "Core_RV32I_mem_pc": {
+        "ports": [
+          "Core_RV32I/mem_pc",
+          "PRIVILEGED/mem_exception_pc"
+        ]
+      },
+      "timer_irq_1": {
+        "ports": [
+          "TIMER/timer_irq",
+          "PRIVILEGED/timer_irq"
+        ]
+      },
+      "timer_error_1": {
+        "ports": [
+          "TIMER/error",
+          "MMIO/timer_error"
+        ]
+      },
+      "xlconstant_1_dout": {
+        "ports": [
+          "SW1",
+          "xlconcat_0/In4",
+          "xlconcat_0/In3",
+          "xlconcat_0/In5",
+          "xlconcat_0/In7",
+          "xlconcat_0/In2",
+          "xlconcat_0/In0",
+          "xlconcat_0/In6",
+          "xlconcat_0/In1"
         ]
       }
     },

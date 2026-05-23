@@ -1,5 +1,12 @@
 
 
+23/05/2026
+
+* correccion de traps, simulacion, mux de excepciones complementados, error de gpio
+* Simuacion simple com dos LEDS y 1  suiche de entrada o boton para la ejecucion de activacion de leds con boton.
+* pruebas GPIO se determino registrar la lectura tambien.
+* test Real funcional de SW - LEDS  MYIR ZU5EV 
+* info https://tinytapeout.com/   ASIC
 
 22/05/2026
 
@@ -86,13 +93,13 @@ This gen_bp_torture.py automatically generates a RISC-V .S file with pseudo-rand
 * Observed that add, sub, mul, div instructions are executed by the ALU block, while store, load, jump, etc., are handled by other blocks.
 * This leads to R, I, S instruction formats, involving multiplexers to pack registers and execute operations.
 
-12/02/2025 - David Steckler
+12/02/2025 - 
 
 * Created project CPU_N1 at:
   /media/steckler/xilinx_linux/SDR_custom/SDR/Software/plutosdr-fw/hdl/projects/CPU_N1/CPU_V1
 * Processor-only project for simulation; still needs interconnection and simulation.
 
-12/01/2025 - David Steckler
+12/01/2025 - 
 
 * Added a processor to the Block Design (BD):
 

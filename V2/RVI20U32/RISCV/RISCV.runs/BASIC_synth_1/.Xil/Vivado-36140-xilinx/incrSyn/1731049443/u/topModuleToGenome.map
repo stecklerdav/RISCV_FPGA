@@ -1,8 +1,0 @@
-BASIC_xlslice_0_0: xlslice_v1_0_2_xlslice, 
-BASIC_xlconstant_0_1: xlconstant_v1_1_7_xlconstant, 
-BASIC_xlconstant_0_0: xlconstant_v1_1_7_xlconstant__parameterized0, 
-BASIC_xlconcat_0_0: xlconcat_v2_1_3_xlconcat, 
-BASIC_xlconstant_3_0: xlconstant_v1_1_7_xlconstant, 
-BASIC_xlconstant_2_0: xlconstant_v1_1_7_xlconstant__parameterized0, 
-BASIC_pc_to_imem_addr_0_0: pc_to_imem_addr, 
-BASIC_xlconstant_3_3: xlconstant_v1_1_7_xlconstant, 

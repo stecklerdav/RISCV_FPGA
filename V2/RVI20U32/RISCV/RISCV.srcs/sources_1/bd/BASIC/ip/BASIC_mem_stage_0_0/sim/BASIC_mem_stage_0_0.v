@@ -73,6 +73,7 @@ module BASIC_mem_stage_0_0 (
   mem_in_wb_sel,
   dmem_addr,
   dmem_valid,
+  dmem_req_ready,
   dmem_we,
   dmem_re,
   dmem_be,
@@ -82,6 +83,9 @@ module BASIC_mem_stage_0_0 (
   dmem_error,
   load_access_fault,
   store_access_fault,
+  mem_fault_valid,
+  mem_fault_cause,
+  mem_fault_tval,
   mem_stall_req,
   mem_out_valid,
   mem_out_data,
@@ -118,6 +122,7 @@ input wire mem_in_rd_we;
 input wire [2 : 0] mem_in_wb_sel;
 output wire [31 : 0] dmem_addr;
 output wire dmem_valid;
+input wire dmem_req_ready;
 output wire dmem_we;
 output wire dmem_re;
 output wire [3 : 0] dmem_be;
@@ -127,6 +132,9 @@ input wire dmem_ready;
 input wire dmem_error;
 output wire load_access_fault;
 output wire store_access_fault;
+output wire mem_fault_valid;
+output wire [3 : 0] mem_fault_cause;
+output wire [31 : 0] mem_fault_tval;
 output wire mem_stall_req;
 output wire mem_out_valid;
 output wire [31 : 0] mem_out_data;
@@ -159,6 +167,7 @@ output wire [31 : 0] mem_forward_data;
     .mem_in_wb_sel(mem_in_wb_sel),
     .dmem_addr(dmem_addr),
     .dmem_valid(dmem_valid),
+    .dmem_req_ready(dmem_req_ready),
     .dmem_we(dmem_we),
     .dmem_re(dmem_re),
     .dmem_be(dmem_be),
@@ -168,6 +177,9 @@ output wire [31 : 0] mem_forward_data;
     .dmem_error(dmem_error),
     .load_access_fault(load_access_fault),
     .store_access_fault(store_access_fault),
+    .mem_fault_valid(mem_fault_valid),
+    .mem_fault_cause(mem_fault_cause),
+    .mem_fault_tval(mem_fault_tval),
     .mem_stall_req(mem_stall_req),
     .mem_out_valid(mem_out_valid),
     .mem_out_data(mem_out_data),

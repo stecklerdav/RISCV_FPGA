@@ -37,20 +37,20 @@
     <Option Name="IPUserFilesDir" Val="$PIPUSERFILESDIR"/>
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
-    <Option Name="WTXSimLaunchSim" Val="316"/>
+    <Option Name="WTXSimLaunchSim" Val="324"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="137"/>
-    <Option Name="WTModelSimExportSim" Val="137"/>
-    <Option Name="WTQuestaExportSim" Val="136"/>
-    <Option Name="WTIesExportSim" Val="136"/>
-    <Option Name="WTVcsExportSim" Val="136"/>
-    <Option Name="WTRivieraExportSim" Val="136"/>
-    <Option Name="WTActivehdlExportSim" Val="136"/>
+    <Option Name="WTXSimExportSim" Val="148"/>
+    <Option Name="WTModelSimExportSim" Val="148"/>
+    <Option Name="WTQuestaExportSim" Val="147"/>
+    <Option Name="WTIesExportSim" Val="147"/>
+    <Option Name="WTVcsExportSim" Val="147"/>
+    <Option Name="WTRivieraExportSim" Val="147"/>
+    <Option Name="WTActivehdlExportSim" Val="147"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -297,16 +297,22 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/bd/BASIC/hdl/BASIC_wrapper.v">
+      <File Path="$PSRCDIR/sources_1/new/exception_mux.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/load_extender.v">
+      <File Path="$PSRCDIR/sources_1/new/mem_exception_merge.v">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/bd/BASIC/hdl/BASIC_wrapper.v">
+        <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

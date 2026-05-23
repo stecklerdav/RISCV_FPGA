@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "uart_tx,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "BASIC_uart_tx_0_0,uart_tx,{}" *)
-(* CORE_GENERATION_INFO = "BASIC_uart_tx_0_0,uart_tx,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_tx,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CLK_FREQ=190000000,BAUD=115200}" *)
+(* CORE_GENERATION_INFO = "BASIC_uart_tx_0_0,uart_tx,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart_tx,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CLK_FREQ=190474289,BAUD=115200}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module BASIC_uart_tx_0_0 (
@@ -94,7 +94,7 @@ output wire rx_busy;
 output wire rx_ready;
 
   uart_tx #(
-    .CLK_FREQ(190000000),
+    .CLK_FREQ(190474289),
     .BAUD(115200)
   ) inst (
     .clk(clk),

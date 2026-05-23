@@ -15,60 +15,124 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="267656150fs"></ZoomStartTime>
-      <ZoomEndTime time="267731301fs"></ZoomEndTime>
-      <Cursor1Time time="267707500fs"></Cursor1Time>
+      <ZoomStartTime time="11023025fs"></ZoomStartTime>
+      <ZoomEndTime time="11222226fs"></ZoomEndTime>
+      <Cursor1Time time="11191825fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="220"></NameColumnWidth>
-      <ValueColumnWidth column_width="106"></ValueColumnWidth>
+      <NameColumnWidth column_width="390"></NameColumnWidth>
+      <ValueColumnWidth column_width="183"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="19" />
    <wave_markers>
       <marker label="" time="7934143" />
    </wave_markers>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/rst">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/clk">
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/clk">
+      <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/if_instr_in">
-      <obj_property name="ElementShortName">if_instr_in[31:0]</obj_property>
-      <obj_property name="ObjectShortName">if_instr_in[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/if_id_reg_0/inst/id_instr_out">
-      <obj_property name="ElementShortName">id_instr_out[31:0]</obj_property>
-      <obj_property name="ObjectShortName">id_instr_out[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_ID/id_ex_reg_1/inst/id_instr">
-      <obj_property name="ElementShortName">id_instr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">id_instr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_ID/id_ex_reg_1/inst/ex_instr">
-      <obj_property name="ElementShortName">ex_instr[31:0]</obj_property>
-      <obj_property name="ObjectShortName">ex_instr[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/PRIVILEGED/privileged_pc_redire_0/inst/priv_redirect_valid">
-      <obj_property name="ElementShortName">priv_redirect_valid</obj_property>
-      <obj_property name="ObjectShortName">priv_redirect_valid</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/PRIVILEGED/privileged_pc_redire_0/inst/priv_redirect_target">
-      <obj_property name="ElementShortName">priv_redirect_target[31:0]</obj_property>
-      <obj_property name="ObjectShortName">priv_redirect_target[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/priority_branch_OR_l_0/inst/if_id_flush_final">
-      <obj_property name="ElementShortName">if_id_flush_final</obj_property>
-      <obj_property name="ObjectShortName">if_id_flush_final</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/priority_branch_OR_l_0/inst/id_ex_flush_final">
-      <obj_property name="ElementShortName">id_ex_flush_final</obj_property>
-      <obj_property name="ObjectShortName">id_ex_flush_final</obj_property>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/rst">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_IF/pc_unit_0/inst/pc">
+      <obj_property name="DisplayName">FullPathName</obj_property>
       <obj_property name="ElementShortName">pc[31:0]</obj_property>
       <obj_property name="ObjectShortName">pc[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/valid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/we">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/addr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/wdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/be">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">be[3:0]</obj_property>
+      <obj_property name="ObjectShortName">be[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/ready">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/gpio_out">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">gpio_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_out[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/gpio_in">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">gpio_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_in[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/gpio_dir">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">gpio_dir[7:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_dir[7:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/GPIO/gpio_0/inst/reg_addr">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">reg_addr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_addr[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_rsp_valid">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_rsp_valid</obj_property>
+      <obj_property name="ObjectShortName">mem_rsp_valid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/mem_rsp_rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_rsp_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_rsp_rdata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/MMIO/mem_bus_registered_0/inst/gpio_rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">gpio_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">gpio_rdata[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/dmem_rdata">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">dmem_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dmem_rdata[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/BASIC_wrapper/BASIC_i/Core_RV32I/RV32I_MEM/mem_stage_0/inst/mem_out_data">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">mem_out_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_out_data[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>

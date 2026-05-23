@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="BASIC" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1779494126"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1779494126"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1779494126"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1779494126"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1779565150"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1779565150"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1779565150"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1779565150"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="BASIC_sim_netlist.vhdl" Type="VHDL">
         <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
@@ -315,14 +315,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/BASIC_util_vector_logic_2_2/BASIC_util_vector_logic_2_2.xci" Type="IP">
-        <Instance HierarchyPath="MMIO/util_vector_logic_3"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip/BASIC_xlslice_0_0/BASIC_xlslice_0_0.xci" Type="IP">
         <Instance HierarchyPath="xlslice_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -379,24 +371,8 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/BASIC_util_vector_logic_2_3/BASIC_util_vector_logic_2_3.xci" Type="IP">
-        <Instance HierarchyPath="util_vector_logic_3"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip/BASIC_xlconcat_0_0/BASIC_xlconcat_0_0.xci" Type="IP">
         <Instance HierarchyPath="xlconcat_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/BASIC_xlconstant_0_1/BASIC_xlconstant_0_1.xci" Type="IP">
-        <Instance HierarchyPath="xlconstant_1"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -501,6 +477,22 @@
       </File>
       <File Name="ip/BASIC_util_vector_logic_10_2/BASIC_util_vector_logic_10_2.xci" Type="IP">
         <Instance HierarchyPath="PRIVILEGED/util_vector_logic_11"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/BASIC_exception_mux_0_0/BASIC_exception_mux_0_0.xci" Type="IP">
+        <Instance HierarchyPath="PRIVILEGED/exception_mux_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/BASIC_mem_exception_merge_0_0/BASIC_mem_exception_merge_0_0.xci" Type="IP">
+        <Instance HierarchyPath="PRIVILEGED/mem_exception_merge_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

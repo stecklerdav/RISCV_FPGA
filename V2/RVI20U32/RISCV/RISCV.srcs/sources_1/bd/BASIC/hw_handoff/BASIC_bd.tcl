@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# load_use_detection, priority_branch_OR_load_use, gpio, mem_bus_registered, csr_access_unit, csr_file, csr_regfile_wb_mux, privileged_pc_redirect_mux, system_decoder, trap_controller, ram_data, timer, uart_tx, alu, branch, ex_mem_reg, forward_mux, forward_mux, forward_mux, forwarding, operand_a_mux, operand_b_mux, control, decoder, id_ex_reg, imm_mux, regfile, branch_predictor_btb_bht, if_id_reg, pc_to_imem_addr, pc_unit, mem_stage, mem_wb_reg, regfile_we_gen, wb_mux
+# load_use_detection, priority_branch_OR_load_use, gpio, mem_bus_registered, csr_access_unit, csr_file, csr_regfile_wb_mux, exception_mux, mem_exception_merge, privileged_pc_redirect_mux, system_decoder, trap_controller, ram_data, timer, uart_tx, alu, branch, ex_mem_reg, forward_mux, forward_mux, forward_mux, forwarding, operand_a_mux, operand_b_mux, control, decoder, id_ex_reg, imm_mux, regfile, branch_predictor_btb_bht, if_id_reg, pc_to_imem_addr, pc_unit, mem_stage, mem_wb_reg, regfile_we_gen, wb_mux
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -236,11 +236,10 @@ proc create_hier_cell_RV32I_WB { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -from 31 -to 0 alu_y
-  create_bd_pin -dir I -from 31 -to 0 csr_data
   create_bd_pin -dir I -from 31 -to 0 imm_u
   create_bd_pin -dir I -from 31 -to 0 load_data
   create_bd_pin -dir I -from 31 -to 0 pc_plus4
-  create_bd_pin -dir O -from 31 -to 0 rd_wdata1
+  create_bd_pin -dir O -from 31 -to 0 rd_wdata
   create_bd_pin -dir I -from 2 -to 0 wb_sel
 
   # Create instance: wb_mux_0, and set properties
@@ -256,11 +255,10 @@ proc create_hier_cell_RV32I_WB { parentCell nameHier } {
   
   # Create port connections
   connect_bd_net -net alu_y_1 [get_bd_pins alu_y] [get_bd_pins wb_mux_0/alu_y]
-  connect_bd_net -net csr_data_1 [get_bd_pins csr_data] [get_bd_pins wb_mux_0/csr_data]
   connect_bd_net -net imm_u_1 [get_bd_pins imm_u] [get_bd_pins wb_mux_0/imm_u]
   connect_bd_net -net load_data_1 [get_bd_pins load_data] [get_bd_pins wb_mux_0/load_data]
   connect_bd_net -net pc_plus4_1 [get_bd_pins pc_plus4] [get_bd_pins wb_mux_0/pc_plus4]
-  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins rd_wdata1] [get_bd_pins wb_mux_0/rd_wdata]
+  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins rd_wdata] [get_bd_pins wb_mux_0/rd_wdata]
   connect_bd_net -net wb_sel_1 [get_bd_pins wb_sel] [get_bd_pins wb_mux_0/wb_sel]
 
   # Restore current instance
@@ -304,17 +302,24 @@ proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
   # Create interface pins
 
   # Create pins
-  create_bd_pin -dir O -from 4 -to 0 Res
   create_bd_pin -dir I -type clk clk
   create_bd_pin -dir O -from 31 -to 0 dmem_addr
   create_bd_pin -dir O -from 3 -to 0 dmem_be
   create_bd_pin -dir I dmem_error
   create_bd_pin -dir O dmem_re
   create_bd_pin -dir I dmem_ready
+  create_bd_pin -dir I dmem_req_ready
+  create_bd_pin -dir O dmem_valid
   create_bd_pin -dir O -from 31 -to 0 dmem_wdata
   create_bd_pin -dir O dmem_we
   create_bd_pin -dir O load_access_fault
+  create_bd_pin -dir I -from 4 -to 0 mem_csr_rd_addr
+  create_bd_pin -dir I -from 31 -to 0 mem_csr_rd_data
+  create_bd_pin -dir I mem_csr_rd_we
   create_bd_pin -dir I -from 31 -to 0 mem_data
+  create_bd_pin -dir O -from 3 -to 0 mem_fault_cause
+  create_bd_pin -dir O -from 31 -to 0 mem_fault_tval
+  create_bd_pin -dir O mem_fault_valid
   create_bd_pin -dir O -from 31 -to 0 mem_forward_data
   create_bd_pin -dir I -from 31 -to 0 mem_in_alu_result
   create_bd_pin -dir I -from 31 -to 0 mem_in_imm_u
@@ -332,9 +337,13 @@ proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
   create_bd_pin -dir O mem_stage_out_valid
   create_bd_pin -dir O mem_stage_rd_out_we
   create_bd_pin -dir O -from 0 -to 0 mem_stall_req
+  create_bd_pin -dir O regfile_we
   create_bd_pin -dir I -type rst rst
   create_bd_pin -dir O store_access_fault
   create_bd_pin -dir O -from 31 -to 0 wb_alu_result
+  create_bd_pin -dir O -from 4 -to 0 wb_csr_rd_addr
+  create_bd_pin -dir O -from 31 -to 0 wb_csr_rd_data
+  create_bd_pin -dir O wb_csr_rd_we
   create_bd_pin -dir O -from 31 -to 0 wb_data
   create_bd_pin -dir O -from 31 -to 0 wb_imm_u
   create_bd_pin -dir O -from 31 -to 0 wb_pc_plus4
@@ -384,6 +393,7 @@ proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net dmem_error_1 [get_bd_pins dmem_error] [get_bd_pins mem_stage_0/dmem_error]
   connect_bd_net -net dmem_ready_1 [get_bd_pins dmem_ready] [get_bd_pins mem_stage_0/dmem_ready]
+  connect_bd_net -net dmem_req_ready_1 [get_bd_pins dmem_req_ready] [get_bd_pins mem_stage_0/dmem_req_ready]
   connect_bd_net -net ex_mem_reg_1_mem_alu_result [get_bd_pins mem_in_alu_result] [get_bd_pins mem_stage_0/mem_in_alu_result]
   connect_bd_net -net ex_mem_reg_1_mem_imm_u [get_bd_pins mem_in_imm_u] [get_bd_pins mem_stage_0/mem_in_imm_u]
   connect_bd_net -net ex_mem_reg_1_mem_mem_re [get_bd_pins mem_in_mem_re] [get_bd_pins mem_stage_0/mem_in_mem_re]
@@ -395,14 +405,20 @@ proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
   connect_bd_net -net ex_mem_reg_1_mem_store_data [get_bd_pins mem_in_store_data] [get_bd_pins mem_stage_0/mem_in_store_data]
   connect_bd_net -net ex_mem_reg_1_mem_valid [get_bd_pins mem_in_valid] [get_bd_pins mem_stage_0/mem_in_valid]
   connect_bd_net -net ex_mem_reg_1_mem_wb_sel [get_bd_pins mem_in_wb_sel] [get_bd_pins mem_stage_0/mem_in_wb_sel]
+  connect_bd_net -net mem_csr_rd_addr_1 [get_bd_pins mem_csr_rd_addr] [get_bd_pins mem_wb_reg_0/mem_csr_rd_addr]
+  connect_bd_net -net mem_csr_rd_data_1 [get_bd_pins mem_csr_rd_data] [get_bd_pins mem_wb_reg_0/mem_csr_rd_data]
+  connect_bd_net -net mem_csr_rd_we_1 [get_bd_pins mem_csr_rd_we] [get_bd_pins mem_wb_reg_0/mem_csr_rd_we]
   connect_bd_net -net mem_data_1 [get_bd_pins mem_data] [get_bd_pins mem_stage_0/dmem_rdata]
   connect_bd_net -net mem_in_mem_we_1 [get_bd_pins mem_in_mem_we] [get_bd_pins mem_stage_0/mem_in_mem_we]
   connect_bd_net -net mem_stage_0_dmem_addr [get_bd_pins dmem_addr] [get_bd_pins mem_stage_0/dmem_addr]
   connect_bd_net -net mem_stage_0_dmem_be [get_bd_pins dmem_be] [get_bd_pins mem_stage_0/dmem_be]
   connect_bd_net -net mem_stage_0_dmem_re [get_bd_pins dmem_re] [get_bd_pins mem_stage_0/dmem_re]
+  connect_bd_net -net mem_stage_0_dmem_valid [get_bd_pins dmem_valid] [get_bd_pins mem_stage_0/dmem_valid]
   connect_bd_net -net mem_stage_0_dmem_wdata [get_bd_pins dmem_wdata] [get_bd_pins mem_stage_0/dmem_wdata]
   connect_bd_net -net mem_stage_0_dmem_we [get_bd_pins dmem_we] [get_bd_pins mem_stage_0/dmem_we]
-  connect_bd_net -net mem_stage_0_load_access_fault [get_bd_pins load_access_fault] [get_bd_pins mem_stage_0/load_access_fault]
+  connect_bd_net -net mem_stage_0_mem_fault_cause [get_bd_pins mem_fault_cause] [get_bd_pins mem_stage_0/mem_fault_cause]
+  connect_bd_net -net mem_stage_0_mem_fault_tval [get_bd_pins mem_fault_tval] [get_bd_pins mem_stage_0/mem_fault_tval]
+  connect_bd_net -net mem_stage_0_mem_fault_valid [get_bd_pins mem_fault_valid] [get_bd_pins mem_stage_0/mem_fault_valid]
   connect_bd_net -net mem_stage_0_mem_forward_data [get_bd_pins mem_forward_data] [get_bd_pins mem_stage_0/mem_forward_data]
   connect_bd_net -net mem_stage_0_mem_out_alu_result [get_bd_pins mem_stage_0/mem_out_alu_result] [get_bd_pins mem_wb_reg_0/mem_alu_result]
   connect_bd_net -net mem_stage_0_mem_out_data [get_bd_pins mem_stage_0/mem_out_data] [get_bd_pins mem_wb_reg_0/mem_data]
@@ -413,8 +429,10 @@ proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
   connect_bd_net -net mem_stage_0_mem_out_valid [get_bd_pins mem_stage_out_valid] [get_bd_pins mem_stage_0/mem_out_valid] [get_bd_pins mem_wb_reg_0/mem_valid]
   connect_bd_net -net mem_stage_0_mem_out_wb_sel [get_bd_pins mem_stage_0/mem_out_wb_sel] [get_bd_pins mem_wb_reg_0/mem_wb_sel]
   connect_bd_net -net mem_stage_0_mem_stall_req [get_bd_pins mem_stall_req] [get_bd_pins mem_stage_0/mem_stall_req]
-  connect_bd_net -net mem_stage_0_store_access_fault [get_bd_pins store_access_fault] [get_bd_pins mem_stage_0/store_access_fault]
   connect_bd_net -net mem_wb_reg_0_wb_alu_result [get_bd_pins wb_alu_result] [get_bd_pins mem_wb_reg_0/wb_alu_result]
+  connect_bd_net -net mem_wb_reg_0_wb_csr_rd_addr [get_bd_pins wb_csr_rd_addr] [get_bd_pins mem_wb_reg_0/wb_csr_rd_addr]
+  connect_bd_net -net mem_wb_reg_0_wb_csr_rd_data [get_bd_pins wb_csr_rd_data] [get_bd_pins mem_wb_reg_0/wb_csr_rd_data]
+  connect_bd_net -net mem_wb_reg_0_wb_csr_rd_we [get_bd_pins wb_csr_rd_we] [get_bd_pins mem_wb_reg_0/wb_csr_rd_we]
   connect_bd_net -net mem_wb_reg_0_wb_data [get_bd_pins wb_data] [get_bd_pins mem_wb_reg_0/wb_data]
   connect_bd_net -net mem_wb_reg_0_wb_imm_u [get_bd_pins wb_imm_u] [get_bd_pins mem_wb_reg_0/wb_imm_u]
   connect_bd_net -net mem_wb_reg_0_wb_pc_plus4 [get_bd_pins wb_pc_plus4] [get_bd_pins mem_wb_reg_0/wb_pc_plus4]
@@ -423,7 +441,7 @@ proc create_hier_cell_RV32I_MEM { parentCell nameHier } {
   connect_bd_net -net mem_wb_reg_0_wb_sel [get_bd_pins wb_sel] [get_bd_pins mem_wb_reg_0/wb_sel]
   connect_bd_net -net mem_wb_reg_0_wb_valid [get_bd_pins wb_valid] [get_bd_pins mem_wb_reg_0/wb_valid] [get_bd_pins regfile_we_gen_0/wb_valid]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins mem_stage_0/rst] [get_bd_pins mem_wb_reg_0/rst]
-  connect_bd_net -net regfile_we_gen_0_regfile_we [get_bd_pins Res] [get_bd_pins regfile_we_gen_0/regfile_we]
+  connect_bd_net -net regfile_we_gen_0_regfile_we [get_bd_pins regfile_we] [get_bd_pins regfile_we_gen_0/regfile_we]
   connect_bd_net -net xlconstant_3_dout [get_bd_pins mem_stage_0/kill] [get_bd_pins mem_stage_0/stall] [get_bd_pins mem_wb_reg_0/flush] [get_bd_pins mem_wb_reg_0/stall] [get_bd_pins xlconstant_3/dout]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins mem_stage_0/clk] [get_bd_pins mem_wb_reg_0/clk]
 
@@ -886,11 +904,16 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   create_bd_pin -dir O bp_update_taken
   create_bd_pin -dir O -from 31 -to 0 bp_update_target
   create_bd_pin -dir O bp_update_valid
-  create_bd_pin -dir O -from 0 -to 0 branch_taken
   create_bd_pin -dir I -type clk clk
   create_bd_pin -dir O -from 31 -to 0 ex_actual_next_pc
   create_bd_pin -dir I ex_branch_en
   create_bd_pin -dir I -from 2 -to 0 ex_branch_funct3
+  create_bd_pin -dir I -from 4 -to 0 ex_csr_rd_addr
+  create_bd_pin -dir I -from 31 -to 0 ex_csr_rd_data
+  create_bd_pin -dir I ex_csr_rd_we
+  create_bd_pin -dir O -from 3 -to 0 ex_exception_cause
+  create_bd_pin -dir O -from 31 -to 0 ex_exception_tval
+  create_bd_pin -dir O ex_exception_valid
   create_bd_pin -dir O ex_flush_req
   create_bd_pin -dir I -from 31 -to 0 ex_imm
   create_bd_pin -dir I -from 31 -to 0 ex_imm_u
@@ -912,11 +935,18 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   create_bd_pin -dir I -from 31 -to 0 ex_rs2_data
   create_bd_pin -dir I ex_valid
   create_bd_pin -dir I -from 2 -to 0 ex_wb_sel
+  create_bd_pin -dir O -from 4 -to 0 mem_csr_rd_addr
+  create_bd_pin -dir O -from 31 -to 0 mem_csr_rd_data
+  create_bd_pin -dir O mem_csr_rd_we
+  create_bd_pin -dir O -from 3 -to 0 mem_exception_cause
+  create_bd_pin -dir O -from 31 -to 0 mem_exception_tval
+  create_bd_pin -dir O mem_exception_valid
   create_bd_pin -dir O -from 31 -to 0 mem_imm_u
   create_bd_pin -dir O mem_mem_re
   create_bd_pin -dir O -from 1 -to 0 mem_mem_size
   create_bd_pin -dir O mem_mem_unsigned
   create_bd_pin -dir O mem_mem_we
+  create_bd_pin -dir O -from 31 -to 0 mem_pc
   create_bd_pin -dir O -from 31 -to 0 mem_pc_plus4
   create_bd_pin -dir O -from 4 -to 0 mem_rd
   create_bd_pin -dir O mem_rd_we
@@ -936,7 +966,7 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   create_bd_pin -dir I -type rst rst
   create_bd_pin -dir I stall
   create_bd_pin -dir I -from 4 -to 0 wb_rd
-  create_bd_pin -dir I -from 4 -to 0 wb_rd_we
+  create_bd_pin -dir I wb_rd_we
   create_bd_pin -dir I wb_valid
 
   # Create instance: alu_0, and set properties
@@ -1069,12 +1099,15 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   connect_bd_net -net branch_0_bp_update_target [get_bd_pins bp_update_target] [get_bd_pins branch_0/bp_update_target]
   connect_bd_net -net branch_0_bp_update_valid [get_bd_pins bp_update_valid] [get_bd_pins branch_0/bp_update_valid]
   connect_bd_net -net branch_0_ex_actual_next_pc [get_bd_pins ex_actual_next_pc] [get_bd_pins branch_0/ex_actual_next_pc]
-  connect_bd_net -net branch_0_ex_exception_cause [get_bd_pins branch_0/ex_exception_cause] [get_bd_pins ex_mem_reg/ex_exception_cause]
-  connect_bd_net -net branch_0_ex_exception_tval [get_bd_pins branch_0/ex_exception_tval] [get_bd_pins ex_mem_reg/ex_exception_tval]
-  connect_bd_net -net branch_0_ex_exception_valid [get_bd_pins branch_0/ex_exception_valid] [get_bd_pins ex_mem_reg/ex_exception_valid]
+  connect_bd_net -net branch_0_ex_exception_cause [get_bd_pins ex_exception_cause] [get_bd_pins branch_0/ex_exception_cause] [get_bd_pins ex_mem_reg/ex_exception_cause]
+  connect_bd_net -net branch_0_ex_exception_tval [get_bd_pins ex_exception_tval] [get_bd_pins branch_0/ex_exception_tval] [get_bd_pins ex_mem_reg/ex_exception_tval]
+  connect_bd_net -net branch_0_ex_exception_valid [get_bd_pins ex_exception_valid] [get_bd_pins branch_0/ex_exception_valid] [get_bd_pins ex_mem_reg/ex_exception_valid]
   connect_bd_net -net branch_0_ex_flush_req [get_bd_pins ex_flush_req] [get_bd_pins branch_0/ex_flush_req]
   connect_bd_net -net branch_0_pc_redirect_target [get_bd_pins pc_redirect_target] [get_bd_pins branch_0/pc_redirect_target]
   connect_bd_net -net branch_0_pc_redirect_valid [get_bd_pins pc_redirect_valid] [get_bd_pins branch_0/pc_redirect_valid]
+  connect_bd_net -net ex_csr_rd_addr_1 [get_bd_pins ex_csr_rd_addr] [get_bd_pins ex_mem_reg/ex_csr_rd_addr]
+  connect_bd_net -net ex_csr_rd_data_1 [get_bd_pins ex_csr_rd_data] [get_bd_pins ex_mem_reg/ex_csr_rd_data]
+  connect_bd_net -net ex_csr_rd_we_1 [get_bd_pins ex_csr_rd_we] [get_bd_pins ex_mem_reg/ex_csr_rd_we]
   connect_bd_net -net ex_mem_reg_1_mem_alu_result [get_bd_pins ex_mem_data] [get_bd_pins ex_mem_reg/mem_alu_result] [get_bd_pins forward_mux_0/ex_mem_data] [get_bd_pins forward_mux_1/ex_mem_data] [get_bd_pins forward_mux_2/ex_mem_data]
   connect_bd_net -net ex_mem_reg_1_mem_imm_u [get_bd_pins mem_imm_u] [get_bd_pins ex_mem_reg/mem_imm_u]
   connect_bd_net -net ex_mem_reg_1_mem_mem_re [get_bd_pins mem_mem_re] [get_bd_pins ex_mem_reg/mem_mem_re] [get_bd_pins forwarding_0/mem_is_load]
@@ -1087,6 +1120,13 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   connect_bd_net -net ex_mem_reg_1_mem_store_data [get_bd_pins mem_store_data] [get_bd_pins ex_mem_reg/mem_store_data]
   connect_bd_net -net ex_mem_reg_1_mem_valid [get_bd_pins mem_valid] [get_bd_pins ex_mem_reg/mem_valid] [get_bd_pins forwarding_0/mem_valid] [get_bd_pins util_vector_logic_1/Op1]
   connect_bd_net -net ex_mem_reg_1_mem_wb_sel [get_bd_pins mem_wb_sel] [get_bd_pins ex_mem_reg/mem_wb_sel]
+  connect_bd_net -net ex_mem_reg_mem_csr_rd_addr [get_bd_pins mem_csr_rd_addr] [get_bd_pins ex_mem_reg/mem_csr_rd_addr]
+  connect_bd_net -net ex_mem_reg_mem_csr_rd_data [get_bd_pins mem_csr_rd_data] [get_bd_pins ex_mem_reg/mem_csr_rd_data]
+  connect_bd_net -net ex_mem_reg_mem_csr_rd_we [get_bd_pins mem_csr_rd_we] [get_bd_pins ex_mem_reg/mem_csr_rd_we]
+  connect_bd_net -net ex_mem_reg_mem_exception_cause [get_bd_pins mem_exception_cause] [get_bd_pins ex_mem_reg/mem_exception_cause]
+  connect_bd_net -net ex_mem_reg_mem_exception_tval [get_bd_pins mem_exception_tval] [get_bd_pins ex_mem_reg/mem_exception_tval]
+  connect_bd_net -net ex_mem_reg_mem_exception_valid [get_bd_pins mem_exception_valid] [get_bd_pins ex_mem_reg/mem_exception_valid]
+  connect_bd_net -net ex_mem_reg_mem_pc [get_bd_pins mem_pc] [get_bd_pins ex_mem_reg/mem_pc]
   connect_bd_net -net ex_pred_next_pc_1 [get_bd_pins ex_pred_next_pc] [get_bd_pins branch_0/ex_pred_next_pc]
   connect_bd_net -net forward_mux_0_out_data [get_bd_pins out_data] [get_bd_pins branch_0/ex_rs1_data] [get_bd_pins forward_mux_0/out_data] [get_bd_pins operand_a_mux_0/rs1_data]
   connect_bd_net -net forward_mux_1_out_data [get_bd_pins branch_0/ex_rs2_data] [get_bd_pins forward_mux_1/out_data] [get_bd_pins operand_b_mux_0/rs2_data]
@@ -1124,10 +1164,10 @@ proc create_hier_cell_RV32I_EX { parentCell nameHier } {
   connect_bd_net -net operand_b_mux_0_operand_b [get_bd_pins alu_0/b] [get_bd_pins operand_b_mux_0/operand_b]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins ex_mem_reg/rst]
   connect_bd_net -net stall_1 [get_bd_pins stall] [get_bd_pins ex_mem_reg/stall]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins wb_rd_we] [get_bd_pins forwarding_0/wb_rd_we]
   connect_bd_net -net util_vector_logic_1_Res [get_bd_pins forwarding_0/mem_rd_we] [get_bd_pins util_vector_logic_1/Res]
   connect_bd_net -net util_vector_logic_4_Res [get_bd_pins forwarding_0/mem_stage_rd_we] [get_bd_pins util_vector_logic_4/Res]
   connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins mem_wb_data] [get_bd_pins forward_mux_0/mem_wb_data] [get_bd_pins forward_mux_1/mem_wb_data] [get_bd_pins forward_mux_2/mem_wb_data]
+  connect_bd_net -net wb_rd_we1_1 [get_bd_pins wb_rd_we] [get_bd_pins forwarding_0/wb_rd_we]
   connect_bd_net -net wb_valid_1 [get_bd_pins wb_valid] [get_bd_pins forwarding_0/wb_valid]
   connect_bd_net -net xlconstant_3_dout [get_bd_pins ex_mem_reg/flush] [get_bd_pins xlconstant_3/dout]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins ex_mem_reg/clk]
@@ -1179,6 +1219,8 @@ proc create_hier_cell_UART { parentCell nameHier } {
   create_bd_pin -dir O -from 31 -to 0 rdata
   create_bd_pin -dir O ready
   create_bd_pin -dir I -type rst rst
+  create_bd_pin -dir I rx
+  create_bd_pin -dir O tx
   create_bd_pin -dir I valid
   create_bd_pin -dir I -from 31 -to 0 wdata
   create_bd_pin -dir I we
@@ -1195,7 +1237,7 @@ proc create_hier_cell_UART { parentCell nameHier } {
    }
     set_property -dict [ list \
    CONFIG.BAUD {115200} \
-   CONFIG.CLK_FREQ {190000000} \
+   CONFIG.CLK_FREQ {190474289} \
  ] $uart_tx_0
 
   # Create port connections
@@ -1205,9 +1247,10 @@ proc create_hier_cell_UART { parentCell nameHier } {
   connect_bd_net -net MMIO_uart_wdata [get_bd_pins wdata] [get_bd_pins uart_tx_0/wdata]
   connect_bd_net -net MMIO_uart_we [get_bd_pins we] [get_bd_pins uart_tx_0/we]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins uart_tx_0/rst]
+  connect_bd_net -net rx_1 [get_bd_pins rx] [get_bd_pins uart_tx_0/rx]
   connect_bd_net -net uart_tx_0_rdata [get_bd_pins rdata] [get_bd_pins uart_tx_0/rdata]
   connect_bd_net -net uart_tx_0_ready [get_bd_pins ready] [get_bd_pins uart_tx_0/ready]
-  connect_bd_net -net uart_tx_0_tx [get_bd_pins uart_tx_0/rx] [get_bd_pins uart_tx_0/tx]
+  connect_bd_net -net uart_tx_0_tx [get_bd_pins tx] [get_bd_pins uart_tx_0/tx]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins uart_tx_0/clk]
 
   # Restore current instance
@@ -1254,6 +1297,7 @@ proc create_hier_cell_TIMER { parentCell nameHier } {
   create_bd_pin -dir I -from 31 -to 0 addr
   create_bd_pin -dir I -from 3 -to 0 be
   create_bd_pin -dir I -type clk clk
+  create_bd_pin -dir O error
   create_bd_pin -dir O -from 31 -to 0 rdata
   create_bd_pin -dir O ready
   create_bd_pin -dir I -type rst rst
@@ -1273,7 +1317,7 @@ proc create_hier_cell_TIMER { parentCell nameHier } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.RESET_CMP {0x00030D40} \
+   CONFIG.RESET_CMP {0x0002E7CA} \
  ] $timer_0
 
   # Create port connections
@@ -1283,6 +1327,7 @@ proc create_hier_cell_TIMER { parentCell nameHier } {
   connect_bd_net -net MMIO_timer_wdata [get_bd_pins wdata] [get_bd_pins timer_0/wdata]
   connect_bd_net -net MMIO_timer_we [get_bd_pins we] [get_bd_pins timer_0/we]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins timer_0/rst]
+  connect_bd_net -net timer_0_error [get_bd_pins error] [get_bd_pins timer_0/error]
   connect_bd_net -net timer_0_rdata [get_bd_pins rdata] [get_bd_pins timer_0/rdata]
   connect_bd_net -net timer_0_ready [get_bd_pins ready] [get_bd_pins timer_0/ready]
   connect_bd_net -net timer_0_timer_irq [get_bd_pins timer_irq] [get_bd_pins timer_0/timer_irq]
@@ -1403,15 +1448,29 @@ proc create_hier_cell_PRIVILEGED { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk clk
-  create_bd_pin -dir O -from 31 -to 0 csr_rd_data
+  create_bd_pin -dir O -from 4 -to 0 csr_rd_addr
+  create_bd_pin -dir I -from 4 -to 0 csr_rd_addr1
+  create_bd_pin -dir O -from 31 -to 0 csr_rd_data1
+  create_bd_pin -dir I -from 31 -to 0 csr_rd_data2
+  create_bd_pin -dir O csr_rd_we
+  create_bd_pin -dir I csr_rd_we1
   create_bd_pin -dir I -from 31 -to 0 current_pc
+  create_bd_pin -dir I -from 3 -to 0 ex_exception_cause
+  create_bd_pin -dir I -from 31 -to 0 ex_exception_tval
+  create_bd_pin -dir I ex_exception_valid
   create_bd_pin -dir O -from 4 -to 0 final_rd
   create_bd_pin -dir O -from 31 -to 0 final_wdata
   create_bd_pin -dir O final_we
   create_bd_pin -dir I illegal_instr
   create_bd_pin -dir I -from 31 -to 0 instr
   create_bd_pin -dir I instr_valid
-  create_bd_pin -dir I load_access_fault
+  create_bd_pin -dir I -from 3 -to 0 mem_exception_cause
+  create_bd_pin -dir I -from 31 -to 0 mem_exception_pc
+  create_bd_pin -dir I -from 31 -to 0 mem_exception_tval
+  create_bd_pin -dir I mem_exception_valid
+  create_bd_pin -dir I -from 3 -to 0 mem_fault_cause
+  create_bd_pin -dir I -from 31 -to 0 mem_fault_tval
+  create_bd_pin -dir I mem_fault_valid
   create_bd_pin -dir I mem_stall_req
   create_bd_pin -dir I -from 4 -to 0 normal_rd
   create_bd_pin -dir I -from 31 -to 0 normal_wdata
@@ -1420,7 +1479,6 @@ proc create_hier_cell_PRIVILEGED { parentCell nameHier } {
   create_bd_pin -dir O priv_redirect_valid
   create_bd_pin -dir I -from 31 -to 0 rs1_data
   create_bd_pin -dir I -type rst rst
-  create_bd_pin -dir I store_access_fault
   create_bd_pin -dir I -type intr timer_irq
   create_bd_pin -dir O trap_flush
 
@@ -1453,6 +1511,28 @@ proc create_hier_cell_PRIVILEGED { parentCell nameHier } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    } elseif { $csr_regfile_wb_mux_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: exception_mux_0, and set properties
+  set block_name exception_mux
+  set block_cell_name exception_mux_0
+  if { [catch {set exception_mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $exception_mux_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: mem_exception_merge_0, and set properties
+  set block_name mem_exception_merge
+  set block_cell_name mem_exception_merge_0
+  if { [catch {set mem_exception_merge_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $mem_exception_merge_0 eq "" } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
@@ -1507,17 +1587,16 @@ proc create_hier_cell_PRIVILEGED { parentCell nameHier } {
  ] $util_vector_logic_11
 
   # Create port connections
-  connect_bd_net -net Core_RV32I_Res [get_bd_pins normal_we] [get_bd_pins csr_regfile_wb_mux_0/normal_we]
   connect_bd_net -net Core_RV32I_ex_instr [get_bd_pins instr] [get_bd_pins system_decoder_0/instr]
-  connect_bd_net -net Core_RV32I_ex_pc [get_bd_pins current_pc] [get_bd_pins trap_controller_0/current_pc]
+  connect_bd_net -net Core_RV32I_ex_pc [get_bd_pins current_pc] [get_bd_pins exception_mux_0/ex_exception_pc] [get_bd_pins trap_controller_0/current_pc]
   connect_bd_net -net Core_RV32I_ex_valid [get_bd_pins instr_valid] [get_bd_pins csr_access_unit_0/ex_valid] [get_bd_pins trap_controller_0/instr_valid]
   connect_bd_net -net Core_RV32I_mem_stall_req [get_bd_pins mem_stall_req] [get_bd_pins trap_controller_0/mem_stall_req]
   connect_bd_net -net Core_RV32I_rd_wdata1 [get_bd_pins normal_wdata] [get_bd_pins csr_regfile_wb_mux_0/normal_wdata]
   connect_bd_net -net Core_RV32I_wb_rd [get_bd_pins normal_rd] [get_bd_pins csr_regfile_wb_mux_0/normal_rd]
   connect_bd_net -net TIMER_timer_irq [get_bd_pins timer_irq] [get_bd_pins csr_file_0/timer_irq] [get_bd_pins trap_controller_0/timer_irq]
-  connect_bd_net -net csr_access_unit_0_csr_rd_addr [get_bd_pins csr_access_unit_0/csr_rd_addr] [get_bd_pins csr_regfile_wb_mux_0/csr_rd_addr]
-  connect_bd_net -net csr_access_unit_0_csr_rd_data [get_bd_pins csr_rd_data] [get_bd_pins csr_access_unit_0/csr_rd_data] [get_bd_pins csr_regfile_wb_mux_0/csr_rd_data]
-  connect_bd_net -net csr_access_unit_0_csr_rd_we [get_bd_pins csr_access_unit_0/csr_rd_we] [get_bd_pins csr_regfile_wb_mux_0/csr_rd_we]
+  connect_bd_net -net csr_access_unit_0_csr_rd_addr [get_bd_pins csr_rd_addr] [get_bd_pins csr_access_unit_0/csr_rd_addr]
+  connect_bd_net -net csr_access_unit_0_csr_rd_data [get_bd_pins csr_rd_data1] [get_bd_pins csr_access_unit_0/csr_rd_data]
+  connect_bd_net -net csr_access_unit_0_csr_rd_we [get_bd_pins csr_rd_we] [get_bd_pins csr_access_unit_0/csr_rd_we]
   connect_bd_net -net csr_access_unit_0_csr_wdata [get_bd_pins csr_access_unit_0/csr_wdata] [get_bd_pins csr_file_0/csr_wdata]
   connect_bd_net -net csr_access_unit_0_csr_we [get_bd_pins csr_access_unit_0/csr_we] [get_bd_pins csr_file_0/csr_we]
   connect_bd_net -net csr_file_0_csr_mepc [get_bd_pins csr_file_0/csr_mepc] [get_bd_pins trap_controller_0/csr_mepc]
@@ -1526,16 +1605,36 @@ proc create_hier_cell_PRIVILEGED { parentCell nameHier } {
   connect_bd_net -net csr_file_0_csr_mstatus [get_bd_pins csr_file_0/csr_mstatus] [get_bd_pins trap_controller_0/csr_mstatus]
   connect_bd_net -net csr_file_0_csr_mtvec [get_bd_pins csr_file_0/csr_mtvec] [get_bd_pins trap_controller_0/csr_mtvec]
   connect_bd_net -net csr_file_0_csr_rdata [get_bd_pins csr_access_unit_0/csr_rdata] [get_bd_pins csr_file_0/csr_rdata]
+  connect_bd_net -net csr_rd_addr1_1 [get_bd_pins csr_rd_addr1] [get_bd_pins csr_regfile_wb_mux_0/csr_rd_addr]
+  connect_bd_net -net csr_rd_data2_1 [get_bd_pins csr_rd_data2] [get_bd_pins csr_regfile_wb_mux_0/csr_rd_data]
+  connect_bd_net -net csr_rd_we1_1 [get_bd_pins csr_rd_we1] [get_bd_pins csr_regfile_wb_mux_0/csr_rd_we]
   connect_bd_net -net csr_regfile_wb_mux_0_final_rd [get_bd_pins final_rd] [get_bd_pins csr_regfile_wb_mux_0/final_rd]
   connect_bd_net -net csr_regfile_wb_mux_0_final_wdata [get_bd_pins final_wdata] [get_bd_pins csr_regfile_wb_mux_0/final_wdata]
   connect_bd_net -net csr_regfile_wb_mux_0_final_we [get_bd_pins final_we] [get_bd_pins csr_regfile_wb_mux_0/final_we]
+  connect_bd_net -net ex_exception_cause_1 [get_bd_pins ex_exception_cause] [get_bd_pins exception_mux_0/ex_exception_cause]
+  connect_bd_net -net ex_exception_tval_1 [get_bd_pins ex_exception_tval] [get_bd_pins exception_mux_0/ex_exception_tval]
+  connect_bd_net -net ex_exception_valid_1 [get_bd_pins ex_exception_valid] [get_bd_pins exception_mux_0/ex_exception_valid]
+  connect_bd_net -net exception_mux_0_exception_cause [get_bd_pins exception_mux_0/exception_cause] [get_bd_pins trap_controller_0/exception_cause]
+  connect_bd_net -net exception_mux_0_exception_pc [get_bd_pins exception_mux_0/exception_pc] [get_bd_pins trap_controller_0/exception_pc]
+  connect_bd_net -net exception_mux_0_exception_tval [get_bd_pins exception_mux_0/exception_tval] [get_bd_pins trap_controller_0/exception_tval]
+  connect_bd_net -net exception_mux_0_exception_valid [get_bd_pins exception_mux_0/exception_valid] [get_bd_pins trap_controller_0/exception_valid]
   connect_bd_net -net illegal_instr_1 [get_bd_pins illegal_instr] [get_bd_pins util_vector_logic_10/Op1]
-  connect_bd_net -net load_access_fault_1 [get_bd_pins load_access_fault] [get_bd_pins trap_controller_0/load_access_fault]
+  connect_bd_net -net mem_exception_cause_1 [get_bd_pins mem_exception_cause] [get_bd_pins mem_exception_merge_0/mem_exception_cause]
+  connect_bd_net -net mem_exception_merge_0_final_mem_exception_cause [get_bd_pins exception_mux_0/mem_exception_cause] [get_bd_pins mem_exception_merge_0/final_mem_exception_cause]
+  connect_bd_net -net mem_exception_merge_0_final_mem_exception_pc [get_bd_pins exception_mux_0/mem_exception_pc] [get_bd_pins mem_exception_merge_0/final_mem_exception_pc]
+  connect_bd_net -net mem_exception_merge_0_final_mem_exception_tval [get_bd_pins exception_mux_0/mem_exception_tval] [get_bd_pins mem_exception_merge_0/final_mem_exception_tval]
+  connect_bd_net -net mem_exception_merge_0_final_mem_exception_valid [get_bd_pins exception_mux_0/mem_exception_valid] [get_bd_pins mem_exception_merge_0/final_mem_exception_valid]
+  connect_bd_net -net mem_exception_pc_1 [get_bd_pins mem_exception_pc] [get_bd_pins mem_exception_merge_0/mem_exception_pc]
+  connect_bd_net -net mem_exception_tval_1 [get_bd_pins mem_exception_tval] [get_bd_pins mem_exception_merge_0/mem_exception_tval]
+  connect_bd_net -net mem_exception_valid_1 [get_bd_pins mem_exception_valid] [get_bd_pins mem_exception_merge_0/mem_exception_valid]
+  connect_bd_net -net mem_fault_cause_1 [get_bd_pins mem_fault_cause] [get_bd_pins mem_exception_merge_0/mem_fault_cause]
+  connect_bd_net -net mem_fault_tval_1 [get_bd_pins mem_fault_tval] [get_bd_pins mem_exception_merge_0/mem_fault_tval]
+  connect_bd_net -net mem_fault_valid_1 [get_bd_pins mem_fault_valid] [get_bd_pins mem_exception_merge_0/mem_fault_valid]
+  connect_bd_net -net normal_we1_1 [get_bd_pins normal_we] [get_bd_pins csr_regfile_wb_mux_0/normal_we]
   connect_bd_net -net privileged_pc_redire_0_priv_redirect_target [get_bd_pins priv_redirect_target] [get_bd_pins privileged_pc_redire_0/priv_redirect_target]
   connect_bd_net -net privileged_pc_redire_0_priv_redirect_valid [get_bd_pins priv_redirect_valid] [get_bd_pins privileged_pc_redire_0/priv_redirect_valid]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins csr_file_0/rst] [get_bd_pins trap_controller_0/rst]
   connect_bd_net -net rs1_data1_1 [get_bd_pins rs1_data] [get_bd_pins csr_access_unit_0/rs1_data]
-  connect_bd_net -net store_access_fault_1 [get_bd_pins store_access_fault] [get_bd_pins trap_controller_0/store_access_fault]
   connect_bd_net -net system_decoder_0_csr_addr [get_bd_pins csr_file_0/csr_addr] [get_bd_pins system_decoder_0/csr_addr]
   connect_bd_net -net system_decoder_0_csr_rd [get_bd_pins csr_access_unit_0/csr_rd] [get_bd_pins system_decoder_0/csr_rd]
   connect_bd_net -net system_decoder_0_csr_rs1 [get_bd_pins csr_access_unit_0/csr_rs1] [get_bd_pins system_decoder_0/csr_rs1]
@@ -1603,7 +1702,6 @@ proc create_hier_cell_MMIO { parentCell nameHier } {
   create_bd_pin -dir I -from 3 -to 0 cpu_be
   create_bd_pin -dir I -from 31 -to 0 cpu_wdata
   create_bd_pin -dir I -from 0 -to 0 cpu_we
-  create_bd_pin -dir I -from 0 -to 0 dmem_re
   create_bd_pin -dir O -from 31 -to 0 gpio_addr
   create_bd_pin -dir O -from 3 -to 0 gpio_be
   create_bd_pin -dir I -from 31 -to 0 gpio_rdata
@@ -1611,6 +1709,8 @@ proc create_hier_cell_MMIO { parentCell nameHier } {
   create_bd_pin -dir O gpio_valid
   create_bd_pin -dir O -from 31 -to 0 gpio_wdata
   create_bd_pin -dir O gpio_we
+  create_bd_pin -dir O mem_req_ready
+  create_bd_pin -dir I mem_req_valid
   create_bd_pin -dir O mem_rsp_error
   create_bd_pin -dir O -from 31 -to 0 mem_rsp_rdata
   create_bd_pin -dir O mem_rsp_valid
@@ -1624,6 +1724,7 @@ proc create_hier_cell_MMIO { parentCell nameHier } {
   create_bd_pin -dir I -type rst rst
   create_bd_pin -dir O -from 31 -to 0 timer_addr
   create_bd_pin -dir O -from 3 -to 0 timer_be
+  create_bd_pin -dir I timer_error
   create_bd_pin -dir I -from 31 -to 0 timer_rdata
   create_bd_pin -dir I timer_ready
   create_bd_pin -dir O timer_valid
@@ -1648,17 +1749,8 @@ proc create_hier_cell_MMIO { parentCell nameHier } {
      return 1
    }
   
-  # Create instance: util_vector_logic_3, and set properties
-  set util_vector_logic_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_3 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {or} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_orgate.png} \
- ] $util_vector_logic_3
-
   # Create port connections
-  connect_bd_net -net RV32I_MEM_dmem_re [get_bd_pins dmem_re] [get_bd_pins util_vector_logic_3/Op2]
-  connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins cpu_we] [get_bd_pins mem_bus_registered_0/mem_req_we] [get_bd_pins util_vector_logic_3/Op1]
+  connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins cpu_we] [get_bd_pins mem_bus_registered_0/mem_req_we]
   connect_bd_net -net clk_1 [get_bd_pins clk] [get_bd_pins mem_bus_registered_0/clk]
   connect_bd_net -net cpu_addr_1 [get_bd_pins cpu_addr] [get_bd_pins mem_bus_registered_0/mem_req_addr]
   connect_bd_net -net cpu_be_1 [get_bd_pins cpu_be] [get_bd_pins mem_bus_registered_0/mem_req_be]
@@ -1670,6 +1762,7 @@ proc create_hier_cell_MMIO { parentCell nameHier } {
   connect_bd_net -net mem_bus_registered_0_gpio_valid [get_bd_pins gpio_valid] [get_bd_pins mem_bus_registered_0/gpio_valid]
   connect_bd_net -net mem_bus_registered_0_gpio_wdata [get_bd_pins gpio_wdata] [get_bd_pins mem_bus_registered_0/gpio_wdata]
   connect_bd_net -net mem_bus_registered_0_gpio_we [get_bd_pins gpio_we] [get_bd_pins mem_bus_registered_0/gpio_we]
+  connect_bd_net -net mem_bus_registered_0_mem_req_ready [get_bd_pins mem_req_ready] [get_bd_pins mem_bus_registered_0/mem_req_ready]
   connect_bd_net -net mem_bus_registered_0_mem_rsp_error [get_bd_pins mem_rsp_error] [get_bd_pins mem_bus_registered_0/mem_rsp_error]
   connect_bd_net -net mem_bus_registered_0_mem_rsp_rdata [get_bd_pins mem_rsp_rdata] [get_bd_pins mem_bus_registered_0/mem_rsp_rdata]
   connect_bd_net -net mem_bus_registered_0_mem_rsp_valid [get_bd_pins mem_rsp_valid] [get_bd_pins mem_bus_registered_0/mem_rsp_valid]
@@ -1688,14 +1781,15 @@ proc create_hier_cell_MMIO { parentCell nameHier } {
   connect_bd_net -net mem_bus_registered_0_uart_valid [get_bd_pins uart_valid] [get_bd_pins mem_bus_registered_0/uart_valid]
   connect_bd_net -net mem_bus_registered_0_uart_wdata [get_bd_pins uart_wdata] [get_bd_pins mem_bus_registered_0/uart_wdata]
   connect_bd_net -net mem_bus_registered_0_uart_we [get_bd_pins uart_we] [get_bd_pins mem_bus_registered_0/uart_we]
+  connect_bd_net -net mem_req_valid_1 [get_bd_pins mem_req_valid] [get_bd_pins mem_bus_registered_0/mem_req_valid]
   connect_bd_net -net ram_rdata_1 [get_bd_pins ram_rdata] [get_bd_pins mem_bus_registered_0/ram_rdata]
   connect_bd_net -net ram_ready_1 [get_bd_pins ram_ready] [get_bd_pins mem_bus_registered_0/ram_ready]
   connect_bd_net -net rst_1 [get_bd_pins rst] [get_bd_pins mem_bus_registered_0/rst]
+  connect_bd_net -net timer_error_1 [get_bd_pins timer_error] [get_bd_pins mem_bus_registered_0/timer_error]
   connect_bd_net -net timer_rdata_1 [get_bd_pins timer_rdata] [get_bd_pins mem_bus_registered_0/timer_rdata]
   connect_bd_net -net timer_ready_1 [get_bd_pins timer_ready] [get_bd_pins mem_bus_registered_0/timer_ready]
   connect_bd_net -net uart_rdata_1 [get_bd_pins uart_rdata] [get_bd_pins mem_bus_registered_0/uart_rdata]
   connect_bd_net -net uart_ready1_1 [get_bd_pins uart_ready] [get_bd_pins mem_bus_registered_0/uart_ready]
-  connect_bd_net -net util_vector_logic_3_Res [get_bd_pins mem_bus_registered_0/mem_req_valid] [get_bd_pins util_vector_logic_3/Res]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1815,22 +1909,33 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   # Create interface pins
 
   # Create pins
-  create_bd_pin -dir O -from 4 -to 0 Res
   create_bd_pin -dir I -type clk clk
-  create_bd_pin -dir I -from 31 -to 0 csr_data
   create_bd_pin -dir O -from 31 -to 0 dmem_addr
   create_bd_pin -dir O -from 3 -to 0 dmem_be
   create_bd_pin -dir I dmem_error
-  create_bd_pin -dir O dmem_re
   create_bd_pin -dir I dmem_ready
+  create_bd_pin -dir I dmem_req_ready
+  create_bd_pin -dir O dmem_valid
   create_bd_pin -dir O -from 31 -to 0 dmem_wdata
   create_bd_pin -dir O dmem_we
+  create_bd_pin -dir I -from 4 -to 0 ex_csr_rd_addr
+  create_bd_pin -dir I -from 31 -to 0 ex_csr_rd_data
+  create_bd_pin -dir I ex_csr_rd_we
+  create_bd_pin -dir O -from 3 -to 0 ex_exception_cause
+  create_bd_pin -dir O -from 31 -to 0 ex_exception_tval
+  create_bd_pin -dir O ex_exception_valid
   create_bd_pin -dir O ex_illegal_instr
   create_bd_pin -dir O -from 31 -to 0 ex_instr
   create_bd_pin -dir O -from 31 -to 0 ex_pc
   create_bd_pin -dir O ex_valid
-  create_bd_pin -dir O load_access_fault
   create_bd_pin -dir I -from 31 -to 0 mem_data
+  create_bd_pin -dir O -from 3 -to 0 mem_exception_cause
+  create_bd_pin -dir O -from 31 -to 0 mem_exception_tval
+  create_bd_pin -dir O mem_exception_valid
+  create_bd_pin -dir O -from 3 -to 0 mem_fault_cause
+  create_bd_pin -dir O -from 31 -to 0 mem_fault_tval
+  create_bd_pin -dir O mem_fault_valid
+  create_bd_pin -dir O -from 31 -to 0 mem_pc
   create_bd_pin -dir O -from 0 -to 0 mem_stall_req
   create_bd_pin -dir O -from 31 -to 0 out_data
   create_bd_pin -dir I -from 31 -to 0 priv_redirect_target
@@ -1839,9 +1944,12 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   create_bd_pin -dir I -from 31 -to 0 rd_wdata
   create_bd_pin -dir O -from 31 -to 0 rd_wdata1
   create_bd_pin -dir I rd_we
+  create_bd_pin -dir O regfile_we
   create_bd_pin -dir I -type rst rst
-  create_bd_pin -dir O store_access_fault
   create_bd_pin -dir I -from 0 -to 0 trap_flush
+  create_bd_pin -dir O -from 4 -to 0 wb_csr_rd_addr
+  create_bd_pin -dir O -from 31 -to 0 wb_csr_rd_data
+  create_bd_pin -dir O wb_csr_rd_we
   create_bd_pin -dir O -from 4 -to 0 wb_rd
 
   # Create instance: RV32I_EX
@@ -1887,7 +1995,16 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   connect_bd_net -net RV32I_EX_bp_update_taken [get_bd_pins RV32I_EX/bp_update_taken] [get_bd_pins RV32I_IF/update_taken]
   connect_bd_net -net RV32I_EX_bp_update_target [get_bd_pins RV32I_EX/bp_update_target] [get_bd_pins RV32I_IF/update_target]
   connect_bd_net -net RV32I_EX_bp_update_valid [get_bd_pins RV32I_EX/bp_update_valid] [get_bd_pins RV32I_IF/update_valid]
+  connect_bd_net -net RV32I_EX_ex_exception_cause [get_bd_pins ex_exception_cause] [get_bd_pins RV32I_EX/ex_exception_cause]
+  connect_bd_net -net RV32I_EX_ex_exception_tval [get_bd_pins ex_exception_tval] [get_bd_pins RV32I_EX/ex_exception_tval]
+  connect_bd_net -net RV32I_EX_ex_exception_valid [get_bd_pins ex_exception_valid] [get_bd_pins RV32I_EX/ex_exception_valid]
   connect_bd_net -net RV32I_EX_ex_flush_req [get_bd_pins RV32I_EX/ex_flush_req] [get_bd_pins priority_branch_OR_l_0/ex_flush_req]
+  connect_bd_net -net RV32I_EX_mem_csr_rd_data [get_bd_pins RV32I_EX/mem_csr_rd_data] [get_bd_pins RV32I_MEM/mem_csr_rd_data]
+  connect_bd_net -net RV32I_EX_mem_csr_rd_we [get_bd_pins RV32I_EX/mem_csr_rd_we] [get_bd_pins RV32I_MEM/mem_csr_rd_we]
+  connect_bd_net -net RV32I_EX_mem_exception_cause [get_bd_pins mem_exception_cause] [get_bd_pins RV32I_EX/mem_exception_cause]
+  connect_bd_net -net RV32I_EX_mem_exception_tval [get_bd_pins mem_exception_tval] [get_bd_pins RV32I_EX/mem_exception_tval]
+  connect_bd_net -net RV32I_EX_mem_exception_valid [get_bd_pins mem_exception_valid] [get_bd_pins RV32I_EX/mem_exception_valid]
+  connect_bd_net -net RV32I_EX_mem_pc [get_bd_pins mem_pc] [get_bd_pins RV32I_EX/mem_pc]
   connect_bd_net -net RV32I_EX_out_data [get_bd_pins out_data] [get_bd_pins RV32I_EX/out_data]
   connect_bd_net -net RV32I_EX_pc_redirect_target [get_bd_pins RV32I_EX/pc_redirect_target] [get_bd_pins RV32I_IF/pc_redirect_target]
   connect_bd_net -net RV32I_EX_pc_redirect_valid [get_bd_pins RV32I_EX/pc_redirect_valid] [get_bd_pins RV32I_IF/pc_redirect_valid]
@@ -1906,13 +2023,18 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   connect_bd_net -net RV32I_IF_id_valid_out [get_bd_pins RV32I_ID/id_valid] [get_bd_pins RV32I_IF/id_valid_out] [get_bd_pins load_use_detection_0/if_id_valid]
   connect_bd_net -net RV32I_MEM_dmem_addr [get_bd_pins dmem_addr] [get_bd_pins RV32I_MEM/dmem_addr]
   connect_bd_net -net RV32I_MEM_dmem_be [get_bd_pins dmem_be] [get_bd_pins RV32I_MEM/dmem_be]
-  connect_bd_net -net RV32I_MEM_dmem_re [get_bd_pins dmem_re] [get_bd_pins RV32I_MEM/dmem_re]
+  connect_bd_net -net RV32I_MEM_dmem_valid [get_bd_pins dmem_valid] [get_bd_pins RV32I_MEM/dmem_valid]
   connect_bd_net -net RV32I_MEM_dmem_wdata [get_bd_pins dmem_wdata] [get_bd_pins RV32I_MEM/dmem_wdata]
   connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins dmem_we] [get_bd_pins RV32I_MEM/dmem_we]
-  connect_bd_net -net RV32I_MEM_load_access_fault [get_bd_pins load_access_fault] [get_bd_pins RV32I_MEM/load_access_fault]
+  connect_bd_net -net RV32I_MEM_mem_fault_cause [get_bd_pins mem_fault_cause] [get_bd_pins RV32I_MEM/mem_fault_cause]
+  connect_bd_net -net RV32I_MEM_mem_fault_tval [get_bd_pins mem_fault_tval] [get_bd_pins RV32I_MEM/mem_fault_tval]
+  connect_bd_net -net RV32I_MEM_mem_fault_valid [get_bd_pins mem_fault_valid] [get_bd_pins RV32I_MEM/mem_fault_valid]
   connect_bd_net -net RV32I_MEM_mem_rd_we [get_bd_pins RV32I_EX/mem_stage_rd_out_we] [get_bd_pins RV32I_MEM/mem_stage_rd_out_we]
-  connect_bd_net -net RV32I_MEM_store_access_fault [get_bd_pins store_access_fault] [get_bd_pins RV32I_MEM/store_access_fault]
+  connect_bd_net -net RV32I_MEM_regfile_we [get_bd_pins regfile_we] [get_bd_pins RV32I_EX/wb_rd_we] [get_bd_pins RV32I_MEM/regfile_we]
   connect_bd_net -net RV32I_MEM_wb_alu_result [get_bd_pins RV32I_MEM/wb_alu_result] [get_bd_pins RV32I_WB/alu_y]
+  connect_bd_net -net RV32I_MEM_wb_csr_rd_addr [get_bd_pins wb_csr_rd_addr] [get_bd_pins RV32I_MEM/wb_csr_rd_addr]
+  connect_bd_net -net RV32I_MEM_wb_csr_rd_data [get_bd_pins wb_csr_rd_data] [get_bd_pins RV32I_MEM/wb_csr_rd_data]
+  connect_bd_net -net RV32I_MEM_wb_csr_rd_we [get_bd_pins wb_csr_rd_we] [get_bd_pins RV32I_MEM/wb_csr_rd_we]
   connect_bd_net -net RV32I_MEM_wb_data [get_bd_pins RV32I_MEM/wb_data] [get_bd_pins RV32I_WB/load_data]
   connect_bd_net -net RV32I_MEM_wb_imm_u [get_bd_pins RV32I_MEM/wb_imm_u] [get_bd_pins RV32I_WB/imm_u]
   connect_bd_net -net RV32I_MEM_wb_pc_plus4 [get_bd_pins RV32I_MEM/wb_pc_plus4] [get_bd_pins RV32I_WB/pc_plus4]
@@ -1920,11 +2042,14 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   connect_bd_net -net RV32I_MEM_wb_valid [get_bd_pins RV32I_EX/wb_valid] [get_bd_pins RV32I_MEM/wb_valid]
   connect_bd_net -net alu_op_1 [get_bd_pins RV32I_EX/alu_op] [get_bd_pins RV32I_ID/ex_alu_op]
   connect_bd_net -net bubble_1 [get_bd_pins RV32I_ID/bubble] [get_bd_pins priority_branch_OR_l_0/id_ex_flush_final]
-  connect_bd_net -net csr_data_1 [get_bd_pins csr_data] [get_bd_pins RV32I_WB/csr_data]
   connect_bd_net -net dmem_error_1 [get_bd_pins dmem_error] [get_bd_pins RV32I_MEM/dmem_error]
   connect_bd_net -net dmem_ready_1 [get_bd_pins dmem_ready] [get_bd_pins RV32I_MEM/dmem_ready]
+  connect_bd_net -net dmem_req_ready_1 [get_bd_pins dmem_req_ready] [get_bd_pins RV32I_MEM/dmem_req_ready]
   connect_bd_net -net ex_branch_en_1 [get_bd_pins RV32I_EX/ex_branch_en] [get_bd_pins RV32I_ID/ex_branch_en]
   connect_bd_net -net ex_branch_funct3_1 [get_bd_pins RV32I_EX/ex_branch_funct3] [get_bd_pins RV32I_ID/ex_branch_funct3]
+  connect_bd_net -net ex_csr_rd_addr_1 [get_bd_pins ex_csr_rd_addr] [get_bd_pins RV32I_EX/ex_csr_rd_addr]
+  connect_bd_net -net ex_csr_rd_data_1 [get_bd_pins ex_csr_rd_data] [get_bd_pins RV32I_EX/ex_csr_rd_data]
+  connect_bd_net -net ex_csr_rd_we_1 [get_bd_pins ex_csr_rd_we] [get_bd_pins RV32I_EX/ex_csr_rd_we]
   connect_bd_net -net ex_imm_1 [get_bd_pins RV32I_EX/ex_imm] [get_bd_pins RV32I_ID/ex_imm]
   connect_bd_net -net ex_imm_u_1 [get_bd_pins RV32I_EX/ex_imm_u] [get_bd_pins RV32I_ID/ex_imm_u]
   connect_bd_net -net ex_jal_1 [get_bd_pins RV32I_EX/ex_jal] [get_bd_pins RV32I_ID/ex_jal]
@@ -1959,6 +2084,7 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   connect_bd_net -net load_use_detection_0_id_ex_flush [get_bd_pins load_use_detection_0/id_ex_flush] [get_bd_pins priority_branch_OR_l_0/load_use_id_ex_flush]
   connect_bd_net -net load_use_detection_0_if_id_hold [get_bd_pins load_use_detection_0/if_id_hold] [get_bd_pins priority_branch_OR_l_0/load_use_if_id_hold]
   connect_bd_net -net load_use_detection_0_pc_en [get_bd_pins load_use_detection_0/pc_en] [get_bd_pins priority_branch_OR_l_0/load_use_pc_en]
+  connect_bd_net -net mem_csr_rd_addr_1 [get_bd_pins RV32I_EX/mem_csr_rd_addr] [get_bd_pins RV32I_MEM/mem_csr_rd_addr]
   connect_bd_net -net mem_stage_0_mem_forward_data [get_bd_pins RV32I_EX/mem_stage_data] [get_bd_pins RV32I_MEM/mem_forward_data]
   connect_bd_net -net mem_stage_0_mem_out_rd [get_bd_pins RV32I_EX/mem_stage_rd] [get_bd_pins RV32I_MEM/mem_rd]
   connect_bd_net -net mem_stage_0_mem_out_valid [get_bd_pins RV32I_EX/mem_stage_out_valid] [get_bd_pins RV32I_MEM/mem_stage_out_valid]
@@ -1974,8 +2100,7 @@ proc create_hier_cell_Core_RV32I { parentCell nameHier } {
   connect_bd_net -net rd_wdata1_1 [get_bd_pins rd_wdata] [get_bd_pins RV32I_ID/rd_wdata]
   connect_bd_net -net rd_we1_1 [get_bd_pins rd_we] [get_bd_pins RV32I_ID/rd_we]
   connect_bd_net -net update_is_control_1 [get_bd_pins RV32I_EX/bp_update_is_control] [get_bd_pins RV32I_IF/update_is_control]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins Res] [get_bd_pins RV32I_EX/wb_rd_we] [get_bd_pins RV32I_MEM/Res]
-  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins rd_wdata1] [get_bd_pins RV32I_EX/mem_wb_data] [get_bd_pins RV32I_WB/rd_wdata1]
+  connect_bd_net -net wb_mux_0_rd_wdata [get_bd_pins rd_wdata1] [get_bd_pins RV32I_EX/mem_wb_data] [get_bd_pins RV32I_WB/rd_wdata]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins RV32I_EX/clk] [get_bd_pins RV32I_ID/clk] [get_bd_pins RV32I_IF/clk] [get_bd_pins RV32I_MEM/clk]
 
   # Restore current instance
@@ -2053,19 +2178,12 @@ proc create_root_design { parentCell } {
    CONFIG.LOGO_FILE {data/sym_orgate.png} \
  ] $util_vector_logic_2
 
-  # Create instance: util_vector_logic_3, and set properties
-  set util_vector_logic_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_3 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {not} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_notgate.png} \
- ] $util_vector_logic_3
-
   # Create instance: vio_0, and set properties
   set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
   set_property -dict [ list \
    CONFIG.C_EN_PROBE_IN_ACTIVITY {0} \
    CONFIG.C_NUM_PROBE_IN {0} \
+   CONFIG.C_NUM_PROBE_OUT {2} \
  ] $vio_0
 
   # Create instance: xlconcat_0, and set properties
@@ -2087,12 +2205,6 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.CONST_VAL {1} \
  ] $xlconstant_0
-
-  # Create instance: xlconstant_1, and set properties
-  set xlconstant_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_1 ]
-  set_property -dict [ list \
-   CONFIG.CONST_VAL {0} \
- ] $xlconstant_1
 
   # Create instance: xlslice_0, and set properties
   set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
@@ -3622,26 +3734,37 @@ proc create_root_design { parentCell } {
  ] $zynq_ultra_ps_e_0
 
   # Create port connections
-  connect_bd_net -net Core_RV32I_Res [get_bd_pins Core_RV32I/Res] [get_bd_pins PRIVILEGED/normal_we]
+  connect_bd_net -net Core_RV32I_ex_exception_cause [get_bd_pins Core_RV32I/ex_exception_cause] [get_bd_pins PRIVILEGED/ex_exception_cause]
+  connect_bd_net -net Core_RV32I_ex_exception_tval [get_bd_pins Core_RV32I/ex_exception_tval] [get_bd_pins PRIVILEGED/ex_exception_tval]
+  connect_bd_net -net Core_RV32I_ex_exception_valid [get_bd_pins Core_RV32I/ex_exception_valid] [get_bd_pins PRIVILEGED/ex_exception_valid]
   connect_bd_net -net Core_RV32I_ex_illegal_instr [get_bd_pins Core_RV32I/ex_illegal_instr] [get_bd_pins PRIVILEGED/illegal_instr]
   connect_bd_net -net Core_RV32I_ex_instr [get_bd_pins Core_RV32I/ex_instr] [get_bd_pins PRIVILEGED/instr]
   connect_bd_net -net Core_RV32I_ex_pc [get_bd_pins Core_RV32I/ex_pc] [get_bd_pins PRIVILEGED/current_pc]
   connect_bd_net -net Core_RV32I_ex_valid [get_bd_pins Core_RV32I/ex_valid] [get_bd_pins PRIVILEGED/instr_valid]
+  connect_bd_net -net Core_RV32I_mem_exception_cause [get_bd_pins Core_RV32I/mem_exception_cause] [get_bd_pins PRIVILEGED/mem_exception_cause]
+  connect_bd_net -net Core_RV32I_mem_exception_tval [get_bd_pins Core_RV32I/mem_exception_tval] [get_bd_pins PRIVILEGED/mem_exception_tval]
+  connect_bd_net -net Core_RV32I_mem_exception_valid [get_bd_pins Core_RV32I/mem_exception_valid] [get_bd_pins PRIVILEGED/mem_exception_valid]
+  connect_bd_net -net Core_RV32I_mem_fault_cause [get_bd_pins Core_RV32I/mem_fault_cause] [get_bd_pins PRIVILEGED/mem_fault_cause]
+  connect_bd_net -net Core_RV32I_mem_fault_tval [get_bd_pins Core_RV32I/mem_fault_tval] [get_bd_pins PRIVILEGED/mem_fault_tval]
+  connect_bd_net -net Core_RV32I_mem_fault_valid [get_bd_pins Core_RV32I/mem_fault_valid] [get_bd_pins PRIVILEGED/mem_fault_valid]
+  connect_bd_net -net Core_RV32I_mem_pc [get_bd_pins Core_RV32I/mem_pc] [get_bd_pins PRIVILEGED/mem_exception_pc]
   connect_bd_net -net Core_RV32I_mem_stall_req [get_bd_pins Core_RV32I/mem_stall_req] [get_bd_pins PRIVILEGED/mem_stall_req]
   connect_bd_net -net Core_RV32I_out_data [get_bd_pins Core_RV32I/out_data] [get_bd_pins PRIVILEGED/rs1_data]
   connect_bd_net -net Core_RV32I_rd_wdata1 [get_bd_pins Core_RV32I/rd_wdata1] [get_bd_pins PRIVILEGED/normal_wdata]
-  connect_bd_net -net Core_RV32I_store_access_fault [get_bd_pins Core_RV32I/store_access_fault] [get_bd_pins PRIVILEGED/store_access_fault]
+  connect_bd_net -net Core_RV32I_regfile_we [get_bd_pins Core_RV32I/regfile_we] [get_bd_pins PRIVILEGED/normal_we]
+  connect_bd_net -net Core_RV32I_wb_csr_rd_data [get_bd_pins Core_RV32I/wb_csr_rd_data] [get_bd_pins PRIVILEGED/csr_rd_data2]
+  connect_bd_net -net Core_RV32I_wb_csr_rd_we [get_bd_pins Core_RV32I/wb_csr_rd_we] [get_bd_pins PRIVILEGED/csr_rd_we1]
   connect_bd_net -net Core_RV32I_wb_rd [get_bd_pins Core_RV32I/wb_rd] [get_bd_pins PRIVILEGED/normal_rd]
   connect_bd_net -net MMIO_mem_rsp_error [get_bd_pins Core_RV32I/dmem_error] [get_bd_pins MMIO/mem_rsp_error]
   connect_bd_net -net MMIO_ram_valid [get_bd_pins MMIO/ram_valid] [get_bd_pins RV32I_RAM_MEMORY/valid]
+  connect_bd_net -net PRIVILEGED_csr_rd_data1 [get_bd_pins Core_RV32I/ex_csr_rd_data] [get_bd_pins PRIVILEGED/csr_rd_data1]
+  connect_bd_net -net PRIVILEGED_csr_rd_we [get_bd_pins Core_RV32I/ex_csr_rd_we] [get_bd_pins PRIVILEGED/csr_rd_we]
   connect_bd_net -net RV32I_MEM_dmem_addr [get_bd_pins Core_RV32I/dmem_addr] [get_bd_pins MMIO/cpu_addr]
   connect_bd_net -net RV32I_MEM_dmem_be [get_bd_pins Core_RV32I/dmem_be] [get_bd_pins MMIO/cpu_be]
-  connect_bd_net -net RV32I_MEM_dmem_re [get_bd_pins Core_RV32I/dmem_re] [get_bd_pins MMIO/dmem_re]
   connect_bd_net -net RV32I_MEM_dmem_wdata [get_bd_pins Core_RV32I/dmem_wdata] [get_bd_pins MMIO/cpu_wdata]
   connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins Core_RV32I/dmem_we] [get_bd_pins MMIO/cpu_we]
   connect_bd_net -net RV32I_RAM_MEMORY_rdata [get_bd_pins MMIO/ram_rdata] [get_bd_pins RV32I_RAM_MEMORY/rdata]
-  connect_bd_net -net SW1_1 [get_bd_ports SW1] [get_bd_pins util_vector_logic_3/Op1]
-  connect_bd_net -net TIMER_timer_irq [get_bd_pins PRIVILEGED/timer_irq] [get_bd_pins TIMER/timer_irq]
+  connect_bd_net -net UART_tx [get_bd_pins UART/tx] [get_bd_pins zynq_ultra_ps_e_0/emio_uart1_rxd]
   connect_bd_net -net addr_1 [get_bd_pins MMIO/ram_addr] [get_bd_pins RV32I_RAM_MEMORY/addr]
   connect_bd_net -net addr_2 [get_bd_pins GPIO/addr] [get_bd_pins MMIO/gpio_addr]
   connect_bd_net -net addr_3 [get_bd_pins MMIO/uart_addr] [get_bd_pins UART/addr]
@@ -3650,16 +3773,18 @@ proc create_root_design { parentCell } {
   connect_bd_net -net be_2 [get_bd_pins GPIO/be] [get_bd_pins MMIO/gpio_be]
   connect_bd_net -net be_3 [get_bd_pins MMIO/uart_be] [get_bd_pins UART/be]
   connect_bd_net -net be_4 [get_bd_pins MMIO/timer_be] [get_bd_pins TIMER/be]
-  connect_bd_net -net csr_access_unit_0_csr_rd_data [get_bd_pins Core_RV32I/csr_data] [get_bd_pins PRIVILEGED/csr_rd_data]
+  connect_bd_net -net csr_rd_addr1_1 [get_bd_pins Core_RV32I/wb_csr_rd_addr] [get_bd_pins PRIVILEGED/csr_rd_addr1]
   connect_bd_net -net csr_regfile_wb_mux_0_final_rd [get_bd_pins Core_RV32I/rd_addr] [get_bd_pins PRIVILEGED/final_rd]
   connect_bd_net -net csr_regfile_wb_mux_0_final_wdata [get_bd_pins Core_RV32I/rd_wdata] [get_bd_pins PRIVILEGED/final_wdata]
   connect_bd_net -net csr_regfile_wb_mux_0_final_we [get_bd_pins Core_RV32I/rd_we] [get_bd_pins PRIVILEGED/final_we]
   connect_bd_net -net dmem_ready_1 [get_bd_pins Core_RV32I/dmem_ready] [get_bd_pins MMIO/mem_rsp_valid]
+  connect_bd_net -net dmem_req_ready_1 [get_bd_pins Core_RV32I/dmem_req_ready] [get_bd_pins MMIO/mem_req_ready]
+  connect_bd_net -net ex_csr_rd_addr_1 [get_bd_pins Core_RV32I/ex_csr_rd_addr] [get_bd_pins PRIVILEGED/csr_rd_addr]
   connect_bd_net -net gpio_0_gpio_out [get_bd_pins GPIO/gpio_out] [get_bd_pins xlslice_0/Din]
   connect_bd_net -net gpio_0_rdata [get_bd_pins GPIO/rdata] [get_bd_pins MMIO/gpio_rdata]
   connect_bd_net -net gpio_0_ready [get_bd_pins GPIO/ready] [get_bd_pins MMIO/gpio_ready]
-  connect_bd_net -net load_access_fault_1 [get_bd_pins Core_RV32I/load_access_fault] [get_bd_pins PRIVILEGED/load_access_fault]
   connect_bd_net -net mem_data_1 [get_bd_pins Core_RV32I/mem_data] [get_bd_pins MMIO/mem_rsp_rdata]
+  connect_bd_net -net mem_req_valid_1 [get_bd_pins Core_RV32I/dmem_valid] [get_bd_pins MMIO/mem_req_valid]
   connect_bd_net -net privileged_pc_redire_0_priv_redirect_target [get_bd_pins Core_RV32I/priv_redirect_target] [get_bd_pins PRIVILEGED/priv_redirect_target]
   connect_bd_net -net privileged_pc_redire_0_priv_redirect_valid [get_bd_pins Core_RV32I/priv_redirect_valid] [get_bd_pins PRIVILEGED/priv_redirect_valid]
   connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins Core_RV32I/rst] [get_bd_pins GPIO/rst] [get_bd_pins MMIO/rst] [get_bd_pins PRIVILEGED/rst] [get_bd_pins RV32I_RAM_MEMORY/rst] [get_bd_pins TIMER/rst] [get_bd_pins UART/rst] [get_bd_pins util_vector_logic_2/Res]
@@ -3667,10 +3792,11 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ram_ready_1 [get_bd_pins MMIO/ram_ready] [get_bd_pins RV32I_RAM_MEMORY/ready]
   connect_bd_net -net timer_0_rdata [get_bd_pins MMIO/timer_rdata] [get_bd_pins TIMER/rdata]
   connect_bd_net -net timer_0_ready [get_bd_pins MMIO/timer_ready] [get_bd_pins TIMER/ready]
+  connect_bd_net -net timer_error_1 [get_bd_pins MMIO/timer_error] [get_bd_pins TIMER/error]
+  connect_bd_net -net timer_irq_1 [get_bd_pins PRIVILEGED/timer_irq] [get_bd_pins TIMER/timer_irq]
   connect_bd_net -net trap_controller_0_trap_flush [get_bd_pins Core_RV32I/trap_flush] [get_bd_pins PRIVILEGED/trap_flush]
   connect_bd_net -net uart_tx_0_rdata [get_bd_pins MMIO/uart_rdata] [get_bd_pins UART/rdata]
   connect_bd_net -net uart_tx_0_ready [get_bd_pins MMIO/uart_ready] [get_bd_pins UART/ready]
-  connect_bd_net -net util_vector_logic_3_Res [get_bd_pins util_vector_logic_3/Res] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net valid_1 [get_bd_pins GPIO/valid] [get_bd_pins MMIO/gpio_valid]
   connect_bd_net -net valid_2 [get_bd_pins MMIO/uart_valid] [get_bd_pins UART/valid]
   connect_bd_net -net valid_3 [get_bd_pins MMIO/timer_valid] [get_bd_pins TIMER/valid]
@@ -3685,8 +3811,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net we_4 [get_bd_pins MMIO/timer_we] [get_bd_pins TIMER/we]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins GPIO/gpio_in] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins proc_sys_reset_0/dcm_locked] [get_bd_pins xlconstant_0/dout]
-  connect_bd_net -net xlconstant_1_dout [get_bd_pins xlconcat_0/In1] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconcat_0/In3] [get_bd_pins xlconcat_0/In4] [get_bd_pins xlconcat_0/In5] [get_bd_pins xlconcat_0/In6] [get_bd_pins xlconcat_0/In7] [get_bd_pins xlconstant_1/dout]
+  connect_bd_net -net xlconstant_1_dout [get_bd_ports SW1] [get_bd_pins xlconcat_0/In0] [get_bd_pins xlconcat_0/In1] [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconcat_0/In3] [get_bd_pins xlconcat_0/In4] [get_bd_pins xlconcat_0/In5] [get_bd_pins xlconcat_0/In6] [get_bd_pins xlconcat_0/In7]
   connect_bd_net -net xlslice_0_Dout [get_bd_ports gpio_out_0] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net zynq_ultra_ps_e_0_emio_uart1_txd [get_bd_pins UART/rx] [get_bd_pins zynq_ultra_ps_e_0/emio_uart1_txd]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins Core_RV32I/clk] [get_bd_pins GPIO/clk] [get_bd_pins MMIO/clk] [get_bd_pins PRIVILEGED/clk] [get_bd_pins RV32I_RAM_MEMORY/clk] [get_bd_pins TIMER/clk] [get_bd_pins UART/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins vio_0/clk] [get_bd_pins zynq_ultra_ps_e_0/maxihpm0_fpd_aclk] [get_bd_pins zynq_ultra_ps_e_0/pl_clk0]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins zynq_ultra_ps_e_0/pl_resetn0]
 
