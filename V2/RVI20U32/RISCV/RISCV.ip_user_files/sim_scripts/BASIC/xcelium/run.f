@@ -10,7 +10,6 @@
   "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/xilinx_vip/hdl/rst_vip_if.sv" \
 -endlib
 -makelib xcelium_lib/xpm -sv \
-  "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
   "/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 -endlib
 -makelib xcelium_lib/xpm \
@@ -79,7 +78,6 @@
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_1_0/sim/BASIC_util_vector_logic_1_0.v" \
   "../../../bd/BASIC/ip/BASIC_load_use_detection_0_0/sim/BASIC_load_use_detection_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_priority_branch_OR_l_0_0/sim/BASIC_priority_branch_OR_l_0_0.v" \
-  "../../../bd/BASIC/ip/BASIC_ila_0_0/sim/BASIC_ila_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_vio_0_0/sim/BASIC_vio_0_0.v" \
   "../../../bd/BASIC/ip/BASIC_util_vector_logic_2_0/sim/BASIC_util_vector_logic_2_0.v" \
   "../../../bd/BASIC/ip/BASIC_forward_mux_1_0/sim/BASIC_forward_mux_1_0.v" \

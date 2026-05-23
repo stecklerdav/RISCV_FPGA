@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "mem_bus_registered,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "BASIC_mem_bus_registered_0_0,mem_bus_registered,{}" *)
-(* CORE_GENERATION_INFO = "BASIC_mem_bus_registered_0_0,mem_bus_registered,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=mem_bus_registered,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RAM_BASE=0x00002000,RAM_SIZE=0x00001000,GPIO_BASE=0x00003000,GPIO_SIZE=0x00000010,UART_BASE=0x00003010,UART_SIZE=0x00000010,TIMER_BASE=0x00003020,TIMER_SIZE=0x00000010}" *)
+(* CORE_GENERATION_INFO = "BASIC_mem_bus_registered_0_0,mem_bus_registered,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=mem_bus_registered,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RAM_BASE=0x00002000,RAM_SIZE=0x00001000,GPIO_BASE=0x00003000,GPIO_SIZE=0x00000010,UART_BASE=0x00003010,UART_SIZE=0x00000010,TIMER_BASE=0x00003020,TIMER_SIZE=0x00000010,TIMEOUT_CYCLES=0x000186A0}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module BASIC_mem_bus_registered_0_0 (
@@ -97,7 +97,7 @@ module BASIC_mem_bus_registered_0_0 (
   timer_ready
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -149,7 +149,8 @@ input wire timer_ready;
     .UART_BASE(32'H00003010),
     .UART_SIZE(32'H00000010),
     .TIMER_BASE(32'H00003020),
-    .TIMER_SIZE(32'H00000010)
+    .TIMER_SIZE(32'H00000010),
+    .TIMEOUT_CYCLES(32'H000186A0)
   ) inst (
     .clk(clk),
     .rst(rst),

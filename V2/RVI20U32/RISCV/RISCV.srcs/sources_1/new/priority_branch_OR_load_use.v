@@ -1,5 +1,3 @@
-`timescale 1ns / 1ps
-
 module priority_branch_OR_load_use (
     input  wire load_use_pc_en,
     input  wire load_use_if_id_hold,
@@ -28,6 +26,6 @@ module priority_branch_OR_load_use (
         any_redirect;
 
     assign id_ex_flush_final =
-        ex_flush_req | load_use_id_ex_flush;
+        any_redirect | load_use_id_ex_flush;
 
 endmodule

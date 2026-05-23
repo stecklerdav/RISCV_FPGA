@@ -6,24 +6,25 @@ Disassembly of section .text:
 
 00000000 <__text_start>:
    0:	000023b7          	lui	x7,0x2
-   4:	11100313          	addi	x6,x0,273
-   8:	0063a023          	sw	x6,0(x7) # 2000 <__end>
-   c:	00000297          	auipc	x5,0x0
-  10:	02828293          	addi	x5,x5,40 # 34 <target_ok>
-  14:	34129073          	csrrw	x0,mepc,x5
-  18:	34102373          	csrrs	x6,mepc,x0
-  1c:	0063a223          	sw	x6,4(x7)
-  20:	30200073          	mret
+   4:	00000297          	auipc	x5,0x0
+   8:	02428293          	addi	x5,x5,36 # 28 <trap_handler>
+   c:	30529073          	csrrw	x0,mtvec,x5
+  10:	11100313          	addi	x6,x0,273
+  14:	0063a023          	sw	x6,0(x7) # 2000 <__end>
+  18:	00000073          	ecall
 
-00000024 <bad_path>:
-  24:	00001337          	lui	x6,0x1
-  28:	bad30313          	addi	x6,x6,-1107 # bad <__stack_size+0x7ad>
-  2c:	0063a423          	sw	x6,8(x7)
-  30:	ff5ff06f          	jal	x0,24 <bad_path>
+0000001c <after_ecall>:
+  1c:	77700313          	addi	x6,x0,1911
+  20:	0063a623          	sw	x6,12(x7)
 
-00000034 <target_ok>:
-  34:	77700313          	addi	x6,x0,1911
-  38:	0063a623          	sw	x6,12(x7)
+00000024 <done>:
+  24:	0000006f          	jal	x0,24 <done>
 
-0000003c <done>:
-  3c:	0000006f          	jal	x0,3c <done>
+00000028 <trap_handler>:
+  28:	341022f3          	csrrs	x5,mepc,x0
+  2c:	0053a223          	sw	x5,4(x7)
+  30:	34202373          	csrrs	x6,mcause,x0
+  34:	0063a423          	sw	x6,8(x7)
+  38:	00428293          	addi	x5,x5,4
+  3c:	34129073          	csrrw	x0,mepc,x5
+  40:	30200073          	mret

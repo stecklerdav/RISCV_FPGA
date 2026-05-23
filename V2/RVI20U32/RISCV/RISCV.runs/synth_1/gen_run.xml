@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1779148773">
+<GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1779494185">
   <File Type="VDS-TIMINGSUMMARY" Name="BASIC_wrapper_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="BASIC_wrapper.dcp"/>
   <File Type="RDS-UTIL-PB" Name="BASIC_wrapper_utilization_synth.pb"/>
@@ -244,14 +244,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/bd/BASIC/hdl/BASIC_wrapper.v">
       <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/mmio.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

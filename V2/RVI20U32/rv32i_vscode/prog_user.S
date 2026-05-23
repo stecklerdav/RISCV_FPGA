@@ -5,31 +5,31 @@
 .equ RAM_BASE, 0x00002000
 
 _start:
-    li   x7, RAM_BASE
+    lui  t2, 0x2              # t2 = 0x00002000
 
-    # Firma inicio
-    li   x6, 0x111
-    sw   x6, 0(x7)
+    la   t0, trap_handler
+    csrw mtvec, t0            # mtvec = handler
 
-    # Cargar mepc con target
-    la   x5, target_ok
-    csrrw x0, mepc, x5
+    li   t1, 0x111
+    sw   t1, 0(t2)            # marca antes del ecall
 
-    # Leer mepc y guardar
-    csrrs x6, mepc, x0
-    sw   x6, 4(x7)
+    ecall                     # DEBE generar trap
 
-    # Ejecutar mret
-    mret
-
-bad_path:
-    li   x6, 0xBAD
-    sw   x6, 8(x7)
-    j bad_path
-
-target_ok:
-    li   x6, 0x777
-    sw   x6, 12(x7)
+after_ecall:
+    li   t1, 0x777
+    sw   t1, 12(t2)           # si vuelve bien, escribe OK
 
 done:
     j done
+
+trap_handler:
+    csrr t0, mepc
+    sw   t0, 4(t2)            # guardar mepc
+
+    csrr t1, mcause
+    sw   t1, 8(t2)            # guardar mcause
+
+    addi t0, t0, 4
+    csrw mepc, t0             # saltar después del ecall
+
+    mret

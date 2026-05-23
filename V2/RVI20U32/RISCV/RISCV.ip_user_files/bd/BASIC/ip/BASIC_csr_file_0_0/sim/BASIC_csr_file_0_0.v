@@ -64,17 +64,19 @@ module BASIC_csr_file_0_0 (
   trap_enter,
   trap_mepc,
   trap_mcause,
+  trap_mtval,
   mret,
   timer_irq,
   csr_mstatus,
   csr_mtvec,
   csr_mepc,
   csr_mcause,
+  csr_mtval,
   csr_mie,
   csr_mip
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -87,6 +89,7 @@ output wire [31 : 0] csr_rdata;
 input wire trap_enter;
 input wire [31 : 0] trap_mepc;
 input wire [31 : 0] trap_mcause;
+input wire [31 : 0] trap_mtval;
 input wire mret;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME timer_irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 timer_irq INTERRUPT" *)
@@ -95,6 +98,7 @@ output wire [31 : 0] csr_mstatus;
 output wire [31 : 0] csr_mtvec;
 output wire [31 : 0] csr_mepc;
 output wire [31 : 0] csr_mcause;
+output wire [31 : 0] csr_mtval;
 output wire [31 : 0] csr_mie;
 output wire [31 : 0] csr_mip;
 
@@ -108,12 +112,14 @@ output wire [31 : 0] csr_mip;
     .trap_enter(trap_enter),
     .trap_mepc(trap_mepc),
     .trap_mcause(trap_mcause),
+    .trap_mtval(trap_mtval),
     .mret(mret),
     .timer_irq(timer_irq),
     .csr_mstatus(csr_mstatus),
     .csr_mtvec(csr_mtvec),
     .csr_mepc(csr_mepc),
     .csr_mcause(csr_mcause),
+    .csr_mtval(csr_mtval),
     .csr_mie(csr_mie),
     .csr_mip(csr_mip)
   );

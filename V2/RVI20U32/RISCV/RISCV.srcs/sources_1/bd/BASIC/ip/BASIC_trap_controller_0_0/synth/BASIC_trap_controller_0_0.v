@@ -64,6 +64,8 @@ module BASIC_trap_controller_0_0 (
   illegal_instr,
   mret,
   timer_irq,
+  load_access_fault,
+  store_access_fault,
   csr_mstatus,
   csr_mtvec,
   csr_mepc,
@@ -75,11 +77,12 @@ module BASIC_trap_controller_0_0 (
   trap_target,
   trap_mepc,
   trap_mcause,
+  trap_mtval,
   mret_taken,
   mret_target
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 199998001, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
@@ -93,6 +96,8 @@ input wire mret;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME timer_irq, SENSITIVITY LEVEL_HIGH, PortWidth 1" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:interrupt:1.0 timer_irq INTERRUPT" *)
 input wire timer_irq;
+input wire load_access_fault;
+input wire store_access_fault;
 input wire [31 : 0] csr_mstatus;
 input wire [31 : 0] csr_mtvec;
 input wire [31 : 0] csr_mepc;
@@ -104,6 +109,7 @@ output wire trap_flush;
 output wire [31 : 0] trap_target;
 output wire [31 : 0] trap_mepc;
 output wire [31 : 0] trap_mcause;
+output wire [31 : 0] trap_mtval;
 output wire mret_taken;
 output wire [31 : 0] mret_target;
 
@@ -116,6 +122,8 @@ output wire [31 : 0] mret_target;
     .illegal_instr(illegal_instr),
     .mret(mret),
     .timer_irq(timer_irq),
+    .load_access_fault(load_access_fault),
+    .store_access_fault(store_access_fault),
     .csr_mstatus(csr_mstatus),
     .csr_mtvec(csr_mtvec),
     .csr_mepc(csr_mepc),
@@ -127,6 +135,7 @@ output wire [31 : 0] mret_target;
     .trap_target(trap_target),
     .trap_mepc(trap_mepc),
     .trap_mcause(trap_mcause),
+    .trap_mtval(trap_mtval),
     .mret_taken(mret_taken),
     .mret_target(mret_target)
   );

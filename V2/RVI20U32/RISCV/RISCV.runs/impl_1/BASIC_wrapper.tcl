@@ -114,7 +114,6 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 
 OPTRACE "Implementation" START { ROLLUP_1 }
@@ -134,7 +133,7 @@ OPTRACE "set parameters" START { }
   set_property parent.project_path /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.xpr [current_project]
   set_property ip_output_repo /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+  set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.runs/synth_1/BASIC_wrapper.dcp
@@ -311,7 +310,7 @@ set rc [catch {
   create_msg_db write_bitstream.pb
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
-  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+  set_property XPM_LIBRARIES XPM_MEMORY [current_project]
   catch { write_mem_info -force BASIC_wrapper.mmi }
 OPTRACE "write_bitstream setup" END { }
 OPTRACE "write_bitstream" START { }

@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="BASIC" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1779146518"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1779146518"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1779146518"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1779146518"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1779494126"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1779494126"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1779494126"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1779494126"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="BASIC_sim_netlist.vhdl" Type="VHDL">
         <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
@@ -188,7 +188,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/BASIC_ex_mem_reg_1_0/BASIC_ex_mem_reg_1_0.xci" Type="IP">
-        <Instance HierarchyPath="Core_RV32I/RV32I_EX/ex_mem_reg_1"/>
+        <Instance HierarchyPath="Core_RV32I/RV32I_EX/ex_mem_reg"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -236,7 +236,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/BASIC_util_vector_logic_1_0/BASIC_util_vector_logic_1_0.xci" Type="IP">
-        <Instance HierarchyPath="Core_RV32I/RV32I_IF/util_vector_logic_2"/>
+        <Instance HierarchyPath="Core_RV32I/RV32I_EX/util_vector_logic_4"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -253,14 +253,6 @@
       </File>
       <File Name="ip/BASIC_priority_branch_OR_l_0_0/BASIC_priority_branch_OR_l_0_0.xci" Type="IP">
         <Instance HierarchyPath="Core_RV32I/priority_branch_OR_l_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/BASIC_ila_0_0/BASIC_ila_0_0.xci" Type="IP">
-        <Instance HierarchyPath="Core_RV32I/ila_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
@@ -348,7 +340,7 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip/BASIC_id_ex_reg_0_1/BASIC_id_ex_reg_0_1.xci" Type="IP">
-        <Instance HierarchyPath="Core_RV32I/RV32I_ID/id_ex_reg_1"/>
+        <Instance HierarchyPath="Core_RV32I/RV32I_ID/id_ex_reg"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

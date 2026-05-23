@@ -88,9 +88,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_load_use_
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_priority_branch_OR_l_0_0/BASIC_priority_branch_OR_l_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_priority_branch_OR_l_0_0 || ORIG_REF_NAME==BASIC_priority_branch_OR_l_0_0} -quiet] -quiet
 
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/BASIC_ila_0_0.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_ila_0_0 || ORIG_REF_NAME==BASIC_ila_0_0} -quiet] -quiet
-
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_vio_0_0 || ORIG_REF_NAME==BASIC_vio_0_0} -quiet] -quiet
 
@@ -197,14 +194,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/BASIC_blk_mem_gen_0_0_ooc.xdc
 
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila_impl.xdc
-set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==BASIC_ila_0_0 || ORIG_REF_NAME==BASIC_ila_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila.xdc
-#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==BASIC_ila_0_0 || ORIG_REF_NAME==BASIC_ila_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/BASIC_ila_0_0_ooc.xdc
-
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_vio_0_0 || ORIG_REF_NAME==BASIC_vio_0_0} -quiet] -quiet
 
@@ -297,9 +286,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_priority_branch_OR_l_0_0/BASIC_priority_branch_OR_l_0_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_priority_branch_OR_l_0_0 || ORIG_REF_NAME==BASIC_priority_branch_OR_l_0_0} -quiet] -quiet
-
-# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/BASIC_ila_0_0.xci
-#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_ila_0_0 || ORIG_REF_NAME==BASIC_ila_0_0} -quiet] -quiet
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_vio_0_0 || ORIG_REF_NAME==BASIC_vio_0_0} -quiet] -quiet
@@ -406,14 +392,6 @@ set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {R
 #dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==BASIC_proc_sys_reset_0_0 || ORIG_REF_NAME==BASIC_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/BASIC_blk_mem_gen_0_0_ooc.xdc
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila_impl.xdc
-#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==BASIC_ila_0_0 || ORIG_REF_NAME==BASIC_ila_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila.xdc
-#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==BASIC_ila_0_0 || ORIG_REF_NAME==BASIC_ila_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
-
-# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/BASIC_ila_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xdc
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==BASIC_vio_0_0 || ORIG_REF_NAME==BASIC_vio_0_0} -quiet] -quiet

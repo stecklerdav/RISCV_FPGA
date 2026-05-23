@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "BASIC_synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 3
-set_msg_config -id {Common 17-41} -limit 10000000
 set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
@@ -83,7 +81,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.cache/wt [current_project]
 set_property parent.project_path /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.xpr [current_project]
-set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
+set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.cache/ip [current_project]
@@ -131,10 +129,6 @@ set_property used_in_implementation false [get_files -all /media/steckler/xilinx
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/BASIC_proc_sys_reset_0_0_board.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_proc_sys_reset_0_0/BASIC_proc_sys_reset_0_0.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_blk_mem_gen_0_0/BASIC_blk_mem_gen_0_0_ooc.xdc]
-set_property used_in_synthesis false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila_impl.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/ila_v6_2/constraints/ila.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_ila_0_0/BASIC_ila_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/ip/BASIC_vio_0_0/BASIC_vio_0_0.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RISCV/RISCV.srcs/sources_1/bd/BASIC/BASIC_ooc.xdc]
 

@@ -9,7 +9,10 @@ module mem_bus_registered #(
     parameter [31:0] UART_SIZE  = 32'h0000_0010,
 
     parameter [31:0] TIMER_BASE = 32'h0000_3020,
-    parameter [31:0] TIMER_SIZE = 32'h0000_0010
+    parameter [31:0] TIMER_SIZE = 32'h0000_0010,
+
+    // Timeout para evitar ready=0 infinito
+    parameter [31:0] TIMEOUT_CYCLES = 32'd100000
 )(
     input  wire        clk,
     input  wire        rst,
@@ -76,6 +79,11 @@ module mem_bus_registered #(
     reg [31:0] addr_q;
     reg [31:0] wdata_q;
     reg [3:0]  be_q;
+
+    reg [31:0] timeout_cnt_q;
+
+    wire timeout_hit;
+    assign timeout_hit = busy_q && (timeout_cnt_q >= TIMEOUT_CYCLES);
 
     wire addr_is_ram =
         (mem_req_addr >= RAM_BASE) &&
@@ -154,6 +162,8 @@ module mem_bus_registered #(
             addr_q        <= 32'h0;
             wdata_q       <= 32'h0;
             be_q          <= 4'h0;
+            timeout_cnt_q <= 32'd0;
+
             mem_rsp_valid <= 1'b0;
             mem_rsp_rdata <= 32'h0;
             mem_rsp_error <= 1'b0;
@@ -162,6 +172,8 @@ module mem_bus_registered #(
             mem_rsp_error <= 1'b0;
 
             if (!busy_q) begin
+                timeout_cnt_q <= 32'd0;
+
                 if (mem_req_valid) begin
                     busy_q  <= 1'b1;
                     we_q    <= mem_req_we;
@@ -181,7 +193,13 @@ module mem_bus_registered #(
                         sel_q <= SEL_NONE;
                 end
             end else begin
+
+                // Contador de timeout mientras una transacción está pendiente
+                if (!timeout_hit)
+                    timeout_cnt_q <= timeout_cnt_q + 1'b1;
+
                 case (sel_q)
+
                     SEL_RAM: begin
                         if (ram_ready) begin
                             mem_rsp_valid <= 1'b1;
@@ -189,6 +207,14 @@ module mem_bus_registered #(
                             mem_rsp_error <= 1'b0;
                             busy_q        <= 1'b0;
                             sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
+                        end else if (timeout_hit) begin
+                            mem_rsp_valid <= 1'b1;
+                            mem_rsp_rdata <= 32'hBAD0_0001;
+                            mem_rsp_error <= 1'b1;
+                            busy_q        <= 1'b0;
+                            sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
                         end
                     end
 
@@ -199,6 +225,14 @@ module mem_bus_registered #(
                             mem_rsp_error <= 1'b0;
                             busy_q        <= 1'b0;
                             sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
+                        end else if (timeout_hit) begin
+                            mem_rsp_valid <= 1'b1;
+                            mem_rsp_rdata <= 32'hBAD0_0002;
+                            mem_rsp_error <= 1'b1;
+                            busy_q        <= 1'b0;
+                            sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
                         end
                     end
 
@@ -209,6 +243,14 @@ module mem_bus_registered #(
                             mem_rsp_error <= 1'b0;
                             busy_q        <= 1'b0;
                             sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
+                        end else if (timeout_hit) begin
+                            mem_rsp_valid <= 1'b1;
+                            mem_rsp_rdata <= 32'hBAD0_0003;
+                            mem_rsp_error <= 1'b1;
+                            busy_q        <= 1'b0;
+                            sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
                         end
                     end
 
@@ -219,15 +261,24 @@ module mem_bus_registered #(
                             mem_rsp_error <= 1'b0;
                             busy_q        <= 1'b0;
                             sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
+                        end else if (timeout_hit) begin
+                            mem_rsp_valid <= 1'b1;
+                            mem_rsp_rdata <= 32'hBAD0_0004;
+                            mem_rsp_error <= 1'b1;
+                            busy_q        <= 1'b0;
+                            sel_q         <= SEL_NONE;
+                            timeout_cnt_q <= 32'd0;
                         end
                     end
 
                     default: begin
                         mem_rsp_valid <= 1'b1;
-                        mem_rsp_rdata <= 32'h0;
+                        mem_rsp_rdata <= 32'hDEAD_BEEF;
                         mem_rsp_error <= 1'b1;
                         busy_q        <= 1'b0;
                         sel_q         <= SEL_NONE;
+                        timeout_cnt_q <= 32'd0;
                     end
                 endcase
             end

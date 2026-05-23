@@ -1,28 +1,35 @@
 
 
 
+22/05/2026
+
+* MMiO only register periphericals, but not RAM, RAM has 1 latency cycle intrinsec, it´s not necessary to regiter.
+* add timeout Periphericals ready to avoid infinite stalls ->  trap access fault = stall > timeout.
+* Fmax= 190 Mhz WNS=0.161
+* add folder spike to do a comparison in future.
+ 
 
 19/05/2026
 
 * RV32I privileged mode: traps, CSRs, MRET redirect and pipeline flush.  -march=rv32izicsr
 
 
-
-
 16/05/2026
 
-* se incluyo wait-states a la interfaz RISCV Core -> MMIO para tener la capacidad de esperar memorias y perifericos N ciclos. 
-* Actualizacion de diagrama de bloques en pdf. 
-* se incluyo un archivo gen_bp_torture.py el cual genera codigo asm aleatorio Ese gen_bp_torture.py genera automáticamente un .S de RISC-V con tests pseudoaleatorios para estresar:
+* Wait-states were added to the RISC-V Core -> MMIO interface to support waiting for memories and peripherals for N cycles.
+* Block diagram PDF updated.
+* Added gen_bp_torture.py, which generates random ASM code.
+
+This gen_bp_torture.py automatically generates a RISC-V .S file with pseudo-random tests to stress:
 
 >>> python3 gen_bp_torture.py --seed 1234 --tests 50
 
-	branches (BEQ, BNE)
-	loops backward
-	JAL
-	JALR
-	branches consecutivos
-	hazards load-use antes de branch
+    - branches (BEQ, BNE)
+    - backward loops
+    - JAL
+    - JALR
+    - consecutive branches
+    - load-use hazards before branch instructions
 
 
 03/05/2026
