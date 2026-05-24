@@ -1,6 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1779646779" />
-    <testcase name="test_add" classname="tb.test_alu" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/cocotb_test/tb/test_alu.py" lineno="4" time="0.00026154518127441406" sim_time_ns="1.0" ratio_time="3823.4311759343664" />
-  </testsuite>
-</testsuites>
