@@ -5,32 +5,32 @@
     <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1779565150"/>
     <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1779565150"/>
     <Generation Name="SIMULATION" State="GENERATED" Timestamp="1779565150"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1779565150"/>
+    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1779658067"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="BASIC_sim_netlist.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1779565388" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
         <UsedIn Val="SINGLE_LANGUAGE"/>
       </File>
       <File Name="BASIC_sim_netlist.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1779565387" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
         <UsedIn Val="SINGLE_LANGUAGE"/>
       </File>
       <File Name="BASIC_stub.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1779565386" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
       </File>
       <File Name="BASIC_stub.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1779565386" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
       </File>
       <File Name="BASIC.dcp" Type="DCP">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1779565386" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
