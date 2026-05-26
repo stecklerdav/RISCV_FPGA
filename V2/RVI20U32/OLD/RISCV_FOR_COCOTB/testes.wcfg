@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="BASIC_wrapper_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="BASIC_wrapper" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="40083334fs"></ZoomStartTime>
+      <ZoomEndTime time="62383335fs"></ZoomEndTime>
+      <Cursor1Time time="43800000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="390"></NameColumnWidth>
+      <ValueColumnWidth column_width="163"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="0" />
+   <wave_markers>
+      <marker label="" time="43800000" />
+   </wave_markers>
+</wave_config>
