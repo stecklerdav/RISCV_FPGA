@@ -2,7 +2,11 @@ SIM ?= icarus
 TOPLEVEL_LANG = verilog
 
 TOPLEVEL = BASIC_wrapper
-MODULE = test_gpio
+COCOTB_TEST_MODULES = test_gpio
+
+
+export PYTHONPATH := $(PWD)/tb
+COCOTB_TEST_MODULES = test_gpio
 
 PWD := $(shell pwd)
 

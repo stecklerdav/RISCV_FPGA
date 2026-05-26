@@ -4,7 +4,7 @@ module rom_memory #(
     parameter DATA_WIDTH = 32,
     parameter ADDR_WIDTH = 11,
     parameter DEPTH      = 2048,
-    parameter MEM_FILE   = "prog_asm.mem"
+    parameter MEM_FILE   = "programs/prog_asm.mem"
 )(
     input  wire                  clk,
     input  wire                  en,
