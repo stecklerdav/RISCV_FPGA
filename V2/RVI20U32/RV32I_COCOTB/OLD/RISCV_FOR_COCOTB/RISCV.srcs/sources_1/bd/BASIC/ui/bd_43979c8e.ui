@@ -4,8 +4,8 @@
    "Addressing View_ScaleFactor":"1.0",
    "Addressing View_TopLeft":"-161,-276",
    "Default View_Layers":"/zynq_ultra_ps_e_0_pl_resetn0:true|/proc_sys_reset_0_peripheral_reset1:true|/zynq_ultra_ps_e_0_pl_clk0:true|/TIMER/timer_0_timer_irq:true|",
-   "Default View_ScaleFactor":"0.37893",
-   "Default View_TopLeft":"939,855",
+   "Default View_ScaleFactor":"1.31951",
+   "Default View_TopLeft":"6887,2141",
    "Display-PortTypeClock":"true",
    "Display-PortTypeInterrupt":"true",
    "Display-PortTypeOthers":"true",
@@ -248,305 +248,305 @@ pagesize -hier Core_RV32I -db -bbox -sgen 1730 402 4870 1872
 #  -string -flagsOSRD
 preplace port clk -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
 preplace port rst -pg 1 -lvl 0 -x 0 -y 110 -defaultsOSRD
-preplace portBus gpio_out_0 -pg 1 -lvl 25 -x 11370 -y 2440 -defaultsOSRD
+preplace portBus gpio_out_0 -pg 1 -lvl 25 -x 11660 -y 2440 -defaultsOSRD
 preplace portBus SW1 -pg 1 -lvl 0 -x 0 -y 2950 -defaultsOSRD
-preplace inst xlslice_2bit_0 -pg 1 -lvl 24 -x 11230 -y 2440 -defaultsOSRD
-preplace inst xlconcat_8_0 -pg 1 -lvl 22 -x 10490 -y 3020 -defaultsOSRD
-preplace inst uart_tx_0 -pg 1 -lvl 21 -x 9900 -y 2600 -defaultsOSRD
-preplace inst timer_0 -pg 1 -lvl 6 -x 2420 -y 2620 -defaultsOSRD
-preplace inst gpio_0 -pg 1 -lvl 23 -x 10960 -y 2430 -defaultsOSRD
-preplace inst ram_data_1 -pg 1 -lvl 21 -x 9900 -y 2370 -defaultsOSRD
-preplace inst mem_bus_registered_0 -pg 1 -lvl 22 -x 10490 -y 2450 -defaultsOSRD
-preplace inst csr_access_unit_0 -pg 1 -lvl 6 -x 2420 -y 1590 -defaultsOSRD
-preplace inst privileged_pc_redire_0 -pg 1 -lvl 9 -x 4290 -y 2410 -defaultsOSRD
-preplace inst system_decoder_0 -pg 1 -lvl 5 -x 1790 -y 1560 -defaultsOSRD
-preplace inst csr_file_0 -pg 1 -lvl 7 -x 3100 -y 2430 -defaultsOSRD
-preplace inst csr_regfile_wb_mux_0 -pg 1 -lvl 14 -x 6450 -y 470 -defaultsOSRD
-preplace inst trap_controller_0 -pg 1 -lvl 8 -x 3610 -y 2370 -defaultsOSRD
-preplace inst exception_mux_0 -pg 1 -lvl 7 -x 3100 -y 1850 -defaultsOSRD
-preplace inst mem_exception_merge_0 -pg 1 -lvl 6 -x 2420 -y 1160 -defaultsOSRD
-preplace inst util_vector_and_0 -pg 1 -lvl 7 -x 3100 -y 2750 -defaultsOSRD
-preplace inst util_vector_not_0 -pg 1 -lvl 6 -x 2420 -y 2780 -defaultsOSRD
-preplace inst load_use_detection_0 -pg 1 -lvl 9 -x 4290 -y 2100 -defaultsOSRD
-preplace inst priority_branch_OR_l_0 -pg 1 -lvl 10 -x 4770 -y 2080 -defaultsOSRD
-preplace inst regfile_we_gen_0 -pg 1 -lvl 3 -x 960 -y 310 -defaultsOSRD
-preplace inst mem_wb_reg_0 -pg 1 -lvl 2 -x 520 -y 220 -defaultsOSRD
-preplace inst mem_stage_0 -pg 1 -lvl 21 -x 9900 -y 1390 -defaultsOSRD
+preplace inst xlslice_2bit_0 -pg 1 -lvl 24 -x 11520 -y 2440 -defaultsOSRD
+preplace inst xlconcat_8_0 -pg 1 -lvl 22 -x 10770 -y 3020 -defaultsOSRD
+preplace inst uart_tx_0 -pg 1 -lvl 21 -x 10160 -y 2600 -defaultsOSRD
+preplace inst timer_0 -pg 1 -lvl 6 -x 2480 -y 2620 -defaultsOSRD
+preplace inst gpio_0 -pg 1 -lvl 23 -x 11250 -y 2430 -defaultsOSRD
+preplace inst ram_data_1 -pg 1 -lvl 21 -x 10160 -y 2370 -defaultsOSRD
+preplace inst mem_bus_registered_0 -pg 1 -lvl 22 -x 10770 -y 2450 -defaultsOSRD
+preplace inst csr_access_unit_0 -pg 1 -lvl 6 -x 2480 -y 1590 -defaultsOSRD
+preplace inst privileged_pc_redire_0 -pg 1 -lvl 9 -x 4390 -y 2410 -defaultsOSRD
+preplace inst system_decoder_0 -pg 1 -lvl 5 -x 1840 -y 1560 -defaultsOSRD
+preplace inst csr_file_0 -pg 1 -lvl 7 -x 3190 -y 2430 -defaultsOSRD
+preplace inst csr_regfile_wb_mux_0 -pg 1 -lvl 14 -x 6650 -y 470 -defaultsOSRD
+preplace inst trap_controller_0 -pg 1 -lvl 8 -x 3720 -y 2370 -defaultsOSRD
+preplace inst exception_mux_0 -pg 1 -lvl 7 -x 3190 -y 1850 -defaultsOSRD
+preplace inst mem_exception_merge_0 -pg 1 -lvl 6 -x 2480 -y 1160 -defaultsOSRD
+preplace inst util_vector_and_0 -pg 1 -lvl 7 -x 3190 -y 2750 -defaultsOSRD
+preplace inst util_vector_not_0 -pg 1 -lvl 6 -x 2480 -y 2780 -defaultsOSRD
+preplace inst load_use_detection_0 -pg 1 -lvl 9 -x 4390 -y 2100 -defaultsOSRD
+preplace inst priority_branch_OR_l_0 -pg 1 -lvl 10 -x 4890 -y 2080 -defaultsOSRD
+preplace inst regfile_we_gen_0 -pg 1 -lvl 3 -x 980 -y 310 -defaultsOSRD
+preplace inst mem_wb_reg_0 -pg 1 -lvl 2 -x 530 -y 220 -defaultsOSRD
+preplace inst mem_stage_0 -pg 1 -lvl 21 -x 10160 -y 1390 -defaultsOSRD
 preplace inst sim_constant_0 -pg 1 -lvl 1 -x 120 -y 170 -defaultsOSRD
-preplace inst alu_0 -pg 1 -lvl 19 -x 8830 -y 1400 -defaultsOSRD
-preplace inst operand_b_mux_0 -pg 1 -lvl 18 -x 8460 -y 1480 -defaultsOSRD
-preplace inst operand_a_mux_0 -pg 1 -lvl 18 -x 8460 -y 1300 -defaultsOSRD
-preplace inst forward_mux_0 -pg 1 -lvl 5 -x 1790 -y 560 -defaultsOSRD
-preplace inst forward_mux_1 -pg 1 -lvl 5 -x 1790 -y 790 -defaultsOSRD
-preplace inst forward_mux_2 -pg 1 -lvl 19 -x 8830 -y 700 -defaultsOSRD
-preplace inst forwarding_0 -pg 1 -lvl 4 -x 1390 -y 740 -defaultsOSRD
-preplace inst branch_0 -pg 1 -lvl 6 -x 2420 -y 1930 -defaultsOSRD
-preplace inst ex_mem_reg -pg 1 -lvl 20 -x 9330 -y 1440 -defaultsOSRD
-preplace inst sim_constant_1 -pg 1 -lvl 19 -x 8830 -y 1280 -defaultsOSRD
-preplace inst util_vector_and_4 -pg 1 -lvl 3 -x 960 -y 750 -defaultsOSRD
-preplace inst util_vector_and_1 -pg 1 -lvl 3 -x 960 -y 520 -defaultsOSRD
-preplace inst regfile_0 -pg 1 -lvl 16 -x 7360 -y 1160 -defaultsOSRD
-preplace inst imm_mux_0 -pg 1 -lvl 16 -x 7360 -y 610 -defaultsOSRD
-preplace inst id_ex_reg -pg 1 -lvl 17 -x 7940 -y 1410 -defaultsOSRD
-preplace inst decoder_0 -pg 1 -lvl 8 -x 3610 -y 700 -defaultsOSRD
-preplace inst control_0 -pg 1 -lvl 14 -x 6450 -y 1610 -defaultsOSRD
-preplace inst pc_to_imem_addr_0 -pg 1 -lvl 13 -x 5910 -y 2300 -defaultsOSRD
-preplace inst branch_predictor_btb_0 -pg 1 -lvl 10 -x 4770 -y 2360 -defaultsOSRD
-preplace inst if_id_reg_0 -pg 1 -lvl 16 -x 7360 -y 2380 -defaultsOSRD
-preplace inst pc_unit_0 -pg 1 -lvl 12 -x 5540 -y 2340 -defaultsOSRD
-preplace inst util_vector_or_0 -pg 1 -lvl 14 -x 6450 -y 2270 -defaultsOSRD
-preplace inst util_vector_or_1 -pg 1 -lvl 12 -x 5540 -y 2710 -defaultsOSRD
-preplace inst util_vector_and_2 -pg 1 -lvl 11 -x 5090 -y 2430 -defaultsOSRD
-preplace inst util_vector_not_2 -pg 1 -lvl 10 -x 4770 -y 2530 -defaultsOSRD
-preplace inst util_vector_not_1 -pg 1 -lvl 13 -x 5910 -y 2700 -defaultsOSRD
-preplace inst util_vector_and_3 -pg 1 -lvl 11 -x 5090 -y 2290 -defaultsOSRD
-preplace inst rom_memory_0 -pg 1 -lvl 14 -x 6450 -y 2700 -defaultsOSRD
-preplace inst wb_mux_0 -pg 1 -lvl 4 -x 1390 -y 280 -defaultsOSRD
-preplace inst sim_constant_2 -pg 1 -lvl 15 -x 6870 -y 2540 -defaultsOSRD
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 23 NJ 80 230 20 NJ 20 NJ 20 NJ 20 2040 2250 2840 2200 3390 2120 3860J 2270 4570 2180 NJ 2180 5270 2190 5780J 2210 6080 2340 N 2340 7100 1040 7750 1040 NJ 1040 NJ 1040 9120 1160 9590 2790 10250 2790 10800J
-preplace netloc proc_sys_reset_0_peripheral_reset 1 0 23 NJ 110 220 10 NJ 10 NJ 10 NJ 10 2050 2270 2820 2270 3360 2140 3830J 2280 4580 2190 NJ 2190 5260 2200 NJ 2200 NJ 2200 N 2200 7130 1050 7740 1050 NJ 1050 NJ 1050 9080 1150 9610 2780 10260 2780 10810
-preplace netloc RV32I_MEM_dmem_addr 1 21 1 10290 1170n
-preplace netloc RV32I_MEM_dmem_we 1 21 1 10270 1210n
-preplace netloc RV32I_MEM_dmem_wdata 1 21 1 10230 1270n
-preplace netloc RV32I_MEM_dmem_be 1 21 1 10240 1250n
-preplace netloc RV32I_RAM_MEMORY_rdata 1 21 1 10140 2360n
+preplace inst alu_0 -pg 1 -lvl 19 -x 9050 -y 1400 -defaultsOSRD
+preplace inst operand_b_mux_0 -pg 1 -lvl 18 -x 8660 -y 1480 -defaultsOSRD
+preplace inst operand_a_mux_0 -pg 1 -lvl 18 -x 8660 -y 1300 -defaultsOSRD
+preplace inst forward_mux_0 -pg 1 -lvl 5 -x 1840 -y 560 -defaultsOSRD
+preplace inst forward_mux_1 -pg 1 -lvl 5 -x 1840 -y 790 -defaultsOSRD
+preplace inst forward_mux_2 -pg 1 -lvl 19 -x 9050 -y 700 -defaultsOSRD
+preplace inst forwarding_0 -pg 1 -lvl 4 -x 1420 -y 740 -defaultsOSRD
+preplace inst branch_0 -pg 1 -lvl 6 -x 2480 -y 1930 -defaultsOSRD
+preplace inst ex_mem_reg -pg 1 -lvl 20 -x 9570 -y 1440 -defaultsOSRD
+preplace inst sim_constant_1 -pg 1 -lvl 19 -x 9050 -y 1280 -defaultsOSRD
+preplace inst util_vector_and_4 -pg 1 -lvl 3 -x 980 -y 750 -defaultsOSRD
+preplace inst util_vector_and_1 -pg 1 -lvl 3 -x 980 -y 520 -defaultsOSRD
+preplace inst regfile_0 -pg 1 -lvl 16 -x 7520 -y 1160 -defaultsOSRD
+preplace inst imm_mux_0 -pg 1 -lvl 16 -x 7520 -y 610 -defaultsOSRD
+preplace inst id_ex_reg -pg 1 -lvl 17 -x 8120 -y 1410 -defaultsOSRD
+preplace inst decoder_0 -pg 1 -lvl 8 -x 3720 -y 700 -defaultsOSRD
+preplace inst control_0 -pg 1 -lvl 14 -x 6650 -y 1610 -defaultsOSRD
+preplace inst pc_to_imem_addr_0 -pg 1 -lvl 13 -x 6100 -y 2300 -defaultsOSRD
+preplace inst branch_predictor_btb_0 -pg 1 -lvl 10 -x 4890 -y 2360 -defaultsOSRD
+preplace inst pc_unit_0 -pg 1 -lvl 12 -x 5710 -y 2340 -defaultsOSRD
+preplace inst util_vector_or_0 -pg 1 -lvl 14 -x 6650 -y 2270 -defaultsOSRD
+preplace inst util_vector_or_1 -pg 1 -lvl 12 -x 5710 -y 2710 -defaultsOSRD
+preplace inst util_vector_and_2 -pg 1 -lvl 11 -x 5230 -y 2430 -defaultsOSRD
+preplace inst util_vector_not_2 -pg 1 -lvl 10 -x 4890 -y 2530 -defaultsOSRD
+preplace inst util_vector_not_1 -pg 1 -lvl 13 -x 6100 -y 2700 -defaultsOSRD
+preplace inst util_vector_and_3 -pg 1 -lvl 11 -x 5230 -y 2290 -defaultsOSRD
+preplace inst rom_memory_0 -pg 1 -lvl 14 -x 6650 -y 2700 -defaultsOSRD
+preplace inst wb_mux_0 -pg 1 -lvl 4 -x 1420 -y 280 -defaultsOSRD
+preplace inst sim_constant_2 -pg 1 -lvl 15 -x 7020 -y 2540 -defaultsOSRD
+preplace inst if_id_reg_0 -pg 1 -lvl 16 -x 7520 -y 2380 -defaultsOSRD
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 23 NJ 80 230 20 NJ 20 NJ 20 NJ 20 2100 2250 2920 2200 3490 2120 3980J 2270 4680 2180 NJ 2180 5420 2190 5970J 2210 6270 2340 N 2340 7250 1040 7920 1040 NJ 1040 NJ 1040 9350 1160 9840 2790 10520 2790 11090J
+preplace netloc proc_sys_reset_0_peripheral_reset 1 0 23 NJ 110 220 10 NJ 10 NJ 10 NJ 10 2110 2270 2900 2270 3460 2140 3950J 2280 4690 2190 NJ 2190 5410 2200 NJ 2200 NJ 2200 N 2200 7280 1050 7910 1050 NJ 1050 NJ 1050 9310 1150 9860 2780 10530 2780 11100
+preplace netloc RV32I_MEM_dmem_addr 1 21 1 10560 1170n
+preplace netloc RV32I_MEM_dmem_we 1 21 1 10540 1210n
+preplace netloc RV32I_MEM_dmem_wdata 1 21 1 10500 1270n
+preplace netloc RV32I_MEM_dmem_be 1 21 1 10510 1250n
+preplace netloc RV32I_RAM_MEMORY_rdata 1 21 1 10410 2360n
 preplace netloc gpio_0_gpio_out 1 23 1 NJ 2440
-preplace netloc uart_tx_0_rdata 1 21 1 10130 2520n
-preplace netloc gpio_0_ready 1 21 3 10300 2740 NJ 2740 11100
-preplace netloc gpio_0_rdata 1 21 3 10290 2750 NJ 2750 11110
-preplace netloc timer_0_rdata 1 6 16 2690J 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 N 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 10270
-preplace netloc timer_0_ready 1 6 16 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 7090 2730 NJ 2730 NJ 2730 NJ 2730 NJ 2730 NJ 2730 10180
-preplace netloc mem_data_1 1 20 3 9660 2160 NJ 2160 10680
-preplace netloc MMIO_ram_valid 1 20 3 9670 2130 NJ 2130 10810
-preplace netloc we_1 1 20 3 9680 2140 NJ 2140 10800
-preplace netloc addr_1 1 20 3 9690 2150 NJ 2150 10710
-preplace netloc wdata_1 1 20 3 9630 2810 NJ 2810 10770
-preplace netloc be_1 1 20 3 9650 2760 NJ 2760 10740
+preplace netloc uart_tx_0_rdata 1 21 1 10400 2520n
+preplace netloc gpio_0_ready 1 21 3 10570 2740 NJ 2740 11390
+preplace netloc gpio_0_rdata 1 21 3 10560 2750 NJ 2750 11400
+preplace netloc timer_0_rdata 1 6 16 2770J 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 N 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 NJ 2820 10540
+preplace netloc timer_0_ready 1 6 16 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 NJ 2610 7240 2730 NJ 2730 NJ 2730 NJ 2730 NJ 2730 NJ 2730 10450
+preplace netloc mem_data_1 1 20 3 9910 2160 NJ 2160 10970
+preplace netloc MMIO_ram_valid 1 20 3 9920 2130 NJ 2130 11100
+preplace netloc we_1 1 20 3 9930 2140 NJ 2140 11090
+preplace netloc addr_1 1 20 3 9940 2150 NJ 2150 11000
+preplace netloc wdata_1 1 20 3 9880 2810 NJ 2810 11060
+preplace netloc be_1 1 20 3 9900 2760 NJ 2760 11030
 preplace netloc valid_1 1 22 1 N 2400
 preplace netloc we_2 1 22 1 N 2420
 preplace netloc addr_2 1 22 1 N 2440
 preplace netloc wdata_2 1 22 1 N 2460
 preplace netloc be_2 1 22 1 N 2480
-preplace netloc valid_2 1 20 3 9640 2830 NJ 2830 10760
-preplace netloc we_3 1 20 3 9620 2880 NJ 2880 10790
-preplace netloc addr_3 1 20 3 9670 2800 NJ 2800 10720
-preplace netloc wdata_3 1 20 3 9660 2870 NJ 2870 10780
-preplace netloc be_3 1 20 3 9680 2770 NJ 2770 10690
-preplace netloc valid_3 1 5 18 2140 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 N 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 10730
-preplace netloc we_4 1 5 18 2130 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 N 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 10750
-preplace netloc addr_4 1 5 18 2170 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 N 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 10290J 2820 10680
-preplace netloc wdata_4 1 5 18 2160 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 N 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 10300J 2850 10710
-preplace netloc be_4 1 5 18 2150 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 N 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 10700
-preplace netloc ram_ready_1 1 21 1 10110 2380n
-preplace netloc dmem_ready_1 1 20 3 9680 2010 NJ 2010 10700
-preplace netloc uart_tx_0_ready 1 21 1 10180 2540n
-preplace netloc Core_RV32I_ex_instr 1 4 14 1620 2230 NJ 2230 2830J 2060 NJ 2060 3920J 2230 NJ 2230 4950J 2160 NJ 2160 NJ 2160 NJ 2160 NJ 2160 N 2160 NJ 2160 8170
-preplace netloc Core_RV32I_mem_stall_req 1 7 15 3430 2600 NJ 2600 4530 2590 NJ 2590 5250 1280 NJ 1280 NJ 1280 NJ 1280 N 1280 7640 1060 NJ 1060 NJ 1060 9070 1110 NJ 1110 10120
-preplace netloc Core_RV32I_ex_illegal_instr 1 6 12 2850 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 6040J 1870 NJ 1870 N 1870 NJ 1870 8130
-preplace netloc privileged_pc_redire_0_priv_redirect_valid 1 9 3 4540 2220 NJ 2220 5230J
-preplace netloc csr_regfile_wb_mux_0_final_we 1 14 2 6690 540 7090
-preplace netloc csr_regfile_wb_mux_0_final_rd 1 14 2 6670 550 7070
-preplace netloc csr_regfile_wb_mux_0_final_wdata 1 14 2 6650 560 6990
-preplace netloc Core_RV32I_wb_rd 1 2 12 720 210 1150 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 6250J
-preplace netloc Core_RV32I_rd_wdata1 1 4 15 1570 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 6200 740 NJ 740 N 740 NJ 740 NJ 740 8650
-preplace netloc Core_RV32I_out_data 1 5 13 2020 1020 NJ 1020 NJ 1020 3960J 890 NJ 890 NJ 890 NJ 890 NJ 890 NJ 890 NJ 890 N 890 NJ 890 8290
-preplace netloc Core_RV32I_ex_pc 1 5 15 2160 2140 2760 1720 3380 1800 NJ 1800 4530 860 NJ 860 NJ 860 NJ 860 NJ 860 NJ 860 6980 850 NJ 850 8310 1180 NJ 1180 9040
-preplace netloc Core_RV32I_ex_valid 1 5 15 2080 2240 NJ 2240 3420 2040 3980 870 NJ 870 NJ 870 NJ 870 NJ 870 NJ 870 NJ 870 N 870 7750J 940 8200 950 NJ 950 9090
-preplace netloc trap_controller_0_trap_flush 1 8 6 3800J 1960 NJ 1960 NJ 1960 NJ 1960 NJ 1960 6240
-preplace netloc privileged_pc_redire_0_priv_redirect_target 1 9 3 4560J 2210 NJ 2210 5240
-preplace netloc MMIO_mem_rsp_error 1 20 3 9690 1990 NJ 1990 10820
-preplace netloc Core_RV32I_regfile_we 1 3 11 1120 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 6280
-preplace netloc mem_req_valid_1 1 21 1 10300 1190n
-preplace netloc dmem_req_ready_1 1 20 3 9650 2020 NJ 2020 10690
-preplace netloc PRIVILEGED_csr_rd_we 1 6 14 2650J 1080 NJ 1080 3970J 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 N 900 NJ 900 NJ 900 NJ 900 9060
-preplace netloc ex_csr_rd_addr_1 1 6 14 2650J 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 6090J 1810 6660J 1790 N 1790 NJ 1790 NJ 1790 NJ 1790 9080
-preplace netloc PRIVILEGED_csr_rd_data1 1 6 14 2660J 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 6060J 1880 NJ 1880 N 1880 NJ 1880 8280J 1800 NJ 1800 9090
-preplace netloc Core_RV32I_wb_csr_rd_we 1 2 12 740J 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 6270
-preplace netloc csr_rd_addr1_1 1 2 12 760J 390 1110J 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 6240
-preplace netloc Core_RV32I_wb_csr_rd_data 1 2 12 710J 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 6260
-preplace netloc Core_RV32I_ex_exception_valid 1 6 14 2680 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 6050J 1840 NJ 1840 N 1840 NJ 1840 8310J 1810 NJ 1810 9100
-preplace netloc Core_RV32I_ex_exception_cause 1 6 14 2670 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 6080J 1820 NJ 1820 N 1820 NJ 1820 NJ 1820 NJ 1820 9110
-preplace netloc Core_RV32I_ex_exception_tval 1 6 14 2690 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 6070J 1830 NJ 1830 N 1830 NJ 1830 NJ 1830 NJ 1830 9120
-preplace netloc Core_RV32I_mem_fault_tval 1 5 17 2150 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 7120 990 7690J 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 10130
-preplace netloc Core_RV32I_mem_fault_valid 1 5 17 2160 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 7130 1000 7670J 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 10110
-preplace netloc Core_RV32I_mem_fault_cause 1 5 17 2140 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 7110 980 7700J 990 NJ 990 NJ 990 NJ 990 NJ 990 10140
-preplace netloc Core_RV32I_mem_exception_valid 1 5 16 2110 2150 NJ 2150 3330J 2130 3850J 2260 4510J 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 N 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 9560
-preplace netloc Core_RV32I_mem_exception_cause 1 5 16 2120 2160 2810J 2070 NJ 2070 3910J 2240 4490J 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 N 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 9540
-preplace netloc Core_RV32I_mem_exception_tval 1 5 16 2070 2220 NJ 2220 3320J 2110 3890J 2250 4550J 2200 4970J 2170 NJ 2170 NJ 2170 NJ 2170 NJ 2170 N 2170 NJ 2170 NJ 2170 NJ 2170 NJ 2170 9550
-preplace netloc Core_RV32I_mem_pc 1 5 16 2170 1040 NJ 1040 NJ 1040 3950J 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 N 880 NJ 880 NJ 880 NJ 880 NJ 880 9540
-preplace netloc timer_irq_1 1 6 2 2800 2590 3420J
-preplace netloc timer_error_1 1 6 16 2840J 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 6980 2740 NJ 2740 NJ 2740 NJ 2740 NJ 2740 NJ 2740 10280
-preplace netloc xlconstant_1_dout 1 0 22 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 N 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 10200J
-preplace netloc xlconcat_8_0_dout 1 22 1 10820J 2500n
+preplace netloc valid_2 1 20 3 9890 2830 NJ 2830 11050
+preplace netloc we_3 1 20 3 9870 2880 NJ 2880 11080
+preplace netloc addr_3 1 20 3 9920 2800 NJ 2800 11010
+preplace netloc wdata_3 1 20 3 9910 2870 NJ 2870 11070
+preplace netloc be_3 1 20 3 9930 2770 NJ 2770 10980
+preplace netloc valid_3 1 5 18 2200 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 N 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 NJ 2840 11020
+preplace netloc we_4 1 5 18 2190 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 N 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 NJ 2890 11040
+preplace netloc addr_4 1 5 18 2230 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 N 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 NJ 2850 10560J 2820 10970
+preplace netloc wdata_4 1 5 18 2220 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 N 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 NJ 2900 10570J 2850 11000
+preplace netloc be_4 1 5 18 2210 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 N 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 NJ 2860 10990
+preplace netloc ram_ready_1 1 21 1 10380 2380n
+preplace netloc dmem_ready_1 1 20 3 9930 2010 NJ 2010 10990
+preplace netloc uart_tx_0_ready 1 21 1 10450 2540n
+preplace netloc Core_RV32I_ex_instr 1 4 14 1660 2230 NJ 2230 2910J 2060 NJ 2060 4040J 2230 NJ 2230 5080J 2160 NJ 2160 NJ 2160 NJ 2160 NJ 2160 N 2160 NJ 2160 8360
+preplace netloc Core_RV32I_mem_stall_req 1 7 15 3530 2600 NJ 2600 4640 2590 NJ 2590 5400 1280 NJ 1280 NJ 1280 NJ 1280 N 1280 7810 1060 NJ 1060 NJ 1060 9300 1110 NJ 1110 10390
+preplace netloc Core_RV32I_ex_illegal_instr 1 6 12 2930 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 NJ 1650 6230J 1870 NJ 1870 N 1870 NJ 1870 8320
+preplace netloc privileged_pc_redire_0_priv_redirect_valid 1 9 3 4650 2220 NJ 2220 5380J
+preplace netloc csr_regfile_wb_mux_0_final_we 1 14 2 6900 540 7240
+preplace netloc csr_regfile_wb_mux_0_final_rd 1 14 2 6880 550 7220
+preplace netloc csr_regfile_wb_mux_0_final_wdata 1 14 2 6860 560 7140
+preplace netloc Core_RV32I_wb_rd 1 2 12 740 210 1170 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 NJ 140 6440J
+preplace netloc Core_RV32I_rd_wdata1 1 4 15 1610 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 NJ 370 6390 740 NJ 740 N 740 NJ 740 NJ 740 8860
+preplace netloc Core_RV32I_out_data 1 5 13 2080 1020 NJ 1020 NJ 1020 4080J 890 NJ 890 NJ 890 NJ 890 NJ 890 NJ 890 NJ 890 N 890 NJ 890 8480
+preplace netloc Core_RV32I_ex_pc 1 5 15 2220 2140 2840 1720 3480 1800 NJ 1800 4640 860 NJ 860 NJ 860 NJ 860 NJ 860 NJ 860 7130 850 NJ 850 8500 1180 NJ 1180 9270
+preplace netloc Core_RV32I_ex_valid 1 5 15 2140 2240 NJ 2240 3520 2040 4100 870 NJ 870 NJ 870 NJ 870 NJ 870 NJ 870 NJ 870 N 870 7920J 940 8390 950 NJ 950 9320
+preplace netloc trap_controller_0_trap_flush 1 8 6 3920J 1960 NJ 1960 NJ 1960 NJ 1960 NJ 1960 6430
+preplace netloc privileged_pc_redire_0_priv_redirect_target 1 9 3 4670J 2210 NJ 2210 5390
+preplace netloc MMIO_mem_rsp_error 1 20 3 9940 1990 NJ 1990 11110
+preplace netloc Core_RV32I_regfile_we 1 3 11 1140 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 NJ 130 6470
+preplace netloc mem_req_valid_1 1 21 1 10570 1190n
+preplace netloc dmem_req_ready_1 1 20 3 9900 2020 NJ 2020 10980
+preplace netloc PRIVILEGED_csr_rd_we 1 6 14 2730J 1080 NJ 1080 4090J 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 NJ 900 N 900 NJ 900 NJ 900 NJ 900 9290
+preplace netloc ex_csr_rd_addr_1 1 6 14 2730J 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 NJ 1620 6280J 1810 6870J 1790 N 1790 NJ 1790 NJ 1790 NJ 1790 9310
+preplace netloc PRIVILEGED_csr_rd_data1 1 6 14 2740J 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 NJ 1610 6250J 1880 NJ 1880 N 1880 NJ 1880 8470J 1800 NJ 1800 9320
+preplace netloc Core_RV32I_wb_csr_rd_we 1 2 12 760J 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 NJ 120 6460
+preplace netloc csr_rd_addr1_1 1 2 12 780J 390 1130J 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 6430
+preplace netloc Core_RV32I_wb_csr_rd_data 1 2 12 730J 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 NJ 110 6450
+preplace netloc Core_RV32I_ex_exception_valid 1 6 14 2760 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 NJ 1660 6240J 1840 NJ 1840 N 1840 NJ 1840 8500J 1810 NJ 1810 9330
+preplace netloc Core_RV32I_ex_exception_cause 1 6 14 2750 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 NJ 1630 6270J 1820 NJ 1820 N 1820 NJ 1820 NJ 1820 NJ 1820 9340
+preplace netloc Core_RV32I_ex_exception_tval 1 6 14 2770 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 NJ 1640 6260J 1830 NJ 1830 N 1830 NJ 1830 NJ 1830 NJ 1830 9350
+preplace netloc Core_RV32I_mem_fault_tval 1 5 17 2210 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 7270 990 7860J 1000 NJ 1000 NJ 1000 NJ 1000 NJ 1000 10400
+preplace netloc Core_RV32I_mem_fault_valid 1 5 17 2220 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 7280 1000 7840J 1010 NJ 1010 NJ 1010 NJ 1010 NJ 1010 10380
+preplace netloc Core_RV32I_mem_fault_cause 1 5 17 2200 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 NJ 990 7260 980 7870J 990 NJ 990 NJ 990 NJ 990 NJ 990 10410
+preplace netloc Core_RV32I_mem_exception_valid 1 5 16 2170 2150 NJ 2150 3430J 2130 3970J 2260 4620J 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 N 1980 NJ 1980 NJ 1980 NJ 1980 NJ 1980 9810
+preplace netloc Core_RV32I_mem_exception_cause 1 5 16 2180 2160 2890J 2070 NJ 2070 4030J 2240 4600J 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 N 1970 NJ 1970 NJ 1970 NJ 1970 NJ 1970 9790
+preplace netloc Core_RV32I_mem_exception_tval 1 5 16 2130 2220 NJ 2220 3420J 2110 4010J 2250 4660J 2200 5100J 2170 NJ 2170 NJ 2170 NJ 2170 NJ 2170 N 2170 NJ 2170 NJ 2170 NJ 2170 NJ 2170 9800
+preplace netloc Core_RV32I_mem_pc 1 5 16 2230 1040 NJ 1040 NJ 1040 4070J 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 NJ 880 N 880 NJ 880 NJ 880 NJ 880 NJ 880 9790
+preplace netloc timer_irq_1 1 6 2 2880 2590 3520J
+preplace netloc timer_error_1 1 6 16 2920J 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 NJ 2620 7130 2740 NJ 2740 NJ 2740 NJ 2740 NJ 2740 NJ 2740 10550
+preplace netloc xlconstant_1_dout 1 0 22 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 N 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 NJ 2950 10470J
+preplace netloc xlconcat_8_0_dout 1 22 1 11110J 2500n
 preplace netloc xlslice_2bit_0_Dout 1 24 1 NJ 2440
 preplace netloc system_decoder_0_is_csrrw 1 5 1 N 1540
 preplace netloc system_decoder_0_is_csrrs 1 5 1 N 1560
 preplace netloc system_decoder_0_is_csrrc 1 5 1 N 1580
-preplace netloc system_decoder_0_csr_rs1 1 5 1 1980 1600n
-preplace netloc system_decoder_0_csr_rd 1 5 1 2000 1620n
-preplace netloc csr_file_0_csr_rdata 1 5 3 2090 2260 NJ 2260 3310
-preplace netloc csr_access_unit_0_csr_we 1 6 1 2740 1550n
-preplace netloc csr_access_unit_0_csr_wdata 1 6 1 2720 1570n
-preplace netloc trap_controller_0_trap_enter 1 6 3 2860 2660 NJ 2660 3830
-preplace netloc trap_controller_0_trap_target 1 8 1 3820 2340n
-preplace netloc trap_controller_0_mret_taken 1 6 3 2900 2650 NJ 2650 4010
+preplace netloc system_decoder_0_csr_rs1 1 5 1 2040 1600n
+preplace netloc system_decoder_0_csr_rd 1 5 1 2060 1620n
+preplace netloc csr_file_0_csr_rdata 1 5 3 2150 2260 NJ 2260 3410
+preplace netloc csr_access_unit_0_csr_we 1 6 1 2820 1550n
+preplace netloc csr_access_unit_0_csr_wdata 1 6 1 2800 1570n
+preplace netloc trap_controller_0_trap_enter 1 6 3 2940 2660 NJ 2660 3950
+preplace netloc trap_controller_0_trap_target 1 8 1 3940 2340n
+preplace netloc trap_controller_0_mret_taken 1 6 3 2980 2650 NJ 2650 4130
 preplace netloc trap_controller_0_mret_target 1 8 1 N 2440
-preplace netloc system_decoder_0_is_system 1 5 1 1960 1480n
-preplace netloc system_decoder_0_is_ecall 1 5 3 2030 1450 NJ 1450 3400J
-preplace netloc system_decoder_0_is_mret 1 5 3 2060 1460 NJ 1460 3350J
-preplace netloc system_decoder_0_csr_addr 1 5 2 1970 2390 NJ
-preplace netloc trap_controller_0_trap_mepc 1 6 3 2880 2630 NJ 2630 3800
-preplace netloc trap_controller_0_trap_mcause 1 6 3 2870 2670 NJ 2670 3810
-preplace netloc trap_controller_0_trap_mtval 1 6 3 2890 2640 NJ 2640 3790
-preplace netloc csr_file_0_csr_mstatus 1 7 1 3340 2380n
-preplace netloc csr_file_0_csr_mtvec 1 7 1 3330 2400n
-preplace netloc csr_file_0_csr_mepc 1 7 1 3320 2420n
-preplace netloc csr_file_0_csr_mie 1 7 1 3310 2480n
-preplace netloc csr_file_0_csr_mip 1 7 1 3300 2500n
-preplace netloc exception_mux_0_exception_valid 1 7 1 3430 1820n
-preplace netloc exception_mux_0_exception_pc 1 7 1 3410 1840n
-preplace netloc exception_mux_0_exception_cause 1 7 1 3370 1860n
-preplace netloc exception_mux_0_exception_tval 1 7 1 3340 1880n
-preplace netloc util_vector_and_0_Res 1 7 1 3390 2380n
-preplace netloc mem_exception_merge_0_final_mem_exception_valid 1 6 1 2840 1130n
-preplace netloc mem_exception_merge_0_final_mem_exception_pc 1 6 1 2830 1150n
-preplace netloc mem_exception_merge_0_final_mem_exception_cause 1 6 1 2820 1170n
-preplace netloc mem_exception_merge_0_final_mem_exception_tval 1 6 1 2770 1190n
-preplace netloc util_vector_not_0_Res 1 6 1 2870J 2760n
-preplace netloc RV32I_MEM_wb_sel 1 2 2 760J 230 1220
-preplace netloc RV32I_MEM_wb_data 1 2 2 NJ 140 1130
-preplace netloc RV32I_MEM_wb_alu_result 1 2 2 720J 170 1090
-preplace netloc RV32I_MEM_wb_pc_plus4 1 2 2 NJ 180 1160
-preplace netloc RV32I_MEM_wb_imm_u 1 2 2 NJ 200 1140
-preplace netloc ex_mem_re_1 1 8 12 4070 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 N 930 NJ 930 8230 960 NJ 960 9050
-preplace netloc RV32I_ID_ex_rd 1 8 12 4050 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 N 910 NJ 910 8220 1190 NJ 1190 9030
-preplace netloc RV32I_IF_id_valid_out 1 8 9 4060 1930 NJ 1930 NJ 1930 NJ 1930 NJ 1930 NJ 1930 NJ 1930 N 1930 7720
-preplace netloc RV32I_ID_rs1 1 8 9 4040 1020 NJ 1020 NJ 1020 NJ 1020 NJ 1020 NJ 1020 N 1020 7140 1010 7610
-preplace netloc RV32I_ID_rs2 1 8 9 4010 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 N 1060 7150 1020 7590
-preplace netloc RV32I_ID_rs1_used 1 8 1 3990 830n
-preplace netloc RV32I_ID_rs2_used 1 8 1 3930 850n
-preplace netloc load_use_detection_0_pc_en 1 9 1 4480 2040n
-preplace netloc load_use_detection_0_if_id_hold 1 9 1 4500 2060n
-preplace netloc load_use_detection_0_id_ex_flush 1 9 1 4520 2080n
-preplace netloc RV32I_EX_ex_flush_req 1 6 4 2730J 1670 NJ 1670 NJ 1670 4540
-preplace netloc pc_en_1 1 10 1 4980 2050n
-preplace netloc hold_1 1 10 2 NJ 2070 5210
-preplace netloc flush_1 1 10 4 NJ 2090 NJ 2090 NJ 2090 6170
-preplace netloc bubble_1 1 10 7 4950 1270 NJ 1270 NJ 1270 NJ 1270 NJ 1270 N 1270 7650J
-preplace netloc RV32I_MEM_wb_valid 1 2 2 730 220 1100
-preplace netloc mem_wb_reg_0_wb_rd_we 1 2 1 810 240n
-preplace netloc xlconstant_3_dout 1 1 20 220 480 800J 410 NJ 410 NJ 410 1980J 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 6190J 580 6630J 570 7010 490 NJ 490 NJ 490 8610J 500 NJ 500 9690
-preplace netloc mem_stage_0_mem_out_valid 1 1 21 230 510 740 590 1190 560 1560J 680 NJ 680 NJ 680 3400J 490 4010J 630 NJ 630 NJ 630 NJ 630 NJ 630 6140J 610 NJ 610 7000 460 NJ 460 NJ 460 8630J 490 NJ 490 NJ 490 10180
-preplace netloc mem_stage_0_mem_out_data 1 1 21 250 460 830J 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 6160J 710 NJ 710 7100 730 7580J 590 NJ 590 NJ 590 NJ 590 NJ 590 10170
-preplace netloc mem_stage_0_mem_out_alu_result 1 1 21 280 450 790J 430 NJ 430 NJ 430 1990J 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 6180J 700 NJ 700 7110 720 7610J 600 NJ 600 NJ 600 NJ 600 NJ 600 10160
-preplace netloc mem_stage_0_mem_out_pc_plus4 1 1 21 240 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 3940J 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 6970 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 10150
-preplace netloc mem_stage_0_mem_out_imm_u 1 1 21 290 470 820J 440 NJ 440 NJ 440 1970J 460 NJ 460 NJ 460 4040J 650 NJ 650 NJ 650 NJ 650 NJ 650 NJ 650 NJ 650 7020 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 10200
-preplace netloc mem_stage_0_mem_out_rd 1 1 21 260 600 NJ 600 1180 460 NJ 460 1960J 470 NJ 470 NJ 470 3990J 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 7040 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 10190
-preplace netloc RV32I_MEM_mem_rd_we 1 1 21 300 490 810 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 6230J 590 6620J 520 6970 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 10220
-preplace netloc mem_stage_0_mem_out_wb_sel 1 1 21 270 2210 NJ 2210 NJ 2210 NJ 2210 NJ 2210 2820J 2030 NJ 2030 3910J 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 N 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 10110
-preplace netloc RV32I_EX_mem_csr_rd_we 1 1 20 310 430 770J 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 N 160 NJ 160 NJ 160 NJ 160 NJ 160 9560
-preplace netloc mem_csr_rd_addr_1 1 1 20 320 440 780J 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 6210J 600 6640J 530 6990 450 NJ 450 NJ 450 NJ 450 NJ 450 9550
-preplace netloc RV32I_EX_mem_csr_rd_data 1 1 20 330 420 750J 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 N 150 NJ 150 NJ 150 NJ 150 NJ 150 9570
-preplace netloc ex_mem_reg_1_mem_valid 1 2 19 770 680 1170 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 N 180 NJ 180 NJ 180 NJ 180 NJ 180 9680
-preplace netloc ex_mem_reg_1_mem_alu_result 1 4 17 1600 670 NJ 670 NJ 670 3380J 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 6990 420 NJ 420 NJ 420 8650 430 NJ 430 9650
+preplace netloc system_decoder_0_is_system 1 5 1 2020 1480n
+preplace netloc system_decoder_0_is_ecall 1 5 3 2090 1450 NJ 1450 3500J
+preplace netloc system_decoder_0_is_mret 1 5 3 2120 1460 NJ 1460 3450J
+preplace netloc system_decoder_0_csr_addr 1 5 2 2030 2390 NJ
+preplace netloc trap_controller_0_trap_mepc 1 6 3 2960 2630 NJ 2630 3920
+preplace netloc trap_controller_0_trap_mcause 1 6 3 2950 2670 NJ 2670 3930
+preplace netloc trap_controller_0_trap_mtval 1 6 3 2970 2640 NJ 2640 3910
+preplace netloc csr_file_0_csr_mstatus 1 7 1 3440 2380n
+preplace netloc csr_file_0_csr_mtvec 1 7 1 3430 2400n
+preplace netloc csr_file_0_csr_mepc 1 7 1 3420 2420n
+preplace netloc csr_file_0_csr_mie 1 7 1 3410 2480n
+preplace netloc csr_file_0_csr_mip 1 7 1 3400 2500n
+preplace netloc exception_mux_0_exception_valid 1 7 1 3530 1820n
+preplace netloc exception_mux_0_exception_pc 1 7 1 3510 1840n
+preplace netloc exception_mux_0_exception_cause 1 7 1 3470 1860n
+preplace netloc exception_mux_0_exception_tval 1 7 1 3440 1880n
+preplace netloc util_vector_and_0_Res 1 7 1 3490 2380n
+preplace netloc mem_exception_merge_0_final_mem_exception_valid 1 6 1 2920 1130n
+preplace netloc mem_exception_merge_0_final_mem_exception_pc 1 6 1 2910 1150n
+preplace netloc mem_exception_merge_0_final_mem_exception_cause 1 6 1 2900 1170n
+preplace netloc mem_exception_merge_0_final_mem_exception_tval 1 6 1 2850 1190n
+preplace netloc util_vector_not_0_Res 1 6 1 2950J 2760n
+preplace netloc RV32I_MEM_wb_sel 1 2 2 780J 230 1240
+preplace netloc RV32I_MEM_wb_data 1 2 2 NJ 140 1150
+preplace netloc RV32I_MEM_wb_alu_result 1 2 2 740J 170 1110
+preplace netloc RV32I_MEM_wb_pc_plus4 1 2 2 NJ 180 1180
+preplace netloc RV32I_MEM_wb_imm_u 1 2 2 NJ 200 1160
+preplace netloc ex_mem_re_1 1 8 12 4190 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 N 930 NJ 930 8420 960 NJ 960 9280
+preplace netloc RV32I_ID_ex_rd 1 8 12 4170 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 NJ 910 N 910 NJ 910 8410 1190 NJ 1190 9260
+preplace netloc RV32I_IF_id_valid_out 1 8 9 4180 1930 NJ 1930 NJ 1930 NJ 1930 NJ 1930 NJ 1930 NJ 1930 N 1930 7890
+preplace netloc RV32I_ID_rs1 1 8 9 4160 1020 NJ 1020 NJ 1020 NJ 1020 NJ 1020 NJ 1020 N 1020 7290 1010 7780
+preplace netloc RV32I_ID_rs2 1 8 9 4130 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 NJ 1060 N 1060 7300 1020 7760
+preplace netloc RV32I_ID_rs1_used 1 8 1 4110 830n
+preplace netloc RV32I_ID_rs2_used 1 8 1 4050 850n
+preplace netloc load_use_detection_0_pc_en 1 9 1 4590 2040n
+preplace netloc load_use_detection_0_if_id_hold 1 9 1 4610 2060n
+preplace netloc load_use_detection_0_id_ex_flush 1 9 1 4630 2080n
+preplace netloc RV32I_EX_ex_flush_req 1 6 4 2810J 1670 NJ 1670 NJ 1670 4650
+preplace netloc pc_en_1 1 10 1 5110 2050n
+preplace netloc hold_1 1 10 2 NJ 2070 5360
+preplace netloc flush_1 1 10 4 NJ 2090 NJ 2090 NJ 2090 6360
+preplace netloc bubble_1 1 10 7 5080 1270 NJ 1270 NJ 1270 NJ 1270 NJ 1270 N 1270 7820J
+preplace netloc RV32I_MEM_wb_valid 1 2 2 750 220 1120
+preplace netloc mem_wb_reg_0_wb_rd_we 1 2 1 830 240n
+preplace netloc xlconstant_3_dout 1 1 20 220 480 820J 410 NJ 410 NJ 410 2040J 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 6380J 580 6840J 570 7160 490 NJ 490 NJ 490 8820J 500 NJ 500 9940
+preplace netloc mem_stage_0_mem_out_valid 1 1 21 230 510 760 590 1210 560 1600J 680 NJ 680 NJ 680 3500J 490 4130J 630 NJ 630 NJ 630 NJ 630 NJ 630 6330J 610 NJ 610 7150 460 NJ 460 NJ 460 8840J 490 NJ 490 NJ 490 10450
+preplace netloc mem_stage_0_mem_out_data 1 1 21 250 460 850J 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 NJ 450 6350J 710 NJ 710 7250 730 7750J 590 NJ 590 NJ 590 NJ 590 NJ 590 10440
+preplace netloc mem_stage_0_mem_out_alu_result 1 1 21 280 450 810J 430 NJ 430 NJ 430 2050J 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 6370J 700 NJ 700 7260 720 7780J 600 NJ 600 NJ 600 NJ 600 NJ 600 10430
+preplace netloc mem_stage_0_mem_out_pc_plus4 1 1 21 240 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 NJ 930 4060J 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 NJ 850 7120 840 NJ 840 NJ 840 NJ 840 NJ 840 NJ 840 10420
+preplace netloc mem_stage_0_mem_out_imm_u 1 1 21 290 470 840J 440 NJ 440 NJ 440 2030J 460 NJ 460 NJ 460 4160J 650 NJ 650 NJ 650 NJ 650 NJ 650 NJ 650 NJ 650 7170 470 NJ 470 NJ 470 NJ 470 NJ 470 NJ 470 10470
+preplace netloc mem_stage_0_mem_out_rd 1 1 21 260 600 NJ 600 1200 460 NJ 460 2020J 470 NJ 470 NJ 470 4110J 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 NJ 660 7190 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 10460
+preplace netloc RV32I_MEM_mem_rd_we 1 1 21 300 490 830 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 NJ 400 6420J 590 6830J 520 7120 440 NJ 440 NJ 440 NJ 440 NJ 440 NJ 440 10490
+preplace netloc mem_stage_0_mem_out_wb_sel 1 1 21 270 2210 NJ 2210 NJ 2210 NJ 2210 NJ 2210 2900J 2030 NJ 2030 4030J 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 N 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 NJ 1920 10380
+preplace netloc RV32I_EX_mem_csr_rd_we 1 1 20 310 430 790J 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 NJ 160 N 160 NJ 160 NJ 160 NJ 160 NJ 160 9810
+preplace netloc mem_csr_rd_addr_1 1 1 20 320 440 800J 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 NJ 420 6400J 600 6850J 530 7140 450 NJ 450 NJ 450 NJ 450 NJ 450 9800
+preplace netloc RV32I_EX_mem_csr_rd_data 1 1 20 330 420 770J 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 NJ 150 N 150 NJ 150 NJ 150 NJ 150 NJ 150 9820
+preplace netloc ex_mem_reg_1_mem_valid 1 2 19 790 680 1190 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 NJ 180 N 180 NJ 180 NJ 180 NJ 180 NJ 180 9930
+preplace netloc ex_mem_reg_1_mem_alu_result 1 4 17 1640 670 NJ 670 NJ 670 3480J 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 NJ 350 7140 420 NJ 420 NJ 420 8860 430 NJ 430 9900
 preplace netloc ex_mem_reg_1_mem_store_data 1 20 1 N 1320
 preplace netloc ex_mem_reg_1_mem_pc_plus4 1 20 1 N 1340
 preplace netloc ex_mem_reg_1_mem_imm_u 1 20 1 N 1360
-preplace netloc ex_mem_reg_1_mem_rd 1 3 18 1210 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 N 960 NJ 960 8210J 980 NJ 980 NJ 980 9580
-preplace netloc ex_mem_reg_1_mem_mem_re 1 3 18 1220 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 N 940 7740J 970 NJ 970 NJ 970 NJ 970 9600
+preplace netloc ex_mem_reg_1_mem_rd 1 3 18 1230 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 NJ 960 N 960 NJ 960 8400J 980 NJ 980 NJ 980 9830
+preplace netloc ex_mem_reg_1_mem_mem_re 1 3 18 1240 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 NJ 940 N 940 7910J 970 NJ 970 NJ 970 NJ 970 9850
 preplace netloc ex_mem_reg_1_mem_mem_we 1 20 1 N 1420
 preplace netloc ex_mem_reg_1_mem_mem_size 1 20 1 N 1440
 preplace netloc ex_mem_reg_1_mem_mem_unsigned 1 20 1 N 1460
-preplace netloc ex_mem_reg_1_mem_rd_we 1 2 19 770 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 7020 860 NJ 860 NJ 860 NJ 860 NJ 860 9660
+preplace netloc ex_mem_reg_1_mem_rd_we 1 2 19 790 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 NJ 950 7170 860 NJ 860 NJ 860 NJ 860 NJ 860 9910
 preplace netloc ex_mem_reg_1_mem_wb_sel 1 20 1 N 1500
-preplace netloc mem_stage_0_mem_forward_data 1 4 18 1610 660 2010J 430 NJ 430 NJ 430 NJ 430 NJ 430 NJ 430 NJ 430 NJ 430 6170J 760 NJ 760 N 760 7610J 730 NJ 730 8640 460 NJ 460 NJ 460 10210
-preplace netloc operand_a_mux_0_operand_a 1 18 1 8640 1300n
-preplace netloc operand_b_mux_0_operand_b 1 18 1 8640 1400n
-preplace netloc alu_op_1 1 17 2 8260J 1220 8650
-preplace netloc alu_0_y 1 19 1 9000 1340n
-preplace netloc forward_mux_1_out_data 1 5 13 1990 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 7100 970 7730J 980 8180J
-preplace netloc ex_imm_1 1 5 13 2100 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 N 920 NJ 920 8280
-preplace netloc ex_op_b_sel_1 1 3 15 1200 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 7080 950 NJ 950 8190
-preplace netloc op_a_sel_1 1 17 1 8270 1320n
-preplace netloc ex_rs1_data_1 1 4 14 1600 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 N 320 NJ 320 8140
-preplace netloc forwarding_0_forward_a 1 4 1 1590 600n
-preplace netloc ex_rs2_data_1 1 4 15 1620 690 2000J 410 NJ 410 NJ 410 NJ 410 NJ 410 NJ 410 NJ 410 NJ 410 6220J 630 NJ 630 7050 500 7750J 610 8240 660 NJ
-preplace netloc forwarding_0_forward_b 1 4 1 1560 740n
-preplace netloc forwarding_0_forward_store 1 4 15 1580 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 7000 410 NJ 410 NJ 410 8660J
-preplace netloc forward_mux_2_out_data 1 19 1 9110 700n
-preplace netloc ex_rs1_1 1 3 15 1200 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 6180J 360 NJ 360 6970 430 NJ 430 8130
-preplace netloc ex_rs2_1 1 3 15 1220 390 1560J 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 N 330 NJ 330 8150
-preplace netloc util_vector_and_0_Res_2 1 3 1 1170 720n
-preplace netloc util_vector_and_1_Res 1 3 1 1090 520n
-preplace netloc ex_branch_en_1 1 5 13 2150 1720 2710J 1700 NJ 1700 NJ 1700 NJ 1700 NJ 1700 5310J 1800 NJ 1800 NJ 1800 NJ 1800 N 1800 NJ 1800 8160
-preplace netloc ex_branch_funct3_1 1 5 13 2130 2190 NJ 2190 3310J 2100 4020J 1850 NJ 1850 NJ 1850 NJ 1850 NJ 1850 NJ 1850 NJ 1850 N 1850 NJ 1850 8150
-preplace netloc ex_jal_1 1 5 13 2140 2200 2780J 1710 NJ 1710 NJ 1710 NJ 1710 NJ 1710 5300J 1810 NJ 1810 6030J 1860 NJ 1860 N 1860 NJ 1860 8140
-preplace netloc ex_jalr_1 1 5 13 2150 2180 2790J 1980 NJ 1980 4030J 1970 4480J 1940 NJ 1940 NJ 1940 NJ 1940 NJ 1940 NJ 1940 N 1940 NJ 1940 8180
-preplace netloc RV32I_ID_ex_pred_next_pc 1 5 13 2170 2170 2800J 1990 NJ 1990 4000J 1910 NJ 1910 NJ 1910 NJ 1910 NJ 1910 NJ 1910 NJ 1910 N 1910 NJ 1910 8200
-preplace netloc RV32I_EX_pc_redirect_valid 1 6 6 2700 1690 NJ 1690 NJ 1690 NJ 1690 NJ 1690 5280J
-preplace netloc RV32I_EX_pc_redirect_target 1 6 6 2660 1680 NJ 1680 NJ 1680 NJ 1680 NJ 1680 5290J
-preplace netloc RV32I_EX_bp_update_valid 1 6 4 NJ 2020 NJ 2020 3900J 2310 4510
-preplace netloc update_is_control_1 1 6 4 2750 2050 NJ 2050 3880J 2320 4480J
-preplace netloc RV32I_EX_bp_update_taken 1 6 4 2730J 2080 NJ 2080 3870J 2290 4500
-preplace netloc RV32I_EX_bp_update_target 1 6 4 2650J 2090 NJ 2090 3840J 2300 4490
+preplace netloc mem_stage_0_mem_forward_data 1 4 18 1650 660 2070J 430 NJ 430 NJ 430 NJ 430 NJ 430 NJ 430 NJ 430 NJ 430 6360J 760 NJ 760 N 760 7780J 730 NJ 730 8850 460 NJ 460 NJ 460 10480
+preplace netloc operand_a_mux_0_operand_a 1 18 1 8850 1300n
+preplace netloc operand_b_mux_0_operand_b 1 18 1 8850 1400n
+preplace netloc alu_op_1 1 17 2 8450J 1220 8860
+preplace netloc alu_0_y 1 19 1 9230 1340n
+preplace netloc forward_mux_1_out_data 1 5 13 2050 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 NJ 980 7250 970 7900J 980 8370J
+preplace netloc ex_imm_1 1 5 13 2160 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 NJ 920 N 920 NJ 920 8470
+preplace netloc ex_op_b_sel_1 1 3 15 1220 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 NJ 970 7230 950 NJ 950 8380
+preplace netloc op_a_sel_1 1 17 1 8460 1320n
+preplace netloc ex_rs1_data_1 1 4 14 1640 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 NJ 320 N 320 NJ 320 8330
+preplace netloc forwarding_0_forward_a 1 4 1 1630 600n
+preplace netloc ex_rs2_data_1 1 4 15 1660 690 2060J 410 NJ 410 NJ 410 NJ 410 NJ 410 NJ 410 NJ 410 NJ 410 6410J 630 NJ 630 7200 500 7920J 610 8430 660 NJ
+preplace netloc forwarding_0_forward_b 1 4 1 1600 740n
+preplace netloc forwarding_0_forward_store 1 4 15 1620 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 NJ 340 7150 410 NJ 410 NJ 410 8870J
+preplace netloc forward_mux_2_out_data 1 19 1 9340 700n
+preplace netloc ex_rs1_1 1 3 15 1220 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 NJ 380 6370J 360 NJ 360 7120 430 NJ 430 8320
+preplace netloc ex_rs2_1 1 3 15 1240 390 1600J 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 NJ 330 N 330 NJ 330 8340
+preplace netloc util_vector_and_0_Res_2 1 3 1 1190 720n
+preplace netloc util_vector_and_1_Res 1 3 1 1110 520n
+preplace netloc ex_branch_en_1 1 5 13 2210 1720 2790J 1700 NJ 1700 NJ 1700 NJ 1700 NJ 1700 5460J 1800 NJ 1800 NJ 1800 NJ 1800 N 1800 NJ 1800 8350
+preplace netloc ex_branch_funct3_1 1 5 13 2190 2190 NJ 2190 3410J 2100 4140J 1850 NJ 1850 NJ 1850 NJ 1850 NJ 1850 NJ 1850 NJ 1850 N 1850 NJ 1850 8340
+preplace netloc ex_jal_1 1 5 13 2200 2200 2860J 1710 NJ 1710 NJ 1710 NJ 1710 NJ 1710 5450J 1810 NJ 1810 6220J 1860 NJ 1860 N 1860 NJ 1860 8330
+preplace netloc ex_jalr_1 1 5 13 2210 2180 2870J 1980 NJ 1980 4150J 1970 4590J 1940 NJ 1940 NJ 1940 NJ 1940 NJ 1940 NJ 1940 N 1940 NJ 1940 8370
+preplace netloc RV32I_ID_ex_pred_next_pc 1 5 13 2230 2170 2880J 1990 NJ 1990 4120J 1910 NJ 1910 NJ 1910 NJ 1910 NJ 1910 NJ 1910 NJ 1910 N 1910 NJ 1910 8390
+preplace netloc RV32I_EX_pc_redirect_valid 1 6 6 2780 1690 NJ 1690 NJ 1690 NJ 1690 NJ 1690 5430J
+preplace netloc RV32I_EX_pc_redirect_target 1 6 6 2740 1680 NJ 1680 NJ 1680 NJ 1680 NJ 1680 5440J
+preplace netloc RV32I_EX_bp_update_valid 1 6 4 NJ 2020 NJ 2020 4020J 2310 4620
+preplace netloc update_is_control_1 1 6 4 2830 2050 NJ 2050 4000J 2320 4590J
+preplace netloc RV32I_EX_bp_update_taken 1 6 4 2810J 2080 NJ 2080 3990J 2290 4610
+preplace netloc RV32I_EX_bp_update_target 1 6 4 2730J 2090 NJ 2090 3960J 2300 4600
 preplace netloc sim_constant_0_dout 1 19 1 NJ 1280
-preplace netloc ex_pc_plus4_1 1 17 3 NJ 1200 8660J 1480 9010
-preplace netloc ex_imm_u_1 1 17 3 8250J 1210 NJ 1210 9020
-preplace netloc ex_mem_we_1 1 17 3 8300J 1400 8610J 1510 9030
-preplace netloc ex_mem_size_1 1 17 3 8290J 1380 8630J 1490 9040
-preplace netloc ex_mem_unsigned_1 1 17 3 8310J 1390 8620J 1500 N
-preplace netloc ex_rd_we_1 1 17 3 NJ 1600 NJ 1600 9010
-preplace netloc ex_wb_sel_1 1 17 3 NJ 1660 NJ 1660 9070
-preplace netloc regfile_0_rs1_rdata 1 16 1 7620 1150n
-preplace netloc regfile_0_rs2_rdata 1 16 1 7600 1170n
-preplace netloc control_0_imm_sel 1 14 2 6670 580 7030
-preplace netloc decoder_0_imm_i 1 8 8 3930 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 6650J 590 7060
-preplace netloc decoder_0_imm_s 1 8 8 N 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 6660J 600 N
-preplace netloc decoder_0_imm_b 1 8 8 3910 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 N
-preplace netloc decoder_0_imm_u 1 8 9 4040 690 NJ 690 NJ 690 NJ 690 NJ 690 NJ 690 N 690 7120 830 7680J
-preplace netloc decoder_0_imm_j 1 8 8 3990 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 7060
-preplace netloc imm_mux_0_imm_out 1 16 1 7710 610n
-preplace netloc RV32I_IF_id_instr_out 1 7 10 3380 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 N 1030 7580
-preplace netloc RV32I_IF_id_pc_out 1 16 1 7690 1240n
-preplace netloc RV32I_IF_id_pc4_out 1 16 1 7730 1260n
-preplace netloc RV32I_IF_id_pred_next_pc_out 1 16 1 7750 1280n
-preplace netloc decoder_0_rd 1 8 9 4070 800 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 7080 820 7660J
-preplace netloc control_0_alu_op 1 14 3 6660 1440 N 1440 NJ
-preplace netloc control_0_op_a_sel 1 14 3 6650 1460 N 1460 NJ
-preplace netloc control_0_op_b_sel 1 14 3 6630 1480 N 1480 NJ
-preplace netloc control_0_branch_en 1 14 3 6680 1500 N 1500 NJ
-preplace netloc control_0_branch_funct3 1 14 3 6690 1520 N 1520 NJ
-preplace netloc control_0_jal 1 14 3 6700 1560 7110 1550 7740J
-preplace netloc control_0_jalr 1 14 3 6710 1570 7120 1560 NJ
+preplace netloc ex_pc_plus4_1 1 17 3 NJ 1200 8870J 1480 9240
+preplace netloc ex_imm_u_1 1 17 3 8440J 1210 NJ 1210 9250
+preplace netloc ex_mem_we_1 1 17 3 8490J 1400 8820J 1510 9260
+preplace netloc ex_mem_size_1 1 17 3 8480J 1380 8840J 1490 9270
+preplace netloc ex_mem_unsigned_1 1 17 3 8500J 1390 8830J 1500 N
+preplace netloc ex_rd_we_1 1 17 3 NJ 1600 NJ 1600 9240
+preplace netloc ex_wb_sel_1 1 17 3 NJ 1660 NJ 1660 9300
+preplace netloc regfile_0_rs1_rdata 1 16 1 7790 1150n
+preplace netloc regfile_0_rs2_rdata 1 16 1 7770 1170n
+preplace netloc control_0_imm_sel 1 14 2 6880 580 7180
+preplace netloc decoder_0_imm_i 1 8 8 4050 640 NJ 640 NJ 640 NJ 640 NJ 640 NJ 640 6860J 590 7210
+preplace netloc decoder_0_imm_s 1 8 8 N 670 NJ 670 NJ 670 NJ 670 NJ 670 NJ 670 6870J 600 N
+preplace netloc decoder_0_imm_b 1 8 8 4030 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 NJ 620 N
+preplace netloc decoder_0_imm_u 1 8 9 4160 690 NJ 690 NJ 690 NJ 690 NJ 690 NJ 690 N 690 7270 830 7850J
+preplace netloc decoder_0_imm_j 1 8 8 4110 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 NJ 680 7210
+preplace netloc imm_mux_0_imm_out 1 16 1 7880 610n
+preplace netloc RV32I_IF_id_instr_out 1 7 10 3480 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 NJ 1030 N 1030 7750
+preplace netloc RV32I_IF_id_pc_out 1 16 1 7860 1240n
+preplace netloc RV32I_IF_id_pc4_out 1 16 1 7900 1260n
+preplace netloc RV32I_IF_id_pred_next_pc_out 1 16 1 7920 1280n
+preplace netloc decoder_0_rd 1 8 9 4190 800 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 NJ 800 7230 820 7830J
+preplace netloc control_0_alu_op 1 14 3 6870 1440 N 1440 NJ
+preplace netloc control_0_op_a_sel 1 14 3 6860 1460 N 1460 NJ
+preplace netloc control_0_op_b_sel 1 14 3 6840 1480 N 1480 NJ
+preplace netloc control_0_branch_en 1 14 3 6890 1500 N 1500 NJ
+preplace netloc control_0_branch_funct3 1 14 3 6900 1520 N 1520 NJ
+preplace netloc control_0_jal 1 14 3 6910 1560 7260 1550 7910J
+preplace netloc control_0_jalr 1 14 3 6920 1570 7270 1560 NJ
 preplace netloc control_0_mem_re 1 14 3 N 1580 N 1580 NJ
 preplace netloc control_0_mem_we 1 14 3 N 1600 N 1600 NJ
 preplace netloc control_0_mem_size 1 14 3 N 1620 N 1620 NJ
 preplace netloc control_0_mem_sign_ext 1 14 3 N 1640 N 1640 NJ
-preplace netloc control_0_rd_we 1 14 3 6620 1530 N 1530 7590J
-preplace netloc control_0_wb_sel 1 14 3 6640 1540 N 1540 7570J
-preplace netloc decoder_0_illegal_opcode 1 8 9 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 N 750 7630
-preplace netloc decoder_0_opcode 1 8 6 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 6150
-preplace netloc decoder_0_funct3 1 8 6 NJ 570 NJ 570 NJ 570 NJ 570 NJ 570 6130
-preplace netloc decoder_0_funct7 1 8 6 3800J 600 NJ 600 NJ 600 NJ 600 NJ 600 6120
-preplace netloc decoder_0_fmt 1 8 6 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 6100
-preplace netloc decoder_0_bit30 1 8 6 3900J 590 NJ 590 NJ 590 NJ 590 NJ 590 6110
-preplace netloc pc_unit_0_pc 1 9 7 4590 1950 NJ 1950 NJ 1950 5790 2190 NJ 2190 N 2190 7110
-preplace netloc pc_to_imem_addr_0_addr 1 13 1 6030 2300n
-preplace netloc branch_predictor_btb_0_pred_valid 1 10 1 4960 2330n
-preplace netloc branch_predictor_btb_0_pred_taken 1 10 1 4950 2350n
-preplace netloc branch_predictor_btb_0_pred_next_pc 1 10 6 4980J 2360 5200 2480 5770J 2470 NJ 2470 NJ 2470 7030
-preplace netloc pc_unit_0_pc_plus4 1 12 4 5770J 2180 NJ 2180 N 2180 7120
-preplace netloc rom_memory_0_dout 1 14 2 6670 2380 N
-preplace netloc util_vector_or_0_Res 1 14 2 N 2270 6990
-preplace netloc util_vector_logic_7_Res 1 12 4 5790 2480 NJ 2480 N 2480 7150
-preplace netloc util_vector_and_1_Res_1 1 11 1 5220 2290n
-preplace netloc util_vector_and_0_Res_1 1 11 1 5220 2400n
-preplace netloc util_vector_not_0_Res_1 1 10 1 4970J 2300n
+preplace netloc control_0_rd_we 1 14 3 6830 1530 N 1530 7760J
+preplace netloc control_0_wb_sel 1 14 3 6850 1540 N 1540 7740J
+preplace netloc decoder_0_illegal_opcode 1 8 9 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 NJ 750 N 750 7800
+preplace netloc decoder_0_opcode 1 8 6 NJ 550 NJ 550 NJ 550 NJ 550 NJ 550 6340
+preplace netloc decoder_0_funct3 1 8 6 NJ 570 NJ 570 NJ 570 NJ 570 NJ 570 6320
+preplace netloc decoder_0_funct7 1 8 6 3920J 600 NJ 600 NJ 600 NJ 600 NJ 600 6310
+preplace netloc decoder_0_fmt 1 8 6 NJ 610 NJ 610 NJ 610 NJ 610 NJ 610 6290
+preplace netloc decoder_0_bit30 1 8 6 4020J 590 NJ 590 NJ 590 NJ 590 NJ 590 6300
+preplace netloc pc_unit_0_pc 1 9 7 4700 1950 NJ 1950 NJ 1950 5980 2190 NJ 2190 N 2190 7260
+preplace netloc pc_to_imem_addr_0_addr 1 13 1 6220 2300n
+preplace netloc branch_predictor_btb_0_pred_valid 1 10 1 5090 2330n
+preplace netloc branch_predictor_btb_0_pred_taken 1 10 1 5080 2350n
+preplace netloc branch_predictor_btb_0_pred_next_pc 1 10 6 5110J 2360 5350 2480 5960J 2470 NJ 2470 NJ 2470 7180
+preplace netloc pc_unit_0_pc_plus4 1 12 4 5960J 2180 NJ 2180 N 2180 7270
+preplace netloc rom_memory_0_dout 1 14 2 6880 2380 N
+preplace netloc util_vector_or_0_Res 1 14 2 N 2270 7140
+preplace netloc util_vector_logic_7_Res 1 12 4 5980 2480 NJ 2480 N 2480 7300
+preplace netloc util_vector_and_1_Res_1 1 11 1 5370 2290n
+preplace netloc util_vector_and_0_Res_1 1 11 1 5370 2400n
+preplace netloc util_vector_not_0_Res_1 1 10 1 5100J 2300n
 preplace netloc util_vector_not_1_Res 1 13 1 N 2700
-preplace netloc uart_tx_0_tx 1 20 2 9690 2750 10110
-preplace netloc sim_constant_2_dout 1 15 1 7100 2400n
-levelinfo -pg 1 0 120 520 960 1390 1790 2420 3100 3610 4290 4770 5090 5540 5910 6450 6870 7360 7940 8460 8830 9330 9900 10490 10960 11230 11370
-pagesize -pg 1 -db -bbox -sgen -110 0 11530 3150
+preplace netloc uart_tx_0_tx 1 20 2 9940 2750 10380
+preplace netloc sim_constant_2_dout 1 15 1 7250 2400n
+levelinfo -pg 1 0 120 530 980 1420 1840 2480 3190 3720 4390 4890 5230 5710 6100 6650 7020 7520 8120 8660 9050 9570 10160 10770 11250 11520 11660
+pagesize -pg 1 -db -bbox -sgen -120 0 11830 3150
 "
 }
 0

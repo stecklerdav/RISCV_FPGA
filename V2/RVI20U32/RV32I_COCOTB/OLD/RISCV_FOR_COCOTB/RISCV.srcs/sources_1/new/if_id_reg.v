@@ -7,19 +7,8 @@ module if_id_reg (
     input  wire [31:0] if_pc_in,
     input  wire [31:0] if_pc4_in,
     input  wire [31:0] if_instr_in,
-    input  wire        if_valid_in,
+    input  wire        if_valid_in,   // queda por compatibilidad, pero no se usa
 
-    // ------------------------------------------------------------
-    // Predicción usada en IF para esta instrucción.
-    //
-    // Debe venir de:
-    //
-    // if_pred_next_pc_used =
-    //     pc_predict_valid ? pc_predict_next : if_pc4_in;
-    //
-    // No conectes aquí pred_next_pc directo sin seleccionar,
-    // porque cuando no hay predicción taken debe viajar PC+4.
-    // ------------------------------------------------------------
     input  wire [31:0] if_pred_next_pc_in,
 
     input  wire        flush,
@@ -30,7 +19,6 @@ module if_id_reg (
     output wire [31:0] id_instr_out,
     output wire        id_valid_out,
 
-    // Predicción ya alineada con la instrucción que sale hacia ID
     output wire [31:0] id_pred_next_pc_out
 );
 
@@ -83,7 +71,6 @@ module if_id_reg (
                 reg_valid          <= 1'b0;
             end
             else if (hold) begin
-                // Congelar todo durante load-use stall
                 pc_align           <= pc_align;
                 pc4_align          <= pc4_align;
                 pred_next_pc_align <= pred_next_pc_align;
@@ -96,7 +83,6 @@ module if_id_reg (
                 reg_valid          <= reg_valid;
             end
             else begin
-                // Primero sacar hacia ID lo alineado con la instrucción actual de BRAM
                 if (kill_cnt != 0) begin
                     reg_pc           <= 32'b0;
                     reg_pc4          <= 32'b0;
@@ -113,11 +99,14 @@ module if_id_reg (
                     reg_valid        <= valid_align;
                 end
 
-                // Luego capturar el PC que corresponderá al próximo dout de BRAM
                 pc_align           <= if_pc_in;
                 pc4_align          <= if_pc4_in;
                 pred_next_pc_align <= if_pred_next_pc_in;
-                valid_align        <= if_valid_in;
+
+                // CORRECCIÓN:
+                // antes: valid_align <= if_valid_in;
+                // ahora: fetch válido siempre que no haya reset/flush/hold
+                valid_align        <= 1'b1;
             end
         end
     end

@@ -14,10 +14,13 @@ module rom_memory #(
 
     reg [DATA_WIDTH-1:0] rom [0:DEPTH-1];
 
-    initial begin
-        $readmemh(MEM_FILE, rom);
-    end
-
+   initial begin
+    $display("[ROM] Loading MEM_FILE = %s", MEM_FILE);
+    $readmemh(MEM_FILE, rom);
+    $display("[ROM] rom[0] = %08h", rom[0]);
+    $display("[ROM] rom[1] = %08h", rom[1]);
+    $display("[ROM] rom[2] = %08h", rom[2]);
+end
     always @(posedge clk) begin
         if (en) begin
             dout <= rom[addr];

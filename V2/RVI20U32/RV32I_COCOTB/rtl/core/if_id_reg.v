@@ -7,19 +7,8 @@ module if_id_reg (
     input  wire [31:0] if_pc_in,
     input  wire [31:0] if_pc4_in,
     input  wire [31:0] if_instr_in,
-    input  wire        if_valid_in,
+    input  wire        if_valid_in,   // queda por compatibilidad, pero no se usa
 
-    // ------------------------------------------------------------
-    // Predicción usada en IF para esta instrucción.
-    //
-    // Debe venir de:
-    //
-    // if_pred_next_pc_used =
-    //     pc_predict_valid ? pc_predict_next : if_pc4_in;
-    //
-    // No conectes aquí pred_next_pc directo sin seleccionar,
-    // porque cuando no hay predicción taken debe viajar PC+4.
-    // ------------------------------------------------------------
     input  wire [31:0] if_pred_next_pc_in,
 
     input  wire        flush,
@@ -30,17 +19,17 @@ module if_id_reg (
     output wire [31:0] id_instr_out,
     output wire        id_valid_out,
 
-    // Predicción ya alineada con la instrucción que sale hacia ID
     output wire [31:0] id_pred_next_pc_out
 );
 
     localparam [31:0] RV32I_NOP = 32'h0000_0013;
 
-    localparam FLUSH_EXTRA_KILLS = 1;
+    localparam FLUSH_EXTRA_KILLS = 2;
     localparam KILL_CNT_W = (FLUSH_EXTRA_KILLS > 0) ? $clog2(FLUSH_EXTRA_KILLS + 1) : 1;
 
     reg [31:0] pc_align;
     reg [31:0] pc4_align;
+    reg [31:0] instr_align;
     reg [31:0] pred_next_pc_align;
     reg        valid_align;
 
@@ -56,6 +45,7 @@ module if_id_reg (
         if (rst) begin
             pc_align           <= 32'b0;
             pc4_align          <= 32'b0;
+            instr_align        <= RV32I_NOP;
             pred_next_pc_align <= 32'b0;
             valid_align        <= 1'b0;
 
@@ -73,6 +63,7 @@ module if_id_reg (
 
                 pc_align           <= 32'b0;
                 pc4_align          <= 32'b0;
+                instr_align        <= RV32I_NOP;
                 pred_next_pc_align <= 32'b0;
                 valid_align        <= 1'b0;
 
@@ -83,9 +74,9 @@ module if_id_reg (
                 reg_valid          <= 1'b0;
             end
             else if (hold) begin
-                // Congelar todo durante load-use stall
                 pc_align           <= pc_align;
                 pc4_align          <= pc4_align;
+                instr_align        <= instr_align;
                 pred_next_pc_align <= pred_next_pc_align;
                 valid_align        <= valid_align;
 
@@ -96,7 +87,6 @@ module if_id_reg (
                 reg_valid          <= reg_valid;
             end
             else begin
-                // Primero sacar hacia ID lo alineado con la instrucción actual de BRAM
                 if (kill_cnt != 0) begin
                     reg_pc           <= 32'b0;
                     reg_pc4          <= 32'b0;
@@ -108,16 +98,17 @@ module if_id_reg (
                 else begin
                     reg_pc           <= pc_align;
                     reg_pc4          <= pc4_align;
-                    reg_instr        <= if_instr_in;
+                    reg_instr        <= instr_align;
                     reg_pred_next_pc <= pred_next_pc_align;
                     reg_valid        <= valid_align;
                 end
 
-                // Luego capturar el PC que corresponderá al próximo dout de BRAM
                 pc_align           <= if_pc_in;
                 pc4_align          <= if_pc4_in;
+                instr_align        <= if_instr_in;
                 pred_next_pc_align <= if_pred_next_pc_in;
-                valid_align        <= if_valid_in;
+
+                valid_align        <= 1'b1;
             end
         end
     end

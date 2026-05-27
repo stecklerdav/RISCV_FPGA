@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/OLD/RISCV_FOR_COCOTB/RISCV.xpr">
+<Project Version="7" Minor="49" Path="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/OLD/RISCV_FOR_COCOTB/RISCV.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="665df9eb1049412aba2015d1f4da0e51"/>
@@ -367,13 +367,13 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../rv32i_vscode/prog_asm.coe">
+      <File Path="$PPRDIR/../../../rv32i_vscode/prog_asm.coe">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../rv32i_vscode/prog_asm.mem">
+      <File Path="$PPRDIR/../../../rv32i_vscode/prog_asm.mem">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
