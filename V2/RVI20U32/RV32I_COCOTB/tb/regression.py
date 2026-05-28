@@ -13,6 +13,8 @@ async def regression(dut):
     await ClockCycles(dut.clk, 10)
     dut.rst.value = 0
 
+    TEST_NAME = os.getenv("TEST_NAME", "")
+
     dut._log.info("===== IF/ID VALID TRACE =====")
 
     for cycle in range(50):
@@ -28,16 +30,34 @@ async def regression(dut):
             pc = int(dut.BASIC_i.pc_unit_0.pc.value)
             instr = int(dut.BASIC_i.RV32I_IF_id_instr_out.value)
 
+            opcode = int(dut.BASIC_i.decoder_0_opcode.value)
+            ctrl_mem_re = int(dut.BASIC_i.control_0_mem_re.value)
+
+            ex_mem_re = int(dut.BASIC_i.ex_mem_re_1.value)
+            mem_mem_re = int(dut.BASIC_i.ex_mem_reg_1_mem_mem_re.value)
+
+            mem_req_valid = int(dut.BASIC_i.mem_req_valid_1.value)
+            dmem_ready = int(dut.BASIC_i.dmem_ready_1.value)
+            mem_out_data = int(dut.BASIC_i.mem_stage_0_mem_out_data.value)
+
             dut._log.info(
                 f"CYC={cycle:03d} "
                 f"PC=0x{pc:08X} "
                 f"INSTR=0x{instr:08X} "
+                f"opcode=0b{opcode:07b} "
+                f"ctrl_mem_re={ctrl_mem_re} "
                 f"flush={flush} "
                 f"hold={hold} "
                 f"kill_cnt={kill} "
                 f"valid_align={valid_align} "
                 f"reg_valid={reg_valid} "
-                f"id_valid={id_valid}"
+                f"id_valid={id_valid} "
+                f"MEMDBG "
+                f"ex_mem_re={ex_mem_re} "
+                f"mem_mem_re={mem_mem_re} "
+                f"req_valid={mem_req_valid} "
+                f"ready={dmem_ready} "
+                f"mem_out=0x{mem_out_data:08X}"
             )
 
         except Exception as e:
@@ -45,16 +65,18 @@ async def regression(dut):
 
     await ClockCycles(dut.clk, 350)
 
-    expected = int(os.getenv("EXPECTED_SIGNATURE", "0xCAFE0001"), 16)
+    expected = int(os.getenv("EXPECTED_SIGNATURE", "0x11223344"), 16)
 
-    b0 = int(dut.BASIC_i.ram_data_1.mem0[0].value)
-    b1 = int(dut.BASIC_i.ram_data_1.mem1[0].value)
-    b2 = int(dut.BASIC_i.ram_data_1.mem2[0].value)
-    b3 = int(dut.BASIC_i.ram_data_1.mem3[0].value)
+    WORD_INDEX = int(os.getenv("SIGNATURE_WORD_INDEX", "0"))
+
+    b0 = int(dut.BASIC_i.ram_data_1.mem0[WORD_INDEX].value)
+    b1 = int(dut.BASIC_i.ram_data_1.mem1[WORD_INDEX].value)
+    b2 = int(dut.BASIC_i.ram_data_1.mem2[WORD_INDEX].value)
+    b3 = int(dut.BASIC_i.ram_data_1.mem3[WORD_INDEX].value)
 
     sig = (b3 << 24) | (b2 << 16) | (b1 << 8) | b0
 
-    dut._log.info("===== RAM[0] BYTES =====")
+    dut._log.info("===== RAM BYTES =====")
     dut._log.info(f"mem0 = 0x{b0:02X}")
     dut._log.info(f"mem1 = 0x{b1:02X}")
     dut._log.info(f"mem2 = 0x{b2:02X}")
@@ -110,22 +132,11 @@ async def regression(dut):
         "control_0_rd_we",
         "control_0_wb_sel",
         "control_0_alu_op",
+        "control_0_mem_re",
 
+        "ex_mem_re_1",
+        "ex_mem_we_1",
         "ex_rd_we_1",
-        "ex_mem_reg_1_mem_rd_we",
-        "mem_wb_reg_0_wb_rd_we",
-
-        "mem_stage_0_mem_out_rd",
-        "mem_stage_0_mem_out_data",
-        "mem_stage_0_mem_out_alu_result",
-
-        "csr_regfile_wb_mux_0_final_we",
-        "csr_regfile_wb_mux_0_final_rd",
-        "csr_regfile_wb_mux_0_final_wdata",
-
-        "Core_RV32I_regfile_we",
-        "Core_RV32I_wb_rd",
-        "Core_RV32I_rd_wdata1",
 
         "ex_mem_reg_1_mem_valid",
         "ex_mem_reg_1_mem_rd",
@@ -136,10 +147,19 @@ async def regression(dut):
 
         "mem_stage_0_mem_out_valid",
         "mem_stage_0_mem_out_rd",
-        "mem_stage_0_mem_out_rd_we",
         "mem_stage_0_mem_out_wb_sel",
         "mem_stage_0_mem_out_alu_result",
         "mem_stage_0_mem_out_data",
+
+        "mem_wb_reg_0_wb_rd_we",
+
+        "csr_regfile_wb_mux_0_final_we",
+        "csr_regfile_wb_mux_0_final_rd",
+        "csr_regfile_wb_mux_0_final_wdata",
+
+        "Core_RV32I_regfile_we",
+        "Core_RV32I_wb_rd",
+        "Core_RV32I_rd_wdata1",
 
         "dmem_ready_1",
         "dmem_req_ready_1",
@@ -153,6 +173,18 @@ async def regression(dut):
             dut._log.info(f"{s} = {val}")
         except Exception as e:
             dut._log.info(f"{s} read error: {e}")
+
+    if "TC-004" in TEST_NAME:
+        x3 = int(dut.BASIC_i.regfile_0.regs[3].value)
+        x4 = int(dut.BASIC_i.regfile_0.regs[4].value)
+
+        assert x3 == 0x00000005, (
+            f"x3 load failed: got 0x{x3:08X}"
+        )
+
+        assert x4 == 0x00000007, (
+            f"load-use failed: x4 got 0x{x4:08X}"
+        )
 
     assert sig == expected, (
         f"Signature mismatch "

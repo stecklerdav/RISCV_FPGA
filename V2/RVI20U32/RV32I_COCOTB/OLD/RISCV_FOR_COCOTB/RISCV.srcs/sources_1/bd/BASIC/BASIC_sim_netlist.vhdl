@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
--- Date        : Tue May 26 21:53:40 2026
--- Host        : xilinx running 64-bit Ubuntu 25.10
+-- Date        : Thu May 28 01:23:02 2026
+-- Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/OLD/RISCV_FOR_COCOTB/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.vhdl
+--               /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/OLD/RISCV_FOR_COCOTB/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.vhdl
 -- Design      : BASIC
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -2024,8 +2024,8 @@ architecture STRUCTURE of BASIC_BASIC_load_use_detection_0_0 is
   signal load_use_hazard2 : STD_LOGIC;
   signal load_use_hazard21_out : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of id_ex_flush_INST_0 : label is "soft_lutpair163";
-  attribute SOFT_HLUTNM of pc_en_INST_0 : label is "soft_lutpair163";
+  attribute SOFT_HLUTNM of id_ex_flush_INST_0 : label is "soft_lutpair164";
+  attribute SOFT_HLUTNM of pc_en_INST_0 : label is "soft_lutpair164";
 begin
   id_ex_flush <= \^id_ex_flush\;
   if_id_hold <= \^id_ex_flush\;
@@ -2177,10 +2177,10 @@ end BASIC_BASIC_priority_branch_OR_l_0_0;
 
 architecture STRUCTURE of BASIC_BASIC_priority_branch_OR_l_0_0 is
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of id_ex_flush_final_INST_0 : label is "soft_lutpair254";
-  attribute SOFT_HLUTNM of if_id_flush_final_INST_0 : label is "soft_lutpair254";
-  attribute SOFT_HLUTNM of if_id_hold_final_INST_0 : label is "soft_lutpair253";
-  attribute SOFT_HLUTNM of pc_en_final_INST_0 : label is "soft_lutpair253";
+  attribute SOFT_HLUTNM of id_ex_flush_final_INST_0 : label is "soft_lutpair255";
+  attribute SOFT_HLUTNM of if_id_flush_final_INST_0 : label is "soft_lutpair255";
+  attribute SOFT_HLUTNM of if_id_hold_final_INST_0 : label is "soft_lutpair254";
+  attribute SOFT_HLUTNM of pc_en_final_INST_0 : label is "soft_lutpair254";
 begin
 id_ex_flush_final_INST_0: unisim.vcomponents.LUT3
     generic map(
@@ -2284,6 +2284,35 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
+entity BASIC_BASIC_sim_constant_0_5 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  attribute CHECK_LICENSE_TYPE : string;
+  attribute CHECK_LICENSE_TYPE of BASIC_BASIC_sim_constant_0_5 : entity is "BASIC_sim_constant_0_5,sim_constant,{}";
+  attribute DowngradeIPIdentifiedWarnings : string;
+  attribute DowngradeIPIdentifiedWarnings of BASIC_BASIC_sim_constant_0_5 : entity is "yes";
+  attribute IP_DEFINITION_SOURCE : string;
+  attribute IP_DEFINITION_SOURCE of BASIC_BASIC_sim_constant_0_5 : entity is "module_ref";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of BASIC_BASIC_sim_constant_0_5 : entity is "BASIC_sim_constant_0_5";
+  attribute X_CORE_INFO : string;
+  attribute X_CORE_INFO of BASIC_BASIC_sim_constant_0_5 : entity is "sim_constant,Vivado 2020.1";
+end BASIC_BASIC_sim_constant_0_5;
+
+architecture STRUCTURE of BASIC_BASIC_sim_constant_0_5 is
+  signal \<const1>\ : STD_LOGIC;
+begin
+  dout(0) <= \<const1>\;
+VCC: unisim.vcomponents.VCC
+     port map (
+      P => \<const1>\
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
 entity BASIC_BASIC_system_decoder_0_0 is
   port (
     instr : in STD_LOGIC_VECTOR ( 31 downto 0 );
@@ -2320,10 +2349,10 @@ architecture STRUCTURE of BASIC_BASIC_system_decoder_0_0 is
   signal is_mret_INST_0_i_2_n_0 : STD_LOGIC;
   signal is_system_INST_0_i_1_n_0 : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of is_csrrc_INST_0 : label is "soft_lutpair256";
-  attribute SOFT_HLUTNM of is_csrrw_INST_0 : label is "soft_lutpair256";
-  attribute SOFT_HLUTNM of is_ecall_INST_0_i_5 : label is "soft_lutpair255";
-  attribute SOFT_HLUTNM of is_system_INST_0 : label is "soft_lutpair255";
+  attribute SOFT_HLUTNM of is_csrrc_INST_0 : label is "soft_lutpair257";
+  attribute SOFT_HLUTNM of is_csrrw_INST_0 : label is "soft_lutpair257";
+  attribute SOFT_HLUTNM of is_ecall_INST_0_i_5 : label is "soft_lutpair256";
+  attribute SOFT_HLUTNM of is_system_INST_0 : label is "soft_lutpair256";
 begin
   \^instr\(31 downto 0) <= instr(31 downto 0);
   csr_addr(11 downto 0) <= \^instr\(31 downto 20);
@@ -2549,42 +2578,42 @@ architecture STRUCTURE of BASIC_BASIC_trap_controller_0_0 is
   signal \^trap_mcause\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal \trap_mepc[31]_INST_0_i_1_n_0\ : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \trap_mcause[2]_INST_0\ : label is "soft_lutpair259";
-  attribute SOFT_HLUTNM of \trap_mtval[0]_INST_0\ : label is "soft_lutpair274";
-  attribute SOFT_HLUTNM of \trap_mtval[10]_INST_0\ : label is "soft_lutpair263";
-  attribute SOFT_HLUTNM of \trap_mtval[11]_INST_0\ : label is "soft_lutpair264";
-  attribute SOFT_HLUTNM of \trap_mtval[12]_INST_0\ : label is "soft_lutpair264";
-  attribute SOFT_HLUTNM of \trap_mtval[13]_INST_0\ : label is "soft_lutpair265";
-  attribute SOFT_HLUTNM of \trap_mtval[14]_INST_0\ : label is "soft_lutpair265";
-  attribute SOFT_HLUTNM of \trap_mtval[15]_INST_0\ : label is "soft_lutpair266";
-  attribute SOFT_HLUTNM of \trap_mtval[16]_INST_0\ : label is "soft_lutpair266";
-  attribute SOFT_HLUTNM of \trap_mtval[17]_INST_0\ : label is "soft_lutpair267";
-  attribute SOFT_HLUTNM of \trap_mtval[18]_INST_0\ : label is "soft_lutpair267";
-  attribute SOFT_HLUTNM of \trap_mtval[19]_INST_0\ : label is "soft_lutpair268";
-  attribute SOFT_HLUTNM of \trap_mtval[20]_INST_0\ : label is "soft_lutpair268";
-  attribute SOFT_HLUTNM of \trap_mtval[21]_INST_0\ : label is "soft_lutpair269";
-  attribute SOFT_HLUTNM of \trap_mtval[22]_INST_0\ : label is "soft_lutpair269";
-  attribute SOFT_HLUTNM of \trap_mtval[23]_INST_0\ : label is "soft_lutpair270";
-  attribute SOFT_HLUTNM of \trap_mtval[24]_INST_0\ : label is "soft_lutpair270";
-  attribute SOFT_HLUTNM of \trap_mtval[25]_INST_0\ : label is "soft_lutpair271";
-  attribute SOFT_HLUTNM of \trap_mtval[26]_INST_0\ : label is "soft_lutpair271";
-  attribute SOFT_HLUTNM of \trap_mtval[27]_INST_0\ : label is "soft_lutpair272";
-  attribute SOFT_HLUTNM of \trap_mtval[28]_INST_0\ : label is "soft_lutpair272";
-  attribute SOFT_HLUTNM of \trap_mtval[29]_INST_0\ : label is "soft_lutpair273";
-  attribute SOFT_HLUTNM of \trap_mtval[2]_INST_0\ : label is "soft_lutpair259";
-  attribute SOFT_HLUTNM of \trap_mtval[30]_INST_0\ : label is "soft_lutpair273";
-  attribute SOFT_HLUTNM of \trap_mtval[31]_INST_0\ : label is "soft_lutpair274";
-  attribute SOFT_HLUTNM of \trap_mtval[3]_INST_0\ : label is "soft_lutpair260";
-  attribute SOFT_HLUTNM of \trap_mtval[4]_INST_0\ : label is "soft_lutpair260";
-  attribute SOFT_HLUTNM of \trap_mtval[5]_INST_0\ : label is "soft_lutpair261";
-  attribute SOFT_HLUTNM of \trap_mtval[6]_INST_0\ : label is "soft_lutpair261";
-  attribute SOFT_HLUTNM of \trap_mtval[7]_INST_0\ : label is "soft_lutpair262";
-  attribute SOFT_HLUTNM of \trap_mtval[8]_INST_0\ : label is "soft_lutpair262";
-  attribute SOFT_HLUTNM of \trap_mtval[9]_INST_0\ : label is "soft_lutpair263";
+  attribute SOFT_HLUTNM of \trap_mcause[2]_INST_0\ : label is "soft_lutpair260";
+  attribute SOFT_HLUTNM of \trap_mtval[0]_INST_0\ : label is "soft_lutpair275";
+  attribute SOFT_HLUTNM of \trap_mtval[10]_INST_0\ : label is "soft_lutpair264";
+  attribute SOFT_HLUTNM of \trap_mtval[11]_INST_0\ : label is "soft_lutpair265";
+  attribute SOFT_HLUTNM of \trap_mtval[12]_INST_0\ : label is "soft_lutpair265";
+  attribute SOFT_HLUTNM of \trap_mtval[13]_INST_0\ : label is "soft_lutpair266";
+  attribute SOFT_HLUTNM of \trap_mtval[14]_INST_0\ : label is "soft_lutpair266";
+  attribute SOFT_HLUTNM of \trap_mtval[15]_INST_0\ : label is "soft_lutpair267";
+  attribute SOFT_HLUTNM of \trap_mtval[16]_INST_0\ : label is "soft_lutpair267";
+  attribute SOFT_HLUTNM of \trap_mtval[17]_INST_0\ : label is "soft_lutpair268";
+  attribute SOFT_HLUTNM of \trap_mtval[18]_INST_0\ : label is "soft_lutpair268";
+  attribute SOFT_HLUTNM of \trap_mtval[19]_INST_0\ : label is "soft_lutpair269";
+  attribute SOFT_HLUTNM of \trap_mtval[20]_INST_0\ : label is "soft_lutpair269";
+  attribute SOFT_HLUTNM of \trap_mtval[21]_INST_0\ : label is "soft_lutpair270";
+  attribute SOFT_HLUTNM of \trap_mtval[22]_INST_0\ : label is "soft_lutpair270";
+  attribute SOFT_HLUTNM of \trap_mtval[23]_INST_0\ : label is "soft_lutpair271";
+  attribute SOFT_HLUTNM of \trap_mtval[24]_INST_0\ : label is "soft_lutpair271";
+  attribute SOFT_HLUTNM of \trap_mtval[25]_INST_0\ : label is "soft_lutpair272";
+  attribute SOFT_HLUTNM of \trap_mtval[26]_INST_0\ : label is "soft_lutpair272";
+  attribute SOFT_HLUTNM of \trap_mtval[27]_INST_0\ : label is "soft_lutpair273";
+  attribute SOFT_HLUTNM of \trap_mtval[28]_INST_0\ : label is "soft_lutpair273";
+  attribute SOFT_HLUTNM of \trap_mtval[29]_INST_0\ : label is "soft_lutpair274";
+  attribute SOFT_HLUTNM of \trap_mtval[2]_INST_0\ : label is "soft_lutpair260";
+  attribute SOFT_HLUTNM of \trap_mtval[30]_INST_0\ : label is "soft_lutpair274";
+  attribute SOFT_HLUTNM of \trap_mtval[31]_INST_0\ : label is "soft_lutpair275";
+  attribute SOFT_HLUTNM of \trap_mtval[3]_INST_0\ : label is "soft_lutpair261";
+  attribute SOFT_HLUTNM of \trap_mtval[4]_INST_0\ : label is "soft_lutpair261";
+  attribute SOFT_HLUTNM of \trap_mtval[5]_INST_0\ : label is "soft_lutpair262";
+  attribute SOFT_HLUTNM of \trap_mtval[6]_INST_0\ : label is "soft_lutpair262";
+  attribute SOFT_HLUTNM of \trap_mtval[7]_INST_0\ : label is "soft_lutpair263";
+  attribute SOFT_HLUTNM of \trap_mtval[8]_INST_0\ : label is "soft_lutpair263";
+  attribute SOFT_HLUTNM of \trap_mtval[9]_INST_0\ : label is "soft_lutpair264";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of timer_irq : signal is "xilinx.com:signal:interrupt:1.0 timer_irq INTERRUPT";
@@ -4725,33 +4754,6 @@ begin
   dout(2) <= \^in2\;
   dout(1) <= \^in1\;
   dout(0) <= \^in0\;
-end STRUCTURE;
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-library UNISIM;
-use UNISIM.VCOMPONENTS.ALL;
-entity BASIC_BASIC_xlconstant_2_0 is
-  port (
-    dout : out STD_LOGIC_VECTOR ( 0 to 0 )
-  );
-  attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of BASIC_BASIC_xlconstant_2_0 : entity is "BASIC_xlconstant_2_0,xlconstant_v1_1_7_xlconstant,{}";
-  attribute DowngradeIPIdentifiedWarnings : string;
-  attribute DowngradeIPIdentifiedWarnings of BASIC_BASIC_xlconstant_2_0 : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of BASIC_BASIC_xlconstant_2_0 : entity is "BASIC_xlconstant_2_0";
-  attribute X_CORE_INFO : string;
-  attribute X_CORE_INFO of BASIC_BASIC_xlconstant_2_0 : entity is "xlconstant_v1_1_7_xlconstant,Vivado 2020.1";
-end BASIC_BASIC_xlconstant_2_0;
-
-architecture STRUCTURE of BASIC_BASIC_xlconstant_2_0 is
-  signal \<const1>\ : STD_LOGIC;
-begin
-  dout(0) <= \<const1>\;
-VCC: unisim.vcomponents.VCC
-     port map (
-      P => \<const1>\
-    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -79300,8 +79302,7 @@ entity BASIC_if_id_reg is
     if_pred_next_pc_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     flush : in STD_LOGIC;
     hold : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    if_valid_in : in STD_LOGIC
+    rst : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of BASIC_if_id_reg : entity is "if_id_reg";
@@ -79317,6 +79318,10 @@ architecture STRUCTURE of BASIC_if_id_reg is
   signal \reg_pc[31]_i_2_n_0\ : STD_LOGIC;
   signal reg_pred_next_pc : STD_LOGIC;
   signal valid_align : STD_LOGIC;
+  signal valid_align_i_1_n_0 : STD_LOGIC;
+  attribute SOFT_HLUTNM : string;
+  attribute SOFT_HLUTNM of \kill_cnt[0]_i_1\ : label is "soft_lutpair163";
+  attribute SOFT_HLUTNM of valid_align_i_1 : label is "soft_lutpair163";
 begin
 \kill_cnt[0]_i_1\: unisim.vcomponents.LUT4
     generic map(
@@ -81165,13 +81170,24 @@ reg_valid_reg: unisim.vcomponents.FDRE
       Q => id_valid_out,
       R => reg_pred_next_pc
     );
+valid_align_i_1: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"000D"
+    )
+        port map (
+      I0 => hold,
+      I1 => valid_align,
+      I2 => flush,
+      I3 => rst,
+      O => valid_align_i_1_n_0
+    );
 valid_align_reg: unisim.vcomponents.FDRE
      port map (
       C => clk,
-      CE => \reg_pc[31]_i_2_n_0\,
-      D => if_valid_in,
+      CE => '1',
+      D => valid_align_i_1_n_0,
       Q => valid_align,
-      R => pred_next_pc_align_0
+      R => '0'
     );
 end STRUCTURE;
 library IEEE;
@@ -82254,71 +82270,71 @@ architecture STRUCTURE of BASIC_mem_bus_registered is
   signal \NLW_timeout_cnt_q_reg[31]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
   signal \NLW_timeout_cnt_q_reg[31]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of busy_q_i_1 : label is "soft_lutpair164";
-  attribute SOFT_HLUTNM of gpio_valid_INST_0 : label is "soft_lutpair174";
-  attribute SOFT_HLUTNM of gpio_we_INST_0 : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of mem_req_ready_INST_0 : label is "soft_lutpair168";
-  attribute SOFT_HLUTNM of mem_rsp_error_i_2 : label is "soft_lutpair167";
-  attribute SOFT_HLUTNM of mem_rsp_error_i_4 : label is "soft_lutpair168";
-  attribute SOFT_HLUTNM of mem_rsp_error_i_6 : label is "soft_lutpair165";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[1]_i_3\ : label is "soft_lutpair167";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[22]_i_3\ : label is "soft_lutpair171";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[26]_i_2\ : label is "soft_lutpair170";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[26]_i_4\ : label is "soft_lutpair171";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[26]_i_6\ : label is "soft_lutpair169";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[29]_i_3\ : label is "soft_lutpair170";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[2]_i_3\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[30]_i_3\ : label is "soft_lutpair169";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[30]_i_4\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[31]_i_3\ : label is "soft_lutpair176";
-  attribute SOFT_HLUTNM of \mem_rsp_rdata[31]_i_5\ : label is "soft_lutpair177";
-  attribute SOFT_HLUTNM of mem_rsp_valid_i_4 : label is "soft_lutpair165";
-  attribute SOFT_HLUTNM of ram_valid_INST_0 : label is "soft_lutpair174";
-  attribute SOFT_HLUTNM of ram_we_INST_0 : label is "soft_lutpair175";
-  attribute SOFT_HLUTNM of \sel_q[0]_i_1\ : label is "soft_lutpair164";
-  attribute SOFT_HLUTNM of \sel_q[2]_i_5\ : label is "soft_lutpair166";
-  attribute SOFT_HLUTNM of \sel_q[2]_i_6\ : label is "soft_lutpair166";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[0]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[10]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[11]_i_1\ : label is "soft_lutpair188";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[12]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[13]_i_1\ : label is "soft_lutpair187";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[14]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[15]_i_1\ : label is "soft_lutpair186";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[16]_i_1\ : label is "soft_lutpair185";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[17]_i_1\ : label is "soft_lutpair185";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[18]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[19]_i_1\ : label is "soft_lutpair184";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[1]_i_1\ : label is "soft_lutpair193";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[20]_i_1\ : label is "soft_lutpair183";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[21]_i_1\ : label is "soft_lutpair183";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[22]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[23]_i_1\ : label is "soft_lutpair182";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[24]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[25]_i_1\ : label is "soft_lutpair181";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[26]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[27]_i_1\ : label is "soft_lutpair180";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[28]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[29]_i_1\ : label is "soft_lutpair179";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[2]_i_1\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[30]_i_1\ : label is "soft_lutpair178";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[31]_i_1\ : label is "soft_lutpair178";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[3]_i_1\ : label is "soft_lutpair192";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[4]_i_1\ : label is "soft_lutpair191";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[5]_i_1\ : label is "soft_lutpair191";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[6]_i_1\ : label is "soft_lutpair190";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[7]_i_1\ : label is "soft_lutpair190";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[8]_i_1\ : label is "soft_lutpair189";
-  attribute SOFT_HLUTNM of \timeout_cnt_q[9]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of busy_q_i_1 : label is "soft_lutpair165";
+  attribute SOFT_HLUTNM of gpio_valid_INST_0 : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of gpio_we_INST_0 : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of mem_req_ready_INST_0 : label is "soft_lutpair169";
+  attribute SOFT_HLUTNM of mem_rsp_error_i_2 : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of mem_rsp_error_i_4 : label is "soft_lutpair169";
+  attribute SOFT_HLUTNM of mem_rsp_error_i_6 : label is "soft_lutpair166";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[1]_i_3\ : label is "soft_lutpair168";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[22]_i_3\ : label is "soft_lutpair172";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[26]_i_2\ : label is "soft_lutpair171";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[26]_i_4\ : label is "soft_lutpair172";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[26]_i_6\ : label is "soft_lutpair170";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[29]_i_3\ : label is "soft_lutpair171";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[2]_i_3\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[30]_i_3\ : label is "soft_lutpair170";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[30]_i_4\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[31]_i_3\ : label is "soft_lutpair177";
+  attribute SOFT_HLUTNM of \mem_rsp_rdata[31]_i_5\ : label is "soft_lutpair178";
+  attribute SOFT_HLUTNM of mem_rsp_valid_i_4 : label is "soft_lutpair166";
+  attribute SOFT_HLUTNM of ram_valid_INST_0 : label is "soft_lutpair175";
+  attribute SOFT_HLUTNM of ram_we_INST_0 : label is "soft_lutpair176";
+  attribute SOFT_HLUTNM of \sel_q[0]_i_1\ : label is "soft_lutpair165";
+  attribute SOFT_HLUTNM of \sel_q[2]_i_5\ : label is "soft_lutpair167";
+  attribute SOFT_HLUTNM of \sel_q[2]_i_6\ : label is "soft_lutpair167";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[0]_i_1\ : label is "soft_lutpair194";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[10]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[11]_i_1\ : label is "soft_lutpair189";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[12]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[13]_i_1\ : label is "soft_lutpair188";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[14]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[15]_i_1\ : label is "soft_lutpair187";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[16]_i_1\ : label is "soft_lutpair186";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[17]_i_1\ : label is "soft_lutpair186";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[18]_i_1\ : label is "soft_lutpair185";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[19]_i_1\ : label is "soft_lutpair185";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[1]_i_1\ : label is "soft_lutpair194";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[20]_i_1\ : label is "soft_lutpair184";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[21]_i_1\ : label is "soft_lutpair184";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[22]_i_1\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[23]_i_1\ : label is "soft_lutpair183";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[24]_i_1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[25]_i_1\ : label is "soft_lutpair182";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[26]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[27]_i_1\ : label is "soft_lutpair181";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[28]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[29]_i_1\ : label is "soft_lutpair180";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[2]_i_1\ : label is "soft_lutpair193";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[30]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[31]_i_1\ : label is "soft_lutpair179";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[3]_i_1\ : label is "soft_lutpair193";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[4]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[5]_i_1\ : label is "soft_lutpair192";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[6]_i_1\ : label is "soft_lutpair191";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[7]_i_1\ : label is "soft_lutpair191";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[8]_i_1\ : label is "soft_lutpair190";
+  attribute SOFT_HLUTNM of \timeout_cnt_q[9]_i_1\ : label is "soft_lutpair190";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \timeout_cnt_q_reg[16]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \timeout_cnt_q_reg[24]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \timeout_cnt_q_reg[31]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \timeout_cnt_q_reg[8]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of timer_valid_INST_0 : label is "soft_lutpair172";
-  attribute SOFT_HLUTNM of timer_we_INST_0 : label is "soft_lutpair173";
-  attribute SOFT_HLUTNM of uart_valid_INST_0 : label is "soft_lutpair172";
-  attribute SOFT_HLUTNM of uart_we_INST_0 : label is "soft_lutpair173";
+  attribute SOFT_HLUTNM of timer_valid_INST_0 : label is "soft_lutpair173";
+  attribute SOFT_HLUTNM of timer_we_INST_0 : label is "soft_lutpair174";
+  attribute SOFT_HLUTNM of uart_valid_INST_0 : label is "soft_lutpair173";
+  attribute SOFT_HLUTNM of uart_we_INST_0 : label is "soft_lutpair174";
 begin
 \addr_q[31]_i_1\: unisim.vcomponents.LUT2
     generic map(
@@ -85305,42 +85321,42 @@ end BASIC_mem_exception_merge;
 
 architecture STRUCTURE of BASIC_mem_exception_merge is
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \final_mem_exception_cause[0]_INST_0\ : label is "soft_lutpair194";
-  attribute SOFT_HLUTNM of \final_mem_exception_cause[1]_INST_0\ : label is "soft_lutpair194";
-  attribute SOFT_HLUTNM of \final_mem_exception_cause[2]_INST_0\ : label is "soft_lutpair195";
-  attribute SOFT_HLUTNM of \final_mem_exception_cause[3]_INST_0\ : label is "soft_lutpair195";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[0]_INST_0\ : label is "soft_lutpair196";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[10]_INST_0\ : label is "soft_lutpair201";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[11]_INST_0\ : label is "soft_lutpair201";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[12]_INST_0\ : label is "soft_lutpair202";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[13]_INST_0\ : label is "soft_lutpair202";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[14]_INST_0\ : label is "soft_lutpair203";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[15]_INST_0\ : label is "soft_lutpair203";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[16]_INST_0\ : label is "soft_lutpair204";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[17]_INST_0\ : label is "soft_lutpair204";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[18]_INST_0\ : label is "soft_lutpair205";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[19]_INST_0\ : label is "soft_lutpair205";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[1]_INST_0\ : label is "soft_lutpair196";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[20]_INST_0\ : label is "soft_lutpair206";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[21]_INST_0\ : label is "soft_lutpair206";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[22]_INST_0\ : label is "soft_lutpair207";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[23]_INST_0\ : label is "soft_lutpair207";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[24]_INST_0\ : label is "soft_lutpair208";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[25]_INST_0\ : label is "soft_lutpair208";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[26]_INST_0\ : label is "soft_lutpair209";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[27]_INST_0\ : label is "soft_lutpair209";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[28]_INST_0\ : label is "soft_lutpair210";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[29]_INST_0\ : label is "soft_lutpair210";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[2]_INST_0\ : label is "soft_lutpair197";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[30]_INST_0\ : label is "soft_lutpair211";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[31]_INST_0\ : label is "soft_lutpair211";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[3]_INST_0\ : label is "soft_lutpair197";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[4]_INST_0\ : label is "soft_lutpair198";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[5]_INST_0\ : label is "soft_lutpair198";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[6]_INST_0\ : label is "soft_lutpair199";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[7]_INST_0\ : label is "soft_lutpair199";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[8]_INST_0\ : label is "soft_lutpair200";
-  attribute SOFT_HLUTNM of \final_mem_exception_tval[9]_INST_0\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \final_mem_exception_cause[0]_INST_0\ : label is "soft_lutpair195";
+  attribute SOFT_HLUTNM of \final_mem_exception_cause[1]_INST_0\ : label is "soft_lutpair195";
+  attribute SOFT_HLUTNM of \final_mem_exception_cause[2]_INST_0\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \final_mem_exception_cause[3]_INST_0\ : label is "soft_lutpair196";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[0]_INST_0\ : label is "soft_lutpair197";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[10]_INST_0\ : label is "soft_lutpair202";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[11]_INST_0\ : label is "soft_lutpair202";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[12]_INST_0\ : label is "soft_lutpair203";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[13]_INST_0\ : label is "soft_lutpair203";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[14]_INST_0\ : label is "soft_lutpair204";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[15]_INST_0\ : label is "soft_lutpair204";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[16]_INST_0\ : label is "soft_lutpair205";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[17]_INST_0\ : label is "soft_lutpair205";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[18]_INST_0\ : label is "soft_lutpair206";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[19]_INST_0\ : label is "soft_lutpair206";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[1]_INST_0\ : label is "soft_lutpair197";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[20]_INST_0\ : label is "soft_lutpair207";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[21]_INST_0\ : label is "soft_lutpair207";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[22]_INST_0\ : label is "soft_lutpair208";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[23]_INST_0\ : label is "soft_lutpair208";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[24]_INST_0\ : label is "soft_lutpair209";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[25]_INST_0\ : label is "soft_lutpair209";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[26]_INST_0\ : label is "soft_lutpair210";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[27]_INST_0\ : label is "soft_lutpair210";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[28]_INST_0\ : label is "soft_lutpair211";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[29]_INST_0\ : label is "soft_lutpair211";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[2]_INST_0\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[30]_INST_0\ : label is "soft_lutpair212";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[31]_INST_0\ : label is "soft_lutpair212";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[3]_INST_0\ : label is "soft_lutpair198";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[4]_INST_0\ : label is "soft_lutpair199";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[5]_INST_0\ : label is "soft_lutpair199";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[6]_INST_0\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[7]_INST_0\ : label is "soft_lutpair200";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[8]_INST_0\ : label is "soft_lutpair201";
+  attribute SOFT_HLUTNM of \final_mem_exception_tval[9]_INST_0\ : label is "soft_lutpair201";
 begin
 \final_mem_exception_cause[0]_INST_0\: unisim.vcomponents.LUT3
     generic map(
@@ -85845,50 +85861,50 @@ architecture STRUCTURE of BASIC_mem_stage is
   signal \^mem_q_wb_sel_reg[2]_0\ : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal p_7_in : STD_LOGIC;
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of load_access_fault_INST_0 : label is "soft_lutpair231";
-  attribute SOFT_HLUTNM of \mem_fault_cause[0]_INST_0\ : label is "soft_lutpair218";
-  attribute SOFT_HLUTNM of \mem_fault_cause[1]_INST_0\ : label is "soft_lutpair218";
-  attribute SOFT_HLUTNM of \mem_forward_data[0]_INST_0_i_4\ : label is "soft_lutpair213";
-  attribute SOFT_HLUTNM of \mem_forward_data[15]_INST_0_i_3\ : label is "soft_lutpair213";
-  attribute SOFT_HLUTNM of \mem_forward_data[16]_INST_0_i_1\ : label is "soft_lutpair217";
-  attribute SOFT_HLUTNM of \mem_forward_data[17]_INST_0_i_1\ : label is "soft_lutpair216";
-  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_2\ : label is "soft_lutpair215";
-  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_3\ : label is "soft_lutpair216";
-  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_4\ : label is "soft_lutpair222";
-  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_5\ : label is "soft_lutpair214";
-  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_6\ : label is "soft_lutpair217";
-  attribute SOFT_HLUTNM of \mem_forward_data[2]_INST_0_i_3\ : label is "soft_lutpair222";
-  attribute SOFT_HLUTNM of \mem_forward_data[31]_INST_0_i_3\ : label is "soft_lutpair212";
-  attribute SOFT_HLUTNM of \mem_forward_data[31]_INST_0_i_5\ : label is "soft_lutpair212";
-  attribute SOFT_HLUTNM of \mem_forward_data[3]_INST_0_i_3\ : label is "soft_lutpair220";
-  attribute SOFT_HLUTNM of \mem_forward_data[4]_INST_0_i_3\ : label is "soft_lutpair221";
-  attribute SOFT_HLUTNM of \mem_forward_data[5]_INST_0_i_3\ : label is "soft_lutpair220";
-  attribute SOFT_HLUTNM of \mem_forward_data[6]_INST_0_i_3\ : label is "soft_lutpair221";
-  attribute SOFT_HLUTNM of \mem_forward_data[6]_INST_0_i_4\ : label is "soft_lutpair215";
-  attribute SOFT_HLUTNM of \mem_out_data[0]_INST_0_i_2\ : label is "soft_lutpair223";
-  attribute SOFT_HLUTNM of \mem_out_data[15]_INST_0_i_1\ : label is "soft_lutpair219";
-  attribute SOFT_HLUTNM of \mem_out_data[16]_INST_0\ : label is "soft_lutpair224";
-  attribute SOFT_HLUTNM of \mem_out_data[17]_INST_0\ : label is "soft_lutpair224";
-  attribute SOFT_HLUTNM of \mem_out_data[18]_INST_0\ : label is "soft_lutpair225";
-  attribute SOFT_HLUTNM of \mem_out_data[19]_INST_0\ : label is "soft_lutpair225";
-  attribute SOFT_HLUTNM of \mem_out_data[1]_INST_0_i_3\ : label is "soft_lutpair223";
-  attribute SOFT_HLUTNM of \mem_out_data[20]_INST_0\ : label is "soft_lutpair226";
-  attribute SOFT_HLUTNM of \mem_out_data[21]_INST_0\ : label is "soft_lutpair226";
-  attribute SOFT_HLUTNM of \mem_out_data[22]_INST_0\ : label is "soft_lutpair227";
-  attribute SOFT_HLUTNM of \mem_out_data[23]_INST_0_i_1\ : label is "soft_lutpair214";
-  attribute SOFT_HLUTNM of \mem_out_data[24]_INST_0\ : label is "soft_lutpair227";
-  attribute SOFT_HLUTNM of \mem_out_data[25]_INST_0\ : label is "soft_lutpair228";
-  attribute SOFT_HLUTNM of \mem_out_data[26]_INST_0\ : label is "soft_lutpair228";
-  attribute SOFT_HLUTNM of \mem_out_data[27]_INST_0\ : label is "soft_lutpair229";
-  attribute SOFT_HLUTNM of \mem_out_data[28]_INST_0\ : label is "soft_lutpair229";
-  attribute SOFT_HLUTNM of \mem_out_data[29]_INST_0\ : label is "soft_lutpair230";
-  attribute SOFT_HLUTNM of \mem_out_data[30]_INST_0\ : label is "soft_lutpair230";
-  attribute SOFT_HLUTNM of \mem_out_data[6]_INST_0_i_2\ : label is "soft_lutpair219";
-  attribute SOFT_HLUTNM of \mem_out_data[7]_INST_0_i_1\ : label is "soft_lutpair232";
-  attribute SOFT_HLUTNM of \mem_out_data[7]_INST_0_i_2\ : label is "soft_lutpair232";
-  attribute SOFT_HLUTNM of \mem_q_alu_result[31]_i_2\ : label is "soft_lutpair233";
-  attribute SOFT_HLUTNM of mem_q_valid_i_1 : label is "soft_lutpair233";
-  attribute SOFT_HLUTNM of store_access_fault_INST_0 : label is "soft_lutpair231";
+  attribute SOFT_HLUTNM of load_access_fault_INST_0 : label is "soft_lutpair232";
+  attribute SOFT_HLUTNM of \mem_fault_cause[0]_INST_0\ : label is "soft_lutpair219";
+  attribute SOFT_HLUTNM of \mem_fault_cause[1]_INST_0\ : label is "soft_lutpair219";
+  attribute SOFT_HLUTNM of \mem_forward_data[0]_INST_0_i_4\ : label is "soft_lutpair214";
+  attribute SOFT_HLUTNM of \mem_forward_data[15]_INST_0_i_3\ : label is "soft_lutpair214";
+  attribute SOFT_HLUTNM of \mem_forward_data[16]_INST_0_i_1\ : label is "soft_lutpair218";
+  attribute SOFT_HLUTNM of \mem_forward_data[17]_INST_0_i_1\ : label is "soft_lutpair217";
+  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_2\ : label is "soft_lutpair216";
+  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_3\ : label is "soft_lutpair217";
+  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_4\ : label is "soft_lutpair223";
+  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_5\ : label is "soft_lutpair215";
+  attribute SOFT_HLUTNM of \mem_forward_data[23]_INST_0_i_6\ : label is "soft_lutpair218";
+  attribute SOFT_HLUTNM of \mem_forward_data[2]_INST_0_i_3\ : label is "soft_lutpair223";
+  attribute SOFT_HLUTNM of \mem_forward_data[31]_INST_0_i_3\ : label is "soft_lutpair213";
+  attribute SOFT_HLUTNM of \mem_forward_data[31]_INST_0_i_5\ : label is "soft_lutpair213";
+  attribute SOFT_HLUTNM of \mem_forward_data[3]_INST_0_i_3\ : label is "soft_lutpair221";
+  attribute SOFT_HLUTNM of \mem_forward_data[4]_INST_0_i_3\ : label is "soft_lutpair222";
+  attribute SOFT_HLUTNM of \mem_forward_data[5]_INST_0_i_3\ : label is "soft_lutpair221";
+  attribute SOFT_HLUTNM of \mem_forward_data[6]_INST_0_i_3\ : label is "soft_lutpair222";
+  attribute SOFT_HLUTNM of \mem_forward_data[6]_INST_0_i_4\ : label is "soft_lutpair216";
+  attribute SOFT_HLUTNM of \mem_out_data[0]_INST_0_i_2\ : label is "soft_lutpair224";
+  attribute SOFT_HLUTNM of \mem_out_data[15]_INST_0_i_1\ : label is "soft_lutpair220";
+  attribute SOFT_HLUTNM of \mem_out_data[16]_INST_0\ : label is "soft_lutpair225";
+  attribute SOFT_HLUTNM of \mem_out_data[17]_INST_0\ : label is "soft_lutpair225";
+  attribute SOFT_HLUTNM of \mem_out_data[18]_INST_0\ : label is "soft_lutpair226";
+  attribute SOFT_HLUTNM of \mem_out_data[19]_INST_0\ : label is "soft_lutpair226";
+  attribute SOFT_HLUTNM of \mem_out_data[1]_INST_0_i_3\ : label is "soft_lutpair224";
+  attribute SOFT_HLUTNM of \mem_out_data[20]_INST_0\ : label is "soft_lutpair227";
+  attribute SOFT_HLUTNM of \mem_out_data[21]_INST_0\ : label is "soft_lutpair227";
+  attribute SOFT_HLUTNM of \mem_out_data[22]_INST_0\ : label is "soft_lutpair228";
+  attribute SOFT_HLUTNM of \mem_out_data[23]_INST_0_i_1\ : label is "soft_lutpair215";
+  attribute SOFT_HLUTNM of \mem_out_data[24]_INST_0\ : label is "soft_lutpair228";
+  attribute SOFT_HLUTNM of \mem_out_data[25]_INST_0\ : label is "soft_lutpair229";
+  attribute SOFT_HLUTNM of \mem_out_data[26]_INST_0\ : label is "soft_lutpair229";
+  attribute SOFT_HLUTNM of \mem_out_data[27]_INST_0\ : label is "soft_lutpair230";
+  attribute SOFT_HLUTNM of \mem_out_data[28]_INST_0\ : label is "soft_lutpair230";
+  attribute SOFT_HLUTNM of \mem_out_data[29]_INST_0\ : label is "soft_lutpair231";
+  attribute SOFT_HLUTNM of \mem_out_data[30]_INST_0\ : label is "soft_lutpair231";
+  attribute SOFT_HLUTNM of \mem_out_data[6]_INST_0_i_2\ : label is "soft_lutpair220";
+  attribute SOFT_HLUTNM of \mem_out_data[7]_INST_0_i_1\ : label is "soft_lutpair233";
+  attribute SOFT_HLUTNM of \mem_out_data[7]_INST_0_i_2\ : label is "soft_lutpair233";
+  attribute SOFT_HLUTNM of \mem_q_alu_result[31]_i_2\ : label is "soft_lutpair234";
+  attribute SOFT_HLUTNM of mem_q_valid_i_1 : label is "soft_lutpair234";
+  attribute SOFT_HLUTNM of store_access_fault_INST_0 : label is "soft_lutpair232";
 begin
   Q(31 downto 0) <= \^q\(31 downto 0);
   mem_out_imm_u(31 downto 0) <= \^mem_out_imm_u\(31 downto 0);
@@ -90986,38 +91002,38 @@ architecture STRUCTURE of BASIC_pc_unit is
   signal \NLW_pc_plus4_carry__2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
   signal \NLW_pc_plus4_carry__2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \pc[0]_i_1\ : label is "soft_lutpair237";
-  attribute SOFT_HLUTNM of \pc[10]_i_1\ : label is "soft_lutpair242";
-  attribute SOFT_HLUTNM of \pc[11]_i_1\ : label is "soft_lutpair242";
-  attribute SOFT_HLUTNM of \pc[12]_i_1\ : label is "soft_lutpair243";
-  attribute SOFT_HLUTNM of \pc[13]_i_1\ : label is "soft_lutpair243";
-  attribute SOFT_HLUTNM of \pc[14]_i_1\ : label is "soft_lutpair244";
-  attribute SOFT_HLUTNM of \pc[15]_i_1\ : label is "soft_lutpair244";
-  attribute SOFT_HLUTNM of \pc[16]_i_1\ : label is "soft_lutpair245";
-  attribute SOFT_HLUTNM of \pc[17]_i_1\ : label is "soft_lutpair245";
-  attribute SOFT_HLUTNM of \pc[18]_i_1\ : label is "soft_lutpair246";
-  attribute SOFT_HLUTNM of \pc[19]_i_1\ : label is "soft_lutpair246";
-  attribute SOFT_HLUTNM of \pc[1]_i_1\ : label is "soft_lutpair237";
-  attribute SOFT_HLUTNM of \pc[20]_i_1\ : label is "soft_lutpair247";
-  attribute SOFT_HLUTNM of \pc[21]_i_1\ : label is "soft_lutpair247";
-  attribute SOFT_HLUTNM of \pc[22]_i_1\ : label is "soft_lutpair248";
-  attribute SOFT_HLUTNM of \pc[23]_i_1\ : label is "soft_lutpair248";
-  attribute SOFT_HLUTNM of \pc[24]_i_1\ : label is "soft_lutpair249";
-  attribute SOFT_HLUTNM of \pc[25]_i_1\ : label is "soft_lutpair249";
-  attribute SOFT_HLUTNM of \pc[26]_i_1\ : label is "soft_lutpair250";
-  attribute SOFT_HLUTNM of \pc[27]_i_1\ : label is "soft_lutpair250";
-  attribute SOFT_HLUTNM of \pc[28]_i_1\ : label is "soft_lutpair251";
-  attribute SOFT_HLUTNM of \pc[29]_i_1\ : label is "soft_lutpair251";
-  attribute SOFT_HLUTNM of \pc[2]_i_1\ : label is "soft_lutpair238";
-  attribute SOFT_HLUTNM of \pc[30]_i_1\ : label is "soft_lutpair252";
-  attribute SOFT_HLUTNM of \pc[31]_i_1\ : label is "soft_lutpair252";
-  attribute SOFT_HLUTNM of \pc[3]_i_1\ : label is "soft_lutpair238";
-  attribute SOFT_HLUTNM of \pc[4]_i_1\ : label is "soft_lutpair239";
-  attribute SOFT_HLUTNM of \pc[5]_i_1\ : label is "soft_lutpair239";
-  attribute SOFT_HLUTNM of \pc[6]_i_1\ : label is "soft_lutpair240";
-  attribute SOFT_HLUTNM of \pc[7]_i_1\ : label is "soft_lutpair240";
-  attribute SOFT_HLUTNM of \pc[8]_i_1\ : label is "soft_lutpair241";
-  attribute SOFT_HLUTNM of \pc[9]_i_1\ : label is "soft_lutpair241";
+  attribute SOFT_HLUTNM of \pc[0]_i_1\ : label is "soft_lutpair238";
+  attribute SOFT_HLUTNM of \pc[10]_i_1\ : label is "soft_lutpair243";
+  attribute SOFT_HLUTNM of \pc[11]_i_1\ : label is "soft_lutpair243";
+  attribute SOFT_HLUTNM of \pc[12]_i_1\ : label is "soft_lutpair244";
+  attribute SOFT_HLUTNM of \pc[13]_i_1\ : label is "soft_lutpair244";
+  attribute SOFT_HLUTNM of \pc[14]_i_1\ : label is "soft_lutpair245";
+  attribute SOFT_HLUTNM of \pc[15]_i_1\ : label is "soft_lutpair245";
+  attribute SOFT_HLUTNM of \pc[16]_i_1\ : label is "soft_lutpair246";
+  attribute SOFT_HLUTNM of \pc[17]_i_1\ : label is "soft_lutpair246";
+  attribute SOFT_HLUTNM of \pc[18]_i_1\ : label is "soft_lutpair247";
+  attribute SOFT_HLUTNM of \pc[19]_i_1\ : label is "soft_lutpair247";
+  attribute SOFT_HLUTNM of \pc[1]_i_1\ : label is "soft_lutpair238";
+  attribute SOFT_HLUTNM of \pc[20]_i_1\ : label is "soft_lutpair248";
+  attribute SOFT_HLUTNM of \pc[21]_i_1\ : label is "soft_lutpair248";
+  attribute SOFT_HLUTNM of \pc[22]_i_1\ : label is "soft_lutpair249";
+  attribute SOFT_HLUTNM of \pc[23]_i_1\ : label is "soft_lutpair249";
+  attribute SOFT_HLUTNM of \pc[24]_i_1\ : label is "soft_lutpair250";
+  attribute SOFT_HLUTNM of \pc[25]_i_1\ : label is "soft_lutpair250";
+  attribute SOFT_HLUTNM of \pc[26]_i_1\ : label is "soft_lutpair251";
+  attribute SOFT_HLUTNM of \pc[27]_i_1\ : label is "soft_lutpair251";
+  attribute SOFT_HLUTNM of \pc[28]_i_1\ : label is "soft_lutpair252";
+  attribute SOFT_HLUTNM of \pc[29]_i_1\ : label is "soft_lutpair252";
+  attribute SOFT_HLUTNM of \pc[2]_i_1\ : label is "soft_lutpair239";
+  attribute SOFT_HLUTNM of \pc[30]_i_1\ : label is "soft_lutpair253";
+  attribute SOFT_HLUTNM of \pc[31]_i_1\ : label is "soft_lutpair253";
+  attribute SOFT_HLUTNM of \pc[3]_i_1\ : label is "soft_lutpair239";
+  attribute SOFT_HLUTNM of \pc[4]_i_1\ : label is "soft_lutpair240";
+  attribute SOFT_HLUTNM of \pc[5]_i_1\ : label is "soft_lutpair240";
+  attribute SOFT_HLUTNM of \pc[6]_i_1\ : label is "soft_lutpair241";
+  attribute SOFT_HLUTNM of \pc[7]_i_1\ : label is "soft_lutpair241";
+  attribute SOFT_HLUTNM of \pc[8]_i_1\ : label is "soft_lutpair242";
+  attribute SOFT_HLUTNM of \pc[9]_i_1\ : label is "soft_lutpair242";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of pc_plus4_carry : label is 35;
   attribute ADDER_THRESHOLD of \pc_plus4_carry__0\ : label is 35;
@@ -96654,7 +96670,7 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity BASIC_rom_memory is
   port (
-    dout : out STD_LOGIC_VECTOR ( 19 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 26 downto 0 );
     clk : in STD_LOGIC;
     en : in STD_LOGIC;
     addr : in STD_LOGIC_VECTOR ( 10 downto 0 )
@@ -96678,14 +96694,20 @@ architecture STRUCTURE of BASIC_rom_memory is
   signal NLW_dout_reg_0_DOUTPBDOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_dout_reg_0_ECCPARITY_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_dout_reg_0_RDADDRECC_UNCONNECTED : STD_LOGIC_VECTOR ( 8 downto 0 );
-  signal NLW_dout_reg_1_CASDOUTA_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_dout_reg_1_CASDOUTB_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_dout_reg_1_CASDOUTPA_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_dout_reg_1_CASDOUTPB_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_dout_reg_1_DOUTADOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 4 );
-  signal NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal NLW_dout_reg_1_CASOUTDBITERR_UNCONNECTED : STD_LOGIC;
+  signal NLW_dout_reg_1_CASOUTSBITERR_UNCONNECTED : STD_LOGIC;
+  signal NLW_dout_reg_1_DBITERR_UNCONNECTED : STD_LOGIC;
+  signal NLW_dout_reg_1_SBITERR_UNCONNECTED : STD_LOGIC;
+  signal NLW_dout_reg_1_CASDOUTA_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_dout_reg_1_CASDOUTB_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_dout_reg_1_CASDOUTPA_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_dout_reg_1_CASDOUTPB_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_dout_reg_1_DOUTADOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 11 );
+  signal NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_dout_reg_1_ECCPARITY_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
+  signal NLW_dout_reg_1_RDADDRECC_UNCONNECTED : STD_LOGIC_VECTOR ( 8 downto 0 );
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
   attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of dout_reg_0 : label is "p0_d16";
   attribute METHODOLOGY_DRC_VIOS : string;
@@ -96693,7 +96715,7 @@ architecture STRUCTURE of BASIC_rom_memory is
   attribute RDADDR_COLLISION_HWCONFIG : string;
   attribute RDADDR_COLLISION_HWCONFIG of dout_reg_0 : label is "PERFORMANCE";
   attribute RTL_RAM_BITS : integer;
-  attribute RTL_RAM_BITS of dout_reg_0 : label is 40960;
+  attribute RTL_RAM_BITS of dout_reg_0 : label is 55296;
   attribute RTL_RAM_NAME : string;
   attribute RTL_RAM_NAME of dout_reg_0 : label is "inst/dout";
   attribute RTL_RAM_TYPE : string;
@@ -96716,21 +96738,21 @@ architecture STRUCTURE of BASIC_rom_memory is
   attribute ram_slice_begin of dout_reg_0 : label is 0;
   attribute ram_slice_end : integer;
   attribute ram_slice_end of dout_reg_0 : label is 15;
-  attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of dout_reg_1 : label is "p0_d4";
+  attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of dout_reg_1 : label is "p0_d11";
   attribute METHODOLOGY_DRC_VIOS of dout_reg_1 : label is "{SYNTH-6 {cell *THIS*}}";
   attribute RDADDR_COLLISION_HWCONFIG of dout_reg_1 : label is "PERFORMANCE";
-  attribute RTL_RAM_BITS of dout_reg_1 : label is 40960;
+  attribute RTL_RAM_BITS of dout_reg_1 : label is 55296;
   attribute RTL_RAM_NAME of dout_reg_1 : label is "inst/dout";
   attribute RTL_RAM_TYPE of dout_reg_1 : label is "RAM_SP";
   attribute bram_addr_begin of dout_reg_1 : label is 0;
   attribute bram_addr_end of dout_reg_1 : label is 2047;
   attribute bram_slice_begin of dout_reg_1 : label is 16;
-  attribute bram_slice_end of dout_reg_1 : label is 19;
+  attribute bram_slice_end of dout_reg_1 : label is 26;
   attribute ram_addr_begin of dout_reg_1 : label is 0;
   attribute ram_addr_end of dout_reg_1 : label is 2047;
   attribute ram_offset of dout_reg_1 : label is 0;
   attribute ram_slice_begin of dout_reg_1 : label is 16;
-  attribute ram_slice_end of dout_reg_1 : label is 19;
+  attribute ram_slice_end of dout_reg_1 : label is 26;
 begin
 dout_reg_0: unisim.vcomponents.RAMB36E2
     generic map(
@@ -96760,134 +96782,134 @@ dout_reg_0: unisim.vcomponents.RAMB36E2
       INITP_0D => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_0E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_0F => X"0000000000000000000000000000000000000000000000000000000000000000",
-      INIT_00 => X"000500057E0B4C0900557E0B4C09805521095E45000500050C318C898025061F",
-      INIT_01 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_02 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_03 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_04 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_05 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_06 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_07 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_08 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_09 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_0A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_0B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_0C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_0D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_0E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_0F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_10 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_11 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_12 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_13 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_14 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_15 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_16 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_17 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_18 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_19 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_1A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_1B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_1C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_1D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_1E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_1F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_20 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_21 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_22 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_23 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_24 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_25 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_26 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_27 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_28 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_29 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_2A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_2B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_2C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_2D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_2E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_2F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_30 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_31 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_32 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_33 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_34 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_35 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_36 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_37 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_38 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_39 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_3A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_3B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_3C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_3D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_3E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_3F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_40 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_41 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_42 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_43 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_44 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_45 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_46 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_47 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_48 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_49 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_4A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_4B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_4C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_4D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_4E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_4F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_50 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_51 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_52 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_53 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_54 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_55 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_56 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_57 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_58 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_59 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_5A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_5B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_5C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_5D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_5E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_5F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_60 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_61 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_62 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_63 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_64 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_65 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_66 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_67 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_68 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_69 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_6A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_6B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_6C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_6D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_6E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_6F => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_70 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_71 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_72 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_73 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_74 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_75 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_76 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_77 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_78 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_79 => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_7A => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_7B => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_7C => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_7D => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_7E => X"0005000500050005000500050005000500050005000500050005000500050005",
-      INIT_7F => X"0005000500050005000500050005000500050005000500050005000500050005",
+      INIT_00 => X"C2C902DB129B0E3101495101501100C90B3101495101501100C952110089185B",
+      INIT_01 => X"00090009000900090009000900090009000900379011C2C902DB129B00379011",
+      INIT_02 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_03 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_04 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_05 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_06 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_07 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_08 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_09 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_0A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_0B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_0C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_0D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_0E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_0F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_10 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_11 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_12 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_13 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_14 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_15 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_16 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_17 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_18 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_19 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_1A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_1B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_1C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_1D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_1E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_1F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_20 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_21 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_22 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_23 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_24 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_25 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_26 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_27 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_28 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_29 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_2A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_2B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_2C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_2D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_2E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_2F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_30 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_31 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_32 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_33 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_34 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_35 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_36 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_37 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_38 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_39 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_3A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_3B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_3C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_3D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_3E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_3F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_40 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_41 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_42 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_43 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_44 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_45 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_46 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_47 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_48 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_49 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_4A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_4B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_4C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_4D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_4E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_4F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_50 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_51 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_52 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_53 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_54 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_55 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_56 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_57 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_58 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_59 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_5A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_5B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_5C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_5D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_5E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_5F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_60 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_61 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_62 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_63 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_64 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_65 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_66 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_67 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_68 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_69 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_6A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_6B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_6C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_6D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_6E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_6F => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_70 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_71 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_72 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_73 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_74 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_75 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_76 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_77 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_78 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_79 => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_7A => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_7B => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_7C => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_7D => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_7E => X"0009000900090009000900090009000900090009000900090009000900090009",
+      INIT_7F => X"0009000900090009000900090009000900090009000900090009000900090009",
       INIT_A => X"000000000",
       INIT_B => X"000000000",
       INIT_FILE => "NONE",
@@ -96942,7 +96964,9 @@ dout_reg_0: unisim.vcomponents.RAMB36E2
       DINPADINP(3 downto 0) => B"0000",
       DINPBDINP(3 downto 0) => B"1111",
       DOUTADOUT(31 downto 16) => NLW_dout_reg_0_DOUTADOUT_UNCONNECTED(31 downto 16),
-      DOUTADOUT(15 downto 0) => dout(15 downto 0),
+      DOUTADOUT(15 downto 14) => dout(14 downto 13),
+      DOUTADOUT(13) => dout(23),
+      DOUTADOUT(12 downto 0) => dout(12 downto 0),
       DOUTBDOUT(31 downto 0) => NLW_dout_reg_0_DOUTBDOUT_UNCONNECTED(31 downto 0),
       DOUTPADOUTP(3 downto 0) => NLW_dout_reg_0_DOUTPADOUTP_UNCONNECTED(3 downto 0),
       DOUTPBDOUTP(3 downto 0) => NLW_dout_reg_0_DOUTPBDOUTP_UNCONNECTED(3 downto 0),
@@ -96964,7 +96988,7 @@ dout_reg_0: unisim.vcomponents.RAMB36E2
       WEA(3 downto 0) => B"0000",
       WEBWE(7 downto 0) => B"00000000"
     );
-dout_reg_1: unisim.vcomponents.RAMB18E2
+dout_reg_1: unisim.vcomponents.RAMB36E2
     generic map(
       CASCADE_ORDER_A => "NONE",
       CASCADE_ORDER_B => "NONE",
@@ -96973,6 +96997,9 @@ dout_reg_1: unisim.vcomponents.RAMB18E2
       DOB_REG => 0,
       ENADDRENA => "FALSE",
       ENADDRENB => "FALSE",
+      EN_ECC_PIPE => "FALSE",
+      EN_ECC_READ => "FALSE",
+      EN_ECC_WRITE => "FALSE",
       INITP_00 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -96981,8 +97008,16 @@ dout_reg_1: unisim.vcomponents.RAMB18E2
       INITP_05 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_06 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_07 => X"0000000000000000000000000000000000000000000000000000000000000000",
-      INIT_00 => X"0000000000000000000000000000000000000A01010D01000000000001000100",
-      INIT_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_08 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_09 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_0A => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_0B => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_0C => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_0D => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_0E => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_0F => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_00 => X"001E05BF0000001500080000000C0008009500040000000C00040008000C0000",
+      INIT_01 => X"0000000000000000000000000000000000000000002E001E03B400000050002E",
       INIT_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_03 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_04 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -97045,70 +97080,147 @@ dout_reg_1: unisim.vcomponents.RAMB18E2
       INIT_3D => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_3E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_3F => X"0000000000000000000000000000000000000000000000000000000000000000",
-      INIT_A => B"00" & X"0000",
-      INIT_B => B"00" & X"0000",
+      INIT_40 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_41 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_42 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_43 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_44 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_45 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_46 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_47 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_48 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_49 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_4A => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_4B => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_4C => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_4D => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_4E => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_4F => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_50 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_51 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_52 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_53 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_54 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_55 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_56 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_57 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_58 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_59 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_5A => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_5B => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_5C => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_5D => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_5E => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_5F => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_60 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_61 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_62 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_63 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_64 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_65 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_66 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_67 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_68 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_69 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_6A => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_6B => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_6C => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_6D => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_6E => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_6F => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_70 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_71 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_72 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_73 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_74 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_75 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_76 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_77 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_78 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_79 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_7A => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_7B => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_7C => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_7D => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_7E => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_7F => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_A => X"000000000",
+      INIT_B => X"000000000",
       INIT_FILE => "NONE",
       RDADDRCHANGEA => "FALSE",
       RDADDRCHANGEB => "FALSE",
-      READ_WIDTH_A => 9,
+      READ_WIDTH_A => 18,
       READ_WIDTH_B => 0,
       RSTREG_PRIORITY_A => "RSTREG",
       RSTREG_PRIORITY_B => "RSTREG",
       SIM_COLLISION_CHECK => "ALL",
       SLEEP_ASYNC => "FALSE",
-      SRVAL_A => B"00" & X"0000",
-      SRVAL_B => B"00" & X"0000",
+      SRVAL_A => X"000000000",
+      SRVAL_B => X"000000000",
       WRITE_MODE_A => "WRITE_FIRST",
       WRITE_MODE_B => "WRITE_FIRST",
-      WRITE_WIDTH_A => 9,
+      WRITE_WIDTH_A => 18,
       WRITE_WIDTH_B => 0
     )
         port map (
-      ADDRARDADDR(13 downto 3) => addr(10 downto 0),
-      ADDRARDADDR(2 downto 0) => B"000",
-      ADDRBWRADDR(13 downto 0) => B"11111111111111",
+      ADDRARDADDR(14 downto 4) => addr(10 downto 0),
+      ADDRARDADDR(3 downto 0) => B"0000",
+      ADDRBWRADDR(14 downto 0) => B"111111111111111",
       ADDRENA => '0',
       ADDRENB => '0',
       CASDIMUXA => '0',
       CASDIMUXB => '0',
-      CASDINA(15 downto 0) => B"0000000000000000",
-      CASDINB(15 downto 0) => B"0000000000000000",
-      CASDINPA(1 downto 0) => B"00",
-      CASDINPB(1 downto 0) => B"00",
+      CASDINA(31 downto 0) => B"00000000000000000000000000000000",
+      CASDINB(31 downto 0) => B"00000000000000000000000000000000",
+      CASDINPA(3 downto 0) => B"0000",
+      CASDINPB(3 downto 0) => B"0000",
       CASDOMUXA => '0',
       CASDOMUXB => '0',
       CASDOMUXEN_A => '1',
       CASDOMUXEN_B => '1',
-      CASDOUTA(15 downto 0) => NLW_dout_reg_1_CASDOUTA_UNCONNECTED(15 downto 0),
-      CASDOUTB(15 downto 0) => NLW_dout_reg_1_CASDOUTB_UNCONNECTED(15 downto 0),
-      CASDOUTPA(1 downto 0) => NLW_dout_reg_1_CASDOUTPA_UNCONNECTED(1 downto 0),
-      CASDOUTPB(1 downto 0) => NLW_dout_reg_1_CASDOUTPB_UNCONNECTED(1 downto 0),
+      CASDOUTA(31 downto 0) => NLW_dout_reg_1_CASDOUTA_UNCONNECTED(31 downto 0),
+      CASDOUTB(31 downto 0) => NLW_dout_reg_1_CASDOUTB_UNCONNECTED(31 downto 0),
+      CASDOUTPA(3 downto 0) => NLW_dout_reg_1_CASDOUTPA_UNCONNECTED(3 downto 0),
+      CASDOUTPB(3 downto 0) => NLW_dout_reg_1_CASDOUTPB_UNCONNECTED(3 downto 0),
+      CASINDBITERR => '0',
+      CASINSBITERR => '0',
       CASOREGIMUXA => '0',
       CASOREGIMUXB => '0',
       CASOREGIMUXEN_A => '1',
       CASOREGIMUXEN_B => '1',
+      CASOUTDBITERR => NLW_dout_reg_1_CASOUTDBITERR_UNCONNECTED,
+      CASOUTSBITERR => NLW_dout_reg_1_CASOUTSBITERR_UNCONNECTED,
       CLKARDCLK => clk,
       CLKBWRCLK => '0',
-      DINADIN(15 downto 0) => B"0000000000001111",
-      DINBDIN(15 downto 0) => B"1111111111111111",
-      DINPADINP(1 downto 0) => B"00",
-      DINPBDINP(1 downto 0) => B"11",
-      DOUTADOUT(15 downto 4) => NLW_dout_reg_1_DOUTADOUT_UNCONNECTED(15 downto 4),
-      DOUTADOUT(3 downto 0) => dout(19 downto 16),
-      DOUTBDOUT(15 downto 0) => NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED(15 downto 0),
-      DOUTPADOUTP(1 downto 0) => NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED(1 downto 0),
-      DOUTPBDOUTP(1 downto 0) => NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED(1 downto 0),
+      DBITERR => NLW_dout_reg_1_DBITERR_UNCONNECTED,
+      DINADIN(31 downto 0) => B"00000000000000000000011111111111",
+      DINBDIN(31 downto 0) => B"11111111111111111111111111111111",
+      DINPADINP(3 downto 0) => B"0000",
+      DINPBDINP(3 downto 0) => B"1111",
+      DOUTADOUT(31 downto 11) => NLW_dout_reg_1_DOUTADOUT_UNCONNECTED(31 downto 11),
+      DOUTADOUT(10 downto 9) => dout(25 downto 24),
+      DOUTADOUT(8) => dout(26),
+      DOUTADOUT(7 downto 0) => dout(22 downto 15),
+      DOUTBDOUT(31 downto 0) => NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED(31 downto 0),
+      DOUTPADOUTP(3 downto 0) => NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED(3 downto 0),
+      DOUTPBDOUTP(3 downto 0) => NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED(3 downto 0),
+      ECCPARITY(7 downto 0) => NLW_dout_reg_1_ECCPARITY_UNCONNECTED(7 downto 0),
+      ECCPIPECE => '1',
       ENARDEN => en,
       ENBWREN => '0',
+      INJECTDBITERR => '0',
+      INJECTSBITERR => '0',
+      RDADDRECC(8 downto 0) => NLW_dout_reg_1_RDADDRECC_UNCONNECTED(8 downto 0),
       REGCEAREGCE => '1',
       REGCEB => '1',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
       RSTREGARSTREG => '0',
       RSTREGB => '0',
+      SBITERR => NLW_dout_reg_1_SBITERR_UNCONNECTED,
       SLEEP => '0',
-      WEA(1 downto 0) => B"00",
-      WEBWE(3 downto 0) => B"0000"
+      WEA(3 downto 0) => B"0000",
+      WEBWE(7 downto 0) => B"00000000"
     );
 end STRUCTURE;
 library IEEE;
@@ -97296,10 +97408,10 @@ architecture STRUCTURE of BASIC_timer is
   signal NLW_timer_value1_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal \NLW_timer_value1_carry__0_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of irq_pending_i_1 : label is "soft_lutpair258";
-  attribute SOFT_HLUTNM of \rdata[0]_INST_0\ : label is "soft_lutpair257";
-  attribute SOFT_HLUTNM of \timer_cmp[31]_i_2\ : label is "soft_lutpair257";
-  attribute SOFT_HLUTNM of timer_irq_INST_0 : label is "soft_lutpair258";
+  attribute SOFT_HLUTNM of irq_pending_i_1 : label is "soft_lutpair259";
+  attribute SOFT_HLUTNM of \rdata[0]_INST_0\ : label is "soft_lutpair258";
+  attribute SOFT_HLUTNM of \timer_cmp[31]_i_2\ : label is "soft_lutpair258";
+  attribute SOFT_HLUTNM of timer_irq_INST_0 : label is "soft_lutpair259";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of timer_value0_carry : label is 35;
   attribute ADDER_THRESHOLD of \timer_value0_carry__0\ : label is 35;
@@ -99611,108 +99723,108 @@ architecture STRUCTURE of BASIC_uart_tx is
   signal \NLW_tx_clk_cnt0_carry__2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 downto 6 );
   signal \NLW_tx_clk_cnt0_carry__2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 7 to 7 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_2\ : label is "soft_lutpair287";
-  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_3\ : label is "soft_lutpair281";
-  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_4\ : label is "soft_lutpair285";
-  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_6\ : label is "soft_lutpair275";
-  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_7\ : label is "soft_lutpair275";
-  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_8\ : label is "soft_lutpair319";
+  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_2\ : label is "soft_lutpair288";
+  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_3\ : label is "soft_lutpair282";
+  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_4\ : label is "soft_lutpair286";
+  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_6\ : label is "soft_lutpair276";
+  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_7\ : label is "soft_lutpair276";
+  attribute SOFT_HLUTNM of \FSM_sequential_rx_state[1]_i_8\ : label is "soft_lutpair320";
   attribute FSM_ENCODED_STATES : string;
   attribute FSM_ENCODED_STATES of \FSM_sequential_rx_state_reg[0]\ : label is "RX_START:01,RX_STOP:11,RX_IDLE:00,RX_DATA:10";
   attribute FSM_ENCODED_STATES of \FSM_sequential_rx_state_reg[1]\ : label is "RX_START:01,RX_STOP:11,RX_IDLE:00,RX_DATA:10";
-  attribute SOFT_HLUTNM of \rdata[6]_INST_0\ : label is "soft_lutpair277";
-  attribute SOFT_HLUTNM of \rdata[7]_INST_0\ : label is "soft_lutpair278";
-  attribute SOFT_HLUTNM of \rx_bit_idx[0]_i_1\ : label is "soft_lutpair288";
-  attribute SOFT_HLUTNM of \rx_bit_idx[1]_i_1\ : label is "soft_lutpair288";
-  attribute SOFT_HLUTNM of \rx_bit_idx[2]_i_2\ : label is "soft_lutpair281";
-  attribute SOFT_HLUTNM of rx_busy_q_i_2 : label is "soft_lutpair319";
-  attribute SOFT_HLUTNM of rx_busy_q_i_3 : label is "soft_lutpair287";
-  attribute SOFT_HLUTNM of rx_busy_q_i_6 : label is "soft_lutpair286";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[10]_i_1\ : label is "soft_lutpair293";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[11]_i_1\ : label is "soft_lutpair294";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[12]_i_1\ : label is "soft_lutpair294";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[13]_i_1\ : label is "soft_lutpair295";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[14]_i_1\ : label is "soft_lutpair295";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[15]_i_1\ : label is "soft_lutpair296";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[16]_i_1\ : label is "soft_lutpair296";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[17]_i_1\ : label is "soft_lutpair297";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[18]_i_1\ : label is "soft_lutpair297";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[19]_i_1\ : label is "soft_lutpair298";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[1]_i_1\ : label is "soft_lutpair289";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[20]_i_1\ : label is "soft_lutpair298";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[21]_i_1\ : label is "soft_lutpair299";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[22]_i_1\ : label is "soft_lutpair299";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[23]_i_1\ : label is "soft_lutpair300";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[24]_i_1\ : label is "soft_lutpair300";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[25]_i_1\ : label is "soft_lutpair301";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[26]_i_1\ : label is "soft_lutpair301";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[27]_i_1\ : label is "soft_lutpair302";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[28]_i_1\ : label is "soft_lutpair302";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[29]_i_1\ : label is "soft_lutpair303";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[2]_i_1\ : label is "soft_lutpair289";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[30]_i_1\ : label is "soft_lutpair303";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[3]_i_1\ : label is "soft_lutpair290";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[4]_i_1\ : label is "soft_lutpair290";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[5]_i_1\ : label is "soft_lutpair291";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[6]_i_1\ : label is "soft_lutpair291";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[7]_i_1\ : label is "soft_lutpair292";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[8]_i_1\ : label is "soft_lutpair292";
-  attribute SOFT_HLUTNM of \rx_clk_cnt[9]_i_1\ : label is "soft_lutpair293";
+  attribute SOFT_HLUTNM of \rdata[6]_INST_0\ : label is "soft_lutpair278";
+  attribute SOFT_HLUTNM of \rdata[7]_INST_0\ : label is "soft_lutpair279";
+  attribute SOFT_HLUTNM of \rx_bit_idx[0]_i_1\ : label is "soft_lutpair289";
+  attribute SOFT_HLUTNM of \rx_bit_idx[1]_i_1\ : label is "soft_lutpair289";
+  attribute SOFT_HLUTNM of \rx_bit_idx[2]_i_2\ : label is "soft_lutpair282";
+  attribute SOFT_HLUTNM of rx_busy_q_i_2 : label is "soft_lutpair320";
+  attribute SOFT_HLUTNM of rx_busy_q_i_3 : label is "soft_lutpair288";
+  attribute SOFT_HLUTNM of rx_busy_q_i_6 : label is "soft_lutpair287";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[10]_i_1\ : label is "soft_lutpair294";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[11]_i_1\ : label is "soft_lutpair295";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[12]_i_1\ : label is "soft_lutpair295";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[13]_i_1\ : label is "soft_lutpair296";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[14]_i_1\ : label is "soft_lutpair296";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[15]_i_1\ : label is "soft_lutpair297";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[16]_i_1\ : label is "soft_lutpair297";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[17]_i_1\ : label is "soft_lutpair298";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[18]_i_1\ : label is "soft_lutpair298";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[19]_i_1\ : label is "soft_lutpair299";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[1]_i_1\ : label is "soft_lutpair290";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[20]_i_1\ : label is "soft_lutpair299";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[21]_i_1\ : label is "soft_lutpair300";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[22]_i_1\ : label is "soft_lutpair300";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[23]_i_1\ : label is "soft_lutpair301";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[24]_i_1\ : label is "soft_lutpair301";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[25]_i_1\ : label is "soft_lutpair302";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[26]_i_1\ : label is "soft_lutpair302";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[27]_i_1\ : label is "soft_lutpair303";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[28]_i_1\ : label is "soft_lutpair303";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[29]_i_1\ : label is "soft_lutpair304";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[2]_i_1\ : label is "soft_lutpair290";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[30]_i_1\ : label is "soft_lutpair304";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[3]_i_1\ : label is "soft_lutpair291";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[4]_i_1\ : label is "soft_lutpair291";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[5]_i_1\ : label is "soft_lutpair292";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[6]_i_1\ : label is "soft_lutpair292";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[7]_i_1\ : label is "soft_lutpair293";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[8]_i_1\ : label is "soft_lutpair293";
+  attribute SOFT_HLUTNM of \rx_clk_cnt[9]_i_1\ : label is "soft_lutpair294";
   attribute ADDER_THRESHOLD : integer;
   attribute ADDER_THRESHOLD of \rx_clk_cnt_reg[16]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \rx_clk_cnt_reg[24]_i_2\ : label is 35;
   attribute ADDER_THRESHOLD of \rx_clk_cnt_reg[31]_i_3\ : label is 35;
   attribute ADDER_THRESHOLD of \rx_clk_cnt_reg[8]_i_2\ : label is 35;
-  attribute SOFT_HLUTNM of \rx_data_q[7]_i_2\ : label is "soft_lutpair279";
-  attribute SOFT_HLUTNM of \rx_data_q[7]_i_3\ : label is "soft_lutpair286";
-  attribute SOFT_HLUTNM of rx_framing_q_i_1 : label is "soft_lutpair285";
-  attribute SOFT_HLUTNM of rx_overrun_q_i_1 : label is "soft_lutpair279";
-  attribute SOFT_HLUTNM of rx_ready_q_i_2 : label is "soft_lutpair277";
-  attribute SOFT_HLUTNM of \tx_bit_idx[1]_i_1\ : label is "soft_lutpair280";
-  attribute SOFT_HLUTNM of \tx_bit_idx[2]_i_1\ : label is "soft_lutpair282";
-  attribute SOFT_HLUTNM of \tx_bit_idx[3]_i_2\ : label is "soft_lutpair282";
-  attribute SOFT_HLUTNM of tx_busy_q_i_3 : label is "soft_lutpair278";
+  attribute SOFT_HLUTNM of \rx_data_q[7]_i_2\ : label is "soft_lutpair280";
+  attribute SOFT_HLUTNM of \rx_data_q[7]_i_3\ : label is "soft_lutpair287";
+  attribute SOFT_HLUTNM of rx_framing_q_i_1 : label is "soft_lutpair286";
+  attribute SOFT_HLUTNM of rx_overrun_q_i_1 : label is "soft_lutpair280";
+  attribute SOFT_HLUTNM of rx_ready_q_i_2 : label is "soft_lutpair278";
+  attribute SOFT_HLUTNM of \tx_bit_idx[1]_i_1\ : label is "soft_lutpair281";
+  attribute SOFT_HLUTNM of \tx_bit_idx[2]_i_1\ : label is "soft_lutpair283";
+  attribute SOFT_HLUTNM of \tx_bit_idx[3]_i_2\ : label is "soft_lutpair283";
+  attribute SOFT_HLUTNM of tx_busy_q_i_3 : label is "soft_lutpair279";
   attribute ADDER_THRESHOLD of tx_clk_cnt0_carry : label is 35;
   attribute ADDER_THRESHOLD of \tx_clk_cnt0_carry__0\ : label is 35;
   attribute ADDER_THRESHOLD of \tx_clk_cnt0_carry__1\ : label is 35;
   attribute ADDER_THRESHOLD of \tx_clk_cnt0_carry__2\ : label is 35;
-  attribute SOFT_HLUTNM of \tx_clk_cnt[10]_i_1\ : label is "soft_lutpair308";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[11]_i_1\ : label is "soft_lutpair309";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[12]_i_1\ : label is "soft_lutpair309";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[13]_i_1\ : label is "soft_lutpair310";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[14]_i_1\ : label is "soft_lutpair310";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[15]_i_1\ : label is "soft_lutpair311";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[16]_i_1\ : label is "soft_lutpair311";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[17]_i_1\ : label is "soft_lutpair312";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[18]_i_1\ : label is "soft_lutpair312";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[19]_i_1\ : label is "soft_lutpair313";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[1]_i_1\ : label is "soft_lutpair304";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[20]_i_1\ : label is "soft_lutpair313";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[21]_i_1\ : label is "soft_lutpair314";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[22]_i_1\ : label is "soft_lutpair314";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[23]_i_1\ : label is "soft_lutpair315";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[24]_i_1\ : label is "soft_lutpair315";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[25]_i_1\ : label is "soft_lutpair316";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[26]_i_1\ : label is "soft_lutpair316";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[27]_i_1\ : label is "soft_lutpair317";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[28]_i_1\ : label is "soft_lutpair317";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[29]_i_1\ : label is "soft_lutpair318";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[2]_i_1\ : label is "soft_lutpair304";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[30]_i_1\ : label is "soft_lutpair318";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[3]_i_1\ : label is "soft_lutpair305";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[4]_i_1\ : label is "soft_lutpair305";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[5]_i_1\ : label is "soft_lutpair306";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[6]_i_1\ : label is "soft_lutpair306";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[7]_i_1\ : label is "soft_lutpair307";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[8]_i_1\ : label is "soft_lutpair307";
-  attribute SOFT_HLUTNM of \tx_clk_cnt[9]_i_1\ : label is "soft_lutpair308";
-  attribute SOFT_HLUTNM of tx_i_1 : label is "soft_lutpair276";
-  attribute SOFT_HLUTNM of tx_i_3 : label is "soft_lutpair280";
-  attribute SOFT_HLUTNM of tx_ready_INST_0 : label is "soft_lutpair276";
-  attribute SOFT_HLUTNM of \tx_shifter[0]_i_1\ : label is "soft_lutpair283";
-  attribute SOFT_HLUTNM of \tx_shifter[1]_i_1\ : label is "soft_lutpair283";
-  attribute SOFT_HLUTNM of \tx_shifter[7]_i_1\ : label is "soft_lutpair284";
-  attribute SOFT_HLUTNM of \tx_shifter[8]_i_2\ : label is "soft_lutpair284";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[10]_i_1\ : label is "soft_lutpair309";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[11]_i_1\ : label is "soft_lutpair310";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[12]_i_1\ : label is "soft_lutpair310";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[13]_i_1\ : label is "soft_lutpair311";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[14]_i_1\ : label is "soft_lutpair311";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[15]_i_1\ : label is "soft_lutpair312";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[16]_i_1\ : label is "soft_lutpair312";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[17]_i_1\ : label is "soft_lutpair313";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[18]_i_1\ : label is "soft_lutpair313";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[19]_i_1\ : label is "soft_lutpair314";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[1]_i_1\ : label is "soft_lutpair305";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[20]_i_1\ : label is "soft_lutpair314";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[21]_i_1\ : label is "soft_lutpair315";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[22]_i_1\ : label is "soft_lutpair315";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[23]_i_1\ : label is "soft_lutpair316";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[24]_i_1\ : label is "soft_lutpair316";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[25]_i_1\ : label is "soft_lutpair317";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[26]_i_1\ : label is "soft_lutpair317";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[27]_i_1\ : label is "soft_lutpair318";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[28]_i_1\ : label is "soft_lutpair318";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[29]_i_1\ : label is "soft_lutpair319";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[2]_i_1\ : label is "soft_lutpair305";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[30]_i_1\ : label is "soft_lutpair319";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[3]_i_1\ : label is "soft_lutpair306";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[4]_i_1\ : label is "soft_lutpair306";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[5]_i_1\ : label is "soft_lutpair307";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[6]_i_1\ : label is "soft_lutpair307";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[7]_i_1\ : label is "soft_lutpair308";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[8]_i_1\ : label is "soft_lutpair308";
+  attribute SOFT_HLUTNM of \tx_clk_cnt[9]_i_1\ : label is "soft_lutpair309";
+  attribute SOFT_HLUTNM of tx_i_1 : label is "soft_lutpair277";
+  attribute SOFT_HLUTNM of tx_i_3 : label is "soft_lutpair281";
+  attribute SOFT_HLUTNM of tx_ready_INST_0 : label is "soft_lutpair277";
+  attribute SOFT_HLUTNM of \tx_shifter[0]_i_1\ : label is "soft_lutpair284";
+  attribute SOFT_HLUTNM of \tx_shifter[1]_i_1\ : label is "soft_lutpair284";
+  attribute SOFT_HLUTNM of \tx_shifter[7]_i_1\ : label is "soft_lutpair285";
+  attribute SOFT_HLUTNM of \tx_shifter[8]_i_2\ : label is "soft_lutpair285";
 begin
   rx_busy <= \^rx_busy\;
   rx_ready_q_reg_0 <= \^rx_ready_q_reg_0\;
@@ -102351,38 +102463,38 @@ end BASIC_wb_mux;
 architecture STRUCTURE of BASIC_wb_mux is
   signal rd_wdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \rd_wdata[0]_INST_0\ : label is "soft_lutpair320";
-  attribute SOFT_HLUTNM of \rd_wdata[10]_INST_0\ : label is "soft_lutpair324";
-  attribute SOFT_HLUTNM of \rd_wdata[11]_INST_0\ : label is "soft_lutpair323";
-  attribute SOFT_HLUTNM of \rd_wdata[12]_INST_0\ : label is "soft_lutpair331";
-  attribute SOFT_HLUTNM of \rd_wdata[13]_INST_0\ : label is "soft_lutpair323";
-  attribute SOFT_HLUTNM of \rd_wdata[14]_INST_0\ : label is "soft_lutpair334";
-  attribute SOFT_HLUTNM of \rd_wdata[15]_INST_0\ : label is "soft_lutpair330";
-  attribute SOFT_HLUTNM of \rd_wdata[16]_INST_0\ : label is "soft_lutpair325";
-  attribute SOFT_HLUTNM of \rd_wdata[17]_INST_0\ : label is "soft_lutpair322";
-  attribute SOFT_HLUTNM of \rd_wdata[18]_INST_0\ : label is "soft_lutpair326";
-  attribute SOFT_HLUTNM of \rd_wdata[19]_INST_0\ : label is "soft_lutpair330";
-  attribute SOFT_HLUTNM of \rd_wdata[1]_INST_0\ : label is "soft_lutpair320";
-  attribute SOFT_HLUTNM of \rd_wdata[20]_INST_0\ : label is "soft_lutpair334";
-  attribute SOFT_HLUTNM of \rd_wdata[21]_INST_0\ : label is "soft_lutpair328";
-  attribute SOFT_HLUTNM of \rd_wdata[22]_INST_0\ : label is "soft_lutpair328";
-  attribute SOFT_HLUTNM of \rd_wdata[23]_INST_0\ : label is "soft_lutpair329";
-  attribute SOFT_HLUTNM of \rd_wdata[24]_INST_0\ : label is "soft_lutpair329";
-  attribute SOFT_HLUTNM of \rd_wdata[25]_INST_0\ : label is "soft_lutpair333";
-  attribute SOFT_HLUTNM of \rd_wdata[26]_INST_0\ : label is "soft_lutpair333";
-  attribute SOFT_HLUTNM of \rd_wdata[27]_INST_0\ : label is "soft_lutpair327";
-  attribute SOFT_HLUTNM of \rd_wdata[28]_INST_0\ : label is "soft_lutpair332";
-  attribute SOFT_HLUTNM of \rd_wdata[29]_INST_0\ : label is "soft_lutpair335";
-  attribute SOFT_HLUTNM of \rd_wdata[2]_INST_0\ : label is "soft_lutpair327";
-  attribute SOFT_HLUTNM of \rd_wdata[30]_INST_0\ : label is "soft_lutpair335";
-  attribute SOFT_HLUTNM of \rd_wdata[31]_INST_0\ : label is "soft_lutpair332";
-  attribute SOFT_HLUTNM of \rd_wdata[3]_INST_0\ : label is "soft_lutpair321";
-  attribute SOFT_HLUTNM of \rd_wdata[4]_INST_0\ : label is "soft_lutpair324";
-  attribute SOFT_HLUTNM of \rd_wdata[5]_INST_0\ : label is "soft_lutpair321";
-  attribute SOFT_HLUTNM of \rd_wdata[6]_INST_0\ : label is "soft_lutpair325";
-  attribute SOFT_HLUTNM of \rd_wdata[7]_INST_0\ : label is "soft_lutpair322";
-  attribute SOFT_HLUTNM of \rd_wdata[8]_INST_0\ : label is "soft_lutpair331";
-  attribute SOFT_HLUTNM of \rd_wdata[9]_INST_0\ : label is "soft_lutpair326";
+  attribute SOFT_HLUTNM of \rd_wdata[0]_INST_0\ : label is "soft_lutpair321";
+  attribute SOFT_HLUTNM of \rd_wdata[10]_INST_0\ : label is "soft_lutpair325";
+  attribute SOFT_HLUTNM of \rd_wdata[11]_INST_0\ : label is "soft_lutpair324";
+  attribute SOFT_HLUTNM of \rd_wdata[12]_INST_0\ : label is "soft_lutpair332";
+  attribute SOFT_HLUTNM of \rd_wdata[13]_INST_0\ : label is "soft_lutpair324";
+  attribute SOFT_HLUTNM of \rd_wdata[14]_INST_0\ : label is "soft_lutpair335";
+  attribute SOFT_HLUTNM of \rd_wdata[15]_INST_0\ : label is "soft_lutpair331";
+  attribute SOFT_HLUTNM of \rd_wdata[16]_INST_0\ : label is "soft_lutpair326";
+  attribute SOFT_HLUTNM of \rd_wdata[17]_INST_0\ : label is "soft_lutpair323";
+  attribute SOFT_HLUTNM of \rd_wdata[18]_INST_0\ : label is "soft_lutpair327";
+  attribute SOFT_HLUTNM of \rd_wdata[19]_INST_0\ : label is "soft_lutpair331";
+  attribute SOFT_HLUTNM of \rd_wdata[1]_INST_0\ : label is "soft_lutpair321";
+  attribute SOFT_HLUTNM of \rd_wdata[20]_INST_0\ : label is "soft_lutpair335";
+  attribute SOFT_HLUTNM of \rd_wdata[21]_INST_0\ : label is "soft_lutpair329";
+  attribute SOFT_HLUTNM of \rd_wdata[22]_INST_0\ : label is "soft_lutpair329";
+  attribute SOFT_HLUTNM of \rd_wdata[23]_INST_0\ : label is "soft_lutpair330";
+  attribute SOFT_HLUTNM of \rd_wdata[24]_INST_0\ : label is "soft_lutpair330";
+  attribute SOFT_HLUTNM of \rd_wdata[25]_INST_0\ : label is "soft_lutpair334";
+  attribute SOFT_HLUTNM of \rd_wdata[26]_INST_0\ : label is "soft_lutpair334";
+  attribute SOFT_HLUTNM of \rd_wdata[27]_INST_0\ : label is "soft_lutpair328";
+  attribute SOFT_HLUTNM of \rd_wdata[28]_INST_0\ : label is "soft_lutpair333";
+  attribute SOFT_HLUTNM of \rd_wdata[29]_INST_0\ : label is "soft_lutpair336";
+  attribute SOFT_HLUTNM of \rd_wdata[2]_INST_0\ : label is "soft_lutpair328";
+  attribute SOFT_HLUTNM of \rd_wdata[30]_INST_0\ : label is "soft_lutpair336";
+  attribute SOFT_HLUTNM of \rd_wdata[31]_INST_0\ : label is "soft_lutpair333";
+  attribute SOFT_HLUTNM of \rd_wdata[3]_INST_0\ : label is "soft_lutpair322";
+  attribute SOFT_HLUTNM of \rd_wdata[4]_INST_0\ : label is "soft_lutpair325";
+  attribute SOFT_HLUTNM of \rd_wdata[5]_INST_0\ : label is "soft_lutpair322";
+  attribute SOFT_HLUTNM of \rd_wdata[6]_INST_0\ : label is "soft_lutpair326";
+  attribute SOFT_HLUTNM of \rd_wdata[7]_INST_0\ : label is "soft_lutpair323";
+  attribute SOFT_HLUTNM of \rd_wdata[8]_INST_0\ : label is "soft_lutpair332";
+  attribute SOFT_HLUTNM of \rd_wdata[9]_INST_0\ : label is "soft_lutpair327";
 begin
 \rd_wdata[0]_INST_0\: unisim.vcomponents.LUT3
     generic map(
@@ -106920,7 +107032,7 @@ architecture STRUCTURE of BASIC_BASIC_branch_predictor_btb_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -106982,7 +107094,7 @@ architecture STRUCTURE of BASIC_BASIC_csr_file_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of timer_irq : signal is "xilinx.com:signal:interrupt:1.0 timer_irq INTERRUPT";
@@ -107076,7 +107188,7 @@ architecture STRUCTURE of BASIC_BASIC_ex_mem_reg_1_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -107331,7 +107443,7 @@ architecture STRUCTURE of BASIC_BASIC_gpio_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -107463,7 +107575,7 @@ architecture STRUCTURE of BASIC_BASIC_id_ex_reg_0_1 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -107564,7 +107676,7 @@ architecture STRUCTURE of BASIC_BASIC_if_id_reg_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -107582,7 +107694,6 @@ inst: entity work.BASIC_if_id_reg
       if_pc4_in(31 downto 0) => if_pc4_in(31 downto 0),
       if_pc_in(31 downto 0) => if_pc_in(31 downto 0),
       if_pred_next_pc_in(31 downto 0) => if_pred_next_pc_in(31 downto 0),
-      if_valid_in => if_valid_in,
       rst => rst
     );
 end STRUCTURE;
@@ -107691,7 +107802,7 @@ architecture STRUCTURE of BASIC_BASIC_mem_bus_registered_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -107876,16 +107987,16 @@ architecture STRUCTURE of BASIC_BASIC_mem_stage_0_0 is
   signal \^mem_fault_valid\ : STD_LOGIC;
   signal \^mem_in_alu_result\ : STD_LOGIC_VECTOR ( 31 downto 0 );
   attribute SOFT_HLUTNM : string;
-  attribute SOFT_HLUTNM of \dmem_be[0]_INST_0\ : label is "soft_lutpair236";
-  attribute SOFT_HLUTNM of \dmem_be[1]_INST_0\ : label is "soft_lutpair236";
-  attribute SOFT_HLUTNM of \dmem_be[2]_INST_0\ : label is "soft_lutpair235";
-  attribute SOFT_HLUTNM of \dmem_be[3]_INST_0\ : label is "soft_lutpair235";
-  attribute SOFT_HLUTNM of dmem_re_INST_0 : label is "soft_lutpair234";
-  attribute SOFT_HLUTNM of dmem_valid_INST_0 : label is "soft_lutpair234";
+  attribute SOFT_HLUTNM of \dmem_be[0]_INST_0\ : label is "soft_lutpair237";
+  attribute SOFT_HLUTNM of \dmem_be[1]_INST_0\ : label is "soft_lutpair237";
+  attribute SOFT_HLUTNM of \dmem_be[2]_INST_0\ : label is "soft_lutpair236";
+  attribute SOFT_HLUTNM of \dmem_be[3]_INST_0\ : label is "soft_lutpair236";
+  attribute SOFT_HLUTNM of dmem_re_INST_0 : label is "soft_lutpair235";
+  attribute SOFT_HLUTNM of dmem_valid_INST_0 : label is "soft_lutpair235";
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -108609,7 +108720,7 @@ architecture STRUCTURE of BASIC_BASIC_mem_wb_reg_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -108751,7 +108862,7 @@ architecture STRUCTURE of BASIC_BASIC_pc_unit_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -108856,7 +108967,7 @@ architecture STRUCTURE of BASIC_BASIC_ram_data_1_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -108910,7 +109021,7 @@ architecture STRUCTURE of BASIC_BASIC_regfile_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
 begin
 inst: entity work.BASIC_regfile
      port map (
@@ -109059,41 +109170,31 @@ entity BASIC_BASIC_rom_memory_0_0 is
 end BASIC_BASIC_rom_memory_0_0;
 
 architecture STRUCTURE of BASIC_BASIC_rom_memory_0_0 is
-  signal \^dout\ : STD_LOGIC_VECTOR ( 25 downto 0 );
+  signal \^dout\ : STD_LOGIC_VECTOR ( 28 downto 0 );
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
 begin
-  dout(31) <= \^dout\(3);
-  dout(30) <= \^dout\(3);
-  dout(29) <= \^dout\(3);
-  dout(28) <= \^dout\(3);
-  dout(27) <= \^dout\(3);
-  dout(26) <= \^dout\(3);
-  dout(25) <= \^dout\(25);
-  dout(24) <= \^dout\(23);
-  dout(23 downto 20) <= \^dout\(23 downto 20);
-  dout(19) <= \^dout\(3);
-  dout(18) <= \^dout\(3);
-  dout(17) <= \^dout\(6);
-  dout(16) <= \^dout\(14);
-  dout(15 downto 2) <= \^dout\(15 downto 2);
+  dout(31) <= \^dout\(27);
+  dout(30) <= \^dout\(19);
+  dout(29) <= \^dout\(28);
+  dout(28 downto 27) <= \^dout\(28 downto 27);
+  dout(26) <= \^dout\(14);
+  dout(25 downto 2) <= \^dout\(25 downto 2);
   dout(1) <= \^dout\(0);
   dout(0) <= \^dout\(0);
 inst: entity work.BASIC_rom_memory
      port map (
       addr(10 downto 0) => addr(10 downto 0),
       clk => clk,
-      dout(19) => \^dout\(3),
-      dout(18) => \^dout\(25),
-      dout(17 downto 14) => \^dout\(23 downto 20),
-      dout(13) => \^dout\(6),
-      dout(12) => \^dout\(14),
-      dout(11) => \^dout\(15),
-      dout(10 downto 4) => \^dout\(13 downto 7),
-      dout(3 downto 2) => \^dout\(5 downto 4),
-      dout(1) => \^dout\(2),
+      dout(26) => \^dout\(27),
+      dout(25) => \^dout\(19),
+      dout(24) => \^dout\(28),
+      dout(23) => \^dout\(14),
+      dout(22 downto 17) => \^dout\(25 downto 20),
+      dout(16 downto 13) => \^dout\(18 downto 15),
+      dout(12 downto 1) => \^dout\(13 downto 2),
       dout(0) => \^dout\(0),
       en => en
     );
@@ -109133,7 +109234,7 @@ architecture STRUCTURE of BASIC_BASIC_timer_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of timer_irq : signal is "xilinx.com:signal:interrupt:1.0 timer_irq INTERRUPT";
@@ -109205,7 +109306,7 @@ architecture STRUCTURE of BASIC_BASIC_uart_tx_0_0 is
   attribute X_INTERFACE_INFO : string;
   attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
   attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 rst RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0";
 begin
@@ -109466,7 +109567,6 @@ architecture STRUCTURE of BASIC is
   signal forward_mux_2_out_data : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal forwarding_0_forward_a : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal forwarding_0_forward_b : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal forwarding_0_forward_store : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal gpio_0_gpio_out : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal gpio_0_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal gpio_0_ready : STD_LOGIC;
@@ -109505,6 +109605,7 @@ architecture STRUCTURE of BASIC is
   signal regfile_0_rs2_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal rom_memory_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal sim_constant_0_dout : STD_LOGIC;
+  signal sim_constant_2_dout : STD_LOGIC;
   signal system_decoder_0_csr_addr : STD_LOGIC_VECTOR ( 11 downto 0 );
   signal system_decoder_0_csr_rd : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal system_decoder_0_csr_rs1 : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -109528,6 +109629,7 @@ architecture STRUCTURE of BASIC is
   signal trap_controller_0_trap_target : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal uart_tx_0_rdata : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal uart_tx_0_ready : STD_LOGIC;
+  signal uart_tx_0_tx : STD_LOGIC;
   signal update_is_control_1 : STD_LOGIC;
   signal util_vector_and_0_Res : STD_LOGIC;
   signal util_vector_and_0_Res_1 : STD_LOGIC;
@@ -109552,7 +109654,6 @@ architecture STRUCTURE of BASIC is
   signal we_4 : STD_LOGIC;
   signal xlconcat_8_0_dout : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal xlconstant_3_dout : STD_LOGIC;
-  signal xlconstant_3_dout_1 : STD_LOGIC;
   signal NLW_branch_0_branch_taken_UNCONNECTED : STD_LOGIC;
   signal NLW_branch_0_ex_control_flow_change_UNCONNECTED : STD_LOGIC;
   signal NLW_branch_0_ex_mispredict_UNCONNECTED : STD_LOGIC;
@@ -109562,6 +109663,7 @@ architecture STRUCTURE of BASIC is
   signal NLW_branch_predictor_btb_0_pred_target_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_csr_file_0_csr_mcause_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_csr_file_0_csr_mtval_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal NLW_forwarding_0_forward_store_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_gpio_0_gpio_dir_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_load_use_detection_0_load_use_hazard_UNCONNECTED : STD_LOGIC;
   signal NLW_mem_stage_0_dmem_re_UNCONNECTED : STD_LOGIC;
@@ -109577,7 +109679,6 @@ architecture STRUCTURE of BASIC is
   signal NLW_pc_unit_0_pc_debug_last_redirect_UNCONNECTED : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal NLW_uart_tx_0_rx_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_uart_tx_0_rx_ready_UNCONNECTED : STD_LOGIC;
-  signal NLW_uart_tx_0_tx_UNCONNECTED : STD_LOGIC;
   signal NLW_uart_tx_0_tx_busy_UNCONNECTED : STD_LOGIC;
   signal NLW_uart_tx_0_tx_ready_UNCONNECTED : STD_LOGIC;
   attribute CHECK_LICENSE_TYPE : string;
@@ -109724,6 +109825,10 @@ architecture STRUCTURE of BASIC is
   attribute DowngradeIPIdentifiedWarnings of sim_constant_1 : label is "yes";
   attribute IP_DEFINITION_SOURCE of sim_constant_1 : label is "module_ref";
   attribute X_CORE_INFO of sim_constant_1 : label is "sim_constant,Vivado 2020.1";
+  attribute CHECK_LICENSE_TYPE of sim_constant_2 : label is "BASIC_sim_constant_0_5,sim_constant,{}";
+  attribute DowngradeIPIdentifiedWarnings of sim_constant_2 : label is "yes";
+  attribute IP_DEFINITION_SOURCE of sim_constant_2 : label is "module_ref";
+  attribute X_CORE_INFO of sim_constant_2 : label is "sim_constant,Vivado 2020.1";
   attribute CHECK_LICENSE_TYPE of system_decoder_0 : label is "BASIC_system_decoder_0_0,system_decoder,{}";
   attribute DowngradeIPIdentifiedWarnings of system_decoder_0 : label is "yes";
   attribute IP_DEFINITION_SOURCE of system_decoder_0 : label is "module_ref";
@@ -109788,9 +109893,6 @@ architecture STRUCTURE of BASIC is
   attribute DowngradeIPIdentifiedWarnings of xlconcat_8_0 : label is "yes";
   attribute IP_DEFINITION_SOURCE of xlconcat_8_0 : label is "module_ref";
   attribute X_CORE_INFO of xlconcat_8_0 : label is "xlconcat_8,Vivado 2020.1";
-  attribute CHECK_LICENSE_TYPE of xlconstant_3 : label is "BASIC_xlconstant_2_0,xlconstant_v1_1_7_xlconstant,{}";
-  attribute DowngradeIPIdentifiedWarnings of xlconstant_3 : label is "yes";
-  attribute X_CORE_INFO of xlconstant_3 : label is "xlconstant_v1_1_7_xlconstant,Vivado 2020.1";
   attribute CHECK_LICENSE_TYPE of xlslice_2bit_0 : label is "BASIC_xlslice_2bit_0_0,xlslice_2bit,{}";
   attribute DowngradeIPIdentifiedWarnings of xlslice_2bit_0 : label is "yes";
   attribute IP_DEFINITION_SOURCE of xlslice_2bit_0 : label is "module_ref";
@@ -110025,7 +110127,7 @@ forward_mux_2: entity work.BASIC_BASIC_forward_mux_1_0
      port map (
       base_data(31 downto 0) => ex_rs2_data_1(31 downto 0),
       ex_mem_data(31 downto 0) => ex_mem_reg_1_mem_alu_result(31 downto 0),
-      forward_sel(1 downto 0) => forwarding_0_forward_store(1 downto 0),
+      forward_sel(1 downto 0) => B"00",
       mem_stage_data(31 downto 0) => mem_stage_0_mem_forward_data(31 downto 0),
       mem_wb_data(31 downto 0) => Core_RV32I_rd_wdata1(31 downto 0),
       out_data(31 downto 0) => forward_mux_2_out_data(31 downto 0)
@@ -110037,7 +110139,7 @@ forwarding_0: entity work.BASIC_BASIC_forwarding_0_0
       ex_rs2(4 downto 0) => ex_rs2_1(4 downto 0),
       forward_a(1 downto 0) => forwarding_0_forward_a(1 downto 0),
       forward_b(1 downto 0) => forwarding_0_forward_b(1 downto 0),
-      forward_store(1 downto 0) => forwarding_0_forward_store(1 downto 0),
+      forward_store(1 downto 0) => NLW_forwarding_0_forward_store_UNCONNECTED(1 downto 0),
       mem_is_load => ex_mem_reg_1_mem_mem_re,
       mem_rd(4 downto 0) => ex_mem_reg_1_mem_rd(4 downto 0),
       mem_rd_we => util_vector_and_0_Res_2,
@@ -110137,7 +110239,7 @@ if_id_reg_0: entity work.BASIC_BASIC_if_id_reg_0_0
       if_pc4_in(31 downto 0) => pc_unit_0_pc_plus4(31 downto 0),
       if_pc_in(31 downto 0) => pc_unit_0_pc(31 downto 0),
       if_pred_next_pc_in(31 downto 0) => branch_predictor_btb_0_pred_next_pc(31 downto 0),
-      if_valid_in => xlconstant_3_dout_1,
+      if_valid_in => sim_constant_2_dout,
       rst => rst
     );
 imm_mux_0: entity work.BASIC_BASIC_imm_mux_0_0
@@ -110402,6 +110504,10 @@ sim_constant_1: entity work.BASIC_BASIC_sim_constant_0_3
      port map (
       dout(0) => sim_constant_0_dout
     );
+sim_constant_2: entity work.BASIC_BASIC_sim_constant_0_5
+     port map (
+      dout(0) => sim_constant_2_dout
+    );
 system_decoder_0: entity work.BASIC_BASIC_system_decoder_0_0
      port map (
       csr_addr(11 downto 0) => system_decoder_0_csr_addr(11 downto 0),
@@ -110466,10 +110572,10 @@ uart_tx_0: entity work.BASIC_BASIC_uart_tx_0_0
       rdata(31 downto 0) => uart_tx_0_rdata(31 downto 0),
       ready => uart_tx_0_ready,
       rst => rst,
-      rx => '0',
+      rx => uart_tx_0_tx,
       rx_busy => NLW_uart_tx_0_rx_busy_UNCONNECTED,
       rx_ready => NLW_uart_tx_0_rx_ready_UNCONNECTED,
-      tx => NLW_uart_tx_0_tx_UNCONNECTED,
+      tx => uart_tx_0_tx,
       tx_busy => NLW_uart_tx_0_tx_busy_UNCONNECTED,
       tx_ready => NLW_uart_tx_0_tx_ready_UNCONNECTED,
       valid => valid_2,
@@ -110553,10 +110659,6 @@ xlconcat_8_0: entity work.BASIC_BASIC_xlconcat_8_0_0
       in5 => SW1(0),
       in6 => SW1(0),
       in7 => SW1(0)
-    );
-xlconstant_3: entity work.BASIC_BASIC_xlconstant_2_0
-     port map (
-      dout(0) => xlconstant_3_dout_1
     );
 xlslice_2bit_0: entity work.BASIC_BASIC_xlslice_2bit_0_0
      port map (

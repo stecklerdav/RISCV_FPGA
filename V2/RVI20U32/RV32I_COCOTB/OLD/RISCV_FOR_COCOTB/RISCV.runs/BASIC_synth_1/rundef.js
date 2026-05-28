@@ -12,9 +12,9 @@ var WshShell = new ActiveXObject( "WScript.Shell" );
 var ProcEnv = WshShell.Environment( "Process" );
 var PathVal = ProcEnv("PATH");
 if ( PathVal.length == 0 ) {
-  PathVal = "/media/steckler/xilinx_linux/vivado_2020.1/Vitis/2020.1/bin:/media/steckler/xilinx_linux/vivado_2020.1/Vivado/2020.1/ids_lite/ISE/bin/lin64;/media/steckler/xilinx_linux/vivado_2020.1/Vivado/2020.1/bin;";
+  PathVal = "/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/bin:/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/ids_lite/ISE/bin/lin64;/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/bin;";
 } else {
-  PathVal = "/media/steckler/xilinx_linux/vivado_2020.1/Vitis/2020.1/bin:/media/steckler/xilinx_linux/vivado_2020.1/Vivado/2020.1/ids_lite/ISE/bin/lin64;/media/steckler/xilinx_linux/vivado_2020.1/Vivado/2020.1/bin;" + PathVal;
+  PathVal = "/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/bin:/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/ids_lite/ISE/bin/lin64;/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/bin;" + PathVal;
 }
 
 ProcEnv("PATH") = PathVal;

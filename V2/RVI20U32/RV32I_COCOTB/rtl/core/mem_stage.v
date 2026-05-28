@@ -21,7 +21,6 @@ module mem_stage (
     input  wire        mem_in_rd_we,
     input  wire [2:0]  mem_in_wb_sel,
 
-    // DMEM REQUEST
     output reg  [31:0] dmem_addr,
     output reg         dmem_valid,
     input  wire        dmem_req_ready,
@@ -30,24 +29,19 @@ module mem_stage (
     output reg  [3:0]  dmem_be,
     output reg  [31:0] dmem_wdata,
 
-    // DMEM RESPONSE
     input  wire [31:0] dmem_rdata,
     input  wire        dmem_ready,
     input  wire        dmem_error,
 
-    // ACCESS FAULTS
     output wire        load_access_fault,
     output wire        store_access_fault,
 
-    // NUEVO: excepción MEM hacia exception_mux
     output wire        mem_fault_valid,
     output wire [3:0]  mem_fault_cause,
     output wire [31:0] mem_fault_tval,
 
-    // PIPELINE CONTROL
     output wire        mem_stall_req,
 
-    // OUTPUT TO WB
     output reg         mem_out_valid,
     output reg  [31:0] mem_out_data,
     output reg  [31:0] mem_out_alu_result,
@@ -72,26 +66,6 @@ module mem_stage (
     localparam [2:0] WB_MEM = 3'd1;
     localparam [2:0] WB_PC4 = 3'd2;
     localparam [2:0] WB_IMM = 3'd3;
-    localparam [2:0] WB_CSR = 3'd4;
-
-    wire mem_req_valid;
-
-    assign mem_req_valid =
-        mem_in_valid &&
-        !kill &&
-        (mem_in_mem_re || mem_in_mem_we);
-
-    assign mem_stall_req =
-        mem_req_valid && (!dmem_req_ready || !dmem_ready);
-
-    wire mem_can_advance;
-
-    assign mem_can_advance =
-        !stall &&
-        (!mem_req_valid || (dmem_req_ready && dmem_ready));
-
-    wire mem_in_mem_sign_ext;
-    assign mem_in_mem_sign_ext = mem_in_mem_unsigned;
 
     reg        mem_q_valid;
     reg [31:0] mem_q_alu_result;
@@ -99,11 +73,46 @@ module mem_stage (
     reg [31:0] mem_q_imm_u;
     reg [4:0]  mem_q_rd;
     reg [1:0]  mem_q_mem_size;
-    reg        mem_q_mem_sign_ext;
+    reg        mem_q_mem_unsigned;
     reg        mem_q_mem_re;
     reg        mem_q_mem_we;
     reg        mem_q_rd_we;
     reg [2:0]  mem_q_wb_sel;
+
+    wire mem_req_valid;
+    wire mem_q_is_mem;
+    wire mem_req_fire;
+    wire mem_response_done;
+    wire mem_out_ready;
+
+    assign mem_req_valid =
+        mem_in_valid &&
+        !kill &&
+        (mem_in_mem_re || mem_in_mem_we);
+
+    assign mem_q_is_mem =
+        mem_q_valid &&
+        (mem_q_mem_re || mem_q_mem_we);
+
+    assign mem_req_fire =
+        mem_req_valid &&
+        !mem_q_is_mem &&
+        dmem_req_ready;
+
+    assign mem_response_done =
+        mem_q_is_mem &&
+        dmem_ready;
+
+    assign mem_stall_req =
+        (mem_req_valid && !mem_q_is_mem && !dmem_req_ready) ||
+        (mem_q_is_mem && !dmem_ready);
+
+    assign mem_out_ready =
+        mem_q_valid &&
+        (
+            (!mem_q_mem_re && !mem_q_mem_we) ||
+            dmem_ready
+        );
 
     assign load_access_fault =
         dmem_ready &&
@@ -131,9 +140,9 @@ module mem_stage (
     always @(*) begin
         dmem_addr  = mem_in_alu_result;
 
-        dmem_valid = mem_req_valid && dmem_req_ready;
-        dmem_we    = mem_req_valid && dmem_req_ready && mem_in_mem_we;
-        dmem_re    = mem_req_valid && dmem_req_ready && mem_in_mem_re;
+        dmem_valid = mem_req_valid && !mem_q_is_mem;
+        dmem_we    = mem_req_valid && !mem_q_is_mem && mem_in_mem_we;
+        dmem_re    = mem_req_valid && !mem_q_is_mem && mem_in_mem_re;
 
         dmem_be    = 4'b0000;
         dmem_wdata = 32'h0000_0000;
@@ -142,10 +151,22 @@ module mem_stage (
             case (mem_in_mem_size)
                 SZ_B: begin
                     case (mem_in_alu_result[1:0])
-                        2'b00: begin dmem_be = 4'b0001; dmem_wdata = {24'b0, mem_in_store_data[7:0]}; end
-                        2'b01: begin dmem_be = 4'b0010; dmem_wdata = {16'b0, mem_in_store_data[7:0], 8'b0}; end
-                        2'b10: begin dmem_be = 4'b0100; dmem_wdata = {8'b0, mem_in_store_data[7:0], 16'b0}; end
-                        2'b11: begin dmem_be = 4'b1000; dmem_wdata = {mem_in_store_data[7:0], 24'b0}; end
+                        2'b00: begin
+                            dmem_be    = 4'b0001;
+                            dmem_wdata = {24'b0, mem_in_store_data[7:0]};
+                        end
+                        2'b01: begin
+                            dmem_be    = 4'b0010;
+                            dmem_wdata = {16'b0, mem_in_store_data[7:0], 8'b0};
+                        end
+                        2'b10: begin
+                            dmem_be    = 4'b0100;
+                            dmem_wdata = {8'b0, mem_in_store_data[7:0], 16'b0};
+                        end
+                        2'b11: begin
+                            dmem_be    = 4'b1000;
+                            dmem_wdata = {mem_in_store_data[7:0], 24'b0};
+                        end
                     endcase
                 end
 
@@ -180,24 +201,31 @@ module mem_stage (
             mem_q_imm_u        <= 32'h0000_0000;
             mem_q_rd           <= 5'd0;
             mem_q_mem_size     <= SZ_B;
-            mem_q_mem_sign_ext <= 1'b0;
+            mem_q_mem_unsigned <= 1'b0;
             mem_q_mem_re       <= 1'b0;
             mem_q_mem_we       <= 1'b0;
             mem_q_rd_we        <= 1'b0;
             mem_q_wb_sel       <= WB_ALU;
         end
-        else if (mem_can_advance) begin
-            mem_q_valid        <= mem_in_valid && !kill;
-            mem_q_alu_result   <= mem_in_alu_result;
-            mem_q_pc_plus4     <= mem_in_pc_plus4;
-            mem_q_imm_u        <= mem_in_imm_u;
-            mem_q_rd           <= mem_in_rd;
-            mem_q_mem_size     <= mem_in_mem_size;
-            mem_q_mem_sign_ext <= mem_in_mem_sign_ext;
-            mem_q_mem_re       <= mem_in_mem_re;
-            mem_q_mem_we       <= mem_in_mem_we;
-            mem_q_rd_we        <= mem_in_rd_we;
-            mem_q_wb_sel       <= mem_in_wb_sel;
+        else if (!stall) begin
+
+            if (mem_response_done) begin
+                mem_q_valid <= 1'b0;
+            end
+
+            if (mem_req_fire || (!mem_req_valid && !mem_q_is_mem)) begin
+                mem_q_valid        <= mem_in_valid && !kill;
+                mem_q_alu_result   <= mem_in_alu_result;
+                mem_q_pc_plus4     <= mem_in_pc_plus4;
+                mem_q_imm_u        <= mem_in_imm_u;
+                mem_q_rd           <= mem_in_rd;
+                mem_q_mem_size     <= mem_in_mem_size;
+                mem_q_mem_unsigned <= mem_in_mem_unsigned;
+                mem_q_mem_re       <= mem_in_mem_re;
+                mem_q_mem_we       <= mem_in_mem_we;
+                mem_q_rd_we        <= mem_in_rd_we;
+                mem_q_wb_sel       <= mem_in_wb_sel;
+            end
         end
     end
 
@@ -209,18 +237,18 @@ module mem_stage (
         case (mem_q_mem_size)
             SZ_B: begin
                 case (mem_q_alu_result[1:0])
-                    2'b00: load_data_aligned = mem_q_mem_sign_ext ? {{24{dmem_rdata[7]}},  dmem_rdata[7:0]}   : {24'b0, dmem_rdata[7:0]};
-                    2'b01: load_data_aligned = mem_q_mem_sign_ext ? {{24{dmem_rdata[15]}}, dmem_rdata[15:8]}  : {24'b0, dmem_rdata[15:8]};
-                    2'b10: load_data_aligned = mem_q_mem_sign_ext ? {{24{dmem_rdata[23]}}, dmem_rdata[23:16]} : {24'b0, dmem_rdata[23:16]};
-                    2'b11: load_data_aligned = mem_q_mem_sign_ext ? {{24{dmem_rdata[31]}}, dmem_rdata[31:24]} : {24'b0, dmem_rdata[31:24]};
+                    2'b00: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[7:0]}   : {{24{dmem_rdata[7]}},  dmem_rdata[7:0]};
+                    2'b01: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[15:8]}  : {{24{dmem_rdata[15]}}, dmem_rdata[15:8]};
+                    2'b10: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[23:16]} : {{24{dmem_rdata[23]}}, dmem_rdata[23:16]};
+                    2'b11: load_data_aligned = mem_q_mem_unsigned ? {24'b0, dmem_rdata[31:24]} : {{24{dmem_rdata[31]}}, dmem_rdata[31:24]};
                 endcase
             end
 
             SZ_H: begin
                 if (mem_q_alu_result[1] == 1'b0)
-                    load_data_aligned = mem_q_mem_sign_ext ? {{16{dmem_rdata[15]}}, dmem_rdata[15:0]} : {16'b0, dmem_rdata[15:0]};
+                    load_data_aligned = mem_q_mem_unsigned ? {16'b0, dmem_rdata[15:0]}  : {{16{dmem_rdata[15]}}, dmem_rdata[15:0]};
                 else
-                    load_data_aligned = mem_q_mem_sign_ext ? {{16{dmem_rdata[31]}}, dmem_rdata[31:16]} : {16'b0, dmem_rdata[31:16]};
+                    load_data_aligned = mem_q_mem_unsigned ? {16'b0, dmem_rdata[31:16]} : {{16{dmem_rdata[31]}}, dmem_rdata[31:16]};
             end
 
             SZ_W: begin
@@ -234,17 +262,17 @@ module mem_stage (
     end
 
     always @(*) begin
-        mem_out_valid        = mem_q_valid;
+        mem_out_valid        = mem_out_ready;
         mem_out_data         = load_data_aligned;
         mem_out_alu_result   = mem_q_alu_result;
         mem_out_pc_plus4     = mem_q_pc_plus4;
         mem_out_imm_u        = mem_q_imm_u;
         mem_out_rd           = mem_q_rd;
         mem_out_mem_size     = mem_q_mem_size;
-        mem_out_mem_unsigned = mem_q_mem_sign_ext;
+        mem_out_mem_unsigned = mem_q_mem_unsigned;
 
         mem_out_rd_we =
-            mem_q_valid &&
+            mem_out_ready &&
             mem_q_rd_we &&
             (mem_q_rd != 5'd0);
 

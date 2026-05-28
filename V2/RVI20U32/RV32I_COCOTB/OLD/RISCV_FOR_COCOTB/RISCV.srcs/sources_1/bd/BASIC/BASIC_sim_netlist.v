@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-// Date        : Tue May 26 21:53:40 2026
-// Host        : xilinx running 64-bit Ubuntu 25.10
+// Date        : Thu May 28 01:23:02 2026
+// Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/OLD/RISCV_FOR_COCOTB/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.v
+//               /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/OLD/RISCV_FOR_COCOTB/RISCV.srcs/sources_1/bd/BASIC/BASIC_sim_netlist.v
 // Design      : BASIC
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -176,7 +176,6 @@ module BASIC
   wire [31:0]forward_mux_2_out_data;
   wire [1:0]forwarding_0_forward_a;
   wire [1:0]forwarding_0_forward_b;
-  wire [1:0]forwarding_0_forward_store;
   wire [7:0]gpio_0_gpio_out;
   wire [31:0]gpio_0_rdata;
   wire gpio_0_ready;
@@ -217,6 +216,7 @@ module BASIC
   wire [31:0]rom_memory_0_dout;
   wire rst;
   wire sim_constant_0_dout;
+  wire sim_constant_2_dout;
   wire [11:0]system_decoder_0_csr_addr;
   wire [4:0]system_decoder_0_csr_rd;
   wire [4:0]system_decoder_0_csr_rs1;
@@ -240,6 +240,7 @@ module BASIC
   wire [31:0]trap_controller_0_trap_target;
   wire [31:0]uart_tx_0_rdata;
   wire uart_tx_0_ready;
+  wire uart_tx_0_tx;
   wire update_is_control_1;
   wire util_vector_and_0_Res;
   wire util_vector_and_0_Res_1;
@@ -264,7 +265,6 @@ module BASIC
   wire we_4;
   wire [7:0]xlconcat_8_0_dout;
   wire xlconstant_3_dout;
-  wire xlconstant_3_dout_1;
   wire NLW_branch_0_branch_taken_UNCONNECTED;
   wire NLW_branch_0_ex_control_flow_change_UNCONNECTED;
   wire NLW_branch_0_ex_mispredict_UNCONNECTED;
@@ -274,6 +274,7 @@ module BASIC
   wire [31:0]NLW_branch_predictor_btb_0_pred_target_UNCONNECTED;
   wire [31:0]NLW_csr_file_0_csr_mcause_UNCONNECTED;
   wire [31:0]NLW_csr_file_0_csr_mtval_UNCONNECTED;
+  wire [1:0]NLW_forwarding_0_forward_store_UNCONNECTED;
   wire [7:0]NLW_gpio_0_gpio_dir_UNCONNECTED;
   wire NLW_load_use_detection_0_load_use_hazard_UNCONNECTED;
   wire NLW_mem_stage_0_dmem_re_UNCONNECTED;
@@ -289,7 +290,6 @@ module BASIC
   wire [31:0]NLW_pc_unit_0_pc_debug_last_redirect_UNCONNECTED;
   wire NLW_uart_tx_0_rx_busy_UNCONNECTED;
   wire NLW_uart_tx_0_rx_ready_UNCONNECTED;
-  wire NLW_uart_tx_0_tx_UNCONNECTED;
   wire NLW_uart_tx_0_tx_busy_UNCONNECTED;
   wire NLW_uart_tx_0_tx_ready_UNCONNECTED;
 
@@ -545,7 +545,7 @@ module BASIC
   BASIC_BASIC_forward_mux_1_0 forward_mux_2
        (.base_data(ex_rs2_data_1),
         .ex_mem_data(ex_mem_reg_1_mem_alu_result),
-        .forward_sel(forwarding_0_forward_store),
+        .forward_sel({1'b0,1'b0}),
         .mem_stage_data(mem_stage_0_mem_forward_data),
         .mem_wb_data(Core_RV32I_rd_wdata1),
         .out_data(forward_mux_2_out_data));
@@ -559,7 +559,7 @@ module BASIC
         .ex_rs2(ex_rs2_1),
         .forward_a(forwarding_0_forward_a),
         .forward_b(forwarding_0_forward_b),
-        .forward_store(forwarding_0_forward_store),
+        .forward_store(NLW_forwarding_0_forward_store_UNCONNECTED[1:0]),
         .mem_is_load(ex_mem_reg_1_mem_mem_re),
         .mem_rd(ex_mem_reg_1_mem_rd),
         .mem_rd_we(util_vector_and_0_Res_2),
@@ -665,7 +665,7 @@ module BASIC
         .if_pc4_in(pc_unit_0_pc_plus4),
         .if_pc_in(pc_unit_0_pc),
         .if_pred_next_pc_in(branch_predictor_btb_0_pred_next_pc),
-        .if_valid_in(xlconstant_3_dout_1),
+        .if_valid_in(sim_constant_2_dout),
         .rst(rst));
   (* CHECK_LICENSE_TYPE = "BASIC_imm_mux_0_0,imm_mux,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
@@ -965,6 +965,12 @@ module BASIC
   (* X_CORE_INFO = "sim_constant,Vivado 2020.1" *) 
   BASIC_BASIC_sim_constant_0_3 sim_constant_1
        (.dout(sim_constant_0_dout));
+  (* CHECK_LICENSE_TYPE = "BASIC_sim_constant_0_5,sim_constant,{}" *) 
+  (* DowngradeIPIdentifiedWarnings = "yes" *) 
+  (* IP_DEFINITION_SOURCE = "module_ref" *) 
+  (* X_CORE_INFO = "sim_constant,Vivado 2020.1" *) 
+  BASIC_BASIC_sim_constant_0_5 sim_constant_2
+       (.dout(sim_constant_2_dout));
   (* CHECK_LICENSE_TYPE = "BASIC_system_decoder_0_0,system_decoder,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* IP_DEFINITION_SOURCE = "module_ref" *) 
@@ -1038,10 +1044,10 @@ module BASIC
         .rdata(uart_tx_0_rdata),
         .ready(uart_tx_0_ready),
         .rst(rst),
-        .rx(1'b0),
+        .rx(uart_tx_0_tx),
         .rx_busy(NLW_uart_tx_0_rx_busy_UNCONNECTED),
         .rx_ready(NLW_uart_tx_0_rx_ready_UNCONNECTED),
-        .tx(NLW_uart_tx_0_tx_UNCONNECTED),
+        .tx(uart_tx_0_tx),
         .tx_busy(NLW_uart_tx_0_tx_busy_UNCONNECTED),
         .tx_ready(NLW_uart_tx_0_tx_ready_UNCONNECTED),
         .valid(valid_2),
@@ -1149,11 +1155,6 @@ module BASIC
         .in5(SW1),
         .in6(SW1),
         .in7(SW1));
-  (* CHECK_LICENSE_TYPE = "BASIC_xlconstant_2_0,xlconstant_v1_1_7_xlconstant,{}" *) 
-  (* DowngradeIPIdentifiedWarnings = "yes" *) 
-  (* X_CORE_INFO = "xlconstant_v1_1_7_xlconstant,Vivado 2020.1" *) 
-  BASIC_BASIC_xlconstant_2_0 xlconstant_3
-       (.dout(xlconstant_3_dout_1));
   (* CHECK_LICENSE_TYPE = "BASIC_xlslice_2bit_0_0,xlslice_2bit,{}" *) 
   (* DowngradeIPIdentifiedWarnings = "yes" *) 
   (* IP_DEFINITION_SOURCE = "module_ref" *) 
@@ -4140,7 +4141,7 @@ module BASIC_BASIC_branch_predictor_btb_0_0
     update_is_control,
     update_taken,
     update_target);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input [31:0]if_pc;
   output pred_valid;
@@ -4897,7 +4898,7 @@ module BASIC_BASIC_csr_file_0_0
     csr_mtval,
     csr_mie,
     csr_mip);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input csr_we;
   input [11:0]csr_addr;
@@ -5591,7 +5592,7 @@ module BASIC_BASIC_ex_mem_reg_1_0
     mem_exception_valid,
     mem_exception_cause,
     mem_exception_tval);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input stall;
   input flush;
@@ -6211,7 +6212,7 @@ module BASIC_BASIC_gpio_0_0
     gpio_out,
     gpio_in,
     gpio_dir);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input valid;
   input we;
@@ -6341,7 +6342,7 @@ module BASIC_BASIC_id_ex_reg_0_1
     ex_instr,
     ex_illegal_instr,
     ex_wb_sel);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input [31:0]id_instr;
   input stall;
@@ -6531,7 +6532,7 @@ module BASIC_BASIC_if_id_reg_0_0
     id_instr_out,
     id_valid_out,
     id_pred_next_pc_out);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input [31:0]if_pc_in;
   input [31:0]if_pc4_in;
@@ -6558,7 +6559,6 @@ module BASIC_BASIC_if_id_reg_0_0
   wire [31:0]if_pc4_in;
   wire [31:0]if_pc_in;
   wire [31:0]if_pred_next_pc_in;
-  wire if_valid_in;
   wire rst;
 
   BASIC_if_id_reg inst
@@ -6574,7 +6574,6 @@ module BASIC_BASIC_if_id_reg_0_0
         .if_pc4_in(if_pc4_in),
         .if_pc_in(if_pc_in),
         .if_pred_next_pc_in(if_pred_next_pc_in),
-        .if_valid_in(if_valid_in),
         .rst(rst));
 endmodule
 
@@ -6660,7 +6659,7 @@ module BASIC_BASIC_load_use_detection_0_0
 
   assign if_id_hold = id_ex_flush;
   assign load_use_hazard = id_ex_flush;
-  (* SOFT_HLUTNM = "soft_lutpair163" *) 
+  (* SOFT_HLUTNM = "soft_lutpair164" *) 
   LUT5 #(
     .INIT(32'h22200000)) 
     id_ex_flush_INST_0
@@ -6720,7 +6719,7 @@ module BASIC_BASIC_load_use_detection_0_0
         .I4(id_ex_rd[1]),
         .I5(if_id_rs1[1]),
         .O(id_ex_flush_INST_0_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair163" *) 
+  (* SOFT_HLUTNM = "soft_lutpair164" *) 
   LUT5 #(
     .INIT(32'hFF57FFFF)) 
     pc_en_INST_0
@@ -6775,7 +6774,7 @@ module BASIC_BASIC_mem_bus_registered_0_0
     timer_rdata,
     timer_ready,
     timer_error);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input mem_req_valid;
   output mem_req_ready;
@@ -6991,7 +6990,7 @@ module BASIC_BASIC_mem_stage_0_0
     mem_out_rd_we,
     mem_out_wb_sel,
     mem_forward_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input stall;
   input kill;
@@ -7096,7 +7095,7 @@ module BASIC_BASIC_mem_stage_0_0
   assign mem_out_alu_result[31:0] = mem_fault_tval;
   GND GND
        (.G(\<const0> ));
-  (* SOFT_HLUTNM = "soft_lutpair236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair237" *) 
   LUT5 #(
     .INIT(32'h05000551)) 
     \dmem_be[0]_INST_0 
@@ -7106,7 +7105,7 @@ module BASIC_BASIC_mem_stage_0_0
         .I3(mem_in_mem_size[1]),
         .I4(mem_in_alu_result[1]),
         .O(dmem_be[0]));
-  (* SOFT_HLUTNM = "soft_lutpair236" *) 
+  (* SOFT_HLUTNM = "soft_lutpair237" *) 
   LUT5 #(
     .INIT(32'h11001154)) 
     \dmem_be[1]_INST_0 
@@ -7116,7 +7115,7 @@ module BASIC_BASIC_mem_stage_0_0
         .I3(mem_in_mem_size[1]),
         .I4(mem_in_alu_result[1]),
         .O(dmem_be[1]));
-  (* SOFT_HLUTNM = "soft_lutpair235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair236" *) 
   LUT5 #(
     .INIT(32'h04045054)) 
     \dmem_be[2]_INST_0 
@@ -7126,7 +7125,7 @@ module BASIC_BASIC_mem_stage_0_0
         .I3(mem_in_alu_result[0]),
         .I4(mem_in_mem_size[0]),
         .O(dmem_be[2]));
-  (* SOFT_HLUTNM = "soft_lutpair235" *) 
+  (* SOFT_HLUTNM = "soft_lutpair236" *) 
   LUT5 #(
     .INIT(32'h11115400)) 
     \dmem_be[3]_INST_0 
@@ -7143,7 +7142,7 @@ module BASIC_BASIC_mem_stage_0_0
         .I1(kill),
         .I2(mem_in_mem_we),
         .O(\dmem_be[3]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair235" *) 
   LUT4 #(
     .INIT(16'h0800)) 
     dmem_re_INST_0
@@ -7152,7 +7151,7 @@ module BASIC_BASIC_mem_stage_0_0
         .I2(kill),
         .I3(mem_in_valid),
         .O(dmem_re));
-  (* SOFT_HLUTNM = "soft_lutpair234" *) 
+  (* SOFT_HLUTNM = "soft_lutpair235" *) 
   LUT5 #(
     .INIT(32'h08080800)) 
     dmem_valid_INST_0
@@ -7637,7 +7636,7 @@ module BASIC_BASIC_mem_wb_reg_0_0
     wb_csr_rd_we,
     wb_csr_rd_addr,
     wb_csr_rd_data);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input stall;
   input flush;
@@ -7802,7 +7801,7 @@ module BASIC_BASIC_pc_unit_0_0
     pc_debug_last_predict,
     pc_debug_predict_pulse);
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   input pc_en;
   input priv_redirect_valid;
   input [31:0]priv_redirect_target;
@@ -7891,7 +7890,7 @@ module BASIC_BASIC_priority_branch_OR_l_0_0
   wire pc_en_final;
   wire priv_redirect_valid;
 
-  (* SOFT_HLUTNM = "soft_lutpair254" *) 
+  (* SOFT_HLUTNM = "soft_lutpair255" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     id_ex_flush_final_INST_0
@@ -7899,14 +7898,14 @@ module BASIC_BASIC_priority_branch_OR_l_0_0
         .I1(ex_flush_req),
         .I2(load_use_id_ex_flush),
         .O(id_ex_flush_final));
-  (* SOFT_HLUTNM = "soft_lutpair254" *) 
+  (* SOFT_HLUTNM = "soft_lutpair255" *) 
   LUT2 #(
     .INIT(4'hE)) 
     if_id_flush_final_INST_0
        (.I0(ex_flush_req),
         .I1(priv_redirect_valid),
         .O(if_id_flush_final));
-  (* SOFT_HLUTNM = "soft_lutpair253" *) 
+  (* SOFT_HLUTNM = "soft_lutpair254" *) 
   LUT3 #(
     .INIT(8'h02)) 
     if_id_hold_final_INST_0
@@ -7914,7 +7913,7 @@ module BASIC_BASIC_priority_branch_OR_l_0_0
         .I1(priv_redirect_valid),
         .I2(ex_flush_req),
         .O(if_id_hold_final));
-  (* SOFT_HLUTNM = "soft_lutpair253" *) 
+  (* SOFT_HLUTNM = "soft_lutpair254" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     pc_en_final_INST_0
@@ -7973,7 +7972,7 @@ module BASIC_BASIC_ram_data_1_0
     wdata,
     rdata,
     ready);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input valid;
   input we;
@@ -8016,7 +8015,7 @@ module BASIC_BASIC_regfile_0_0
     rd_we,
     rd_addr,
     rd_wdata);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   input [4:0]rs1_addr;
   input [4:0]rs2_addr;
   output [31:0]rs1_rdata;
@@ -8142,36 +8141,28 @@ module BASIC_BASIC_rom_memory_0_0
     en,
     addr,
     dout);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   input en;
   input [10:0]addr;
   output [31:0]dout;
 
   wire [10:0]addr;
   wire clk;
-  wire [25:0]\^dout ;
+  wire [28:0]\^dout ;
   wire en;
 
-  assign dout[31] = \^dout [3];
-  assign dout[30] = \^dout [3];
-  assign dout[29] = \^dout [3];
-  assign dout[28] = \^dout [3];
-  assign dout[27] = \^dout [3];
-  assign dout[26] = \^dout [3];
-  assign dout[25] = \^dout [25];
-  assign dout[24] = \^dout [23];
-  assign dout[23:20] = \^dout [23:20];
-  assign dout[19] = \^dout [3];
-  assign dout[18] = \^dout [3];
-  assign dout[17] = \^dout [6];
-  assign dout[16] = \^dout [14];
-  assign dout[15:2] = \^dout [15:2];
+  assign dout[31] = \^dout [27];
+  assign dout[30] = \^dout [19];
+  assign dout[29] = \^dout [28];
+  assign dout[28:27] = \^dout [28:27];
+  assign dout[26] = \^dout [14];
+  assign dout[25:2] = \^dout [25:2];
   assign dout[1] = \^dout [0];
   assign dout[0] = \^dout [0];
   BASIC_rom_memory inst
        (.addr(addr),
         .clk(clk),
-        .dout({\^dout [3],\^dout [25],\^dout [23:20],\^dout [6],\^dout [14],\^dout [15],\^dout [13:7],\^dout [5:4],\^dout [2],\^dout [0]}),
+        .dout({\^dout [27],\^dout [19],\^dout [28],\^dout [14],\^dout [25:20],\^dout [18:15],\^dout [13:2],\^dout [0]}),
         .en(en));
 endmodule
 
@@ -8199,6 +8190,19 @@ module BASIC_BASIC_sim_constant_0_4
   assign dout[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
+endmodule
+
+(* CHECK_LICENSE_TYPE = "BASIC_sim_constant_0_5,sim_constant,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
+(* ORIG_REF_NAME = "BASIC_sim_constant_0_5" *) (* X_CORE_INFO = "sim_constant,Vivado 2020.1" *) 
+module BASIC_BASIC_sim_constant_0_5
+   (dout);
+  output [0:0]dout;
+
+  wire \<const1> ;
+
+  assign dout[0] = \<const1> ;
+  VCC VCC
+       (.P(\<const1> ));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "BASIC_system_decoder_0_0,system_decoder,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
@@ -8244,7 +8248,7 @@ module BASIC_BASIC_system_decoder_0_0
   assign csr_addr[11:0] = instr[31:20];
   assign csr_rd[4:0] = instr[11:7];
   assign csr_rs1[4:0] = instr[19:15];
-  (* SOFT_HLUTNM = "soft_lutpair256" *) 
+  (* SOFT_HLUTNM = "soft_lutpair257" *) 
   LUT3 #(
     .INIT(8'h80)) 
     is_csrrc_INST_0
@@ -8259,7 +8263,7 @@ module BASIC_BASIC_system_decoder_0_0
         .I1(instr[13]),
         .I2(is_ecall_INST_0_i_5_n_0),
         .O(is_csrrs));
-  (* SOFT_HLUTNM = "soft_lutpair256" *) 
+  (* SOFT_HLUTNM = "soft_lutpair257" *) 
   LUT3 #(
     .INIT(8'h40)) 
     is_csrrw_INST_0
@@ -8316,7 +8320,7 @@ module BASIC_BASIC_system_decoder_0_0
         .I4(instr[31]),
         .I5(instr[30]),
         .O(is_ecall_INST_0_i_4_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair255" *) 
+  (* SOFT_HLUTNM = "soft_lutpair256" *) 
   LUT5 #(
     .INIT(32'h00008000)) 
     is_ecall_INST_0_i_5
@@ -8355,7 +8359,7 @@ module BASIC_BASIC_system_decoder_0_0
         .I4(instr[31]),
         .I5(instr[30]),
         .O(is_mret_INST_0_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair255" *) 
+  (* SOFT_HLUTNM = "soft_lutpair256" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     is_system_INST_0
@@ -8388,7 +8392,7 @@ module BASIC_BASIC_timer_0_0
     ready,
     error,
     timer_irq);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input valid;
   input we;
@@ -8460,7 +8464,7 @@ module BASIC_BASIC_trap_controller_0_0
     trap_mtval,
     mret_taken,
     mret_target);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input exception_valid;
   input [31:0]exception_pc;
@@ -8936,7 +8940,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I4(illegal_instr),
         .I5(instr_valid),
         .O(\^trap_mcause [1]));
-  (* SOFT_HLUTNM = "soft_lutpair259" *) 
+  (* SOFT_HLUTNM = "soft_lutpair260" *) 
   LUT4 #(
     .INIT(16'hFB08)) 
     \trap_mcause[2]_INST_0 
@@ -9297,7 +9301,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I4(trap_flush_INST_0_i_1_n_0),
         .I5(\inst/take_exception__0 ),
         .O(trap_mepc[9]));
-  (* SOFT_HLUTNM = "soft_lutpair274" *) 
+  (* SOFT_HLUTNM = "soft_lutpair275" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[0]_INST_0 
@@ -9305,7 +9309,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[0]),
         .O(trap_mtval[0]));
-  (* SOFT_HLUTNM = "soft_lutpair263" *) 
+  (* SOFT_HLUTNM = "soft_lutpair264" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[10]_INST_0 
@@ -9313,7 +9317,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[10]),
         .O(trap_mtval[10]));
-  (* SOFT_HLUTNM = "soft_lutpair264" *) 
+  (* SOFT_HLUTNM = "soft_lutpair265" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[11]_INST_0 
@@ -9321,7 +9325,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[11]),
         .O(trap_mtval[11]));
-  (* SOFT_HLUTNM = "soft_lutpair264" *) 
+  (* SOFT_HLUTNM = "soft_lutpair265" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[12]_INST_0 
@@ -9329,7 +9333,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[12]),
         .O(trap_mtval[12]));
-  (* SOFT_HLUTNM = "soft_lutpair265" *) 
+  (* SOFT_HLUTNM = "soft_lutpair266" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[13]_INST_0 
@@ -9337,7 +9341,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[13]),
         .O(trap_mtval[13]));
-  (* SOFT_HLUTNM = "soft_lutpair265" *) 
+  (* SOFT_HLUTNM = "soft_lutpair266" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[14]_INST_0 
@@ -9345,7 +9349,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[14]),
         .O(trap_mtval[14]));
-  (* SOFT_HLUTNM = "soft_lutpair266" *) 
+  (* SOFT_HLUTNM = "soft_lutpair267" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[15]_INST_0 
@@ -9353,7 +9357,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[15]),
         .O(trap_mtval[15]));
-  (* SOFT_HLUTNM = "soft_lutpair266" *) 
+  (* SOFT_HLUTNM = "soft_lutpair267" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[16]_INST_0 
@@ -9361,7 +9365,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[16]),
         .O(trap_mtval[16]));
-  (* SOFT_HLUTNM = "soft_lutpair267" *) 
+  (* SOFT_HLUTNM = "soft_lutpair268" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[17]_INST_0 
@@ -9369,7 +9373,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[17]),
         .O(trap_mtval[17]));
-  (* SOFT_HLUTNM = "soft_lutpair267" *) 
+  (* SOFT_HLUTNM = "soft_lutpair268" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[18]_INST_0 
@@ -9377,7 +9381,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[18]),
         .O(trap_mtval[18]));
-  (* SOFT_HLUTNM = "soft_lutpair268" *) 
+  (* SOFT_HLUTNM = "soft_lutpair269" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[19]_INST_0 
@@ -9392,7 +9396,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[1]),
         .O(trap_mtval[1]));
-  (* SOFT_HLUTNM = "soft_lutpair268" *) 
+  (* SOFT_HLUTNM = "soft_lutpair269" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[20]_INST_0 
@@ -9400,7 +9404,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[20]),
         .O(trap_mtval[20]));
-  (* SOFT_HLUTNM = "soft_lutpair269" *) 
+  (* SOFT_HLUTNM = "soft_lutpair270" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[21]_INST_0 
@@ -9408,7 +9412,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[21]),
         .O(trap_mtval[21]));
-  (* SOFT_HLUTNM = "soft_lutpair269" *) 
+  (* SOFT_HLUTNM = "soft_lutpair270" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[22]_INST_0 
@@ -9416,7 +9420,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[22]),
         .O(trap_mtval[22]));
-  (* SOFT_HLUTNM = "soft_lutpair270" *) 
+  (* SOFT_HLUTNM = "soft_lutpair271" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[23]_INST_0 
@@ -9424,7 +9428,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[23]),
         .O(trap_mtval[23]));
-  (* SOFT_HLUTNM = "soft_lutpair270" *) 
+  (* SOFT_HLUTNM = "soft_lutpair271" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[24]_INST_0 
@@ -9432,7 +9436,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[24]),
         .O(trap_mtval[24]));
-  (* SOFT_HLUTNM = "soft_lutpair271" *) 
+  (* SOFT_HLUTNM = "soft_lutpair272" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[25]_INST_0 
@@ -9440,7 +9444,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[25]),
         .O(trap_mtval[25]));
-  (* SOFT_HLUTNM = "soft_lutpair271" *) 
+  (* SOFT_HLUTNM = "soft_lutpair272" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[26]_INST_0 
@@ -9448,7 +9452,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[26]),
         .O(trap_mtval[26]));
-  (* SOFT_HLUTNM = "soft_lutpair272" *) 
+  (* SOFT_HLUTNM = "soft_lutpair273" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[27]_INST_0 
@@ -9456,7 +9460,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[27]),
         .O(trap_mtval[27]));
-  (* SOFT_HLUTNM = "soft_lutpair272" *) 
+  (* SOFT_HLUTNM = "soft_lutpair273" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[28]_INST_0 
@@ -9464,7 +9468,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[28]),
         .O(trap_mtval[28]));
-  (* SOFT_HLUTNM = "soft_lutpair273" *) 
+  (* SOFT_HLUTNM = "soft_lutpair274" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[29]_INST_0 
@@ -9472,7 +9476,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[29]),
         .O(trap_mtval[29]));
-  (* SOFT_HLUTNM = "soft_lutpair259" *) 
+  (* SOFT_HLUTNM = "soft_lutpair260" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[2]_INST_0 
@@ -9480,7 +9484,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[2]),
         .O(trap_mtval[2]));
-  (* SOFT_HLUTNM = "soft_lutpair273" *) 
+  (* SOFT_HLUTNM = "soft_lutpair274" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[30]_INST_0 
@@ -9488,7 +9492,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[30]),
         .O(trap_mtval[30]));
-  (* SOFT_HLUTNM = "soft_lutpair274" *) 
+  (* SOFT_HLUTNM = "soft_lutpair275" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[31]_INST_0 
@@ -9496,7 +9500,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[31]),
         .O(trap_mtval[31]));
-  (* SOFT_HLUTNM = "soft_lutpair260" *) 
+  (* SOFT_HLUTNM = "soft_lutpair261" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[3]_INST_0 
@@ -9504,7 +9508,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[3]),
         .O(trap_mtval[3]));
-  (* SOFT_HLUTNM = "soft_lutpair260" *) 
+  (* SOFT_HLUTNM = "soft_lutpair261" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[4]_INST_0 
@@ -9512,7 +9516,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[4]),
         .O(trap_mtval[4]));
-  (* SOFT_HLUTNM = "soft_lutpair261" *) 
+  (* SOFT_HLUTNM = "soft_lutpair262" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[5]_INST_0 
@@ -9520,7 +9524,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[5]),
         .O(trap_mtval[5]));
-  (* SOFT_HLUTNM = "soft_lutpair261" *) 
+  (* SOFT_HLUTNM = "soft_lutpair262" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[6]_INST_0 
@@ -9528,7 +9532,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[6]),
         .O(trap_mtval[6]));
-  (* SOFT_HLUTNM = "soft_lutpair262" *) 
+  (* SOFT_HLUTNM = "soft_lutpair263" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[7]_INST_0 
@@ -9536,7 +9540,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[7]),
         .O(trap_mtval[7]));
-  (* SOFT_HLUTNM = "soft_lutpair262" *) 
+  (* SOFT_HLUTNM = "soft_lutpair263" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[8]_INST_0 
@@ -9544,7 +9548,7 @@ module BASIC_BASIC_trap_controller_0_0
         .I1(exception_valid),
         .I2(exception_tval[8]),
         .O(trap_mtval[8]));
-  (* SOFT_HLUTNM = "soft_lutpair263" *) 
+  (* SOFT_HLUTNM = "soft_lutpair264" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \trap_mtval[9]_INST_0 
@@ -9892,7 +9896,7 @@ module BASIC_BASIC_uart_tx_0_0
     tx_ready,
     rx_busy,
     rx_ready);
-  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *) input clk;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN BASIC_clk, INSERT_VIP 0" *) input clk;
   (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input rst;
   input valid;
   input we;
@@ -10251,19 +10255,6 @@ module BASIC_BASIC_xlconcat_8_0_0
   assign dout[2] = in2;
   assign dout[1] = in1;
   assign dout[0] = in0;
-endmodule
-
-(* CHECK_LICENSE_TYPE = "BASIC_xlconstant_2_0,xlconstant_v1_1_7_xlconstant,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* ORIG_REF_NAME = "BASIC_xlconstant_2_0" *) 
-(* X_CORE_INFO = "xlconstant_v1_1_7_xlconstant,Vivado 2020.1" *) 
-module BASIC_BASIC_xlconstant_2_0
-   (dout);
-  output [0:0]dout;
-
-  wire \<const1> ;
-
-  assign dout[0] = \<const1> ;
-  VCC VCC
-       (.P(\<const1> ));
 endmodule
 
 (* CHECK_LICENSE_TYPE = "BASIC_xlslice_2bit_0_0,xlslice_2bit,{}" *) (* DowngradeIPIdentifiedWarnings = "yes" *) (* IP_DEFINITION_SOURCE = "module_ref" *) 
@@ -67013,8 +67004,7 @@ module BASIC_if_id_reg
     if_pred_next_pc_in,
     flush,
     hold,
-    rst,
-    if_valid_in);
+    rst);
   output [31:0]id_pc_out;
   output [31:0]id_pc4_out;
   output [31:0]id_instr_out;
@@ -67028,7 +67018,6 @@ module BASIC_if_id_reg
   input flush;
   input hold;
   input rst;
-  input if_valid_in;
 
   wire clk;
   wire flush;
@@ -67042,7 +67031,6 @@ module BASIC_if_id_reg
   wire [31:0]if_pc4_in;
   wire [31:0]if_pc_in;
   wire [31:0]if_pred_next_pc_in;
-  wire if_valid_in;
   wire kill_cnt;
   wire \kill_cnt[0]_i_1_n_0 ;
   wire [31:0]pc4_align;
@@ -67053,7 +67041,9 @@ module BASIC_if_id_reg
   wire reg_pred_next_pc;
   wire rst;
   wire valid_align;
+  wire valid_align_i_1_n_0;
 
+  (* SOFT_HLUTNM = "soft_lutpair163" *) 
   LUT4 #(
     .INIT(16'h00EA)) 
     \kill_cnt[0]_i_1 
@@ -68437,12 +68427,21 @@ module BASIC_if_id_reg
         .D(valid_align),
         .Q(id_valid_out),
         .R(reg_pred_next_pc));
+  (* SOFT_HLUTNM = "soft_lutpair163" *) 
+  LUT4 #(
+    .INIT(16'h000D)) 
+    valid_align_i_1
+       (.I0(hold),
+        .I1(valid_align),
+        .I2(flush),
+        .I3(rst),
+        .O(valid_align_i_1_n_0));
   FDRE valid_align_reg
        (.C(clk),
-        .CE(\reg_pc[31]_i_2_n_0 ),
-        .D(if_valid_in),
+        .CE(1'b1),
+        .D(valid_align_i_1_n_0),
         .Q(valid_align),
-        .R(pred_next_pc_align_0));
+        .R(1'b0));
 endmodule
 
 (* ORIG_REF_NAME = "imm_mux" *) 
@@ -69614,7 +69613,7 @@ module BASIC_mem_bus_registered
         .D(mem_req_be[3]),
         .Q(timer_be[3]),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair164" *) 
+  (* SOFT_HLUTNM = "soft_lutpair165" *) 
   LUT3 #(
     .INIT(8'h74)) 
     busy_q_i_1
@@ -69628,7 +69627,7 @@ module BASIC_mem_bus_registered
         .D(busy_q_i_1_n_0),
         .Q(busy_q),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair174" *) 
+  (* SOFT_HLUTNM = "soft_lutpair175" *) 
   LUT4 #(
     .INIT(16'h0040)) 
     gpio_valid_INST_0
@@ -69637,7 +69636,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[1] ),
         .I3(\sel_q_reg_n_0_[0] ),
         .O(gpio_valid));
-  (* SOFT_HLUTNM = "soft_lutpair175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair176" *) 
   LUT4 #(
     .INIT(16'h0040)) 
     gpio_we_INST_0
@@ -69646,7 +69645,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[1] ),
         .I3(\sel_q_reg_n_0_[0] ),
         .O(gpio_we));
-  (* SOFT_HLUTNM = "soft_lutpair168" *) 
+  (* SOFT_HLUTNM = "soft_lutpair169" *) 
   LUT1 #(
     .INIT(2'h1)) 
     mem_req_ready_INST_0
@@ -69662,7 +69661,7 @@ module BASIC_mem_bus_registered
         .I4(mem_rsp_error_i_4_n_0),
         .I5(ram_ready),
         .O(mem_rsp_error_0));
-  (* SOFT_HLUTNM = "soft_lutpair167" *) 
+  (* SOFT_HLUTNM = "soft_lutpair168" *) 
   LUT3 #(
     .INIT(8'h47)) 
     mem_rsp_error_i_2
@@ -69680,7 +69679,7 @@ module BASIC_mem_bus_registered
         .I4(\mem_rsp_rdata[26]_i_6_n_0 ),
         .I5(timer_error),
         .O(mem_rsp_error_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair168" *) 
+  (* SOFT_HLUTNM = "soft_lutpair169" *) 
   LUT5 #(
     .INIT(32'h4555FFFF)) 
     mem_rsp_error_i_4
@@ -69698,7 +69697,7 @@ module BASIC_mem_bus_registered
         .I2(\timeout_cnt_q_reg_n_0_[15] ),
         .I3(\timeout_cnt_q_reg_n_0_[16] ),
         .O(mem_rsp_error_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair165" *) 
+  (* SOFT_HLUTNM = "soft_lutpair166" *) 
   LUT4 #(
     .INIT(16'hFFFE)) 
     mem_rsp_error_i_6
@@ -69963,7 +69962,7 @@ module BASIC_mem_bus_registered
         .I4(\sel_q_reg_n_0_[1] ),
         .I5(\mem_rsp_rdata[1]_i_3_n_0 ),
         .O(\mem_rsp_rdata[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair167" *) 
+  (* SOFT_HLUTNM = "soft_lutpair168" *) 
   LUT5 #(
     .INIT(32'hDDDDF0FF)) 
     \mem_rsp_rdata[1]_i_3 
@@ -70042,7 +70041,7 @@ module BASIC_mem_bus_registered
         .I4(\sel_q_reg_n_0_[1] ),
         .I5(\mem_rsp_rdata[22]_i_3_n_0 ),
         .O(\mem_rsp_rdata[22]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair171" *) 
+  (* SOFT_HLUTNM = "soft_lutpair172" *) 
   LUT5 #(
     .INIT(32'h20202F20)) 
     \mem_rsp_rdata[22]_i_3 
@@ -70122,7 +70121,7 @@ module BASIC_mem_bus_registered
         .I4(\mem_rsp_rdata[26]_i_4_n_0 ),
         .I5(\mem_rsp_rdata[26]_i_5_n_0 ),
         .O(mem_rsp_rdata_2[26]));
-  (* SOFT_HLUTNM = "soft_lutpair170" *) 
+  (* SOFT_HLUTNM = "soft_lutpair171" *) 
   LUT2 #(
     .INIT(4'h7)) 
     \mem_rsp_rdata[26]_i_2 
@@ -70135,7 +70134,7 @@ module BASIC_mem_bus_registered
        (.I0(\sel_q_reg_n_0_[1] ),
         .I1(\sel_q_reg_n_0_[2] ),
         .O(\mem_rsp_rdata[26]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair171" *) 
+  (* SOFT_HLUTNM = "soft_lutpair172" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \mem_rsp_rdata[26]_i_4 
@@ -70152,7 +70151,7 @@ module BASIC_mem_bus_registered
         .I4(ram_rdata[26]),
         .I5(\mem_rsp_rdata[2]_i_3_n_0 ),
         .O(\mem_rsp_rdata[26]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair169" *) 
+  (* SOFT_HLUTNM = "soft_lutpair170" *) 
   LUT3 #(
     .INIT(8'h04)) 
     \mem_rsp_rdata[26]_i_6 
@@ -70220,7 +70219,7 @@ module BASIC_mem_bus_registered
         .I4(\sel_q_reg_n_0_[1] ),
         .I5(\mem_rsp_rdata[29]_i_3_n_0 ),
         .O(\mem_rsp_rdata[29]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair170" *) 
+  (* SOFT_HLUTNM = "soft_lutpair171" *) 
   LUT5 #(
     .INIT(32'h20202F20)) 
     \mem_rsp_rdata[29]_i_3 
@@ -70250,7 +70249,7 @@ module BASIC_mem_bus_registered
         .I4(\sel_q_reg_n_0_[0] ),
         .I5(gpio_ready),
         .O(\mem_rsp_rdata[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair177" *) 
   LUT3 #(
     .INIT(8'h10)) 
     \mem_rsp_rdata[2]_i_3 
@@ -70278,7 +70277,7 @@ module BASIC_mem_bus_registered
         .I4(gpio_rdata[30]),
         .I5(\mem_rsp_rdata[30]_i_4_n_0 ),
         .O(\mem_rsp_rdata[30]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair169" *) 
+  (* SOFT_HLUTNM = "soft_lutpair170" *) 
   LUT5 #(
     .INIT(32'hF8CC88CC)) 
     \mem_rsp_rdata[30]_i_3 
@@ -70288,7 +70287,7 @@ module BASIC_mem_bus_registered
         .I3(\sel_q_reg_n_0_[0] ),
         .I4(uart_rdata[30]),
         .O(\mem_rsp_rdata[30]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair178" *) 
   LUT4 #(
     .INIT(16'h0444)) 
     \mem_rsp_rdata[30]_i_4 
@@ -70317,7 +70316,7 @@ module BASIC_mem_bus_registered
         .I4(ram_rdata[31]),
         .I5(\sel_q_reg_n_0_[2] ),
         .O(mem_rsp_rdata_2[31]));
-  (* SOFT_HLUTNM = "soft_lutpair176" *) 
+  (* SOFT_HLUTNM = "soft_lutpair177" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     \mem_rsp_rdata[31]_i_3 
@@ -70336,7 +70335,7 @@ module BASIC_mem_bus_registered
         .I4(gpio_rdata[31]),
         .I5(gpio_ready),
         .O(\mem_rsp_rdata[31]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair177" *) 
+  (* SOFT_HLUTNM = "soft_lutpair178" *) 
   LUT3 #(
     .INIT(8'h40)) 
     \mem_rsp_rdata[31]_i_5 
@@ -70702,7 +70701,7 @@ module BASIC_mem_bus_registered
         .I4(\sel_q_reg_n_0_[0] ),
         .I5(ram_ready),
         .O(mem_rsp_valid_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair165" *) 
+  (* SOFT_HLUTNM = "soft_lutpair166" *) 
   LUT5 #(
     .INIT(32'h00000002)) 
     mem_rsp_valid_i_4
@@ -70762,7 +70761,7 @@ module BASIC_mem_bus_registered
         .D(busy_q_1),
         .Q(mem_rsp_valid),
         .R(mem_rsp_valid_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair174" *) 
+  (* SOFT_HLUTNM = "soft_lutpair175" *) 
   LUT4 #(
     .INIT(16'h0400)) 
     ram_valid_INST_0
@@ -70771,7 +70770,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[2] ),
         .I3(busy_q),
         .O(ram_valid));
-  (* SOFT_HLUTNM = "soft_lutpair175" *) 
+  (* SOFT_HLUTNM = "soft_lutpair176" *) 
   LUT4 #(
     .INIT(16'h0400)) 
     ram_we_INST_0
@@ -70780,7 +70779,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[2] ),
         .I3(we_q),
         .O(ram_we));
-  (* SOFT_HLUTNM = "soft_lutpair164" *) 
+  (* SOFT_HLUTNM = "soft_lutpair165" *) 
   LUT5 #(
     .INIT(32'hBABF8A80)) 
     \sel_q[0]_i_1 
@@ -70877,7 +70876,7 @@ module BASIC_mem_bus_registered
         .I4(mem_req_addr[12]),
         .I5(mem_req_addr[5]),
         .O(\sel_q[2]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair166" *) 
+  (* SOFT_HLUTNM = "soft_lutpair167" *) 
   LUT4 #(
     .INIT(16'hFEFF)) 
     \sel_q[2]_i_5 
@@ -70886,7 +70885,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q[2]_i_10_n_0 ),
         .I3(\sel_q[2]_i_11_n_0 ),
         .O(\sel_q[2]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair166" *) 
+  (* SOFT_HLUTNM = "soft_lutpair167" *) 
   LUT5 #(
     .INIT(32'h00000004)) 
     \sel_q[2]_i_6 
@@ -70940,224 +70939,224 @@ module BASIC_mem_bus_registered
         .D(\sel_q[2]_i_1_n_0 ),
         .Q(\sel_q_reg_n_0_[2] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair193" *) 
+  (* SOFT_HLUTNM = "soft_lutpair194" *) 
   LUT2 #(
     .INIT(4'h1)) 
     \timeout_cnt_q[0]_i_1 
        (.I0(\timeout_cnt_q_reg_n_0_[0] ),
         .I1(busy_q_1),
         .O(timeout_cnt_q[0]));
-  (* SOFT_HLUTNM = "soft_lutpair188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair189" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[10]_i_1 
        (.I0(timeout_cnt_q0[10]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[10]));
-  (* SOFT_HLUTNM = "soft_lutpair188" *) 
+  (* SOFT_HLUTNM = "soft_lutpair189" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[11]_i_1 
        (.I0(timeout_cnt_q0[11]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[11]));
-  (* SOFT_HLUTNM = "soft_lutpair187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair188" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[12]_i_1 
        (.I0(timeout_cnt_q0[12]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[12]));
-  (* SOFT_HLUTNM = "soft_lutpair187" *) 
+  (* SOFT_HLUTNM = "soft_lutpair188" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[13]_i_1 
        (.I0(timeout_cnt_q0[13]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[13]));
-  (* SOFT_HLUTNM = "soft_lutpair186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair187" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[14]_i_1 
        (.I0(timeout_cnt_q0[14]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[14]));
-  (* SOFT_HLUTNM = "soft_lutpair186" *) 
+  (* SOFT_HLUTNM = "soft_lutpair187" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[15]_i_1 
        (.I0(timeout_cnt_q0[15]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[15]));
-  (* SOFT_HLUTNM = "soft_lutpair185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair186" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[16]_i_1 
        (.I0(timeout_cnt_q0[16]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[16]));
-  (* SOFT_HLUTNM = "soft_lutpair185" *) 
+  (* SOFT_HLUTNM = "soft_lutpair186" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[17]_i_1 
        (.I0(timeout_cnt_q0[17]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[17]));
-  (* SOFT_HLUTNM = "soft_lutpair184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair185" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[18]_i_1 
        (.I0(timeout_cnt_q0[18]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[18]));
-  (* SOFT_HLUTNM = "soft_lutpair184" *) 
+  (* SOFT_HLUTNM = "soft_lutpair185" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[19]_i_1 
        (.I0(timeout_cnt_q0[19]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[19]));
-  (* SOFT_HLUTNM = "soft_lutpair193" *) 
+  (* SOFT_HLUTNM = "soft_lutpair194" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[1]_i_1 
        (.I0(timeout_cnt_q0[1]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[1]));
-  (* SOFT_HLUTNM = "soft_lutpair183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair184" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[20]_i_1 
        (.I0(timeout_cnt_q0[20]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[20]));
-  (* SOFT_HLUTNM = "soft_lutpair183" *) 
+  (* SOFT_HLUTNM = "soft_lutpair184" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[21]_i_1 
        (.I0(timeout_cnt_q0[21]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[21]));
-  (* SOFT_HLUTNM = "soft_lutpair182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair183" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[22]_i_1 
        (.I0(timeout_cnt_q0[22]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[22]));
-  (* SOFT_HLUTNM = "soft_lutpair182" *) 
+  (* SOFT_HLUTNM = "soft_lutpair183" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[23]_i_1 
        (.I0(timeout_cnt_q0[23]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[23]));
-  (* SOFT_HLUTNM = "soft_lutpair181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair182" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[24]_i_1 
        (.I0(timeout_cnt_q0[24]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[24]));
-  (* SOFT_HLUTNM = "soft_lutpair181" *) 
+  (* SOFT_HLUTNM = "soft_lutpair182" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[25]_i_1 
        (.I0(timeout_cnt_q0[25]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[25]));
-  (* SOFT_HLUTNM = "soft_lutpair180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair181" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[26]_i_1 
        (.I0(timeout_cnt_q0[26]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[26]));
-  (* SOFT_HLUTNM = "soft_lutpair180" *) 
+  (* SOFT_HLUTNM = "soft_lutpair181" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[27]_i_1 
        (.I0(timeout_cnt_q0[27]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[27]));
-  (* SOFT_HLUTNM = "soft_lutpair179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair180" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[28]_i_1 
        (.I0(timeout_cnt_q0[28]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[28]));
-  (* SOFT_HLUTNM = "soft_lutpair179" *) 
+  (* SOFT_HLUTNM = "soft_lutpair180" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[29]_i_1 
        (.I0(timeout_cnt_q0[29]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[29]));
-  (* SOFT_HLUTNM = "soft_lutpair192" *) 
+  (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[2]_i_1 
        (.I0(timeout_cnt_q0[2]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[2]));
-  (* SOFT_HLUTNM = "soft_lutpair178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair179" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[30]_i_1 
        (.I0(timeout_cnt_q0[30]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[30]));
-  (* SOFT_HLUTNM = "soft_lutpair178" *) 
+  (* SOFT_HLUTNM = "soft_lutpair179" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[31]_i_1 
        (.I0(timeout_cnt_q0[31]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[31]));
-  (* SOFT_HLUTNM = "soft_lutpair192" *) 
+  (* SOFT_HLUTNM = "soft_lutpair193" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[3]_i_1 
        (.I0(timeout_cnt_q0[3]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[3]));
-  (* SOFT_HLUTNM = "soft_lutpair191" *) 
+  (* SOFT_HLUTNM = "soft_lutpair192" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[4]_i_1 
        (.I0(timeout_cnt_q0[4]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[4]));
-  (* SOFT_HLUTNM = "soft_lutpair191" *) 
+  (* SOFT_HLUTNM = "soft_lutpair192" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[5]_i_1 
        (.I0(timeout_cnt_q0[5]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[5]));
-  (* SOFT_HLUTNM = "soft_lutpair190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair191" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[6]_i_1 
        (.I0(timeout_cnt_q0[6]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[6]));
-  (* SOFT_HLUTNM = "soft_lutpair190" *) 
+  (* SOFT_HLUTNM = "soft_lutpair191" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[7]_i_1 
        (.I0(timeout_cnt_q0[7]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[7]));
-  (* SOFT_HLUTNM = "soft_lutpair189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair190" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[8]_i_1 
        (.I0(timeout_cnt_q0[8]),
         .I1(busy_q_1),
         .O(timeout_cnt_q[8]));
-  (* SOFT_HLUTNM = "soft_lutpair189" *) 
+  (* SOFT_HLUTNM = "soft_lutpair190" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \timeout_cnt_q[9]_i_1 
@@ -71388,7 +71387,7 @@ module BASIC_mem_bus_registered
         .D(timeout_cnt_q[9]),
         .Q(\timeout_cnt_q_reg_n_0_[9] ),
         .R(mem_rsp_valid_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair172" *) 
+  (* SOFT_HLUTNM = "soft_lutpair173" *) 
   LUT4 #(
     .INIT(16'h0400)) 
     timer_valid_INST_0
@@ -71397,7 +71396,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[0] ),
         .I3(busy_q),
         .O(timer_valid));
-  (* SOFT_HLUTNM = "soft_lutpair173" *) 
+  (* SOFT_HLUTNM = "soft_lutpair174" *) 
   LUT4 #(
     .INIT(16'h0020)) 
     timer_we_INST_0
@@ -71406,7 +71405,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[2] ),
         .I3(\sel_q_reg_n_0_[0] ),
         .O(timer_we));
-  (* SOFT_HLUTNM = "soft_lutpair172" *) 
+  (* SOFT_HLUTNM = "soft_lutpair173" *) 
   LUT4 #(
     .INIT(16'h4000)) 
     uart_valid_INST_0
@@ -71415,7 +71414,7 @@ module BASIC_mem_bus_registered
         .I2(\sel_q_reg_n_0_[0] ),
         .I3(\sel_q_reg_n_0_[1] ),
         .O(uart_valid));
-  (* SOFT_HLUTNM = "soft_lutpair173" *) 
+  (* SOFT_HLUTNM = "soft_lutpair174" *) 
   LUT4 #(
     .INIT(16'h4000)) 
     uart_we_INST_0
@@ -71649,7 +71648,7 @@ module BASIC_mem_exception_merge
   wire [31:0]mem_fault_tval;
   wire mem_fault_valid;
 
-  (* SOFT_HLUTNM = "soft_lutpair194" *) 
+  (* SOFT_HLUTNM = "soft_lutpair195" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \final_mem_exception_cause[0]_INST_0 
@@ -71657,7 +71656,7 @@ module BASIC_mem_exception_merge
         .I1(mem_fault_valid),
         .I2(mem_exception_cause[0]),
         .O(final_mem_exception_cause[0]));
-  (* SOFT_HLUTNM = "soft_lutpair194" *) 
+  (* SOFT_HLUTNM = "soft_lutpair195" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \final_mem_exception_cause[1]_INST_0 
@@ -71665,7 +71664,7 @@ module BASIC_mem_exception_merge
         .I1(mem_fault_valid),
         .I2(mem_exception_cause[1]),
         .O(final_mem_exception_cause[1]));
-  (* SOFT_HLUTNM = "soft_lutpair195" *) 
+  (* SOFT_HLUTNM = "soft_lutpair196" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \final_mem_exception_cause[2]_INST_0 
@@ -71673,7 +71672,7 @@ module BASIC_mem_exception_merge
         .I1(mem_fault_valid),
         .I2(mem_exception_cause[2]),
         .O(final_mem_exception_cause[2]));
-  (* SOFT_HLUTNM = "soft_lutpair195" *) 
+  (* SOFT_HLUTNM = "soft_lutpair196" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \final_mem_exception_cause[3]_INST_0 
@@ -71681,7 +71680,7 @@ module BASIC_mem_exception_merge
         .I1(mem_fault_valid),
         .I2(mem_exception_cause[3]),
         .O(final_mem_exception_cause[3]));
-  (* SOFT_HLUTNM = "soft_lutpair196" *) 
+  (* SOFT_HLUTNM = "soft_lutpair197" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[0]_INST_0 
@@ -71689,7 +71688,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[0]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[0]));
-  (* SOFT_HLUTNM = "soft_lutpair201" *) 
+  (* SOFT_HLUTNM = "soft_lutpair202" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[10]_INST_0 
@@ -71697,7 +71696,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[10]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[10]));
-  (* SOFT_HLUTNM = "soft_lutpair201" *) 
+  (* SOFT_HLUTNM = "soft_lutpair202" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[11]_INST_0 
@@ -71705,7 +71704,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[11]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[11]));
-  (* SOFT_HLUTNM = "soft_lutpair202" *) 
+  (* SOFT_HLUTNM = "soft_lutpair203" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[12]_INST_0 
@@ -71713,7 +71712,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[12]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[12]));
-  (* SOFT_HLUTNM = "soft_lutpair202" *) 
+  (* SOFT_HLUTNM = "soft_lutpair203" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[13]_INST_0 
@@ -71721,7 +71720,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[13]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[13]));
-  (* SOFT_HLUTNM = "soft_lutpair203" *) 
+  (* SOFT_HLUTNM = "soft_lutpair204" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[14]_INST_0 
@@ -71729,7 +71728,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[14]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[14]));
-  (* SOFT_HLUTNM = "soft_lutpair203" *) 
+  (* SOFT_HLUTNM = "soft_lutpair204" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[15]_INST_0 
@@ -71737,7 +71736,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[15]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[15]));
-  (* SOFT_HLUTNM = "soft_lutpair204" *) 
+  (* SOFT_HLUTNM = "soft_lutpair205" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[16]_INST_0 
@@ -71745,7 +71744,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[16]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[16]));
-  (* SOFT_HLUTNM = "soft_lutpair204" *) 
+  (* SOFT_HLUTNM = "soft_lutpair205" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[17]_INST_0 
@@ -71753,7 +71752,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[17]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[17]));
-  (* SOFT_HLUTNM = "soft_lutpair205" *) 
+  (* SOFT_HLUTNM = "soft_lutpair206" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[18]_INST_0 
@@ -71761,7 +71760,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[18]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[18]));
-  (* SOFT_HLUTNM = "soft_lutpair205" *) 
+  (* SOFT_HLUTNM = "soft_lutpair206" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[19]_INST_0 
@@ -71769,7 +71768,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[19]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[19]));
-  (* SOFT_HLUTNM = "soft_lutpair196" *) 
+  (* SOFT_HLUTNM = "soft_lutpair197" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[1]_INST_0 
@@ -71777,7 +71776,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[1]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[1]));
-  (* SOFT_HLUTNM = "soft_lutpair206" *) 
+  (* SOFT_HLUTNM = "soft_lutpair207" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[20]_INST_0 
@@ -71785,7 +71784,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[20]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[20]));
-  (* SOFT_HLUTNM = "soft_lutpair206" *) 
+  (* SOFT_HLUTNM = "soft_lutpair207" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[21]_INST_0 
@@ -71793,7 +71792,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[21]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[21]));
-  (* SOFT_HLUTNM = "soft_lutpair207" *) 
+  (* SOFT_HLUTNM = "soft_lutpair208" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[22]_INST_0 
@@ -71801,7 +71800,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[22]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[22]));
-  (* SOFT_HLUTNM = "soft_lutpair207" *) 
+  (* SOFT_HLUTNM = "soft_lutpair208" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[23]_INST_0 
@@ -71809,7 +71808,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[23]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[23]));
-  (* SOFT_HLUTNM = "soft_lutpair208" *) 
+  (* SOFT_HLUTNM = "soft_lutpair209" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[24]_INST_0 
@@ -71817,7 +71816,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[24]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[24]));
-  (* SOFT_HLUTNM = "soft_lutpair208" *) 
+  (* SOFT_HLUTNM = "soft_lutpair209" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[25]_INST_0 
@@ -71825,7 +71824,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[25]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[25]));
-  (* SOFT_HLUTNM = "soft_lutpair209" *) 
+  (* SOFT_HLUTNM = "soft_lutpair210" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[26]_INST_0 
@@ -71833,7 +71832,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[26]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[26]));
-  (* SOFT_HLUTNM = "soft_lutpair209" *) 
+  (* SOFT_HLUTNM = "soft_lutpair210" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[27]_INST_0 
@@ -71841,7 +71840,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[27]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[27]));
-  (* SOFT_HLUTNM = "soft_lutpair210" *) 
+  (* SOFT_HLUTNM = "soft_lutpair211" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[28]_INST_0 
@@ -71849,7 +71848,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[28]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[28]));
-  (* SOFT_HLUTNM = "soft_lutpair210" *) 
+  (* SOFT_HLUTNM = "soft_lutpair211" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[29]_INST_0 
@@ -71857,7 +71856,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[29]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[29]));
-  (* SOFT_HLUTNM = "soft_lutpair197" *) 
+  (* SOFT_HLUTNM = "soft_lutpair198" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[2]_INST_0 
@@ -71865,7 +71864,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[2]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[2]));
-  (* SOFT_HLUTNM = "soft_lutpair211" *) 
+  (* SOFT_HLUTNM = "soft_lutpair212" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[30]_INST_0 
@@ -71873,7 +71872,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[30]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[30]));
-  (* SOFT_HLUTNM = "soft_lutpair211" *) 
+  (* SOFT_HLUTNM = "soft_lutpair212" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[31]_INST_0 
@@ -71881,7 +71880,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[31]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[31]));
-  (* SOFT_HLUTNM = "soft_lutpair197" *) 
+  (* SOFT_HLUTNM = "soft_lutpair198" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[3]_INST_0 
@@ -71889,7 +71888,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[3]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[3]));
-  (* SOFT_HLUTNM = "soft_lutpair198" *) 
+  (* SOFT_HLUTNM = "soft_lutpair199" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[4]_INST_0 
@@ -71897,7 +71896,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[4]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[4]));
-  (* SOFT_HLUTNM = "soft_lutpair198" *) 
+  (* SOFT_HLUTNM = "soft_lutpair199" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[5]_INST_0 
@@ -71905,7 +71904,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[5]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[5]));
-  (* SOFT_HLUTNM = "soft_lutpair199" *) 
+  (* SOFT_HLUTNM = "soft_lutpair200" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[6]_INST_0 
@@ -71913,7 +71912,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[6]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[6]));
-  (* SOFT_HLUTNM = "soft_lutpair199" *) 
+  (* SOFT_HLUTNM = "soft_lutpair200" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[7]_INST_0 
@@ -71921,7 +71920,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[7]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[7]));
-  (* SOFT_HLUTNM = "soft_lutpair200" *) 
+  (* SOFT_HLUTNM = "soft_lutpair201" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[8]_INST_0 
@@ -71929,7 +71928,7 @@ module BASIC_mem_exception_merge
         .I1(mem_exception_tval[8]),
         .I2(mem_fault_valid),
         .O(final_mem_exception_tval[8]));
-  (* SOFT_HLUTNM = "soft_lutpair200" *) 
+  (* SOFT_HLUTNM = "soft_lutpair201" *) 
   LUT3 #(
     .INIT(8'hAC)) 
     \final_mem_exception_tval[9]_INST_0 
@@ -72130,7 +72129,7 @@ module BASIC_mem_stage
   wire stall;
   wire store_access_fault;
 
-  (* SOFT_HLUTNM = "soft_lutpair231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair232" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     load_access_fault_INST_0
@@ -72139,7 +72138,7 @@ module BASIC_mem_stage
         .I2(mem_q_valid_reg_0),
         .I3(dmem_ready),
         .O(load_access_fault));
-  (* SOFT_HLUTNM = "soft_lutpair218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair219" *) 
   LUT5 #(
     .INIT(32'hC0008000)) 
     \mem_fault_cause[0]_INST_0 
@@ -72149,7 +72148,7 @@ module BASIC_mem_stage
         .I3(dmem_error),
         .I4(mem_q_mem_we),
         .O(mem_fault_cause[1]));
-  (* SOFT_HLUTNM = "soft_lutpair218" *) 
+  (* SOFT_HLUTNM = "soft_lutpair219" *) 
   LUT5 #(
     .INIT(32'h00008000)) 
     \mem_fault_cause[1]_INST_0 
@@ -72197,7 +72196,7 @@ module BASIC_mem_stage
         .I3(dmem_rdata[16]),
         .I4(Q[0]),
         .O(\mem_forward_data[0]_INST_0_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair213" *) 
+  (* SOFT_HLUTNM = "soft_lutpair214" *) 
   LUT5 #(
     .INIT(32'h0C0A0000)) 
     \mem_forward_data[0]_INST_0_i_4 
@@ -72367,7 +72366,7 @@ module BASIC_mem_stage
         .I4(mem_q_mem_sign_ext_reg_0),
         .I5(\mem_forward_data[31]_INST_0_i_5_n_0 ),
         .O(\mem_forward_data[15]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair213" *) 
+  (* SOFT_HLUTNM = "soft_lutpair214" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \mem_forward_data[15]_INST_0_i_3 
@@ -72384,7 +72383,7 @@ module BASIC_mem_stage
         .I4(mem_out_imm_u[16]),
         .I5(\mem_forward_data[31]_INST_0_i_4_n_0 ),
         .O(mem_forward_data[16]));
-  (* SOFT_HLUTNM = "soft_lutpair217" *) 
+  (* SOFT_HLUTNM = "soft_lutpair218" *) 
   LUT5 #(
     .INIT(32'hCCCC00AC)) 
     \mem_forward_data[16]_INST_0_i_1 
@@ -72404,7 +72403,7 @@ module BASIC_mem_stage
         .I4(mem_out_imm_u[17]),
         .I5(\mem_forward_data[31]_INST_0_i_4_n_0 ),
         .O(mem_forward_data[17]));
-  (* SOFT_HLUTNM = "soft_lutpair216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair217" *) 
   LUT5 #(
     .INIT(32'hCCCC00AC)) 
     \mem_forward_data[17]_INST_0_i_1 
@@ -72559,7 +72558,7 @@ module BASIC_mem_stage
         .I4(\mem_forward_data[23]_INST_0_i_6_n_0 ),
         .I5(\mem_forward_data[23]_INST_0_i_7_n_0 ),
         .O(\mem_forward_data[23]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair216" *) 
   LUT3 #(
     .INIT(8'hF1)) 
     \mem_forward_data[23]_INST_0_i_2 
@@ -72567,7 +72566,7 @@ module BASIC_mem_stage
         .I1(\mem_q_wb_sel_reg[2]_0 [0]),
         .I2(\mem_q_wb_sel_reg[2]_0 [2]),
         .O(\mem_forward_data[23]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair216" *) 
+  (* SOFT_HLUTNM = "soft_lutpair217" *) 
   LUT3 #(
     .INIT(8'h04)) 
     \mem_forward_data[23]_INST_0_i_3 
@@ -72575,7 +72574,7 @@ module BASIC_mem_stage
         .I1(\mem_q_wb_sel_reg[2]_0 [1]),
         .I2(\mem_q_wb_sel_reg[2]_0 [2]),
         .O(\mem_forward_data[23]_INST_0_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair222" *) 
+  (* SOFT_HLUTNM = "soft_lutpair223" *) 
   LUT4 #(
     .INIT(16'h0800)) 
     \mem_forward_data[23]_INST_0_i_4 
@@ -72584,7 +72583,7 @@ module BASIC_mem_stage
         .I2(\mem_q_wb_sel_reg[2]_0 [2]),
         .I3(mem_out_imm_u[23]),
         .O(\mem_forward_data[23]_INST_0_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair214" *) 
+  (* SOFT_HLUTNM = "soft_lutpair215" *) 
   LUT5 #(
     .INIT(32'h00000080)) 
     \mem_forward_data[23]_INST_0_i_5 
@@ -72594,7 +72593,7 @@ module BASIC_mem_stage
         .I3(\mem_q_mem_size_reg[1]_0 [0]),
         .I4(Q[0]),
         .O(\mem_forward_data[23]_INST_0_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair217" *) 
+  (* SOFT_HLUTNM = "soft_lutpair218" *) 
   LUT3 #(
     .INIT(8'h04)) 
     \mem_forward_data[23]_INST_0_i_6 
@@ -72756,7 +72755,7 @@ module BASIC_mem_stage
         .I4(\mem_forward_data[6]_INST_0_i_4_n_0 ),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_forward_data[2]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair222" *) 
+  (* SOFT_HLUTNM = "soft_lutpair223" *) 
   LUT4 #(
     .INIT(16'hAB00)) 
     \mem_forward_data[2]_INST_0_i_3 
@@ -72813,7 +72812,7 @@ module BASIC_mem_stage
         .I3(\mem_q_wb_sel_reg[2]_0 [0]),
         .I4(\mem_q_wb_sel_reg[2]_0 [2]),
         .O(\mem_forward_data[31]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair212" *) 
+  (* SOFT_HLUTNM = "soft_lutpair213" *) 
   LUT5 #(
     .INIT(32'h00000400)) 
     \mem_forward_data[31]_INST_0_i_3 
@@ -72830,7 +72829,7 @@ module BASIC_mem_stage
         .I1(\mem_q_wb_sel_reg[2]_0 [0]),
         .I2(\mem_q_wb_sel_reg[2]_0 [1]),
         .O(\mem_forward_data[31]_INST_0_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair212" *) 
+  (* SOFT_HLUTNM = "soft_lutpair213" *) 
   LUT4 #(
     .INIT(16'h0004)) 
     \mem_forward_data[31]_INST_0_i_5 
@@ -72869,7 +72868,7 @@ module BASIC_mem_stage
         .I4(\mem_forward_data[6]_INST_0_i_4_n_0 ),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_forward_data[3]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair221" *) 
   LUT4 #(
     .INIT(16'hAB00)) 
     \mem_forward_data[3]_INST_0_i_3 
@@ -72908,7 +72907,7 @@ module BASIC_mem_stage
         .I4(\mem_forward_data[6]_INST_0_i_4_n_0 ),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_forward_data[4]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair222" *) 
   LUT4 #(
     .INIT(16'hAB00)) 
     \mem_forward_data[4]_INST_0_i_3 
@@ -72947,7 +72946,7 @@ module BASIC_mem_stage
         .I4(\mem_forward_data[6]_INST_0_i_4_n_0 ),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_forward_data[5]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair220" *) 
+  (* SOFT_HLUTNM = "soft_lutpair221" *) 
   LUT4 #(
     .INIT(16'hAB00)) 
     \mem_forward_data[5]_INST_0_i_3 
@@ -72986,7 +72985,7 @@ module BASIC_mem_stage
         .I4(\mem_forward_data[6]_INST_0_i_4_n_0 ),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_forward_data[6]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair221" *) 
+  (* SOFT_HLUTNM = "soft_lutpair222" *) 
   LUT4 #(
     .INIT(16'hAB00)) 
     \mem_forward_data[6]_INST_0_i_3 
@@ -72995,7 +72994,7 @@ module BASIC_mem_stage
         .I2(\mem_q_wb_sel_reg[2]_0 [1]),
         .I3(Q[6]),
         .O(\mem_forward_data[6]_INST_0_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair215" *) 
+  (* SOFT_HLUTNM = "soft_lutpair216" *) 
   LUT5 #(
     .INIT(32'h00100000)) 
     \mem_forward_data[6]_INST_0_i_4 
@@ -73094,7 +73093,7 @@ module BASIC_mem_stage
         .I4(Q[0]),
         .I5(\mem_q_mem_size_reg[1]_0 [0]),
         .O(\mem_out_data[0]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair224" *) 
   LUT4 #(
     .INIT(16'h4404)) 
     \mem_out_data[0]_INST_0_i_2 
@@ -73171,7 +73170,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [1]),
         .I3(\mem_out_data[15]_INST_0_i_1_n_0 ),
         .O(mem_out_data[15]));
-  (* SOFT_HLUTNM = "soft_lutpair219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair220" *) 
   LUT5 #(
     .INIT(32'hFAF80008)) 
     \mem_out_data[15]_INST_0_i_1 
@@ -73181,7 +73180,7 @@ module BASIC_mem_stage
         .I3(Q[0]),
         .I4(\mem_out_data[7]_INST_0_i_2_n_0 ),
         .O(\mem_out_data[15]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair225" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[16]_INST_0 
@@ -73190,7 +73189,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[16]));
-  (* SOFT_HLUTNM = "soft_lutpair224" *) 
+  (* SOFT_HLUTNM = "soft_lutpair225" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[17]_INST_0 
@@ -73199,7 +73198,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[17]));
-  (* SOFT_HLUTNM = "soft_lutpair225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair226" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[18]_INST_0 
@@ -73208,7 +73207,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[18]));
-  (* SOFT_HLUTNM = "soft_lutpair225" *) 
+  (* SOFT_HLUTNM = "soft_lutpair226" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[19]_INST_0 
@@ -73244,7 +73243,7 @@ module BASIC_mem_stage
         .I2(Q[0]),
         .I3(\mem_q_mem_size_reg[1]_0 [1]),
         .O(\mem_out_data[1]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair223" *) 
+  (* SOFT_HLUTNM = "soft_lutpair224" *) 
   LUT4 #(
     .INIT(16'h0F31)) 
     \mem_out_data[1]_INST_0_i_3 
@@ -73253,7 +73252,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_q_mem_size_reg[1]_0 [1]),
         .O(\mem_out_data[1]_INST_0_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair227" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[20]_INST_0 
@@ -73262,7 +73261,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[20]));
-  (* SOFT_HLUTNM = "soft_lutpair226" *) 
+  (* SOFT_HLUTNM = "soft_lutpair227" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[21]_INST_0 
@@ -73271,7 +73270,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[21]));
-  (* SOFT_HLUTNM = "soft_lutpair227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair228" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[22]_INST_0 
@@ -73290,7 +73289,7 @@ module BASIC_mem_stage
         .I4(mem_q_mem_sign_ext_reg_0),
         .I5(\mem_out_data[23]_INST_0_i_2_n_0 ),
         .O(mem_out_data[23]));
-  (* SOFT_HLUTNM = "soft_lutpair214" *) 
+  (* SOFT_HLUTNM = "soft_lutpair215" *) 
   LUT5 #(
     .INIT(32'h00000080)) 
     \mem_out_data[23]_INST_0_i_1 
@@ -73310,7 +73309,7 @@ module BASIC_mem_stage
         .I4(Q[1]),
         .I5(dmem_rdata[15]),
         .O(\mem_out_data[23]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair227" *) 
+  (* SOFT_HLUTNM = "soft_lutpair228" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[24]_INST_0 
@@ -73319,7 +73318,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[24]));
-  (* SOFT_HLUTNM = "soft_lutpair228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair229" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[25]_INST_0 
@@ -73328,7 +73327,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[25]));
-  (* SOFT_HLUTNM = "soft_lutpair228" *) 
+  (* SOFT_HLUTNM = "soft_lutpair229" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[26]_INST_0 
@@ -73337,7 +73336,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[26]));
-  (* SOFT_HLUTNM = "soft_lutpair229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair230" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[27]_INST_0 
@@ -73346,7 +73345,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[27]));
-  (* SOFT_HLUTNM = "soft_lutpair229" *) 
+  (* SOFT_HLUTNM = "soft_lutpair230" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[28]_INST_0 
@@ -73355,7 +73354,7 @@ module BASIC_mem_stage
         .I2(\mem_q_mem_size_reg[1]_0 [0]),
         .I3(\mem_out_data[31]_INST_0_i_1_n_0 ),
         .O(mem_out_data[28]));
-  (* SOFT_HLUTNM = "soft_lutpair230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair231" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[29]_INST_0 
@@ -73384,7 +73383,7 @@ module BASIC_mem_stage
         .I4(Q[1]),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_out_data[2]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair230" *) 
+  (* SOFT_HLUTNM = "soft_lutpair231" *) 
   LUT4 #(
     .INIT(16'hFF08)) 
     \mem_out_data[30]_INST_0 
@@ -73491,7 +73490,7 @@ module BASIC_mem_stage
         .I4(Q[1]),
         .I5(\mem_out_data[6]_INST_0_i_2_n_0 ),
         .O(\mem_out_data[6]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair219" *) 
+  (* SOFT_HLUTNM = "soft_lutpair220" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \mem_out_data[6]_INST_0_i_2 
@@ -73508,7 +73507,7 @@ module BASIC_mem_stage
         .I4(Q[0]),
         .I5(\mem_out_data[7]_INST_0_i_2_n_0 ),
         .O(mem_out_data[7]));
-  (* SOFT_HLUTNM = "soft_lutpair232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair233" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \mem_out_data[7]_INST_0_i_1 
@@ -73516,7 +73515,7 @@ module BASIC_mem_stage
         .I1(Q[1]),
         .I2(dmem_rdata[7]),
         .O(\mem_out_data[7]_INST_0_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair232" *) 
+  (* SOFT_HLUTNM = "soft_lutpair233" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \mem_out_data[7]_INST_0_i_2 
@@ -73570,7 +73569,7 @@ module BASIC_mem_stage
         .I4(mem_in_mem_re),
         .I5(\mem_q_alu_result[31]_i_2_n_0 ),
         .O(mem_can_advance));
-  (* SOFT_HLUTNM = "soft_lutpair233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair234" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \mem_q_alu_result[31]_i_2 
@@ -74219,7 +74218,7 @@ module BASIC_mem_stage
         .D(mem_in_rd_we),
         .Q(mem_q_rd_we),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair233" *) 
+  (* SOFT_HLUTNM = "soft_lutpair234" *) 
   LUT2 #(
     .INIT(4'h2)) 
     mem_q_valid_i_1
@@ -74250,7 +74249,7 @@ module BASIC_mem_stage
         .D(mem_in_wb_sel[2]),
         .Q(\mem_q_wb_sel_reg[2]_0 [2]),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair231" *) 
+  (* SOFT_HLUTNM = "soft_lutpair232" *) 
   LUT4 #(
     .INIT(16'h8000)) 
     store_access_fault_INST_0
@@ -76093,7 +76092,7 @@ module BASIC_pc_unit
   wire [7:6]NLW_pc_plus4_carry__2_CO_UNCONNECTED;
   wire [7:7]NLW_pc_plus4_carry__2_O_UNCONNECTED;
 
-  (* SOFT_HLUTNM = "soft_lutpair237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair238" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[0]_i_1 
@@ -76110,7 +76109,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc[0]),
         .O(\pc[0]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair243" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[10]_i_1 
@@ -76127,7 +76126,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[9]),
         .O(\pc[10]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair242" *) 
+  (* SOFT_HLUTNM = "soft_lutpair243" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[11]_i_1 
@@ -76144,7 +76143,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[10]),
         .O(\pc[11]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair244" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[12]_i_1 
@@ -76161,7 +76160,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[11]),
         .O(\pc[12]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair243" *) 
+  (* SOFT_HLUTNM = "soft_lutpair244" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[13]_i_1 
@@ -76178,7 +76177,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[12]),
         .O(\pc[13]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair245" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[14]_i_1 
@@ -76195,7 +76194,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[13]),
         .O(\pc[14]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair244" *) 
+  (* SOFT_HLUTNM = "soft_lutpair245" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[15]_i_1 
@@ -76212,7 +76211,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[14]),
         .O(\pc[15]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair245" *) 
+  (* SOFT_HLUTNM = "soft_lutpair246" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[16]_i_1 
@@ -76229,7 +76228,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[15]),
         .O(\pc[16]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair245" *) 
+  (* SOFT_HLUTNM = "soft_lutpair246" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[17]_i_1 
@@ -76246,7 +76245,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[16]),
         .O(\pc[17]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair246" *) 
+  (* SOFT_HLUTNM = "soft_lutpair247" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[18]_i_1 
@@ -76263,7 +76262,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[17]),
         .O(\pc[18]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair246" *) 
+  (* SOFT_HLUTNM = "soft_lutpair247" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[19]_i_1 
@@ -76280,7 +76279,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[18]),
         .O(\pc[19]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair237" *) 
+  (* SOFT_HLUTNM = "soft_lutpair238" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[1]_i_1 
@@ -76297,7 +76296,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[0]),
         .O(\pc[1]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair247" *) 
+  (* SOFT_HLUTNM = "soft_lutpair248" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[20]_i_1 
@@ -76314,7 +76313,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[19]),
         .O(\pc[20]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair247" *) 
+  (* SOFT_HLUTNM = "soft_lutpair248" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[21]_i_1 
@@ -76331,7 +76330,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[20]),
         .O(\pc[21]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair248" *) 
+  (* SOFT_HLUTNM = "soft_lutpair249" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[22]_i_1 
@@ -76348,7 +76347,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[21]),
         .O(\pc[22]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair248" *) 
+  (* SOFT_HLUTNM = "soft_lutpair249" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[23]_i_1 
@@ -76365,7 +76364,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[22]),
         .O(\pc[23]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair249" *) 
+  (* SOFT_HLUTNM = "soft_lutpair250" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[24]_i_1 
@@ -76382,7 +76381,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[23]),
         .O(\pc[24]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair249" *) 
+  (* SOFT_HLUTNM = "soft_lutpair250" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[25]_i_1 
@@ -76399,7 +76398,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[24]),
         .O(\pc[25]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair250" *) 
+  (* SOFT_HLUTNM = "soft_lutpair251" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[26]_i_1 
@@ -76416,7 +76415,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[25]),
         .O(\pc[26]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair250" *) 
+  (* SOFT_HLUTNM = "soft_lutpair251" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[27]_i_1 
@@ -76433,7 +76432,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[26]),
         .O(\pc[27]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair251" *) 
+  (* SOFT_HLUTNM = "soft_lutpair252" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[28]_i_1 
@@ -76450,7 +76449,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[27]),
         .O(\pc[28]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair251" *) 
+  (* SOFT_HLUTNM = "soft_lutpair252" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[29]_i_1 
@@ -76467,7 +76466,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[28]),
         .O(\pc[29]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair239" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[2]_i_1 
@@ -76484,7 +76483,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[1]),
         .O(\pc[2]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair252" *) 
+  (* SOFT_HLUTNM = "soft_lutpair253" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[30]_i_1 
@@ -76501,7 +76500,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[29]),
         .O(\pc[30]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair252" *) 
+  (* SOFT_HLUTNM = "soft_lutpair253" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[31]_i_1 
@@ -76518,7 +76517,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[30]),
         .O(\pc[31]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair238" *) 
+  (* SOFT_HLUTNM = "soft_lutpair239" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[3]_i_1 
@@ -76535,7 +76534,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[2]),
         .O(\pc[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair240" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[4]_i_1 
@@ -76552,7 +76551,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[3]),
         .O(\pc[4]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair239" *) 
+  (* SOFT_HLUTNM = "soft_lutpair240" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[5]_i_1 
@@ -76569,7 +76568,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[4]),
         .O(\pc[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair241" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[6]_i_1 
@@ -76586,7 +76585,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[5]),
         .O(\pc[6]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair240" *) 
+  (* SOFT_HLUTNM = "soft_lutpair241" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[7]_i_1 
@@ -76603,7 +76602,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[6]),
         .O(\pc[7]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair242" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[8]_i_1 
@@ -76620,7 +76619,7 @@ module BASIC_pc_unit
         .I3(pc_predict_valid),
         .I4(pc_plus4[7]),
         .O(\pc[8]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair241" *) 
+  (* SOFT_HLUTNM = "soft_lutpair242" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \pc[9]_i_1 
@@ -80572,14 +80571,14 @@ module BASIC_rom_memory
     clk,
     en,
     addr);
-  output [19:0]dout;
+  output [26:0]dout;
   input clk;
   input en;
   input [10:0]addr;
 
   wire [10:0]addr;
   wire clk;
-  wire [19:0]dout;
+  wire [26:0]dout;
   wire en;
   wire NLW_dout_reg_0_CASOUTDBITERR_UNCONNECTED;
   wire NLW_dout_reg_0_CASOUTSBITERR_UNCONNECTED;
@@ -80595,19 +80594,25 @@ module BASIC_rom_memory
   wire [3:0]NLW_dout_reg_0_DOUTPBDOUTP_UNCONNECTED;
   wire [7:0]NLW_dout_reg_0_ECCPARITY_UNCONNECTED;
   wire [8:0]NLW_dout_reg_0_RDADDRECC_UNCONNECTED;
-  wire [15:0]NLW_dout_reg_1_CASDOUTA_UNCONNECTED;
-  wire [15:0]NLW_dout_reg_1_CASDOUTB_UNCONNECTED;
-  wire [1:0]NLW_dout_reg_1_CASDOUTPA_UNCONNECTED;
-  wire [1:0]NLW_dout_reg_1_CASDOUTPB_UNCONNECTED;
-  wire [15:4]NLW_dout_reg_1_DOUTADOUT_UNCONNECTED;
-  wire [15:0]NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED;
-  wire [1:0]NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED;
-  wire [1:0]NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED;
+  wire NLW_dout_reg_1_CASOUTDBITERR_UNCONNECTED;
+  wire NLW_dout_reg_1_CASOUTSBITERR_UNCONNECTED;
+  wire NLW_dout_reg_1_DBITERR_UNCONNECTED;
+  wire NLW_dout_reg_1_SBITERR_UNCONNECTED;
+  wire [31:0]NLW_dout_reg_1_CASDOUTA_UNCONNECTED;
+  wire [31:0]NLW_dout_reg_1_CASDOUTB_UNCONNECTED;
+  wire [3:0]NLW_dout_reg_1_CASDOUTPA_UNCONNECTED;
+  wire [3:0]NLW_dout_reg_1_CASDOUTPB_UNCONNECTED;
+  wire [31:11]NLW_dout_reg_1_DOUTADOUT_UNCONNECTED;
+  wire [31:0]NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED;
+  wire [3:0]NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED;
+  wire [3:0]NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED;
+  wire [7:0]NLW_dout_reg_1_ECCPARITY_UNCONNECTED;
+  wire [8:0]NLW_dout_reg_1_RDADDRECC_UNCONNECTED;
 
   (* \MEM.PORTA.DATA_BIT_LAYOUT  = "p0_d16" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-6 {cell *THIS*}}" *) 
   (* RDADDR_COLLISION_HWCONFIG = "PERFORMANCE" *) 
-  (* RTL_RAM_BITS = "40960" *) 
+  (* RTL_RAM_BITS = "55296" *) 
   (* RTL_RAM_NAME = "inst/dout" *) 
   (* RTL_RAM_TYPE = "RAM_SP" *) 
   (* bram_addr_begin = "0" *) 
@@ -80646,134 +80651,134 @@ module BASIC_rom_memory
     .INITP_0D(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_0E(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_0F(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h000500057E0B4C0900557E0B4C09805521095E45000500050C318C898025061F),
-    .INIT_01(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_02(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_03(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_04(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_05(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_06(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_07(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_08(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_09(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_0A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_0B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_0C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_0D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_0E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_0F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_10(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_11(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_12(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_13(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_14(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_15(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_16(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_17(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_18(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_19(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_1A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_1B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_1C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_1D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_1E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_1F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_20(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_21(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_22(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_23(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_24(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_25(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_26(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_27(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_28(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_29(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_2A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_2B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_2C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_2D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_2E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_2F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_30(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_31(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_32(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_33(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_34(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_35(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_36(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_37(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_38(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_39(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_3A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_3B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_3C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_3D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_3E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_3F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_40(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_41(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_42(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_43(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_44(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_45(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_46(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_47(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_48(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_49(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_4A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_4B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_4C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_4D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_4E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_4F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_50(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_51(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_52(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_53(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_54(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_55(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_56(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_57(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_58(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_59(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_5A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_5B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_5C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_5D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_5E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_5F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_60(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_61(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_62(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_63(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_64(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_65(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_66(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_67(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_68(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_69(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_6A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_6B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_6C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_6D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_6E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_6F(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_70(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_71(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_72(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_73(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_74(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_75(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_76(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_77(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_78(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_79(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_7A(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_7B(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_7C(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_7D(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_7E(256'h0005000500050005000500050005000500050005000500050005000500050005),
-    .INIT_7F(256'h0005000500050005000500050005000500050005000500050005000500050005),
+    .INIT_00(256'hC2C902DB129B0E3101495101501100C90B3101495101501100C952110089185B),
+    .INIT_01(256'h00090009000900090009000900090009000900379011C2C902DB129B00379011),
+    .INIT_02(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_03(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_04(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_05(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_06(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_07(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_08(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_09(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_0A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_0B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_0C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_0D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_0E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_0F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_10(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_11(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_12(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_13(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_14(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_15(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_16(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_17(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_18(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_19(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_1A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_1B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_1C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_1D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_1E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_1F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_20(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_21(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_22(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_23(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_24(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_25(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_26(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_27(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_28(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_29(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_2A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_2B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_2C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_2D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_2E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_2F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_30(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_31(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_32(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_33(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_34(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_35(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_36(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_37(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_38(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_39(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_3A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_3B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_3C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_3D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_3E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_3F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_40(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_41(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_42(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_43(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_44(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_45(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_46(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_47(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_48(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_49(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_4A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_4B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_4C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_4D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_4E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_4F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_50(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_51(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_52(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_53(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_54(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_55(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_56(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_57(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_58(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_59(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_5A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_5B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_5C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_5D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_5E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_5F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_60(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_61(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_62(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_63(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_64(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_65(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_66(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_67(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_68(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_69(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_6A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_6B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_6C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_6D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_6E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_6F(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_70(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_71(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_72(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_73(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_74(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_75(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_76(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_77(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_78(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_79(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_7A(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_7B(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_7C(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_7D(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_7E(256'h0009000900090009000900090009000900090009000900090009000900090009),
+    .INIT_7F(256'h0009000900090009000900090009000900090009000900090009000900090009),
     .INIT_A(36'h000000000),
     .INIT_B(36'h000000000),
     .INIT_FILE("NONE"),
@@ -80825,7 +80830,7 @@ module BASIC_rom_memory
         .DINBDIN({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
         .DINPADINP({1'b0,1'b0,1'b0,1'b0}),
         .DINPBDINP({1'b1,1'b1,1'b1,1'b1}),
-        .DOUTADOUT({NLW_dout_reg_0_DOUTADOUT_UNCONNECTED[31:16],dout[15:0]}),
+        .DOUTADOUT({NLW_dout_reg_0_DOUTADOUT_UNCONNECTED[31:16],dout[14:13],dout[23],dout[12:0]}),
         .DOUTBDOUT(NLW_dout_reg_0_DOUTBDOUT_UNCONNECTED[31:0]),
         .DOUTPADOUTP(NLW_dout_reg_0_DOUTPADOUTP_UNCONNECTED[3:0]),
         .DOUTPBDOUTP(NLW_dout_reg_0_DOUTPBDOUTP_UNCONNECTED[3:0]),
@@ -80846,22 +80851,22 @@ module BASIC_rom_memory
         .SLEEP(1'b0),
         .WEA({1'b0,1'b0,1'b0,1'b0}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
-  (* \MEM.PORTA.DATA_BIT_LAYOUT  = "p0_d4" *) 
+  (* \MEM.PORTA.DATA_BIT_LAYOUT  = "p0_d11" *) 
   (* METHODOLOGY_DRC_VIOS = "{SYNTH-6 {cell *THIS*}}" *) 
   (* RDADDR_COLLISION_HWCONFIG = "PERFORMANCE" *) 
-  (* RTL_RAM_BITS = "40960" *) 
+  (* RTL_RAM_BITS = "55296" *) 
   (* RTL_RAM_NAME = "inst/dout" *) 
   (* RTL_RAM_TYPE = "RAM_SP" *) 
   (* bram_addr_begin = "0" *) 
   (* bram_addr_end = "2047" *) 
   (* bram_slice_begin = "16" *) 
-  (* bram_slice_end = "19" *) 
+  (* bram_slice_end = "26" *) 
   (* ram_addr_begin = "0" *) 
   (* ram_addr_end = "2047" *) 
   (* ram_offset = "0" *) 
   (* ram_slice_begin = "16" *) 
-  (* ram_slice_end = "19" *) 
-  RAMB18E2 #(
+  (* ram_slice_end = "26" *) 
+  RAMB36E2 #(
     .CASCADE_ORDER_A("NONE"),
     .CASCADE_ORDER_B("NONE"),
     .CLOCK_DOMAINS("INDEPENDENT"),
@@ -80869,6 +80874,9 @@ module BASIC_rom_memory
     .DOB_REG(0),
     .ENADDRENA("FALSE"),
     .ENADDRENB("FALSE"),
+    .EN_ECC_PIPE("FALSE"),
+    .EN_ECC_READ("FALSE"),
+    .EN_ECC_WRITE("FALSE"),
     .INITP_00(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
@@ -80877,8 +80885,16 @@ module BASIC_rom_memory
     .INITP_05(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_06(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_07(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h0000000000000000000000000000000000000A01010D01000000000001000100),
-    .INIT_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_08(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_09(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_0A(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_0B(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_0C(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_0D(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_0E(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INITP_0F(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_00(256'h001E05BF0000001500080000000C0008009500040000000C00040008000C0000),
+    .INIT_01(256'h0000000000000000000000000000000000000000002E001E03B400000050002E),
     .INIT_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_04(256'h0000000000000000000000000000000000000000000000000000000000000000),
@@ -80941,67 +80957,142 @@ module BASIC_rom_memory
     .INIT_3D(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_3E(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_3F(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_A(18'h00000),
-    .INIT_B(18'h00000),
+    .INIT_40(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_41(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_42(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_43(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_44(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_45(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_46(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_47(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_48(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_49(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_4A(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_4B(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_4C(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_4D(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_4E(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_4F(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_50(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_51(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_52(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_53(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_54(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_55(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_56(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_57(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_58(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_59(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_5A(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_5B(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_5C(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_5D(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_5E(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_5F(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_60(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_61(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_62(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_63(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_64(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_65(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_66(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_67(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_68(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_69(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_6A(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_6B(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_6C(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_6D(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_6E(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_6F(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_70(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_71(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_72(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_73(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_74(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_75(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_76(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_77(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_78(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_79(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_7A(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_7B(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_7C(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_7D(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_7E(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_7F(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_A(36'h000000000),
+    .INIT_B(36'h000000000),
     .INIT_FILE("NONE"),
     .RDADDRCHANGEA("FALSE"),
     .RDADDRCHANGEB("FALSE"),
-    .READ_WIDTH_A(9),
+    .READ_WIDTH_A(18),
     .READ_WIDTH_B(0),
     .RSTREG_PRIORITY_A("RSTREG"),
     .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SLEEP_ASYNC("FALSE"),
-    .SRVAL_A(18'h00000),
-    .SRVAL_B(18'h00000),
+    .SRVAL_A(36'h000000000),
+    .SRVAL_B(36'h000000000),
     .WRITE_MODE_A("WRITE_FIRST"),
     .WRITE_MODE_B("WRITE_FIRST"),
-    .WRITE_WIDTH_A(9),
+    .WRITE_WIDTH_A(18),
     .WRITE_WIDTH_B(0)) 
     dout_reg_1
-       (.ADDRARDADDR({addr,1'b0,1'b0,1'b0}),
-        .ADDRBWRADDR({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
+       (.ADDRARDADDR({addr,1'b0,1'b0,1'b0,1'b0}),
+        .ADDRBWRADDR({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
         .ADDRENA(1'b0),
         .ADDRENB(1'b0),
         .CASDIMUXA(1'b0),
         .CASDIMUXB(1'b0),
-        .CASDINA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .CASDINB({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
-        .CASDINPA({1'b0,1'b0}),
-        .CASDINPB({1'b0,1'b0}),
+        .CASDINA({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .CASDINB({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .CASDINPA({1'b0,1'b0,1'b0,1'b0}),
+        .CASDINPB({1'b0,1'b0,1'b0,1'b0}),
         .CASDOMUXA(1'b0),
         .CASDOMUXB(1'b0),
         .CASDOMUXEN_A(1'b1),
         .CASDOMUXEN_B(1'b1),
-        .CASDOUTA(NLW_dout_reg_1_CASDOUTA_UNCONNECTED[15:0]),
-        .CASDOUTB(NLW_dout_reg_1_CASDOUTB_UNCONNECTED[15:0]),
-        .CASDOUTPA(NLW_dout_reg_1_CASDOUTPA_UNCONNECTED[1:0]),
-        .CASDOUTPB(NLW_dout_reg_1_CASDOUTPB_UNCONNECTED[1:0]),
+        .CASDOUTA(NLW_dout_reg_1_CASDOUTA_UNCONNECTED[31:0]),
+        .CASDOUTB(NLW_dout_reg_1_CASDOUTB_UNCONNECTED[31:0]),
+        .CASDOUTPA(NLW_dout_reg_1_CASDOUTPA_UNCONNECTED[3:0]),
+        .CASDOUTPB(NLW_dout_reg_1_CASDOUTPB_UNCONNECTED[3:0]),
+        .CASINDBITERR(1'b0),
+        .CASINSBITERR(1'b0),
         .CASOREGIMUXA(1'b0),
         .CASOREGIMUXB(1'b0),
         .CASOREGIMUXEN_A(1'b1),
         .CASOREGIMUXEN_B(1'b1),
+        .CASOUTDBITERR(NLW_dout_reg_1_CASOUTDBITERR_UNCONNECTED),
+        .CASOUTSBITERR(NLW_dout_reg_1_CASOUTSBITERR_UNCONNECTED),
         .CLKARDCLK(clk),
         .CLKBWRCLK(1'b0),
-        .DINADIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1,1'b1,1'b1,1'b1}),
-        .DINBDIN({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
-        .DINPADINP({1'b0,1'b0}),
-        .DINPBDINP({1'b1,1'b1}),
-        .DOUTADOUT({NLW_dout_reg_1_DOUTADOUT_UNCONNECTED[15:4],dout[19:16]}),
-        .DOUTBDOUT(NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED[15:0]),
-        .DOUTPADOUTP(NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED[1:0]),
-        .DOUTPBDOUTP(NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED[1:0]),
+        .DBITERR(NLW_dout_reg_1_DBITERR_UNCONNECTED),
+        .DINADIN({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
+        .DINBDIN({1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1,1'b1}),
+        .DINPADINP({1'b0,1'b0,1'b0,1'b0}),
+        .DINPBDINP({1'b1,1'b1,1'b1,1'b1}),
+        .DOUTADOUT({NLW_dout_reg_1_DOUTADOUT_UNCONNECTED[31:11],dout[25:24],dout[26],dout[22:15]}),
+        .DOUTBDOUT(NLW_dout_reg_1_DOUTBDOUT_UNCONNECTED[31:0]),
+        .DOUTPADOUTP(NLW_dout_reg_1_DOUTPADOUTP_UNCONNECTED[3:0]),
+        .DOUTPBDOUTP(NLW_dout_reg_1_DOUTPBDOUTP_UNCONNECTED[3:0]),
+        .ECCPARITY(NLW_dout_reg_1_ECCPARITY_UNCONNECTED[7:0]),
+        .ECCPIPECE(1'b1),
         .ENARDEN(en),
         .ENBWREN(1'b0),
+        .INJECTDBITERR(1'b0),
+        .INJECTSBITERR(1'b0),
+        .RDADDRECC(NLW_dout_reg_1_RDADDRECC_UNCONNECTED[8:0]),
         .REGCEAREGCE(1'b1),
         .REGCEB(1'b1),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
         .RSTREGARSTREG(1'b0),
         .RSTREGB(1'b0),
+        .SBITERR(NLW_dout_reg_1_SBITERR_UNCONNECTED),
         .SLEEP(1'b0),
-        .WEA({1'b0,1'b0}),
-        .WEBWE({1'b0,1'b0,1'b0,1'b0}));
+        .WEA({1'b0,1'b0,1'b0,1'b0}),
+        .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
 (* ORIG_REF_NAME = "timer" *) 
@@ -81210,7 +81301,7 @@ module BASIC_timer
         .D(wdata[1]),
         .Q(p_2_in[1]),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair258" *) 
+  (* SOFT_HLUTNM = "soft_lutpair259" *) 
   LUT4 #(
     .INIT(16'h0F08)) 
     irq_pending_i_1
@@ -81241,7 +81332,7 @@ module BASIC_timer
         .D(irq_pending_i_1_n_0),
         .Q(irq_pending),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair257" *) 
+  (* SOFT_HLUTNM = "soft_lutpair258" *) 
   LUT4 #(
     .INIT(16'h0200)) 
     \rdata[0]_INST_0 
@@ -81578,7 +81669,7 @@ module BASIC_timer
         .I4(addr[0]),
         .I5(addr[1]),
         .O(p_0_in[31]));
-  (* SOFT_HLUTNM = "soft_lutpair257" *) 
+  (* SOFT_HLUTNM = "soft_lutpair258" *) 
   LUT4 #(
     .INIT(16'h0200)) 
     \timer_cmp[31]_i_2 
@@ -81803,7 +81894,7 @@ module BASIC_timer
         .D(wdata[0]),
         .Q(p_2_in[0]),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair258" *) 
+  (* SOFT_HLUTNM = "soft_lutpair259" *) 
   LUT2 #(
     .INIT(4'h8)) 
     timer_irq_INST_0
@@ -82930,7 +83021,7 @@ module BASIC_uart_tx
         .I4(rx_state__0[0]),
         .I5(\FSM_sequential_rx_state[1]_i_6_n_0 ),
         .O(\FSM_sequential_rx_state[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair287" *) 
+  (* SOFT_HLUTNM = "soft_lutpair288" *) 
   LUT3 #(
     .INIT(8'h26)) 
     \FSM_sequential_rx_state[1]_i_2 
@@ -82938,7 +83029,7 @@ module BASIC_uart_tx
         .I1(rx_state__0[0]),
         .I2(rx_sync),
         .O(rx_state__1[1]));
-  (* SOFT_HLUTNM = "soft_lutpair281" *) 
+  (* SOFT_HLUTNM = "soft_lutpair282" *) 
   LUT3 #(
     .INIT(8'h7F)) 
     \FSM_sequential_rx_state[1]_i_3 
@@ -82946,7 +83037,7 @@ module BASIC_uart_tx
         .I1(\rx_bit_idx_reg_n_0_[0] ),
         .I2(\rx_bit_idx_reg_n_0_[2] ),
         .O(\FSM_sequential_rx_state[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair285" *) 
+  (* SOFT_HLUTNM = "soft_lutpair286" *) 
   LUT3 #(
     .INIT(8'h01)) 
     \FSM_sequential_rx_state[1]_i_4 
@@ -82964,7 +83055,7 @@ module BASIC_uart_tx
         .I4(\rx_clk_cnt_reg_n_0_[2] ),
         .I5(\FSM_sequential_rx_state[1]_i_8_n_0 ),
         .O(\FSM_sequential_rx_state[1]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair275" *) 
+  (* SOFT_HLUTNM = "soft_lutpair276" *) 
   LUT5 #(
     .INIT(32'h00000004)) 
     \FSM_sequential_rx_state[1]_i_6 
@@ -82974,14 +83065,14 @@ module BASIC_uart_tx
         .I3(\rx_clk_cnt_reg_n_0_[31] ),
         .I4(\rx_clk_cnt[0]_i_2_n_0 ),
         .O(\FSM_sequential_rx_state[1]_i_6_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair275" *) 
+  (* SOFT_HLUTNM = "soft_lutpair276" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \FSM_sequential_rx_state[1]_i_7 
        (.I0(\rx_clk_cnt_reg_n_0_[0] ),
         .I1(rx_state__0[1]),
         .O(\FSM_sequential_rx_state[1]_i_7_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair319" *) 
+  (* SOFT_HLUTNM = "soft_lutpair320" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \FSM_sequential_rx_state[1]_i_8 
@@ -83062,7 +83153,7 @@ module BASIC_uart_tx
         .I4(addr[1]),
         .I5(addr[0]),
         .O(rdata[5]));
-  (* SOFT_HLUTNM = "soft_lutpair277" *) 
+  (* SOFT_HLUTNM = "soft_lutpair278" *) 
   LUT5 #(
     .INIT(32'h00020000)) 
     \rdata[6]_INST_0 
@@ -83072,7 +83163,7 @@ module BASIC_uart_tx
         .I3(addr[2]),
         .I4(rx_data_q[6]),
         .O(rdata[6]));
-  (* SOFT_HLUTNM = "soft_lutpair278" *) 
+  (* SOFT_HLUTNM = "soft_lutpair279" *) 
   LUT5 #(
     .INIT(32'h00020000)) 
     \rdata[7]_INST_0 
@@ -83082,14 +83173,14 @@ module BASIC_uart_tx
         .I3(addr[2]),
         .I4(rx_data_q[7]),
         .O(rdata[7]));
-  (* SOFT_HLUTNM = "soft_lutpair288" *) 
+  (* SOFT_HLUTNM = "soft_lutpair289" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \rx_bit_idx[0]_i_1 
        (.I0(rx_state__0[1]),
         .I1(\rx_bit_idx_reg_n_0_[0] ),
         .O(\rx_bit_idx[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair288" *) 
+  (* SOFT_HLUTNM = "soft_lutpair289" *) 
   LUT3 #(
     .INIT(8'h28)) 
     \rx_bit_idx[1]_i_1 
@@ -83107,7 +83198,7 @@ module BASIC_uart_tx
         .I4(rx_state__0[1]),
         .I5(rx_state__0[0]),
         .O(rx_bit_idx));
-  (* SOFT_HLUTNM = "soft_lutpair281" *) 
+  (* SOFT_HLUTNM = "soft_lutpair282" *) 
   LUT4 #(
     .INIT(16'h2888)) 
     \rx_bit_idx[2]_i_2 
@@ -83144,14 +83235,14 @@ module BASIC_uart_tx
         .I4(rx_busy_q_i_6_n_0),
         .I5(rx_busy),
         .O(rx_busy_q_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair319" *) 
+  (* SOFT_HLUTNM = "soft_lutpair320" *) 
   LUT2 #(
     .INIT(4'h1)) 
     rx_busy_q_i_2
        (.I0(rx_sync),
         .I1(rx_state__0[0]),
         .O(rx_busy_q_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair287" *) 
+  (* SOFT_HLUTNM = "soft_lutpair288" *) 
   LUT2 #(
     .INIT(4'hE)) 
     rx_busy_q_i_3
@@ -83174,7 +83265,7 @@ module BASIC_uart_tx
        (.I0(\rx_clk_cnt[0]_i_3_n_0 ),
         .I1(\rx_clk_cnt_reg_n_0_[31] ),
         .O(rx_busy_q_i_5_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair286" *) 
+  (* SOFT_HLUTNM = "soft_lutpair287" *) 
   LUT3 #(
     .INIT(8'h40)) 
     rx_busy_q_i_6
@@ -83276,161 +83367,161 @@ module BASIC_uart_tx
         .I3(\rx_clk_cnt_reg_n_0_[5] ),
         .I4(\rx_clk_cnt_reg_n_0_[4] ),
         .O(\rx_clk_cnt[0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair293" *) 
+  (* SOFT_HLUTNM = "soft_lutpair294" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[10]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_14 ),
         .O(rx_clk_cnt[10]));
-  (* SOFT_HLUTNM = "soft_lutpair294" *) 
+  (* SOFT_HLUTNM = "soft_lutpair295" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[11]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_13 ),
         .O(rx_clk_cnt[11]));
-  (* SOFT_HLUTNM = "soft_lutpair294" *) 
+  (* SOFT_HLUTNM = "soft_lutpair295" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[12]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_12 ),
         .O(rx_clk_cnt[12]));
-  (* SOFT_HLUTNM = "soft_lutpair295" *) 
+  (* SOFT_HLUTNM = "soft_lutpair296" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[13]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_11 ),
         .O(rx_clk_cnt[13]));
-  (* SOFT_HLUTNM = "soft_lutpair295" *) 
+  (* SOFT_HLUTNM = "soft_lutpair296" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[14]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_10 ),
         .O(rx_clk_cnt[14]));
-  (* SOFT_HLUTNM = "soft_lutpair296" *) 
+  (* SOFT_HLUTNM = "soft_lutpair297" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[15]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_9 ),
         .O(rx_clk_cnt[15]));
-  (* SOFT_HLUTNM = "soft_lutpair296" *) 
+  (* SOFT_HLUTNM = "soft_lutpair297" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[16]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[16]_i_2_n_8 ),
         .O(rx_clk_cnt[16]));
-  (* SOFT_HLUTNM = "soft_lutpair297" *) 
+  (* SOFT_HLUTNM = "soft_lutpair298" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[17]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_15 ),
         .O(rx_clk_cnt[17]));
-  (* SOFT_HLUTNM = "soft_lutpair297" *) 
+  (* SOFT_HLUTNM = "soft_lutpair298" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[18]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_14 ),
         .O(rx_clk_cnt[18]));
-  (* SOFT_HLUTNM = "soft_lutpair298" *) 
+  (* SOFT_HLUTNM = "soft_lutpair299" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[19]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_13 ),
         .O(rx_clk_cnt[19]));
-  (* SOFT_HLUTNM = "soft_lutpair289" *) 
+  (* SOFT_HLUTNM = "soft_lutpair290" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[1]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_15 ),
         .O(rx_clk_cnt[1]));
-  (* SOFT_HLUTNM = "soft_lutpair298" *) 
+  (* SOFT_HLUTNM = "soft_lutpair299" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[20]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_12 ),
         .O(rx_clk_cnt[20]));
-  (* SOFT_HLUTNM = "soft_lutpair299" *) 
+  (* SOFT_HLUTNM = "soft_lutpair300" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[21]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_11 ),
         .O(rx_clk_cnt[21]));
-  (* SOFT_HLUTNM = "soft_lutpair299" *) 
+  (* SOFT_HLUTNM = "soft_lutpair300" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[22]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_10 ),
         .O(rx_clk_cnt[22]));
-  (* SOFT_HLUTNM = "soft_lutpair300" *) 
+  (* SOFT_HLUTNM = "soft_lutpair301" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[23]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_9 ),
         .O(rx_clk_cnt[23]));
-  (* SOFT_HLUTNM = "soft_lutpair300" *) 
+  (* SOFT_HLUTNM = "soft_lutpair301" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[24]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[24]_i_2_n_8 ),
         .O(rx_clk_cnt[24]));
-  (* SOFT_HLUTNM = "soft_lutpair301" *) 
+  (* SOFT_HLUTNM = "soft_lutpair302" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[25]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[31]_i_3_n_15 ),
         .O(rx_clk_cnt[25]));
-  (* SOFT_HLUTNM = "soft_lutpair301" *) 
+  (* SOFT_HLUTNM = "soft_lutpair302" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[26]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[31]_i_3_n_14 ),
         .O(rx_clk_cnt[26]));
-  (* SOFT_HLUTNM = "soft_lutpair302" *) 
+  (* SOFT_HLUTNM = "soft_lutpair303" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[27]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[31]_i_3_n_13 ),
         .O(rx_clk_cnt[27]));
-  (* SOFT_HLUTNM = "soft_lutpair302" *) 
+  (* SOFT_HLUTNM = "soft_lutpair303" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[28]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[31]_i_3_n_12 ),
         .O(rx_clk_cnt[28]));
-  (* SOFT_HLUTNM = "soft_lutpair303" *) 
+  (* SOFT_HLUTNM = "soft_lutpair304" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[29]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[31]_i_3_n_11 ),
         .O(rx_clk_cnt[29]));
-  (* SOFT_HLUTNM = "soft_lutpair289" *) 
+  (* SOFT_HLUTNM = "soft_lutpair290" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[2]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_14 ),
         .O(rx_clk_cnt[2]));
-  (* SOFT_HLUTNM = "soft_lutpair303" *) 
+  (* SOFT_HLUTNM = "soft_lutpair304" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[30]_i_1 
@@ -83473,49 +83564,49 @@ module BASIC_uart_tx
         .I4(\rx_clk_cnt_reg_n_0_[10] ),
         .I5(rx_state__0[1]),
         .O(\rx_clk_cnt[31]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair290" *) 
+  (* SOFT_HLUTNM = "soft_lutpair291" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[3]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_13 ),
         .O(rx_clk_cnt[3]));
-  (* SOFT_HLUTNM = "soft_lutpair290" *) 
+  (* SOFT_HLUTNM = "soft_lutpair291" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[4]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_12 ),
         .O(rx_clk_cnt[4]));
-  (* SOFT_HLUTNM = "soft_lutpair291" *) 
+  (* SOFT_HLUTNM = "soft_lutpair292" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[5]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_11 ),
         .O(rx_clk_cnt[5]));
-  (* SOFT_HLUTNM = "soft_lutpair291" *) 
+  (* SOFT_HLUTNM = "soft_lutpair292" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[6]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_10 ),
         .O(rx_clk_cnt[6]));
-  (* SOFT_HLUTNM = "soft_lutpair292" *) 
+  (* SOFT_HLUTNM = "soft_lutpair293" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[7]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_9 ),
         .O(rx_clk_cnt[7]));
-  (* SOFT_HLUTNM = "soft_lutpair292" *) 
+  (* SOFT_HLUTNM = "soft_lutpair293" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[8]_i_1 
        (.I0(\rx_clk_cnt[31]_i_2_n_0 ),
         .I1(\rx_clk_cnt_reg[8]_i_2_n_8 ),
         .O(rx_clk_cnt[8]));
-  (* SOFT_HLUTNM = "soft_lutpair293" *) 
+  (* SOFT_HLUTNM = "soft_lutpair294" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \rx_clk_cnt[9]_i_1 
@@ -83756,14 +83847,14 @@ module BASIC_uart_tx
         .I4(\rx_clk_cnt_reg_n_0_[31] ),
         .I5(\rx_clk_cnt[0]_i_2_n_0 ),
         .O(rx_data_q_1));
-  (* SOFT_HLUTNM = "soft_lutpair279" *) 
+  (* SOFT_HLUTNM = "soft_lutpair280" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \rx_data_q[7]_i_2 
        (.I0(rx_sync),
         .I1(rx_ready_q_reg_0),
         .O(\rx_data_q[7]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair286" *) 
+  (* SOFT_HLUTNM = "soft_lutpair287" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \rx_data_q[7]_i_3 
@@ -83818,7 +83909,7 @@ module BASIC_uart_tx
         .D(\rx_shift_reg_n_0_[7] ),
         .Q(rx_data_q[7]),
         .R(rst));
-  (* SOFT_HLUTNM = "soft_lutpair285" *) 
+  (* SOFT_HLUTNM = "soft_lutpair286" *) 
   LUT3 #(
     .INIT(8'hF4)) 
     rx_framing_q_i_1
@@ -83838,7 +83929,7 @@ module BASIC_uart_tx
         .D(rx),
         .Q(rx_meta),
         .S(rst));
-  (* SOFT_HLUTNM = "soft_lutpair279" *) 
+  (* SOFT_HLUTNM = "soft_lutpair280" *) 
   LUT4 #(
     .INIT(16'hFF80)) 
     rx_overrun_q_i_1
@@ -83862,7 +83953,7 @@ module BASIC_uart_tx
         .I3(rx_data_q_1),
         .I4(rx_ready_q_reg_0),
         .O(rx_ready_q_i_1_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair277" *) 
+  (* SOFT_HLUTNM = "soft_lutpair278" *) 
   LUT4 #(
     .INIT(16'h0100)) 
     rx_ready_q_i_2
@@ -84026,7 +84117,7 @@ module BASIC_uart_tx
     \tx_bit_idx[0]_i_1 
        (.I0(\tx_bit_idx_reg_n_0_[0] ),
         .O(\tx_bit_idx[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair280" *) 
+  (* SOFT_HLUTNM = "soft_lutpair281" *) 
   LUT4 #(
     .INIT(16'h0BF0)) 
     \tx_bit_idx[1]_i_1 
@@ -84035,7 +84126,7 @@ module BASIC_uart_tx
         .I2(\tx_bit_idx_reg_n_0_[1] ),
         .I3(\tx_bit_idx_reg_n_0_[0] ),
         .O(\tx_bit_idx[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair282" *) 
+  (* SOFT_HLUTNM = "soft_lutpair283" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \tx_bit_idx[2]_i_1 
@@ -84049,7 +84140,7 @@ module BASIC_uart_tx
        (.I0(tx_busy_q_reg_0),
         .I1(tx_i_2_n_0),
         .O(\tx_bit_idx[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair282" *) 
+  (* SOFT_HLUTNM = "soft_lutpair283" *) 
   LUT4 #(
     .INIT(16'h68AA)) 
     \tx_bit_idx[3]_i_2 
@@ -84100,7 +84191,7 @@ module BASIC_uart_tx
         .I4(tx_busy_q_reg_0),
         .I5(tx_busy_q_i_3_n_0),
         .O(tx_busy_q_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair278" *) 
+  (* SOFT_HLUTNM = "soft_lutpair279" *) 
   LUT3 #(
     .INIT(8'h01)) 
     tx_busy_q_i_3
@@ -84222,161 +84313,161 @@ module BASIC_uart_tx
         .I2(tx_clk_cnt[17]),
         .I3(tx_clk_cnt[16]),
         .O(\tx_clk_cnt[0]_i_9_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair308" *) 
+  (* SOFT_HLUTNM = "soft_lutpair309" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[10]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_14),
         .O(tx_clk_cnt_0[10]));
-  (* SOFT_HLUTNM = "soft_lutpair309" *) 
+  (* SOFT_HLUTNM = "soft_lutpair310" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[11]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_13),
         .O(tx_clk_cnt_0[11]));
-  (* SOFT_HLUTNM = "soft_lutpair309" *) 
+  (* SOFT_HLUTNM = "soft_lutpair310" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[12]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_12),
         .O(tx_clk_cnt_0[12]));
-  (* SOFT_HLUTNM = "soft_lutpair310" *) 
+  (* SOFT_HLUTNM = "soft_lutpair311" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[13]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_11),
         .O(tx_clk_cnt_0[13]));
-  (* SOFT_HLUTNM = "soft_lutpair310" *) 
+  (* SOFT_HLUTNM = "soft_lutpair311" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[14]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_10),
         .O(tx_clk_cnt_0[14]));
-  (* SOFT_HLUTNM = "soft_lutpair311" *) 
+  (* SOFT_HLUTNM = "soft_lutpair312" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[15]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_9),
         .O(tx_clk_cnt_0[15]));
-  (* SOFT_HLUTNM = "soft_lutpair311" *) 
+  (* SOFT_HLUTNM = "soft_lutpair312" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[16]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__0_n_8),
         .O(tx_clk_cnt_0[16]));
-  (* SOFT_HLUTNM = "soft_lutpair312" *) 
+  (* SOFT_HLUTNM = "soft_lutpair313" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[17]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_15),
         .O(tx_clk_cnt_0[17]));
-  (* SOFT_HLUTNM = "soft_lutpair312" *) 
+  (* SOFT_HLUTNM = "soft_lutpair313" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[18]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_14),
         .O(tx_clk_cnt_0[18]));
-  (* SOFT_HLUTNM = "soft_lutpair313" *) 
+  (* SOFT_HLUTNM = "soft_lutpair314" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[19]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_13),
         .O(tx_clk_cnt_0[19]));
-  (* SOFT_HLUTNM = "soft_lutpair304" *) 
+  (* SOFT_HLUTNM = "soft_lutpair305" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[1]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_15),
         .O(tx_clk_cnt_0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair313" *) 
+  (* SOFT_HLUTNM = "soft_lutpair314" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[20]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_12),
         .O(tx_clk_cnt_0[20]));
-  (* SOFT_HLUTNM = "soft_lutpair314" *) 
+  (* SOFT_HLUTNM = "soft_lutpair315" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[21]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_11),
         .O(tx_clk_cnt_0[21]));
-  (* SOFT_HLUTNM = "soft_lutpair314" *) 
+  (* SOFT_HLUTNM = "soft_lutpair315" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[22]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_10),
         .O(tx_clk_cnt_0[22]));
-  (* SOFT_HLUTNM = "soft_lutpair315" *) 
+  (* SOFT_HLUTNM = "soft_lutpair316" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[23]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_9),
         .O(tx_clk_cnt_0[23]));
-  (* SOFT_HLUTNM = "soft_lutpair315" *) 
+  (* SOFT_HLUTNM = "soft_lutpair316" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[24]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__1_n_8),
         .O(tx_clk_cnt_0[24]));
-  (* SOFT_HLUTNM = "soft_lutpair316" *) 
+  (* SOFT_HLUTNM = "soft_lutpair317" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[25]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__2_n_15),
         .O(tx_clk_cnt_0[25]));
-  (* SOFT_HLUTNM = "soft_lutpair316" *) 
+  (* SOFT_HLUTNM = "soft_lutpair317" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[26]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__2_n_14),
         .O(tx_clk_cnt_0[26]));
-  (* SOFT_HLUTNM = "soft_lutpair317" *) 
+  (* SOFT_HLUTNM = "soft_lutpair318" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[27]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__2_n_13),
         .O(tx_clk_cnt_0[27]));
-  (* SOFT_HLUTNM = "soft_lutpair317" *) 
+  (* SOFT_HLUTNM = "soft_lutpair318" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[28]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__2_n_12),
         .O(tx_clk_cnt_0[28]));
-  (* SOFT_HLUTNM = "soft_lutpair318" *) 
+  (* SOFT_HLUTNM = "soft_lutpair319" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[29]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__2_n_11),
         .O(tx_clk_cnt_0[29]));
-  (* SOFT_HLUTNM = "soft_lutpair304" *) 
+  (* SOFT_HLUTNM = "soft_lutpair305" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[2]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_14),
         .O(tx_clk_cnt_0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair318" *) 
+  (* SOFT_HLUTNM = "soft_lutpair319" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[30]_i_1 
@@ -84395,49 +84486,49 @@ module BASIC_uart_tx
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry__2_n_9),
         .O(tx_clk_cnt_0[31]));
-  (* SOFT_HLUTNM = "soft_lutpair305" *) 
+  (* SOFT_HLUTNM = "soft_lutpair306" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[3]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_13),
         .O(tx_clk_cnt_0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair305" *) 
+  (* SOFT_HLUTNM = "soft_lutpair306" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[4]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_12),
         .O(tx_clk_cnt_0[4]));
-  (* SOFT_HLUTNM = "soft_lutpair306" *) 
+  (* SOFT_HLUTNM = "soft_lutpair307" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[5]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_11),
         .O(tx_clk_cnt_0[5]));
-  (* SOFT_HLUTNM = "soft_lutpair306" *) 
+  (* SOFT_HLUTNM = "soft_lutpair307" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[6]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_10),
         .O(tx_clk_cnt_0[6]));
-  (* SOFT_HLUTNM = "soft_lutpair307" *) 
+  (* SOFT_HLUTNM = "soft_lutpair308" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[7]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_9),
         .O(tx_clk_cnt_0[7]));
-  (* SOFT_HLUTNM = "soft_lutpair307" *) 
+  (* SOFT_HLUTNM = "soft_lutpair308" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[8]_i_1 
        (.I0(tx_i_2_n_0),
         .I1(tx_clk_cnt0_carry_n_8),
         .O(tx_clk_cnt_0[8]));
-  (* SOFT_HLUTNM = "soft_lutpair308" *) 
+  (* SOFT_HLUTNM = "soft_lutpair309" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \tx_clk_cnt[9]_i_1 
@@ -84636,7 +84727,7 @@ module BASIC_uart_tx
         .D(tx_clk_cnt_0[9]),
         .Q(tx_clk_cnt[9]),
         .R(\tx_clk_cnt[31]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair276" *) 
+  (* SOFT_HLUTNM = "soft_lutpair277" *) 
   LUT5 #(
     .INIT(32'hEFEFEFFF)) 
     tx_i_1
@@ -84654,7 +84745,7 @@ module BASIC_uart_tx
         .I2(\tx_clk_cnt[0]_i_4_n_0 ),
         .I3(tx_clk_cnt[0]),
         .O(tx_i_2_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair280" *) 
+  (* SOFT_HLUTNM = "soft_lutpair281" *) 
   LUT4 #(
     .INIT(16'hFFDF)) 
     tx_i_3
@@ -84663,7 +84754,7 @@ module BASIC_uart_tx
         .I2(\tx_bit_idx_reg_n_0_[3] ),
         .I3(\tx_bit_idx_reg_n_0_[2] ),
         .O(tx_i_3_n_0));
-  (* SOFT_HLUTNM = "soft_lutpair276" *) 
+  (* SOFT_HLUTNM = "soft_lutpair277" *) 
   LUT1 #(
     .INIT(2'h1)) 
     tx_ready_INST_0
@@ -84675,7 +84766,7 @@ module BASIC_uart_tx
         .D(tx_i_1_n_0),
         .Q(tx),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair283" *) 
+  (* SOFT_HLUTNM = "soft_lutpair284" *) 
   LUT3 #(
     .INIT(8'hF8)) 
     \tx_shifter[0]_i_1 
@@ -84683,7 +84774,7 @@ module BASIC_uart_tx
         .I1(\tx_shifter_reg_n_0_[1] ),
         .I2(rst),
         .O(p_1_in[0]));
-  (* SOFT_HLUTNM = "soft_lutpair283" *) 
+  (* SOFT_HLUTNM = "soft_lutpair284" *) 
   LUT4 #(
     .INIT(16'hFEAE)) 
     \tx_shifter[1]_i_1 
@@ -84732,7 +84823,7 @@ module BASIC_uart_tx
         .I2(tx_busy_q_reg_0),
         .I3(\tx_shifter_reg_n_0_[7] ),
         .O(p_1_in[6]));
-  (* SOFT_HLUTNM = "soft_lutpair284" *) 
+  (* SOFT_HLUTNM = "soft_lutpair285" *) 
   LUT4 #(
     .INIT(16'hFEAE)) 
     \tx_shifter[7]_i_1 
@@ -84749,7 +84840,7 @@ module BASIC_uart_tx
         .I2(tx_i_2_n_0),
         .I3(tx_busy_q_reg_0),
         .O(\tx_shifter[8]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair284" *) 
+  (* SOFT_HLUTNM = "soft_lutpair285" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \tx_shifter[8]_i_2 
@@ -84836,7 +84927,7 @@ module BASIC_wb_mux
   wire [31:0]\wb_alu_result_reg[31] ;
   wire [2:0]wb_sel;
 
-  (* SOFT_HLUTNM = "soft_lutpair320" *) 
+  (* SOFT_HLUTNM = "soft_lutpair321" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[0]_INST_0 
@@ -84854,7 +84945,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[0]),
         .O(rd_wdata[0]));
-  (* SOFT_HLUTNM = "soft_lutpair324" *) 
+  (* SOFT_HLUTNM = "soft_lutpair325" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[10]_INST_0 
@@ -84872,7 +84963,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[10]),
         .O(rd_wdata[10]));
-  (* SOFT_HLUTNM = "soft_lutpair323" *) 
+  (* SOFT_HLUTNM = "soft_lutpair324" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[11]_INST_0 
@@ -84890,7 +84981,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[11]),
         .O(rd_wdata[11]));
-  (* SOFT_HLUTNM = "soft_lutpair331" *) 
+  (* SOFT_HLUTNM = "soft_lutpair332" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[12]_INST_0 
@@ -84908,7 +84999,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[12]),
         .O(rd_wdata[12]));
-  (* SOFT_HLUTNM = "soft_lutpair323" *) 
+  (* SOFT_HLUTNM = "soft_lutpair324" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[13]_INST_0 
@@ -84926,7 +85017,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[13]),
         .O(rd_wdata[13]));
-  (* SOFT_HLUTNM = "soft_lutpair334" *) 
+  (* SOFT_HLUTNM = "soft_lutpair335" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[14]_INST_0 
@@ -84944,7 +85035,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[14]),
         .O(rd_wdata[14]));
-  (* SOFT_HLUTNM = "soft_lutpair330" *) 
+  (* SOFT_HLUTNM = "soft_lutpair331" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[15]_INST_0 
@@ -84962,7 +85053,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[15]),
         .O(rd_wdata[15]));
-  (* SOFT_HLUTNM = "soft_lutpair325" *) 
+  (* SOFT_HLUTNM = "soft_lutpair326" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[16]_INST_0 
@@ -84980,7 +85071,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[16]),
         .O(rd_wdata[16]));
-  (* SOFT_HLUTNM = "soft_lutpair322" *) 
+  (* SOFT_HLUTNM = "soft_lutpair323" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[17]_INST_0 
@@ -84998,7 +85089,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[17]),
         .O(rd_wdata[17]));
-  (* SOFT_HLUTNM = "soft_lutpair326" *) 
+  (* SOFT_HLUTNM = "soft_lutpair327" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[18]_INST_0 
@@ -85016,7 +85107,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[18]),
         .O(rd_wdata[18]));
-  (* SOFT_HLUTNM = "soft_lutpair330" *) 
+  (* SOFT_HLUTNM = "soft_lutpair331" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[19]_INST_0 
@@ -85034,7 +85125,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[19]),
         .O(rd_wdata[19]));
-  (* SOFT_HLUTNM = "soft_lutpair320" *) 
+  (* SOFT_HLUTNM = "soft_lutpair321" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[1]_INST_0 
@@ -85052,7 +85143,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[1]),
         .O(rd_wdata[1]));
-  (* SOFT_HLUTNM = "soft_lutpair334" *) 
+  (* SOFT_HLUTNM = "soft_lutpair335" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[20]_INST_0 
@@ -85070,7 +85161,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[20]),
         .O(rd_wdata[20]));
-  (* SOFT_HLUTNM = "soft_lutpair328" *) 
+  (* SOFT_HLUTNM = "soft_lutpair329" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[21]_INST_0 
@@ -85088,7 +85179,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[21]),
         .O(rd_wdata[21]));
-  (* SOFT_HLUTNM = "soft_lutpair328" *) 
+  (* SOFT_HLUTNM = "soft_lutpair329" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[22]_INST_0 
@@ -85106,7 +85197,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[22]),
         .O(rd_wdata[22]));
-  (* SOFT_HLUTNM = "soft_lutpair329" *) 
+  (* SOFT_HLUTNM = "soft_lutpair330" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[23]_INST_0 
@@ -85124,7 +85215,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[23]),
         .O(rd_wdata[23]));
-  (* SOFT_HLUTNM = "soft_lutpair329" *) 
+  (* SOFT_HLUTNM = "soft_lutpair330" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[24]_INST_0 
@@ -85142,7 +85233,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[24]),
         .O(rd_wdata[24]));
-  (* SOFT_HLUTNM = "soft_lutpair333" *) 
+  (* SOFT_HLUTNM = "soft_lutpair334" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[25]_INST_0 
@@ -85160,7 +85251,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[25]),
         .O(rd_wdata[25]));
-  (* SOFT_HLUTNM = "soft_lutpair333" *) 
+  (* SOFT_HLUTNM = "soft_lutpair334" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[26]_INST_0 
@@ -85178,7 +85269,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[26]),
         .O(rd_wdata[26]));
-  (* SOFT_HLUTNM = "soft_lutpair327" *) 
+  (* SOFT_HLUTNM = "soft_lutpair328" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[27]_INST_0 
@@ -85196,7 +85287,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[27]),
         .O(rd_wdata[27]));
-  (* SOFT_HLUTNM = "soft_lutpair332" *) 
+  (* SOFT_HLUTNM = "soft_lutpair333" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[28]_INST_0 
@@ -85214,7 +85305,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[28]),
         .O(rd_wdata[28]));
-  (* SOFT_HLUTNM = "soft_lutpair335" *) 
+  (* SOFT_HLUTNM = "soft_lutpair336" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[29]_INST_0 
@@ -85232,7 +85323,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[29]),
         .O(rd_wdata[29]));
-  (* SOFT_HLUTNM = "soft_lutpair327" *) 
+  (* SOFT_HLUTNM = "soft_lutpair328" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[2]_INST_0 
@@ -85250,7 +85341,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[2]),
         .O(rd_wdata[2]));
-  (* SOFT_HLUTNM = "soft_lutpair335" *) 
+  (* SOFT_HLUTNM = "soft_lutpair336" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[30]_INST_0 
@@ -85268,7 +85359,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[30]),
         .O(rd_wdata[30]));
-  (* SOFT_HLUTNM = "soft_lutpair332" *) 
+  (* SOFT_HLUTNM = "soft_lutpair333" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[31]_INST_0 
@@ -85286,7 +85377,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[31]),
         .O(rd_wdata[31]));
-  (* SOFT_HLUTNM = "soft_lutpair321" *) 
+  (* SOFT_HLUTNM = "soft_lutpair322" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[3]_INST_0 
@@ -85304,7 +85395,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[3]),
         .O(rd_wdata[3]));
-  (* SOFT_HLUTNM = "soft_lutpair324" *) 
+  (* SOFT_HLUTNM = "soft_lutpair325" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[4]_INST_0 
@@ -85322,7 +85413,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[4]),
         .O(rd_wdata[4]));
-  (* SOFT_HLUTNM = "soft_lutpair321" *) 
+  (* SOFT_HLUTNM = "soft_lutpair322" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[5]_INST_0 
@@ -85340,7 +85431,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[5]),
         .O(rd_wdata[5]));
-  (* SOFT_HLUTNM = "soft_lutpair325" *) 
+  (* SOFT_HLUTNM = "soft_lutpair326" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[6]_INST_0 
@@ -85358,7 +85449,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[6]),
         .O(rd_wdata[6]));
-  (* SOFT_HLUTNM = "soft_lutpair322" *) 
+  (* SOFT_HLUTNM = "soft_lutpair323" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[7]_INST_0 
@@ -85376,7 +85467,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[7]),
         .O(rd_wdata[7]));
-  (* SOFT_HLUTNM = "soft_lutpair331" *) 
+  (* SOFT_HLUTNM = "soft_lutpair332" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[8]_INST_0 
@@ -85394,7 +85485,7 @@ module BASIC_wb_mux
         .I4(wb_sel[0]),
         .I5(pc_plus4[8]),
         .O(rd_wdata[8]));
-  (* SOFT_HLUTNM = "soft_lutpair326" *) 
+  (* SOFT_HLUTNM = "soft_lutpair327" *) 
   LUT3 #(
     .INIT(8'hB8)) 
     \rd_wdata[9]_INST_0 

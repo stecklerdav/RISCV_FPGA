@@ -58,8 +58,8 @@ vlog -work xil_defaultlib -64 -incr \
 "../../../bd/BASIC/ip/BASIC_xlslice_2bit_0_0/sim/BASIC_xlslice_2bit_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_xlconcat_8_0_0/sim/BASIC_xlconcat_8_0_0.v" \
 "../../../bd/BASIC/ip/BASIC_rom_memory_0_0/sim/BASIC_rom_memory_0_0.v" \
-"../../../bd/BASIC/sim/BASIC.v" \
 "../../../bd/BASIC/ip/BASIC_sim_constant_0_5/sim/BASIC_sim_constant_0_5.v" \
+"../../../bd/BASIC/sim/BASIC.v" \
 
 
 vlog -work xil_defaultlib \
