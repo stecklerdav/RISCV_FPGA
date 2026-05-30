@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1780064380" />
+    <testcase classname="regression" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/tb/regression.py" lineno="7" name="regression" ratio_time="33908.18942037659" sim_time_ns="4390.0" time="0.12946724891662598">
+      <failure error_msg="Signature mismatch expected=0xCAFE0005 got=0xBAD00005" error_type="AssertionError" />
+    </testcase>
+  </testsuite>
+</testsuites>

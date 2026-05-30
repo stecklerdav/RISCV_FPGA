@@ -1,0 +1,277 @@
+-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-- --------------------------------------------------------------------------------
+-- Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
+-- Date        : Fri May 29 20:40:36 2026
+-- Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
+-- Command     : write_vhdl -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
+--               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ RV32_IF_ID_rom_memory_0_0_sim_netlist.vhdl
+-- Design      : RV32_IF_ID_rom_memory_0_0
+-- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
+--               synthesized. This netlist cannot be used for SDF annotated simulation.
+-- Device      : xczu5ev-sfvc784-2-i
+-- --------------------------------------------------------------------------------
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_rom_memory is
+  port (
+    instr : out STD_LOGIC_VECTOR ( 7 downto 0 );
+    clk : in STD_LOGIC;
+    en : in STD_LOGIC;
+    addr : in STD_LOGIC_VECTOR ( 10 downto 0 )
+  );
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_rom_memory;
+
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_rom_memory is
+  signal NLW_instr_reg_CASDOUTA_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_instr_reg_CASDOUTB_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_instr_reg_CASDOUTPA_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal NLW_instr_reg_CASDOUTPB_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal NLW_instr_reg_DOUTADOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 8 );
+  signal NLW_instr_reg_DOUTBDOUT_UNCONNECTED : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal NLW_instr_reg_DOUTPADOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal NLW_instr_reg_DOUTPBDOUTP_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
+  attribute \MEM.PORTA.DATA_BIT_LAYOUT\ : string;
+  attribute \MEM.PORTA.DATA_BIT_LAYOUT\ of instr_reg : label is "p0_d8";
+  attribute METHODOLOGY_DRC_VIOS : string;
+  attribute METHODOLOGY_DRC_VIOS of instr_reg : label is "{SYNTH-6 {cell *THIS*}}";
+  attribute RDADDR_COLLISION_HWCONFIG : string;
+  attribute RDADDR_COLLISION_HWCONFIG of instr_reg : label is "PERFORMANCE";
+  attribute RTL_RAM_BITS : integer;
+  attribute RTL_RAM_BITS of instr_reg : label is 16384;
+  attribute RTL_RAM_NAME : string;
+  attribute RTL_RAM_NAME of instr_reg : label is "inst/instr";
+  attribute RTL_RAM_TYPE : string;
+  attribute RTL_RAM_TYPE of instr_reg : label is "RAM_SP";
+  attribute bram_addr_begin : integer;
+  attribute bram_addr_begin of instr_reg : label is 0;
+  attribute bram_addr_end : integer;
+  attribute bram_addr_end of instr_reg : label is 2047;
+  attribute bram_slice_begin : integer;
+  attribute bram_slice_begin of instr_reg : label is 0;
+  attribute bram_slice_end : integer;
+  attribute bram_slice_end of instr_reg : label is 7;
+  attribute ram_addr_begin : integer;
+  attribute ram_addr_begin of instr_reg : label is 0;
+  attribute ram_addr_end : integer;
+  attribute ram_addr_end of instr_reg : label is 2047;
+  attribute ram_offset : integer;
+  attribute ram_offset of instr_reg : label is 0;
+  attribute ram_slice_begin : integer;
+  attribute ram_slice_begin of instr_reg : label is 0;
+  attribute ram_slice_end : integer;
+  attribute ram_slice_end of instr_reg : label is 7;
+begin
+instr_reg: unisim.vcomponents.RAMB18E2
+    generic map(
+      CASCADE_ORDER_A => "NONE",
+      CASCADE_ORDER_B => "NONE",
+      CLOCK_DOMAINS => "INDEPENDENT",
+      DOA_REG => 0,
+      DOB_REG => 0,
+      ENADDRENA => "FALSE",
+      ENADDRENB => "FALSE",
+      INITP_00 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_03 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_04 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_05 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_06 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INITP_07 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_00 => X"0303030303030303030303030303030305030303635B534B433B332B231B130B",
+      INIT_01 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_02 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_03 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_04 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_05 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_06 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_07 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_08 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_09 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_0A => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_0B => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_0C => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_0D => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_0E => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_0F => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_10 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_11 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_12 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_13 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_14 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_15 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_16 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_17 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_18 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_19 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_1A => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_1B => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_1C => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_1D => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_1E => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_1F => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_20 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_21 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_22 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_23 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_24 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_25 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_26 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_27 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_28 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_29 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_2A => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_2B => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_2C => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_2D => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_2E => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_2F => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_30 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_31 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_32 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_33 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_34 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_35 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_36 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_37 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_38 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_39 => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_3A => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_3B => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_3C => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_3D => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_3E => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_3F => X"0303030303030303030303030303030303030303030303030303030303030303",
+      INIT_A => B"00" & X"0000",
+      INIT_B => B"00" & X"0000",
+      INIT_FILE => "NONE",
+      RDADDRCHANGEA => "FALSE",
+      RDADDRCHANGEB => "FALSE",
+      READ_WIDTH_A => 9,
+      READ_WIDTH_B => 0,
+      RSTREG_PRIORITY_A => "RSTREG",
+      RSTREG_PRIORITY_B => "RSTREG",
+      SIM_COLLISION_CHECK => "ALL",
+      SLEEP_ASYNC => "FALSE",
+      SRVAL_A => B"00" & X"0000",
+      SRVAL_B => B"00" & X"0000",
+      WRITE_MODE_A => "WRITE_FIRST",
+      WRITE_MODE_B => "WRITE_FIRST",
+      WRITE_WIDTH_A => 9,
+      WRITE_WIDTH_B => 0
+    )
+        port map (
+      ADDRARDADDR(13 downto 3) => addr(10 downto 0),
+      ADDRARDADDR(2 downto 0) => B"000",
+      ADDRBWRADDR(13 downto 0) => B"11111111111111",
+      ADDRENA => '0',
+      ADDRENB => '0',
+      CASDIMUXA => '0',
+      CASDIMUXB => '0',
+      CASDINA(15 downto 0) => B"0000000000000000",
+      CASDINB(15 downto 0) => B"0000000000000000",
+      CASDINPA(1 downto 0) => B"00",
+      CASDINPB(1 downto 0) => B"00",
+      CASDOMUXA => '0',
+      CASDOMUXB => '0',
+      CASDOMUXEN_A => '1',
+      CASDOMUXEN_B => '1',
+      CASDOUTA(15 downto 0) => NLW_instr_reg_CASDOUTA_UNCONNECTED(15 downto 0),
+      CASDOUTB(15 downto 0) => NLW_instr_reg_CASDOUTB_UNCONNECTED(15 downto 0),
+      CASDOUTPA(1 downto 0) => NLW_instr_reg_CASDOUTPA_UNCONNECTED(1 downto 0),
+      CASDOUTPB(1 downto 0) => NLW_instr_reg_CASDOUTPB_UNCONNECTED(1 downto 0),
+      CASOREGIMUXA => '0',
+      CASOREGIMUXB => '0',
+      CASOREGIMUXEN_A => '1',
+      CASOREGIMUXEN_B => '1',
+      CLKARDCLK => clk,
+      CLKBWRCLK => '0',
+      DINADIN(15 downto 0) => B"0000000011111111",
+      DINBDIN(15 downto 0) => B"1111111111111111",
+      DINPADINP(1 downto 0) => B"00",
+      DINPBDINP(1 downto 0) => B"11",
+      DOUTADOUT(15 downto 8) => NLW_instr_reg_DOUTADOUT_UNCONNECTED(15 downto 8),
+      DOUTADOUT(7 downto 0) => instr(7 downto 0),
+      DOUTBDOUT(15 downto 0) => NLW_instr_reg_DOUTBDOUT_UNCONNECTED(15 downto 0),
+      DOUTPADOUTP(1 downto 0) => NLW_instr_reg_DOUTPADOUTP_UNCONNECTED(1 downto 0),
+      DOUTPBDOUTP(1 downto 0) => NLW_instr_reg_DOUTPBDOUTP_UNCONNECTED(1 downto 0),
+      ENARDEN => en,
+      ENBWREN => '0',
+      REGCEAREGCE => '1',
+      REGCEB => '1',
+      RSTRAMARSTRAM => '0',
+      RSTRAMB => '0',
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
+      SLEEP => '0',
+      WEA(1 downto 0) => B"00",
+      WEBWE(3 downto 0) => B"0000"
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
+  port (
+    clk : in STD_LOGIC;
+    en : in STD_LOGIC;
+    addr : in STD_LOGIC_VECTOR ( 10 downto 0 );
+    instr : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  attribute NotValidForBitStream : boolean;
+  attribute NotValidForBitStream of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is true;
+  attribute CHECK_LICENSE_TYPE : string;
+  attribute CHECK_LICENSE_TYPE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "RV32_IF_ID_rom_memory_0_0,rom_memory,{}";
+  attribute DowngradeIPIdentifiedWarnings : string;
+  attribute DowngradeIPIdentifiedWarnings of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "yes";
+  attribute IP_DEFINITION_SOURCE : string;
+  attribute IP_DEFINITION_SOURCE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "module_ref";
+  attribute X_CORE_INFO : string;
+  attribute X_CORE_INFO of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix : entity is "rom_memory,Vivado 2020.1";
+end decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix;
+
+architecture STRUCTURE of decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix is
+  signal \^instr\ : STD_LOGIC_VECTOR ( 11 downto 0 );
+  attribute X_INTERFACE_INFO : string;
+  attribute X_INTERFACE_INFO of clk : signal is "xilinx.com:signal:clock:1.0 clk CLK";
+  attribute X_INTERFACE_PARAMETER : string;
+  attribute X_INTERFACE_PARAMETER of clk : signal is "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, INSERT_VIP 0";
+begin
+  instr(31) <= \^instr\(11);
+  instr(30) <= \^instr\(11);
+  instr(29) <= \^instr\(11);
+  instr(28) <= \^instr\(11);
+  instr(27) <= \^instr\(11);
+  instr(26) <= \^instr\(11);
+  instr(25) <= \^instr\(11);
+  instr(24 downto 20) <= \^instr\(11 downto 7);
+  instr(19) <= \^instr\(11);
+  instr(18) <= \^instr\(11);
+  instr(17) <= \^instr\(11);
+  instr(16) <= \^instr\(11);
+  instr(15) <= \^instr\(11);
+  instr(14) <= \^instr\(11);
+  instr(13) <= \^instr\(11);
+  instr(12) <= \^instr\(11);
+  instr(11 downto 7) <= \^instr\(11 downto 7);
+  instr(6) <= \^instr\(2);
+  instr(5) <= \^instr\(2);
+  instr(4) <= \^instr\(4);
+  instr(3) <= \^instr\(2);
+  instr(2) <= \^instr\(2);
+  instr(1) <= \^instr\(0);
+  instr(0) <= \^instr\(0);
+inst: entity work.decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_rom_memory
+     port map (
+      addr(10 downto 0) => addr(10 downto 0),
+      clk => clk,
+      en => en,
+      instr(7 downto 3) => \^instr\(11 downto 7),
+      instr(2) => \^instr\(2),
+      instr(1) => \^instr\(4),
+      instr(0) => \^instr\(0)
+    );
+end STRUCTURE;

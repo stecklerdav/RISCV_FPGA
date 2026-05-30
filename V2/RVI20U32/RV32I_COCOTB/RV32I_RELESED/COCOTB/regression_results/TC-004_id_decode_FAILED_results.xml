@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1780100811" />
+    <testcase classname="regression" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RV32I_RELESED/COCOTB/tb/regression.py" lineno="27" name="regression" ratio_time="20719.802400566095" sim_time_ns="370.0" time="0.01785731315612793">
+      <failure error_msg="No se vio ADDI x5,x0,123 en EX" error_type="AssertionError" />
+    </testcase>
+  </testsuite>
+</testsuites>

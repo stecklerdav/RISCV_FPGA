@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1780088927" />
+    <testcase classname="regression" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RV32I_RELESED/COCOTB/tb/regression.py" lineno="10" name="regression" ratio_time="25551.244348969187" sim_time_ns="190.0" time="0.007436037063598633">
+      <failure error_msg="Flush failed: expected ID_PC=0x00000000, got=0x00000024" error_type="AssertionError" />
+    </testcase>
+  </testsuite>
+</testsuites>

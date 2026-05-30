@@ -1,0 +1,40 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.678979",
+   "Default View_TopLeft":"-231,-199",
+   "ExpandedHierarchyInLayout":"",
+   "PinnedBlocks":"/rom_memory_0|/sim_constant_0|/pc_to_imem_addr_0|/pc_unit_0|/if_id_reg_0|",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x -70 -y 210 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -70 -y 150 -defaultsOSRD
+preplace port if_id_enable -pg 1 -lvl 0 -x -70 -y 170 -defaultsOSRD
+preplace port if_id_flush -pg 1 -lvl 0 -x -70 -y 190 -defaultsOSRD
+preplace portBus if_instr_debug -pg 1 -lvl 6 -x 1620 -y 300 -defaultsOSRD
+preplace portBus id_pc_debug -pg 1 -lvl 6 -x 1620 -y 160 -defaultsOSRD
+preplace portBus id_pc_plus4_debug -pg 1 -lvl 6 -x 1620 -y 200 -defaultsOSRD
+preplace portBus id_instr_debug -pg 1 -lvl 6 -x 1620 -y 220 -defaultsOSRD
+preplace portBus if_pc_plus4_debug -pg 1 -lvl 6 -x 1620 -y 180 -defaultsOSRD
+preplace portBus if_pc_debug -pg 1 -lvl 6 -x 1620 -y 320 -defaultsOSRD
+preplace inst pc_to_imem_addr_0 -pg 1 -lvl 3 -x 680 -y 190 -defaultsOSRD
+preplace inst pc_unit_0 -pg 1 -lvl 2 -x 410 -y 210 -defaultsOSRD
+preplace inst rom_memory_0 -pg 1 -lvl 4 -x 950 -y 190 -defaultsOSRD
+preplace inst sim_constant_0 -pg 1 -lvl 1 -x 120 -y 270 -defaultsOSRD
+preplace inst if_id_reg_0 -pg 1 -lvl 5 -x 1410 -y 180 -defaultsOSRD
+preplace netloc Net 1 0 5 NJ 210 250 300 N 300 810 110 1080
+preplace netloc Net1 1 1 3 260 290 560J 260 820
+preplace netloc pc_unit_0_pc 1 2 4 550 280 NJ 280 1120 320 N
+preplace netloc rom_memory_0_instr 1 4 2 1100 300 N
+preplace netloc rst_1 1 0 5 NJ 150 230J 330 N 330 N 330 1090
+preplace netloc pc_unit_0_pc_plus4 1 2 4 540J 270 NJ 270 1130 310 1600
+preplace netloc if_id_reg_0_id_pc 1 5 1 N 160
+preplace netloc if_id_reg_0_id_pc_plus4 1 5 1 1590 180n
+preplace netloc if_id_reg_0_id_instr 1 5 1 1580 200n
+preplace netloc if_id_flush_1 1 0 5 NJ 190 220J 320 NJ 320 NJ 320 1110
+preplace netloc pc_to_imem_addr_0_addr 1 3 1 800 190n
+preplace netloc if_id_enable_1 1 0 5 NJ 170 240J 310 NJ 310 NJ 310 1080
+levelinfo -pg 1 -70 120 410 680 950 1410 1620
+pagesize -pg 1 -db -bbox -sgen -210 -120 1850 390
+"
+}
+0

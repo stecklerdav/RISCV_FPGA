@@ -1,43 +1,15 @@
 .option norvc
-.section .text.start
+.section .text
 .global _start
 
-.equ RAM_BASE,  0x00002000
-.equ GPIO_BASE, 0x00003000
-.equ GPIO_OUT,  0x00
-.equ GPIO_IN,   0x04
-.equ GPIO_DIR,  0x08
-
 _start:
-    li   x1, GPIO_BASE
+    addi x5, x0, 123      # ex_rd=5, ex_rd_we=1, ex_imm=123
+    sw   x2, 8(x1)        # ex_rs1=1, ex_rs2=2, ex_imm=8, mem_we=1
+    beq  x1, x2, label    # branch_en=1, funct3=000
+    add  x3, x1, x2       # ex_rd=3, ex_rd_we=1
 
-    li   x2, 0x00000003
-    sw   x2, GPIO_DIR(x1)      # GPIO[1:0] output
+label:
+    addi x6, x0, 55       # ex_rd=6, ex_imm=55
 
-    li   x3, 0x00000001
-    sw   x3, GPIO_OUT(x1)
-
-    lw   x4, GPIO_OUT(x1)
-    li   x5, 0x00000001
-    bne  x4, x5, fail
-
-    li   x3, 0x00000002
-    sw   x3, GPIO_OUT(x1)
-
-    lw   x4, GPIO_OUT(x1)
-    li   x5, 0x00000002
-    bne  x4, x5, fail
-
-pass:
-    li   x10, RAM_BASE
-    li   x11, 0xCAFE0007
-    sw   x11, 0(x10)
-    j    done
-
-fail:
-    li   x10, RAM_BASE
-    li   x11, 0xBAD00007
-    sw   x11, 0(x10)
-
-done:
-    j    done
+halt:
+    jal x0, halt
