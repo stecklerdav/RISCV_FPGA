@@ -3,7 +3,7 @@
 module rom_memory #(
     parameter ADDR_WIDTH = 11,              // 2048 palabras
     parameter DATA_WIDTH = 32,
-    parameter INIT_FILE = "programs/prog_asm.mem"
+    parameter INIT_FILE = "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/programs/prog_asm.mem"
 )(
     input  wire                     clk,
     input  wire                     en,

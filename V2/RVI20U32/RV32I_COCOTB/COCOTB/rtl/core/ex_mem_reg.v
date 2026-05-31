@@ -84,6 +84,32 @@ module ex_mem_reg (
             mem_exception_cause <= 4'b0;
             mem_exception_tval  <= 32'b0;
         end
+	else if (flush) begin
+	    mem_valid           <= 1'b0;
+
+	    mem_pc              <= 32'b0;
+	    mem_alu_result      <= 32'b0;
+	    mem_store_data      <= 32'b0;
+	    mem_pc_plus4        <= 32'b0;
+	    mem_imm_u           <= 32'b0;
+	    mem_rd              <= 5'b0;
+
+	    mem_mem_re          <= 1'b0;
+	    mem_mem_we          <= 1'b0;
+	    mem_mem_size        <= 2'b0;
+	    mem_mem_unsigned    <= 1'b0;
+
+	    mem_rd_we           <= 1'b0;
+	    mem_wb_sel          <= 3'b0;
+
+	    mem_csr_rd_we       <= 1'b0;
+	    mem_csr_rd_addr     <= 5'b0;
+	    mem_csr_rd_data     <= 32'b0;
+
+	    mem_exception_valid <= 1'b0;
+	    mem_exception_cause <= 4'b0;
+	    mem_exception_tval  <= 32'b0;
+	end
         else if (!stall) begin
             mem_valid           <= ex_valid;
 

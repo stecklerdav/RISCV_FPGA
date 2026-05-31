@@ -1,0 +1,1 @@
+-wto "665df9eb1049412aba2015d1f4da0e51" --incr --debug "all" --relax --mt "8" -L "xil_defaultlib" -L "xlconstant_v1_1_7" -L "xilinx_vip" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "RISCV_COCOTB_wrapper_behav" "xil_defaultlib.RISCV_COCOTB_wrapper" "xil_defaultlib.glbl" -log "elaborate.log" 

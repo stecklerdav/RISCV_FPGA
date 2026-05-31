@@ -1,0 +1,7 @@
+Running: xsim.dir/RISCV_COCOTB_wrapper_behav/xsimk -simmode gui -wdb RISCV_COCOTB_wrapper_behav.wdb -simrunnum 0 -socket 34687
+Design successfully loaded
+Design Loading Memory Usage: 44772 KB (Peak: 44772 KB)
+Design Loading CPU Usage: 40 ms
+Simulation completed
+Simulation Memory Usage: 126296 KB (Peak: 184040 KB)
+Simulation CPU Usage: 170 ms

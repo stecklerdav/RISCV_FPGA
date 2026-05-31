@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat May 30 23:25:01 2026
+//Date        : Sun May 31 13:03:39 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -19,10 +19,14 @@ module Core_RV32I_imp_BFBAKD
     dmem_valid,
     dmem_wdata,
     dmem_we,
+    ex_rs2,
+    ex_store_data,
+    forward_store,
     id_instr_out,
     id_pc_out,
     id_valid_out,
     mem_data,
+    mem_store_data,
     pc_debug_last_predict_0,
     pc_debug_last_priv_redirect_0,
     pc_debug_last_redirect_0,
@@ -34,7 +38,9 @@ module Core_RV32I_imp_BFBAKD
     rd_wdata,
     regfile_we,
     rst,
-    wb_rd);
+    wb_rd,
+    wb_rd_we,
+    wb_valid);
   input clk;
   output [31:0]dmem_addr;
   output [3:0]dmem_be;
@@ -44,10 +50,14 @@ module Core_RV32I_imp_BFBAKD
   output dmem_valid;
   output [31:0]dmem_wdata;
   output dmem_we;
+  output [4:0]ex_rs2;
+  output [31:0]ex_store_data;
+  output [1:0]forward_store;
   output [31:0]id_instr_out;
   output [31:0]id_pc_out;
   output id_valid_out;
   input [31:0]mem_data;
+  output [31:0]mem_store_data;
   output [31:0]pc_debug_last_predict_0;
   output [31:0]pc_debug_last_priv_redirect_0;
   output [31:0]pc_debug_last_redirect_0;
@@ -60,12 +70,16 @@ module Core_RV32I_imp_BFBAKD
   output regfile_we;
   input rst;
   output [4:0]wb_rd;
+  output wb_rd_we;
+  output wb_valid;
 
   wire [0:0]Op3_1;
   wire RV32I_EX_bp_update_taken;
   wire [31:0]RV32I_EX_bp_update_target;
   wire RV32I_EX_bp_update_valid;
   wire RV32I_EX_ex_flush_req;
+  wire [31:0]RV32I_EX_ex_store_data;
+  wire [1:0]RV32I_EX_forward_store;
   wire [31:0]RV32I_EX_mem_csr_rd_data;
   wire RV32I_EX_mem_csr_rd_we;
   wire [31:0]RV32I_EX_pc_redirect_target;
@@ -98,6 +112,7 @@ module Core_RV32I_imp_BFBAKD
   wire [31:0]RV32I_MEM_wb_data;
   wire [31:0]RV32I_MEM_wb_imm_u;
   wire [31:0]RV32I_MEM_wb_pc_plus4;
+  wire RV32I_MEM_wb_rd_we;
   wire [2:0]RV32I_MEM_wb_sel;
   wire RV32I_MEM_wb_valid;
   wire [3:0]alu_op_1;
@@ -165,9 +180,13 @@ module Core_RV32I_imp_BFBAKD
   assign dmem_valid = RV32I_MEM_dmem_valid;
   assign dmem_wdata[31:0] = RV32I_MEM_dmem_wdata;
   assign dmem_we = RV32I_MEM_dmem_we;
+  assign ex_rs2[4:0] = ex_rs2_1;
+  assign ex_store_data[31:0] = RV32I_EX_ex_store_data;
+  assign forward_store[1:0] = RV32I_EX_forward_store;
   assign id_instr_out[31:0] = RV32I_IF_id_instr_out;
   assign id_pc_out[31:0] = RV32I_IF_id_pc_out;
   assign id_valid_out = RV32I_IF_id_valid_out;
+  assign mem_store_data[31:0] = ex_mem_reg_1_mem_store_data;
   assign mmio_0_cpu_rdata = mem_data[31:0];
   assign pc_debug_last_predict_0[31:0] = RV32I_IF_pc_debug_last_predict_0;
   assign pc_debug_last_priv_redirect_0[31:0] = RV32I_IF_pc_debug_last_priv_redirect_0;
@@ -181,6 +200,8 @@ module Core_RV32I_imp_BFBAKD
   assign rd_wdata[31:0] = wb_mux_0_rd_wdata;
   assign regfile_we = RV32I_MEM_regfile_we;
   assign wb_rd[4:0] = mem_wb_reg_0_wb_rd;
+  assign wb_rd_we = RV32I_MEM_wb_rd_we;
+  assign wb_valid = RV32I_MEM_wb_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   RV32I_EX_imp_J96COH RV32I_EX
        (.alu_op(alu_op_1),
@@ -210,8 +231,10 @@ module Core_RV32I_imp_BFBAKD
         .ex_rs1_data(ex_rs1_data_1),
         .ex_rs2(ex_rs2_1),
         .ex_rs2_data(ex_rs2_data_1),
+        .ex_store_data(RV32I_EX_ex_store_data),
         .ex_valid(ex_valid_1),
         .ex_wb_sel(ex_wb_sel_1),
+        .forward_store(RV32I_EX_forward_store),
         .mem_csr_rd_addr(mem_csr_rd_addr_1),
         .mem_csr_rd_data(RV32I_EX_mem_csr_rd_data),
         .mem_csr_rd_we(RV32I_EX_mem_csr_rd_we),
@@ -346,6 +369,7 @@ module Core_RV32I_imp_BFBAKD
         .wb_imm_u(RV32I_MEM_wb_imm_u),
         .wb_pc_plus4(RV32I_MEM_wb_pc_plus4),
         .wb_rd(mem_wb_reg_0_wb_rd),
+        .wb_rd_we(RV32I_MEM_wb_rd_we),
         .wb_sel(RV32I_MEM_wb_sel),
         .wb_valid(RV32I_MEM_wb_valid));
   RV32I_WB_imp_LBXQBW RV32I_WB
@@ -359,6 +383,7 @@ module Core_RV32I_imp_BFBAKD
        (.id_ex_flush(load_use_detection_0_id_ex_flush),
         .id_ex_mem_re(ex_mem_re_1),
         .id_ex_rd(RV32I_ID_ex_rd),
+        .id_ex_rd_we(ex_rd_we_1),
         .id_ex_valid(ex_valid_1),
         .if_id_hold(load_use_detection_0_if_id_hold),
         .if_id_rs1(RV32I_ID_rs1),
@@ -660,6 +685,9 @@ module RISCV_COCOTB
     dmem_valid,
     dmem_wdata,
     dmem_we,
+    ex_rs2,
+    ex_store_data,
+    forward_store,
     gpio_dir_0,
     gpio_in,
     gpio_out,
@@ -668,6 +696,7 @@ module RISCV_COCOTB
     id_valid_out,
     mem_req_ready,
     mem_rsp_valid,
+    mem_store_data,
     pc_debug_last_predict_0,
     pc_debug_last_priv_redirect_0,
     pc_debug_last_redirect_0,
@@ -686,13 +715,18 @@ module RISCV_COCOTB
     rst,
     timer_ready,
     tx,
-    wb_rd);
+    wb_rd,
+    wb_rd_we,
+    wb_valid);
   input clk;
   output [31:0]dmem_addr;
   output [3:0]dmem_be;
   output dmem_valid;
   output [31:0]dmem_wdata;
   output dmem_we;
+  output [4:0]ex_rs2;
+  output [31:0]ex_store_data;
+  output [1:0]forward_store;
   output [7:0]gpio_dir_0;
   input [7:0]gpio_in;
   output [7:0]gpio_out;
@@ -701,6 +735,7 @@ module RISCV_COCOTB
   output id_valid_out;
   output mem_req_ready;
   output mem_rsp_valid;
+  output [31:0]mem_store_data;
   output [31:0]pc_debug_last_predict_0;
   output [31:0]pc_debug_last_priv_redirect_0;
   output [31:0]pc_debug_last_redirect_0;
@@ -720,10 +755,16 @@ module RISCV_COCOTB
   input timer_ready;
   output tx;
   output [4:0]wb_rd;
+  output wb_rd_we;
+  output wb_valid;
 
+  wire [4:0]Core_RV32I_ex_rs2;
+  wire [31:0]Core_RV32I_ex_store_data;
+  wire [1:0]Core_RV32I_forward_store;
   wire [31:0]Core_RV32I_id_instr_out;
   wire [31:0]Core_RV32I_id_pc_out;
   wire Core_RV32I_id_valid_out;
+  wire [31:0]Core_RV32I_mem_store_data;
   wire [31:0]Core_RV32I_pc_debug_last_predict_0;
   wire [31:0]Core_RV32I_pc_debug_last_priv_redirect_0;
   wire [31:0]Core_RV32I_pc_debug_last_redirect_0;
@@ -733,6 +774,8 @@ module RISCV_COCOTB
   wire [31:0]Core_RV32I_rd_wdata;
   wire Core_RV32I_regfile_we;
   wire [4:0]Core_RV32I_wb_rd;
+  wire Core_RV32I_wb_rd_we;
+  wire Core_RV32I_wb_valid;
   wire [7:0]GPIO_gpio_dir_0;
   wire [7:0]GPIO_gpio_out;
   wire MMIO_mem_rsp_error;
@@ -785,6 +828,9 @@ module RISCV_COCOTB
   assign dmem_valid = mem_req_valid_1;
   assign dmem_wdata[31:0] = RV32I_MEM_dmem_wdata;
   assign dmem_we = RV32I_MEM_dmem_we;
+  assign ex_rs2[4:0] = Core_RV32I_ex_rs2;
+  assign ex_store_data[31:0] = Core_RV32I_ex_store_data;
+  assign forward_store[1:0] = Core_RV32I_forward_store;
   assign gpio_dir_0[7:0] = GPIO_gpio_dir_0;
   assign gpio_in_1 = gpio_in[7:0];
   assign gpio_out[7:0] = GPIO_gpio_out;
@@ -793,6 +839,7 @@ module RISCV_COCOTB
   assign id_valid_out = Core_RV32I_id_valid_out;
   assign mem_req_ready = dmem_req_ready_1;
   assign mem_rsp_valid = dmem_ready_1;
+  assign mem_store_data[31:0] = Core_RV32I_mem_store_data;
   assign pc_debug_last_predict_0[31:0] = Core_RV32I_pc_debug_last_predict_0;
   assign pc_debug_last_priv_redirect_0[31:0] = Core_RV32I_pc_debug_last_priv_redirect_0;
   assign pc_debug_last_redirect_0[31:0] = Core_RV32I_pc_debug_last_redirect_0;
@@ -811,6 +858,8 @@ module RISCV_COCOTB
   assign regfile_we = Core_RV32I_regfile_we;
   assign tx = rx_1;
   assign wb_rd[4:0] = Core_RV32I_wb_rd;
+  assign wb_rd_we = Core_RV32I_wb_rd_we;
+  assign wb_valid = Core_RV32I_wb_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   Core_RV32I_imp_BFBAKD Core_RV32I
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -822,10 +871,14 @@ module RISCV_COCOTB
         .dmem_valid(mem_req_valid_1),
         .dmem_wdata(RV32I_MEM_dmem_wdata),
         .dmem_we(RV32I_MEM_dmem_we),
+        .ex_rs2(Core_RV32I_ex_rs2),
+        .ex_store_data(Core_RV32I_ex_store_data),
+        .forward_store(Core_RV32I_forward_store),
         .id_instr_out(Core_RV32I_id_instr_out),
         .id_pc_out(Core_RV32I_id_pc_out),
         .id_valid_out(Core_RV32I_id_valid_out),
         .mem_data(mem_data_1),
+        .mem_store_data(Core_RV32I_mem_store_data),
         .pc_debug_last_predict_0(Core_RV32I_pc_debug_last_predict_0),
         .pc_debug_last_priv_redirect_0(Core_RV32I_pc_debug_last_priv_redirect_0),
         .pc_debug_last_redirect_0(Core_RV32I_pc_debug_last_redirect_0),
@@ -837,7 +890,9 @@ module RISCV_COCOTB
         .rd_wdata(Core_RV32I_rd_wdata),
         .regfile_we(Core_RV32I_regfile_we),
         .rst(proc_sys_reset_0_peripheral_reset),
-        .wb_rd(Core_RV32I_wb_rd));
+        .wb_rd(Core_RV32I_wb_rd),
+        .wb_rd_we(Core_RV32I_wb_rd_we),
+        .wb_valid(Core_RV32I_wb_valid));
   GPIO_imp_QQRY0N GPIO
        (.addr(addr_2),
         .be(be_2),
@@ -959,8 +1014,10 @@ module RV32I_EX_imp_J96COH
     ex_rs1_data,
     ex_rs2,
     ex_rs2_data,
+    ex_store_data,
     ex_valid,
     ex_wb_sel,
+    forward_store,
     mem_csr_rd_addr,
     mem_csr_rd_data,
     mem_csr_rd_we,
@@ -1025,8 +1082,10 @@ module RV32I_EX_imp_J96COH
   input [31:0]ex_rs1_data;
   input [4:0]ex_rs2;
   input [31:0]ex_rs2_data;
+  output [31:0]ex_store_data;
   input ex_valid;
   input [2:0]ex_wb_sel;
+  output [1:0]forward_store;
   output [4:0]mem_csr_rd_addr;
   output [31:0]mem_csr_rd_data;
   output mem_csr_rd_we;
@@ -1152,6 +1211,8 @@ module RV32I_EX_imp_J96COH
   assign ex_flush_req = branch_0_ex_flush_req;
   assign ex_mem_data[31:0] = ex_mem_reg_1_mem_alu_result;
   assign ex_pred_next_pc_1 = ex_pred_next_pc[31:0];
+  assign ex_store_data[31:0] = forward_mux_2_out_data;
+  assign forward_store[1:0] = forwarding_0_forward_store;
   assign id_ex_reg_0_ex_alu_op = alu_op[3:0];
   assign id_ex_reg_0_ex_branch_en = ex_branch_en;
   assign id_ex_reg_0_ex_branch_funct3 = ex_branch_funct3[2:0];
@@ -1654,7 +1715,6 @@ endmodule
 
 module RV32I_IF_imp_9A1V5I
    (clk,
-    dout,
     flush,
     hold,
     id_instr_out,
@@ -1684,7 +1744,6 @@ module RV32I_IF_imp_9A1V5I
     update_target,
     update_valid);
   input clk;
-  output [0:0]dout;
   input flush;
   input hold;
   output [31:0]id_instr_out;
@@ -1756,7 +1815,6 @@ module RV32I_IF_imp_9A1V5I
 
   assign Op3_1 = stall[0];
   assign branch_0_pc_redirect_target = pc_redirect_target[31:0];
-  assign dout[0] = xlconstant_3_dout;
   assign flush_1 = flush;
   assign hold_1 = hold;
   assign id_instr_out[31:0] = if_id_reg_0_id_instr_out;
@@ -1897,6 +1955,7 @@ module RV32I_MEM_imp_1HCZWI8
     wb_imm_u,
     wb_pc_plus4,
     wb_rd,
+    wb_rd_we,
     wb_sel,
     wb_valid);
   input clk;
@@ -1936,6 +1995,7 @@ module RV32I_MEM_imp_1HCZWI8
   output [31:0]wb_imm_u;
   output [31:0]wb_pc_plus4;
   output [4:0]wb_rd;
+  output wb_rd_we;
   output [2:0]wb_sel;
   output wb_valid;
 
@@ -2022,6 +2082,7 @@ module RV32I_MEM_imp_1HCZWI8
   assign wb_imm_u[31:0] = mem_wb_reg_0_wb_imm_u;
   assign wb_pc_plus4[31:0] = mem_wb_reg_0_wb_pc_plus4;
   assign wb_rd[4:0] = mem_wb_reg_0_wb_rd;
+  assign wb_rd_we = mem_wb_reg_0_wb_rd_we;
   assign wb_sel[2:0] = mem_wb_reg_0_wb_sel;
   assign wb_valid = mem_wb_reg_0_wb_valid;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
@@ -2297,3 +2358,4 @@ module UART_imp_118P651
         .wdata(MMIO_uart_wdata),
         .we(MMIO_uart_we));
 endmodule
+

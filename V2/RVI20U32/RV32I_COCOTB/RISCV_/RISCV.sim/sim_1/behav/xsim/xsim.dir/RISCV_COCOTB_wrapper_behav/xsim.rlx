@@ -1,0 +1,12 @@
+
+{ 
+    crc :  12445085350232918858  , 
+    ccp_crc :  0  , 
+    cmdline : " -wto 665df9eb1049412aba2015d1f4da0e51 --incr --debug all --relax --mt 8 -L xil_defaultlib -L xlconstant_v1_1_7 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot RISCV_COCOTB_wrapper_behav xil_defaultlib.RISCV_COCOTB_wrapper xil_defaultlib.glbl" , 
+    buildDate : "May 27 2020" , 
+    buildTime : "19:59:15" , 
+    linkCmd : "/usr/bin/gcc -Wa,-W  -O -fPIC  -m64  -Wl,--no-as-needed  -Wl,--unresolved-symbols=ignore-all  -o \"xsim.dir/RISCV_COCOTB_wrapper_behav/xsimk\"   \"xsim.dir/RISCV_COCOTB_wrapper_behav/obj/xsim_0.lnx64.o\" \"xsim.dir/RISCV_COCOTB_wrapper_behav/obj/xsim_1.lnx64.o\" -L\"/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/lib/lnx64.o\" -lrdi_simulator_kernel   -lrdi_simbridge_kernel" , 
+    aggregate_nets : 
+    [ 
+    ] 
+} 

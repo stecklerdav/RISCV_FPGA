@@ -31,13 +31,13 @@
           "util_vector_and_0": "",
           "util_vector_and_1": "",
           "alu_0": "",
-          "forwarding_0": "",
           "forward_mux_0": "",
           "operand_b_mux_0": "",
           "operand_a_mux_0": "",
           "branch_0": "",
-          "ex_mem_reg": "",
-          "sim_constant_0": ""
+          "sim_constant_0": "",
+          "forwarding_0": "",
+          "ex_mem_reg": ""
         },
         "RV32I_WB": {
           "wb_mux_0": ""
@@ -65,8 +65,8 @@
           "util_vector_and_0": "",
           "util_vector_not_0": ""
         },
-        "load_use_detection_0": "",
-        "priority_branch_OR_l_0": ""
+        "priority_branch_OR_l_0": "",
+        "load_use_detection_0": ""
       },
       "GPIO": {
         "gpio_0": ""
@@ -5343,83 +5343,6 @@
                   }
                 }
               },
-              "forwarding_0": {
-                "vlnv": "xilinx.com:module_ref:forwarding:1.0",
-                "xci_name": "BASIC_forwarding_0_0",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "forwarding",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "ex_rs1": {
-                    "direction": "I",
-                    "left": "4",
-                    "right": "0"
-                  },
-                  "ex_rs2": {
-                    "direction": "I",
-                    "left": "4",
-                    "right": "0"
-                  },
-                  "ex_op_b_sel": {
-                    "direction": "I",
-                    "left": "1",
-                    "right": "0"
-                  },
-                  "mem_valid": {
-                    "direction": "I"
-                  },
-                  "mem_rd": {
-                    "direction": "I",
-                    "left": "4",
-                    "right": "0"
-                  },
-                  "mem_rd_we": {
-                    "direction": "I"
-                  },
-                  "mem_is_load": {
-                    "direction": "I"
-                  },
-                  "mem_stage_valid": {
-                    "direction": "I"
-                  },
-                  "mem_stage_rd": {
-                    "direction": "I",
-                    "left": "4",
-                    "right": "0"
-                  },
-                  "mem_stage_rd_we": {
-                    "direction": "I"
-                  },
-                  "wb_valid": {
-                    "direction": "I"
-                  },
-                  "wb_rd": {
-                    "direction": "I",
-                    "left": "4",
-                    "right": "0"
-                  },
-                  "wb_rd_we": {
-                    "direction": "I"
-                  },
-                  "forward_a": {
-                    "direction": "O",
-                    "left": "1",
-                    "right": "0"
-                  },
-                  "forward_b": {
-                    "direction": "O",
-                    "left": "1",
-                    "right": "0"
-                  },
-                  "forward_store": {
-                    "direction": "O",
-                    "left": "1",
-                    "right": "0"
-                  }
-                }
-              },
               "forward_mux_0": {
                 "vlnv": "xilinx.com:module_ref:forward_mux:1.0",
                 "xci_name": "BASIC_forward_mux_0_0",
@@ -5636,6 +5559,99 @@
                   }
                 }
               },
+              "sim_constant_0": {
+                "vlnv": "xilinx.com:module_ref:sim_constant:1.0",
+                "xci_name": "BASIC_sim_constant_0_3",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "sim_constant",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "dout": {
+                    "direction": "O",
+                    "left": "0",
+                    "right": "0"
+                  }
+                }
+              },
+              "forwarding_0": {
+                "vlnv": "xilinx.com:module_ref:forwarding:1.0",
+                "xci_name": "BASIC_forwarding_0_0",
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "forwarding",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "ex_rs1": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "ex_rs2": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "ex_op_b_sel": {
+                    "direction": "I",
+                    "left": "1",
+                    "right": "0"
+                  },
+                  "mem_valid": {
+                    "direction": "I"
+                  },
+                  "mem_rd": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "mem_rd_we": {
+                    "direction": "I"
+                  },
+                  "mem_is_load": {
+                    "direction": "I"
+                  },
+                  "mem_stage_valid": {
+                    "direction": "I"
+                  },
+                  "mem_stage_rd": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "mem_stage_rd_we": {
+                    "direction": "I"
+                  },
+                  "wb_valid": {
+                    "direction": "I"
+                  },
+                  "wb_rd": {
+                    "direction": "I",
+                    "left": "4",
+                    "right": "0"
+                  },
+                  "wb_rd_we": {
+                    "direction": "I"
+                  },
+                  "forward_a": {
+                    "direction": "O",
+                    "left": "1",
+                    "right": "0"
+                  },
+                  "forward_b": {
+                    "direction": "O",
+                    "left": "1",
+                    "right": "0"
+                  },
+                  "forward_store": {
+                    "direction": "O",
+                    "left": "1",
+                    "right": "0"
+                  }
+                }
+              },
               "ex_mem_reg": {
                 "vlnv": "xilinx.com:module_ref:ex_mem_reg:1.0",
                 "xci_name": "BASIC_ex_mem_reg_1_0",
@@ -5819,22 +5835,6 @@
                   "mem_exception_tval": {
                     "direction": "O",
                     "left": "31",
-                    "right": "0"
-                  }
-                }
-              },
-              "sim_constant_0": {
-                "vlnv": "xilinx.com:module_ref:sim_constant:1.0",
-                "xci_name": "BASIC_sim_constant_0_3",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "sim_constant",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "dout": {
-                    "direction": "O",
-                    "left": "0",
                     "right": "0"
                   }
                 }
@@ -6072,8 +6072,8 @@
               "id_ex_reg_0_ex_op_b_sel": {
                 "ports": [
                   "ex_op_b_sel",
-                  "forwarding_0/ex_op_b_sel",
-                  "operand_b_mux_0/op_b_sel"
+                  "operand_b_mux_0/op_b_sel",
+                  "forwarding_0/ex_op_b_sel"
                 ]
               },
               "id_ex_reg_0_ex_op_a_sel": {
@@ -8386,59 +8386,6 @@
               }
             }
           },
-          "load_use_detection_0": {
-            "vlnv": "xilinx.com:module_ref:load_use_detection:1.0",
-            "xci_name": "BASIC_load_use_detection_0_0",
-            "reference_info": {
-              "ref_type": "hdl",
-              "ref_name": "load_use_detection",
-              "boundary_crc": "0x0"
-            },
-            "ports": {
-              "id_ex_valid": {
-                "direction": "I"
-              },
-              "id_ex_mem_re": {
-                "direction": "I"
-              },
-              "id_ex_rd": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "if_id_valid": {
-                "direction": "I"
-              },
-              "if_id_rs1": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "if_id_rs2": {
-                "direction": "I",
-                "left": "4",
-                "right": "0"
-              },
-              "if_id_rs1_used": {
-                "direction": "I"
-              },
-              "if_id_rs2_used": {
-                "direction": "I"
-              },
-              "load_use_hazard": {
-                "direction": "O"
-              },
-              "pc_en": {
-                "direction": "O"
-              },
-              "if_id_hold": {
-                "direction": "O"
-              },
-              "id_ex_flush": {
-                "direction": "O"
-              }
-            }
-          },
           "priority_branch_OR_l_0": {
             "vlnv": "xilinx.com:module_ref:priority_branch_OR_load_use:1.0",
             "xci_name": "BASIC_priority_branch_OR_l_0_0",
@@ -8476,6 +8423,62 @@
                 "direction": "O"
               },
               "id_ex_flush_final": {
+                "direction": "O"
+              }
+            }
+          },
+          "load_use_detection_0": {
+            "vlnv": "xilinx.com:module_ref:load_use_detection:1.0",
+            "xci_name": "BASIC_load_use_detection_0_0",
+            "reference_info": {
+              "ref_type": "hdl",
+              "ref_name": "load_use_detection",
+              "boundary_crc": "0x0"
+            },
+            "ports": {
+              "id_ex_valid": {
+                "direction": "I"
+              },
+              "id_ex_mem_re": {
+                "direction": "I"
+              },
+              "id_ex_rd_we": {
+                "direction": "I"
+              },
+              "id_ex_rd": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "if_id_valid": {
+                "direction": "I"
+              },
+              "if_id_rs1": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "if_id_rs2": {
+                "direction": "I",
+                "left": "4",
+                "right": "0"
+              },
+              "if_id_rs1_used": {
+                "direction": "I"
+              },
+              "if_id_rs2_used": {
+                "direction": "I"
+              },
+              "load_use_hazard": {
+                "direction": "O"
+              },
+              "pc_en": {
+                "direction": "O"
+              },
+              "if_id_hold": {
+                "direction": "O"
+              },
+              "id_ex_flush": {
                 "direction": "O"
               }
             }

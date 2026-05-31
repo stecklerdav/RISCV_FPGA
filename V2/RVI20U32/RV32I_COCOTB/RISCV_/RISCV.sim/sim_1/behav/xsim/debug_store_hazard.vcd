@@ -1,0 +1,93 @@
+$date
+   Sun May 31 12:54:24 2026
+$end
+$version
+  2020.1
+$end
+$timescale
+  1ps
+$end
+$scope module RISCV_COCOTB_wrapper $end
+$var wire 1 ! clk $end
+$var wire 32 1 dmem_addr [31:0] $end
+$var wire 4 3 dmem_be [3:0] $end
+$var wire 1 / dmem_valid $end
+$var wire 32 2 dmem_wdata [31:0] $end
+$var wire 1 0 dmem_we $end
+$var wire 5 & ex_rs2 [4:0] $end
+$var wire 32 ' ex_store_data [31:0] $end
+$var wire 2 ) forward_store [1:0] $end
+$var wire 8 7 gpio_dir_0 [7:0] $end
+$var wire 8 8 gpio_in [7:0] $end
+$var wire 8 9 gpio_out [7:0] $end
+$var wire 32 $ id_instr_out [31:0] $end
+$var wire 32 # id_pc_out [31:0] $end
+$var wire 1 % id_valid_out $end
+$var wire 1 4 mem_req_ready $end
+$var wire 1 5 mem_rsp_valid $end
+$var wire 32 ( mem_store_data [31:0] $end
+$var wire 32 : pc_debug_last_predict_0 [31:0] $end
+$var wire 32 ; pc_debug_last_priv_redirect_0 [31:0] $end
+$var wire 32 < pc_debug_last_redirect_0 [31:0] $end
+$var wire 1 = pc_debug_predict_pulse_0 $end
+$var wire 1 > pc_debug_priv_redirect_pulse_0 $end
+$var wire 1 ? pc_debug_redirect_pulse_0 $end
+$var wire 32 @ priv_redirect_target_0 [31:0] $end
+$var wire 1 A priv_redirect_valid_0 $end
+$var wire 32 . rd_wdata [31:0] $end
+$var wire 32 6 rdata [31:0] $end
+$var wire 1 B ready $end
+$var wire 1 C ready_1 $end
+$var wire 1 D ready_2 $end
+$var wire 1 E ready_3 $end
+$var wire 1 - regfile_we $end
+$var wire 1 " rst $end
+$var wire 1 F timer_ready $end
+$var wire 1 G tx $end
+$var wire 5 * wb_rd [4:0] $end
+$var wire 1 , wb_rd_we $end
+$var wire 1 + wb_valid $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+z!
+z"
+bx #
+bx $
+x%
+bx &
+bx '
+bx (
+bx )
+bx *
+x+
+x,
+x-
+bx .
+x/
+x0
+bx 1
+bx 2
+bx 3
+x4
+x5
+bx 6
+bx 7
+bz 8
+bx 9
+bx :
+bx ;
+bx <
+x=
+x>
+x?
+bz @
+zA
+1B
+xC
+1D
+xE
+zF
+xG
+$end

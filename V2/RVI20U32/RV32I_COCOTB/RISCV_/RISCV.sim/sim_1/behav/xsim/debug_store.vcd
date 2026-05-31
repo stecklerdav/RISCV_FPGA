@@ -1,0 +1,39 @@
+$date
+   Sun May 31 13:12:59 2026
+$end
+$version
+  2020.1
+$end
+$timescale
+  1ps
+$end
+$scope module tb_top $end
+$scope module dut $end
+$var wire 32 $ ex_store_data [31:0] $end
+$scope module RISCV_COCOTB_i $end
+$var wire 32 $ ex_store_data [31:0] $end
+$var wire 32 # Core_RV32I_ex_store_data [31:0] $end
+$scope module Core_RV32I $end
+$var wire 32 # ex_store_data [31:0] $end
+$var wire 32 " RV32I_EX_ex_store_data [31:0] $end
+$scope module RV32I_EX $end
+$var wire 32 " ex_store_data [31:0] $end
+$scope module ex_mem_reg $end
+$var wire 32 ! ex_store_data [31:0] $end
+$scope module inst $end
+$var wire 32 ! ex_store_data [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 !
+b0 "
+b0 #
+b0 $
+$end
