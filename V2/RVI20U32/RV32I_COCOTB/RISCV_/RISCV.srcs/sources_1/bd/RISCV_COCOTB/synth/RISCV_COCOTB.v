@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun May 31 13:03:39 2026
+//Date        : Sun May 31 18:37:36 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -27,6 +27,7 @@ module Core_RV32I_imp_BFBAKD
     id_valid_out,
     mem_data,
     mem_store_data,
+    pc,
     pc_debug_last_predict_0,
     pc_debug_last_priv_redirect_0,
     pc_debug_last_redirect_0,
@@ -58,6 +59,7 @@ module Core_RV32I_imp_BFBAKD
   output id_valid_out;
   input [31:0]mem_data;
   output [31:0]mem_store_data;
+  output [31:0]pc;
   output [31:0]pc_debug_last_predict_0;
   output [31:0]pc_debug_last_priv_redirect_0;
   output [31:0]pc_debug_last_redirect_0;
@@ -95,6 +97,7 @@ module Core_RV32I_imp_BFBAKD
   wire [31:0]RV32I_IF_id_pc_out;
   wire [31:0]RV32I_IF_id_pred_next_pc_out;
   wire RV32I_IF_id_valid_out;
+  wire [31:0]RV32I_IF_pc;
   wire [31:0]RV32I_IF_pc_debug_last_predict_0;
   wire [31:0]RV32I_IF_pc_debug_last_priv_redirect_0;
   wire [31:0]RV32I_IF_pc_debug_last_redirect_0;
@@ -188,6 +191,7 @@ module Core_RV32I_imp_BFBAKD
   assign id_valid_out = RV32I_IF_id_valid_out;
   assign mem_store_data[31:0] = ex_mem_reg_1_mem_store_data;
   assign mmio_0_cpu_rdata = mem_data[31:0];
+  assign pc[31:0] = RV32I_IF_pc;
   assign pc_debug_last_predict_0[31:0] = RV32I_IF_pc_debug_last_predict_0;
   assign pc_debug_last_priv_redirect_0[31:0] = RV32I_IF_pc_debug_last_priv_redirect_0;
   assign pc_debug_last_redirect_0[31:0] = RV32I_IF_pc_debug_last_redirect_0;
@@ -313,6 +317,7 @@ module Core_RV32I_imp_BFBAKD
         .id_pc_out(RV32I_IF_id_pc_out),
         .id_pred_next_pc_out(RV32I_IF_id_pred_next_pc_out),
         .id_valid_out(RV32I_IF_id_valid_out),
+        .pc(RV32I_IF_pc),
         .pc_debug_last_predict_0(RV32I_IF_pc_debug_last_predict_0),
         .pc_debug_last_priv_redirect_0(RV32I_IF_pc_debug_last_priv_redirect_0),
         .pc_debug_last_redirect_0(RV32I_IF_pc_debug_last_redirect_0),
@@ -697,6 +702,7 @@ module RISCV_COCOTB
     mem_req_ready,
     mem_rsp_valid,
     mem_store_data,
+    pc,
     pc_debug_last_predict_0,
     pc_debug_last_priv_redirect_0,
     pc_debug_last_redirect_0,
@@ -736,6 +742,7 @@ module RISCV_COCOTB
   output mem_req_ready;
   output mem_rsp_valid;
   output [31:0]mem_store_data;
+  output [31:0]pc;
   output [31:0]pc_debug_last_predict_0;
   output [31:0]pc_debug_last_priv_redirect_0;
   output [31:0]pc_debug_last_redirect_0;
@@ -765,6 +772,7 @@ module RISCV_COCOTB
   wire [31:0]Core_RV32I_id_pc_out;
   wire Core_RV32I_id_valid_out;
   wire [31:0]Core_RV32I_mem_store_data;
+  wire [31:0]Core_RV32I_pc;
   wire [31:0]Core_RV32I_pc_debug_last_predict_0;
   wire [31:0]Core_RV32I_pc_debug_last_priv_redirect_0;
   wire [31:0]Core_RV32I_pc_debug_last_redirect_0;
@@ -840,6 +848,7 @@ module RISCV_COCOTB
   assign mem_req_ready = dmem_req_ready_1;
   assign mem_rsp_valid = dmem_ready_1;
   assign mem_store_data[31:0] = Core_RV32I_mem_store_data;
+  assign pc[31:0] = Core_RV32I_pc;
   assign pc_debug_last_predict_0[31:0] = Core_RV32I_pc_debug_last_predict_0;
   assign pc_debug_last_priv_redirect_0[31:0] = Core_RV32I_pc_debug_last_priv_redirect_0;
   assign pc_debug_last_redirect_0[31:0] = Core_RV32I_pc_debug_last_redirect_0;
@@ -879,6 +888,7 @@ module RISCV_COCOTB
         .id_valid_out(Core_RV32I_id_valid_out),
         .mem_data(mem_data_1),
         .mem_store_data(Core_RV32I_mem_store_data),
+        .pc(Core_RV32I_pc),
         .pc_debug_last_predict_0(Core_RV32I_pc_debug_last_predict_0),
         .pc_debug_last_priv_redirect_0(Core_RV32I_pc_debug_last_priv_redirect_0),
         .pc_debug_last_redirect_0(Core_RV32I_pc_debug_last_redirect_0),

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x79FD9470ED2F9CF9",
+      "boundary_crc": "0x5E25507EA052F3E3",
       "device": "xczu5ev-sfvc784-2-i",
       "name": "RISCV_COCOTB",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -248,6 +248,11 @@
       },
       "wb_rd_we": {
         "direction": "O"
+      },
+      "pc": {
+        "direction": "O",
+        "left": "31",
+        "right": "0"
       }
     },
     "components": {
@@ -379,6 +384,11 @@
           },
           "wb_rd_we": {
             "direction": "O"
+          },
+          "pc": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
           }
         },
         "components": {
@@ -4804,9 +4814,6 @@
               "if_id_rs2_used": {
                 "direction": "I"
               },
-              "load_use_hazard": {
-                "direction": "O"
-              },
               "pc_en": {
                 "direction": "O"
               },
@@ -5433,6 +5440,12 @@
             "ports": [
               "RV32I_MEM/wb_rd_we",
               "wb_rd_we"
+            ]
+          },
+          "RV32I_IF_pc": {
+            "ports": [
+              "RV32I_IF/pc",
+              "pc"
             ]
           }
         }
@@ -7174,6 +7187,12 @@
         "ports": [
           "Core_RV32I/wb_rd_we",
           "wb_rd_we"
+        ]
+      },
+      "Core_RV32I_pc": {
+        "ports": [
+          "Core_RV32I/pc",
+          "pc"
         ]
       }
     }

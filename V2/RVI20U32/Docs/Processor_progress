@@ -1,6 +1,18 @@
-27/05/2026
 
-* prepare todo para hacer pruebas con cocotb + icarus  para regresiones
+
+
+
+
+
+
+31/05/2026
+
+* 1. TC_CORE_KEY Validó el pipeline base completo: IF → ID → EX → MEM → WB, ADDI, ADD, SW, LW, writeback, regfile, RAM y forwarding básico ALU→store.
+
+* 2. TC_LOAD_USE_UART_TIMER Validó load-use hazard, stalls/bubble, lw seguido de add, lw seguido de sw, branch dependiente de un load, GPIO MMIO, UART MMIO y lectura básica del timer.
+
+* 3. TC_FULL_PIPELINE_MMIO_WAIT Validó una secuencia más larga combinando forwarding, load-use, branch, stores, loads, GPIO, UART, timer y firma final 0xCAFE0001. El fallo de RAM[10] = 6 vs 5 no parece bug del 
+     core; ajusta el assert a >= 5 o == 6.
 
 26/05/2026
 

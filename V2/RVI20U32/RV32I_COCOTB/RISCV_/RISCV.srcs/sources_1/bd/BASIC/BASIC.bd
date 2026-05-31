@@ -8469,9 +8469,6 @@
               "if_id_rs2_used": {
                 "direction": "I"
               },
-              "load_use_hazard": {
-                "direction": "O"
-              },
               "pc_en": {
                 "direction": "O"
               },

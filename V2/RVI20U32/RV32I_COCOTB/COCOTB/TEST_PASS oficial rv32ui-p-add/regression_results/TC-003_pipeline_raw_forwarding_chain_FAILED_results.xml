@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1779914237" />
+    <testcase classname="test_gpio" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/tb/test_gpio.py" lineno="10" name="test_reset_and_pc_runs" ratio_time="43178.73432903447" sim_time_ns="3090.0" time="0.0715630054473877">
+      <failure error_msg="" error_type="AssertionError" />
+    </testcase>
+  </testsuite>
+</testsuites>

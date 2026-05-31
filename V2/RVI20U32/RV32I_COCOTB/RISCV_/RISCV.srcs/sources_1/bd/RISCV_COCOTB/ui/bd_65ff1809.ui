@@ -1,72 +1,91 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.329877",
-   "Default View_TopLeft":"-249,-906",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"1851,585",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
 #  -string -flagsOSRD
-preplace port clk -pg 1 -lvl 0 -x -10 -y 150 -defaultsOSRD
-preplace port rst -pg 1 -lvl 0 -x -10 -y 170 -defaultsOSRD
-preplace port pc_redirect_valid -pg 1 -lvl 0 -x -10 -y 410 -defaultsOSRD
-preplace port flush -pg 1 -lvl 0 -x -10 -y 690 -defaultsOSRD
-preplace port id_valid_out -pg 1 -lvl 7 -x 2330 -y 610 -defaultsOSRD
-preplace port pc_en -pg 1 -lvl 0 -x -10 -y 710 -defaultsOSRD
-preplace port hold -pg 1 -lvl 0 -x -10 -y 850 -defaultsOSRD
-preplace port update_taken -pg 1 -lvl 0 -x -10 -y 330 -defaultsOSRD
-preplace port update_is_control -pg 1 -lvl 0 -x -10 -y 310 -defaultsOSRD
-preplace port update_valid -pg 1 -lvl 0 -x -10 -y 270 -defaultsOSRD
-preplace portBus pc_redirect_target -pg 1 -lvl 0 -x -10 -y 430 -defaultsOSRD
-preplace portBus id_pc_out -pg 1 -lvl 7 -x 2330 -y 550 -defaultsOSRD
-preplace portBus id_pc4_out -pg 1 -lvl 7 -x 2330 -y 570 -defaultsOSRD
-preplace portBus id_instr_out -pg 1 -lvl 7 -x 2330 -y 590 -defaultsOSRD
-preplace portBus update_pc -pg 1 -lvl 0 -x -10 -y 290 -defaultsOSRD
-preplace portBus id_pred_next_pc_out -pg 1 -lvl 7 -x 2330 -y 630 -defaultsOSRD
-preplace portBus update_target -pg 1 -lvl 0 -x -10 -y 350 -defaultsOSRD
-preplace portBus stall -pg 1 -lvl 0 -x -10 -y 770 -defaultsOSRD
-preplace inst xlconstant_3 -pg 1 -lvl 5 -x 1690 -y 626 -defaultsOSRD
+preplace port clk -pg 1 -lvl 0 -x -40 -y 150 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -40 -y 170 -defaultsOSRD
+preplace port pc_redirect_valid -pg 1 -lvl 0 -x -40 -y 410 -defaultsOSRD
+preplace port flush -pg 1 -lvl 0 -x -40 -y 690 -defaultsOSRD
+preplace port id_valid_out -pg 1 -lvl 7 -x 2450 -y 610 -defaultsOSRD
+preplace port pc_en -pg 1 -lvl 0 -x -40 -y 710 -defaultsOSRD
+preplace port hold -pg 1 -lvl 0 -x -40 -y 850 -defaultsOSRD
+preplace port update_taken -pg 1 -lvl 0 -x -40 -y 330 -defaultsOSRD
+preplace port update_is_control -pg 1 -lvl 0 -x -40 -y 310 -defaultsOSRD
+preplace port update_valid -pg 1 -lvl 0 -x -40 -y 270 -defaultsOSRD
+preplace port pc_debug_predict_pulse_0 -pg 1 -lvl 7 -x 2450 -y 370 -defaultsOSRD
+preplace port pc_debug_priv_redirect_pulse_0 -pg 1 -lvl 7 -x 2450 -y 310 -defaultsOSRD
+preplace port pc_debug_redirect_pulse_0 -pg 1 -lvl 7 -x 2450 -y 450 -defaultsOSRD
+preplace port priv_redirect_valid_0 -pg 1 -lvl 0 -x -40 -y 370 -defaultsOSRD
+preplace portBus pc_redirect_target -pg 1 -lvl 0 -x -40 -y 430 -defaultsOSRD
+preplace portBus id_pc_out -pg 1 -lvl 7 -x 2450 -y 530 -defaultsOSRD
+preplace portBus id_pc4_out -pg 1 -lvl 7 -x 2450 -y 550 -defaultsOSRD
+preplace portBus id_instr_out -pg 1 -lvl 7 -x 2450 -y 590 -defaultsOSRD
+preplace portBus update_pc -pg 1 -lvl 0 -x -40 -y 290 -defaultsOSRD
+preplace portBus id_pred_next_pc_out -pg 1 -lvl 7 -x 2450 -y 630 -defaultsOSRD
+preplace portBus update_target -pg 1 -lvl 0 -x -40 -y 350 -defaultsOSRD
+preplace portBus stall -pg 1 -lvl 0 -x -40 -y 770 -defaultsOSRD
+preplace portBus pc_debug_last_predict_0 -pg 1 -lvl 7 -x 2450 -y 350 -defaultsOSRD
+preplace portBus pc_debug_last_priv_redirect_0 -pg 1 -lvl 7 -x 2450 -y 290 -defaultsOSRD
+preplace portBus pc_debug_last_redirect_0 -pg 1 -lvl 7 -x 2450 -y 330 -defaultsOSRD
+preplace portBus priv_redirect_target_0 -pg 1 -lvl 0 -x -40 -y 390 -defaultsOSRD
+preplace portBus id_instr_out_1 -pg 1 -lvl 7 -x 2450 -y 570 -defaultsOSRD
+preplace portBus id_pc_out_1 -pg 1 -lvl 7 -x 2450 -y 510 -defaultsOSRD
+preplace portBus pc -pg 1 -lvl 7 -x 2450 -y 836 -defaultsOSRD
+preplace inst xlconstant_3 -pg 1 -lvl 5 -x 1750 -y 626 -defaultsOSRD
 preplace inst branch_predictor_btb_0 -pg 1 -lvl 1 -x 220 -y 280 -defaultsOSRD
-preplace inst pc_unit_0 -pg 1 -lvl 3 -x 970 -y 390 -defaultsOSRD
-preplace inst util_vector_or_1 -pg 1 -lvl 3 -x 970 -y 840 -defaultsOSRD
-preplace inst util_vector_and_0 -pg 1 -lvl 2 -x 550 -y 60 -defaultsOSRD
+preplace inst pc_unit_0 -pg 1 -lvl 3 -x 1030 -y 390 -defaultsOSRD
+preplace inst util_vector_or_1 -pg 1 -lvl 3 -x 1030 -y 840 -defaultsOSRD
+preplace inst util_vector_and_0 -pg 1 -lvl 2 -x 600 -y 60 -defaultsOSRD
 preplace inst util_vector_not_0 -pg 1 -lvl 1 -x 220 -y 770 -defaultsOSRD
-preplace inst util_vector_not_1 -pg 1 -lvl 4 -x 1350 -y 750 -defaultsOSRD
-preplace inst util_vector_and_1 -pg 1 -lvl 2 -x 550 -y 760 -defaultsOSRD
-preplace inst pc_to_imem_addr_0 -pg 1 -lvl 4 -x 1350 -y 460 -defaultsOSRD
-preplace inst rom_memory_0 -pg 1 -lvl 5 -x 1690 -y 440 -defaultsOSRD
-preplace inst if_id_reg_0 -pg 1 -lvl 6 -x 2090 -y 590 -defaultsOSRD
-preplace netloc pc_unit_0_pc 1 0 6 30 410 430J 230 NJ 230 1220 900 1490J 836 1850J
-preplace netloc xlconstant_3_dout 1 5 1 1820J 610n
-preplace netloc pc_unit_0_pc_plus4 1 3 3 N 340 NJ 340 1840J
-preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 30 150 NJ 150 710 240 NJ 240 1490 566 1820
-preplace netloc proc_sys_reset_0_peripheral_reset 1 0 6 20 420 NJ 420 690 250 NJ 250 NJ 250 1850J
+preplace inst util_vector_not_1 -pg 1 -lvl 4 -x 1470 -y 750 -defaultsOSRD
+preplace inst util_vector_and_1 -pg 1 -lvl 2 -x 600 -y 760 -defaultsOSRD
+preplace inst pc_to_imem_addr_0 -pg 1 -lvl 4 -x 1470 -y 460 -defaultsOSRD
+preplace inst if_id_reg_0 -pg 1 -lvl 6 -x 2180 -y 590 -defaultsOSRD
+preplace inst rom_memory_0 -pg 1 -lvl 5 -x 1750 -y 440 -defaultsOSRD
+preplace netloc pc_unit_0_pc 1 0 7 0 130 NJ 130 NJ 130 1330 520 NJ 520 1960J 450 2400
+preplace netloc xlconstant_3_dout 1 5 1 1890J 610n
+preplace netloc pc_unit_0_pc_plus4 1 3 3 1320 360 NJ 360 1930J
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 6 -20 150 NJ 150 730 250 NJ 250 1600 320 1940
+preplace netloc proc_sys_reset_0_peripheral_reset 1 0 6 -10 140 NJ 140 780 240 NJ 240 NJ 240 1950J
 preplace netloc branch_0_pc_redirect_target 1 0 3 NJ 430 NJ 430 NJ
-preplace netloc if_id_reg_0_id_pc_out 1 6 1 NJ 550
-preplace netloc if_id_reg_0_id_pc4_out 1 6 1 NJ 570
-preplace netloc if_id_reg_0_id_instr_out 1 6 1 NJ 590
+preplace netloc if_id_reg_0_id_pc_out 1 6 1 2410J 510n
+preplace netloc if_id_reg_0_id_pc4_out 1 6 1 2420J 550n
+preplace netloc if_id_reg_0_id_instr_out 1 6 1 2430J 570n
 preplace netloc if_id_reg_0_id_valid_out 1 6 1 NJ 610
-preplace netloc pc_en_1 1 0 2 NJ 710 420J
+preplace netloc pc_en_1 1 0 2 NJ 710 410J
 preplace netloc hold_1 1 0 3 NJ 850 NJ 850 NJ
 preplace netloc pc_to_imem_addr_0_addr 1 4 1 NJ 460
-preplace netloc RV32I_ROM_MEMORY_douta 1 5 1 1830 440n
+preplace netloc RV32I_ROM_MEMORY_douta 1 5 1 1920 440n
 preplace netloc branch_predictor_btb_0_pred_valid 1 1 1 410 50n
 preplace netloc branch_predictor_btb_0_pred_taken 1 1 1 420 70n
-preplace netloc pc_redirect_valid_1 1 0 3 10J 440 NJ 440 710J
-preplace netloc branch_predictor_btb_0_pred_next_pc 1 1 5 N 310 680 680 NJ 680 1490J 686 1840J
+preplace netloc pc_redirect_valid_1 1 0 3 -20J 420 NJ 420 760J
+preplace netloc branch_predictor_btb_0_pred_next_pc 1 1 5 N 310 720 546 NJ 546 NJ 546 1910J
 preplace netloc if_id_reg_0_id_pred_next_pc_out 1 6 1 NJ 630
 preplace netloc update_target_1 1 0 1 NJ 350
 preplace netloc update_taken_1 1 0 1 NJ 330
 preplace netloc update_is_control_1 1 0 1 NJ 310
 preplace netloc update_valid1_1 1 0 1 NJ 270
 preplace netloc update_pc_1 1 0 1 NJ 290
-preplace netloc Op3_1 1 0 3 20 680 NJ 680 670J
-preplace netloc util_vector_logic_7_Res 1 3 3 1230 890 1470J 826 1870
+preplace netloc Op3_1 1 0 3 0 690 NJ 690 720J
+preplace netloc util_vector_logic_7_Res 1 3 3 1320 566 NJ 566 1880
 preplace netloc util_vector_not_0_Res 1 1 1 NJ 770
-preplace netloc util_vector_and_0_Res 1 2 1 720 60n
-preplace netloc util_vector_not_1_Res 1 4 1 1480 440n
-preplace netloc util_vector_and_1_Res 1 2 1 700 350n
-preplace netloc flush_1 1 0 6 NJ 690 NJ 690 NJ 690 NJ 690 1470J 696 1860
-levelinfo -pg 1 -10 220 550 970 1350 1690 2090 2330
-pagesize -pg 1 -db -bbox -sgen -240 -10 2570 910
+preplace netloc util_vector_and_0_Res 1 2 1 770 60n
+preplace netloc util_vector_not_1_Res 1 4 1 1590 440n
+preplace netloc util_vector_and_1_Res 1 2 1 740 350n
+preplace netloc flush_1 1 0 6 -20J 556 NJ 556 NJ 556 NJ 556 NJ 556 1900
+preplace netloc pc_unit_0_pc_debug_last_predict 1 3 4 1350J 400 1590J 340 NJ 340 2420J
+preplace netloc pc_unit_0_pc_debug_last_priv_redirect 1 3 4 1280J 290 NJ 290 NJ 290 NJ
+preplace netloc pc_unit_0_pc_debug_last_redirect 1 3 4 1310J 330 NJ 330 NJ 330 NJ
+preplace netloc pc_unit_0_pc_debug_predict_pulse 1 3 4 1290J 300 NJ 300 NJ 300 2430J
+preplace netloc pc_unit_0_pc_debug_priv_redirect_pulse 1 3 4 1300J 310 NJ 310 NJ 310 NJ
+preplace netloc pc_unit_0_pc_debug_redirect_pulse 1 3 4 1340J 350 NJ 350 NJ 350 2410J
+preplace netloc priv_redirect_target_0_1 1 0 3 -10J 440 NJ 440 750J
+preplace netloc priv_redirect_valid_0_1 1 0 3 0J 410 NJ 410 730J
+levelinfo -pg 1 -40 220 600 1030 1470 1750 2180 2450
+pagesize -pg 1 -db -bbox -sgen -290 -10 2760 910
 "
 }
-
+0
