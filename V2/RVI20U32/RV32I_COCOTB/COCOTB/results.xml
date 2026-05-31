@@ -1,0 +1,8 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1780185939" />
+    <testcase classname="regression" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/regression.py" lineno="73" name="regression" ratio_time="26185.885562176358" sim_time_ns="30110.0" time="1.1498560905456543">
+      <failure error_msg="No se detectó PASS signature 0xCAFE0001 en 3000 ciclos" error_type="AssertionError" />
+    </testcase>
+  </testsuite>
+</testsuites>

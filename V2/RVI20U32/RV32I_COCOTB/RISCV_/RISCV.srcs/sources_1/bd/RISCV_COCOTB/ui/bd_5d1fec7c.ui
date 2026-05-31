@@ -1,0 +1,93 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-669,-86",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port clk -pg 1 -lvl 0 -x -20 -y 140 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -20 -y 160 -defaultsOSRD
+preplace port gpio_ready -pg 1 -lvl 0 -x -20 -y 340 -defaultsOSRD
+preplace port uart_ready -pg 1 -lvl 0 -x -20 -y 380 -defaultsOSRD
+preplace port timer_ready -pg 1 -lvl 0 -x -20 -y 420 -defaultsOSRD
+preplace port ram_valid -pg 1 -lvl 2 -x 510 -y 100 -defaultsOSRD
+preplace port ram_we -pg 1 -lvl 2 -x 510 -y 140 -defaultsOSRD
+preplace port gpio_valid -pg 1 -lvl 2 -x 510 -y 220 -defaultsOSRD
+preplace port gpio_we -pg 1 -lvl 2 -x 510 -y 260 -defaultsOSRD
+preplace port uart_valid -pg 1 -lvl 2 -x 510 -y 340 -defaultsOSRD
+preplace port uart_we -pg 1 -lvl 2 -x 510 -y 380 -defaultsOSRD
+preplace port timer_valid -pg 1 -lvl 2 -x 510 -y 460 -defaultsOSRD
+preplace port timer_we -pg 1 -lvl 2 -x 510 -y 500 -defaultsOSRD
+preplace port ram_ready -pg 1 -lvl 0 -x -20 -y 300 -defaultsOSRD
+preplace port mem_rsp_valid -pg 1 -lvl 2 -x 510 -y 40 -defaultsOSRD
+preplace port mem_rsp_error -pg 1 -lvl 2 -x 510 -y 80 -defaultsOSRD
+preplace port mem_req_valid -pg 1 -lvl 0 -x -20 -y 180 -defaultsOSRD
+preplace port mem_req_ready -pg 1 -lvl 2 -x 510 -y 20 -defaultsOSRD
+preplace port timer_error -pg 1 -lvl 0 -x -20 -y 440 -defaultsOSRD
+preplace portBus cpu_we -pg 1 -lvl 0 -x -20 -y 200 -defaultsOSRD
+preplace portBus cpu_addr -pg 1 -lvl 0 -x -20 -y 220 -defaultsOSRD
+preplace portBus cpu_wdata -pg 1 -lvl 0 -x -20 -y 240 -defaultsOSRD
+preplace portBus cpu_be -pg 1 -lvl 0 -x -20 -y 260 -defaultsOSRD
+preplace portBus ram_rdata -pg 1 -lvl 0 -x -20 -y 280 -defaultsOSRD
+preplace portBus gpio_rdata -pg 1 -lvl 0 -x -20 -y 320 -defaultsOSRD
+preplace portBus uart_rdata -pg 1 -lvl 0 -x -20 -y 360 -defaultsOSRD
+preplace portBus timer_rdata -pg 1 -lvl 0 -x -20 -y 400 -defaultsOSRD
+preplace portBus mem_rsp_rdata -pg 1 -lvl 2 -x 510 -y 60 -defaultsOSRD
+preplace portBus ram_addr -pg 1 -lvl 2 -x 510 -y 160 -defaultsOSRD
+preplace portBus ram_wdata -pg 1 -lvl 2 -x 510 -y 180 -defaultsOSRD
+preplace portBus ram_be -pg 1 -lvl 2 -x 510 -y 200 -defaultsOSRD
+preplace portBus gpio_addr -pg 1 -lvl 2 -x 510 -y 280 -defaultsOSRD
+preplace portBus gpio_wdata -pg 1 -lvl 2 -x 510 -y 300 -defaultsOSRD
+preplace portBus gpio_be -pg 1 -lvl 2 -x 510 -y 320 -defaultsOSRD
+preplace portBus uart_addr -pg 1 -lvl 2 -x 510 -y 400 -defaultsOSRD
+preplace portBus uart_wdata -pg 1 -lvl 2 -x 510 -y 420 -defaultsOSRD
+preplace portBus uart_be -pg 1 -lvl 2 -x 510 -y 440 -defaultsOSRD
+preplace portBus timer_addr -pg 1 -lvl 2 -x 510 -y 520 -defaultsOSRD
+preplace portBus timer_wdata -pg 1 -lvl 2 -x 510 -y 540 -defaultsOSRD
+preplace portBus timer_be -pg 1 -lvl 2 -x 510 -y 560 -defaultsOSRD
+preplace inst mem_bus_registered_0 -pg 1 -lvl 1 -x 200 -y 290 -defaultsOSRD
+preplace netloc RV32I_MEM_dmem_we 1 0 1 NJ 200
+preplace netloc cpu_addr_1 1 0 1 NJ 220
+preplace netloc rst_1 1 0 1 NJ 160
+preplace netloc cpu_wdata_1 1 0 1 NJ 240
+preplace netloc ram_rdata_1 1 0 1 NJ 280
+preplace netloc cpu_be_1 1 0 1 NJ 260
+preplace netloc clk_1 1 0 1 NJ 140
+preplace netloc gpio_ready_1 1 0 1 NJ 340
+preplace netloc timer_ready_1 1 0 1 NJ 420
+preplace netloc gpio_rdata_1 1 0 1 NJ 320
+preplace netloc uart_ready1_1 1 0 1 NJ 380
+preplace netloc timer_rdata_1 1 0 1 NJ 400
+preplace netloc mem_bus_registered_0_mem_rsp_rdata 1 1 1 420J 60n
+preplace netloc mem_bus_registered_0_ram_valid 1 1 1 440 100n
+preplace netloc mem_bus_registered_0_ram_we 1 1 1 450J 140n
+preplace netloc mem_bus_registered_0_ram_addr 1 1 1 460J 160n
+preplace netloc mem_bus_registered_0_ram_wdata 1 1 1 470J 180n
+preplace netloc mem_bus_registered_0_ram_be 1 1 1 480J 200n
+preplace netloc mem_bus_registered_0_gpio_valid 1 1 1 490 220n
+preplace netloc mem_bus_registered_0_gpio_we 1 1 1 NJ 260
+preplace netloc mem_bus_registered_0_gpio_addr 1 1 1 NJ 280
+preplace netloc mem_bus_registered_0_gpio_wdata 1 1 1 NJ 300
+preplace netloc mem_bus_registered_0_gpio_be 1 1 1 NJ 320
+preplace netloc mem_bus_registered_0_uart_valid 1 1 1 N 340
+preplace netloc mem_bus_registered_0_uart_we 1 1 1 490J 360n
+preplace netloc mem_bus_registered_0_uart_addr 1 1 1 480J 380n
+preplace netloc mem_bus_registered_0_uart_wdata 1 1 1 470J 400n
+preplace netloc mem_bus_registered_0_uart_be 1 1 1 460J 420n
+preplace netloc mem_bus_registered_0_timer_valid 1 1 1 440 440n
+preplace netloc mem_bus_registered_0_timer_we 1 1 1 430J 460n
+preplace netloc mem_bus_registered_0_timer_addr 1 1 1 420J 480n
+preplace netloc mem_bus_registered_0_timer_wdata 1 1 1 410J 500n
+preplace netloc mem_bus_registered_0_timer_be 1 1 1 400J 520n
+preplace netloc ram_ready_1 1 0 1 NJ 300
+preplace netloc mem_bus_registered_0_mem_rsp_valid 1 1 1 410J 40n
+preplace netloc uart_rdata_1 1 0 1 NJ 360
+preplace netloc mem_bus_registered_0_mem_rsp_error 1 1 1 430J 80n
+preplace netloc mem_req_valid_1 1 0 1 NJ 180
+preplace netloc mem_bus_registered_0_mem_req_ready 1 1 1 400J 20n
+preplace netloc timer_error_1 1 0 1 NJ 440
+levelinfo -pg 1 -20 200 510
+pagesize -pg 1 -db -bbox -sgen -200 0 720 580
+"
+}
+

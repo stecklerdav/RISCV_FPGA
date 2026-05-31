@@ -1,9 +1,0 @@
-{
-	"version": "1.0",
-	"modules": {
-		"RV32_IF_ID": {
-			"proto_instances": {
-			}
-		}
-	}
-}
