@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun May 31 18:37:36 2026
+//Date        : Mon Jun  1 22:02:58 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -682,7 +682,7 @@ module MMIO_imp_CEWL94
         .uart_we(mem_bus_registered_0_uart_we));
 endmodule
 
-(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=51,numReposBlks=40,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=39,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=52,numReposBlks=41,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=39,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
 module RISCV_COCOTB
    (clk,
     dmem_addr,
@@ -719,7 +719,6 @@ module RISCV_COCOTB
     ready_3,
     regfile_we,
     rst,
-    timer_ready,
     tx,
     wb_rd,
     wb_rd_we,
@@ -753,13 +752,12 @@ module RISCV_COCOTB
   input priv_redirect_valid_0;
   output [31:0]rd_wdata;
   output [31:0]rdata;
-  output ready;
+  output [0:0]ready;
   output ready_1;
   output ready_2;
   output ready_3;
   output regfile_we;
   input rst;
-  input timer_ready;
   output tx;
   output [4:0]wb_rd;
   output wb_rd_we;
@@ -817,7 +815,7 @@ module RISCV_COCOTB
   wire timer_0_ready;
   wire timer_error_1;
   wire [31:0]uart_tx_0_rdata;
-  wire uart_tx_0_ready;
+  wire [0:0]uart_tx_0_ready;
   wire valid_1;
   wire valid_2;
   wire valid_3;
@@ -860,7 +858,7 @@ module RISCV_COCOTB
   assign proc_sys_reset_0_peripheral_reset = rst;
   assign rd_wdata[31:0] = Core_RV32I_rd_wdata;
   assign rdata[31:0] = RV32I_RAM_MEMORY_rdata;
-  assign ready = uart_tx_0_ready;
+  assign ready[0] = uart_tx_0_ready;
   assign ready_1 = timer_0_ready;
   assign ready_2 = gpio_0_ready;
   assign ready_3 = ram_ready_1;
@@ -983,13 +981,14 @@ module RISCV_COCOTB
         .be(be_3),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .rdata(uart_tx_0_rdata),
-        .ready(uart_tx_0_ready),
         .rst(proc_sys_reset_0_peripheral_reset),
         .rx(rx_1),
         .tx(rx_1),
         .valid(valid_2),
         .wdata(wdata_3),
         .we(we_3));
+  RISCV_COCOTB_xlconstant_3_1 xlconstant_3
+       (.dout(uart_tx_0_ready));
 endmodule
 
 module RV32I_EX_imp_J96COH

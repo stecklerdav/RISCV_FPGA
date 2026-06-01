@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1779744261">
-  <File Type="RDS-DCP" Name="BASIC_wrapper.dcp"/>
   <File Type="PA-TCL" Name="BASIC_wrapper.tcl"/>
   <File Type="REPORTS-TCL" Name="BASIC_wrapper_reports.tcl"/>
   <File Type="RDS-RDS" Name="BASIC_wrapper.vds"/>
+  <File Type="RDS-DCP" Name="BASIC_wrapper.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/pc_unit.v">

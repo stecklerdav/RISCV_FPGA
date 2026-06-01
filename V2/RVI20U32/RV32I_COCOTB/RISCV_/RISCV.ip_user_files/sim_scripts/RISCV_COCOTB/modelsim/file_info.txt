@@ -48,5 +48,6 @@ RISCV_COCOTB_ram_data_1_0.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/R
 RISCV_COCOTB_timer_0_0.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_timer_0_0/sim/RISCV_COCOTB_timer_0_0.v,
 RISCV_COCOTB_uart_0_0.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_uart_0_0/sim/RISCV_COCOTB_uart_0_0.v,
 RISCV_COCOTB_rom_memory_0_0.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_rom_memory_0_0/sim/RISCV_COCOTB_rom_memory_0_0.v,
+RISCV_COCOTB_xlconstant_3_1.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_3_1/sim/RISCV_COCOTB_xlconstant_3_1.v,
 RISCV_COCOTB.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v,
 glbl.v,Verilog,xil_defaultlib,glbl.v

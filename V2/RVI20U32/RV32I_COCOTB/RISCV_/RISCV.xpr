@@ -44,13 +44,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="158"/>
-    <Option Name="WTModelSimExportSim" Val="158"/>
-    <Option Name="WTQuestaExportSim" Val="157"/>
-    <Option Name="WTIesExportSim" Val="157"/>
-    <Option Name="WTVcsExportSim" Val="157"/>
-    <Option Name="WTRivieraExportSim" Val="157"/>
-    <Option Name="WTActivehdlExportSim" Val="157"/>
+    <Option Name="WTXSimExportSim" Val="159"/>
+    <Option Name="WTModelSimExportSim" Val="159"/>
+    <Option Name="WTQuestaExportSim" Val="158"/>
+    <Option Name="WTIesExportSim" Val="158"/>
+    <Option Name="WTVcsExportSim" Val="158"/>
+    <Option Name="WTRivieraExportSim" Val="158"/>
+    <Option Name="WTActivehdlExportSim" Val="158"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -293,7 +293,7 @@
       <File Path="$PSRCDIR/sources_1/imports/hdl/RISCV_COCOTB_wrapper.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/bd/RISCV_COCOTB/hdl/RISCV_COCOTB_wrapper.v"/>
-          <Attr Name="ImportTime" Val="1780249057"/>
+          <Attr Name="ImportTime" Val="1780349307"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -390,6 +390,12 @@
           <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PPRDIR/../../../rv32i_vscode/prog_asm.coe">
+        <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>

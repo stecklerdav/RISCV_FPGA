@@ -66,6 +66,7 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+/media/steckler/xilinx_linux/vitis_202
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_timer_0_0/sim/RISCV_COCOTB_timer_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_uart_0_0/sim/RISCV_COCOTB_uart_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_rom_memory_0_0/sim/RISCV_COCOTB_rom_memory_0_0.v" \
+"../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_3_1/sim/RISCV_COCOTB_xlconstant_3_1.v" \
 "../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v" \
 
 vlog -work xil_defaultlib \

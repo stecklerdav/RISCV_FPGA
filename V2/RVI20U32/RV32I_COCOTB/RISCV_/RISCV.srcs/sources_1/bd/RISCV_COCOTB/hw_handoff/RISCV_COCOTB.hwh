@@ -1,0 +1,3018 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Jun  1 22:28:28 2026" VIVADOVERSION="2020.1">
+
+  <SYSTEMINFO ARCH="zynquplus" DEVICE="xczu5ev" NAME="RISCV_COCOTB" PACKAGE="sfvc784" SPEEDGRADE="-2"/>
+
+  <EXTERNALPORTS>
+    <PORT DIR="I" NAME="clk" SIGIS="undef" SIGNAME="External_Ports_clk">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="clk"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_rom_memory_0" PORT="clk"/>
+        <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="clk"/>
+        <CONNECTION INSTANCE="GPIO_gpio_0" PORT="clk"/>
+        <CONNECTION INSTANCE="UART_uart_0" PORT="clk"/>
+        <CONNECTION INSTANCE="TIMER_timer_0" PORT="clk"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="rst" SIGIS="undef" SIGNAME="External_Ports_rst">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="rst"/>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="rst"/>
+        <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="rst"/>
+        <CONNECTION INSTANCE="GPIO_gpio_0" PORT="rst"/>
+        <CONNECTION INSTANCE="UART_uart_0" PORT="rst"/>
+        <CONNECTION INSTANCE="TIMER_timer_0" PORT="rst"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="gpio_out" RIGHT="0" SIGIS="undef" SIGNAME="GPIO_gpio_0_gpio_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="GPIO_gpio_0" PORT="gpio_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="gpio_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_gpio_in">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="GPIO_gpio_0" PORT="gpio_in"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="pc_debug_last_predict_0" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_last_predict">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_debug_last_predict"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="pc_debug_last_priv_redirect_0" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_last_priv_redirect">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_debug_last_priv_redirect"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="pc_debug_last_redirect_0" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_last_redirect">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_debug_last_redirect"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pc_debug_predict_pulse_0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_predict_pulse">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_debug_predict_pulse"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pc_debug_priv_redirect_pulse_0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_priv_redirect_pulse">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_debug_priv_redirect_pulse"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="pc_debug_redirect_pulse_0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_redirect_pulse">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_debug_redirect_pulse"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="31" NAME="priv_redirect_target_0" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_priv_redirect_target_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="priv_redirect_target"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="priv_redirect_valid_0" SIGIS="undef" SIGNAME="External_Ports_priv_redirect_valid_0">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="priv_redirect_valid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="7" NAME="gpio_dir_0" RIGHT="0" SIGIS="undef" SIGNAME="GPIO_gpio_0_gpio_dir">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="GPIO_gpio_0" PORT="gpio_dir"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="tx" SIGIS="undef" SIGNAME="UART_uart_0_tx">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="UART_uart_0" PORT="tx"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="ready" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_3_dout">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="xlconstant_3" PORT="dout"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="ready_1" SIGIS="undef" SIGNAME="TIMER_timer_0_ready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="TIMER_timer_0" PORT="ready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="ready_2" SIGIS="undef" SIGNAME="GPIO_gpio_0_ready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="GPIO_gpio_0" PORT="ready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="ready_3" SIGIS="undef" SIGNAME="RV32I_RAM_MEMORY_ram_data_ready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="ready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_RAM_MEMORY_ram_data_rdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="rdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="id_pc_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pc_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_pc_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="id_instr_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_instr_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_instr_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="id_valid_out" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_valid_out">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_valid_out"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="dmem_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_addr">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_addr"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="dmem_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_wdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_wdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="dmem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_we">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_we"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="dmem_be" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_be">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_be"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="dmem_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_valid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_valid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="mem_rsp_valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_valid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_rsp_valid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="mem_req_ready" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_req_ready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_ready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="regfile_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="regfile_we"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="4" NAME="wb_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="ex_store_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_2_out_data">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="out_data"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="mem_store_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_store_data">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_store_data"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="1" NAME="forward_store" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_store">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="forward_store"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="4" NAME="ex_rs2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs2">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rs2"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="wb_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_valid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_valid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="wb_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd_we">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd_we"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="31" NAME="pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc"/>
+      </CONNECTIONS>
+    </PORT>
+  </EXTERNALPORTS>
+
+  <EXTERNALINTERFACES/>
+
+  <MODULES>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/alu_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_alu_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="alu" VLNV="xilinx.com:module_ref:alu:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_alu_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="a" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_operand_a_mux_0_operand_a">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" PORT="operand_a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="b" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_operand_b_mux_0_operand_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_b_mux_0" PORT="operand_b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="alu_op" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_alu_op">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_alu_op"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="y" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_alu_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/branch_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_branch_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="branch" VLNV="xilinx.com:module_ref:branch:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_branch_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="ex_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_rs1_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_0_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_rs2_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_1_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_imm" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_imm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_imm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_branch_en" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_branch_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_branch_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="ex_branch_funct3" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_branch_funct3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_branch_funct3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_jal" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_jal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_jal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_jalr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_jalr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_jalr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_pred_next_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pred_next_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_pred_next_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="branch_taken" SIGIS="undef"/>
+        <PORT DIR="O" NAME="pc_redirect_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_pc_redirect_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_redirect_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_redirect_target" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_pc_redirect_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_redirect_target"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="instr_addr_misaligned" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="instr_addr_misaligned_target" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ex_exception_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_exception_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_exception_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="ex_exception_cause" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_exception_cause">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_exception_cause"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_exception_tval" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_exception_tval">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_exception_tval"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_flush_req" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_flush_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="ex_flush_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_control_flow_change" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ex_mispredict" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="ex_actual_next_pc" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="bp_update_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="update_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bp_update_is_control" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_is_control">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="update_is_control"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bp_update_taken" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="update_taken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="bp_update_target" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="update_target"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/ex_mem_reg" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ex_mem_reg" VLNV="xilinx.com:module_ref:ex_mem_reg:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_ex_mem_reg_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_sim_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_alu_0_y">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_alu_0" PORT="y"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_store_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_2_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="ex_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_mem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_mem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ex_mem_size" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_mem_size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_mem_unsigned" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_unsigned">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_mem_unsigned"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="ex_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_csr_rd_we" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="4" NAME="ex_csr_rd_addr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="31" NAME="ex_csr_rd_data" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" NAME="ex_exception_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_exception_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_exception_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="ex_exception_cause" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_exception_cause">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_exception_cause"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_exception_tval" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_exception_tval">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_exception_tval"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_pc" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="mem_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_alu_result"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="ex_mem_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="ex_mem_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="ex_mem_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_store_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_store_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_store_data"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="mem_store_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="mem_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_rd"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_mem_re"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_is_load"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_mem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_mem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mem_mem_size" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_mem_size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_mem_unsigned" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_unsigned">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_mem_unsigned"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_rd_we"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_0" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_in_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_csr_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_csr_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_csr_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="mem_csr_rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_csr_rd_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_csr_rd_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_csr_rd_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_csr_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_csr_rd_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_exception_valid" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="mem_exception_cause" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="mem_exception_tval" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/forward_mux_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="forward_mux" VLNV="xilinx.com:module_ref:forward_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_forward_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="base_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs1_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rs1_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_mem_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_stage_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_forward_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_forward_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_wb_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="forward_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_a">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="forward_a"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="out_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_0_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" PORT="rs1_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_rs1_data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/forward_mux_1" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="forward_mux" VLNV="xilinx.com:module_ref:forward_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_forward_mux_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="base_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs2_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rs2_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_mem_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_stage_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_forward_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_forward_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_wb_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="forward_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="forward_b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="out_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_1_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_b_mux_0" PORT="rs2_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_rs2_data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/forward_mux_2" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="forward_mux" VLNV="xilinx.com:module_ref:forward_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_forward_mux_2_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="base_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs2_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rs2_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ex_mem_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_stage_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_forward_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_forward_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_wb_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="forward_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_store">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="forward_store"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="out_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_2_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_store_data"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ex_store_data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/forwarding_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="forwarding" VLNV="xilinx.com:module_ref:forwarding:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_forwarding_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="4" NAME="ex_rs1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="ex_rs2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rs2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="ex_op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_op_b_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_op_b_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="mem_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_util_vector_and_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_is_load" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_stage_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="mem_stage_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_stage_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_util_vector_and_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="wb_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="wb_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="wb_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="regfile_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="forward_a" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_a">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="forward_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="forward_b" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="forward_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="forward_store" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forwarding_0_forward_store">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="forward_sel"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="forward_store"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/operand_a_mux_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="operand_a_mux" VLNV="xilinx.com:module_ref:operand_a_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_operand_a_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="rs1_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_0_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="op_a_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_op_a_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_op_a_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="operand_a" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_operand_a_mux_0_operand_a">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_alu_0" PORT="a"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/operand_b_mux_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_operand_b_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="operand_b_mux" VLNV="xilinx.com:module_ref:operand_b_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_operand_b_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="rs2_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_forward_mux_1_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_imm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_imm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_op_b_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_op_b_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="operand_b" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_operand_b_mux_0_operand_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_alu_0" PORT="b"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/sim_constant_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_sim_constant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sim_constant" VLNV="xilinx.com:module_ref:sim_constant:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="VALUE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_sim_constant_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="flush"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/util_vector_and_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_and" VLNV="xilinx.com:module_ref:util_vector_and:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_and_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_util_vector_and_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_EX/util_vector_and_1" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_and" VLNV="xilinx.com:module_ref:util_vector_and:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_and_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_util_vector_and_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_stage_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_ID/control_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_ID_control_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="control" VLNV="xilinx.com:module_ref:control:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_control_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="6" NAME="opcode" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_opcode">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="opcode"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="funct3" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_funct3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="funct3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="6" NAME="funct7" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_funct7">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="funct7"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="fmt" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_fmt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="fmt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="bit30" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_bit30">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="bit30"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="op_a_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_op_a_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_op_a_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_op_b_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_op_b_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="alu_op" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_alu_op">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_alu_op"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_mem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_mem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mem_size" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_mem_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_mem_size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_unsigned" SIGIS="undef"/>
+        <PORT DIR="O" NAME="branch_en" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_branch_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_branch_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="branch_funct3" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_branch_funct3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_branch_funct3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="jal" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_jal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_jal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="jalr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_jalr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_jalr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="imm_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_imm_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_sel"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_ID/decoder_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_ID_decoder_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="decoder" VLNV="xilinx.com:module_ref:decoder:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_decoder_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="instr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_instr_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_instr_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="6" NAME="opcode" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_opcode">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="opcode"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="funct3" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_funct3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="funct3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="6" NAME="funct7" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_funct7">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="funct7"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="fmt" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_fmt">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="fmt"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="bit30" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_bit30">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="bit30"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="imm_i" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="imm_s" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_s">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_s"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="imm_b" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_u"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="imm_j" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_j">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_j"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="illegal_opcode" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_illegal_opcode">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_illegal_instr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="rs1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rs1_addr"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="if_id_rs1"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="rs2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rs2_addr"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="if_id_rs2"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_rs2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rs1_used" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs1_used">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="if_id_rs1_used"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="rs2_used" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs2_used">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="if_id_rs2_used"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_ID/id_ex_reg" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="id_ex_reg" VLNV="xilinx.com:module_ref:id_ex_reg:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_id_ex_reg_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_instr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_instr_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_instr_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="bubble" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_id_ex_flush_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="id_ex_flush_final"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_valid_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pc_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_pc_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pc4_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_pc4_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_pred_next_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pred_next_pc_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_pred_next_pc_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_rs1_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_regfile_0_rs1_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rs1_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_rs2_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_regfile_0_rs2_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rs2_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_imm" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_imm_mux_0_imm_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" PORT="imm_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="id_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="id_rs1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="id_rs2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="id_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="id_alu_op" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_alu_op">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="alu_op"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="id_op_a_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_op_a_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="op_a_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="id_op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_op_b_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="op_b_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_branch_en" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_branch_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="branch_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="id_branch_funct3" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_branch_funct3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="branch_funct3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_jal" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_jal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="jal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_jalr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_jalr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="jalr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_mem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_mem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="mem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="id_mem_size" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_mem_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="mem_size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_mem_unsigned" SIGIS="undef"/>
+        <PORT DIR="I" NAME="id_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="id_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_illegal_instr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_illegal_opcode">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="illegal_opcode"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="id_ex_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" PORT="pc"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_pc"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_pc"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="update_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_pred_next_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pred_next_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_pred_next_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_rs1_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs1_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="base_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_rs2_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs2_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="base_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="base_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_imm" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_imm">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_b_mux_0" PORT="imm"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_imm"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="ex_rs1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="ex_rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="ex_rs2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rs2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="ex_rs2"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ex_rs2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="ex_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_rd"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="id_ex_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="ex_alu_op" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_alu_op">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_alu_0" PORT="alu_op"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="ex_op_a_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_op_a_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_a_mux_0" PORT="op_a_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="ex_op_b_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_op_b_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_operand_b_mux_0" PORT="op_b_sel"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="ex_op_b_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_branch_en" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_branch_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_branch_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="ex_branch_funct3" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_branch_funct3">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_branch_funct3"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_jal" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_jal">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_jal"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_jalr" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_jalr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_jalr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_mem_re"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="id_ex_mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_mem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_mem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="ex_mem_size" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_mem_size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_mem_unsigned" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_unsigned">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_mem_unsigned"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ex_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_rd_we"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="id_ex_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ex_instr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="ex_illegal_instr" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="2" NAME="ex_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="ex_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_ID/imm_mux_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_ID_imm_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="imm_mux" VLNV="xilinx.com:module_ref:imm_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_imm_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="imm_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_control_0_imm_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_control_0" PORT="imm_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm_i" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_i">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="imm_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm_s" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_s">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="imm_s"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm_b" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_b">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="imm_b"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm_j" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_imm_j">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="imm_j"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="imm_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_imm_mux_0_imm_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_imm"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_ID/regfile_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_ID_regfile_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="regfile" VLNV="xilinx.com:module_ref:regfile:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_regfile_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="rs1_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="rs2_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rs1_rdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_regfile_0_rs1_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_rs1_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rs2_rdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_regfile_0_rs2_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_rs2_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="regfile_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/branch_predictor_btb_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="branch_predictor_btb_bht" VLNV="xilinx.com:module_ref:branch_predictor_btb_bht:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="ENTRY_BITS" VALUE="6"/>
+        <PARAMETER NAME="ENTRY_NUM" VALUE="64"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_branch_predictor_btb_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="if_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pred_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_0" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pred_taken" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_0" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pred_target" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="pred_next_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_next_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_predict_next"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_pred_next_pc_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="update_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="bp_update_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="update_pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="update_is_control" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_is_control">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="bp_update_is_control"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="update_taken" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="bp_update_taken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="update_target" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_bp_update_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="bp_update_target"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/if_id_reg_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="if_id_reg" VLNV="xilinx.com:module_ref:if_id_reg:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_if_id_reg_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="if_pc_in" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="if_pc4_in" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="if_instr_in" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_rom_memory_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_rom_memory_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="if_valid_in" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_xlconstant_3_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_xlconstant_3" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="if_pred_next_pc_in" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_next_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="pred_next_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_flush_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="if_id_flush_final"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="hold" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_or_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_or_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="id_pc_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pc_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_pc"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="id_pc_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="id_pc4_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pc4_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="id_instr_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_instr_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="instr"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_instr"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="id_instr_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="id_valid_out" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_valid"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="id_valid_out"/>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="if_id_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="id_pred_next_pc_out" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_pred_next_pc_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="id_pred_next_pc"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/pc_to_imem_addr_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_pc_to_imem_addr_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pc_to_imem_addr" VLNV="xilinx.com:module_ref:pc_to_imem_addr:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="ADDR_W" VALUE="11"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_pc_to_imem_addr_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="31" NAME="pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="10" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_to_imem_addr_0_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_rom_memory_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/pc_unit_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="pc_unit" VLNV="xilinx.com:module_ref:pc_unit:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="RESET_PC" VALUE="0x00000000"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_pc_unit_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pc_en" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_and_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="priv_redirect_valid" SIGIS="undef" SIGNAME="External_Ports_priv_redirect_valid_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="priv_redirect_valid_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="priv_redirect_target" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_priv_redirect_target_0">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="priv_redirect_target_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pc_redirect_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_pc_redirect_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="pc_redirect_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="pc_redirect_target" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_pc_redirect_target">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="pc_redirect_target"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="pc_predict_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_and_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="pc_predict_next" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_next_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="pred_next_pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="if_pc"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_to_imem_addr_0" PORT="pc"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_pc_in"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_pc4_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_debug_last_priv_redirect" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_last_priv_redirect">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc_debug_last_priv_redirect_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pc_debug_priv_redirect_pulse" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_priv_redirect_pulse">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc_debug_priv_redirect_pulse_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_debug_last_redirect" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_last_redirect">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc_debug_last_redirect_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pc_debug_redirect_pulse" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_redirect_pulse">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc_debug_redirect_pulse_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="pc_debug_last_predict" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_last_predict">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc_debug_last_predict_0"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pc_debug_predict_pulse" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_unit_0_pc_debug_predict_pulse">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="pc_debug_predict_pulse_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/rom_memory_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_rom_memory_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rom_memory" VLNV="xilinx.com:module_ref:rom_memory:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="ADDR_WIDTH" VALUE="11"/>
+        <PARAMETER NAME="DATA_WIDTH" VALUE="32"/>
+        <PARAMETER NAME="INIT_FILE" VALUE="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/programs/prog_asm.mem"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_rom_memory_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="en" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_not_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_not_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="10" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_pc_to_imem_addr_0_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_to_imem_addr_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_rom_memory_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_instr_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/util_vector_and_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_and" VLNV="xilinx.com:module_ref:util_vector_and:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_and_0_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="pred_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_branch_predictor_btb_0_pred_taken">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_branch_predictor_btb_0" PORT="pred_taken"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_and_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_predict_valid"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/util_vector_and_1" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_and" VLNV="xilinx.com:module_ref:util_vector_and:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_and_1_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_pc_en_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="pc_en_final"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_not_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_not_0" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_and_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_pc_unit_0" PORT="pc_en"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/util_vector_not_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_util_vector_not_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_not" VLNV="xilinx.com:module_ref:util_vector_not:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_not_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_not_0_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_1" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/util_vector_not_1" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_util_vector_not_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_not" VLNV="xilinx.com:module_ref:util_vector_not:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_not_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_or_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_or_1" PORT="Res"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_not_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_rom_memory_0" PORT="en"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_IF/util_vector_or_1" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_IF_util_vector_or_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="util_vector_or" VLNV="xilinx.com:module_ref:util_vector_or:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_util_vector_or_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="0" NAME="Op2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_hold_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="if_id_hold_final"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="0" NAME="Res" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_util_vector_or_1_Res">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_not_1" PORT="Op1"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="hold"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="7" FULLNAME="/Core_RV32I/RV32I_IF/xlconstant_3" HWVERSION="1.1" INSTANCE="Core_RV32I_RV32I_IF_xlconstant_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_xlconstant_3_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_xlconstant_3_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="if_valid_in"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_MEM/mem_stage_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mem_stage" VLNV="xilinx.com:module_ref:mem_stage:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_mem_stage_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_sim_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="kill" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_sim_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_in_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_in_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_in_store_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_store_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_store_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_in_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_in_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="mem_in_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_in_mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_in_mem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_mem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="mem_in_mem_size" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_size">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_mem_size"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_in_mem_unsigned" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_mem_unsigned">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_mem_unsigned"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_in_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="mem_in_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="dmem_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_addr"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="dmem_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="dmem_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_valid"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="dmem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="dmem_req_ready" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_req_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="dmem_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_we"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="dmem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="dmem_re" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="dmem_be" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_be"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="dmem_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="dmem_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_req_wdata"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="dmem_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="dmem_rdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_rsp_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="dmem_ready" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_rsp_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="dmem_error" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_error">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="mem_rsp_error"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="load_access_fault" SIGIS="undef"/>
+        <PORT DIR="O" NAME="store_access_fault" SIGIS="undef"/>
+        <PORT DIR="O" NAME="mem_fault_valid" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="3" NAME="mem_fault_cause" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="mem_fault_tval" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="mem_stall_req" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="stall"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="stall"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_or_1" PORT="Op1"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_not_0" PORT="Op1"/>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_out_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_1" PORT="Op1"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_stage_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_out_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_out_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_out_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_out_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="mem_out_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="mem_stage_rd"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="1" NAME="mem_out_mem_size" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" NAME="mem_out_mem_unsigned" SIGIS="undef"/>
+        <PORT DIR="O" NAME="mem_out_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_util_vector_and_1" PORT="Op2"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="mem_out_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="mem_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_forward_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_forward_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="mem_stage_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="mem_stage_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="mem_stage_data"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_MEM/mem_wb_reg_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mem_wb_reg" VLNV="xilinx.com:module_ref:mem_wb_reg:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_mem_wb_reg_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="stall" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_sim_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="flush" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_sim_constant_0" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="mem_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="mem_wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_out_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_out_wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_csr_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_csr_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_csr_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="mem_csr_rd_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_csr_rd_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_csr_rd_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_csr_rd_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_ex_mem_reg_mem_csr_rd_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_ex_mem_reg" PORT="mem_csr_rd_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="wb_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="wb_valid"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_valid"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="wb_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="wb_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="load_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="wb_alu_result" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="alu_y"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="wb_pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="wb_imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="4" NAME="wb_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_rd"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_addr"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="wb_rd"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="wb_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="wb_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" PORT="wb_rd_we"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="wb_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="2" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" PORT="wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="wb_csr_rd_we" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="4" NAME="wb_csr_rd_addr" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="31" NAME="wb_csr_rd_data" RIGHT="0" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_MEM/regfile_we_gen_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_MEM_regfile_we_gen_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="regfile_we_gen" VLNV="xilinx.com:module_ref:regfile_we_gen:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_regfile_we_gen_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="wb_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="wb_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="wb_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="regfile_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_regfile_we_gen_0_regfile_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forwarding_0" PORT="wb_rd_we"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_we"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="regfile_we"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_MEM/sim_constant_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_MEM_sim_constant_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="sim_constant" VLNV="xilinx.com:module_ref:sim_constant:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="WIDTH" VALUE="1"/>
+        <PARAMETER NAME="VALUE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_sim_constant_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_sim_constant_0_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="stall"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="flush"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="stall"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="kill"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/RV32I_WB/wb_mux_0" HWVERSION="1.0" INSTANCE="Core_RV32I_RV32I_WB_wb_mux_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="wb_mux" VLNV="xilinx.com:module_ref:wb_mux:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_wb_mux_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="2" NAME="wb_sel" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_sel">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_sel"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="alu_y" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_alu_result">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_alu_result"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="load_data" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_data">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_data"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="pc_plus4" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_pc_plus4">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_pc_plus4"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="imm_u" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_wb_reg_0_wb_imm_u">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_wb_reg_0" PORT="wb_imm_u"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rd_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_WB_wb_mux_0_rd_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_1" PORT="mem_wb_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_0" PORT="mem_wb_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_forward_mux_2" PORT="mem_wb_data"/>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_regfile_0" PORT="rd_wdata"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rd_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/load_use_detection_0" HWVERSION="1.0" INSTANCE="Core_RV32I_load_use_detection_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="load_use_detection" VLNV="xilinx.com:module_ref:load_use_detection:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_load_use_detection_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="id_ex_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_ex_mem_re" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_mem_re">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_mem_re"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="id_ex_rd_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rd_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rd_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="id_ex_rd" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_id_ex_reg_ex_rd">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="ex_rd"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="if_id_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_IF_if_id_reg_0_id_valid_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="id_valid_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="if_id_rs1" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="4" NAME="if_id_rs2" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs2">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="if_id_rs1_used" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs1_used">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs1_used"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="if_id_rs2_used" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_ID_decoder_0_rs2_used">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_decoder_0" PORT="rs2_used"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pc_en" SIGIS="undef" SIGNAME="Core_RV32I_load_use_detection_0_pc_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="load_use_pc_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="if_id_hold" SIGIS="undef" SIGNAME="Core_RV32I_load_use_detection_0_if_id_hold">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="load_use_if_id_hold"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="id_ex_flush" SIGIS="undef" SIGNAME="Core_RV32I_load_use_detection_0_id_ex_flush">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_priority_branch_OR_l_0" PORT="load_use_id_ex_flush"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/Core_RV32I/priority_branch_OR_l_0" HWVERSION="1.0" INSTANCE="Core_RV32I_priority_branch_OR_l_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="priority_branch_OR_load_use" VLNV="xilinx.com:module_ref:priority_branch_OR_load_use:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_priority_branch_OR_l_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="load_use_pc_en" SIGIS="undef" SIGNAME="Core_RV32I_load_use_detection_0_pc_en">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="pc_en"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="load_use_if_id_hold" SIGIS="undef" SIGNAME="Core_RV32I_load_use_detection_0_if_id_hold">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="if_id_hold"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="load_use_id_ex_flush" SIGIS="undef" SIGNAME="Core_RV32I_load_use_detection_0_id_ex_flush">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_load_use_detection_0" PORT="id_ex_flush"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ex_flush_req" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_EX_branch_0_ex_flush_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_EX_branch_0" PORT="ex_flush_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="priv_redirect_valid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="mem_stall_req" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_mem_stall_req">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="mem_stall_req"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="pc_en_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_pc_en_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_and_1" PORT="Op1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="if_id_hold_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_hold_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_util_vector_or_1" PORT="Op2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="if_id_flush_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_if_id_flush_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_IF_if_id_reg_0" PORT="flush"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="id_ex_flush_final" SIGIS="undef" SIGNAME="Core_RV32I_priority_branch_OR_l_0_id_ex_flush_final">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_ID_id_ex_reg" PORT="bubble"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/GPIO/gpio_0" HWVERSION="1.0" INSTANCE="GPIO_gpio_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="gpio" VLNV="xilinx.com:module_ref:gpio:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_gpio_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="GPIO_gpio_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="GPIO_gpio_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="gpio_ready"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ready_2"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="gpio_out" RIGHT="0" SIGIS="undef" SIGNAME="GPIO_gpio_0_gpio_out">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="gpio_out"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="gpio_in" RIGHT="0" SIGIS="undef" SIGNAME="External_Ports_gpio_in">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="gpio_in"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="7" NAME="gpio_dir" RIGHT="0" SIGIS="undef" SIGNAME="GPIO_gpio_0_gpio_dir">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="gpio_dir_0"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/MMIO/mem_bus_registered_0" HWVERSION="1.0" INSTANCE="MMIO_mem_bus_registered_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="mem_bus_registered" VLNV="xilinx.com:module_ref:mem_bus_registered:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="RAM_BASE" VALUE="0x00002000"/>
+        <PARAMETER NAME="RAM_SIZE" VALUE="0x00001000"/>
+        <PARAMETER NAME="GPIO_BASE" VALUE="0x00003000"/>
+        <PARAMETER NAME="GPIO_SIZE" VALUE="0x00000010"/>
+        <PARAMETER NAME="UART_BASE" VALUE="0x00003010"/>
+        <PARAMETER NAME="UART_SIZE" VALUE="0x00000010"/>
+        <PARAMETER NAME="TIMER_BASE" VALUE="0x00003020"/>
+        <PARAMETER NAME="TIMER_SIZE" VALUE="0x00000010"/>
+        <PARAMETER NAME="TIMEOUT_CYCLES" VALUE="0x000186A0"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_mem_bus_registered_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_req_valid" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_req_ready" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_req_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_req_ready"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="mem_req_ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="mem_req_we" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_req_addr" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="mem_req_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="mem_req_be" RIGHT="0" SIGIS="undef" SIGNAME="Core_RV32I_RV32I_MEM_mem_stage_0_dmem_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_rsp_valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_ready"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="mem_rsp_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="mem_rsp_rdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="mem_rsp_error" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_mem_rsp_error">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Core_RV32I_RV32I_MEM_mem_stage_0" PORT="dmem_error"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ram_valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ram_we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ram_addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="ram_wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="ram_be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="ram_rdata" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_RAM_MEMORY_ram_data_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="ram_ready" SIGIS="undef" SIGNAME="RV32I_RAM_MEMORY_ram_data_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="RV32I_RAM_MEMORY_ram_data" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="gpio_valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="gpio_we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="gpio_addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="gpio_wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="gpio_be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_gpio_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="gpio_rdata" RIGHT="0" SIGIS="undef" SIGNAME="GPIO_gpio_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="gpio_ready" SIGIS="undef" SIGNAME="GPIO_gpio_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="GPIO_gpio_0" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="uart_valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="uart_we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="uart_addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="uart_wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="uart_be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="uart_rdata" RIGHT="0" SIGIS="undef" SIGNAME="UART_uart_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="uart_ready" SIGIS="undef" SIGNAME="xlconstant_3_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="xlconstant_3" PORT="dout"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="timer_valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="timer_we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="timer_addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="timer_wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="3" NAME="timer_be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="timer_rdata" RIGHT="0" SIGIS="undef" SIGNAME="TIMER_timer_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="timer_ready" SIGIS="undef" SIGNAME="TIMER_timer_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="timer_error" SIGIS="undef" SIGNAME="TIMER_timer_0_error">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="TIMER_timer_0" PORT="error"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/RV32I_RAM_MEMORY/ram_data" HWVERSION="1.0" INSTANCE="RV32I_RAM_MEMORY_ram_data" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ram_data" VLNV="xilinx.com:module_ref:ram_data:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="ADDR_WIDTH" VALUE="10"/>
+        <PARAMETER NAME="WORDS" VALUE="1024"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_ram_data_1_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_ram_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="RV32I_RAM_MEMORY_ram_data_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_rdata"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="RV32I_RAM_MEMORY_ram_data_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="ram_ready"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ready_3"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/TIMER/timer_0" HWVERSION="1.0" INSTANCE="TIMER_timer_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="timer" VLNV="xilinx.com:module_ref:timer:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="RESET_CMP" VALUE="0x0002E7CA"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_timer_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="190474289" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_timer_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="TIMER_timer_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready" SIGIS="undef" SIGNAME="TIMER_timer_0_ready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_ready"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ready_1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="error" SIGIS="undef" SIGNAME="TIMER_timer_0_error">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="timer_error"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="timer_irq" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/UART/uart_0" HWVERSION="1.0" INSTANCE="UART_uart_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="uart" VLNV="xilinx.com:module_ref:uart:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CLK_FREQ" VALUE="100000000"/>
+        <PARAMETER NAME="BAUD" VALUE="115200"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_uart_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="External_Ports_clk">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="clk"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rst" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="External_Ports_rst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="rst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="valid" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_valid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_valid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="we" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_we">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_we"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="addr" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_addr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_addr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="wdata" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="be" RIGHT="0" SIGIS="undef" SIGNAME="MMIO_mem_bus_registered_0_uart_be">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_be"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" LEFT="31" NAME="rdata" RIGHT="0" SIGIS="undef" SIGNAME="UART_uart_0_rdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_rdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="ready" SIGIS="undef"/>
+        <PORT DIR="O" NAME="tx" SIGIS="undef" SIGNAME="UART_uart_0_tx">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="rx"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="tx"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="rx" SIGIS="undef" SIGNAME="UART_uart_0_tx">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="UART_uart_0" PORT="tx"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="tx_busy" SIGIS="undef"/>
+        <PORT DIR="O" NAME="tx_ready" SIGIS="undef"/>
+        <PORT DIR="O" NAME="rx_busy" SIGIS="undef"/>
+        <PORT DIR="O" NAME="rx_ready" SIGIS="undef"/>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="7" FULLNAME="/xlconstant_3" HWVERSION="1.1" INSTANCE="xlconstant_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
+        <PARAMETER NAME="Component_Name" VALUE="RISCV_COCOTB_xlconstant_3_1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_3_dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="MMIO_mem_bus_registered_0" PORT="uart_ready"/>
+            <CONNECTION INSTANCE="External_Ports" PORT="ready"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+  </MODULES>
+
+</EDKSYSTEM>

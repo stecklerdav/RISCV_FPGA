@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x5E25507EA052F3E3",
+      "boundary_crc": "0x6F4F788C8BD5476E",
       "device": "xczu5ev-sfvc784-2-i",
       "name": "RISCV_COCOTB",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -71,7 +71,8 @@
       },
       "UART": {
         "uart_0": ""
-      }
+      },
+      "xlconstant_3": ""
     },
     "ports": {
       "clk": {
@@ -151,7 +152,9 @@
         "direction": "O"
       },
       "ready": {
-        "direction": "O"
+        "direction": "O",
+        "left": "0",
+        "right": "0"
       },
       "ready_1": {
         "direction": "O"
@@ -166,9 +169,6 @@
         "direction": "O",
         "left": "31",
         "right": "0"
-      },
-      "timer_ready": {
-        "direction": "I"
       },
       "id_pc_out": {
         "direction": "O",
@@ -6779,6 +6779,18 @@
             ]
           }
         }
+      },
+      "xlconstant_3": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "RISCV_COCOTB_xlconstant_3_1",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          },
+          "CONST_WIDTH": {
+            "value": "1"
+          }
+        }
       }
     },
     "nets": {
@@ -6962,7 +6974,7 @@
       },
       "uart_tx_0_ready": {
         "ports": [
-          "UART/ready",
+          "xlconstant_3/dout",
           "MMIO/uart_ready",
           "ready"
         ]

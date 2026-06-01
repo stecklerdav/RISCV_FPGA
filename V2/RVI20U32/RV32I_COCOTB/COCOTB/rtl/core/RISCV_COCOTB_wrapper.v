@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun May 31 18:37:36 2026
+//Date        : Mon Jun  1 22:28:27 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB_wrapper.bd
 //Design      : RISCV_COCOTB_wrapper
@@ -45,7 +45,6 @@ module RISCV_COCOTB_wrapper
     ready_3,
     regfile_we,
     rst,
-    timer_ready,
     tx,
     wb_rd,
     wb_rd_we,
@@ -79,13 +78,12 @@ module RISCV_COCOTB_wrapper
   input priv_redirect_valid_0;
   output [31:0]rd_wdata;
   output [31:0]rdata;
-  output ready;
+  output [0:0]ready;
   output ready_1;
   output ready_2;
   output ready_3;
   output regfile_we;
   input rst;
-  input timer_ready;
   output tx;
   output [4:0]wb_rd;
   output wb_rd_we;
@@ -120,13 +118,12 @@ module RISCV_COCOTB_wrapper
   wire priv_redirect_valid_0;
   wire [31:0]rd_wdata;
   wire [31:0]rdata;
-  wire ready;
+  wire [0:0]ready;
   wire ready_1;
   wire ready_2;
   wire ready_3;
   wire regfile_we;
   wire rst;
-  wire timer_ready;
   wire tx;
   wire [4:0]wb_rd;
   wire wb_rd_we;
@@ -168,7 +165,6 @@ module RISCV_COCOTB_wrapper
         .ready_3(ready_3),
         .regfile_we(regfile_we),
         .rst(rst),
-        .timer_ready(timer_ready),
         .tx(tx),
         .wb_rd(wb_rd),
         .wb_rd_we(wb_rd_we),

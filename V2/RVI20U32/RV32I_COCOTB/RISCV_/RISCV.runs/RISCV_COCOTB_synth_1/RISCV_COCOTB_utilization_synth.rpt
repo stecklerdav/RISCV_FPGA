@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date         : Sun May 31 13:06:52 2026
+| Date         : Mon Jun  1 22:31:04 2026
 | Host         : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 | Command      : report_utilization -file RISCV_COCOTB_utilization_synth.rpt -pb RISCV_COCOTB_utilization_synth.pb
 | Design       : RISCV_COCOTB
@@ -69,15 +69,14 @@ Table of Contents
 2. BLOCKRAM
 -----------
 
-+-------------------+------+-------+-----------+-------+
-|     Site Type     | Used | Fixed | Available | Util% |
-+-------------------+------+-------+-----------+-------+
-| Block RAM Tile    |    2 |     0 |       144 |  1.39 |
-|   RAMB36/FIFO*    |    2 |     0 |       144 |  1.39 |
-|     RAMB36E2 only |    2 |       |           |       |
-|   RAMB18          |    0 |     0 |       288 |  0.00 |
-| URAM              |    0 |     0 |        64 |  0.00 |
-+-------------------+------+-------+-----------+-------+
++----------------+------+-------+-----------+-------+
+|    Site Type   | Used | Fixed | Available | Util% |
++----------------+------+-------+-----------+-------+
+| Block RAM Tile |    0 |     0 |       144 |  0.00 |
+|   RAMB36/FIFO* |    0 |     0 |       144 |  0.00 |
+|   RAMB18       |    0 |     0 |       288 |  0.00 |
+| URAM           |    0 |     0 |        64 |  0.00 |
++----------------+------+-------+-----------+-------+
 * Note: Each Block RAM Tile only has one FIFO logic available and therefore can accommodate only one FIFO36E2 or one FIFO18E2. However, if a FIFO18E2 occupies a Block RAM Tile, that tile can still accommodate a RAMB18E2
 
 
@@ -174,7 +173,6 @@ Table of Contents
 | CARRY8   |   63 |                 CLB |
 | LUT1     |   17 |                 CLB |
 | RAMS32   |   12 |                 CLB |
-| RAMB36E2 |    2 |           Block Ram |
 +----------+------+---------------------+
 
 

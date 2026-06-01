@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1779744261">
-  <File Type="RBD_FILE" Name="BASIC_wrapper.rbd"/>
-  <File Type="NPI_FILE" Name="BASIC_wrapper.npi"/>
-  <File Type="RNPI_FILE" Name="BASIC_wrapper.rnpi"/>
-  <File Type="CFI_FILE" Name="BASIC_wrapper.cfi"/>
-  <File Type="RCFI_FILE" Name="BASIC_wrapper.rcfi"/>
-  <File Type="PDI-FILE" Name="BASIC_wrapper.pdi"/>
+  <File Type="ROUTE-TIMING-PB" Name="BASIC_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="BASIC_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="BASIC_wrapper_routed_error.dcp"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="BASIC_wrapper.ltx"/>
   <File Type="BITSTR-SYSDEF" Name="BASIC_wrapper.sysdef"/>
@@ -13,15 +10,14 @@
   <File Type="BITSTR-MMI" Name="BASIC_wrapper.mmi"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="BASIC_wrapper_postroute_physopt.dcp"/>
   <File Type="BITSTR-BMM" Name="BASIC_wrapper_bd.bmm"/>
+  <File Type="OPT-DCP" Name="BASIC_wrapper_opt.dcp"/>
+  <File Type="BG-DRC" Name="BASIC_wrapper.drc"/>
   <File Type="BG-BGN" Name="BASIC_wrapper.bgn"/>
   <File Type="PLACE-DCP" Name="BASIC_wrapper_placed.dcp"/>
   <File Type="OPT-HWDEF" Name="BASIC_wrapper.hwdef"/>
   <File Type="BG-BIT" Name="BASIC_wrapper.bit"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="PA-TCL" Name="BASIC_wrapper.tcl"/>
-  <File Type="REPORTS-TCL" Name="BASIC_wrapper_reports.tcl"/>
-  <File Type="BG-DRC" Name="BASIC_wrapper.drc"/>
-  <File Type="OPT-DCP" Name="BASIC_wrapper_opt.dcp"/>
+  <File Type="ROUTE-DCP" Name="BASIC_wrapper_routed.dcp"/>
   <File Type="RDI-RDI" Name="BASIC_wrapper.vdi"/>
   <File Type="BG-BIN" Name="BASIC_wrapper.bin"/>
   <File Type="PWROPT-DCP" Name="BASIC_wrapper_pwropt.dcp"/>
@@ -31,10 +27,14 @@
   <File Type="BITSTR-RBT" Name="BASIC_wrapper.rbt"/>
   <File Type="BITSTR-NKY" Name="BASIC_wrapper.nky"/>
   <File Type="PHYSOPT-DCP" Name="BASIC_wrapper_physopt.dcp"/>
-  <File Type="ROUTE-DCP" Name="BASIC_wrapper_routed.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="BASIC_wrapper_routed_error.dcp"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="BASIC_wrapper_routed_bb.dcp"/>
-  <File Type="ROUTE-TIMING-PB" Name="BASIC_wrapper_timing_summary_routed.pb"/>
+  <File Type="PDI-FILE" Name="BASIC_wrapper.pdi"/>
+  <File Type="RCFI_FILE" Name="BASIC_wrapper.rcfi"/>
+  <File Type="CFI_FILE" Name="BASIC_wrapper.cfi"/>
+  <File Type="RNPI_FILE" Name="BASIC_wrapper.rnpi"/>
+  <File Type="NPI_FILE" Name="BASIC_wrapper.npi"/>
+  <File Type="RBD_FILE" Name="BASIC_wrapper.rbd"/>
+  <File Type="PA-TCL" Name="BASIC_wrapper.tcl"/>
+  <File Type="REPORTS-TCL" Name="BASIC_wrapper_reports.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/pc_unit.v">

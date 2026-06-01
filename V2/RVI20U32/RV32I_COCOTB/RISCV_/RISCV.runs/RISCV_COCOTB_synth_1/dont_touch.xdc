@@ -124,6 +124,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_ua
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_rom_memory_0_0/RISCV_COCOTB_rom_memory_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_rom_memory_0_0 || ORIG_REF_NAME==RISCV_COCOTB_rom_memory_0_0} -quiet] -quiet
 
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_3_1/RISCV_COCOTB_xlconstant_3_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_xlconstant_3_1 || ORIG_REF_NAME==RISCV_COCOTB_xlconstant_3_1} -quiet] -quiet
+
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.srcs/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'RISCV_COCOTB'. Do not add the DONT_TOUCH constraint.
 
@@ -249,6 +252,9 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_ro
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_rom_memory_0_0/RISCV_COCOTB_rom_memory_0_0.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_rom_memory_0_0 || ORIG_REF_NAME==RISCV_COCOTB_rom_memory_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_3_1/RISCV_COCOTB_xlconstant_3_1.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_xlconstant_3_1 || ORIG_REF_NAME==RISCV_COCOTB_xlconstant_3_1} -quiet] -quiet
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.srcs/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'RISCV_COCOTB'. Do not add the DONT_TOUCH constraint.
