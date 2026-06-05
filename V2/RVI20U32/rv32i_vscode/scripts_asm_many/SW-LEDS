@@ -1,0 +1,28 @@
+.section .text.start
+.global _start
+
+_start:
+
+    li t0, 0x80003000      # GPIO_BASE
+
+main_loop:
+
+    lw t1, 0(t0)           # leer SW1
+
+    andi t1, t1, 1         # aislar bit 0
+
+    beq t1, x0, switch_off
+
+switch_on:
+
+    li t2, 0x00000003      # LED0=1 LED1=1
+    sw t2, 0(t0)
+
+    j main_loop
+
+switch_off:
+
+    li t2, 0x00000000      # LED0=0 LED1=0
+    sw t2, 0(t0)
+
+    j main_loop

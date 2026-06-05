@@ -276,10 +276,16 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
                 dut._log.info("PASS oficial RISC-V: gp == 1")
                 return
 
-        valid = int(dmem_valid.value)
-        we = int(dmem_we.value)
-        addr = int(dmem_addr.value)
-        data = int(dmem_wdata.value)
+        addr  = safe_int(dmem_addr)
+        data  = safe_int(dmem_wdata)
+        valid = safe_int(dmem_valid)
+        we    = safe_int(dmem_we)
+
+        # Si alguna señal viene en X/Z, no intentes formatearla ni usarla
+        # para detectar escrituras. Esto evita que cocotb aborte antes
+        # de llegar al punto real de debug.
+        mem_access_known = (addr is not None and data is not None and
+                            valid is not None and we is not None)
 
         ex_pc_val = safe_int(ex_pc)
 
@@ -303,11 +309,28 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
                 f"FWD_B={fmt_dec_obj(fwd_b)} "
                 f"GP={fmt_hex_obj(gp_sig)}"
             )
+        if ex_pc_val in [0x80000384, 0x80000388, 0x8000038C, 0x80000390]:
+            ex_rs1_data = find_child_by_name(dut, "forward_mux_0_out_data")
+            ex_rs2_data = find_child_by_name(dut, "forward_mux_1_out_data")
+            fwd_a = find_child_by_name(dut, "forwarding_0_forward_a")
+            fwd_b = find_child_by_name(dut, "forwarding_0_forward_b")
+
+            dut._log.info(
+                f"TEST21_ADDI "
+                f"EX_PC=0x{ex_pc_val:08X} "
+                f"EX_INSTR={fmt_hex_obj(ex_instr)} "
+                f"RS1={fmt_hex_obj(ex_rs1_data)} "
+                f"RS2={fmt_hex_obj(ex_rs2_data)} "
+                f"FWD_A={fmt_dec_obj(fwd_a)} "
+                f"FWD_B={fmt_dec_obj(fwd_b)} "
+                f"GP={fmt_hex_obj(gp_sig)}"
+            )
 
         # Importante: este bloque debe ir ANTES de detectar tohost.
         # En tu core, el ECALL de pass entra al handler de trap y luego puede escribir
         # tohost usando gp viejo. Para validar rv32ui-p-add, paramos al ECALL de pass.
-        if ex_pc_val in [0x8000066C, 0x80000688, 0x80000698]:
+        if ex_pc_val in [0x8000066C, 0x80000688, 0x80000698,
+                         0x80000414, 0x80000430, 0x80000440]:
             dut._log.info(
                 f"END_AREA cycle={cycle} "
                 f"PC={fmt_hex_obj(pc_sig)} "
@@ -316,18 +339,18 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
                 f"GP={fmt_hex_obj(gp_sig)}"
             )
 
-            if ex_pc_val == 0x80000698 and safe_int(ex_instr) == 0x00000073:
+            if ex_pc_val in [0x80000698, 0x80000440] and safe_int(ex_instr) == 0x00000073:
                 dut._log.info("PASS oficial RISC-V: llegó al ECALL de pass")
                 return
 
-        if valid and we:
+        if mem_access_known and valid and we:
             dut._log.info(
                 f"MEM WRITE cycle={cycle} "
                 f"addr=0x{addr:08X} "
                 f"data=0x{data:08X}"
             )
 
-        if valid and we and addr in TOHOST_ADDRS:
+        if mem_access_known and valid and we and addr in TOHOST_ADDRS:
             dut._log.info(
                 f"TOHOST write detectado: "
                 f"addr=0x{addr:08X} "

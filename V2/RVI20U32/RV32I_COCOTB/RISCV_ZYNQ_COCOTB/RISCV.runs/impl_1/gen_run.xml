@@ -1,85 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1780438035">
-  <File Type="ROUTE-TIMING-PB" Name="BASIC_wrapper_timing_summary_routed.pb"/>
-  <File Type="ROUTE-BLACKBOX-DCP" Name="BASIC_wrapper_routed_bb.dcp"/>
-  <File Type="ROUTE-ERROR-DCP" Name="BASIC_wrapper_routed_error.dcp"/>
-  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
-  <File Type="BITSTR-LTX" Name="BASIC_wrapper.ltx"/>
-  <File Type="BITSTR-SYSDEF" Name="BASIC_wrapper.sysdef"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="BASIC_wrapper_postroute_physopt_bb.dcp"/>
-  <File Type="BITSTR-MMI" Name="BASIC_wrapper.mmi"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="BASIC_wrapper_postroute_physopt.dcp"/>
-  <File Type="BITSTR-BMM" Name="BASIC_wrapper_bd.bmm"/>
-  <File Type="OPT-DCP" Name="BASIC_wrapper_opt.dcp"/>
-  <File Type="BG-DRC" Name="BASIC_wrapper.drc"/>
-  <File Type="BG-BGN" Name="BASIC_wrapper.bgn"/>
-  <File Type="PLACE-DCP" Name="BASIC_wrapper_placed.dcp"/>
-  <File Type="OPT-HWDEF" Name="BASIC_wrapper.hwdef"/>
-  <File Type="BG-BIT" Name="BASIC_wrapper.bit"/>
+<GenRun Id="impl_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1780682640">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
-  <File Type="ROUTE-DCP" Name="BASIC_wrapper_routed.dcp"/>
-  <File Type="RDI-RDI" Name="BASIC_wrapper.vdi"/>
-  <File Type="BG-BIN" Name="BASIC_wrapper.bin"/>
-  <File Type="PWROPT-DCP" Name="BASIC_wrapper_pwropt.dcp"/>
-  <File Type="BITSTR-MSK" Name="BASIC_wrapper.msk"/>
-  <File Type="POSTPLACE-PWROPT-DCP" Name="BASIC_wrapper_postplace_pwropt.dcp"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="BASIC_wrapper_incremental_reuse_pre_placed.rpt"/>
-  <File Type="BITSTR-RBT" Name="BASIC_wrapper.rbt"/>
-  <File Type="BITSTR-NKY" Name="BASIC_wrapper.nky"/>
-  <File Type="PHYSOPT-DCP" Name="BASIC_wrapper_physopt.dcp"/>
-  <File Type="PDI-FILE" Name="BASIC_wrapper.pdi"/>
-  <File Type="RCFI_FILE" Name="BASIC_wrapper.rcfi"/>
-  <File Type="CFI_FILE" Name="BASIC_wrapper.cfi"/>
-  <File Type="RNPI_FILE" Name="BASIC_wrapper.rnpi"/>
-  <File Type="NPI_FILE" Name="BASIC_wrapper.npi"/>
-  <File Type="RBD_FILE" Name="BASIC_wrapper.rbd"/>
-  <File Type="PA-TCL" Name="BASIC_wrapper.tcl"/>
-  <File Type="REPORTS-TCL" Name="BASIC_wrapper_reports.tcl"/>
+  <File Type="RDI-RDI" Name="RV32UI_wrapper.vdi"/>
+  <File Type="BG-DRC" Name="RV32UI_wrapper.drc"/>
+  <File Type="BG-BGN" Name="RV32UI_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="RV32UI_wrapper.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="RV32UI_wrapper.ltx"/>
+  <File Type="RBD_FILE" Name="RV32UI_wrapper.rbd"/>
+  <File Type="NPI_FILE" Name="RV32UI_wrapper.npi"/>
+  <File Type="RNPI_FILE" Name="RV32UI_wrapper.rnpi"/>
+  <File Type="CFI_FILE" Name="RV32UI_wrapper.cfi"/>
+  <File Type="RCFI_FILE" Name="RV32UI_wrapper.rcfi"/>
+  <File Type="PDI-FILE" Name="RV32UI_wrapper.pdi"/>
+  <File Type="BITSTR-MMI" Name="RV32UI_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="RV32UI_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="RV32UI_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="RV32UI_wrapper.rbt"/>
+  <File Type="BITSTR-MSK" Name="RV32UI_wrapper.msk"/>
+  <File Type="BG-BIN" Name="RV32UI_wrapper.bin"/>
+  <File Type="BG-BIT" Name="RV32UI_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="RV32UI_wrapper_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="RV32UI_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="RV32UI_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="RV32UI_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="RV32UI_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="RV32UI_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="RV32UI_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="RV32UI_wrapper_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="RV32UI_wrapper_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="RV32UI_wrapper_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW" Name="RV32UI_wrapper_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="RV32UI_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="RV32UI_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="RV32UI_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="RV32UI_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="RV32UI_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="RV32UI_wrapper_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="RV32UI_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="RV32UI_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="RV32UI_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="RV32UI_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="RV32UI_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="RV32UI_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="RV32UI_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="RV32UI_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="RV32UI_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="RV32UI_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="RV32UI_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="RV32UI_wrapper_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="RV32UI_wrapper_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="RV32UI_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="RV32UI_wrapper_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="RV32UI_wrapper_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="RV32UI_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="RV32UI_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="RV32UI_wrapper_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="RV32UI_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="RV32UI_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="RV32UI_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="RV32UI_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="RV32UI_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="RV32UI_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="RV32UI_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="RV32UI_wrapper_placed.dcp"/>
+  <File Type="PWROPT-DRC" Name="RV32UI_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="RV32UI_wrapper_pwropt.dcp"/>
+  <File Type="OPT-HWDEF" Name="RV32UI_wrapper.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="RV32UI_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="RV32UI_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="RV32UI_wrapper_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="RV32UI_wrapper_timing_summary_init.rpt"/>
+  <File Type="PWROPT-TIMING" Name="RV32UI_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="REPORTS-TCL" Name="RV32UI_wrapper_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="RV32UI_wrapper_timing_summary_opted.rpt"/>
+  <File Type="PA-TCL" Name="RV32UI_wrapper.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/pc_unit.v">
+    <File Path="$PSRCDIR/sources_1/new/xlslice_2bit.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/pc_to_imem_addr.v">
+    <File Path="$PSRCDIR/sources_1/new/xlconcat_8.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/if_id_reg.v">
+    <File Path="$PSRCDIR/sources_1/new/uart.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/decoder.v">
+    <File Path="$PSRCDIR/sources_1/new/timer.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/control.v">
+    <File Path="$PSRCDIR/sources_1/new/regfile_we_gen.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/regfile.v">
+    <File Path="$PSRCDIR/sources_1/new/mem_wb_reg.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/imm_mux.v">
+    <File Path="$PSRCDIR/sources_1/new/constant_zero.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/mem_stage.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -87,20 +134,6 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/alu.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/forwarding.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/forward_mux.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -135,21 +168,21 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/mem_stage.v">
+    <File Path="$PSRCDIR/sources_1/new/util_vector_and.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/ram_data.v">
+    <File Path="$PSRCDIR/sources_1/new/forward_mux.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/mem_wb_reg.v">
+    <File Path="$PSRCDIR/sources_1/new/forwarding.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -157,6 +190,97 @@
       </FileInfo>
     </File>
     <File Path="$PSRCDIR/sources_1/new/wb_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/imm_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/decoder.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/control.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/id_ex_reg.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/regfile.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/branch_predictor_btb_bht.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pc_to_imem_addr.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/util_vector_or.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/util_vector_not.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/constant_one.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/rom_memory.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pc_unit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/if_id_reg.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -177,70 +301,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/regfile_we_gen.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/gpio.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/id_ex_reg.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/branch_predictor_btb_bht.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/timer.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/mem_bus_registered.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/trap_controller.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/system_decoder.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/csr_file.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/privileged_pc_redirect_mux.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -254,7 +315,21 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/csr_regfile_wb_mux.v">
+    <File Path="$PSRCDIR/sources_1/new/privileged_pc_redirect_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/system_decoder.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/trap_controller.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -275,25 +350,53 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/uart.v">
+    <File Path="$PSRCDIR/sources_1/new/csr_file.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/imports/hdl/BASIC_wrapper.v">
+    <File Path="$PSRCDIR/sources_1/new/csr_use_detection.v">
       <FileInfo>
-        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/bd/BASIC/hdl/BASIC_wrapper.v"/>
-        <Attr Name="ImportTime" Val="1780525800"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/uart_tx.v">
+    <File Path="$PSRCDIR/sources_1/new/csr_regfile_wb_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/ram_data.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/gpio.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/bd/RV32UI/hdl/RV32UI_wrapper.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/hdl/RISCV_COCOTB_wrapper.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/bd/RISCV_COCOTB/hdl/RISCV_COCOTB_wrapper.v"/>
+        <Attr Name="ImportTime" Val="1780660007"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -305,10 +408,23 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/sim_constant.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../rv32i_vscode/prog_asm.mem">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="BASIC_wrapper"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="RV32UI_wrapper"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -340,7 +456,6 @@
     <Step Id="route_design"/>
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
-    <Step Id="write_device_image"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="BASIC"/>
+  <BlockFileSet Type="BlockSrcs" Name="RV32UI"/>
 </GenRun>

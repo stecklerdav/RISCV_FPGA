@@ -61,4 +61,5 @@ RISCV_COCOTB_util_vector_not_0_2.v,verilog,xil_defaultlib,../../../bd/RISCV_COCO
 RISCV_COCOTB_xlslice_2bit_0_0.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlslice_2bit_0_0/sim/RISCV_COCOTB_xlslice_2bit_0_0.v,
 RISCV_COCOTB_csr_use_detection_0_0.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_csr_use_detection_0_0/sim/RISCV_COCOTB_csr_use_detection_0_0.v,
 RISCV_COCOTB.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v,
+RISCV_COCOTB_constant_zero_0_2.v,verilog,xil_defaultlib,../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/sim/RISCV_COCOTB_constant_zero_0_2.v,
 glbl.v,Verilog,xil_defaultlib,glbl.v

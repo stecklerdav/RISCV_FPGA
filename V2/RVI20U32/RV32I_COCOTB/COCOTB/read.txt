@@ -1,5 +1,0 @@
-
-steps
-
-*cambiar los util vectos constnts quitar los zynq y todos los ip propietario de xilinx en RISCV_  ussar solo .v generar el top con vivado y luego modificar para cocotb
-* hacer regresiones con muchos asm diferentes

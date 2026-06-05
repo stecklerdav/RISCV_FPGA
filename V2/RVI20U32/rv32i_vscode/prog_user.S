@@ -1,27 +1,37 @@
-.section .text
-.globl _start
+.section .text.start
+.global _start
 
 _start:
-    # Leer mcause en x30/t5
-    csrr x30, mcause
+    /* GPIO base */
+    li t0, 0x80003000
 
-    # NOPs para probar si el problema es hazard CSR-use
-    nop
-    nop
-    nop
+    /* GPIO_DIR = 0b00000011
+       bit0 = LED0 salida
+       bit1 = LED1 salida
+    */
+    li t1, 0x00000003
+    sw t1, 8(t0)
 
-    # Si x30 >= 0, falla.
-    # Si mcause = 0x80000000, x30 es negativo y NO debe saltar.
-    bgez x30, fail
+main_loop:
+    /* Leer GPIO_IN */
+    lw t2, 4(t0)
 
-pass:
-    li x1, 1
-    lui x2, 0x1          # x2 = 0x00001000
-    sw x1, 0(x2)         # tohost/remap = 0x00001000
-    j pass
+    /* Aislar SW1 = bit0 */
+    andi t2, t2, 0x01
 
-fail:
-    li x1, 0x539
-    lui x2, 0x1          # x2 = 0x00001000
-    sw x1, 0(x2)
-    j fail
+    /* Si SW1 == 0, apagar LEDs */
+    beq t2, x0, switch_off
+
+switch_on:
+    /* LED0 = 1, LED1 = 1 */
+    li t3, 0x00000003
+    sw t3, 0(t0)
+
+    j main_loop
+
+switch_off:
+    /* LED0 = 0, LED1 = 0 */
+    li t3, 0x00000000
+    sw t3, 0(t0)
+
+    j main_loop

@@ -1,6 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1780580487" />
-    <testcase classname="regression" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/regression.py" lineno="244" name="regression" ratio_time="2107.980224035116" sim_time_ns="1210.0" time="0.5740091800689697" />
-  </testsuite>
-</testsuites>

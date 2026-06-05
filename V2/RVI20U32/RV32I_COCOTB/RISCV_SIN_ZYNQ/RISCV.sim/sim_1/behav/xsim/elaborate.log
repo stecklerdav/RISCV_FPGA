@@ -1,9 +1,0 @@
-Vivado Simulator 2020.1
-Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
-Running: /media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/bin/unwrapped/lnx64.o/xelab -wto 665df9eb1049412aba2015d1f4da0e51 --incr --debug all --relax --mt 8 -L xil_defaultlib -L xlconstant_v1_1_7 -L xilinx_vip -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_top_behav xil_defaultlib.tb_top xil_defaultlib.glbl -log elaborate.log 
-Using 8 slave threads.
-Starting static elaboration
-Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-5021] port 'id_mem_unsigned' is not connected on this instance [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_/RISCV.ip_user_files/bd/RISCV_COCOTB/sim/RISCV_COCOTB.v:1641]
-Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
