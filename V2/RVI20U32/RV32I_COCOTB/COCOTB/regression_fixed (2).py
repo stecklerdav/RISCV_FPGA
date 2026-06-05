@@ -256,13 +256,8 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
         await ClockCycles(dut.clk, 1)
         await ReadOnly()
 
-        pc_now = safe_int(pc_sig)
-        if pc_now is not None:
-            if last_pc is not None and abs(pc_now - last_pc) > 0x100:
-                dut._log.info(
-                    f"PC_JUMP cycle={cycle} last=0x{last_pc:08X} now=0x{pc_now:08X}"
-                )
-            last_pc = pc_now
+        if pc_sig is not None:
+            last_pc = safe_int(pc_sig)
 
         gp_val = safe_int(gp_sig)
         if gp_val is not None:
@@ -287,6 +282,9 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
             log_pipeline_stall_state(dut, cycle)
 
         # DEBUG específico para rv32ui-p-add test_38.
+        # Esperado:
+        #   EX_PC=0x80000664 -> RS1=0, RS2=0
+        #   EX_PC=0x80000668 -> RS1=0, RS2=0x26
         if ex_pc_val in [0x80000664, 0x80000668, 0x8000066C, 0x80000688]:
             ex_rs1_data = find_child_by_name(dut, "forward_mux_0_out_data")
             ex_rs2_data = find_child_by_name(dut, "forward_mux_1_out_data")
@@ -303,22 +301,6 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
                 f"FWD_B={fmt_dec_obj(fwd_b)} "
                 f"GP={fmt_hex_obj(gp_sig)}"
             )
-
-        # Importante: este bloque debe ir ANTES de detectar tohost.
-        # En tu core, el ECALL de pass entra al handler de trap y luego puede escribir
-        # tohost usando gp viejo. Para validar rv32ui-p-add, paramos al ECALL de pass.
-        if ex_pc_val in [0x8000066C, 0x80000688, 0x80000698]:
-            dut._log.info(
-                f"END_AREA cycle={cycle} "
-                f"PC={fmt_hex_obj(pc_sig)} "
-                f"EX_PC={fmt_hex_obj(ex_pc)} "
-                f"EX_INSTR={fmt_hex_obj(ex_instr)} "
-                f"GP={fmt_hex_obj(gp_sig)}"
-            )
-
-            if ex_pc_val == 0x80000698 and safe_int(ex_instr) == 0x00000073:
-                dut._log.info("PASS oficial RISC-V: llegó al ECALL de pass")
-                return
 
         if valid and we:
             dut._log.info(
@@ -342,6 +324,15 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
             raise AssertionError(
                 f"FAIL oficial RISC-V: "
                 f"tohost=0x{data:08X}, addr=0x{addr:08X}"
+            )
+
+        if ex_pc_val in [0x8000066C, 0x80000688, 0x80000698]:
+            dut._log.info(
+                f"END_AREA cycle={cycle} "
+                f"PC={fmt_hex_obj(pc_sig)} "
+                f"EX_PC={fmt_hex_obj(ex_pc)} "
+                f"EX_INSTR={fmt_hex_obj(ex_instr)} "
+                f"GP={fmt_hex_obj(gp_sig)}"
             )
 
     log_debug_state(dut)
