@@ -8,14 +8,8 @@ TOPLEVEL_LANG = verilog
 TOPLEVEL = RISCV_COCOTB_wrapper
 MODULE   = regression
 
-# Cambia esto a tu carpeta real de Verilog.
 RTL_DIR ?= rtl
-
 VERILOG_SOURCES = $(shell find $(PWD)/$(RTL_DIR) -name "*.v")
-
-# ============================================================
-# RISC-V toolchain
-# ============================================================
 
 RISCV_PREFIX ?= riscv32-unknown-elf-
 
@@ -50,17 +44,14 @@ LDFLAGS = \
 
 IVERILOG_ARGS += -g2012
 
-# ============================================================
-# Build program memory before simulation
-# ============================================================
-
-results.xml: $(MEM)
-
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
 $(PROGRAM_DIR):
 	mkdir -p $(PROGRAM_DIR)
+
+.PHONY: gen_mem
+gen_mem: $(MEM)
 
 $(ELF): $(ASM) | $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $<
@@ -75,6 +66,10 @@ $(MEM): $(BIN) | $(PROGRAM_DIR)
 	cp $@ prog_asm.mem
 	@echo "[OK] MEM generado: $@"
 	@echo "[OK] Copia generada: prog_asm.mem"
+
+.PHONY: run_local
+run_local: gen_mem
+	$(MAKE) sim
 
 .PHONY: clean_prog
 clean_prog:

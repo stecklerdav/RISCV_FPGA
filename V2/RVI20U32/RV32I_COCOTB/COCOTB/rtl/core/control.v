@@ -95,6 +95,7 @@ module control (
                     3'b101: alu_op = bit30 ? ALU_SRA : ALU_SRL;
                     3'b110: alu_op = ALU_OR;
                     3'b111: alu_op = ALU_AND;
+                    default: alu_op = ALU_ADD;
                 endcase
             end
 
@@ -114,6 +115,7 @@ module control (
                     3'b111: alu_op = ALU_AND;
                     3'b001: alu_op = ALU_SLL;
                     3'b101: alu_op = bit30 ? ALU_SRA : ALU_SRL;
+                    default: alu_op = ALU_ADD;
                 endcase
             end
 
@@ -127,11 +129,11 @@ module control (
                 mem_re   = 1'b1;
 
                 case (funct3)
-                    3'b000: begin mem_size = SZ_B; mem_unsigned = 1'b0; end // LB
-                    3'b001: begin mem_size = SZ_H; mem_unsigned = 1'b0; end // LH
-                    3'b010: begin mem_size = SZ_W; mem_unsigned = 1'b0; end // LW
-                    3'b100: begin mem_size = SZ_B; mem_unsigned = 1'b1; end // LBU
-                    3'b101: begin mem_size = SZ_H; mem_unsigned = 1'b1; end // LHU
+                    3'b000: begin mem_size = SZ_B; mem_unsigned = 1'b0; end
+                    3'b001: begin mem_size = SZ_H; mem_unsigned = 1'b0; end
+                    3'b010: begin mem_size = SZ_W; mem_unsigned = 1'b0; end
+                    3'b100: begin mem_size = SZ_B; mem_unsigned = 1'b1; end
+                    3'b101: begin mem_size = SZ_H; mem_unsigned = 1'b1; end
                     default: begin mem_size = SZ_W; mem_unsigned = 1'b0; end
                 endcase
             end
@@ -147,6 +149,7 @@ module control (
                     3'b000: mem_size = SZ_B;
                     3'b001: mem_size = SZ_H;
                     3'b010: mem_size = SZ_W;
+                    default: mem_size = SZ_W;
                 endcase
             end
 
@@ -191,9 +194,46 @@ module control (
                 op_b_sel = B_IMM;
             end
 
+            // FENCE / FENCE.I
+            // En este core simple se trata como NOP válido.
+            // No escribe registros, no accede a memoria y no redirecciona PC.
+            7'b0001111: begin
+                rd_we         = 1'b0;
+                wb_sel        = WB_ALU;
+                imm_sel       = IMM_I;
+                op_a_sel      = A_RS1;
+                op_b_sel      = B_RS2;
+                alu_op        = ALU_ADD;
+                mem_re        = 1'b0;
+                mem_we        = 1'b0;
+                mem_size      = SZ_W;
+                mem_unsigned  = 1'b0;
+                branch_en     = 1'b0;
+                branch_funct3 = funct3;
+                jal           = 1'b0;
+                jalr          = 1'b0;
+            end
+
             7'b1110011: begin
                 rd_we  = 1'b0;
                 wb_sel = WB_ALU;
+            end
+
+            default: begin
+                rd_we         = 1'b0;
+                wb_sel        = WB_ALU;
+                imm_sel       = IMM_I;
+                op_a_sel      = A_RS1;
+                op_b_sel      = B_RS2;
+                alu_op        = ALU_ADD;
+                mem_re        = 1'b0;
+                mem_we        = 1'b0;
+                mem_size      = SZ_W;
+                mem_unsigned  = 1'b0;
+                branch_en     = 1'b0;
+                branch_funct3 = funct3;
+                jal           = 1'b0;
+                jalr          = 1'b0;
             end
 
         endcase

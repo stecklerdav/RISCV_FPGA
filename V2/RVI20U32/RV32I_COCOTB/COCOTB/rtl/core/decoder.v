@@ -47,9 +47,7 @@ module decoder (
     wire is_branch = (opcode == 7'b1100011);
     wire is_jalr   = (opcode == 7'b1100111);
     wire is_system = (opcode == 7'b1110011);
-    wire is_lui    = (opcode == 7'b0110111);
-    wire is_auipc  = (opcode == 7'b0010111);
-    wire is_jal    = (opcode == 7'b1101111);
+    wire is_fence  = (opcode == 7'b0001111);
 
     wire is_csr_reg;
 
@@ -88,20 +86,49 @@ module decoder (
         illegal_opcode = 1'b0;
 
         case (opcode)
-            7'b0110011: fmt = FMT_R; // OP
+            7'b0110011: begin
+                fmt = FMT_R; // OP
+            end
 
-            7'b0010011: fmt = FMT_I; // OP-IMM
-            7'b0000011: fmt = FMT_I; // LOAD
-            7'b1100111: fmt = FMT_I; // JALR
-            7'b1110011: fmt = FMT_I; // SYSTEM
+            7'b0010011: begin
+                fmt = FMT_I; // OP-IMM
+            end
 
-            7'b0100011: fmt = FMT_S; // STORE
-            7'b1100011: fmt = FMT_B; // BRANCH
+            7'b0000011: begin
+                fmt = FMT_I; // LOAD
+            end
 
-            7'b0110111: fmt = FMT_U; // LUI
-            7'b0010111: fmt = FMT_U; // AUIPC
+            7'b1100111: begin
+                fmt = FMT_I; // JALR
+            end
 
-            7'b1101111: fmt = FMT_J; // JAL
+            7'b1110011: begin
+                fmt = FMT_I; // SYSTEM / CSR / ECALL / MRET
+            end
+
+            7'b0001111: begin
+                fmt = FMT_I; // FENCE / FENCE.I tratado como NOP por ahora
+            end
+
+            7'b0100011: begin
+                fmt = FMT_S; // STORE
+            end
+
+            7'b1100011: begin
+                fmt = FMT_B; // BRANCH
+            end
+
+            7'b0110111: begin
+                fmt = FMT_U; // LUI
+            end
+
+            7'b0010111: begin
+                fmt = FMT_U; // AUIPC
+            end
+
+            7'b1101111: begin
+                fmt = FMT_J; // JAL
+            end
 
             default: begin
                 fmt            = FMT_UNKNOWN;

@@ -97,7 +97,7 @@ output wire [31 : 0] pc_debug_last_predict;
 output wire pc_debug_predict_pulse;
 
   pc_unit #(
-    .RESET_PC(32'H00000000)
+    .RESET_PC(32'H80000000)
   ) inst (
     .rst(rst),
     .clk(clk),

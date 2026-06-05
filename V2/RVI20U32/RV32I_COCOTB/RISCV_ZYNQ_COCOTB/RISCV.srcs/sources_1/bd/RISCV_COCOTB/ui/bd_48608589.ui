@@ -1,0 +1,124 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.563981",
+   "Default View_TopLeft":"-395,-209",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:9.0 TLS
+#  -string -flagsOSRD
+preplace port instr_valid -pg 1 -lvl 0 -x -20 -y 780 -defaultsOSRD
+preplace port clk -pg 1 -lvl 0 -x -20 -y 270 -defaultsOSRD
+preplace port rst -pg 1 -lvl 0 -x -20 -y 1130 -defaultsOSRD
+preplace port illegal_instr -pg 1 -lvl 0 -x -20 -y 800 -defaultsOSRD
+preplace port timer_irq -pg 1 -lvl 0 -x -20 -y 1170 -defaultsOSRD
+preplace port mem_stall_req -pg 1 -lvl 0 -x -20 -y 410 -defaultsOSRD
+preplace port trap_flush -pg 1 -lvl 7 -x 2930 -y 1060 -defaultsOSRD
+preplace port final_we -pg 1 -lvl 7 -x 2930 -y 1220 -defaultsOSRD
+preplace port priv_redirect_valid -pg 1 -lvl 7 -x 2930 -y 960 -defaultsOSRD
+preplace port normal_we -pg 1 -lvl 0 -x -20 -y 1190 -defaultsOSRD
+preplace port csr_rd_we -pg 1 -lvl 7 -x 2930 -y 770 -defaultsOSRD
+preplace port csr_rd_we1 -pg 1 -lvl 0 -x -20 -y 1250 -defaultsOSRD
+preplace port ex_exception_valid -pg 1 -lvl 0 -x -20 -y 70 -defaultsOSRD
+preplace port mem_fault_valid -pg 1 -lvl 0 -x -20 -y 1040 -defaultsOSRD
+preplace port mem_exception_valid -pg 1 -lvl 0 -x -20 -y 960 -defaultsOSRD
+preplace portBus instr -pg 1 -lvl 0 -x -20 -y 640 -defaultsOSRD
+preplace portBus current_pc -pg 1 -lvl 0 -x -20 -y 90 -defaultsOSRD
+preplace portBus normal_rd -pg 1 -lvl 0 -x -20 -y 1210 -defaultsOSRD
+preplace portBus normal_wdata -pg 1 -lvl 0 -x -20 -y 1230 -defaultsOSRD
+preplace portBus final_rd -pg 1 -lvl 7 -x 2930 -y 1240 -defaultsOSRD
+preplace portBus final_wdata -pg 1 -lvl 7 -x 2930 -y 1260 -defaultsOSRD
+preplace portBus priv_redirect_target -pg 1 -lvl 7 -x 2930 -y 980 -defaultsOSRD
+preplace portBus rs1_data -pg 1 -lvl 0 -x -20 -y 1150 -defaultsOSRD
+preplace portBus csr_rd_addr -pg 1 -lvl 7 -x 2930 -y 790 -defaultsOSRD
+preplace portBus csr_rd_data1 -pg 1 -lvl 7 -x 2930 -y 810 -defaultsOSRD
+preplace portBus csr_rd_addr1 -pg 1 -lvl 0 -x -20 -y 1270 -defaultsOSRD
+preplace portBus csr_rd_data2 -pg 1 -lvl 0 -x -20 -y 1290 -defaultsOSRD
+preplace portBus ex_exception_cause -pg 1 -lvl 0 -x -20 -y 110 -defaultsOSRD
+preplace portBus ex_exception_tval -pg 1 -lvl 0 -x -20 -y 130 -defaultsOSRD
+preplace portBus mem_fault_tval -pg 1 -lvl 0 -x -20 -y 1080 -defaultsOSRD
+preplace portBus mem_fault_cause -pg 1 -lvl 0 -x -20 -y 1060 -defaultsOSRD
+preplace portBus mem_exception_cause -pg 1 -lvl 0 -x -20 -y 1000 -defaultsOSRD
+preplace portBus mem_exception_tval -pg 1 -lvl 0 -x -20 -y 1020 -defaultsOSRD
+preplace portBus mem_exception_pc -pg 1 -lvl 0 -x -20 -y 980 -defaultsOSRD
+preplace inst csr_access_unit_0 -pg 1 -lvl 6 -x 2690 -y 770 -defaultsOSRD
+preplace inst privileged_pc_redire_0 -pg 1 -lvl 6 -x 2690 -y 970 -defaultsOSRD
+preplace inst system_decoder_0 -pg 1 -lvl 1 -x 160 -y 640 -defaultsOSRD
+preplace inst csr_file_0 -pg 1 -lvl 5 -x 2200 -y 580 -defaultsOSRD
+preplace inst csr_regfile_wb_mux_0 -pg 1 -lvl 6 -x 2690 -y 1240 -defaultsOSRD
+preplace inst trap_controller_0 -pg 1 -lvl 4 -x 1660 -y 240 -defaultsOSRD
+preplace inst exception_mux_0 -pg 1 -lvl 3 -x 1150 -y 140 -defaultsOSRD
+preplace inst mem_exception_merge_0 -pg 1 -lvl 2 -x 620 -y 1020 -defaultsOSRD
+preplace inst util_vector_and_0 -pg 1 -lvl 3 -x 1150 -y 990 -defaultsOSRD
+preplace inst util_vector_not_0 -pg 1 -lvl 2 -x 620 -y 660 -defaultsOSRD
+preplace netloc system_decoder_0_is_ecall 1 1 3 310 0 NJ 0 1380J
+preplace netloc system_decoder_0_is_mret 1 1 3 340 270 NJ 270 NJ
+preplace netloc system_decoder_0_is_csrrw 1 1 5 360 550 NJ 550 NJ 550 1950J 420 2470J
+preplace netloc system_decoder_0_is_csrrs 1 1 5 340 750 NJ 750 NJ 750 NJ 750 2470J
+preplace netloc system_decoder_0_is_csrrc 1 1 5 330 760 NJ 760 NJ 760 NJ 760 NJ
+preplace netloc system_decoder_0_csr_addr 1 1 4 350 540 NJ 540 NJ 540 NJ
+preplace netloc system_decoder_0_csr_rs1 1 1 5 310 780 NJ 780 NJ 780 NJ 780 NJ
+preplace netloc system_decoder_0_csr_rd 1 1 5 320 730 NJ 730 NJ 730 1850J 800 NJ
+preplace netloc csr_file_0_csr_rdata 1 5 1 2450 510n
+preplace netloc csr_access_unit_0_csr_we 1 4 3 1990 360 NJ 360 2890
+preplace netloc csr_access_unit_0_csr_wdata 1 4 3 1980 350 NJ 350 2900
+preplace netloc csr_file_0_csr_mstatus 1 3 3 1430 500 1900J 400 2390
+preplace netloc csr_file_0_csr_mtvec 1 3 3 1440 510 1920J 410 2380
+preplace netloc csr_file_0_csr_mepc 1 3 3 1450 470 1850J 370 2420
+preplace netloc csr_file_0_csr_mie 1 3 3 1460 480 1860J 380 2410
+preplace netloc csr_file_0_csr_mip 1 3 3 1470 490 1880J 390 2400
+preplace netloc trap_controller_0_trap_enter 1 4 2 1940 340 2460J
+preplace netloc trap_controller_0_trap_target 1 4 2 1990 320 2480J
+preplace netloc trap_controller_0_trap_mepc 1 4 1 1930 230n
+preplace netloc trap_controller_0_trap_mcause 1 4 1 1910 250n
+preplace netloc trap_controller_0_mret_taken 1 4 2 1870 770 2390J
+preplace netloc trap_controller_0_mret_target 1 4 2 1900 330 2430J
+preplace netloc Core_RV32I_ex_instr 1 0 1 NJ 640
+preplace netloc Core_RV32I_ex_valid 1 0 6 NJ 780 300J 740 NJ 740 1390 740 NJ 740 2440J
+preplace netloc zynq_ultra_ps_e_0_pl_clk0 1 0 5 NJ 270 330J 280 NJ 280 1360 530 1960J
+preplace netloc proc_sys_reset_0_peripheral_reset 1 0 5 0J 500 NJ 500 NJ 500 1420 520 1970J
+preplace netloc Core_RV32I_ex_pc 1 0 4 NJ 90 NJ 90 870 10 1370
+preplace netloc TIMER_timer_irq 1 0 5 10J 790 NJ 790 910J 720 1410 680 NJ
+preplace netloc Core_RV32I_mem_stall_req 1 0 4 NJ 410 NJ 410 NJ 410 NJ
+preplace netloc trap_controller_0_trap_flush 1 4 3 NJ 190 NJ 190 2910J
+preplace netloc Core_RV32I_wb_rd 1 0 6 NJ 1210 NJ 1210 NJ 1210 NJ 1210 NJ 1210 NJ
+preplace netloc Core_RV32I_rd_wdata1 1 0 6 NJ 1230 NJ 1230 NJ 1230 NJ 1230 NJ 1230 NJ
+preplace netloc csr_regfile_wb_mux_0_final_we 1 6 1 NJ 1220
+preplace netloc csr_regfile_wb_mux_0_final_rd 1 6 1 NJ 1240
+preplace netloc csr_regfile_wb_mux_0_final_wdata 1 6 1 NJ 1260
+preplace netloc privileged_pc_redire_0_priv_redirect_valid 1 6 1 NJ 960
+preplace netloc privileged_pc_redire_0_priv_redirect_target 1 6 1 NJ 980
+preplace netloc system_decoder_0_is_system 1 1 1 370 560n
+preplace netloc illegal_instr_1 1 0 3 NJ 800 NJ 800 890J
+preplace netloc rs1_data1_1 1 0 6 20J 820 NJ 820 NJ 820 NJ 820 NJ 820 NJ
+preplace netloc trap_controller_0_trap_mtval 1 4 1 1890 270n
+preplace netloc normal_we1_1 1 0 6 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ 1190 NJ
+preplace netloc csr_access_unit_0_csr_rd_we 1 6 1 NJ 770
+preplace netloc csr_access_unit_0_csr_rd_addr 1 6 1 NJ 790
+preplace netloc csr_access_unit_0_csr_rd_data 1 6 1 NJ 810
+preplace netloc csr_rd_we1_1 1 0 6 NJ 1250 NJ 1250 NJ 1250 NJ 1250 NJ 1250 NJ
+preplace netloc csr_rd_addr1_1 1 0 6 NJ 1270 NJ 1270 NJ 1270 NJ 1270 NJ 1270 NJ
+preplace netloc csr_rd_data2_1 1 0 6 NJ 1290 NJ 1290 NJ 1290 NJ 1290 NJ 1290 NJ
+preplace netloc exception_mux_0_exception_valid 1 3 1 N 110
+preplace netloc exception_mux_0_exception_pc 1 3 1 N 130
+preplace netloc exception_mux_0_exception_tval 1 3 1 N 170
+preplace netloc exception_mux_0_exception_cause 1 3 1 N 150
+preplace netloc ex_exception_valid_1 1 0 3 NJ 70 NJ 70 NJ
+preplace netloc ex_exception_cause_1 1 0 3 NJ 110 NJ 110 NJ
+preplace netloc ex_exception_tval_1 1 0 3 NJ 130 NJ 130 NJ
+preplace netloc mem_fault_tval_1 1 0 2 NJ 1080 NJ
+preplace netloc mem_fault_valid_1 1 0 2 NJ 1040 NJ
+preplace netloc mem_fault_cause_1 1 0 2 NJ 1060 NJ
+preplace netloc mem_exception_valid_1 1 0 2 NJ 960 NJ
+preplace netloc mem_exception_cause_1 1 0 2 NJ 1000 NJ
+preplace netloc mem_exception_tval_1 1 0 2 NJ 1020 NJ
+preplace netloc mem_exception_pc_1 1 0 2 NJ 980 NJ
+preplace netloc mem_exception_merge_0_final_mem_exception_valid 1 2 1 870 150n
+preplace netloc mem_exception_merge_0_final_mem_exception_cause 1 2 1 920 190n
+preplace netloc mem_exception_merge_0_final_mem_exception_tval 1 2 1 930 210n
+preplace netloc mem_exception_merge_0_final_mem_exception_pc 1 2 1 880 170n
+preplace netloc util_vector_and_0_Res 1 3 1 1400 250n
+preplace netloc util_vector_not_0_Res 1 2 1 900 660n
+levelinfo -pg 1 -20 160 620 1150 1660 2200 2690 2930
+pagesize -pg 1 -db -bbox -sgen -270 -70 3170 1350
+"
+}
+

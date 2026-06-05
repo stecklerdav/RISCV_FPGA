@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Fri Jun  5 00:18:31 2026
+# Process ID: 27219
+# Current directory: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.runs/RISCV_COCOTB_synth_1
+# Command line: vivado -log RISCV_COCOTB.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RISCV_COCOTB.tcl
+# Log file: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.runs/RISCV_COCOTB_synth_1/RISCV_COCOTB.vds
+# Journal file: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.runs/RISCV_COCOTB_synth_1/vivado.jou
+#-----------------------------------------------------------
+source RISCV_COCOTB.tcl -notrace

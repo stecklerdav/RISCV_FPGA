@@ -71,8 +71,15 @@ module id_ex_reg (
     output reg  [2:0]  ex_wb_sel
 );
 
+    reg [2:0] bubble_pipe;
+    wire      bubble_any;
+
+    assign bubble_any = bubble | bubble_pipe[0] | bubble_pipe[1]| bubble_pipe[2];
+
     always @(posedge clk) begin
         if (rst) begin
+            bubble_pipe      <= 3'b000;
+
             ex_valid         <= 1'b0;
             ex_pc            <= 32'b0;
             ex_pc_plus4      <= 32'b0;
@@ -104,72 +111,76 @@ module id_ex_reg (
             ex_illegal_instr <= 1'b0;
             ex_instr         <= 32'h0000_0013;
         end
-        else if (stall) begin
-            // HOLD: mantener ID/EX actual
-        end
-        else if (bubble) begin
-            ex_valid         <= 1'b0;
-            ex_pc            <= 32'b0;
-            ex_pc_plus4      <= 32'b0;
-            ex_pred_next_pc  <= 32'b0;
+        else begin 
+        
+           bubble_pipe <= {bubble_pipe[1:0], bubble};
+            if (bubble) begin
+                ex_valid         <= 1'b0;
+                ex_pc            <= 32'b0;
+                ex_pc_plus4      <= 32'b0;
+                ex_pred_next_pc  <= 32'b0;
 
-            ex_rs1_data      <= 32'b0;
-            ex_rs2_data      <= 32'b0;
-            ex_imm           <= 32'b0;
-            ex_imm_u         <= 32'b0;
-            ex_rs1           <= 5'b0;
-            ex_rs2           <= 5'b0;
-            ex_rd            <= 5'b0;
+                ex_rs1_data      <= 32'b0;
+                ex_rs2_data      <= 32'b0;
+                ex_imm           <= 32'b0;
+                ex_imm_u         <= 32'b0;
+                ex_rs1           <= 5'b0;
+                ex_rs2           <= 5'b0;
+                ex_rd            <= 5'b0;
 
-            ex_alu_op        <= 4'b0;
-            ex_op_a_sel      <= 2'b0;
-            ex_op_b_sel      <= 2'b0;
-            ex_branch_en     <= 1'b0;
-            ex_branch_funct3 <= 3'b0;
-            ex_jal           <= 1'b0;
-            ex_jalr          <= 1'b0;
+                ex_alu_op        <= 4'b0;
+                ex_op_a_sel      <= 2'b0;
+                ex_op_b_sel      <= 2'b0;
+                ex_branch_en     <= 1'b0;
+                ex_branch_funct3 <= 3'b0;
+                ex_jal           <= 1'b0;
+                ex_jalr          <= 1'b0;
 
-            ex_mem_re        <= 1'b0;
-            ex_mem_we        <= 1'b0;
-            ex_mem_size      <= 2'b0;
-            ex_mem_unsigned  <= 1'b0;
+                ex_mem_re        <= 1'b0;
+                ex_mem_we        <= 1'b0;
+                ex_mem_size      <= 2'b0;
+                ex_mem_unsigned  <= 1'b0;
 
-            ex_rd_we         <= 1'b0;
-            ex_wb_sel        <= 3'b0;
-            ex_illegal_instr <= 1'b0;
-            ex_instr         <= 32'h0000_0013;
-        end
-        else begin
-            ex_valid         <= id_valid;
-            ex_pc            <= id_pc;
-            ex_pc_plus4      <= id_pc_plus4;
-            ex_pred_next_pc  <= id_pred_next_pc;
+                ex_rd_we         <= 1'b0;
+                ex_wb_sel        <= 3'b0;
+                ex_illegal_instr <= 1'b0;
+                ex_instr         <= 32'h0000_0013;
+            end
+            else if (stall) begin
+                // HOLD: mantener ID/EX actual
+            end
+            else begin
+                ex_valid         <= id_valid;
+                ex_pc            <= id_pc;
+                ex_pc_plus4      <= id_pc_plus4;
+                ex_pred_next_pc  <= id_pred_next_pc;
 
-            ex_rs1_data      <= id_rs1_data;
-            ex_rs2_data      <= id_rs2_data;
-            ex_imm           <= id_imm;
-            ex_imm_u         <= id_imm_u;
-            ex_rs1           <= id_rs1;
-            ex_rs2           <= id_rs2;
-            ex_rd            <= id_rd;
+                ex_rs1_data      <= id_rs1_data;
+                ex_rs2_data      <= id_rs2_data;
+                ex_imm           <= id_imm;
+                ex_imm_u         <= id_imm_u;
+                ex_rs1           <= id_rs1;
+                ex_rs2           <= id_rs2;
+                ex_rd            <= id_rd;
 
-            ex_alu_op        <= id_alu_op;
-            ex_op_a_sel      <= id_op_a_sel;
-            ex_op_b_sel      <= id_op_b_sel;
-            ex_branch_en     <= id_branch_en;
-            ex_branch_funct3 <= id_branch_funct3;
-            ex_jal           <= id_jal;
-            ex_jalr          <= id_jalr;
+                ex_alu_op        <= id_alu_op;
+                ex_op_a_sel      <= id_op_a_sel;
+                ex_op_b_sel      <= id_op_b_sel;
+                ex_branch_en     <= id_branch_en;
+                ex_branch_funct3 <= id_branch_funct3;
+                ex_jal           <= id_jal;
+                ex_jalr          <= id_jalr;
 
-            ex_mem_re        <= id_mem_re;
-            ex_mem_we        <= id_mem_we;
-            ex_mem_size      <= id_mem_size;
-            ex_mem_unsigned  <= id_mem_unsigned;
+                ex_mem_re        <= id_mem_re;
+                ex_mem_we        <= id_mem_we;
+                ex_mem_size      <= id_mem_size;
+                ex_mem_unsigned  <= id_mem_unsigned;
 
-            ex_rd_we         <= id_rd_we && id_valid;
-            ex_wb_sel        <= id_wb_sel;
-            ex_illegal_instr <= id_illegal_instr && id_valid;
-            ex_instr         <= id_instr;
+                ex_rd_we         <= id_rd_we && id_valid;
+                ex_wb_sel        <= id_wb_sel;
+                ex_illegal_instr <= id_illegal_instr && id_valid;
+                ex_instr         <= id_instr;
+            end
         end
     end
 

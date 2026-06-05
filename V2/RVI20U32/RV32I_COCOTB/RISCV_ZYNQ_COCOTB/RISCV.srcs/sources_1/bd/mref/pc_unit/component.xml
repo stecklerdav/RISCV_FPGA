@@ -55,7 +55,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>966cface</spirit:value>
+            <spirit:value>88729d71</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +68,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>966cface</spirit:value>
+            <spirit:value>88729d71</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -340,7 +340,7 @@
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>RESET_PC</spirit:name>
         <spirit:displayName>Reset Pc</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RESET_PC" spirit:bitStringLength="32">0x00000000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RESET_PC" spirit:bitStringLength="32">0x80000000</spirit:value>
       </spirit:modelParameter>
     </spirit:modelParameters>
   </spirit:model>
@@ -360,7 +360,7 @@
     <spirit:parameter>
       <spirit:name>RESET_PC</spirit:name>
       <spirit:displayName>Reset Pc</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RESET_PC" spirit:bitStringLength="32">0x00000000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RESET_PC" spirit:bitStringLength="32">0x80000000</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
@@ -382,7 +382,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-05-18T13:50:10Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-06-04T15:14:18Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>

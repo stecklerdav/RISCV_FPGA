@@ -46,9 +46,35 @@ module if_id_reg (
     reg [31:0] pc4_d;
     reg [31:0] pred_d;
     reg        valid_d;
+    reg        flush_d;
+    
+    reg [2:0] flush_pipe;
+    wire flush_any;
+
+    assign flush_any = flush | flush_pipe[0] | flush_pipe[1] | flush_pipe[2];
 
     always @(posedge clk) begin
-        if (rst) begin
+    if (rst) begin
+        flush_pipe <= 3'b000;
+       // flush_d <= 1'b0;
+
+        pc_d                <= 32'h0000_0000;
+        pc4_d               <= 32'h0000_0000;
+        pred_d              <= 32'h0000_0000;
+        valid_d             <= 1'b0;
+
+        id_pc_out           <= 32'h0000_0000;
+        id_pc4_out          <= 32'h0000_0000;
+        id_instr_out        <= RV32I_NOP;
+        id_pred_next_pc_out <= 32'h0000_0000;
+        id_valid_out        <= 1'b0;
+    end
+    else begin
+      //  flush_d <= flush;
+        flush_pipe <= {flush_pipe[1:0], flush}; 
+
+        if (flush_any ) begin
+            
             pc_d                <= 32'h0000_0000;
             pc4_d               <= 32'h0000_0000;
             pred_d              <= 32'h0000_0000;
@@ -60,31 +86,7 @@ module if_id_reg (
             id_pred_next_pc_out <= 32'h0000_0000;
             id_valid_out        <= 1'b0;
         end
-
-        else if (flush) begin
-            pc_d                <= 32'h0000_0000;
-            pc4_d               <= 32'h0000_0000;
-            pred_d              <= 32'h0000_0000;
-            valid_d             <= 1'b0;
-
-            id_pc_out           <= 32'h0000_0000;
-            id_pc4_out          <= 32'h0000_0000;
-            id_instr_out        <= RV32I_NOP;
-            id_pred_next_pc_out <= 32'h0000_0000;
-            id_valid_out        <= 1'b0;
-        end
-
         else if (hold) begin
-            /*
-                HOLD:
-                No se actualiza nada.
-
-                Esto conserva:
-                - PC retrasado
-                - instrucción en ID
-                - valid
-                - pred_next_pc
-            */
             pc_d                <= pc_d;
             pc4_d               <= pc4_d;
             pred_d              <= pred_d;
@@ -96,15 +98,7 @@ module if_id_reg (
             id_pred_next_pc_out <= id_pred_next_pc_out;
             id_valid_out        <= id_valid_out;
         end
-
         else begin
-            /*
-                Capturamos los datos actuales del IF.
-
-                La instrucción if_instr_in ya viene retrasada por la ROM
-                de latencia 1, por eso se combina con pc_d, pc4_d y pred_d.
-            */
-
             pc_d    <= if_pc_in;
             pc4_d   <= if_pc4_in;
             pred_d  <= if_pred_next_pc_in;
@@ -121,5 +115,6 @@ module if_id_reg (
                 id_instr_out <= RV32I_NOP;
         end
     end
+ end
 
 endmodule

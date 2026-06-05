@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 module pc_unit #(
-    parameter [31:0] RESET_PC = 32'h0000_0000
+    parameter [31:0] RESET_PC = 32'h80000000
 )(
     input  wire        rst,
     input  wire        clk,
@@ -28,7 +28,7 @@ module pc_unit #(
     output reg  [31:0] pc_debug_last_priv_redirect,
     output reg         pc_debug_priv_redirect_pulse,
 
-    // Debug redirect real
+    // Debug redirect realparameter [31:0] RESET_PC = 32'h80000000
     output reg  [31:0] pc_debug_last_redirect,
     output reg         pc_debug_redirect_pulse,
 

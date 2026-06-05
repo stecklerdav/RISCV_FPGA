@@ -3,16 +3,19 @@
 module regfile (
     input  wire        clk,
 
-    // Lecturas
     input  wire [4:0]  rs1_addr,
     input  wire [4:0]  rs2_addr,
     output wire [31:0] rs1_rdata,
     output wire [31:0] rs2_rdata,
 
-    // Escritura
     input  wire        rd_we,
     input  wire [4:0]  rd_addr,
-    input  wire [31:0] rd_wdata
+    input  wire [31:0] rd_wdata,
+
+    output wire [31:0] debug_x3,
+
+    output wire [31:0] debug_x4,
+    output wire [31:0] debug_x5
 );
 
     reg [31:0] regs [0:31];
@@ -62,11 +65,18 @@ module regfile (
 
     // Escritura síncrona
     always @(posedge clk) begin
-        if (rd_we && (rd_addr != 5'd0))
+        if (rd_we && (rd_addr != 5'd0))begin
             regs[rd_addr] <= rd_wdata;
+            if (rd_addr == 5'd3) begin
+                $display("[GP_WRITE] time=%0t gp <= 0x%08x", $time, rd_wdata);
+            end
+            
+        end
     end
-
     assign rs1_rdata = rs1_rdata_r;
     assign rs2_rdata = rs2_rdata_r;
+    assign debug_x3 = regs[3];
+    assign debug_x4 = regs[4];
+    assign debug_x5 = regs[5];
 
 endmodule

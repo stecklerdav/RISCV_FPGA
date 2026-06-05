@@ -29,9 +29,18 @@ module forwarding(
     wire mem_stage_can_forward;
     wire wb_can_forward;
 
-    assign mem_can_forward_exmem = mem_valid       && mem_rd_we       && !mem_is_load;
-    assign mem_stage_can_forward = mem_stage_valid && mem_stage_rd_we;
-    assign wb_can_forward        = wb_valid        && wb_rd_we;
+    assign mem_can_forward_exmem =
+        mem_valid &&
+        mem_rd_we &&
+        !mem_is_load;
+
+    assign mem_stage_can_forward =
+        mem_stage_valid &&
+        mem_stage_rd_we;
+
+    assign wb_can_forward =
+        wb_valid &&
+        wb_rd_we;
 
     always @(*) begin
         forward_a     = 2'b00;
@@ -42,43 +51,53 @@ module forwarding(
             (mem_rd != 5'd0) &&
             (mem_rd == ex_rs1)) begin
             forward_a = 2'b01;
-        end else if (mem_stage_can_forward &&
-                     (mem_stage_rd != 5'd0) &&
-                     (mem_stage_rd == ex_rs1)) begin
+        end
+        else if (mem_stage_can_forward &&
+                 (mem_stage_rd != 5'd0) &&
+                 (mem_stage_rd == ex_rs1)) begin
             forward_a = 2'b10;
-        end else if (wb_can_forward &&
-                     (wb_rd != 5'd0) &&
-                     (wb_rd == ex_rs1)) begin
+        end
+        else if (wb_can_forward &&
+                 (wb_rd != 5'd0) &&
+                 (wb_rd == ex_rs1)) begin
             forward_a = 2'b11;
         end
 
-        if (ex_op_b_sel == B_RS2) begin
-            if (mem_can_forward_exmem &&
-                (mem_rd != 5'd0) &&
-                (mem_rd == ex_rs2)) begin
-                forward_b = 2'b01;
-            end else if (mem_stage_can_forward &&
-                         (mem_stage_rd != 5'd0) &&
-                         (mem_stage_rd == ex_rs2)) begin
-                forward_b = 2'b10;
-            end else if (wb_can_forward &&
-                         (wb_rd != 5'd0) &&
-                         (wb_rd == ex_rs2)) begin
-                forward_b = 2'b11;
-            end
+        /*
+         * IMPORTANTE:
+         * Para branch, ex_op_b_sel puede NO ser B_RS2,
+         * pero el comparador de branch sí usa rs2.
+         * Por eso forward_b debe calcularse SIEMPRE.
+         */
+        if (mem_can_forward_exmem &&
+            (mem_rd != 5'd0) &&
+            (mem_rd == ex_rs2)) begin
+            forward_b = 2'b01;
+        end
+        else if (mem_stage_can_forward &&
+                 (mem_stage_rd != 5'd0) &&
+                 (mem_stage_rd == ex_rs2)) begin
+            forward_b = 2'b10;
+        end
+        else if (wb_can_forward &&
+                 (wb_rd != 5'd0) &&
+                 (wb_rd == ex_rs2)) begin
+            forward_b = 2'b11;
         end
 
         if (mem_can_forward_exmem &&
             (mem_rd != 5'd0) &&
             (mem_rd == ex_rs2)) begin
             forward_store = 2'b01;
-        end else if (mem_stage_can_forward &&
-                     (mem_stage_rd != 5'd0) &&
-                     (mem_stage_rd == ex_rs2)) begin
+        end
+        else if (mem_stage_can_forward &&
+                 (mem_stage_rd != 5'd0) &&
+                 (mem_stage_rd == ex_rs2)) begin
             forward_store = 2'b10;
-        end else if (wb_can_forward &&
-                     (wb_rd != 5'd0) &&
-                     (wb_rd == ex_rs2)) begin
+        end
+        else if (wb_can_forward &&
+                 (wb_rd != 5'd0) &&
+                 (wb_rd == ex_rs2)) begin
             forward_store = 2'b11;
         end
     end
