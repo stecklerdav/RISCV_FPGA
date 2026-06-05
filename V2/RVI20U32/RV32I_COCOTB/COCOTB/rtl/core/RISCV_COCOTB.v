@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Fri Jun  5 00:17:53 2026
+//Date        : Fri Jun  5 12:46:46 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -850,7 +850,7 @@ module PRIVILEGED_imp_UN02VO
   wire [31:0]Core_RV32I_ex_pc;
   wire Core_RV32I_ex_valid;
   wire Core_RV32I_mem_stall_req;
-  wire [31:0]Core_RV32I_rd_wdata1;
+  wire [31:0]Core_RV32I_rd_wdata;
   wire [4:0]Core_RV32I_wb_rd;
   wire TIMER_timer_irq;
   wire [4:0]csr_access_unit_0_csr_rd_addr;
@@ -927,7 +927,7 @@ module PRIVILEGED_imp_UN02VO
   assign Core_RV32I_ex_pc = current_pc[31:0];
   assign Core_RV32I_ex_valid = instr_valid;
   assign Core_RV32I_mem_stall_req = mem_stall_req;
-  assign Core_RV32I_rd_wdata1 = normal_wdata[31:0];
+  assign Core_RV32I_rd_wdata = normal_wdata[31:0];
   assign Core_RV32I_wb_rd = normal_rd[4:0];
   assign TIMER_timer_irq = timer_irq;
   assign csr_rd_addr[4:0] = csr_access_unit_0_csr_rd_addr;
@@ -1005,7 +1005,7 @@ module PRIVILEGED_imp_UN02VO
         .final_wdata(csr_regfile_wb_mux_0_final_wdata),
         .final_we(csr_regfile_wb_mux_0_final_we),
         .normal_rd(Core_RV32I_wb_rd),
-        .normal_wdata(Core_RV32I_rd_wdata1),
+        .normal_wdata(Core_RV32I_rd_wdata),
         .normal_we(normal_we1_1));
   RISCV_COCOTB_csr_use_detection_0_0 csr_use_detection_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -1099,7 +1099,7 @@ module PRIVILEGED_imp_UN02VO
         .Res(util_vector_not_0_Res));
 endmodule
 
-(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=65,numReposBlks=53,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=53,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=66,numReposBlks=54,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=54,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
 module RISCV_COCOTB
    (Reset,
     SW1,
@@ -1127,7 +1127,7 @@ module RISCV_COCOTB
   wire [31:0]Core_RV32I_mem_pc;
   wire [0:0]Core_RV32I_mem_stall_req;
   wire [31:0]Core_RV32I_out_data;
-  wire [31:0]Core_RV32I_rd_wdata1;
+  wire [31:0]Core_RV32I_rd_wdata;
   wire Core_RV32I_regfile_we;
   wire [4:0]Core_RV32I_rs1;
   wire Core_RV32I_rs2_used;
@@ -1238,7 +1238,7 @@ module RISCV_COCOTB
         .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
         .rd_addr(csr_regfile_wb_mux_0_final_rd),
         .rd_wdata(csr_regfile_wb_mux_0_final_wdata),
-        .rd_wdata1(Core_RV32I_rd_wdata1),
+        .rd_wdata1(Core_RV32I_rd_wdata),
         .rd_we(csr_regfile_wb_mux_0_final_we),
         .regfile_we(Core_RV32I_regfile_we),
         .rs1(Core_RV32I_rs1),
@@ -1338,7 +1338,7 @@ module RISCV_COCOTB
         .mem_fault_valid(Core_RV32I_mem_fault_valid),
         .mem_stall_req(Core_RV32I_mem_stall_req),
         .normal_rd(Core_RV32I_wb_rd),
-        .normal_wdata(Core_RV32I_rd_wdata1),
+        .normal_wdata(Core_RV32I_rd_wdata),
         .normal_we(Core_RV32I_regfile_we),
         .pc_en(PRIVILEGED_pc_en),
         .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
@@ -1550,6 +1550,7 @@ module RV32I_EX_imp_J96COH
   wire branch_0_ex_flush_req;
   wire [31:0]branch_0_pc_redirect_target;
   wire branch_0_pc_redirect_valid;
+  wire [0:0]constant_zero_0_dout;
   wire [4:0]ex_csr_rd_addr_1;
   wire [31:0]ex_csr_rd_data_1;
   wire ex_csr_rd_we_1;
@@ -1712,6 +1713,8 @@ module RV32I_EX_imp_J96COH
         .ex_valid(Net),
         .pc_redirect_target(branch_0_pc_redirect_target),
         .pc_redirect_valid(branch_0_pc_redirect_valid));
+  RISCV_COCOTB_constant_zero_0_2 constant_zero_0
+       (.dout(constant_zero_0_dout));
   RISCV_COCOTB_ex_mem_reg_0 ex_mem_reg
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .ex_alu_result(alu_0_y),
@@ -1733,7 +1736,7 @@ module RV32I_EX_imp_J96COH
         .ex_store_data(forward_mux_2_out_data),
         .ex_valid(Net),
         .ex_wb_sel(id_ex_reg_0_ex_wb_sel),
-        .flush(branch_0_ex_flush_req),
+        .flush(constant_zero_0_dout),
         .mem_alu_result(ex_mem_reg_1_mem_alu_result),
         .mem_csr_rd_addr(ex_mem_reg_mem_csr_rd_addr),
         .mem_csr_rd_data(ex_mem_reg_mem_csr_rd_data),
@@ -2251,7 +2254,7 @@ module RV32I_IF_imp_9A1V5I
         .if_instr_in(rom_memory_0_dout),
         .if_pc4_in(pc_unit_0_pc_plus4),
         .if_pc_in(pc_unit_0_pc),
-        .if_pred_next_pc_in(pc_unit_0_pc_plus4),
+        .if_pred_next_pc_in({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .if_valid_in(constant_one_0_dout),
         .rst(proc_sys_reset_0_peripheral_reset));
   RISCV_COCOTB_pc_to_imem_addr_0_0 pc_to_imem_addr_0

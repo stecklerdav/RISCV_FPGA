@@ -2,13 +2,13 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="RISCV_COCOTB" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1780617148"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1780617148"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1780617148"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1780617148"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1780681902"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1780681902"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1780681902"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1780681902"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="RISCV_COCOTB.dcp" Type="DCP">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1780615278" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="1780660675" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -431,6 +431,14 @@
       </File>
       <File Name="ip/RISCV_COCOTB_csr_use_detection_0_0/RISCV_COCOTB_csr_use_detection_0_0.xci" Type="IP">
         <Instance HierarchyPath="PRIVILEGED/csr_use_detection_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/RISCV_COCOTB_constant_zero_0_2/RISCV_COCOTB_constant_zero_0_2.xci" Type="IP">
+        <Instance HierarchyPath="Core_RV32I/RV32I_EX/constant_zero_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
