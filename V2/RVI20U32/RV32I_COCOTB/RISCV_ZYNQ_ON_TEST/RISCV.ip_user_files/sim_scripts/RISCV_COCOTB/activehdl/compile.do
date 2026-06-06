@@ -72,8 +72,8 @@ vlog -work xil_defaultlib  -v2k5 "+incdir+/media/steckler/xilinx_linux/vitis_202
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_not_0_2/sim/RISCV_COCOTB_util_vector_not_0_2.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlslice_2bit_0_0/sim/RISCV_COCOTB_xlslice_2bit_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_csr_use_detection_0_0/sim/RISCV_COCOTB_csr_use_detection_0_0.v" \
-"../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/sim/RISCV_COCOTB_constant_zero_0_2.v" \
+"../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

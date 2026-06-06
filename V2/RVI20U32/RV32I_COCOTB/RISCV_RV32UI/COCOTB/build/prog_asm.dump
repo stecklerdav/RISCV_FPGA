@@ -1,0 +1,42 @@
+
+build/prog_asm.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	000020b7          	lui	ra,0x2
+   4:	00008093          	mv	ra,ra
+   8:	01100293          	li	t0,17
+   c:	0050a023          	sw	t0,0(ra) # 2000 <RAM_BASE>
+  10:	02200293          	li	t0,34
+  14:	0050a223          	sw	t0,4(ra)
+  18:	03300293          	li	t0,51
+  1c:	0050a423          	sw	t0,8(ra)
+  20:	005282b3          	add	t0,t0,t0
+  24:	0050a623          	sw	t0,12(ra)
+  28:	005282b3          	add	t0,t0,t0
+  2c:	0050a823          	sw	t0,16(ra)
+  30:	0000a503          	lw	a0,0(ra)
+  34:	0040a583          	lw	a1,4(ra)
+  38:	0080a603          	lw	a2,8(ra)
+  3c:	00c0a683          	lw	a3,12(ra)
+  40:	0100a703          	lw	a4,16(ra)
+
+00000044 <loop>:
+  44:	0000006f          	j	44 <loop>
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1941                	.insn	2, 0x1941
+   2:	0000                	.insn	2, 0x0000
+   4:	7200                	.insn	2, 0x7200
+   6:	7369                	.insn	2, 0x7369
+   8:	01007663          	bgeu	zero,a6,14 <_start+0x14>
+   c:	0000000f          	fence	unknown,unknown
+  10:	7205                	.insn	2, 0x7205
+  12:	3376                	.insn	2, 0x3376
+  14:	6932                	.insn	2, 0x6932
+  16:	7032                	.insn	2, 0x7032
+  18:	0031                	.insn	2, 0x0031

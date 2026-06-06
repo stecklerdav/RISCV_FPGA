@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"RISCV_COCOTB": {
+			"proto_instances": {
+			}
+		}
+	}
+}

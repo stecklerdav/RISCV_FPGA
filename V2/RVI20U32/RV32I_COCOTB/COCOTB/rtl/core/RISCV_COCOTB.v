@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Fri Jun  5 12:46:46 2026
+//Date        : Sat Jun  6 23:13:47 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -906,8 +906,11 @@ module PRIVILEGED_imp_UN02VO
   wire [4:0]system_decoder_0_csr_rd;
   wire [4:0]system_decoder_0_csr_rs1;
   wire system_decoder_0_is_csrrc;
+  wire system_decoder_0_is_csrrci;
   wire system_decoder_0_is_csrrs;
+  wire system_decoder_0_is_csrrsi;
   wire system_decoder_0_is_csrrw;
+  wire system_decoder_0_is_csrrwi;
   wire system_decoder_0_is_ecall;
   wire system_decoder_0_is_mret;
   wire system_decoder_0_is_system;
@@ -976,8 +979,11 @@ module PRIVILEGED_imp_UN02VO
         .csr_we(csr_access_unit_0_csr_we),
         .ex_valid(Core_RV32I_ex_valid),
         .is_csrrc(system_decoder_0_is_csrrc),
+        .is_csrrci(system_decoder_0_is_csrrci),
         .is_csrrs(system_decoder_0_is_csrrs),
+        .is_csrrsi(system_decoder_0_is_csrrsi),
         .is_csrrw(system_decoder_0_is_csrrw),
+        .is_csrrwi(system_decoder_0_is_csrrwi),
         .rs1_data(rs1_data1_1));
   RISCV_COCOTB_csr_file_0_0 csr_file_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -1058,8 +1064,11 @@ module PRIVILEGED_imp_UN02VO
         .csr_rs1(system_decoder_0_csr_rs1),
         .instr(Core_RV32I_ex_instr),
         .is_csrrc(system_decoder_0_is_csrrc),
+        .is_csrrci(system_decoder_0_is_csrrci),
         .is_csrrs(system_decoder_0_is_csrrs),
+        .is_csrrsi(system_decoder_0_is_csrrsi),
         .is_csrrw(system_decoder_0_is_csrrw),
+        .is_csrrwi(system_decoder_0_is_csrrwi),
         .is_ecall(system_decoder_0_is_ecall),
         .is_mret(system_decoder_0_is_mret),
         .is_system(system_decoder_0_is_system));

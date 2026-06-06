@@ -1,6 +1,6 @@
 module mem_bus_registered #(
-    parameter [31:0] RAM_BASE   = 32'h8000_2000,
-    parameter [31:0] RAM_SIZE   = 32'h0000_1000,
+    parameter [31:0] RAM_BASE   = 32'h8000_1000,
+    parameter [31:0] RAM_SIZE   = 32'h0000_2000,
 
     parameter [31:0] GPIO_BASE  = 32'h8000_3000,
     parameter [31:0] GPIO_SIZE  = 32'h0000_0010,

@@ -1,7 +1,12 @@
 import os
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles, ReadOnly
+from cocotb.triggers import (
+    ClockCycles,
+    ReadOnly,
+    RisingEdge,
+    Timer
+)
 
 
 TOHOST_ADDRS = [0x80001000, 0x00001000]
@@ -154,6 +159,7 @@ def log_debug_state(dut):
     ]:
         log_signal_1bit(dut, label, find_child_by_name(dut, name))
 
+
     dut._log.info("=================================")
 
 
@@ -199,16 +205,54 @@ def get_required_signal(dut, name):
     return sig
 
 
-async def apply_reset(dut, cycles_assert=10, cycles_after=5):
+async def apply_reset(dut, cycles_assert=10, cycles_after=0):
     rst = get_reset_handle(dut)
+
+    # ------------------------------------------------------------
+    # Assert reset
+    # ------------------------------------------------------------
     rst.value = 1
 
     if hasattr(dut, "SW1"):
         dut.SW1.value = 0
 
     await ClockCycles(dut.clk, cycles_assert)
+
+    # Leer señales solo en ReadOnly
+    await ReadOnly()
+
+    dut._log.info("DEBUG DURANTE RESET:")
+    log_debug_state(dut)
+
+    dut._log.info(
+        "DURANTE_RESET PC="
+        f"{fmt_hex_obj(find_child_by_name(dut, 'pc_unit_0_pc'))}"
+    )
+
+    # Salir de ReadOnly antes de escribir rst
+    await RisingEdge(dut.clk)
+
+    # ------------------------------------------------------------
+    # Release reset
+    # ------------------------------------------------------------
     rst.value = 0
-    await ClockCycles(dut.clk, cycles_after)
+
+    await RisingEdge(dut.clk)
+    await ReadOnly()
+
+    dut._log.info(
+        "RESET_RELEASE PC="
+        f"{fmt_hex_obj(find_child_by_name(dut, 'pc_unit_0_pc'))}"
+    )
+
+    if cycles_after > 0:
+        await ClockCycles(dut.clk, cycles_after)
+        await ReadOnly()
+
+        dut._log.info(
+            "POST_RESET_WAIT PC="
+            f"{fmt_hex_obj(find_child_by_name(dut, 'pc_unit_0_pc'))}"
+        )
 
 
 async def dump_ram(dut, words=12):
@@ -288,6 +332,31 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
                             valid is not None and we is not None)
 
         ex_pc_val = safe_int(ex_pc)
+
+        if ex_pc_val in [0x800001B4, 0x800001B8, 0x800001C8, 0x800001CC]:
+            dut._log.info(
+                f"CSRDBG_POINT cycle={cycle} "
+                f"EX_PC={fmt_hex_obj(ex_pc)} "
+                f"EX_INSTR={fmt_hex_obj(ex_instr)}"
+            )
+
+            for name in [
+                "system_decoder_0_csr_addr",
+                "system_decoder_0_csr_rs1",
+                "system_decoder_0_csr_rd",
+                "system_decoder_0_is_csrrw",
+                "system_decoder_0_is_csrrs",
+                "system_decoder_0_is_csrrc",
+                "system_decoder_0_is_csrrwi",
+                "system_decoder_0_is_csrrsi",
+                "system_decoder_0_is_csrrci",
+                "csr_access_unit_0_csr_we",
+                "csr_access_unit_0_csr_wdata",
+                "csr_access_unit_0_csr_rd_data",
+                "csr_file_0_csr_rdata",
+            ]:
+                sig = find_child_by_name(dut, name)
+                dut._log.info(f"CSRDBG {name} = {fmt_hex_obj(sig)}")
 
         if cycle < 40 or cycle % 500 == 0:
             log_pipeline_stall_state(dut, cycle)
@@ -394,7 +463,7 @@ async def regression(dut):
     dut._log.info("DEBUG inicial después de reset:")
     log_debug_state(dut)
 
-    if test_name.startswith("rv32ui-p-"):
+    if test_name.startswith("rv32ui-p-") or test_name.startswith("rv32mi-p-"):
         await wait_riscv_official_pass_fail(dut, max_cycles=20000)
         return
 

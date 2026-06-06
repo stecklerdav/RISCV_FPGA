@@ -7,6 +7,10 @@ module csr_access_unit (
     input  wire        is_csrrs,
     input  wire        is_csrrc,
 
+    input  wire        is_csrrwi,
+    input  wire        is_csrrsi,
+    input  wire        is_csrrci,
+
     input  wire [4:0]  csr_rs1,
     input  wire [4:0]  csr_rd,
 
@@ -23,22 +27,40 @@ module csr_access_unit (
 
     wire csr_instr;
     wire rs1_is_zero;
+    wire zimm_is_zero;
+    wire csr_uses_imm;
+    wire [31:0] csr_operand;
 
-    assign csr_instr   = is_csrrw | is_csrrs | is_csrrc;
+    assign csr_instr =
+        is_csrrw  |
+        is_csrrs  |
+        is_csrrc  |
+        is_csrrwi |
+        is_csrrsi |
+        is_csrrci;
+
     assign rs1_is_zero = (csr_rs1 == 5'd0);
+    assign zimm_is_zero = (csr_rs1 == 5'd0);
+
+    assign csr_uses_imm = is_csrrwi | is_csrrsi | is_csrrci;
+
+    assign csr_operand = csr_uses_imm ? {27'b0, csr_rs1} : rs1_data;
 
     assign csr_wdata =
-        is_csrrw ? rs1_data :
-        is_csrrs ? (csr_rdata | rs1_data) :
-        is_csrrc ? (csr_rdata & ~rs1_data) :
-                   32'h0000_0000;
+        (is_csrrw  | is_csrrwi) ? csr_operand :
+        (is_csrrs  | is_csrrsi) ? (csr_rdata | csr_operand) :
+        (is_csrrc  | is_csrrci) ? (csr_rdata & ~csr_operand) :
+                                   32'h0000_0000;
 
     assign csr_we =
         ex_valid &&
         (
-            is_csrrw ||
-            (is_csrrs && !rs1_is_zero) ||
-            (is_csrrc && !rs1_is_zero)
+            is_csrrw  ||
+            is_csrrwi ||
+            (is_csrrs  && !rs1_is_zero) ||
+            (is_csrrc  && !rs1_is_zero) ||
+            (is_csrrsi && !zimm_is_zero) ||
+            (is_csrrci && !zimm_is_zero)
         );
 
     assign csr_rd_we =

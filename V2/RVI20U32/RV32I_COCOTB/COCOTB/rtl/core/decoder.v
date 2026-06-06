@@ -49,24 +49,47 @@ module decoder (
     wire is_system = (opcode == 7'b1110011);
     wire is_fence  = (opcode == 7'b0001111);
 
+    wire is_ecall;
+    wire is_mret;
+
     wire is_csr_reg;
+    wire is_csr_imm;
+    wire is_csr_any;
+    wire is_system_valid;
+
+    assign is_ecall = (instr == 32'h0000_0073);
+    assign is_mret  = (instr == 32'h3020_0073);
 
     assign is_csr_reg = is_system &&
                         ((funct3 == 3'b001) ||
                          (funct3 == 3'b010) ||
                          (funct3 == 3'b011));
 
-    assign rs1_used = is_r_type |
-                      is_i_type |
-                      is_load   |
-                      is_store  |
-                      is_branch |
-                      is_jalr   |
-                      is_csr_reg;
+    assign is_csr_imm = is_system &&
+                        ((funct3 == 3'b101) ||
+                         (funct3 == 3'b110) ||
+                         (funct3 == 3'b111));
 
-    assign rs2_used = is_r_type |
-                      is_store  |
-                      is_branch;
+    assign is_csr_any = is_csr_reg | is_csr_imm;
+
+    assign is_system_valid =
+        is_ecall |
+        is_mret  |
+        is_csr_any;
+
+    assign rs1_used =
+        is_r_type |
+        is_i_type |
+        is_load   |
+        is_store  |
+        is_branch |
+        is_jalr   |
+        is_csr_reg;
+
+    assign rs2_used =
+        is_r_type |
+        is_store  |
+        is_branch;
 
     assign imm_i = {{20{instr[31]}}, instr[31:20]};
 
@@ -86,6 +109,7 @@ module decoder (
         illegal_opcode = 1'b0;
 
         case (opcode)
+
             7'b0110011: begin
                 fmt = FMT_R; // OP
             end
@@ -104,10 +128,13 @@ module decoder (
 
             7'b1110011: begin
                 fmt = FMT_I; // SYSTEM / CSR / ECALL / MRET
+
+                if (!is_system_valid)
+                    illegal_opcode = 1'b1;
             end
 
             7'b0001111: begin
-                fmt = FMT_I; // FENCE / FENCE.I tratado como NOP por ahora
+                fmt = FMT_I; // FENCE tratado como NOP por ahora
             end
 
             7'b0100011: begin

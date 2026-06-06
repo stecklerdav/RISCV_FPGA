@@ -62,6 +62,9 @@ module RISCV_COCOTB_system_decoder_0_0 (
   is_csrrw,
   is_csrrs,
   is_csrrc,
+  is_csrrwi,
+  is_csrrsi,
+  is_csrrci,
   csr_addr,
   csr_rs1,
   csr_rd
@@ -74,6 +77,9 @@ output wire is_mret;
 output wire is_csrrw;
 output wire is_csrrs;
 output wire is_csrrc;
+output wire is_csrrwi;
+output wire is_csrrsi;
+output wire is_csrrci;
 output wire [11 : 0] csr_addr;
 output wire [4 : 0] csr_rs1;
 output wire [4 : 0] csr_rd;
@@ -86,6 +92,9 @@ output wire [4 : 0] csr_rd;
     .is_csrrw(is_csrrw),
     .is_csrrs(is_csrrs),
     .is_csrrc(is_csrrc),
+    .is_csrrwi(is_csrrwi),
+    .is_csrrsi(is_csrrsi),
+    .is_csrrci(is_csrrci),
     .csr_addr(csr_addr),
     .csr_rs1(csr_rs1),
     .csr_rd(csr_rd)

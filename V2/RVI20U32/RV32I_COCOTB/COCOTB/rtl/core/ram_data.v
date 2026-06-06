@@ -3,7 +3,7 @@
 module ram_data #(
     parameter ADDR_WIDTH = 10,
     parameter WORDS      = (1 << ADDR_WIDTH),
-    parameter [31:0] RAM_BASE = 32'h8000_2000
+    parameter [31:0] RAM_BASE = 32'h8000_1000
 )(
     input  wire        clk,
     input  wire        rst,
@@ -38,21 +38,9 @@ module ram_data #(
             mem2[i] = 8'h00;
             mem3[i] = 8'h00;
         end
-
-        // rv32ui-p-lb / lbu / lh / lhu / lw data:
-        // ELF: 0x80002000 = ff00f00f
-        // Little endian bytes:
-        // 0x80002000 -> FF
-        // 0x80002001 -> 00
-        // 0x80002002 -> F0
-        // 0x80002003 -> 0F
-        mem0[0] = 8'hFF;
-        mem1[0] = 8'h00;
-        mem2[0] = 8'hF0;
-        mem3[0] = 8'h0F;
-
-        $display("[RAM_INIT] mem[0] = %02x %02x %02x %02x",
-                 mem3[0], mem2[0], mem1[0], mem0[0]);
+        
+        $display("[RAM_INIT] RAM cleared to zero");
+   
     end
 
     reg [31:0] mem_read;

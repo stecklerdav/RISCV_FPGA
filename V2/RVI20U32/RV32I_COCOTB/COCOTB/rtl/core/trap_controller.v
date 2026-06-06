@@ -5,19 +5,12 @@ module trap_controller (
     input  wire        clk,
     input  wire        rst,
 
-    // ============================================================
-    // UNIFIED EXCEPTION INPUTS
-    // ============================================================
     input  wire        exception_valid,
     input  wire [31:0] exception_pc,
     input  wire [3:0]  exception_cause,
     input  wire [31:0] exception_tval,
 
-    // ============================================================
-    // SYSTEM / PRIVILEGED EVENTS
-    // ============================================================
     input  wire        instr_valid,
-
     input  wire [31:0] current_pc,
 
     input  wire        ecall,
@@ -46,21 +39,13 @@ module trap_controller (
     output reg  [31:0] mret_target
 );
 
-    // ============================================================
-    // IRQ ENABLES
-    // ============================================================
-
     wire global_irq_enable;
     wire timer_irq_enable;
     wire timer_irq_pending;
 
-    assign global_irq_enable = csr_mstatus[3]; // MIE
-    assign timer_irq_enable  = csr_mie[7];     // MTIE
-    assign timer_irq_pending = csr_mip[7];     // MTIP
-
-    // ============================================================
-    // TAKE CONDITIONS
-    // ============================================================
+    assign global_irq_enable = csr_mstatus[3];       // mstatus.MIE
+    assign timer_irq_enable  = csr_mie[7];           // mie.MTIE
+    assign timer_irq_pending = csr_mip[7] | timer_irq; // mip.MTIP o entrada directa
 
     wire take_exception;
     wire take_timer_irq;
@@ -94,10 +79,6 @@ module trap_controller (
         mret &&
         !mem_stall_req;
 
-    // ============================================================
-    // TRAP CONTROL
-    // ============================================================
-
     always @(*) begin
 
         trap_enter  = 1'b0;
@@ -111,78 +92,58 @@ module trap_controller (
         mret_taken  = 1'b0;
         mret_target = 32'h0000_0000;
 
-        // ========================================================
-        // PIPELINED EXCEPTION FROM EX/MEM
-        // ========================================================
-        if (take_exception) begin
+        if (!rst) begin
 
-            trap_enter  = 1'b1;
-            trap_flush  = 1'b1;
+            if (take_exception) begin
+                trap_enter  = 1'b1;
+                trap_flush  = 1'b1;
 
-            trap_target = csr_mtvec;
+                trap_target = csr_mtvec;
 
-            trap_mepc   = exception_pc;
-            trap_mcause = {28'h0000000, exception_cause};
-            trap_mtval  = exception_tval;
-        end
+                trap_mepc   = exception_pc;
+                trap_mcause = {28'h0000000, exception_cause};
+                trap_mtval  = exception_tval;
+            end
 
-        // ========================================================
-        // MACHINE TIMER INTERRUPT
-        // mcause = 0x80000007
-        // ========================================================
-        else if (take_timer_irq) begin
+            else if (take_timer_irq) begin
+                trap_enter  = 1'b1;
+                trap_flush  = 1'b1;
 
-            trap_enter  = 1'b1;
-            trap_flush  = 1'b1;
+                trap_target = csr_mtvec;
 
-            trap_target = csr_mtvec;
+                trap_mepc   = current_pc;
+                trap_mcause = 32'h8000_0007;
+                trap_mtval  = 32'h0000_0000;
+            end
 
-            trap_mepc   = current_pc;
-            trap_mcause = 32'h8000_0007;
-            trap_mtval  = 32'h0000_0000;
-        end
+            else if (take_ecall) begin
+                trap_enter  = 1'b1;
+                trap_flush  = 1'b1;
 
-        // ========================================================
-        // ECALL FROM MACHINE MODE
-        // mcause = 11
-        // ========================================================
-        else if (take_ecall) begin
+                trap_target = csr_mtvec;
 
-            trap_enter  = 1'b1;
-            trap_flush  = 1'b1;
+                trap_mepc   = current_pc;
+                trap_mcause = 32'h0000_000B;
+                trap_mtval  = 32'h0000_0000;
+            end
 
-            trap_target = csr_mtvec;
+            else if (take_illegal) begin
+                trap_enter  = 1'b1;
+                trap_flush  = 1'b1;
 
-            trap_mepc   = current_pc;
-            trap_mcause = 32'h0000_000B;
-            trap_mtval  = 32'h0000_0000;
-        end
+                trap_target = csr_mtvec;
 
-        // ========================================================
-        // ILLEGAL INSTRUCTION
-        // mcause = 2
-        // ========================================================
-        else if (take_illegal) begin
+                trap_mepc   = current_pc;
+                trap_mcause = 32'h0000_0002;
+                trap_mtval  = 32'h0000_0000;
+            end
 
-            trap_enter  = 1'b1;
-            trap_flush  = 1'b1;
+            else if (take_mret) begin
+                mret_taken  = 1'b1;
+                trap_flush  = 1'b1;
 
-            trap_target = csr_mtvec;
-
-            trap_mepc   = current_pc;
-            trap_mcause = 32'h0000_0002;
-            trap_mtval  = 32'h0000_0000;
-        end
-
-        // ========================================================
-        // MRET
-        // ========================================================
-        else if (take_mret) begin
-
-            mret_taken  = 1'b1;
-            trap_flush  = 1'b1;
-
-            mret_target = csr_mepc;
+                mret_target = csr_mepc;
+            end
         end
     end
 

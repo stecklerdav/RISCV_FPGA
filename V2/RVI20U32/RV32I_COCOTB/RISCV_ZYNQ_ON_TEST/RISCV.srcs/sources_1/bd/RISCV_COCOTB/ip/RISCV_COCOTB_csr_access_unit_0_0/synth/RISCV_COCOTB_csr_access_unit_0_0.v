@@ -60,6 +60,9 @@ module RISCV_COCOTB_csr_access_unit_0_0 (
   is_csrrw,
   is_csrrs,
   is_csrrc,
+  is_csrrwi,
+  is_csrrsi,
+  is_csrrci,
   csr_rs1,
   csr_rd,
   rs1_data,
@@ -75,6 +78,9 @@ input wire ex_valid;
 input wire is_csrrw;
 input wire is_csrrs;
 input wire is_csrrc;
+input wire is_csrrwi;
+input wire is_csrrsi;
+input wire is_csrrci;
 input wire [4 : 0] csr_rs1;
 input wire [4 : 0] csr_rd;
 input wire [31 : 0] rs1_data;
@@ -90,6 +96,9 @@ output wire [31 : 0] csr_rd_data;
     .is_csrrw(is_csrrw),
     .is_csrrs(is_csrrs),
     .is_csrrc(is_csrrc),
+    .is_csrrwi(is_csrrwi),
+    .is_csrrsi(is_csrrsi),
+    .is_csrrci(is_csrrci),
     .csr_rs1(csr_rs1),
     .csr_rd(csr_rd),
     .rs1_data(rs1_data),
