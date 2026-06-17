@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1780789418">
+<GenRun Id="synth_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1781659169">
   <File Type="VDS-TIMINGSUMMARY" Name="RISCV_COCOTB_wrapper_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="RISCV_COCOTB_wrapper.dcp"/>
   <File Type="RDS-UTIL-PB" Name="RISCV_COCOTB_wrapper_utilization_synth.pb"/>
@@ -322,7 +322,7 @@
     <File Path="$PSRCDIR/sources_1/imports/hdl/RISCV_COCOTB_wrapper.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/bd/RISCV_COCOTB/hdl/RISCV_COCOTB_wrapper.v"/>
-        <Attr Name="ImportTime" Val="1780784028"/>
+        <Attr Name="ImportTime" Val="1781658950"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>

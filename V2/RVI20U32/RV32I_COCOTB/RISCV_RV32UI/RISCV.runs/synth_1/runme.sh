@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.runs/synth_1'
+HD_PWD='/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

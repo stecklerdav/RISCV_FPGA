@@ -121,49 +121,6 @@
   <spirit:model>
     <spirit:views>
       <spirit:view>
-        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
-        <spirit:displayName>Synthesis</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
-        <spirit:modelName>uart</spirit:modelName>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9508705d</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_synthesisconstraints</spirit:name>
-        <spirit:displayName>Synthesis Constraints</spirit:displayName>
-        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9508705d</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
-        <spirit:name>xilinx_verilogsynthesiswrapper</spirit:name>
-        <spirit:displayName>Verilog Synthesis Wrapper</spirit:displayName>
-        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
-        <spirit:language>verilog</spirit:language>
-        <spirit:modelName>RV32UI_uart_0_0</spirit:modelName>
-        <spirit:fileSetRef>
-          <spirit:localName>xilinx_verilogsynthesiswrapper_view_fileset</spirit:localName>
-        </spirit:fileSetRef>
-        <spirit:parameters>
-          <spirit:parameter>
-            <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Fri Jun 05 16:16:21 UTC 2026</spirit:value>
-          </spirit:parameter>
-          <spirit:parameter>
-            <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:9508705d</spirit:value>
-          </spirit:parameter>
-        </spirit:parameters>
-      </spirit:view>
-      <spirit:view>
         <spirit:name>xilinx_anylanguagebehavioralsimulation</spirit:name>
         <spirit:displayName>Simulation</spirit:displayName>
         <spirit:envIdentifier>:vivado.xilinx.com:simulation</spirit:envIdentifier>
@@ -192,6 +149,49 @@
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
             <spirit:value>9:ba6d68af</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_anylanguagesynthesis</spirit:name>
+        <spirit:displayName>Synthesis</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis</spirit:envIdentifier>
+        <spirit:modelName>uart</spirit:modelName>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:1a92f1c3</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_synthesisconstraints</spirit:name>
+        <spirit:displayName>Synthesis Constraints</spirit:displayName>
+        <spirit:envIdentifier>:vivado.xilinx.com:synthesis.constraints</spirit:envIdentifier>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:1a92f1c3</spirit:value>
+          </spirit:parameter>
+        </spirit:parameters>
+      </spirit:view>
+      <spirit:view>
+        <spirit:name>xilinx_verilogsynthesiswrapper</spirit:name>
+        <spirit:displayName>Verilog Synthesis Wrapper</spirit:displayName>
+        <spirit:envIdentifier>verilogSource:vivado.xilinx.com:synthesis.wrapper</spirit:envIdentifier>
+        <spirit:language>verilog</spirit:language>
+        <spirit:modelName>RV32UI_uart_0_0</spirit:modelName>
+        <spirit:fileSetRef>
+          <spirit:localName>xilinx_verilogsynthesiswrapper_view_fileset</spirit:localName>
+        </spirit:fileSetRef>
+        <spirit:parameters>
+          <spirit:parameter>
+            <spirit:name>GENtimestamp</spirit:name>
+            <spirit:value>Wed Jun 17 00:30:04 UTC 2026</spirit:value>
+          </spirit:parameter>
+          <spirit:parameter>
+            <spirit:name>outputProductCRC</spirit:name>
+            <spirit:value>9:1a92f1c3</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -413,7 +413,7 @@
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>CLK_FREQ</spirit:name>
         <spirit:displayName>Clk Freq</spirit:displayName>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.CLK_FREQ">100000000</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.CLK_FREQ">190474200</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>BAUD</spirit:name>
@@ -424,17 +424,17 @@
   </spirit:model>
   <spirit:fileSets>
     <spirit:fileSet>
-      <spirit:name>xilinx_verilogsynthesiswrapper_view_fileset</spirit:name>
+      <spirit:name>xilinx_verilogsimulationwrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>synth/RV32UI_uart_0_0.v</spirit:name>
+        <spirit:name>sim/RV32UI_uart_0_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
-      <spirit:name>xilinx_verilogsimulationwrapper_view_fileset</spirit:name>
+      <spirit:name>xilinx_verilogsynthesiswrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>sim/RV32UI_uart_0_0.v</spirit:name>
+        <spirit:name>synth/RV32UI_uart_0_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
@@ -445,7 +445,7 @@
     <spirit:parameter>
       <spirit:name>CLK_FREQ</spirit:name>
       <spirit:displayName>Clk Freq</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.CLK_FREQ">100000000</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.CLK_FREQ">190474200</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>BAUD</spirit:name>
@@ -470,6 +470,7 @@
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.PHASE" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.RST.POLARITY" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.CLK_FREQ" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

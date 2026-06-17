@@ -62,7 +62,7 @@ module RISCV_COCOTB_rom_memory_0_0 (
   dout
 );
 
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN RISCV_COCOTB_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
 input wire en;

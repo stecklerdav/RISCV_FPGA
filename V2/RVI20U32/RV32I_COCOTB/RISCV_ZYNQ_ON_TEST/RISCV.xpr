@@ -44,13 +44,13 @@
     <Option Name="WTVcsLaunchSim" Val="0"/>
     <Option Name="WTRivieraLaunchSim" Val="0"/>
     <Option Name="WTActivehdlLaunchSim" Val="0"/>
-    <Option Name="WTXSimExportSim" Val="165"/>
-    <Option Name="WTModelSimExportSim" Val="165"/>
-    <Option Name="WTQuestaExportSim" Val="164"/>
-    <Option Name="WTIesExportSim" Val="164"/>
-    <Option Name="WTVcsExportSim" Val="164"/>
-    <Option Name="WTRivieraExportSim" Val="164"/>
-    <Option Name="WTActivehdlExportSim" Val="164"/>
+    <Option Name="WTXSimExportSim" Val="168"/>
+    <Option Name="WTModelSimExportSim" Val="168"/>
+    <Option Name="WTQuestaExportSim" Val="167"/>
+    <Option Name="WTIesExportSim" Val="167"/>
+    <Option Name="WTVcsExportSim" Val="167"/>
+    <Option Name="WTRivieraExportSim" Val="167"/>
+    <Option Name="WTActivehdlExportSim" Val="167"/>
     <Option Name="GenerateIPUpgradeLog" Val="TRUE"/>
     <Option Name="XSimRadix" Val="hex"/>
     <Option Name="XSimTimeUnit" Val="ns"/>
@@ -377,7 +377,7 @@
       <File Path="$PSRCDIR/sources_1/imports/hdl/RISCV_COCOTB_wrapper.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/bd/RISCV_COCOTB/hdl/RISCV_COCOTB_wrapper.v"/>
-          <Attr Name="ImportTime" Val="1780784028"/>
+          <Attr Name="ImportTime" Val="1781658950"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -450,20 +450,6 @@
         <Option Name="TopAutoSet" Val="TRUE"/>
       </Config>
     </FileSet>
-    <FileSet Name="RV32UI" Type="BlockSrcs" RelSrcDir="$PSRCDIR/RV32UI">
-      <File Path="$PSRCDIR/sources_1/bd/RV32UI/RV32UI.bd">
-        <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <Config>
-        <Option Name="TopModule" Val="RV32UI"/>
-        <Option Name="UseBlackboxStub" Val="1"/>
-      </Config>
-    </FileSet>
     <FileSet Name="RISCV_COCOTB" Type="BlockSrcs" RelSrcDir="$PSRCDIR/RISCV_COCOTB">
       <File Path="$PSRCDIR/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB.bd">
         <FileInfo>
@@ -513,19 +499,11 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="RV32UI_synth_1" Type="Ft3:Synth" SrcSet="RV32UI" Part="xczu5ev-sfvc784-2-i" ConstrsSet="RV32UI" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RV32UI_synth_1" IncludeInArchive="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
-        <Step Id="synth_design"/>
-      </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
-      <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2020"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
     <Run Id="RISCV_COCOTB_synth_1" Type="Ft3:Synth" SrcSet="RISCV_COCOTB" Part="xczu5ev-sfvc784-2-i" ConstrsSet="RISCV_COCOTB" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/RISCV_COCOTB_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020"/>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2020">
+          <Desc>Vivado Synthesis Defaults</Desc>
+        </StratHandle>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -533,7 +511,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xczu5ev-sfvc784-2-i" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xczu5ev-sfvc784-2-i" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
         <Step Id="init_design"/>
@@ -546,30 +524,16 @@
         <Step Id="post_route_phys_opt_design"/>
         <Step Id="write_bitstream"/>
       </Strategy>
-      <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
-      <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
-      <RQSFiles/>
-    </Run>
-    <Run Id="RV32UI_impl_1" Type="Ft2:EntireDesign" Part="xczu5ev-sfvc784-2-i" ConstrsSet="RV32UI" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RV32UI_synth_1" IncludeInArchive="false" GenFullBitstream="true">
-      <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
-        <Step Id="init_design"/>
-        <Step Id="opt_design"/>
-        <Step Id="power_opt_design"/>
-        <Step Id="place_design"/>
-        <Step Id="post_place_power_opt_design"/>
-        <Step Id="phys_opt_design"/>
-        <Step Id="route_design"/>
-        <Step Id="post_route_phys_opt_design"/>
-        <Step Id="write_bitstream"/>
-      </Strategy>
+      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Implementation Default Reports" Flow="Vivado Implementation 2020"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
     <Run Id="RISCV_COCOTB_impl_1" Type="Ft2:EntireDesign" Part="xczu5ev-sfvc784-2-i" ConstrsSet="RISCV_COCOTB" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="RISCV_COCOTB_synth_1" IncludeInArchive="false" GenFullBitstream="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+          <Desc>Default settings for Implementation.</Desc>
+        </StratHandle>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>

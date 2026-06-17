@@ -23,11 +23,17 @@ module csr_regfile_wb_mux (
             final_we    = 1'b1;
             final_rd    = csr_rd_addr;
             final_wdata = csr_rd_data;
-        end
-        else if (normal_we && (normal_rd != 5'd0)) begin
+        end else if (normal_we && (normal_rd != 5'd0)) begin
             final_we    = 1'b1;
             final_rd    = normal_rd;
             final_wdata = normal_wdata;
+        end
+    end
+
+    always @(*) begin
+        if (csr_rd_we && (csr_rd_addr != 5'd0)) begin
+            $display("[CSR_WB_MUX] csr rd=x%0d data=0x%08x final_we=%0d",
+                     csr_rd_addr, csr_rd_data, final_we);
         end
     end
 

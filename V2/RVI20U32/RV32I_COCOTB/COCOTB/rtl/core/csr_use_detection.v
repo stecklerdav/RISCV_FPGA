@@ -24,7 +24,7 @@ module csr_use_detection(
     wire        ex_is_csr;
     wire        hazard_now;
 
-    reg  [2:0]  stall_cnt;
+    reg [2:0] stall_cnt;
 
     assign ex_is_system = (ex_instr[6:0] == 7'b1110011);
     assign ex_funct3    = ex_instr[14:12];
@@ -33,9 +33,12 @@ module csr_use_detection(
     assign ex_is_csr =
         ex_is_system &&
         (
-            (ex_funct3 == 3'b001) ||
-            (ex_funct3 == 3'b010) ||
-            (ex_funct3 == 3'b011)
+            (ex_funct3 == 3'b001) || // CSRRW
+            (ex_funct3 == 3'b010) || // CSRRS
+            (ex_funct3 == 3'b011) || // CSRRC
+            (ex_funct3 == 3'b101) || // CSRRWI
+            (ex_funct3 == 3'b110) || // CSRRSI
+            (ex_funct3 == 3'b111)    // CSRRCI
         );
 
     assign hazard_now =
@@ -49,17 +52,15 @@ module csr_use_detection(
         );
 
     always @(posedge clk) begin
-        if (rst) begin
-            stall_cnt <= 3'd0;
-        end
-        else begin
-            if (hazard_now) begin
-                stall_cnt <= 3'd2;
-            end
-            else if (stall_cnt != 3'd0) begin
-                stall_cnt <= stall_cnt - 3'd1;
-            end
-        end
+	    if (rst) begin
+		stall_cnt <= 3'd0;
+	    end else begin
+		if (hazard_now && (stall_cnt == 3'd0)) begin
+		    stall_cnt <= 3'd1;
+		end else if (stall_cnt != 3'd0) begin
+		    stall_cnt <= stall_cnt - 3'd1;
+		end
+	    end
     end
 
     assign pc_en       = (stall_cnt == 3'd0) && !hazard_now;

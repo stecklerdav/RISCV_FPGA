@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-| Date             : Fri Jun  5 19:14:22 2026
+| Date             : Wed Jun 17 01:43:03 2026
 | Host             : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 | Command          : report_power -file RV32UI_wrapper_power_routed.rpt -pb RV32UI_wrapper_power_summary_routed.pb -rpx RV32UI_wrapper_power_routed.rpx
 | Design           : RV32UI_wrapper
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 3.330        |
+| Total On-Chip Power (W)  | 3.335        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.874        |
+| Dynamic (W)              | 2.879        |
 | Device Static (W)        | 0.456        |
 | Effective TJA (C/W)      | 2.3          |
 | Max Ambient (C)          | 92.3         |
@@ -52,23 +52,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.021 |        5 |       --- |             --- |
-| CLB Logic                |     0.002 |     8508 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     2963 |    117120 |            2.53 |
-|   LUT as Distributed RAM |    <0.001 |      544 |     57600 |            0.94 |
-|   Register               |    <0.001 |     3474 |    234240 |            1.48 |
+| Clocks                   |     0.017 |        5 |       --- |             --- |
+| CLB Logic                |     0.006 |     6734 |       --- |             --- |
+|   LUT as Logic           |     0.004 |     2027 |    117120 |            1.73 |
+|   LUT as Distributed RAM |    <0.001 |     1056 |     57600 |            1.83 |
+|   Register               |    <0.001 |     2080 |    234240 |            0.89 |
 |   CARRY8                 |    <0.001 |       59 |     14640 |            0.40 |
 |   LUT as Shift Register  |    <0.001 |        1 |     57600 |           <0.01 |
-|   Others                 |     0.000 |      153 |       --- |             --- |
-|   F7/F8 Muxes            |     0.000 |      833 |    117120 |            0.71 |
-| Signals                  |     0.002 |     5554 |       --- |             --- |
+|   Others                 |     0.000 |      150 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |      801 |    117120 |            0.68 |
+| Signals                  |     0.007 |     3783 |       --- |             --- |
 | Block RAM                |     0.003 |      1.5 |       144 |            1.04 |
 | I/O                      |    <0.001 |        3 |       252 |            1.19 |
 | PS8                      |     2.846 |        1 |       --- |             --- |
 | Static Power             |     0.456 |          |           |                 |
 |   PS Static              |     0.103 |          |           |                 |
 |   PL Static              |     0.353 |          |           |                 |
-| Total                    |     3.330 |          |           |                 |
+| Total                    |     3.335 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,7 +78,7 @@ Table of Contents
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source          | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint          |       0.850 |     0.136 |       0.033 |      0.103 |       NA    | Unspecified | NA         |
+| Vccint          |       0.850 |     0.142 |       0.039 |      0.103 |       NA    | Unspecified | NA         |
 | Vccint_io       |       0.850 |     0.037 |       0.000 |      0.037 |       NA    | Unspecified | NA         |
 | Vccbram         |       0.850 |     0.001 |       0.000 |      0.001 |       NA    | Unspecified | NA         |
 | Vccaux          |       1.800 |     0.075 |       0.000 |      0.075 |       NA    | Unspecified | NA         |
@@ -164,29 +164,29 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------------------+-----------+
-| Name                     | Power (W) |
-+--------------------------+-----------+
-| RV32UI_wrapper           |     2.874 |
-|   RV32UI_i               |     2.870 |
-|     Core_RV32I           |     0.014 |
-|       RV32I_EX           |     0.001 |
-|       RV32I_ID           |     0.007 |
-|       RV32I_IF           |     0.004 |
-|       RV32I_MEM          |     0.002 |
-|     PRIVILEGED           |     0.001 |
-|       csr_file_0         |     0.001 |
-|     RV32I_RAM_MEMORY     |     0.003 |
-|       ram_data_1         |     0.003 |
-|     UART                 |     0.002 |
-|       uart_0             |     0.002 |
-|     vio_0                |     0.002 |
-|       inst               |     0.002 |
-|     zynq_ultra_ps_e_0    |     2.846 |
-|       inst               |     2.846 |
-|   dbg_hub                |     0.004 |
-|     inst                 |     0.004 |
-|       BSCANID.u_xsdbm_id |     0.004 |
-+--------------------------+-----------+
++----------------------------+-----------+
+| Name                       | Power (W) |
++----------------------------+-----------+
+| RV32UI_wrapper             |     2.879 |
+|   RV32UI_i                 |     2.875 |
+|     Core_RV32I             |     0.015 |
+|       RV32I_EX             |     0.004 |
+|       RV32I_ID             |     0.002 |
+|       RV32I_IF             |     0.005 |
+|       RV32I_MEM            |     0.003 |
+|     MMIO                   |     0.002 |
+|       mem_bus_registered_0 |     0.002 |
+|     RV32I_RAM_MEMORY       |     0.007 |
+|       ram_data_1           |     0.007 |
+|     UART                   |     0.002 |
+|       uart_0               |     0.002 |
+|     vio_0                  |     0.002 |
+|       inst                 |     0.002 |
+|     zynq_ultra_ps_e_0      |     2.846 |
+|       inst                 |     2.846 |
+|   dbg_hub                  |     0.004 |
+|     inst                   |     0.004 |
+|       BSCANID.u_xsdbm_id   |     0.004 |
++----------------------------+-----------+
 
 

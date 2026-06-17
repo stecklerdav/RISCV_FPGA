@@ -3,4 +3,4 @@
 
 2 python3 -m py_compile regression.py
 
-3 ./ run_all_rv32ui.sh
+3 ./ run_all.sh

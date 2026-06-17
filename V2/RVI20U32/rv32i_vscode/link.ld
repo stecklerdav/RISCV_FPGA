@@ -4,7 +4,7 @@ MEMORY
 {
   ROM  (rx)  : ORIGIN = 0x80000000, LENGTH = 8K
   RAM  (rwx) : ORIGIN = 0x80002000, LENGTH = 4K
-  MMIO (rw)  : ORIGIN = 0x80003000, LENGTH = 256
+  MMIO (rw)  : ORIGIN = 0x80004000, LENGTH = 256
 }
 
 __stack_size = 0x400;

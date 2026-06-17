@@ -1,14 +1,14 @@
 module mem_bus_registered #(
     parameter [31:0] RAM_BASE   = 32'h8000_2000,
-    parameter [31:0] RAM_SIZE   = 32'h0000_1000,
+    parameter [31:0] RAM_SIZE   = 32'h0000_2000,
 
-    parameter [31:0] GPIO_BASE  = 32'h8000_3000,
+    parameter [31:0] GPIO_BASE  = 32'h8000_4000,
     parameter [31:0] GPIO_SIZE  = 32'h0000_0010,
 
-    parameter [31:0] UART_BASE  = 32'h8000_3010,
+    parameter [31:0] UART_BASE  = 32'h8000_4010,
     parameter [31:0] UART_SIZE  = 32'h0000_0010,
 
-    parameter [31:0] TIMER_BASE = 32'h8000_3020,
+    parameter [31:0] TIMER_BASE = 32'h8000_4020,
     parameter [31:0] TIMER_SIZE = 32'h0000_0010,
 
     parameter [31:0] TIMEOUT_CYCLES = 32'd100000

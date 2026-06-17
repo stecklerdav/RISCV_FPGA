@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "ram_data,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "RV32UI_ram_data_1_0,ram_data,{}" *)
-(* CORE_GENERATION_INFO = "RV32UI_ram_data_1_0,ram_data,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ram_data,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ADDR_WIDTH=10,WORDS=1024,RAM_BASE=0x80002000}" *)
+(* CORE_GENERATION_INFO = "RV32UI_ram_data_1_0,ram_data,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ram_data,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,ADDR_WIDTH=11,WORDS=2048,RAM_BASE=0x80002000}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module RV32UI_ram_data_1_0 (
@@ -82,8 +82,8 @@ output wire [31 : 0] rdata;
 output wire ready;
 
   ram_data #(
-    .ADDR_WIDTH(10),
-    .WORDS(1024),
+    .ADDR_WIDTH(11),
+    .WORDS(2048),
     .RAM_BASE(32'H80002000)
   ) inst (
     .clk(clk),

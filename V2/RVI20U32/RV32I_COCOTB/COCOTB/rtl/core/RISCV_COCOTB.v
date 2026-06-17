@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sat Jun  6 23:13:47 2026
+//Date        : Wed Jun 17 00:09:05 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -160,7 +160,6 @@ module Core_RV32I_imp_BFBAKD
   wire [31:0]RV32I_MEM_wb_imm_u;
   wire [31:0]RV32I_MEM_wb_pc_plus4;
   wire [2:0]RV32I_MEM_wb_sel;
-  wire RV32I_MEM_wb_valid;
   wire [3:0]alu_op_1;
   wire bubble_1;
   wire csr_use_id_ex_flush_1;
@@ -334,7 +333,7 @@ module Core_RV32I_imp_BFBAKD
         .mem_stage_rd_out_we(RV32I_MEM_mem_rd_we),
         .mem_store_data(ex_mem_reg_1_mem_store_data),
         .mem_valid(ex_mem_reg_1_mem_valid),
-        .mem_wb_data(wb_mux_0_rd_wdata),
+        .mem_wb_data(rd_wdata1_1),
         .mem_wb_sel(ex_mem_reg_1_mem_wb_sel),
         .op_a_sel(op_a_sel_1),
         .out_data(RV32I_EX_out_data),
@@ -343,9 +342,9 @@ module Core_RV32I_imp_BFBAKD
         .pc_redirect_valid(RV32I_EX_pc_redirect_valid),
         .rst(proc_sys_reset_0_peripheral_reset),
         .stall(Op3_1),
-        .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_rd_we(RV32I_MEM_regfile_we),
-        .wb_valid(RV32I_MEM_wb_valid));
+        .wb_rd(rd_addr1_1),
+        .wb_rd_we(rd_we1_1),
+        .wb_valid(rd_we1_1));
   RV32I_ID_imp_I31ZGD RV32I_ID
        (.bubble(bubble_1),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -455,8 +454,7 @@ module Core_RV32I_imp_BFBAKD
         .wb_imm_u(RV32I_MEM_wb_imm_u),
         .wb_pc_plus4(RV32I_MEM_wb_pc_plus4),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_sel(RV32I_MEM_wb_sel),
-        .wb_valid(RV32I_MEM_wb_valid));
+        .wb_sel(RV32I_MEM_wb_sel));
   RV32I_WB_imp_LBXQBW RV32I_WB
        (.alu_y(RV32I_MEM_wb_alu_result),
         .imm_u(RV32I_MEM_wb_imm_u),

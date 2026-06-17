@@ -1,6 +1,13 @@
 
+---------------------------------------------------------------------------------------
+
+17/06/2026
+
+* Riscv-test RV32UI + RV32MI are done validated, Riscv core + machine mode(Privileged)   
+* rv32mi-p + rv32mi-p-csr  
 
 
+---------------------------------------------------------------------------------------
 
 01/06/2026
 
@@ -19,7 +26,7 @@
 
 26/05/2026
 
-* Genere los archivos para cocotb copiando proyecto y quitandole todos los ip xilinx propietarios todavia debo quitar la gerarquia generar un wrapper con modulos simples y copiar todos los v de modulos mas   
+* Genere los archivos para cocotb copiando proyecto y quitandole todos los ip xilinx propietarios todavia debo quitar la jerarquia generar un wrapper con modulos simples y copiar todos los v de modulos mas   
   BASIC.v + BASIC_Wrapper.v generar todo de nuevo y reemplazar en el rtl de cocotb
 
 

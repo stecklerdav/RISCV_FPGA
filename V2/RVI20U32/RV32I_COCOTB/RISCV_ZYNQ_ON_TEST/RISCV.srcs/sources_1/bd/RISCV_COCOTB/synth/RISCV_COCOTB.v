@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Sun Jun  7 00:12:58 2026
+//Date        : Wed Jun 17 02:15:49 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -160,7 +160,6 @@ module Core_RV32I_imp_BFBAKD
   wire [31:0]RV32I_MEM_wb_imm_u;
   wire [31:0]RV32I_MEM_wb_pc_plus4;
   wire [2:0]RV32I_MEM_wb_sel;
-  wire RV32I_MEM_wb_valid;
   wire [3:0]alu_op_1;
   wire bubble_1;
   wire csr_use_id_ex_flush_1;
@@ -334,7 +333,7 @@ module Core_RV32I_imp_BFBAKD
         .mem_stage_rd_out_we(RV32I_MEM_mem_rd_we),
         .mem_store_data(ex_mem_reg_1_mem_store_data),
         .mem_valid(ex_mem_reg_1_mem_valid),
-        .mem_wb_data(wb_mux_0_rd_wdata),
+        .mem_wb_data(rd_wdata1_1),
         .mem_wb_sel(ex_mem_reg_1_mem_wb_sel),
         .op_a_sel(op_a_sel_1),
         .out_data(RV32I_EX_out_data),
@@ -343,9 +342,9 @@ module Core_RV32I_imp_BFBAKD
         .pc_redirect_valid(RV32I_EX_pc_redirect_valid),
         .rst(proc_sys_reset_0_peripheral_reset),
         .stall(Op3_1),
-        .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_rd_we(RV32I_MEM_regfile_we),
-        .wb_valid(RV32I_MEM_wb_valid));
+        .wb_rd(rd_addr1_1),
+        .wb_rd_we(rd_we1_1),
+        .wb_valid(rd_we1_1));
   RV32I_ID_imp_I31ZGD RV32I_ID
        (.bubble(bubble_1),
         .clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -455,8 +454,7 @@ module Core_RV32I_imp_BFBAKD
         .wb_imm_u(RV32I_MEM_wb_imm_u),
         .wb_pc_plus4(RV32I_MEM_wb_pc_plus4),
         .wb_rd(mem_wb_reg_0_wb_rd),
-        .wb_sel(RV32I_MEM_wb_sel),
-        .wb_valid(RV32I_MEM_wb_valid));
+        .wb_sel(RV32I_MEM_wb_sel));
   RV32I_WB_imp_LBXQBW RV32I_WB
        (.alu_y(RV32I_MEM_wb_alu_result),
         .imm_u(RV32I_MEM_wb_imm_u),
@@ -1108,15 +1106,11 @@ module PRIVILEGED_imp_UN02VO
         .Res(util_vector_not_0_Res));
 endmodule
 
-(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=66,numReposBlks=54,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=54,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=72,numReposBlks=60,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=54,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
 module RISCV_COCOTB
-   (Reset,
-    SW1,
-    clk,
+   (SW1,
     gpio_out_0);
-  input [0:0]Reset;
   input [0:0]SW1;
-  input clk;
   output [1:0]gpio_out_0;
 
   wire [3:0]Core_RV32I_ex_exception_cause;
@@ -1155,6 +1149,7 @@ module RISCV_COCOTB
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
   wire [31:0]RV32I_RAM_MEMORY_rdata;
+  wire [0:0]SW1_1;
   wire UART_tx;
   wire [31:0]addr_1;
   wire [31:0]addr_2;
@@ -1174,6 +1169,8 @@ module RISCV_COCOTB
   wire [7:0]gpio_0_gpio_out;
   wire [31:0]gpio_0_rdata;
   wire gpio_0_ready;
+  wire [0:0]hier_0_Res1;
+  wire hier_0_emio_uart1_txd;
   wire if_id_rs1_used_1;
   wire [4:0]if_id_rs2_1;
   wire [31:0]mem_data_1;
@@ -1181,6 +1178,7 @@ module RISCV_COCOTB
   wire [31:0]privileged_pc_redire_0_priv_redirect_target;
   wire privileged_pc_redire_0_priv_redirect_valid;
   wire [0:0]proc_sys_reset_0_peripheral_reset;
+  wire [0:0]proc_sys_reset_0_peripheral_reset2;
   wire ram_ready_1;
   wire [31:0]timer_0_rdata;
   wire timer_0_ready;
@@ -1192,6 +1190,8 @@ module RISCV_COCOTB
   wire valid_1;
   wire valid_2;
   wire valid_3;
+  wire [0:0]vio_0_probe_out0;
+  wire [0:0]vio_0_probe_out1;
   wire [31:0]wdata_1;
   wire [31:0]wdata_2;
   wire [31:0]wdata_3;
@@ -1201,14 +1201,13 @@ module RISCV_COCOTB
   wire we_3;
   wire we_4;
   wire [7:0]xlconcat_8_0_dout;
-  wire [0:0]xlconstant_1_dout;
+  wire [0:0]xlconstant_0_dout;
   wire [1:0]xlslice_2bit_0_Dout;
   wire zynq_ultra_ps_e_0_pl_clk0;
+  wire zynq_ultra_ps_e_0_pl_resetn0;
 
+  assign SW1_1 = SW1[0];
   assign gpio_out_0[1:0] = xlslice_2bit_0_Dout;
-  assign proc_sys_reset_0_peripheral_reset = Reset[0];
-  assign xlconstant_1_dout = SW1[0];
-  assign zynq_ultra_ps_e_0_pl_clk0 = clk;
   Core_RV32I_imp_BFBAKD Core_RV32I
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
         .csr_use_id_ex_flush(PRIVILEGED_id_ex_flush),
@@ -1385,24 +1384,66 @@ module RISCV_COCOTB
         .rdata(uart_tx_0_rdata),
         .ready(uart_tx_0_ready),
         .rst(proc_sys_reset_0_peripheral_reset),
-        .rx(UART_tx),
+        .rx(hier_0_emio_uart1_txd),
         .tx(UART_tx),
         .valid(valid_2),
         .wdata(wdata_3),
         .we(we_3));
+  RISCV_COCOTB_proc_sys_reset_0_0 proc_sys_reset_0
+       (.aux_reset_in(1'b1),
+        .dcm_locked(xlconstant_0_dout),
+        .ext_reset_in(zynq_ultra_ps_e_0_pl_resetn0),
+        .mb_debug_sys_rst(1'b0),
+        .peripheral_reset(proc_sys_reset_0_peripheral_reset2),
+        .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
+  RISCV_COCOTB_util_vector_logic_2_0 util_vector_logic_2
+       (.Op1(proc_sys_reset_0_peripheral_reset2),
+        .Op2(vio_0_probe_out0),
+        .Res(proc_sys_reset_0_peripheral_reset));
+  RISCV_COCOTB_util_vector_logic_3_0 util_vector_logic_3
+       (.Op1(SW1_1),
+        .Op2(vio_0_probe_out1),
+        .Res(hier_0_Res1));
+  RISCV_COCOTB_vio_0_0 vio_0
+       (.clk(zynq_ultra_ps_e_0_pl_clk0),
+        .probe_out0(vio_0_probe_out0),
+        .probe_out1(vio_0_probe_out1));
   RISCV_COCOTB_xlconcat_8_0_0 xlconcat_8_0
        (.dout(xlconcat_8_0_dout),
-        .in0(xlconstant_1_dout),
-        .in1(xlconstant_1_dout),
-        .in2(xlconstant_1_dout),
-        .in3(xlconstant_1_dout),
-        .in4(xlconstant_1_dout),
-        .in5(xlconstant_1_dout),
-        .in6(xlconstant_1_dout),
-        .in7(xlconstant_1_dout));
+        .in0(hier_0_Res1),
+        .in1(hier_0_Res1),
+        .in2(hier_0_Res1),
+        .in3(hier_0_Res1),
+        .in4(hier_0_Res1),
+        .in5(hier_0_Res1),
+        .in6(hier_0_Res1),
+        .in7(hier_0_Res1));
+  RISCV_COCOTB_xlconstant_0_0 xlconstant_0
+       (.dout(xlconstant_0_dout));
   RISCV_COCOTB_xlslice_2bit_0_0 xlslice_2bit_0
        (.Din(gpio_0_gpio_out),
         .Dout(xlslice_2bit_0_Dout));
+  RISCV_COCOTB_zynq_ultra_ps_e_0_0 zynq_ultra_ps_e_0
+       (.emio_can0_phy_rx(1'b0),
+        .emio_gpio_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .emio_i2c0_scl_i(1'b0),
+        .emio_i2c0_sda_i(1'b0),
+        .emio_uart1_rxd(UART_tx),
+        .emio_uart1_txd(hier_0_emio_uart1_txd),
+        .maxigp0_arready(1'b0),
+        .maxigp0_awready(1'b0),
+        .maxigp0_bid({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .maxigp0_bresp({1'b0,1'b0}),
+        .maxigp0_bvalid(1'b0),
+        .maxigp0_rdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .maxigp0_rid({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .maxigp0_rlast(1'b0),
+        .maxigp0_rresp({1'b0,1'b0}),
+        .maxigp0_rvalid(1'b0),
+        .maxigp0_wready(1'b0),
+        .maxihpm0_fpd_aclk(zynq_ultra_ps_e_0_pl_clk0),
+        .pl_clk0(zynq_ultra_ps_e_0_pl_clk0),
+        .pl_resetn0(zynq_ultra_ps_e_0_pl_resetn0));
 endmodule
 
 module RV32I_EX_imp_J96COH

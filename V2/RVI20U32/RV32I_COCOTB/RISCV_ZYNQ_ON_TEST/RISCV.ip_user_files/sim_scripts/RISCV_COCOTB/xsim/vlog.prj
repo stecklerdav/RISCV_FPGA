@@ -1,4 +1,4 @@
-verilog xil_defaultlib  \
+verilog xil_defaultlib --include "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/ec67/hdl" --include "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/e257/hdl" --include "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/1b7e/hdl/verilog" --include "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/122e/hdl/verilog" --include "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/46fd/hdl" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_uart_0_0/sim/RISCV_COCOTB_uart_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_timer_0_0/sim/RISCV_COCOTB_timer_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_regfile_we_gen_0_0/sim/RISCV_COCOTB_regfile_we_gen_0_0.v" \
@@ -53,6 +53,11 @@ verilog xil_defaultlib  \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlslice_2bit_0_0/sim/RISCV_COCOTB_xlslice_2bit_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_csr_use_detection_0_0/sim/RISCV_COCOTB_csr_use_detection_0_0.v" \
 "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/sim/RISCV_COCOTB_constant_zero_0_2.v" \
+"../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/sim/RISCV_COCOTB_zynq_ultra_ps_e_0_0_vip_wrapper.v" \
+"../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_0_0/sim/RISCV_COCOTB_xlconstant_0_0.v" \
+"../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_2_0/sim/RISCV_COCOTB_util_vector_logic_2_0.v" \
+"../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_3_0/sim/RISCV_COCOTB_util_vector_logic_3_0.v" \
+"../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/sim/RISCV_COCOTB_vio_0_0.v" \
 "../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v" \
 
 verilog xil_defaultlib "glbl.v"

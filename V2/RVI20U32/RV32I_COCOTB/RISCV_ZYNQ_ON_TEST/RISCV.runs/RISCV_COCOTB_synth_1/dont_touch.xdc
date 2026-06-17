@@ -166,6 +166,42 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_cs
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/RISCV_COCOTB_constant_zero_0_2.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_constant_zero_0_2 || ORIG_REF_NAME==RISCV_COCOTB_constant_zero_0_2} -quiet] -quiet
 
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0 || ORIG_REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_0_0/RISCV_COCOTB_xlconstant_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_xlconstant_0_0 || ORIG_REF_NAME==RISCV_COCOTB_xlconstant_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_2_0/RISCV_COCOTB_util_vector_logic_2_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_util_vector_logic_2_0 || ORIG_REF_NAME==RISCV_COCOTB_util_vector_logic_2_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_3_0/RISCV_COCOTB_util_vector_logic_3_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_util_vector_logic_3_0 || ORIG_REF_NAME==RISCV_COCOTB_util_vector_logic_3_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0 || ORIG_REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_vio_0_0 || ORIG_REF_NAME==RISCV_COCOTB_vio_0_0} -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0_ooc.xdc
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0 || ORIG_REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_board.xdc
+set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0 || ORIG_REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0 || ORIG_REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_ooc.xdc
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_vio_0_0 || ORIG_REF_NAME==RISCV_COCOTB_vio_0_0} -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0_ooc.xdc
+
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'RISCV_COCOTB'. Do not add the DONT_TOUCH constraint.
 
@@ -333,6 +369,42 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_co
 
 # IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/RISCV_COCOTB_constant_zero_0_2.xci
 #dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_constant_zero_0_2 || ORIG_REF_NAME==RISCV_COCOTB_constant_zero_0_2} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0 || ORIG_REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_0_0/RISCV_COCOTB_xlconstant_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_xlconstant_0_0 || ORIG_REF_NAME==RISCV_COCOTB_xlconstant_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_2_0/RISCV_COCOTB_util_vector_logic_2_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_util_vector_logic_2_0 || ORIG_REF_NAME==RISCV_COCOTB_util_vector_logic_2_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_3_0/RISCV_COCOTB_util_vector_logic_3_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_util_vector_logic_3_0 || ORIG_REF_NAME==RISCV_COCOTB_util_vector_logic_3_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0 || ORIG_REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0} -quiet] -quiet
+
+# IP: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xci
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_vio_0_0 || ORIG_REF_NAME==RISCV_COCOTB_vio_0_0} -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0_ooc.xdc
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0 || ORIG_REF_NAME==RISCV_COCOTB_zynq_ultra_ps_e_0_0} -quiet] {/inst } ]/inst ] -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_board.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0 || ORIG_REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells [split [join [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0 || ORIG_REF_NAME==RISCV_COCOTB_proc_sys_reset_0_0} -quiet] {/U0 } ]/U0 ] -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_ooc.xdc
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xdc
+#dup# set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==RISCV_COCOTB_vio_0_0 || ORIG_REF_NAME==RISCV_COCOTB_vio_0_0} -quiet] -quiet
+
+# XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0_ooc.xdc
 
 # XDC: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB_ooc.xdc
 # XDC: The top module name and the constraint reference have the same name: 'RISCV_COCOTB'. Do not add the DONT_TOUCH constraint.

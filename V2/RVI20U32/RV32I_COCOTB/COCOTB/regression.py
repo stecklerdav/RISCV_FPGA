@@ -333,7 +333,12 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
 
         ex_pc_val = safe_int(ex_pc)
 
-        if ex_pc_val in [0x800001B4, 0x800001B8, 0x800001C8, 0x800001CC]:
+        if ex_pc_val in [  0x800001B4, 0x800001B8,
+            0x800001C8, 0x800001CC,
+            0x800001D0, 0x800001D4,
+            0x800001D8, 0x800001DC,
+            0x800001E0, 0x800001E4,
+            0x800001E8]:
             dut._log.info(
                 f"CSRDBG_POINT cycle={cycle} "
                 f"EX_PC={fmt_hex_obj(ex_pc)} "
@@ -354,6 +359,15 @@ async def wait_riscv_official_pass_fail(dut, max_cycles=20000):
                 "csr_access_unit_0_csr_wdata",
                 "csr_access_unit_0_csr_rd_data",
                 "csr_file_0_csr_rdata",
+		"csr_regfile_wb_mux_0_wb_data",
+		"csr_regfile_wb_mux_0_is_csr",
+		"mem_wb_rd_data",
+		"mem_wb_rd",
+		"mem_wb_rd_we",
+		"regfile_0_debug_x10",
+                "csr_use_detection_0_pc_en",
+                "csr_use_detection_0_if_id_hold",
+                "csr_use_detection_0_id_ex_flush",
             ]:
                 sig = find_child_by_name(dut, name)
                 dut._log.info(f"CSRDBG {name} = {fmt_hex_obj(sig)}")

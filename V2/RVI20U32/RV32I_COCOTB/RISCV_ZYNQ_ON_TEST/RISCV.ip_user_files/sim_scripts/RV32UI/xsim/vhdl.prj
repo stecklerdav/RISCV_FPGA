@@ -1,4 +1,0 @@
-vhdl xil_defaultlib  \
-"../../../bd/RV32UI/ip/RV32UI_proc_sys_reset_0_0/sim/RV32UI_proc_sys_reset_0_0.vhd" \
-
-nosort

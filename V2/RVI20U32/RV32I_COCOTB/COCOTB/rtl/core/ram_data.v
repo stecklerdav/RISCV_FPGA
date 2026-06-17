@@ -31,16 +31,15 @@ module ram_data #(
 
     integer i;
 
-     initial begin
+    initial begin
         for (i = 0; i < WORDS; i = i + 1) begin
             mem0[i] = 8'h00;
             mem1[i] = 8'h00;
             mem2[i] = 8'h00;
             mem3[i] = 8'h00;
         end
-        
+
         $display("[RAM_INIT] RAM cleared to zero");
-   
     end
 
     reg [31:0] mem_read;
@@ -49,13 +48,24 @@ module ram_data #(
         mem_read = {mem3[wa], mem2[wa], mem1[wa], mem0[wa]};
     end
 
-	always @(posedge clk)
-	begin
-	    if (valid && !we)
-		$display("[RAM_ACCESS] addr=%08x wa=%08x",
-		         addr,
-		         wa);
-	end
+    always @(posedge clk) begin
+        if (valid && !we) begin
+            $display("[RAM_ACCESS] addr=%08x wa=%08x",
+                     addr,
+                     wa);
+        end
+    end
+
+    always @(posedge clk) begin
+        if (valid && we) begin
+            $display("[RAM_WRITE] addr=%08x wa=%08x wdata=%08x be=%b",
+                     addr, wa, wdata, be);
+
+            if (addr == 32'h8000_1000) begin
+                $display("[TOHOST_WRITE] data=%08x be=%b", wdata, be);
+            end
+        end
+    end
 
     always @(posedge clk) begin
         if (rst) begin

@@ -55,7 +55,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>aa36956c</spirit:value>
+            <spirit:value>5e8a4e60</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +68,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>aa36956c</spirit:value>
+            <spirit:value>5e8a4e60</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -692,12 +692,12 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>RAM_SIZE</spirit:name>
         <spirit:displayName>Ram Size</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00001000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00002000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>GPIO_BASE</spirit:name>
         <spirit:displayName>Gpio Base</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.GPIO_BASE" spirit:bitStringLength="32">0x80003000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.GPIO_BASE" spirit:bitStringLength="32">0x80004000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>GPIO_SIZE</spirit:name>
@@ -707,7 +707,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>UART_BASE</spirit:name>
         <spirit:displayName>Uart Base</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.UART_BASE" spirit:bitStringLength="32">0x80003010</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.UART_BASE" spirit:bitStringLength="32">0x80004010</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>UART_SIZE</spirit:name>
@@ -717,7 +717,7 @@
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>TIMER_BASE</spirit:name>
         <spirit:displayName>Timer Base</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TIMER_BASE" spirit:bitStringLength="32">0x80003020</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.TIMER_BASE" spirit:bitStringLength="32">0x80004020</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>TIMER_SIZE</spirit:name>
@@ -752,12 +752,12 @@
     <spirit:parameter>
       <spirit:name>RAM_SIZE</spirit:name>
       <spirit:displayName>Ram Size</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00001000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00002000</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>GPIO_BASE</spirit:name>
       <spirit:displayName>Gpio Base</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.GPIO_BASE" spirit:bitStringLength="32">0x80003000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.GPIO_BASE" spirit:bitStringLength="32">0x80004000</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>GPIO_SIZE</spirit:name>
@@ -767,7 +767,7 @@
     <spirit:parameter>
       <spirit:name>UART_BASE</spirit:name>
       <spirit:displayName>Uart Base</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.UART_BASE" spirit:bitStringLength="32">0x80003010</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.UART_BASE" spirit:bitStringLength="32">0x80004010</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>UART_SIZE</spirit:name>
@@ -777,7 +777,7 @@
     <spirit:parameter>
       <spirit:name>TIMER_BASE</spirit:name>
       <spirit:displayName>Timer Base</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.TIMER_BASE" spirit:bitStringLength="32">0x80003020</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.TIMER_BASE" spirit:bitStringLength="32">0x80004020</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>TIMER_SIZE</spirit:name>
@@ -809,7 +809,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-06-05T16:35:54Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-06-17T00:23:43Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>

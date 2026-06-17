@@ -1,0 +1,503 @@
+rm -f results.xml
+"make" -f Makefile results.xml
+make[1]: se entra en el directorio '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB'
+mkdir -p sim_build
+/usr/bin/iverilog -o sim_build/sim.vvp -s RISCV_COCOTB_wrapper -g2012 -f sim_build/cmds.f  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_1_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_mem_wb_reg_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_sim_constant_0_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/id_ex_reg.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/csr_use_detection.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/wb_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/util_vector_or.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_privileged_pc_redire_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/util_vector_and.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_csr_use_detection_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/csr_file.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_priority_branch_OR_l_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_constant_zero_0_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/csr_access_unit.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/uart.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_or_0_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/priority_branch_OR_load_use.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/branch.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_mem_bus_registered_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_exception_merge.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_constant_zero_0_2.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_regfile_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_alu_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_not_0_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/regfile_we_gen.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_pc_to_imem_addr_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/pc_to_imem_addr.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_imm_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/exception_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_0_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_xlconstant_3_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_operand_b_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_branch_predictor_btb_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_timer_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/regfile.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/sim_constant.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/constant_zero.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_csr_access_unit_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_not_1_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_csr_file_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_or_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_stage.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_system_decoder_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/decoder.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/rom_memory.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/timer.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/constant_one.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_0_2.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_forward_mux_1_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_operand_a_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_0_3.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/gpio.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/operand_a_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_0_4.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_if_id_reg_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_wrapper.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_wb_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/load_use_detection.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/util_vector_not.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_regfile_we_gen_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_csr_regfile_wb_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/control.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_ex_mem_reg_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_forward_mux_2_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/alu.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_control_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_forward_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_constant_one_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_and_1_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/operand_b_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/system_decoder.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ex_mem_reg.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_sim_constant_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_ram_data_1_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_xlconcat_8_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/privileged_pc_redirect_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_xlconstant_3_1.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/forward_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_gpio_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_id_ex_reg_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_constant_zero_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_trap_controller_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_pc_unit_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/forwarding.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_not_0_2.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_load_use_detection_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_not_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/branch_predictor_btb_bht.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/imm_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_wb_reg.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/csr_regfile_wb_mux.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/xlconcat_8.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_decoder_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_rom_memory_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_branch_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/if_id_reg.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/trap_controller.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_uart_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_xlslice_2bit_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_bus_registered.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_util_vector_or_1_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_mem_exception_merge_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/xlslice_2bit.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_forwarding_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_exception_mux_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB_mem_stage_0_0.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/RISCV_COCOTB.v /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/pc_unit.v
+/home/steckler/.local/lib/python3.6/site-packages/cocotb_tools/makefiles/simulators/Makefile.icarus:65: Using MODULE is deprecated, please use COCOTB_TEST_MODULES instead.
+rm -f results.xml
+COCOTB_TEST_MODULES=regression COCOTB_TESTCASE= COCOTB_TEST_FILTER= COCOTB_TOPLEVEL=RISCV_COCOTB_wrapper TOPLEVEL_LANG=verilog \
+         /usr/bin/vvp -M /home/steckler/.local/lib/python3.6/site-packages/cocotb/libs -m libcocotbvpi_icarus   sim_build/sim.vvp   
+     -.--ns INFO     gpi                                ..mbed/gpi_embed.cpp:94   in _embed_init_python              Using Python 3.6.15 interpreter at /usr/bin/python3
+     -.--ns INFO     gpi                                ../gpi/GpiCommon.cpp:79   in gpi_print_registered_impl       VPI registered
+     0.00ns INFO     cocotb                             Running on Icarus Verilog version 10.1 (stable)
+     0.00ns WARNING  gpi                                vpi_iterate returned NULL for type vpiInstance for object NULL
+     0.00ns INFO     cocotb                             Seeding Python random module with 1781658538
+     0.00ns INFO     cocotb                             Initialized cocotb v2.0.1 from /home/steckler/.local/lib/python3.6/site-packages/cocotb
+     0.00ns INFO     cocotb.regression                  pytest not found, install it to enable better AssertionError messages
+     0.00ns INFO     cocotb                             Running tests
+     0.00ns INFO     cocotb.regression                  running regression.regression (1/1)
+     0.00ns INFO     cocotb.RISCV_COCOTB_wrapper        TEST_NAME = rv32ui-p-slli
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DEBUG DURANTE RESET:
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        ========== DEBUG STATE ==========
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        PC_IF: 0x80000000
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_PC: 0x00000000
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_INSTR: 0x00000013
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DMEM_ADDR: 0x00000000
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DMEM_WDATA: 0x00000000
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        ROM_ADDR: 0x00000000
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        ROM_DOUT: 0x0540006F
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        IF_ID_INSTR: 0x00000013
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        IF_ID_PC: 0x00000000
+    90.00ns WARNING  gpi                                VPI: Not able to map type vpiFunction(20) to object.
+    90.00ns WARNING  gpi                                Unable to create apply_be via any registered implementation
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        X3_GP: NO_ENCONTRADA
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        X4_TP: NO_ENCONTRADA
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        X5_T0: NO_ENCONTRADA
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_VALID: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_ILLEGAL: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_EXCEPTION_VALID: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        MEM_EXCEPTION_VALID: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        TRAP_ENTER: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        TRAP_FLUSH: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        PC_EN: 1
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        STALL: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        FLUSH: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        IF_ID_HOLD: 0
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        =================================
+    90.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DURANTE_RESET PC=0x80000000
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        RESET_RELEASE PC=0x80000004
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DEBUG inicial después de reset:
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        ========== DEBUG STATE ==========
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        PC_IF: 0x80000004
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_PC: 0x00000000
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_INSTR: 0x00000013
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DMEM_ADDR: 0x00000000
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        DMEM_WDATA: 0x00000000
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        ROM_ADDR: 0x00000001
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        ROM_DOUT: 0x0540006F
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        IF_ID_INSTR: 0x00000013
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        IF_ID_PC: 0x00000000
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        X3_GP: NO_ENCONTRADA
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        X4_TP: NO_ENCONTRADA
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        X5_T0: NO_ENCONTRADA
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_VALID: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_ILLEGAL: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        EX_EXCEPTION_VALID: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        MEM_EXCEPTION_VALID: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        TRAP_ENTER: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        TRAP_FLUSH: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        PC_EN: 1
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        STALL: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        FLUSH: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        IF_ID_HOLD: 0
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        =================================
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        Detectando PASS/FAIL oficial también por gp/x3
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        Esperando PASS/FAIL oficial RISC-V...
+   110.00ns INFO     cocotb.RISCV_COCOTB_wrapper        TOHOST_ADDRS = 0x80001000, 0x00001000
+   120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=0 gp <= 0x00000000
+   120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=0] PIPE PC=0x80000008 ROM_ADDR=0x00000002 ROM_DOUT=0x34202F73 IF_ID_INSTR=0x0540006F IF_ID_PC=0x80000000 EX_PC=0x00000000 EX_INSTR=0x00000013 EX_VALID=0 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=1] PIPE PC=0x8000000C ROM_ADDR=0x00000003 ROM_DOUT=0x00800F93 IF_ID_INSTR=0x34202F73 IF_ID_PC=0x80000004 EX_PC=0x80000000 EX_INSTR=0x0540006F EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=1 BUBBLE=1 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=2] PIPE PC=0x80000054 ROM_ADDR=0x00000015 ROM_DOUT=0x03FF0A63 IF_ID_INSTR=0x00000013 IF_ID_PC=0x00000000 EX_PC=0x00000000 EX_INSTR=0x00000013 EX_VALID=0 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x80000004 DMEM_WDATA=0x00000000 
+   150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=3] PIPE PC=0x80000058 ROM_ADDR=0x00000016 ROM_DOUT=0x00000093 IF_ID_INSTR=0x00000013 IF_ID_PC=0x00000000 EX_PC=0x00000000 EX_INSTR=0x00000013 EX_VALID=0 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=4] PIPE PC=0x8000005C ROM_ADDR=0x00000017 ROM_DOUT=0x00000113 IF_ID_INSTR=0x00000093 IF_ID_PC=0x80000054 EX_PC=0x00000000 EX_INSTR=0x00000013 EX_VALID=0 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=5] PIPE PC=0x80000060 ROM_ADDR=0x00000018 ROM_DOUT=0x00000193 IF_ID_INSTR=0x00000113 IF_ID_PC=0x80000058 EX_PC=0x80000054 EX_INSTR=0x00000093 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=6] PIPE PC=0x80000064 ROM_ADDR=0x00000019 ROM_DOUT=0x00000213 IF_ID_INSTR=0x00000193 IF_ID_PC=0x8000005C EX_PC=0x80000058 EX_INSTR=0x00000113 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=7] PIPE PC=0x80000068 ROM_ADDR=0x0000001A ROM_DOUT=0x00000293 IF_ID_INSTR=0x00000213 IF_ID_PC=0x80000060 EX_PC=0x8000005C EX_INSTR=0x00000193 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=8] PIPE PC=0x8000006C ROM_ADDR=0x0000001B ROM_DOUT=0x00000313 IF_ID_INSTR=0x00000293 IF_ID_PC=0x80000064 EX_PC=0x80000060 EX_INSTR=0x00000213 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   210.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=9] PIPE PC=0x80000070 ROM_ADDR=0x0000001C ROM_DOUT=0x00000393 IF_ID_INSTR=0x00000313 IF_ID_PC=0x80000068 EX_PC=0x80000064 EX_INSTR=0x00000293 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   220.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=10] PIPE PC=0x80000074 ROM_ADDR=0x0000001D ROM_DOUT=0x00000413 IF_ID_INSTR=0x00000393 IF_ID_PC=0x8000006C EX_PC=0x80000068 EX_INSTR=0x00000313 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   230.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=11] PIPE PC=0x80000078 ROM_ADDR=0x0000001E ROM_DOUT=0x00000493 IF_ID_INSTR=0x00000413 IF_ID_PC=0x80000070 EX_PC=0x8000006C EX_INSTR=0x00000393 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   240.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=12] PIPE PC=0x8000007C ROM_ADDR=0x0000001F ROM_DOUT=0x00000513 IF_ID_INSTR=0x00000493 IF_ID_PC=0x80000074 EX_PC=0x80000070 EX_INSTR=0x00000413 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   250.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=13] PIPE PC=0x80000080 ROM_ADDR=0x00000020 ROM_DOUT=0x00000593 IF_ID_INSTR=0x00000513 IF_ID_PC=0x80000078 EX_PC=0x80000074 EX_INSTR=0x00000493 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   260.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=14] PIPE PC=0x80000084 ROM_ADDR=0x00000021 ROM_DOUT=0x00000613 IF_ID_INSTR=0x00000593 IF_ID_PC=0x8000007C EX_PC=0x80000078 EX_INSTR=0x00000513 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   270.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=15] PIPE PC=0x80000088 ROM_ADDR=0x00000022 ROM_DOUT=0x00000693 IF_ID_INSTR=0x00000613 IF_ID_PC=0x80000080 EX_PC=0x8000007C EX_INSTR=0x00000593 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   280.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=16] PIPE PC=0x8000008C ROM_ADDR=0x00000023 ROM_DOUT=0x00000713 IF_ID_INSTR=0x00000693 IF_ID_PC=0x80000084 EX_PC=0x80000080 EX_INSTR=0x00000613 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   290.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=17] PIPE PC=0x80000090 ROM_ADDR=0x00000024 ROM_DOUT=0x00000793 IF_ID_INSTR=0x00000713 IF_ID_PC=0x80000088 EX_PC=0x80000084 EX_INSTR=0x00000693 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   300.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=18] PIPE PC=0x80000094 ROM_ADDR=0x00000025 ROM_DOUT=0x00000813 IF_ID_INSTR=0x00000793 IF_ID_PC=0x8000008C EX_PC=0x80000088 EX_INSTR=0x00000713 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   310.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=19] PIPE PC=0x80000098 ROM_ADDR=0x00000026 ROM_DOUT=0x00000893 IF_ID_INSTR=0x00000813 IF_ID_PC=0x80000090 EX_PC=0x8000008C EX_INSTR=0x00000793 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   320.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=20] PIPE PC=0x8000009C ROM_ADDR=0x00000027 ROM_DOUT=0x00000913 IF_ID_INSTR=0x00000893 IF_ID_PC=0x80000094 EX_PC=0x80000090 EX_INSTR=0x00000813 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   330.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=21] PIPE PC=0x800000A0 ROM_ADDR=0x00000028 ROM_DOUT=0x00000993 IF_ID_INSTR=0x00000913 IF_ID_PC=0x80000098 EX_PC=0x80000094 EX_INSTR=0x00000893 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   340.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=22] PIPE PC=0x800000A4 ROM_ADDR=0x00000029 ROM_DOUT=0x00000A13 IF_ID_INSTR=0x00000993 IF_ID_PC=0x8000009C EX_PC=0x80000098 EX_INSTR=0x00000913 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   350.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=23] PIPE PC=0x800000A8 ROM_ADDR=0x0000002A ROM_DOUT=0x00000A93 IF_ID_INSTR=0x00000A13 IF_ID_PC=0x800000A0 EX_PC=0x8000009C EX_INSTR=0x00000993 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   360.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=24] PIPE PC=0x800000AC ROM_ADDR=0x0000002B ROM_DOUT=0x00000B13 IF_ID_INSTR=0x00000A93 IF_ID_PC=0x800000A4 EX_PC=0x800000A0 EX_INSTR=0x00000A13 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   370.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=25] PIPE PC=0x800000B0 ROM_ADDR=0x0000002C ROM_DOUT=0x00000B93 IF_ID_INSTR=0x00000B13 IF_ID_PC=0x800000A8 EX_PC=0x800000A4 EX_INSTR=0x00000A93 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   380.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=26] PIPE PC=0x800000B4 ROM_ADDR=0x0000002D ROM_DOUT=0x00000C13 IF_ID_INSTR=0x00000B93 IF_ID_PC=0x800000AC EX_PC=0x800000A8 EX_INSTR=0x00000B13 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   390.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=27] PIPE PC=0x800000B8 ROM_ADDR=0x0000002E ROM_DOUT=0x00000C93 IF_ID_INSTR=0x00000C13 IF_ID_PC=0x800000B0 EX_PC=0x800000AC EX_INSTR=0x00000B93 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   400.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=28] PIPE PC=0x800000BC ROM_ADDR=0x0000002F ROM_DOUT=0x00000D13 IF_ID_INSTR=0x00000C93 IF_ID_PC=0x800000B4 EX_PC=0x800000B0 EX_INSTR=0x00000C13 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   410.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=29] PIPE PC=0x800000C0 ROM_ADDR=0x00000030 ROM_DOUT=0x00000D93 IF_ID_INSTR=0x00000D13 IF_ID_PC=0x800000B8 EX_PC=0x800000B4 EX_INSTR=0x00000C93 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   420.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=30] PIPE PC=0x800000C4 ROM_ADDR=0x00000031 ROM_DOUT=0x00000E13 IF_ID_INSTR=0x00000D93 IF_ID_PC=0x800000BC EX_PC=0x800000B8 EX_INSTR=0x00000D13 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   430.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=31] PIPE PC=0x800000C8 ROM_ADDR=0x00000032 ROM_DOUT=0x00000E93 IF_ID_INSTR=0x00000E13 IF_ID_PC=0x800000C0 EX_PC=0x800000BC EX_INSTR=0x00000D93 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   440.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=32] PIPE PC=0x800000CC ROM_ADDR=0x00000033 ROM_DOUT=0x00000F13 IF_ID_INSTR=0x00000E93 IF_ID_PC=0x800000C4 EX_PC=0x800000C0 EX_INSTR=0x00000E13 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   450.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=33] PIPE PC=0x800000D0 ROM_ADDR=0x00000034 ROM_DOUT=0x00000F93 IF_ID_INSTR=0x00000F13 IF_ID_PC=0x800000C8 EX_PC=0x800000C4 EX_INSTR=0x00000E93 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   460.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=34] PIPE PC=0x800000D4 ROM_ADDR=0x00000035 ROM_DOUT=0xF1402573 IF_ID_INSTR=0x00000F93 IF_ID_PC=0x800000CC EX_PC=0x800000C8 EX_INSTR=0x00000F13 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   470.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=35] PIPE PC=0x800000D8 ROM_ADDR=0x00000036 ROM_DOUT=0x00051063 IF_ID_INSTR=0xF1402573 IF_ID_PC=0x800000D0 EX_PC=0x800000CC EX_INSTR=0x00000F93 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   480.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=36] PIPE PC=0x800000DC ROM_ADDR=0x00000037 ROM_DOUT=0x00000297 IF_ID_INSTR=0x00051063 IF_ID_PC=0x800000D4 EX_PC=0x800000D0 EX_INSTR=0xF1402573 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=0 HOLD=1 FLUSH=0 BUBBLE=1 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   490.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=37] PIPE PC=0x800000DC ROM_ADDR=0x00000037 ROM_DOUT=0x00000297 IF_ID_INSTR=0x00051063 IF_ID_PC=0x800000D4 EX_PC=0x00000000 EX_INSTR=0x00000013 EX_VALID=0 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=0 HOLD=1 FLUSH=0 BUBBLE=1 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   500.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=38] PIPE PC=0x800000DC ROM_ADDR=0x00000037 ROM_DOUT=0x00000297 IF_ID_INSTR=0x00051063 IF_ID_PC=0x800000D4 EX_PC=0x00000000 EX_INSTR=0x00000013 EX_VALID=0 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+   510.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [cycle=39] PIPE PC=0x800000E0 ROM_ADDR=0x00000038 ROM_DOUT=0x01028293 IF_ID_INSTR=0x00000297 IF_ID_PC=0x800000D8 EX_PC=0x800000D4 EX_INSTR=0x00051063 EX_VALID=1 OP3_STALL_NET=0 MEM_STALL_REQ_TOP=0 MEM_STAGE_STALL_REQ=0 IF_STALL=0 PC_EN=1 HOLD=0 FLUSH=0 BUBBLE=0 DMEM_VALID=0 DMEM_WE=0 DMEM_ADDR=0x00000000 DMEM_WDATA=0x00000000 
+  1050.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=93 gp <= 0x00000014
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=95 EX_PC=0x800001B4 EX_INSTR=0x34005573
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000340
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x0000000A
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000001
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000001
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1070.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=96 EX_PC=0x800001B8 EX_INSTR=0x3407D573
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000340
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x0000000F
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x0000000A
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000001
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000001
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x0000000F
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1080.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=100 EX_PC=0x800001C8 EX_INSTR=0x34086073
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000340
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000010
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000001
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000001
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x0000001F
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x0000000F
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x0000000F
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1120.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=101 EX_PC=0x800001CC EX_INSTR=0x34002573
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000340
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x0000000A
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000001
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x0000001F
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x0000001F
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x0000001F
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1130.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=102 EX_PC=0x800001D0 EX_INSTR=0x01F00393
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x0000001F
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000007
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1140.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=103 gp <= 0x00000016
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=103 EX_PC=0x800001D4 EX_INSTR=0x1A751A63
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x000001A7
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x0000000A
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000014
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1150.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=104 EX_PC=0x800001D8 EX_INSTR=0x3401D073
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000340
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000003
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000001
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000001
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000003
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x0000001F
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x0000001F
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1160.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=105 EX_PC=0x800001DC EX_INSTR=0x00200193
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000002
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000003
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1170.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=106 EX_PC=0x800001E0 EX_INSTR=0x34002573
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000340
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x0000000A
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000001
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000003
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000003
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000003
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1180.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=107 EX_PC=0x800001E4 EX_INSTR=0x00300393
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x00000003
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000007
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1190.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG_POINT cycle=108 EX_PC=0x800001E8 EX_INSTR=0x1A751063
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_addr = 0x000001A7
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rs1 = 0x0000000A
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_csr_rd = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrw = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrs = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrc = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrwi = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrsi = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG system_decoder_0_is_csrrci = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_we = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_wdata = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_access_unit_0_csr_rd_data = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_file_0_csr_rdata = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_wb_data = NA
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_regfile_wb_mux_0_is_csr = NA
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_data = NA
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd = NA
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG mem_wb_rd_we = NA
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG regfile_0_debug_x10 = NA
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_pc_en = 0x00000001
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_if_id_hold = 0x00000000
+  1200.00ns INFO     cocotb.RISCV_COCOTB_wrapper        CSRDBG csr_use_detection_0_id_ex_flush = 0x00000000
+  1370.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=125 gp <= 0x00000006
+  1430.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=131 gp <= 0x00000007
+  1500.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=138 gp <= 0x00000008
+  1560.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=144 gp <= 0x00000009
+  1630.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=151 gp <= 0x0000000A
+WARNING: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/rom_memory.v:20: $readmemh(/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/programs/prog_asm.mem): Not enough words in the file for the requested range [0:2047].
+[RAM_INIT] RAM cleared to zero
+[GP_WRITE] time=230000 gp <= 0x00000000
+[TP_WRITE] time=240000 tp <= 0x00000000
+[T0_WRITE] time=250000 t0 <= 0x00000000
+[T1_WRITE] time=260000 t1 <= 0x00000000
+[T2_WRITE] time=270000 t2 <= 0x00000000
+[A0_WRITE] time=300000 a0 <= 0x00000000
+[A3_WRITE] time=330000 a3 <= 0x00000000
+[A4_WRITE] time=340000 a4 <= 0x00000000
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[A0_WRITE] time=510000 a0 <= 0x00000000
+[T0_WRITE] time=560000 t0 <= 0x800000d8
+[T0_WRITE] time=570000 t0 <= 0x800000e8
+[T0_WRITE] time=600000 t0 <= 0x800000e8
+[T0_WRITE] time=610000 t0 <= 0x800000f8
+[T0_WRITE] time=640000 t0 <= 0x800000f8
+[T0_WRITE] time=650000 t0 <= 0x80000118
+[T0_WRITE] time=670000 t0 <= 0x80000000
+[T0_WRITE] time=680000 t0 <= 0x7fffffff
+[T0_WRITE] time=700000 t0 <= 0x0000001f
+[T0_WRITE] time=730000 t0 <= 0x8000011c
+[T0_WRITE] time=740000 t0 <= 0x80000130
+[GP_WRITE] time=780000 gp <= 0x00000000
+[T0_WRITE] time=790000 t0 <= 0x80000134
+[T0_WRITE] time=800000 t0 <= 0x80000004
+[A0_WRITE] time=820000 a0 <= 0x00000001
+[A0_WRITE] time=830000 a0 <= 0x80000000
+[T0_WRITE] time=880000 t0 <= 0x00000000
+[A0_WRITE] time=940000 a0 <= 0x00002000
+[A0_WRITE] time=950000 a0 <= 0x00001800
+[T0_WRITE] time=970000 t0 <= 0x80000188
+[T0_WRITE] time=980000 t0 <= 0x8000019c
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[A0_WRITE] time=990000 a0 <= 0x00000000
+[GP_WRITE] time=1050000 gp <= 0x00000014
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[A0_WRITE] time=1060000 a0 <= 0x00000000
+[T2_WRITE] time=1080000 t2 <= 0x00000000
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[A0_WRITE] time=1100000 a0 <= 0x00000000
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x00000000 final_we=1
+[A0_WRITE] time=1110000 a0 <= 0x00000000
+[T2_WRITE] time=1130000 t2 <= 0x00000000
+[GP_WRITE] time=1150000 gp <= 0x00000016
+[CSR_WB_MUX] csr rd=x10 data=0x0000001f final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x0000001f final_we=1
+[A0_WRITE] time=1160000 a0 <= 0x0000001f
+[T2_WRITE] time=1180000 t2 <= 0x0000001f
+[CSR_WB_MUX] csr rd=x10 data=0x00000003 final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x00000003 final_we=1
+[A0_WRITE] time=1210000 a0 <= 0x00000003
+[T2_WRITE] time=1230000 t2 <= 0x00000003
+[CSR_WB_MUX] csr rd=x11 data=0x00000003 final_we=1
+[CSR_WB_MUX] csr rd=x11 data=0x00000003 final_we=1
+[T2_WRITE] time=1270000 t2 <= 0x00000003
+[CSR_WB_MUX] csr rd=x12 data=0x00000002 final_we=1
+[CSR_WB_MUX] csr rd=x12 data=0x00000002 final_we=1
+[T2_WRITE] time=1310000 t2 <= 0x00000002
+[CSR_WB_MUX] csr rd=x13 data=0x00000006 final_we=1
+[CSR_WB_MUX] csr rd=x13 data=0x00000006 final_we=1
+[A3_WRITE] time=1330000 a3 <= 0x00000006
+[T2_WRITE] time=1350000 t2 <= 0x00000006
+[GP_WRITE] time=1370000 gp <= 0x00000006
+[A0_WRITE] time=1380000 a0 <= 0x0bad2000
+[CSR_WB_MUX] csr rd=x11 data=0x00000002 final_we=1
+[T2_WRITE] time=1410000 t2 <= 0x00000002
+[GP_WRITE] time=1430000 gp <= 0x00000007
+[A0_WRITE] time=1440000 a0 <= 0x00002000
+[CSR_WB_MUX] csr rd=x11 data=0x0bad1dea final_we=1
+[T2_WRITE] time=1470000 t2 <= 0x0bad2000
+[T2_WRITE] time=1480000 t2 <= 0x0bad1dea
+[GP_WRITE] time=1500000 gp <= 0x00000008
+[A0_WRITE] time=1510000 a0 <= 0x0000c000
+[CSR_WB_MUX] csr rd=x11 data=0x0bad0000 final_we=1
+[T2_WRITE] time=1540000 t2 <= 0x0bad0000
+[GP_WRITE] time=1560000 gp <= 0x00000009
+[A0_WRITE] time=1570000 a0 <= 0x0bad2000
+[CSR_WB_MUX] csr rd=x10 data=0x0badbeef final_we=1
+[A0_WRITE] time=1580000 a0 <= 0x0badbeef
+[T2_WRITE] time=1600000 t2 <= 0x0badc000
+[T2_WRITE] time=1610000 t2 <= 0x0badbeef
+[GP_WRITE] time=1630000 gp <= 0x0000000a
+[A0_WRITE] time=1640000 a0 <= 0x00002000
+[CSR_WB_MUX] csr rd=x10 data=0x0bad1dea final_we=1
+[A0_WRITE] ti  1700.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=158 gp <= 0x0000000B
+  1990.00ns INFO     cocotb.RISCV_COCOTB_wrapper        PC_JUMP cycle=187 last=0x8000038C now=0x80000004
+  1990.00ns INFO     cocotb.RISCV_COCOTB_wrapper        [GP_WRITE] cycle=187 gp <= 0x00000001
+  1990.00ns INFO     cocotb.RISCV_COCOTB_wrapper        PASS oficial RISC-V: gp == 1
+  1990.00ns INFO     cocotb.regression                  regression.regression passed
+  1990.00ns INFO     cocotb.regression                  **************************************************************************************
+                                                        ** TEST                          STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        **************************************************************************************
+                                                        ** regression.regression          PASS        1990.00           3.02        658.12  **
+                                                        **************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0               1990.00           3.03        655.87  **
+                                                        **************************************************************************************
+/home/steckler/.local/lib/python3.6/site-packages/cocotb/__init__.py:126: FutureWarning: Support for Python versions < 3.9 will be dropped in version 2.1
+  FutureWarning,
+me=1650000 a0 <= 0x0bad1dea
+[T2_WRITE] time=1670000 t2 <= 0x0bad2000
+[T2_WRITE] time=1680000 t2 <= 0x0bad1dea
+[GP_WRITE] time=1700000 gp <= 0x0000000b
+[A0_WRITE] time=1710000 a0 <= 0x0000c000
+[CSR_WB_MUX] csr rd=x10 data=0x0bad0000 final_we=1
+[A0_WRITE] time=1720000 a0 <= 0x0bad0000
+[T2_WRITE] time=1740000 t2 <= 0x0bad0000
+[CSR_WB_MUX] csr rd=x10 data=0x0badbeef final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x0badbeef final_we=1
+[A0_WRITE] time=1760000 a0 <= 0x0badbeef
+[T2_WRITE] time=1780000 t2 <= 0x0badc000
+[T2_WRITE] time=1790000 t2 <= 0x0badbeef
+[CSR_WB_MUX] csr rd=x10 data=0x40000100 final_we=1
+[CSR_WB_MUX] csr rd=x10 data=0x40000100 final_we=1
+[A0_WRITE] time=1800000 a0 <= 0x40000100
+[A0_WRITE] time=1840000 a0 <= 0x00000000
+[CSR_WB_MUX] csr rd=x10 data=0x40000100 final_we=1
+[A0_WRITE] time=1880000 a0 <= 0x40000100
+[A0_WRITE] time=1920000 a0 <= 0x00000400
+[A0_WRITE] time=1930000 a0 <= 0x00000000
+[GP_WRITE] time=1990000 gp <= 0x00000001
+make[1]: se sale del directorio '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB'

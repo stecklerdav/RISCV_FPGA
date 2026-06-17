@@ -64,6 +64,43 @@
   "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlslice_2bit_0_0/sim/RISCV_COCOTB_xlslice_2bit_0_0.v" \
   "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_csr_use_detection_0_0/sim/RISCV_COCOTB_csr_use_detection_0_0.v" \
   "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/sim/RISCV_COCOTB_constant_zero_0_2.v" \
+-endlib
+-makelib xcelium_lib/axi_infrastructure_v1_1_0 \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/ec67/hdl/axi_infrastructure_v1_1_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/axi_vip_v1_1_7 -sv \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/ce6c/hdl/axi_vip_v1_1_vl_rfs.sv" \
+-endlib
+-makelib xcelium_lib/zynq_ultra_ps_e_vip_v1_0_7 -sv \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/e257/hdl/zynq_ultra_ps_e_vip_v1_0_vl_rfs.sv" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/sim/RISCV_COCOTB_zynq_ultra_ps_e_0_0_vip_wrapper.v" \
+-endlib
+-makelib xcelium_lib/xlconstant_v1_1_7 \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_xlconstant_0_0/sim/RISCV_COCOTB_xlconstant_0_0.v" \
+-endlib
+-makelib xcelium_lib/util_vector_logic_v2_0_1 \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/2137/hdl/util_vector_logic_v2_0_vl_rfs.v" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_2_0/sim/RISCV_COCOTB_util_vector_logic_2_0.v" \
+  "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_logic_3_0/sim/RISCV_COCOTB_util_vector_logic_3_0.v" \
+-endlib
+-makelib xcelium_lib/lib_cdc_v1_0_2 \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/proc_sys_reset_v5_0_13 \
+  "../../../../RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/sim/RISCV_COCOTB_proc_sys_reset_0_0.vhd" \
+-endlib
+-makelib xcelium_lib/xil_defaultlib \
+  "../../../bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/sim/RISCV_COCOTB_vio_0_0.v" \
   "../../../bd/RISCV_COCOTB/sim/RISCV_COCOTB.v" \
 -endlib
 -makelib xcelium_lib/xil_defaultlib \

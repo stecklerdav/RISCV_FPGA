@@ -23,7 +23,7 @@
       <spirit:parameters>
         <spirit:parameter>
           <spirit:name>FREQ_HZ</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">100000000</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.FREQ_HZ">190474289</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -50,7 +50,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>CLK_DOMAIN</spirit:name>
-          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN"/>
+          <spirit:value spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN">RISCV_COCOTB_zynq_ultra_ps_e_0_0_pl_clk0</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -97,7 +97,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dc50eed2</spirit:value>
+            <spirit:value>9:a6562352</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -108,7 +108,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dc50eed2</spirit:value>
+            <spirit:value>9:a6562352</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -124,11 +124,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Jun 06 20:40:51 UTC 2026</spirit:value>
+            <spirit:value>Wed Jun 17 01:15:51 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dc50eed2</spirit:value>
+            <spirit:value>9:a6562352</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -140,7 +140,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dcc79023</spirit:value>
+            <spirit:value>9:13651ee7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -156,11 +156,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sat Jun 06 20:40:51 UTC 2026</spirit:value>
+            <spirit:value>Wed Jun 17 01:15:51 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:dcc79023</spirit:value>
+            <spirit:value>9:13651ee7</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -293,8 +293,8 @@
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_BUSIF" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.ASSOCIATED_RESET" xilinx:valuePermission="bd_and_user"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valuePermission="bd_and_user"/>
-        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.CLK_DOMAIN" xilinx:valueSource="default_prop" xilinx:valuePermission="bd_and_user"/>
+        <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_HZ" xilinx:valueSource="user_prop" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.FREQ_TOLERANCE_HZ" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="BUSIFPARAM_VALUE.CLK.PHASE" xilinx:valuePermission="bd_and_user"/>
       </xilinx:configElementInfos>

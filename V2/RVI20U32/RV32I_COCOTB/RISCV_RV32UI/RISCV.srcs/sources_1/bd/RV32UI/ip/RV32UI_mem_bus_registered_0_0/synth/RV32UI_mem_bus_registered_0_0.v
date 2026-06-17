@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "mem_bus_registered,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "RV32UI_mem_bus_registered_0_0,mem_bus_registered,{}" *)
-(* CORE_GENERATION_INFO = "RV32UI_mem_bus_registered_0_0,mem_bus_registered,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=mem_bus_registered,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RAM_BASE=0x80002000,RAM_SIZE=0x00001000,GPIO_BASE=0x80003000,GPIO_SIZE=0x00000010,UART_BASE=0x80003010,UART_SIZE=0x00000010,TIMER_BASE=0x80003020,TIMER_SIZE=0x00000010,TIMEOUT_CYCLES=0x000186A0}" *)
+(* CORE_GENERATION_INFO = "RV32UI_mem_bus_registered_0_0,mem_bus_registered,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=mem_bus_registered,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,RAM_BASE=0x80002000,RAM_SIZE=0x00002000,GPIO_BASE=0x80004000,GPIO_SIZE=0x00000010,UART_BASE=0x80004010,UART_SIZE=0x00000010,TIMER_BASE=0x80004020,TIMER_SIZE=0x00000010,TIMEOUT_CYCLES=0x000186A0}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module RV32UI_mem_bus_registered_0_0 (
@@ -145,12 +145,12 @@ input wire timer_error;
 
   mem_bus_registered #(
     .RAM_BASE(32'H80002000),
-    .RAM_SIZE(32'H00001000),
-    .GPIO_BASE(32'H80003000),
+    .RAM_SIZE(32'H00002000),
+    .GPIO_BASE(32'H80004000),
     .GPIO_SIZE(32'H00000010),
-    .UART_BASE(32'H80003010),
+    .UART_BASE(32'H80004010),
     .UART_SIZE(32'H00000010),
-    .TIMER_BASE(32'H80003020),
+    .TIMER_BASE(32'H80004020),
     .TIMER_SIZE(32'H00000010),
     .TIMEOUT_CYCLES(32'H000186A0)
   ) inst (

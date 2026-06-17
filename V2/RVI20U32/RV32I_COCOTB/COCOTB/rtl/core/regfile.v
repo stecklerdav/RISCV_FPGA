@@ -31,21 +31,17 @@ module regfile (
     always @(*) begin
         if (rs1_addr == 5'd0) begin
             rs1_rdata_r = 32'b0;
-        end
-        else if (rd_we && (rd_addr != 5'd0) && (rd_addr == rs1_addr)) begin
+        end else if (rd_we && (rd_addr != 5'd0) && (rd_addr == rs1_addr)) begin
             rs1_rdata_r = rd_wdata;
-        end
-        else begin
+        end else begin
             rs1_rdata_r = regs[rs1_addr];
         end
 
         if (rs2_addr == 5'd0) begin
             rs2_rdata_r = 32'b0;
-        end
-        else if (rd_we && (rd_addr != 5'd0) && (rd_addr == rs2_addr)) begin
+        end else if (rd_we && (rd_addr != 5'd0) && (rd_addr == rs2_addr)) begin
             rs2_rdata_r = rd_wdata;
-        end
-        else begin
+        end else begin
             rs2_rdata_r = regs[rs2_addr];
         end
     end
@@ -60,6 +56,7 @@ module regfile (
                 5'd5:  $display("[T0_WRITE] time=%0t t0 <= 0x%08x", $time, rd_wdata);
                 5'd6:  $display("[T1_WRITE] time=%0t t1 <= 0x%08x", $time, rd_wdata);
                 5'd7:  $display("[T2_WRITE] time=%0t t2 <= 0x%08x", $time, rd_wdata);
+                5'd10: $display("[A0_WRITE] time=%0t a0 <= 0x%08x", $time, rd_wdata);
                 5'd13: $display("[A3_WRITE] time=%0t a3 <= 0x%08x", $time, rd_wdata);
                 5'd14: $display("[A4_WRITE] time=%0t a4 <= 0x%08x", $time, rd_wdata);
                 default: ;

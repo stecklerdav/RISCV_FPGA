@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xczu5ev-sfvc784-2-i" LaunchTime="1781659169">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="RDI-RDI" Name="RISCV_COCOTB_wrapper.vdi"/>
+  <File Type="BG-DRC" Name="RISCV_COCOTB_wrapper.drc"/>
+  <File Type="BG-BGN" Name="RISCV_COCOTB_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="RISCV_COCOTB_wrapper.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="RISCV_COCOTB_wrapper.ltx"/>
+  <File Type="RBD_FILE" Name="RISCV_COCOTB_wrapper.rbd"/>
+  <File Type="NPI_FILE" Name="RISCV_COCOTB_wrapper.npi"/>
+  <File Type="RNPI_FILE" Name="RISCV_COCOTB_wrapper.rnpi"/>
+  <File Type="CFI_FILE" Name="RISCV_COCOTB_wrapper.cfi"/>
+  <File Type="RCFI_FILE" Name="RISCV_COCOTB_wrapper.rcfi"/>
+  <File Type="PDI-FILE" Name="RISCV_COCOTB_wrapper.pdi"/>
+  <File Type="BITSTR-MMI" Name="RISCV_COCOTB_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="RISCV_COCOTB_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="RISCV_COCOTB_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="RISCV_COCOTB_wrapper.rbt"/>
+  <File Type="BITSTR-MSK" Name="RISCV_COCOTB_wrapper.msk"/>
+  <File Type="BG-BIN" Name="RISCV_COCOTB_wrapper.bin"/>
+  <File Type="BG-BIT" Name="RISCV_COCOTB_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="RISCV_COCOTB_wrapper_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="RISCV_COCOTB_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="RISCV_COCOTB_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="RISCV_COCOTB_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="RISCV_COCOTB_wrapper_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="RISCV_COCOTB_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="RISCV_COCOTB_wrapper_postroute_physopt.dcp"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="RISCV_COCOTB_wrapper_bus_skew_routed.rpx"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="RISCV_COCOTB_wrapper_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW" Name="RISCV_COCOTB_wrapper_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="RISCV_COCOTB_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-SIMILARITY" Name="RISCV_COCOTB_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-TIMING-RPX" Name="RISCV_COCOTB_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-TIMING-PB" Name="RISCV_COCOTB_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="RISCV_COCOTB_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="RISCV_COCOTB_wrapper_route_status.pb"/>
+  <File Type="ROUTE-STATUS" Name="RISCV_COCOTB_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="RISCV_COCOTB_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-PWR-SUM" Name="RISCV_COCOTB_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="RISCV_COCOTB_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="RISCV_COCOTB_wrapper_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="RISCV_COCOTB_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="RISCV_COCOTB_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="RISCV_COCOTB_wrapper_drc_routed.rpx"/>
+  <File Type="ROUTE-DRC-PB" Name="RISCV_COCOTB_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-DRC" Name="RISCV_COCOTB_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="RISCV_COCOTB_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DCP" Name="RISCV_COCOTB_wrapper_routed.dcp"/>
+  <File Type="ROUTE-ERROR-DCP" Name="RISCV_COCOTB_wrapper_routed_error.dcp"/>
+  <File Type="PHYSOPT-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="RISCV_COCOTB_wrapper_drc_physopted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="RISCV_COCOTB_wrapper_physopt.dcp"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="RISCV_COCOTB_wrapper_postplace_pwropt.dcp"/>
+  <File Type="PLACE-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="RISCV_COCOTB_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="RISCV_COCOTB_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-CTRL" Name="RISCV_COCOTB_wrapper_control_sets_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="RISCV_COCOTB_wrapper_utilization_placed.pb"/>
+  <File Type="PLACE-UTIL" Name="RISCV_COCOTB_wrapper_utilization_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="RISCV_COCOTB_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-IO" Name="RISCV_COCOTB_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-DCP" Name="RISCV_COCOTB_wrapper_placed.dcp"/>
+  <File Type="PWROPT-DRC" Name="RISCV_COCOTB_wrapper_drc_pwropted.rpt"/>
+  <File Type="PWROPT-DCP" Name="RISCV_COCOTB_wrapper_pwropt.dcp"/>
+  <File Type="OPT-HWDEF" Name="RISCV_COCOTB_wrapper.hwdef"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="RISCV_COCOTB_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="OPT-DRC" Name="RISCV_COCOTB_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-DCP" Name="RISCV_COCOTB_wrapper_opt.dcp"/>
+  <File Type="INIT-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_init.rpt"/>
+  <File Type="PWROPT-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="REPORTS-TCL" Name="RISCV_COCOTB_wrapper_reports.tcl"/>
+  <File Type="OPT-TIMING" Name="RISCV_COCOTB_wrapper_timing_summary_opted.rpt"/>
+  <File Type="PA-TCL" Name="RISCV_COCOTB_wrapper.tcl"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/uart.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/timer.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/regfile_we_gen.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/mem_stage.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/mem_wb_reg.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/alu.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/operand_b_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/operand_a_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/forward_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/forwarding.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/branch.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/ex_mem_reg.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/wb_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/regfile.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/imm_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/decoder.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/control.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/id_ex_reg.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/branch_predictor_btb_bht.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/pc_unit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/pc_to_imem_addr.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/if_id_reg.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/load_use_detection.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/priority_branch_OR_load_use.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/mem_bus_registered.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/csr_access_unit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/privileged_pc_redirect_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/system_decoder.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/csr_file.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/csr_regfile_wb_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/trap_controller.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/exception_mux.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/mem_exception_merge.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/gpio.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/ram_data.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/util_vector_and.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/util_vector_not.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/util_vector_or.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/constant_one.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/rom_memory.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/constant_zero.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/xlconcat_8.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/xlslice_2bit.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/csr_use_detection.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/hdl/RISCV_COCOTB_wrapper.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/bd/RISCV_COCOTB/hdl/RISCV_COCOTB_wrapper.v"/>
+        <Attr Name="ImportTime" Val="1781658950"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../rv32i_vscode/prog_asm.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/rtl/core/sim_constant.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../COCOTB/programs/prog_asm.mem">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="RISCV_COCOTB_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/src.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="RISCV_COCOTB"/>
+</GenRun>

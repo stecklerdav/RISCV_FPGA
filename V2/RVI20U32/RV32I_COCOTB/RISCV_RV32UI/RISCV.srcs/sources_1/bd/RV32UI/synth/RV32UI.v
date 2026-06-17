@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Fri Jun  5 19:02:32 2026
+//Date        : Wed Jun 17 01:30:03 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RV32UI.bd
 //Design      : RV32UI
@@ -758,345 +758,6 @@ module MMIO_imp_J7VAW8
         .uart_valid(mem_bus_registered_0_uart_valid),
         .uart_wdata(mem_bus_registered_0_uart_wdata),
         .uart_we(mem_bus_registered_0_uart_we));
-endmodule
-
-module PRIVILEGED_imp_4JLUQ3
-   (clk,
-    csr_rd_addr,
-    csr_rd_addr1,
-    csr_rd_data1,
-    csr_rd_data2,
-    csr_rd_we,
-    csr_rd_we1,
-    current_pc,
-    ex_exception_cause,
-    ex_exception_tval,
-    ex_exception_valid,
-    final_rd,
-    final_wdata,
-    final_we,
-    id_ex_flush,
-    if_id_hold,
-    if_id_rs1,
-    if_id_rs1_used,
-    if_id_rs2,
-    if_id_rs2_used,
-    if_id_valid,
-    illegal_instr,
-    instr,
-    instr_valid,
-    mem_exception_cause,
-    mem_exception_pc,
-    mem_exception_tval,
-    mem_exception_valid,
-    mem_fault_cause,
-    mem_fault_tval,
-    mem_fault_valid,
-    mem_stall_req,
-    normal_rd,
-    normal_wdata,
-    normal_we,
-    pc_en,
-    priv_redirect_target,
-    priv_redirect_valid,
-    rs1_data,
-    rst,
-    timer_irq,
-    trap_flush);
-  input clk;
-  output [4:0]csr_rd_addr;
-  input [4:0]csr_rd_addr1;
-  output [31:0]csr_rd_data1;
-  input [31:0]csr_rd_data2;
-  output csr_rd_we;
-  input csr_rd_we1;
-  input [31:0]current_pc;
-  input [3:0]ex_exception_cause;
-  input [31:0]ex_exception_tval;
-  input ex_exception_valid;
-  output [4:0]final_rd;
-  output [31:0]final_wdata;
-  output final_we;
-  output id_ex_flush;
-  output if_id_hold;
-  input [4:0]if_id_rs1;
-  input if_id_rs1_used;
-  input [4:0]if_id_rs2;
-  input if_id_rs2_used;
-  input if_id_valid;
-  input illegal_instr;
-  input [31:0]instr;
-  input instr_valid;
-  input [3:0]mem_exception_cause;
-  input [31:0]mem_exception_pc;
-  input [31:0]mem_exception_tval;
-  input mem_exception_valid;
-  input [3:0]mem_fault_cause;
-  input [31:0]mem_fault_tval;
-  input mem_fault_valid;
-  input mem_stall_req;
-  input [4:0]normal_rd;
-  input [31:0]normal_wdata;
-  input normal_we;
-  output pc_en;
-  output [31:0]priv_redirect_target;
-  output priv_redirect_valid;
-  input [31:0]rs1_data;
-  input rst;
-  input timer_irq;
-  output trap_flush;
-
-  wire [31:0]Core_RV32I_ex_instr;
-  wire [31:0]Core_RV32I_ex_pc;
-  wire Core_RV32I_ex_valid;
-  wire Core_RV32I_mem_stall_req;
-  wire [31:0]Core_RV32I_rd_wdata;
-  wire [4:0]Core_RV32I_wb_rd;
-  wire TIMER_timer_irq;
-  wire [4:0]csr_access_unit_0_csr_rd_addr;
-  wire [31:0]csr_access_unit_0_csr_rd_data;
-  wire csr_access_unit_0_csr_rd_we;
-  wire [31:0]csr_access_unit_0_csr_wdata;
-  wire csr_access_unit_0_csr_we;
-  wire [31:0]csr_file_0_csr_mepc;
-  wire [31:0]csr_file_0_csr_mie;
-  wire [31:0]csr_file_0_csr_mip;
-  wire [31:0]csr_file_0_csr_mstatus;
-  wire [31:0]csr_file_0_csr_mtvec;
-  wire [31:0]csr_file_0_csr_rdata;
-  wire [4:0]csr_rd_addr1_1;
-  wire [31:0]csr_rd_data2_1;
-  wire csr_rd_we1_1;
-  wire [4:0]csr_regfile_wb_mux_0_final_rd;
-  wire [31:0]csr_regfile_wb_mux_0_final_wdata;
-  wire csr_regfile_wb_mux_0_final_we;
-  wire csr_use_detection_0_id_ex_flush;
-  wire csr_use_detection_0_if_id_hold;
-  wire csr_use_detection_0_pc_en;
-  wire [3:0]ex_exception_cause_1;
-  wire [31:0]ex_exception_tval_1;
-  wire ex_exception_valid_1;
-  wire [3:0]exception_mux_0_exception_cause;
-  wire [31:0]exception_mux_0_exception_pc;
-  wire [31:0]exception_mux_0_exception_tval;
-  wire exception_mux_0_exception_valid;
-  wire [4:0]if_id_rs1_1;
-  wire if_id_rs1_used_1;
-  wire [4:0]if_id_rs2_1;
-  wire if_id_rs2_used_1;
-  wire if_id_valid_1;
-  wire illegal_instr_1;
-  wire [3:0]mem_exception_cause_1;
-  wire [3:0]mem_exception_merge_0_final_mem_exception_cause;
-  wire [31:0]mem_exception_merge_0_final_mem_exception_pc;
-  wire [31:0]mem_exception_merge_0_final_mem_exception_tval;
-  wire mem_exception_merge_0_final_mem_exception_valid;
-  wire [31:0]mem_exception_pc_1;
-  wire [31:0]mem_exception_tval_1;
-  wire mem_exception_valid_1;
-  wire [3:0]mem_fault_cause_1;
-  wire [31:0]mem_fault_tval_1;
-  wire mem_fault_valid_1;
-  wire normal_we1_1;
-  wire [31:0]privileged_pc_redire_0_priv_redirect_target;
-  wire privileged_pc_redire_0_priv_redirect_valid;
-  wire proc_sys_reset_0_peripheral_reset;
-  wire [31:0]rs1_data1_1;
-  wire [11:0]system_decoder_0_csr_addr;
-  wire [4:0]system_decoder_0_csr_rd;
-  wire [4:0]system_decoder_0_csr_rs1;
-  wire system_decoder_0_is_csrrc;
-  wire system_decoder_0_is_csrrs;
-  wire system_decoder_0_is_csrrw;
-  wire system_decoder_0_is_ecall;
-  wire system_decoder_0_is_mret;
-  wire system_decoder_0_is_system;
-  wire trap_controller_0_mret_taken;
-  wire [31:0]trap_controller_0_mret_target;
-  wire trap_controller_0_trap_enter;
-  wire trap_controller_0_trap_flush;
-  wire [31:0]trap_controller_0_trap_mcause;
-  wire [31:0]trap_controller_0_trap_mepc;
-  wire [31:0]trap_controller_0_trap_mtval;
-  wire [31:0]trap_controller_0_trap_target;
-  wire [0:0]util_vector_and_0_Res;
-  wire [0:0]util_vector_not_0_Res;
-  wire zynq_ultra_ps_e_0_pl_clk0;
-
-  assign Core_RV32I_ex_instr = instr[31:0];
-  assign Core_RV32I_ex_pc = current_pc[31:0];
-  assign Core_RV32I_ex_valid = instr_valid;
-  assign Core_RV32I_mem_stall_req = mem_stall_req;
-  assign Core_RV32I_rd_wdata = normal_wdata[31:0];
-  assign Core_RV32I_wb_rd = normal_rd[4:0];
-  assign TIMER_timer_irq = timer_irq;
-  assign csr_rd_addr[4:0] = csr_access_unit_0_csr_rd_addr;
-  assign csr_rd_addr1_1 = csr_rd_addr1[4:0];
-  assign csr_rd_data1[31:0] = csr_access_unit_0_csr_rd_data;
-  assign csr_rd_data2_1 = csr_rd_data2[31:0];
-  assign csr_rd_we = csr_access_unit_0_csr_rd_we;
-  assign csr_rd_we1_1 = csr_rd_we1;
-  assign ex_exception_cause_1 = ex_exception_cause[3:0];
-  assign ex_exception_tval_1 = ex_exception_tval[31:0];
-  assign ex_exception_valid_1 = ex_exception_valid;
-  assign final_rd[4:0] = csr_regfile_wb_mux_0_final_rd;
-  assign final_wdata[31:0] = csr_regfile_wb_mux_0_final_wdata;
-  assign final_we = csr_regfile_wb_mux_0_final_we;
-  assign id_ex_flush = csr_use_detection_0_id_ex_flush;
-  assign if_id_hold = csr_use_detection_0_if_id_hold;
-  assign if_id_rs1_1 = if_id_rs1[4:0];
-  assign if_id_rs1_used_1 = if_id_rs1_used;
-  assign if_id_rs2_1 = if_id_rs2[4:0];
-  assign if_id_rs2_used_1 = if_id_rs2_used;
-  assign if_id_valid_1 = if_id_valid;
-  assign illegal_instr_1 = illegal_instr;
-  assign mem_exception_cause_1 = mem_exception_cause[3:0];
-  assign mem_exception_pc_1 = mem_exception_pc[31:0];
-  assign mem_exception_tval_1 = mem_exception_tval[31:0];
-  assign mem_exception_valid_1 = mem_exception_valid;
-  assign mem_fault_cause_1 = mem_fault_cause[3:0];
-  assign mem_fault_tval_1 = mem_fault_tval[31:0];
-  assign mem_fault_valid_1 = mem_fault_valid;
-  assign normal_we1_1 = normal_we;
-  assign pc_en = csr_use_detection_0_pc_en;
-  assign priv_redirect_target[31:0] = privileged_pc_redire_0_priv_redirect_target;
-  assign priv_redirect_valid = privileged_pc_redire_0_priv_redirect_valid;
-  assign proc_sys_reset_0_peripheral_reset = rst;
-  assign rs1_data1_1 = rs1_data[31:0];
-  assign trap_flush = trap_controller_0_trap_flush;
-  assign zynq_ultra_ps_e_0_pl_clk0 = clk;
-  RV32UI_csr_access_unit_0_0 csr_access_unit_0
-       (.csr_rd(system_decoder_0_csr_rd),
-        .csr_rd_addr(csr_access_unit_0_csr_rd_addr),
-        .csr_rd_data(csr_access_unit_0_csr_rd_data),
-        .csr_rd_we(csr_access_unit_0_csr_rd_we),
-        .csr_rdata(csr_file_0_csr_rdata),
-        .csr_rs1(system_decoder_0_csr_rs1),
-        .csr_wdata(csr_access_unit_0_csr_wdata),
-        .csr_we(csr_access_unit_0_csr_we),
-        .ex_valid(Core_RV32I_ex_valid),
-        .is_csrrc(system_decoder_0_is_csrrc),
-        .is_csrrs(system_decoder_0_is_csrrs),
-        .is_csrrw(system_decoder_0_is_csrrw),
-        .rs1_data(rs1_data1_1));
-  RV32UI_csr_file_0_0 csr_file_0
-       (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .csr_addr(system_decoder_0_csr_addr),
-        .csr_mepc(csr_file_0_csr_mepc),
-        .csr_mie(csr_file_0_csr_mie),
-        .csr_mip(csr_file_0_csr_mip),
-        .csr_mstatus(csr_file_0_csr_mstatus),
-        .csr_mtvec(csr_file_0_csr_mtvec),
-        .csr_rdata(csr_file_0_csr_rdata),
-        .csr_wdata(csr_access_unit_0_csr_wdata),
-        .csr_we(csr_access_unit_0_csr_we),
-        .mret(trap_controller_0_mret_taken),
-        .rst(proc_sys_reset_0_peripheral_reset),
-        .timer_irq(TIMER_timer_irq),
-        .trap_enter(trap_controller_0_trap_enter),
-        .trap_mcause(trap_controller_0_trap_mcause),
-        .trap_mepc(trap_controller_0_trap_mepc),
-        .trap_mtval(trap_controller_0_trap_mtval));
-  RV32UI_csr_regfile_wb_mux_0_0 csr_regfile_wb_mux_0
-       (.csr_rd_addr(csr_rd_addr1_1),
-        .csr_rd_data(csr_rd_data2_1),
-        .csr_rd_we(csr_rd_we1_1),
-        .final_rd(csr_regfile_wb_mux_0_final_rd),
-        .final_wdata(csr_regfile_wb_mux_0_final_wdata),
-        .final_we(csr_regfile_wb_mux_0_final_we),
-        .normal_rd(Core_RV32I_wb_rd),
-        .normal_wdata(Core_RV32I_rd_wdata),
-        .normal_we(normal_we1_1));
-  RV32UI_csr_use_detection_0_0 csr_use_detection_0
-       (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .ex_instr(Core_RV32I_ex_instr),
-        .ex_valid(Core_RV32I_ex_valid),
-        .id_ex_flush(csr_use_detection_0_id_ex_flush),
-        .if_id_hold(csr_use_detection_0_if_id_hold),
-        .if_id_rs1(if_id_rs1_1),
-        .if_id_rs1_used(if_id_rs1_used_1),
-        .if_id_rs2(if_id_rs2_1),
-        .if_id_rs2_used(if_id_rs2_used_1),
-        .if_id_valid(if_id_valid_1),
-        .pc_en(csr_use_detection_0_pc_en),
-        .rst(proc_sys_reset_0_peripheral_reset));
-  RV32UI_exception_mux_0_0 exception_mux_0
-       (.ex_exception_cause(ex_exception_cause_1),
-        .ex_exception_pc(Core_RV32I_ex_pc),
-        .ex_exception_tval(ex_exception_tval_1),
-        .ex_exception_valid(ex_exception_valid_1),
-        .exception_cause(exception_mux_0_exception_cause),
-        .exception_pc(exception_mux_0_exception_pc),
-        .exception_tval(exception_mux_0_exception_tval),
-        .exception_valid(exception_mux_0_exception_valid),
-        .mem_exception_cause(mem_exception_merge_0_final_mem_exception_cause),
-        .mem_exception_pc(mem_exception_merge_0_final_mem_exception_pc),
-        .mem_exception_tval(mem_exception_merge_0_final_mem_exception_tval),
-        .mem_exception_valid(mem_exception_merge_0_final_mem_exception_valid));
-  RV32UI_mem_exception_merge_0_0 mem_exception_merge_0
-       (.final_mem_exception_cause(mem_exception_merge_0_final_mem_exception_cause),
-        .final_mem_exception_pc(mem_exception_merge_0_final_mem_exception_pc),
-        .final_mem_exception_tval(mem_exception_merge_0_final_mem_exception_tval),
-        .final_mem_exception_valid(mem_exception_merge_0_final_mem_exception_valid),
-        .mem_exception_cause(mem_exception_cause_1),
-        .mem_exception_pc(mem_exception_pc_1),
-        .mem_exception_tval(mem_exception_tval_1),
-        .mem_exception_valid(mem_exception_valid_1),
-        .mem_fault_cause(mem_fault_cause_1),
-        .mem_fault_tval(mem_fault_tval_1),
-        .mem_fault_valid(mem_fault_valid_1));
-  RV32UI_privileged_pc_redire_0_0 privileged_pc_redire_0
-       (.mret_taken(trap_controller_0_mret_taken),
-        .mret_target(trap_controller_0_mret_target),
-        .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
-        .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
-        .trap_enter(trap_controller_0_trap_enter),
-        .trap_target(trap_controller_0_trap_target));
-  RV32UI_system_decoder_0_0 system_decoder_0
-       (.csr_addr(system_decoder_0_csr_addr),
-        .csr_rd(system_decoder_0_csr_rd),
-        .csr_rs1(system_decoder_0_csr_rs1),
-        .instr(Core_RV32I_ex_instr),
-        .is_csrrc(system_decoder_0_is_csrrc),
-        .is_csrrs(system_decoder_0_is_csrrs),
-        .is_csrrw(system_decoder_0_is_csrrw),
-        .is_ecall(system_decoder_0_is_ecall),
-        .is_mret(system_decoder_0_is_mret),
-        .is_system(system_decoder_0_is_system));
-  RV32UI_trap_controller_0_0 trap_controller_0
-       (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .csr_mepc(csr_file_0_csr_mepc),
-        .csr_mie(csr_file_0_csr_mie),
-        .csr_mip(csr_file_0_csr_mip),
-        .csr_mstatus(csr_file_0_csr_mstatus),
-        .csr_mtvec(csr_file_0_csr_mtvec),
-        .current_pc(Core_RV32I_ex_pc),
-        .ecall(system_decoder_0_is_ecall),
-        .exception_cause(exception_mux_0_exception_cause),
-        .exception_pc(exception_mux_0_exception_pc),
-        .exception_tval(exception_mux_0_exception_tval),
-        .exception_valid(exception_mux_0_exception_valid),
-        .illegal_instr(util_vector_and_0_Res),
-        .instr_valid(Core_RV32I_ex_valid),
-        .mem_stall_req(Core_RV32I_mem_stall_req),
-        .mret(system_decoder_0_is_mret),
-        .mret_taken(trap_controller_0_mret_taken),
-        .mret_target(trap_controller_0_mret_target),
-        .rst(proc_sys_reset_0_peripheral_reset),
-        .timer_irq(TIMER_timer_irq),
-        .trap_enter(trap_controller_0_trap_enter),
-        .trap_flush(trap_controller_0_trap_flush),
-        .trap_mcause(trap_controller_0_trap_mcause),
-        .trap_mepc(trap_controller_0_trap_mepc),
-        .trap_mtval(trap_controller_0_trap_mtval),
-        .trap_target(trap_controller_0_trap_target));
-  RV32UI_util_vector_and_0_2 util_vector_and_0
-       (.Op1(illegal_instr_1),
-        .Op2(util_vector_not_0_Res),
-        .Res(util_vector_and_0_Res));
-  RV32UI_util_vector_not_0_1 util_vector_not_0
-       (.Op1(system_decoder_0_is_system),
-        .Res(util_vector_not_0_Res));
 endmodule
 
 module RV32I_EX_imp_1ET1UXA
@@ -2364,44 +2025,15 @@ module RV32I_WB_imp_KKWAOO
         .wb_sel(wb_sel_1));
 endmodule
 
-(* CORE_GENERATION_INFO = "RV32UI,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RV32UI,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=72,numReposBlks=60,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=54,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RV32UI.hwdef" *) 
+(* CORE_GENERATION_INFO = "RV32UI,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RV32UI,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=60,numReposBlks=49,numNonXlnxBlks=0,numHierBlks=11,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=43,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RV32UI.hwdef" *) 
 module RV32UI
    (SW1,
     gpio_out_0);
   input [0:0]SW1;
   output [1:0]gpio_out_0;
 
-  wire [3:0]Core_RV32I_ex_exception_cause;
-  wire [31:0]Core_RV32I_ex_exception_tval;
-  wire Core_RV32I_ex_exception_valid;
-  wire Core_RV32I_ex_illegal_instr;
-  wire [31:0]Core_RV32I_ex_instr;
-  wire [31:0]Core_RV32I_ex_pc;
-  wire Core_RV32I_ex_valid;
-  wire Core_RV32I_id_valid_out;
-  wire [3:0]Core_RV32I_mem_exception_cause;
-  wire [31:0]Core_RV32I_mem_exception_tval;
-  wire Core_RV32I_mem_exception_valid;
-  wire [3:0]Core_RV32I_mem_fault_cause;
-  wire [31:0]Core_RV32I_mem_fault_tval;
-  wire Core_RV32I_mem_fault_valid;
-  wire [31:0]Core_RV32I_mem_pc;
-  wire [0:0]Core_RV32I_mem_stall_req;
-  wire [31:0]Core_RV32I_out_data;
-  wire [31:0]Core_RV32I_rd_wdata;
-  wire Core_RV32I_regfile_we;
-  wire [4:0]Core_RV32I_rs1;
-  wire Core_RV32I_rs2_used;
-  wire [31:0]Core_RV32I_wb_csr_rd_data;
-  wire Core_RV32I_wb_csr_rd_we;
-  wire [4:0]Core_RV32I_wb_rd;
   wire MMIO_mem_rsp_error;
   wire MMIO_ram_valid;
-  wire [31:0]PRIVILEGED_csr_rd_data1;
-  wire PRIVILEGED_csr_rd_we;
-  wire PRIVILEGED_id_ex_flush;
-  wire PRIVILEGED_if_id_hold;
-  wire PRIVILEGED_pc_en;
   wire [31:0]RV32I_MEM_dmem_addr;
   wire [3:0]RV32I_MEM_dmem_be;
   wire [31:0]RV32I_MEM_dmem_wdata;
@@ -2417,30 +2049,19 @@ module RV32UI
   wire [3:0]be_2;
   wire [3:0]be_3;
   wire [3:0]be_4;
-  wire [4:0]csr_rd_addr1_1;
-  wire [4:0]csr_regfile_wb_mux_0_final_rd;
-  wire [31:0]csr_regfile_wb_mux_0_final_wdata;
-  wire csr_regfile_wb_mux_0_final_we;
   wire dmem_ready_1;
   wire dmem_req_ready_1;
-  wire [4:0]ex_csr_rd_addr_1;
   wire [7:0]gpio_0_gpio_out;
   wire [31:0]gpio_0_rdata;
   wire gpio_0_ready;
-  wire if_id_rs1_used_1;
-  wire [4:0]if_id_rs2_1;
   wire [31:0]mem_data_1;
   wire mem_req_valid_1;
-  wire [31:0]privileged_pc_redire_0_priv_redirect_target;
-  wire privileged_pc_redire_0_priv_redirect_valid;
   wire [0:0]proc_sys_reset_0_peripheral_reset1;
   wire [0:0]proc_sys_reset_0_peripheral_reset2;
   wire ram_ready_1;
   wire [31:0]timer_0_rdata;
   wire timer_0_ready;
   wire timer_error_1;
-  wire timer_irq_1;
-  wire trap_controller_0_trap_flush;
   wire [31:0]uart_tx_0_rdata;
   wire uart_tx_0_ready;
   wire valid_1;
@@ -2468,9 +2089,9 @@ module RV32UI
   assign gpio_out_0[1:0] = xlslice_2bit_0_Dout;
   Core_RV32I_imp_2AUGDK Core_RV32I
        (.clk(zynq_ultra_ps_e_0_pl_clk1),
-        .csr_use_id_ex_flush(PRIVILEGED_id_ex_flush),
-        .csr_use_if_id_hold(PRIVILEGED_if_id_hold),
-        .csr_use_pc_en(PRIVILEGED_pc_en),
+        .csr_use_id_ex_flush(1'b0),
+        .csr_use_if_id_hold(1'b0),
+        .csr_use_pc_en(1'b0),
         .dmem_addr(RV32I_MEM_dmem_addr),
         .dmem_be(RV32I_MEM_dmem_be),
         .dmem_error(MMIO_mem_rsp_error),
@@ -2479,44 +2100,17 @@ module RV32UI
         .dmem_valid(mem_req_valid_1),
         .dmem_wdata(RV32I_MEM_dmem_wdata),
         .dmem_we(RV32I_MEM_dmem_we),
-        .ex_csr_rd_addr(ex_csr_rd_addr_1),
-        .ex_csr_rd_data(PRIVILEGED_csr_rd_data1),
-        .ex_csr_rd_we(PRIVILEGED_csr_rd_we),
-        .ex_exception_cause(Core_RV32I_ex_exception_cause),
-        .ex_exception_tval(Core_RV32I_ex_exception_tval),
-        .ex_exception_valid(Core_RV32I_ex_exception_valid),
-        .ex_illegal_instr(Core_RV32I_ex_illegal_instr),
-        .ex_instr(Core_RV32I_ex_instr),
-        .ex_pc(Core_RV32I_ex_pc),
-        .ex_valid(Core_RV32I_ex_valid),
-        .id_valid_out(Core_RV32I_id_valid_out),
+        .ex_csr_rd_addr({1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ex_csr_rd_data({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .ex_csr_rd_we(1'b0),
         .mem_data(mem_data_1),
-        .mem_exception_cause(Core_RV32I_mem_exception_cause),
-        .mem_exception_tval(Core_RV32I_mem_exception_tval),
-        .mem_exception_valid(Core_RV32I_mem_exception_valid),
-        .mem_fault_cause(Core_RV32I_mem_fault_cause),
-        .mem_fault_tval(Core_RV32I_mem_fault_tval),
-        .mem_fault_valid(Core_RV32I_mem_fault_valid),
-        .mem_pc(Core_RV32I_mem_pc),
-        .mem_stall_req(Core_RV32I_mem_stall_req),
-        .out_data(Core_RV32I_out_data),
-        .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
-        .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
-        .rd_addr(csr_regfile_wb_mux_0_final_rd),
-        .rd_wdata(csr_regfile_wb_mux_0_final_wdata),
-        .rd_wdata1(Core_RV32I_rd_wdata),
-        .rd_we(csr_regfile_wb_mux_0_final_we),
-        .regfile_we(Core_RV32I_regfile_we),
-        .rs1(Core_RV32I_rs1),
-        .rs1_used(if_id_rs1_used_1),
-        .rs2(if_id_rs2_1),
-        .rs2_used(Core_RV32I_rs2_used),
+        .priv_redirect_target({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .priv_redirect_valid(1'b0),
+        .rd_addr({1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .rd_wdata({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
+        .rd_we(1'b0),
         .rst(proc_sys_reset_0_peripheral_reset1),
-        .trap_flush(trap_controller_0_trap_flush),
-        .wb_csr_rd_addr(csr_rd_addr1_1),
-        .wb_csr_rd_data(Core_RV32I_wb_csr_rd_data),
-        .wb_csr_rd_we(Core_RV32I_wb_csr_rd_we),
-        .wb_rd(Core_RV32I_wb_rd));
+        .trap_flush(1'b0));
   GPIO_imp_4F5IX3 GPIO
        (.addr(addr_2),
         .be(be_2),
@@ -2570,49 +2164,6 @@ module RV32UI
         .uart_valid(valid_2),
         .uart_wdata(wdata_3),
         .uart_we(we_3));
-  PRIVILEGED_imp_4JLUQ3 PRIVILEGED
-       (.clk(zynq_ultra_ps_e_0_pl_clk1),
-        .csr_rd_addr(ex_csr_rd_addr_1),
-        .csr_rd_addr1(csr_rd_addr1_1),
-        .csr_rd_data1(PRIVILEGED_csr_rd_data1),
-        .csr_rd_data2(Core_RV32I_wb_csr_rd_data),
-        .csr_rd_we(PRIVILEGED_csr_rd_we),
-        .csr_rd_we1(Core_RV32I_wb_csr_rd_we),
-        .current_pc(Core_RV32I_ex_pc),
-        .ex_exception_cause(Core_RV32I_ex_exception_cause),
-        .ex_exception_tval(Core_RV32I_ex_exception_tval),
-        .ex_exception_valid(Core_RV32I_ex_exception_valid),
-        .final_rd(csr_regfile_wb_mux_0_final_rd),
-        .final_wdata(csr_regfile_wb_mux_0_final_wdata),
-        .final_we(csr_regfile_wb_mux_0_final_we),
-        .id_ex_flush(PRIVILEGED_id_ex_flush),
-        .if_id_hold(PRIVILEGED_if_id_hold),
-        .if_id_rs1(Core_RV32I_rs1),
-        .if_id_rs1_used(if_id_rs1_used_1),
-        .if_id_rs2(if_id_rs2_1),
-        .if_id_rs2_used(Core_RV32I_rs2_used),
-        .if_id_valid(Core_RV32I_id_valid_out),
-        .illegal_instr(Core_RV32I_ex_illegal_instr),
-        .instr(Core_RV32I_ex_instr),
-        .instr_valid(Core_RV32I_ex_valid),
-        .mem_exception_cause(Core_RV32I_mem_exception_cause),
-        .mem_exception_pc(Core_RV32I_mem_pc),
-        .mem_exception_tval(Core_RV32I_mem_exception_tval),
-        .mem_exception_valid(Core_RV32I_mem_exception_valid),
-        .mem_fault_cause(Core_RV32I_mem_fault_cause),
-        .mem_fault_tval(Core_RV32I_mem_fault_tval),
-        .mem_fault_valid(Core_RV32I_mem_fault_valid),
-        .mem_stall_req(Core_RV32I_mem_stall_req),
-        .normal_rd(Core_RV32I_wb_rd),
-        .normal_wdata(Core_RV32I_rd_wdata),
-        .normal_we(Core_RV32I_regfile_we),
-        .pc_en(PRIVILEGED_pc_en),
-        .priv_redirect_target(privileged_pc_redire_0_priv_redirect_target),
-        .priv_redirect_valid(privileged_pc_redire_0_priv_redirect_valid),
-        .rs1_data(Core_RV32I_out_data),
-        .rst(proc_sys_reset_0_peripheral_reset1),
-        .timer_irq(timer_irq_1),
-        .trap_flush(trap_controller_0_trap_flush));
   RV32I_RAM_MEMORY_imp_1IHZT2 RV32I_RAM_MEMORY
        (.addr(addr_1),
         .be(be_1),
@@ -2631,7 +2182,6 @@ module RV32UI
         .rdata(timer_0_rdata),
         .ready(timer_0_ready),
         .rst(proc_sys_reset_0_peripheral_reset1),
-        .timer_irq(timer_irq_1),
         .valid(valid_3),
         .wdata(wdata_4),
         .we(we_4));

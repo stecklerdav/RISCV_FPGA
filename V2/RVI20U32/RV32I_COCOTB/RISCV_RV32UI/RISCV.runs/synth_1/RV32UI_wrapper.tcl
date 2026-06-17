@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.runs/synth_1/RV32UI_wrapper.tcl"
+  variable script "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.runs/synth_1/RV32UI_wrapper.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,7 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 3
 set_msg_config -id {HDL-1065} -limit 10000
 OPTRACE "Creating in-memory project" START { }
@@ -80,24 +79,24 @@ set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.cache/wt [current_project]
-set_property parent.project_path /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.xpr [current_project]
+set_property webtalk.parent_dir /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.cache/wt [current_project]
+set_property parent.project_path /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.cache/ip [current_project]
+set_property ip_output_repo /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog_asm.coe
 read_mem /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog_asm.mem
-read_verilog -library xil_defaultlib /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/hdl/RV32UI_wrapper.v
-add_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/RV32UI.bd
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_proc_sys_reset_0_0/RV32UI_proc_sys_reset_0_0_board.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_proc_sys_reset_0_0/RV32UI_proc_sys_reset_0_0.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_vio_0_0/RV32UI_vio_0_0.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_zynq_ultra_ps_e_0_0/RV32UI_zynq_ultra_ps_e_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_zynq_ultra_ps_e_0_0/RV32UI_zynq_ultra_ps_e_0_0.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/sources_1/bd/RV32UI/RV32UI_ooc.xdc]
+read_verilog -library xil_defaultlib /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/hdl/RV32UI_wrapper.v
+add_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/RV32UI.bd
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_proc_sys_reset_0_0/RV32UI_proc_sys_reset_0_0_board.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_proc_sys_reset_0_0/RV32UI_proc_sys_reset_0_0.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_vio_0_0/RV32UI_vio_0_0.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_zynq_ultra_ps_e_0_0/RV32UI_zynq_ultra_ps_e_0_0_ooc.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/ip/RV32UI_zynq_ultra_ps_e_0_0/RV32UI_zynq_ultra_ps_e_0_0.xdc]
+set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/sources_1/bd/RV32UI/RV32UI_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -108,8 +107,8 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/constrs_1/new/src.xdc
-set_property used_in_implementation false [get_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.srcs/constrs_1/new/src.xdc]
+read_xdc /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/constrs_1/new/src.xdc
+set_property used_in_implementation false [get_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.srcs/constrs_1/new/src.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]

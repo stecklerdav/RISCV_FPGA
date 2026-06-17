@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_COCOTB/RISCV.runs/impl_1'
+HD_PWD='/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RISCV.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -37,7 +37,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .write_bitstream.begin.rst
+/bin/touch .init_design.begin.rst
 EAStep vivado -log RV32UI_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source RV32UI_wrapper.tcl -notrace
 
 
