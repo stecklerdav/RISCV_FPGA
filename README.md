@@ -2,6 +2,10 @@
 
 Custom RISC-V RV32I System-on-Chip written in Verilog.
 
+<p align="center">
+  <img src="images/Diagrama.png" width="1000">
+</p>
+
 Features:
 
 - RV32I 5-stage pipeline CPU
