@@ -31,3 +31,17 @@ Verification status:
 Target FPGA:
 
 - Xilinx Zynq-7000
+
+<p align="center">
+<a href="RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32UI/RV32UI.pdf">
+📄 Open RV32UI Architecture PDF
+</a>
+</p>
+
+
+<p align="center">
+<a href="RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_RV32MI/RV32MI.pdf">
+📄 Open RV32UI Architecture PDF
+</a>
+</p>
+
