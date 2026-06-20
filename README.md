@@ -3,7 +3,7 @@
 Custom RISC-V RV32I System-on-Chip written in Verilog.
 
 <p align="center">
-  <img src="images/Diagrama.png" width="1000">
+  <img src="Diagrama.png" width="1000">
 </p>
 
 Features:
