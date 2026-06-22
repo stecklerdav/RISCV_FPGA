@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "uart,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "RISCV_COCOTB_uart_0_0,uart,{}" *)
-(* CORE_GENERATION_INFO = "RISCV_COCOTB_uart_0_0,uart,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CLK_FREQ=100000000,BAUD=115200}" *)
+(* CORE_GENERATION_INFO = "RISCV_COCOTB_uart_0_0,uart,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=uart,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,CLK_FREQ=190474289,BAUD=921000,FIFO_DEPTH=64}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module RISCV_COCOTB_uart_0_0 (
@@ -94,8 +94,9 @@ output wire rx_busy;
 output wire rx_ready;
 
   uart #(
-    .CLK_FREQ(100000000),
-    .BAUD(115200)
+    .CLK_FREQ(190474289),
+    .BAUD(921000),
+    .FIFO_DEPTH(64)
   ) inst (
     .clk(clk),
     .rst(rst),

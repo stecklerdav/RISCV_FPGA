@@ -1,13 +1,13 @@
 	.file	"syscalls.c"
 	.option nopic
-	.attribute arch, "rv32i2p1"
+	.attribute arch, "rv32i2p1_zicsr2p0"
 	.attribute unaligned_access, 0
 	.attribute stack_align, 16
 # GNU C23 (xPack GNU RISC-V Embedded GCC x86_64) version 15.2.0 (riscv-none-elf)
 #	compiled by GNU C version 15.2.0, GMP version 6.3.0, MPFR version 4.2.2, MPC version 1.3.1, isl version isl-0.27-GMP
 
 # GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-# options passed: -mabi=ilp32 -misa-spec=20191213 -march=rv32i -Os -ffreestanding -fno-pic -fno-asynchronous-unwind-tables -fno-unwind-tables -ffunction-sections -fdata-sections
+# options passed: -mabi=ilp32 -misa-spec=20191213 -march=rv32i_zicsr -Os -ffreestanding -fno-pic -fno-asynchronous-unwind-tables -fno-unwind-tables -ffunction-sections -fdata-sections
 	.text
 	.section	.text._sbrk,"ax",@progbits
 	.align	2

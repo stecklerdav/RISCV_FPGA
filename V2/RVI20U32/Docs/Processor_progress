@@ -1,4 +1,34 @@
 
+
+
+
+
+
+primero que todo probar antes quetodo que el programa acrual escriba por consola uart cuando escribo con teclado guardar en un commit luego continuar
+
+
+
+
+
+
+
+
+
+
+
+
+
+proximo crear el bootloader para crgarlo o precargarlo en la rom y definir los limites de rom ram en el programa riscv e zynq 
+
+20/03/2026
+
+* UART1 921000 Baudios Zynq <-> Uart Riscv and UART0 115200 Baudios Zynq <-> PC   
+* Programas en C para test Uart, RAM.
+* Ram dual port para proxiammente cargar desde el zybq el firmware a la ram con un bootloader en la rom
+* bootloader en la RAM +  convertidor uart -> port ram
+* Tengo dos salidas tx una de el conversor uart ram para el bootloader y la otra es del modulo comun uart del mmio estan unidas a un mux el cual selecciona una u otra estan conectadas al UART1 del Zynq 
+
+
 ---------------------------------------------------------------------------------------
 
 17/06/2026

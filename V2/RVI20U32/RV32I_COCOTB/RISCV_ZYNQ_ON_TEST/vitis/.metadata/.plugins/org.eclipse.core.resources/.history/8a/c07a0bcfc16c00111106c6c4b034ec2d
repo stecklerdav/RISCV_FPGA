@@ -1,0 +1,42 @@
+#include "xuartps.h"
+#include "xparameters.h"
+
+XUartPs uart_pc;
+XUartPs uart_riscv;
+
+int main()
+{
+    XUartPs_Config *cfg;
+
+    cfg = XUartPs_LookupConfig(XPAR_XUARTPS_0_DEVICE_ID);
+    XUartPs_CfgInitialize(&uart_pc, cfg, cfg->BaseAddress);
+
+    cfg = XUartPs_LookupConfig(XPAR_XUARTPS_1_DEVICE_ID);
+    XUartPs_CfgInitialize(&uart_riscv, cfg, cfg->BaseAddress);
+
+    XUartPs_SetBaudRate(&uart_pc, 115200);
+    XUartPs_SetBaudRate(&uart_riscv, 115200);
+
+    while(1)
+    {
+        u8 c;
+
+        if (XUartPs_IsReceiveData(uart_pc.Config.BaseAddress))
+        {
+            c = XUartPs_ReadReg(
+                    uart_pc.Config.BaseAddress,
+                    XUARTPS_FIFO_OFFSET);
+
+            XUartPs_Send(&uart_riscv, &c, 1);
+        }
+
+        if (XUartPs_IsReceiveData(uart_riscv.Config.BaseAddress))
+        {
+            c = XUartPs_ReadReg(
+                    uart_riscv.Config.BaseAddress,
+                    XUARTPS_FIFO_OFFSET);
+
+            XUartPs_Send(&uart_pc, &c, 1);
+        }
+    }
+}

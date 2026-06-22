@@ -1,0 +1,65 @@
+#include "xuartps.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "sleep.h"
+
+static XUartPs uart_pc;
+static XUartPs uart_riscv;
+
+static int init_uart(XUartPs *uart, u16 dev_id)
+{
+    XUartPs_Config *cfg = XUartPs_LookupConfig(dev_id);
+    if (!cfg) return -1;
+
+    int status = XUartPs_CfgInitialize(uart, cfg, cfg->BaseAddress);
+    if (status != XST_SUCCESS) return -1;
+
+    XUartPs_SetBaudRate(uart, 115200);
+    return 0;
+}
+
+int main(void)
+{
+    u8 c;
+
+    init_uart(&uart_pc,    XPAR_XUARTPS_0_DEVICE_ID); // PC terminal
+    init_uart(&uart_riscv, XPAR_XUARTPS_1_DEVICE_ID); // EMIO hacia RISC-V
+
+    xil_printf("\r\nA53 UART BRIDGE READY\r\n");
+    xil_printf("Type a key. It will be sent to RISC-V UART1.\r\n");
+    xil_printf("If RISC-V echo works, you will see: RX FROM RISCV = <char>\r\n\r\n");
+
+    while (1)
+    {
+        if (XUartPs_IsReceiveData(uart_pc.Config.BaseAddress))
+        {
+            c = XUartPs_ReadReg(uart_pc.Config.BaseAddress, XUARTPS_FIFO_OFFSET);
+
+            xil_printf("PC -> RISCV: %c\r\n", c);
+
+            XUartPs_Send(&uart_riscv, &c, 1);
+
+            /*
+             * Espera corta por respuesta del RISC-V.
+             * Si el RISC-V tiene el firmware echo, debería devolver el mismo byte.
+             */
+            int timeout = 10000000;
+            while (!XUartPs_IsReceiveData(uart_riscv.Config.BaseAddress) && timeout > 0)
+            {
+                timeout--;
+            }
+
+            if (timeout > 0)
+            {
+                u8 r = XUartPs_ReadReg(uart_riscv.Config.BaseAddress, XUARTPS_FIFO_OFFSET);
+                xil_printf("RX FROM RISCV: %c  HEX: 0x%02X\r\n", r, r);
+            }
+            else
+            {
+                xil_printf("TIMEOUT: no response from RISC-V\r\n");
+            }
+        }
+    }
+
+    return 0;
+}

@@ -2,14 +2,15 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:35 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Wed Jun 17 02:16:55 2026
-# Process ID: 22819
+# Start of session at: Mon Jun 22 00:00:50 2026
+# Process ID: 31276
 # Current directory: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1
 # Command line: vivado -log RISCV_COCOTB.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RISCV_COCOTB.tcl
 # Log file: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1/RISCV_COCOTB.vds
 # Journal file: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1/vivado.jou
 #-----------------------------------------------------------
 source RISCV_COCOTB.tcl -notrace
+create_project: Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2151.875 ; gain = 2.016 ; free physical = 3274 ; free virtual = 21329
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/data/ip'.
@@ -159,7 +160,7 @@ INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIAT
 WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'interface_aximm'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'zynq'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
 INFO: [IP_Flow 19-5107] Inferred bus interface 'rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
 INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
 INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rst'.
@@ -192,8 +193,24 @@ INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIAT
 WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'zynq'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
+INFO: [IP_Flow 19-5107] Inferred bus interface 'rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIATED_RESET' with value 'rst'.
+WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-5107] Inferred bus interface 'loader_cpu_reset' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
 WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'write_txdata' has a dependency on the module local parameter or undefined parameter 'UART_TXDATA'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'rx_wr_ptr' has a dependency on the module local parameter or undefined parameter 'FIFO_AW'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'rx_rd_ptr' has a dependency on the module local parameter or undefined parameter 'FIFO_AW'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'rx_count' has a dependency on the module local parameter or undefined parameter 'FIFO_AW'.
 WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'read_rxdata' has a dependency on the module local parameter or undefined parameter 'UART_RXDATA'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'read_status' has a dependency on the module local parameter or undefined parameter 'UART_STATUS'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'rx_stop_sample' has a dependency on the module local parameter or undefined parameter 'CLKS_PER_BIT'.
+WARNING: [IP_Flow 19-587] [HDL Parser] HDL port or parameter 'rx_stop_sample' has a dependency on the module local parameter or undefined parameter 'RX_STOP'.
 INFO: [IP_Flow 19-5151] The Range '31:0' is present in all ports of the interface 'interface_aximm'. It is assumed that this is meant to declare an array of interface. If this is not the desired behaviour, switch of this feature by disabling the parameter 'ips.enableInterfaceArrayInference'.
 INFO: [IP_Flow 19-5107] Inferred bus interface 'rst' of definition 'xilinx.com:signal:reset:1.0' (from Xilinx Repository).
 INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository).
@@ -201,7 +218,7 @@ INFO: [IP_Flow 19-4728] Bus Interface 'clk': Added interface parameter 'ASSOCIAT
 WARNING: [IP_Flow 19-5661] Bus Interface 'clk' does not have any bus interfaces associated with it.
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-add_files: Time (s): cpu = 00:01:30 ; elapsed = 00:00:37 . Memory (MB): peak = 2648.125 ; gain = 496.250 ; free physical = 3160 ; free virtual = 24433
+add_files: Time (s): cpu = 00:01:21 ; elapsed = 00:00:39 . Memory (MB): peak = 2608.098 ; gain = 456.223 ; free physical = 3227 ; free virtual = 21304
 Command: synth_design -top RISCV_COCOTB -part xczu5ev-sfvc784-2-i -mode out_of_context
 Starting synth_design
 WARNING: [Vivado_Tcl 4-393] The 'Synthesis' target of the following IPs are stale, please generate the output products using the generate_target or synth_ip command before running synth_design.
@@ -215,13 +232,13 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu5ev
 INFO: [Device 21-403] Loading part xczu5ev-sfvc784-2-i
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 23601
+INFO: [Synth 8-7075] Helper process launched with PID 32206
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2648.125 ; gain = 0.000 ; free physical = 2242 ; free virtual = 23512
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 2643.195 ; gain = 9.902 ; free physical = 2248 ; free virtual = 20320
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1110]
 INFO: [Synth 8-6157] synthesizing module 'Core_RV32I_imp_BFBAKD' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:12]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_EX_imp_J96COH' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1449]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_EX_imp_J96COH' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1473]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_alu_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_alu_0_0/synth/RISCV_COCOTB_alu_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'alu' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/alu.v:3]
 	Parameter ALU_ADD bound to: 4'b0000 
@@ -249,12 +266,12 @@ INFO: [Synth 8-6157] synthesizing module 'branch' [/media/steckler/xilinx_linux/
 	Parameter EXC_INSTR_ADDR_MISALIGNED bound to: 4'b0000 
 INFO: [Synth 8-6155] done synthesizing module 'branch' (3#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/branch.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_branch_0_0' (4#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_branch_0_0/synth/RISCV_COCOTB_branch_0_0.v:58]
-WARNING: [Synth 8-7071] port 'branch_taken' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1744]
-WARNING: [Synth 8-7071] port 'instr_addr_misaligned' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1744]
-WARNING: [Synth 8-7071] port 'instr_addr_misaligned_target' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1744]
-WARNING: [Synth 8-7071] port 'ex_control_flow_change' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1744]
-WARNING: [Synth 8-7071] port 'ex_mispredict' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1744]
-WARNING: [Synth 8-7023] instance 'branch_0' of module 'RISCV_COCOTB_branch_0_0' has 26 connections declared, but only 21 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1744]
+WARNING: [Synth 8-7071] port 'branch_taken' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1768]
+WARNING: [Synth 8-7071] port 'instr_addr_misaligned' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1768]
+WARNING: [Synth 8-7071] port 'instr_addr_misaligned_target' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1768]
+WARNING: [Synth 8-7071] port 'ex_control_flow_change' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1768]
+WARNING: [Synth 8-7071] port 'ex_mispredict' of module 'RISCV_COCOTB_branch_0_0' is unconnected for instance 'branch_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1768]
+WARNING: [Synth 8-7023] instance 'branch_0' of module 'RISCV_COCOTB_branch_0_0' has 26 connections declared, but only 21 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1768]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_constant_zero_0_2' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_2/synth/RISCV_COCOTB_constant_zero_0_2.v:58]
 INFO: [Synth 8-6157] synthesizing module 'constant_zero' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/constant_zero.v:3]
 	Parameter WIDTH bound to: 1 - type: integer 
@@ -299,10 +316,10 @@ INFO: [Synth 8-6155] done synthesizing module 'util_vector_and' (19#1) [/media/s
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_and_0_2' (20#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_2/synth/RISCV_COCOTB_util_vector_and_0_2.v:58]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_util_vector_and_0_3' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_3/synth/RISCV_COCOTB_util_vector_and_0_3.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_and_0_3' (21#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_3/synth/RISCV_COCOTB_util_vector_and_0_3.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_EX_imp_J96COH' (22#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1449]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_EX_imp_J96COH' (22#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1473]
 WARNING: [Synth 8-7071] port 'ex_actual_next_pc' of module 'RV32I_EX_imp_J96COH' is unconnected for instance 'RV32I_EX' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:279]
 WARNING: [Synth 8-7023] instance 'RV32I_EX' of module 'RV32I_EX_imp_J96COH' has 69 connections declared, but only 68 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:279]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_ID_imp_I31ZGD' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1869]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_ID_imp_I31ZGD' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1893]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_control_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_control_0_0/synth/RISCV_COCOTB_control_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'control' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/control.v:3]
 	Parameter IMM_I bound to: 3'b000 
@@ -381,12 +398,12 @@ WARNING: [Synth 8-639] system function call 'time' not supported [/media/steckle
 INFO: [Synth 8-251] [A4_WRITE] time=1'b0 a4 <= 0xxxxxxxxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/regfile.v:61]
 INFO: [Synth 8-6155] done synthesizing module 'regfile' (31#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/regfile.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_regfile_0_0' (32#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_regfile_0_0/synth/RISCV_COCOTB_regfile_0_0.v:58]
-WARNING: [Synth 8-7071] port 'debug_x3' of module 'RISCV_COCOTB_regfile_0_0' is unconnected for instance 'regfile_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2172]
-WARNING: [Synth 8-7071] port 'debug_x4' of module 'RISCV_COCOTB_regfile_0_0' is unconnected for instance 'regfile_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2172]
-WARNING: [Synth 8-7071] port 'debug_x5' of module 'RISCV_COCOTB_regfile_0_0' is unconnected for instance 'regfile_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2172]
-WARNING: [Synth 8-7023] instance 'regfile_0' of module 'RISCV_COCOTB_regfile_0_0' has 11 connections declared, but only 8 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2172]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_ID_imp_I31ZGD' (33#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1869]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_IF_imp_9A1V5I' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2183]
+WARNING: [Synth 8-7071] port 'debug_x3' of module 'RISCV_COCOTB_regfile_0_0' is unconnected for instance 'regfile_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2196]
+WARNING: [Synth 8-7071] port 'debug_x4' of module 'RISCV_COCOTB_regfile_0_0' is unconnected for instance 'regfile_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2196]
+WARNING: [Synth 8-7071] port 'debug_x5' of module 'RISCV_COCOTB_regfile_0_0' is unconnected for instance 'regfile_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2196]
+WARNING: [Synth 8-7023] instance 'regfile_0' of module 'RISCV_COCOTB_regfile_0_0' has 11 connections declared, but only 8 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2196]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_ID_imp_I31ZGD' (33#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1893]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_IF_imp_9A1V5I' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2207]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_branch_predictor_btb_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_branch_predictor_btb_0_0/synth/RISCV_COCOTB_branch_predictor_btb_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'branch_predictor_btb_bht' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/branch_predictor_btb_bht.v:3]
 	Parameter ENTRY_BITS bound to: 6 - type: integer 
@@ -394,9 +411,9 @@ INFO: [Synth 8-6157] synthesizing module 'branch_predictor_btb_bht' [/media/stec
 	Parameter TAG_BITS bound to: 24 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'branch_predictor_btb_bht' (34#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/branch_predictor_btb_bht.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_branch_predictor_btb_0_0' (35#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_branch_predictor_btb_0_0/synth/RISCV_COCOTB_branch_predictor_btb_0_0.v:58]
-WARNING: [Synth 8-7071] port 'pred_target' of module 'RISCV_COCOTB_branch_predictor_btb_0_0' is unconnected for instance 'branch_predictor_btb_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2282]
-WARNING: [Synth 8-7071] port 'pred_next_pc' of module 'RISCV_COCOTB_branch_predictor_btb_0_0' is unconnected for instance 'branch_predictor_btb_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2282]
-WARNING: [Synth 8-7023] instance 'branch_predictor_btb_0' of module 'RISCV_COCOTB_branch_predictor_btb_0_0' has 12 connections declared, but only 10 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2282]
+WARNING: [Synth 8-7071] port 'pred_target' of module 'RISCV_COCOTB_branch_predictor_btb_0_0' is unconnected for instance 'branch_predictor_btb_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2306]
+WARNING: [Synth 8-7071] port 'pred_next_pc' of module 'RISCV_COCOTB_branch_predictor_btb_0_0' is unconnected for instance 'branch_predictor_btb_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2306]
+WARNING: [Synth 8-7023] instance 'branch_predictor_btb_0' of module 'RISCV_COCOTB_branch_predictor_btb_0_0' has 12 connections declared, but only 10 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2306]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_constant_one_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_one_0_0/synth/RISCV_COCOTB_constant_one_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'constant_one' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/constant_one.v:3]
 	Parameter WIDTH bound to: 1 - type: integer 
@@ -417,27 +434,27 @@ INFO: [Synth 8-6157] synthesizing module 'pc_unit' [/media/steckler/xilinx_linux
 	Parameter RESET_PC bound to: -2147483648 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'pc_unit' (42#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/pc_unit.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_pc_unit_0_0' (43#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_pc_unit_0_0/synth/RISCV_COCOTB_pc_unit_0_0.v:58]
-WARNING: [Synth 8-7071] port 'pc_debug_last_priv_redirect' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
-WARNING: [Synth 8-7071] port 'pc_debug_priv_redirect_pulse' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
-WARNING: [Synth 8-7071] port 'pc_debug_last_redirect' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
-WARNING: [Synth 8-7071] port 'pc_debug_redirect_pulse' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
-WARNING: [Synth 8-7071] port 'pc_debug_last_predict' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
-WARNING: [Synth 8-7071] port 'pc_debug_predict_pulse' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
-WARNING: [Synth 8-7023] instance 'pc_unit_0' of module 'RISCV_COCOTB_pc_unit_0_0' has 17 connections declared, but only 11 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2313]
+WARNING: [Synth 8-7071] port 'pc_debug_last_priv_redirect' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
+WARNING: [Synth 8-7071] port 'pc_debug_priv_redirect_pulse' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
+WARNING: [Synth 8-7071] port 'pc_debug_last_redirect' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
+WARNING: [Synth 8-7071] port 'pc_debug_redirect_pulse' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
+WARNING: [Synth 8-7071] port 'pc_debug_last_predict' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
+WARNING: [Synth 8-7071] port 'pc_debug_predict_pulse' of module 'RISCV_COCOTB_pc_unit_0_0' is unconnected for instance 'pc_unit_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
+WARNING: [Synth 8-7023] instance 'pc_unit_0' of module 'RISCV_COCOTB_pc_unit_0_0' has 17 connections declared, but only 11 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2337]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_rom_memory_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_rom_memory_0_0/synth/RISCV_COCOTB_rom_memory_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'rom_memory' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/rom_memory.v:3]
 	Parameter ADDR_WIDTH bound to: 11 - type: integer 
 	Parameter DATA_WIDTH bound to: 32 - type: integer 
-	Parameter INIT_FILE bound to: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/programs/prog_asm.mem - type: string 
+	Parameter INIT_FILE bound to: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog.mem - type: string 
 	Parameter DEPTH bound to: 2048 - type: integer 
-INFO: [Synth 8-3876] $readmem data file '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/programs/prog_asm.mem' is read successfully [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/rom_memory.v:20]
+INFO: [Synth 8-3876] $readmem data file '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog.mem' is read successfully [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/rom_memory.v:20]
 INFO: [Synth 8-6155] done synthesizing module 'rom_memory' (44#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/rom_memory.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_rom_memory_0_0' (45#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_rom_memory_0_0/synth/RISCV_COCOTB_rom_memory_0_0.v:58]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2330]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2354]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_util_vector_and_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_0/synth/RISCV_COCOTB_util_vector_and_0_0.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_and_0_0' (46#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_0/synth/RISCV_COCOTB_util_vector_and_0_0.v:58]
-WARNING: [Synth 8-7071] port 'Res' of module 'RISCV_COCOTB_util_vector_and_0_0' is unconnected for instance 'util_vector_and_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2330]
-WARNING: [Synth 8-7023] instance 'util_vector_and_0' of module 'RISCV_COCOTB_util_vector_and_0_0' has 3 connections declared, but only 2 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2330]
+WARNING: [Synth 8-7071] port 'Res' of module 'RISCV_COCOTB_util_vector_and_0_0' is unconnected for instance 'util_vector_and_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2354]
+WARNING: [Synth 8-7023] instance 'util_vector_and_0' of module 'RISCV_COCOTB_util_vector_and_0_0' has 3 connections declared, but only 2 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2354]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_util_vector_and_0_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_1/synth/RISCV_COCOTB_util_vector_and_0_1.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_and_0_1' (47#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_and_0_1/synth/RISCV_COCOTB_util_vector_and_0_1.v:58]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_util_vector_not_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_not_0_0/synth/RISCV_COCOTB_util_vector_not_0_0.v:58]
@@ -454,8 +471,8 @@ INFO: [Synth 8-6155] done synthesizing module 'util_vector_or' (51#1) [/media/st
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_or_0_0' (52#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_or_0_0/synth/RISCV_COCOTB_util_vector_or_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_util_vector_or_0_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_or_0_1/synth/RISCV_COCOTB_util_vector_or_0_1.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_or_0_1' (53#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_or_0_1/synth/RISCV_COCOTB_util_vector_or_0_1.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_IF_imp_9A1V5I' (54#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2183]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_MEM_imp_1HCZWI8' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2353]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_IF_imp_9A1V5I' (54#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2207]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_MEM_imp_1HCZWI8' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2377]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_constant_zero_0_1' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_1/synth/RISCV_COCOTB_constant_zero_0_1.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_constant_zero_0_1' (55#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_constant_zero_0_1/synth/RISCV_COCOTB_constant_zero_0_1.v:58]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_mem_stage_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_mem_stage_0_0/synth/RISCV_COCOTB_mem_stage_0_0.v:58]
@@ -471,11 +488,11 @@ WARNING: [Synth 8-639] system function call 'time' not supported [/media/steckle
 INFO: [Synth 8-251] [LB_DEBUG] time=1'b0 addr=0xxxxxxxxx word=0xxxxxxxxx offs=x unsigned=x byte=0xxx result=0xxxxxxxxx rd=xx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_stage.v:301]
 INFO: [Synth 8-6155] done synthesizing module 'mem_stage' (56#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_stage.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_mem_stage_0_0' (57#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_mem_stage_0_0/synth/RISCV_COCOTB_mem_stage_0_0.v:58]
-WARNING: [Synth 8-7071] port 'load_access_fault' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2553]
-WARNING: [Synth 8-7071] port 'store_access_fault' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2553]
-WARNING: [Synth 8-7071] port 'mem_out_mem_size' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2553]
-WARNING: [Synth 8-7071] port 'mem_out_mem_unsigned' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2553]
-WARNING: [Synth 8-7023] instance 'mem_stage_0' of module 'RISCV_COCOTB_mem_stage_0_0' has 43 connections declared, but only 39 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2553]
+WARNING: [Synth 8-7071] port 'load_access_fault' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2577]
+WARNING: [Synth 8-7071] port 'store_access_fault' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2577]
+WARNING: [Synth 8-7071] port 'mem_out_mem_size' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2577]
+WARNING: [Synth 8-7071] port 'mem_out_mem_unsigned' of module 'RISCV_COCOTB_mem_stage_0_0' is unconnected for instance 'mem_stage_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2577]
+WARNING: [Synth 8-7023] instance 'mem_stage_0' of module 'RISCV_COCOTB_mem_stage_0_0' has 43 connections declared, but only 39 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2577]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_mem_wb_reg_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_mem_wb_reg_0_0/synth/RISCV_COCOTB_mem_wb_reg_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'mem_wb_reg' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_wb_reg.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'mem_wb_reg' (58#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_wb_reg.v:3]
@@ -484,13 +501,13 @@ INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_regfile_we_gen_0_0' [/med
 INFO: [Synth 8-6157] synthesizing module 'regfile_we_gen' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/regfile_we_gen.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'regfile_we_gen' (60#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/regfile_we_gen.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_regfile_we_gen_0_0' (61#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_regfile_we_gen_0_0/synth/RISCV_COCOTB_regfile_we_gen_0_0.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_MEM_imp_1HCZWI8' (62#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2353]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_MEM_imp_1HCZWI8' (62#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2377]
 WARNING: [Synth 8-7071] port 'dmem_re' of module 'RV32I_MEM_imp_1HCZWI8' is unconnected for instance 'RV32I_MEM' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:413]
 WARNING: [Synth 8-7071] port 'load_access_fault' of module 'RV32I_MEM_imp_1HCZWI8' is unconnected for instance 'RV32I_MEM' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:413]
 WARNING: [Synth 8-7071] port 'store_access_fault' of module 'RV32I_MEM_imp_1HCZWI8' is unconnected for instance 'RV32I_MEM' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:413]
 WARNING: [Synth 8-7071] port 'wb_valid' of module 'RV32I_MEM_imp_1HCZWI8' is unconnected for instance 'RV32I_MEM' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:413]
 WARNING: [Synth 8-7023] instance 'RV32I_MEM' of module 'RV32I_MEM_imp_1HCZWI8' has 48 connections declared, but only 44 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:413]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_WB_imp_LBXQBW' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2678]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_WB_imp_LBXQBW' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2737]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_wb_mux_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_wb_mux_0_0/synth/RISCV_COCOTB_wb_mux_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'wb_mux' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/wb_mux.v:3]
 	Parameter WB_ALU bound to: 3'b000 
@@ -499,7 +516,7 @@ INFO: [Synth 8-6157] synthesizing module 'wb_mux' [/media/steckler/xilinx_linux/
 	Parameter WB_IMM bound to: 3'b011 
 INFO: [Synth 8-6155] done synthesizing module 'wb_mux' (63#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/wb_mux.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_wb_mux_0_0' (64#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_wb_mux_0_0/synth/RISCV_COCOTB_wb_mux_0_0.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_WB_imp_LBXQBW' (65#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2678]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_WB_imp_LBXQBW' (65#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2737]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_load_use_detection_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_load_use_detection_0_0/synth/RISCV_COCOTB_load_use_detection_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'load_use_detection' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/load_use_detection.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'load_use_detection' (66#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/load_use_detection.v:3]
@@ -520,8 +537,8 @@ INFO: [Synth 8-6155] done synthesizing module 'GPIO_imp_QQRY0N' (73#1) [/media/s
 INFO: [Synth 8-6157] synthesizing module 'MMIO_imp_CEWL94' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:555]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_mem_bus_registered_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_mem_bus_registered_0_0/synth/RISCV_COCOTB_mem_bus_registered_0_0.v:58]
 INFO: [Synth 8-6157] synthesizing module 'mem_bus_registered' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/mem_bus_registered.v:1]
-	Parameter RAM_BASE bound to: -2147479552 - type: integer 
-	Parameter RAM_SIZE bound to: 8192 - type: integer 
+	Parameter RAM_BASE bound to: -2147475456 - type: integer 
+	Parameter RAM_SIZE bound to: 4096 - type: integer 
 	Parameter GPIO_BASE bound to: -2147471360 - type: integer 
 	Parameter GPIO_SIZE bound to: 16 - type: integer 
 	Parameter UART_BASE bound to: -2147471344 - type: integer 
@@ -599,19 +616,20 @@ INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_and_0_4'
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_util_vector_not_0_2' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_not_0_2/synth/RISCV_COCOTB_util_vector_not_0_2.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_util_vector_not_0_2' (96#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_util_vector_not_0_2/synth/RISCV_COCOTB_util_vector_not_0_2.v:58]
 INFO: [Synth 8-6155] done synthesizing module 'PRIVILEGED_imp_UN02VO' (97#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:761]
-INFO: [Synth 8-6157] synthesizing module 'RV32I_RAM_MEMORY_imp_1PB3UDL' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2627]
+INFO: [Synth 8-6157] synthesizing module 'RV32I_RAM_MEMORY_imp_1PB3UDL' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2651]
 INFO: [Synth 8-6157] synthesizing module 'RISCV_COCOTB_ram_data_1_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_ram_data_1_0/synth/RISCV_COCOTB_ram_data_1_0.v:58]
 INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 	Parameter ADDR_WIDTH bound to: 10 - type: integer 
 	Parameter WORDS bound to: 1024 - type: integer 
 	Parameter RAM_BASE bound to: -2147479552 - type: integer 
-INFO: [Synth 8-251] [RAM_INIT] RAM cleared to zero [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:42]
-INFO: [Synth 8-251] [RAM_ACCESS] addr=xxxxxxxx wa=xxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:53]
-INFO: [Synth 8-251] [RAM_WRITE] addr=xxxxxxxx wa=xxx wdata=xxxxxxxx be=4'bxxxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:61]
-INFO: [Synth 8-251] [TOHOST_WRITE] data=xxxxxxxx be=4'bxxxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:65]
+INFO: [Synth 8-251] [RAM_INIT] RAM cleared to zero [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:71]
+INFO: [Synth 8-251] [RAM_ACCESS] addr=xxxxxxxx wa=xxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:80]
+INFO: [Synth 8-251] [RAM_WRITE] addr=xxxxxxxx wa=xxx wdata=xxxxxxxx be=4'bxxxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:86]
+INFO: [Synth 8-251] [TOHOST_WRITE] data=xxxxxxxx be=4'bxxxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:90]
+INFO: [Synth 8-251] [ZYNQ_RAM_WRITE] addr=xxxxxxxx wa=xxx wdata=xxxxxxxx be=4'bxxxx [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:97]
 INFO: [Synth 8-6155] done synthesizing module 'ram_data' (98#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/ram_data.v:3]
 INFO: [Synth 8-6155] done synthesizing module 'RISCV_COCOTB_ram_data_1_0' (99#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_ram_data_1_0/synth/RISCV_COCOTB_ram_data_1_0.v:58]
-INFO: [Synth 8-6155] done synthesizing module 'RV32I_RAM_MEMORY_imp_1PB3UDL' (100#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2627]
+INFO: [Synth 8-6155] done synthesizing module 'RV32I_RAM_MEMORY_imp_1PB3UDL' (100#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2651]
 INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 	Parameter RESET_CMP bound to: 190410 - type: integer 
 	Parameter ADDR_VALUE bound to: 4'b0000 
@@ -619,22 +637,25 @@ INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instan
 	Parameter ADDR_CTRL bound to: 4'b1000 
 	Parameter ADDR_STATUS bound to: 4'b1100 
 INFO: [Synth 8-155] case statement is not full and has no default [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/timer.v:93]
-	Parameter CLK_FREQ bound to: 100000000 - type: integer 
-	Parameter BAUD bound to: 115200 - type: integer 
-	Parameter CLKS_PER_BIT bound to: 868 - type: integer 
-	Parameter HALF_BIT_CLKS bound to: 434 - type: integer 
+	Parameter CLK_FREQ bound to: 190474289 - type: integer 
+	Parameter BAUD bound to: 921000 - type: integer 
+	Parameter FIFO_DEPTH bound to: 64 - type: integer 
+	Parameter CLKS_PER_BIT bound to: 206 - type: integer 
+	Parameter HALF_BIT_CLKS bound to: 103 - type: integer 
 	Parameter UART_TXDATA bound to: 4'b0000 
 	Parameter UART_STATUS bound to: 4'b0100 
 	Parameter UART_RXDATA bound to: 4'b1000 
+	Parameter FIFO_AW bound to: 6 - type: integer 
 	Parameter RX_IDLE bound to: 2'b00 
 	Parameter RX_START bound to: 2'b01 
 	Parameter RX_DATA bound to: 2'b10 
 	Parameter RX_STOP bound to: 2'b11 
-WARNING: [Synth 8-7071] port 'tx_busy' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2822]
-WARNING: [Synth 8-7071] port 'tx_ready' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2822]
-WARNING: [Synth 8-7071] port 'rx_busy' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2822]
-WARNING: [Synth 8-7071] port 'rx_ready' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2822]
-WARNING: [Synth 8-7023] instance 'uart_0' of module 'RISCV_COCOTB_uart_0_0' has 15 connections declared, but only 11 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2822]
+INFO: [Synth 8-226] default block is never used [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/uart.v:222]
+WARNING: [Synth 8-7071] port 'tx_busy' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2881]
+WARNING: [Synth 8-7071] port 'tx_ready' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2881]
+WARNING: [Synth 8-7071] port 'rx_busy' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2881]
+WARNING: [Synth 8-7071] port 'rx_ready' of module 'RISCV_COCOTB_uart_0_0' is unconnected for instance 'uart_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2881]
+WARNING: [Synth 8-7023] instance 'uart_0' of module 'RISCV_COCOTB_uart_0_0' has 15 connections declared, but only 11 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:2881]
 INFO: [Synth 8-638] synthesizing module 'RISCV_COCOTB_proc_sys_reset_0_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/synth/RISCV_COCOTB_proc_sys_reset_0_0.vhd:74]
 	Parameter C_FAMILY bound to: zynquplus - type: string 
 	Parameter C_EXT_RST_WIDTH bound to: 4 - type: integer 
@@ -716,13 +737,37 @@ INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (110#1) [/media/steckler/
 INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (111#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
 INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (112#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ipshared/8842/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
 INFO: [Synth 8-256] done synthesizing module 'RISCV_COCOTB_proc_sys_reset_0_0' (113#1) [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/synth/RISCV_COCOTB_proc_sys_reset_0_0.vhd:74]
-WARNING: [Synth 8-7071] port 'mb_reset' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1392]
-WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1392]
-WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1392]
-WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1392]
-WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'RISCV_COCOTB_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1392]
-	Parameter C_OPERATION bound to: or - type: string 
-	Parameter C_SIZE bound to: 1 - type: integer 
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1406]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1406]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1406]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'RISCV_COCOTB_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1406]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'RISCV_COCOTB_proc_sys_reset_0_0' has 10 connections declared, but only 6 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1406]
+	Parameter CLK_FREQ bound to: 190474289 - type: integer 
+	Parameter BAUD bound to: 921000 - type: integer 
+	Parameter CLKS_PER_BIT bound to: 206 - type: integer 
+	Parameter HALF_BIT_CLKS bound to: 103 - type: integer 
+	Parameter CMD_WRITE bound to: 8'b01010111 
+	Parameter CMD_GO bound to: 8'b01000111 
+	Parameter CMD_RESET bound to: 8'b01011000 
+	Parameter CMD_PING bound to: 8'b01010000 
+	Parameter ACK bound to: 8'b00000110 
+	Parameter RX_IDLE bound to: 2'b00 
+	Parameter RX_START bound to: 2'b01 
+	Parameter RX_DATA bound to: 2'b10 
+	Parameter RX_STOP bound to: 2'b11 
+	Parameter S_CMD bound to: 4'b0000 
+	Parameter S_A3 bound to: 4'b0001 
+	Parameter S_A2 bound to: 4'b0010 
+	Parameter S_A1 bound to: 4'b0011 
+	Parameter S_A0 bound to: 4'b0100 
+	Parameter S_D3 bound to: 4'b0101 
+	Parameter S_D2 bound to: 4'b0110 
+	Parameter S_D1 bound to: 4'b0111 
+	Parameter S_D0 bound to: 4'b1000 
+	Parameter S_WRITE bound to: 4'b1001 
+	Parameter S_WAIT bound to: 4'b1010 
+	Parameter S_ACK bound to: 4'b1011 
+INFO: [Synth 8-226] default block is never used [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/new/uart_ram_converter.v:93]
 	Parameter CONST_VAL bound to: 1 - type: integer 
 	Parameter CONST_WIDTH bound to: 1 - type: integer 
 	Parameter C_MAXIGP0_DATA_WIDTH bound to: 32 - type: integer 
@@ -830,25 +875,22 @@ WARNING: [Synth 8-7071] port 'emio_enet1_signal_detect' of module 'zynq_ultra_ps
 WARNING: [Synth 8-7071] port 'emio_enet2_signal_detect' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/synth/RISCV_COCOTB_zynq_ultra_ps_e_0_0.v:275]
 WARNING: [Synth 8-7071] port 'emio_enet3_signal_detect' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' is unconnected for instance 'inst' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/synth/RISCV_COCOTB_zynq_ultra_ps_e_0_0.v:275]
 WARNING: [Synth 8-7023] instance 'inst' of module 'zynq_ultra_ps_e_v3_3_2_zynq_ultra_ps_e' has 1491 connections declared, but only 1487 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/synth/RISCV_COCOTB_zynq_ultra_ps_e_0_0.v:275]
-WARNING: [Synth 8-7071] port 'maxigp0_awid' of module 'RISCV_COCOTB_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1426]
+WARNING: [Synth 8-7071] port 'maxigp0_awid' of module 'RISCV_COCOTB_zynq_ultra_ps_e_0_0' is unconnected for instance 'zynq_ultra_ps_e_0' [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1450]
 INFO: [Common 17-14] Message 'Synth 8-7071' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-WARNING: [Synth 8-7023] instance 'zynq_ultra_ps_e_0' of module 'RISCV_COCOTB_zynq_ultra_ps_e_0_0' has 56 connections declared, but only 20 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1426]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'vio_0'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1407]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'util_vector_logic_2'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1399]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'util_vector_logic_3'. This will prevent further optimization [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1403]
+WARNING: [Synth 8-7023] instance 'zynq_ultra_ps_e_0' of module 'RISCV_COCOTB_zynq_ultra_ps_e_0_0' has 56 connections declared, but only 20 given [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/synth/RISCV_COCOTB.v:1450]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2758.070 ; gain = 109.945 ; free physical = 2198 ; free virtual = 23469
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 2753.102 ; gain = 119.809 ; free physical = 2219 ; free virtual = 20294
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 2772.914 ; gain = 124.789 ; free physical = 2227 ; free virtual = 23498
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 2768.945 ; gain = 135.652 ; free physical = 2269 ; free virtual = 20344
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 2772.914 ; gain = 124.789 ; free physical = 2227 ; free virtual = 23498
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 2768.945 ; gain = 135.652 ; free physical = 2269 ; free virtual = 20344
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.27 ; elapsed = 00:00:00.27 . Memory (MB): peak = 2782.820 ; gain = 0.000 ; free physical = 2204 ; free virtual = 23476
+Netlist sorting complete. Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2778.852 ; gain = 0.000 ; free physical = 2251 ; free virtual = 20325
 INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -863,23 +905,21 @@ Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCO
 Finished Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_board.xdc] for cell 'proc_sys_reset_0/U0'
 Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xdc] for cell 'proc_sys_reset_0/U0'
 Finished Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xdc] for cell 'proc_sys_reset_0/U0'
-Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xdc] for cell 'vio_0'
-Finished Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xdc] for cell 'vio_0'
 Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1/dont_touch.xdc]
 Finished Parsing XDC File [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1/dont_touch.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1/dont_touch.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/RISCV_COCOTB_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/RISCV_COCOTB_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2911.617 ; gain = 0.000 ; free physical = 2114 ; free virtual = 23383
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2907.680 ; gain = 0.000 ; free physical = 2204 ; free virtual = 20272
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 13 instances were transformed.
   FDR => FDRE: 12 instances
   SRL16 => SRL16E: 1 instance 
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.17 . Memory (MB): peak = 2911.617 ; gain = 0.000 ; free physical = 2104 ; free virtual = 23373
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2907.680 ; gain = 0.000 ; free physical = 2203 ; free virtual = 20271
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 2911.617 ; gain = 263.492 ; free physical = 2189 ; free virtual = 23459
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 2907.680 ; gain = 274.387 ; free physical = 2277 ; free virtual = 20343
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -887,7 +927,7 @@ Start Loading Part and Timing Information
 Loading part: xczu5ev-sfvc784-2-i
 INFO: [Synth 8-6742] Reading net delay rules and data
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 2911.617 ; gain = 263.492 ; free physical = 2189 ; free virtual = 23459
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 2907.680 ; gain = 274.387 ; free physical = 2277 ; free virtual = 20343
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -951,14 +991,28 @@ Applied set_property DONT_TOUCH = true for PRIVILEGED/csr_use_detection_0. (cons
 Applied set_property DONT_TOUCH = true for Core_RV32I/RV32I_EX/constant_zero_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for zynq_ultra_ps_e_0. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for xlconstant_0. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for util_vector_logic_2. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for util_vector_logic_3. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for proc_sys_reset_0. (constraint file  auto generated constraint, line ).
-Applied set_property DONT_TOUCH = true for vio_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for uart_ram_converter_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for util_vector_or_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for uart_tx_mux_0. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:30 . Memory (MB): peak = 2911.617 ; gain = 263.492 ; free physical = 2179 ; free virtual = 23448
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:22 . Memory (MB): peak = 2907.680 ; gain = 274.387 ; free physical = 2277 ; free virtual = 20343
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'rx_state_reg' in module 'uart'
+INFO: [Synth 8-802] inferred FSM for state register 'rx_state_reg' in module 'uart_ram_converter'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_ram_converter'
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"ram_data:/mem0_reg"'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "ram_data:/mem0_reg"
+INFO: [Synth 8-3971] The signal "ram_data:/mem0_reg" was recognized as a true dual port RAM template.
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"ram_data:/mem1_reg"'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "ram_data:/mem1_reg"
+INFO: [Synth 8-3971] The signal "ram_data:/mem1_reg" was recognized as a true dual port RAM template.
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"ram_data:/mem2_reg"'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "ram_data:/mem2_reg"
+INFO: [Synth 8-3971] The signal "ram_data:/mem2_reg" was recognized as a true dual port RAM template.
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"ram_data:/mem3_reg"'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "ram_data:/mem3_reg"
+INFO: [Synth 8-3971] The signal "ram_data:/mem3_reg" was recognized as a true dual port RAM template.
+INFO: [Synth 8-6904] The RAM "uart:/rx_fifo_reg" of size (depth=64 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
 ---------------------------------------------------------------------------------------------------
@@ -967,74 +1021,102 @@ INFO: [Synth 8-802] inferred FSM for state register 'rx_state_reg' in module 'ua
                  RX_DATA |                               10 |                               10
                  RX_STOP |                               11 |                               11
 ---------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'rx_state_reg' using encoding 'sequential' in module 'uart'
+INFO: [Synth 8-3354] encoded FSM with state register 'rx_state_reg' using encoding 'sequential' in module 'uart_ram_converter'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                   S_CMD |                             0000 |                             0000
+                    S_A3 |                             0001 |                             0001
+                    S_A2 |                             0010 |                             0010
+                    S_A1 |                             0011 |                             0011
+                    S_A0 |                             0100 |                             0100
+                    S_D3 |                             0101 |                             0101
+                    S_D2 |                             0110 |                             0110
+                    S_D1 |                             0111 |                             0111
+                    S_D0 |                             1000 |                             1000
+                 S_WRITE |                             1001 |                             1001
+                  S_WAIT |                             1010 |                             1010
+                   S_ACK |                             1011 |                             1011
+                  iSTATE |                             1100 |                             1111
+*
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_ram_converter'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:30 ; elapsed = 00:00:36 . Memory (MB): peak = 2911.617 ; gain = 263.492 ; free physical = 2259 ; free virtual = 23516
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 2907.680 ; gain = 274.387 ; free physical = 2235 ; free virtual = 20302
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   32 Bit       Adders := 10    
+	   2 Input   32 Bit       Adders := 12    
 	   3 Input   32 Bit       Adders := 1     
-	   2 Input    6 Bit       Adders := 1     
-	   2 Input    4 Bit       Adders := 1     
-	   2 Input    3 Bit       Adders := 2     
+	   2 Input    7 Bit       Adders := 1     
+	   2 Input    6 Bit       Adders := 3     
+	   2 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 3     
 	   2 Input    2 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
-	              128 Bit    Registers := 1     
-	               32 Bit    Registers := 150   
+	               32 Bit    Registers := 154   
+	               29 Bit    Registers := 1     
 	               24 Bit    Registers := 64    
-	               16 Bit    Registers := 8     
-	               10 Bit    Registers := 1     
-	                8 Bit    Registers := 4     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 14    
 	                7 Bit    Registers := 1     
-	                6 Bit    Registers := 1     
-	                5 Bit    Registers := 9     
-	                4 Bit    Registers := 4     
-	                3 Bit    Registers := 13    
-	                2 Bit    Registers := 69    
-	                1 Bit    Registers := 138   
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 8     
+	                4 Bit    Registers := 6     
+	                3 Bit    Registers := 12    
+	                2 Bit    Registers := 70    
+	                1 Bit    Registers := 130   
 +---RAMs : 
 	               8K Bit	(1024 X 8 bit)          RAMs := 4     
+	              512 Bit	(64 X 8 bit)          RAMs := 1     
++---ROMs : 
+	                    ROMs := 1     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 72    
-	   4 Input   32 Bit        Muxes := 14    
-	 273 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 74    
+	   4 Input   32 Bit        Muxes := 15    
 	  19 Input   32 Bit        Muxes := 2     
 	  16 Input   32 Bit        Muxes := 2     
 	   5 Input   32 Bit        Muxes := 6     
 	   6 Input   32 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 3     
-	   2 Input   10 Bit        Muxes := 2     
-	   3 Input    8 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 4     
-	   4 Input    8 Bit        Muxes := 1     
-	   2 Input    6 Bit        Muxes := 1     
+	  13 Input   32 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 4     
+	   3 Input   10 Bit        Muxes := 2     
+	   3 Input    8 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 2     
+	   4 Input    8 Bit        Muxes := 2     
+	  13 Input    8 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 3     
 	   2 Input    5 Bit        Muxes := 2     
-	   2 Input    4 Bit        Muxes := 5     
+	   2 Input    4 Bit        Muxes := 7     
 	   8 Input    4 Bit        Muxes := 2     
 	  12 Input    4 Bit        Muxes := 1     
 	   9 Input    4 Bit        Muxes := 1     
-	   2 Input    3 Bit        Muxes := 5     
+	  13 Input    4 Bit        Muxes := 1     
+	   5 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 6     
 	  12 Input    3 Bit        Muxes := 2     
 	   7 Input    3 Bit        Muxes := 1     
 	   6 Input    3 Bit        Muxes := 1     
 	   3 Input    3 Bit        Muxes := 1     
-	   4 Input    3 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 2     
 	   2 Input    2 Bit        Muxes := 7     
 	  12 Input    2 Bit        Muxes := 4     
 	   6 Input    2 Bit        Muxes := 1     
 	   4 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 219   
+	   5 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 223   
 	  12 Input    1 Bit        Muxes := 8     
 	   6 Input    1 Bit        Muxes := 1     
-	   3 Input    1 Bit        Muxes := 2     
-	   5 Input    1 Bit        Muxes := 13    
-	   4 Input    1 Bit        Muxes := 9     
+	   3 Input    1 Bit        Muxes := 3     
+	   5 Input    1 Bit        Muxes := 15    
+	   4 Input    1 Bit        Muxes := 10    
+	  13 Input    1 Bit        Muxes := 6     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -1050,22 +1132,53 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-6904] The RAM "\UART/uart_0/inst/rx_fifo_reg " of size (depth=64 x width=8) is automatically implemented using LUTRAM. BRAM implementation would be inefficient 
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"\RV32I_RAM_MEMORY/ram_data_1/inst/mem0_reg "'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "\RV32I_RAM_MEMORY/ram_data_1/inst/mem0_reg "
+INFO: [Synth 8-3971] The signal "\RV32I_RAM_MEMORY/ram_data_1/inst/mem0_reg " was recognized as a true dual port RAM template.
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"\RV32I_RAM_MEMORY/ram_data_1/inst/mem1_reg "'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "\RV32I_RAM_MEMORY/ram_data_1/inst/mem1_reg "
+INFO: [Synth 8-3971] The signal "\RV32I_RAM_MEMORY/ram_data_1/inst/mem1_reg " was recognized as a true dual port RAM template.
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"\RV32I_RAM_MEMORY/ram_data_1/inst/mem2_reg "'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "\RV32I_RAM_MEMORY/ram_data_1/inst/mem2_reg "
+INFO: [Synth 8-3971] The signal "\RV32I_RAM_MEMORY/ram_data_1/inst/mem2_reg " was recognized as a true dual port RAM template.
+INFO: [Synth 8-5779] Default cascade height of 1 will be used for BRAM '"\RV32I_RAM_MEMORY/ram_data_1/inst/mem3_reg "'.
+INFO: [Synth 8-7030] Implemented Non-Cascaded Block Ram (cascade_height = 1) of width 8 for RAM "\RV32I_RAM_MEMORY/ram_data_1/inst/mem3_reg "
+INFO: [Synth 8-3971] The signal "\RV32I_RAM_MEMORY/ram_data_1/inst/mem3_reg " was recognized as a true dual port RAM template.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:09 . Memory (MB): peak = 2911.617 ; gain = 263.492 ; free physical = 1996 ; free virtual = 23275
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:48 . Memory (MB): peak = 2907.680 ; gain = 274.387 ; free physical = 2036 ; free virtual = 20157
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
+ROM: Preliminary Mapping	Report
++----------------------------+---------------+---------------+----------------+
+|Module Name                 | RTL Object    | Depth x Width | Implemented As | 
++----------------------------+---------------+---------------+----------------+
+|RISCV_COCOTB_rom_memory_0_0 | inst/dout_reg | 2048x29       | Block RAM      | 
+|RISCV_COCOTB_rom_memory_0_0 | inst/dout_reg | 2048x29       | Block RAM      | 
++----------------------------+---------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping	Report (see note below)
++------------------------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name                   | RTL Object    | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------------------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem0_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem1_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem2_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem3_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
++------------------------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+
 Distributed RAM: Preliminary Mapping	Report (see note below)
-+------------------------------+---------------+-----------+----------------------+-----------------+
-|Module Name                   | RTL Object    | Inference | Size (Depth x Width) | Primitives      | 
-+------------------------------+---------------+-----------+----------------------+-----------------+
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem0_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem1_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem2_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem3_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-+------------------------------+---------------+-----------+----------------------+-----------------+
++--------------+------------------+-----------+----------------------+--------------+
+|Module Name   | RTL Object       | Inference | Size (Depth x Width) | Primitives   | 
++--------------+------------------+-----------+----------------------+--------------+
+|\UART/uart_0  | inst/rx_fifo_reg | Implied   | 64 x 8               | RAM64M8 x 2	 | 
++--------------+------------------+-----------+----------------------+--------------+
 
 Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 ---------------------------------------------------------------------------------
@@ -1075,27 +1188,35 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:22 ; elapsed = 00:01:47 . Memory (MB): peak = 4406.430 ; gain = 1758.305 ; free physical = 416 ; free virtual = 21687
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:04 ; elapsed = 00:01:34 . Memory (MB): peak = 4405.523 ; gain = 1772.230 ; free physical = 197 ; free virtual = 18185
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:51 . Memory (MB): peak = 4475.484 ; gain = 1827.359 ; free physical = 365 ; free virtual = 21636
+Finished Timing Optimization : Time (s): cpu = 00:01:10 ; elapsed = 00:01:40 . Memory (MB): peak = 4474.586 ; gain = 1841.293 ; free physical = 364 ; free virtual = 18272
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
+Block RAM: Final Mapping	Report
++------------------------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name                   | RTL Object    | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++------------------------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem0_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem1_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem2_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
+|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem3_reg | 1 K x 8(READ_FIRST)    | W | R | 1 K x 8(READ_FIRST)    | W | R | Port A and B     | 1      | 0      | 1               | 
++------------------------------+---------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+
 Distributed RAM: Final Mapping	Report
-+------------------------------+---------------+-----------+----------------------+-----------------+
-|Module Name                   | RTL Object    | Inference | Size (Depth x Width) | Primitives      | 
-+------------------------------+---------------+-----------+----------------------+-----------------+
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem0_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem1_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem2_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-|\RV32I_RAM_MEMORY/ram_data_1  | inst/mem3_reg | Implied   | 1 K x 8              | RAM512X1S x 16	 | 
-+------------------------------+---------------+-----------+----------------------+-----------------+
++--------------+------------------+-----------+----------------------+--------------+
+|Module Name   | RTL Object       | Inference | Size (Depth x Width) | Primitives   | 
++--------------+------------------+-----------+----------------------+--------------+
+|\UART/uart_0  | inst/rx_fifo_reg | Implied   | 64 x 8               | RAM64M8 x 2	 | 
++--------------+------------------+-----------+----------------------+--------------+
 
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP and Shift Register Reporting
@@ -1103,8 +1224,18 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance Core_RV32I/RV32I_IF/rom_memory_0/inst/dout_reg_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance Core_RV32I/RV32I_IF/rom_memory_0/inst/dout_reg_1 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem0_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem0_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem1_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem1_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem2_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem2_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem3_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance RV32I_RAM_MEMORY/ram_data_1/inst/mem3_reg_bram_0 (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:37 ; elapsed = 00:02:03 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 336 ; free virtual = 21609
+Finished Technology Mapping : Time (s): cpu = 00:01:22 ; elapsed = 00:01:53 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 229 ; free virtual = 18131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1121,43 +1252,6 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[36] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[35] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[34] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[33] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[32] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[31] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[30] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[29] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[28] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[27] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[26] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[25] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[24] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[23] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[22] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[21] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[20] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[19] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[18] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[17] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[16] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[15] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[14] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[13] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[12] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[11] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[10] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[9] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[8] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[7] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[6] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[5] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[4] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[3] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[2] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[1] to constant 0
-WARNING: [Synth 8-3295] tying undriven pin inst:sl_iport0[0] to constant 0
 WARNING: [Synth 8-3295] tying undriven pin trace_ctl_pipe[0]_inferred:in0 to constant 0
 WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[0]_inferred:in0[31] to constant 0
 WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[0]_inferred:in0[30] to constant 0
@@ -1221,39 +1315,76 @@ WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[12] t
 WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[11] to constant 0
 WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[10] to constant 0
 WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[9] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[8] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[4] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[3] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[2] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[1] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[7]_inferred:in0[0] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[31] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[30] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[29] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[28] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[27] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[26] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[25] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[24] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[23] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[22] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[21] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[20] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[19] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[18] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[17] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[16] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[15] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[14] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[13] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[12] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[11] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[10] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[9] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[8] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[7] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[6] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[5] to constant 0
+WARNING: [Synth 8-3295] tying undriven pin trace_data_pipe[6]_inferred:in0[4] to constant 0
 INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:43 ; elapsed = 00:02:10 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished IO Insertion : Time (s): cpu = 00:01:28 ; elapsed = 00:01:59 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 255 ; free virtual = 18145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:43 ; elapsed = 00:02:10 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:28 ; elapsed = 00:01:59 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 255 ; free virtual = 18145
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:44 ; elapsed = 00:02:11 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:29 ; elapsed = 00:02:00 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 255 ; free virtual = 18146
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:44 ; elapsed = 00:02:11 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:29 ; elapsed = 00:02:00 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 255 ; free virtual = 18146
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:45 ; elapsed = 00:02:11 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:29 ; elapsed = 00:02:00 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 256 ; free virtual = 18146
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:45 ; elapsed = 00:02:11 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:29 ; elapsed = 00:02:00 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 256 ; free virtual = 18146
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1266,52 +1397,54 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+----------+------+
-|      |Cell      |Count |
-+------+----------+------+
-|1     |BUFG_PS   |     2|
-|2     |CARRY8    |    63|
-|3     |LUT1      |   412|
-|4     |LUT2      |   350|
-|5     |LUT3      |   384|
-|6     |LUT4      |   590|
-|7     |LUT5      |   565|
-|8     |LUT6      |  3000|
-|9     |MUXF7     |   834|
-|10    |MUXF8     |   383|
-|11    |PS8       |     1|
-|12    |RAM512X1S |    64|
-|13    |SRL16     |     1|
-|14    |FDCE      |   130|
-|15    |FDPE      |     1|
-|16    |FDR       |     8|
-|17    |FDRE      |  6699|
-|18    |FDSE      |    88|
-+------+----------+------+
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG_PS  |     2|
+|2     |CARRY8   |    72|
+|3     |LUT1     |   418|
+|4     |LUT2     |   420|
+|5     |LUT3     |   447|
+|6     |LUT4     |   608|
+|7     |LUT5     |   581|
+|8     |LUT6     |  2761|
+|9     |MUXF7    |   769|
+|10    |MUXF8    |   368|
+|11    |PS8      |     1|
+|12    |RAM64M8  |     2|
+|13    |RAMB18E2 |     4|
+|14    |RAMB36E2 |     2|
+|16    |SRL16    |     1|
+|17    |FDCE     |   130|
+|18    |FDPE     |     1|
+|19    |FDR      |     8|
+|20    |FDRE     |  6720|
+|21    |FDSE     |   104|
++------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:45 ; elapsed = 00:02:11 . Memory (MB): peak = 4484.500 ; gain = 1836.375 ; free physical = 357 ; free virtual = 21630
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:29 ; elapsed = 00:02:00 . Memory (MB): peak = 4483.602 ; gain = 1850.309 ; free physical = 256 ; free virtual = 18146
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 305 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:35 ; elapsed = 00:01:59 . Memory (MB): peak = 4484.500 ; gain = 1697.672 ; free physical = 398 ; free virtual = 21671
-Synthesis Optimization Complete : Time (s): cpu = 00:01:45 ; elapsed = 00:02:11 . Memory (MB): peak = 4484.508 ; gain = 1836.375 ; free physical = 398 ; free virtual = 21671
+Synthesis finished with 0 errors, 0 critical warnings and 268 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:22 ; elapsed = 00:01:52 . Memory (MB): peak = 4483.602 ; gain = 1711.574 ; free physical = 298 ; free virtual = 18188
+Synthesis Optimization Complete : Time (s): cpu = 00:01:29 ; elapsed = 00:02:01 . Memory (MB): peak = 4483.609 ; gain = 1850.309 ; free physical = 298 ; free virtual = 18188
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.18 . Memory (MB): peak = 4484.508 ; gain = 0.000 ; free physical = 460 ; free virtual = 21733
-INFO: [Netlist 29-17] Analyzing 1353 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.16 ; elapsed = 00:00:00.16 . Memory (MB): peak = 4483.609 ; gain = 0.000 ; free physical = 369 ; free virtual = 18259
+INFO: [Netlist 29-17] Analyzing 1220 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 4996.492 ; gain = 0.000 ; free physical = 339 ; free virtual = 21620
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 5120.652 ; gain = 0.000 ; free physical = 1078 ; free virtual = 18961
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 73 instances were transformed.
+  A total of 11 instances were transformed.
   FDR => FDRE: 8 instances
-  RAM512X1S => RAM512X1S (MUXF7(x4), MUXF8(x2), MUXF9, RAMS64E1(x8)): 64 instances
+  RAM64M8 => RAM64M8 (RAMD64E(x8)): 2 instances
   SRL16 => SRL16E: 1 instance 
 
 INFO: [Common 17-83] Releasing license: Synthesis
-436 Infos, 272 Warnings, 0 Critical Warnings and 0 Errors encountered.
+483 Infos, 280 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:03:36 ; elapsed = 00:03:08 . Memory (MB): peak = 4996.492 ; gain = 2348.367 ; free physical = 1547 ; free virtual = 22829
-INFO: [Coretcl 2-1174] Renamed 115 cell refs.
+synth_design: Time (s): cpu = 00:03:32 ; elapsed = 00:02:56 . Memory (MB): peak = 5120.652 ; gain = 2512.555 ; free physical = 2289 ; free virtual = 20172
+INFO: [Coretcl 2-1174] Renamed 110 cell refs.
 INFO: [Common 17-1381] The checkpoint '/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.runs/RISCV_COCOTB_synth_1/RISCV_COCOTB.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file RISCV_COCOTB_utilization_synth.rpt -pb RISCV_COCOTB_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Jun 17 02:20:57 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 22 00:04:50 2026...

@@ -1,0 +1,40 @@
+#include "xuartps.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "sleep.h"
+
+static XUartPs uart_pc;
+static XUartPs uart_riscv;
+
+static int init_uart(XUartPs *uart, u16 dev_id)
+{
+    XUartPs_Config *cfg = XUartPs_LookupConfig(dev_id);
+    if (!cfg) return -1;
+
+    int status = XUartPs_CfgInitialize(uart, cfg, cfg->BaseAddress);
+    if (status != XST_SUCCESS) return -1;
+
+    XUartPs_SetBaudRate(uart, 115200);
+    return 0;
+}
+int main(void)
+{
+    u8 c;
+
+    init_uart(&uart_pc,    XPAR_XUARTPS_0_DEVICE_ID);
+    init_uart(&uart_riscv, XPAR_XUARTPS_1_DEVICE_ID);
+
+    xil_printf("\r\nA53 UART BRIDGE READY\r\n");
+    xil_printf("Listening RISC-V UART1 -> PC UART0\r\n\r\n");
+
+    while (1)
+    {
+        if (XUartPs_IsReceiveData(uart_riscv.Config.BaseAddress))
+        {
+            c = XUartPs_ReadReg(uart_riscv.Config.BaseAddress, XUARTPS_FIFO_OFFSET);
+            XUartPs_Send(&uart_pc, &c, 1);
+        }
+    }
+
+    return 0;
+}

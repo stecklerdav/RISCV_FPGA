@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (lin64) Build 2902540 Wed May 27 19:54:35 MDT 2020
-//Date        : Wed Jun 17 02:15:49 2026
+//Date        : Mon Jun 22 00:00:16 2026
 //Host        : steckler-Default-string running 64-bit Ubuntu 18.04.6 LTS
 //Command     : generate_target RISCV_COCOTB.bd
 //Design      : RISCV_COCOTB
@@ -1106,11 +1106,11 @@ module PRIVILEGED_imp_UN02VO
         .Res(util_vector_not_0_Res));
 endmodule
 
-(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=72,numReposBlks=60,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=54,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
+(* CORE_GENERATION_INFO = "RISCV_COCOTB,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=RISCV_COCOTB,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=72,numReposBlks=60,numNonXlnxBlks=0,numHierBlks=12,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=57,numPkgbdBlks=0,bdsource=USER,synth_mode=OOC_per_BD}" *) (* HW_HANDOFF = "RISCV_COCOTB.hwdef" *) 
 module RISCV_COCOTB
    (SW1,
     gpio_out_0);
-  input [0:0]SW1;
+  input SW1;
   output [1:0]gpio_out_0;
 
   wire [3:0]Core_RV32I_ex_exception_cause;
@@ -1139,6 +1139,7 @@ module RISCV_COCOTB
   wire [4:0]Core_RV32I_wb_rd;
   wire MMIO_mem_rsp_error;
   wire MMIO_ram_valid;
+  wire Net;
   wire [31:0]PRIVILEGED_csr_rd_data1;
   wire PRIVILEGED_csr_rd_we;
   wire PRIVILEGED_id_ex_flush;
@@ -1149,7 +1150,8 @@ module RISCV_COCOTB
   wire [31:0]RV32I_MEM_dmem_wdata;
   wire RV32I_MEM_dmem_we;
   wire [31:0]RV32I_RAM_MEMORY_rdata;
-  wire [0:0]SW1_1;
+  wire [31:0]RV32I_RAM_MEMORY_zynq_rdata;
+  wire RV32I_RAM_MEMORY_zynq_ready;
   wire UART_tx;
   wire [31:0]addr_1;
   wire [31:0]addr_2;
@@ -1169,7 +1171,6 @@ module RISCV_COCOTB
   wire [7:0]gpio_0_gpio_out;
   wire [31:0]gpio_0_rdata;
   wire gpio_0_ready;
-  wire [0:0]hier_0_Res1;
   wire hier_0_emio_uart1_txd;
   wire if_id_rs1_used_1;
   wire [4:0]if_id_rs2_1;
@@ -1185,13 +1186,19 @@ module RISCV_COCOTB
   wire timer_error_1;
   wire timer_irq_1;
   wire trap_controller_0_trap_flush;
+  wire uart_ram_converter_0_cpu_reset_out;
+  wire uart_ram_converter_0_uart_tx;
+  wire [31:0]uart_ram_converter_0_zynq_addr;
+  wire [3:0]uart_ram_converter_0_zynq_be;
+  wire uart_ram_converter_0_zynq_valid;
+  wire [31:0]uart_ram_converter_0_zynq_wdata;
+  wire uart_ram_converter_0_zynq_we;
   wire [31:0]uart_tx_0_rdata;
   wire uart_tx_0_ready;
+  wire uart_tx_mux_0_uart_tx_to_zynq;
   wire valid_1;
   wire valid_2;
   wire valid_3;
-  wire [0:0]vio_0_probe_out0;
-  wire [0:0]vio_0_probe_out1;
   wire [31:0]wdata_1;
   wire [31:0]wdata_2;
   wire [31:0]wdata_3;
@@ -1206,7 +1213,7 @@ module RISCV_COCOTB
   wire zynq_ultra_ps_e_0_pl_clk0;
   wire zynq_ultra_ps_e_0_pl_resetn0;
 
-  assign SW1_1 = SW1[0];
+  assign Net = SW1;
   assign gpio_out_0[1:0] = xlslice_2bit_0_Dout;
   Core_RV32I_imp_BFBAKD Core_RV32I
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
@@ -1361,10 +1368,17 @@ module RISCV_COCOTB
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .rdata(RV32I_RAM_MEMORY_rdata),
         .ready(ram_ready_1),
-        .rst(proc_sys_reset_0_peripheral_reset),
+        .rst(proc_sys_reset_0_peripheral_reset2),
         .valid(MMIO_ram_valid),
         .wdata(wdata_1),
-        .we(we_1));
+        .we(we_1),
+        .zynq_addr(uart_ram_converter_0_zynq_addr),
+        .zynq_be(uart_ram_converter_0_zynq_be),
+        .zynq_rdata(RV32I_RAM_MEMORY_zynq_rdata),
+        .zynq_ready(RV32I_RAM_MEMORY_zynq_ready),
+        .zynq_valid(uart_ram_converter_0_zynq_valid),
+        .zynq_wdata(uart_ram_converter_0_zynq_wdata),
+        .zynq_we(uart_ram_converter_0_zynq_we));
   TIMER_imp_1W5J4GN TIMER
        (.addr(addr_4),
         .be(be_4),
@@ -1396,28 +1410,38 @@ module RISCV_COCOTB
         .mb_debug_sys_rst(1'b0),
         .peripheral_reset(proc_sys_reset_0_peripheral_reset2),
         .slowest_sync_clk(zynq_ultra_ps_e_0_pl_clk0));
-  RISCV_COCOTB_util_vector_logic_2_0 util_vector_logic_2
-       (.Op1(proc_sys_reset_0_peripheral_reset2),
-        .Op2(vio_0_probe_out0),
-        .Res(proc_sys_reset_0_peripheral_reset));
-  RISCV_COCOTB_util_vector_logic_3_0 util_vector_logic_3
-       (.Op1(SW1_1),
-        .Op2(vio_0_probe_out1),
-        .Res(hier_0_Res1));
-  RISCV_COCOTB_vio_0_0 vio_0
+  RISCV_COCOTB_uart_ram_converter_0_0 uart_ram_converter_0
        (.clk(zynq_ultra_ps_e_0_pl_clk0),
-        .probe_out0(vio_0_probe_out0),
-        .probe_out1(vio_0_probe_out1));
+        .cpu_reset_out(uart_ram_converter_0_cpu_reset_out),
+        .rst(proc_sys_reset_0_peripheral_reset2),
+        .uart_rx(hier_0_emio_uart1_txd),
+        .uart_tx(uart_ram_converter_0_uart_tx),
+        .zynq_addr(uart_ram_converter_0_zynq_addr),
+        .zynq_be(uart_ram_converter_0_zynq_be),
+        .zynq_rdata(RV32I_RAM_MEMORY_zynq_rdata),
+        .zynq_ready(RV32I_RAM_MEMORY_zynq_ready),
+        .zynq_valid(uart_ram_converter_0_zynq_valid),
+        .zynq_wdata(uart_ram_converter_0_zynq_wdata),
+        .zynq_we(uart_ram_converter_0_zynq_we));
+  RISCV_COCOTB_uart_tx_mux_0_0 uart_tx_mux_0
+       (.loader_cpu_reset(proc_sys_reset_0_peripheral_reset),
+        .loader_uart_tx(uart_ram_converter_0_uart_tx),
+        .riscv_uart_tx(UART_tx),
+        .uart_tx_to_zynq(uart_tx_mux_0_uart_tx_to_zynq));
+  RISCV_COCOTB_util_vector_or_0_4 util_vector_or_0
+       (.Op1(uart_ram_converter_0_cpu_reset_out),
+        .Op2(proc_sys_reset_0_peripheral_reset2),
+        .Res(proc_sys_reset_0_peripheral_reset));
   RISCV_COCOTB_xlconcat_8_0_0 xlconcat_8_0
        (.dout(xlconcat_8_0_dout),
-        .in0(hier_0_Res1),
-        .in1(hier_0_Res1),
-        .in2(hier_0_Res1),
-        .in3(hier_0_Res1),
-        .in4(hier_0_Res1),
-        .in5(hier_0_Res1),
-        .in6(hier_0_Res1),
-        .in7(hier_0_Res1));
+        .in0(Net),
+        .in1(Net),
+        .in2(Net),
+        .in3(Net),
+        .in4(Net),
+        .in5(Net),
+        .in6(Net),
+        .in7(Net));
   RISCV_COCOTB_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   RISCV_COCOTB_xlslice_2bit_0_0 xlslice_2bit_0
@@ -1428,7 +1452,7 @@ module RISCV_COCOTB
         .emio_gpio_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
         .emio_i2c0_scl_i(1'b0),
         .emio_i2c0_sda_i(1'b0),
-        .emio_uart1_rxd(UART_tx),
+        .emio_uart1_rxd(uart_tx_mux_0_uart_tx_to_zynq),
         .emio_uart1_txd(hier_0_emio_uart1_txd),
         .maxigp0_arready(1'b0),
         .maxigp0_awready(1'b0),
@@ -2633,7 +2657,14 @@ module RV32I_RAM_MEMORY_imp_1PB3UDL
     rst,
     valid,
     wdata,
-    we);
+    we,
+    zynq_addr,
+    zynq_be,
+    zynq_rdata,
+    zynq_ready,
+    zynq_valid,
+    zynq_wdata,
+    zynq_we);
   input [31:0]addr;
   input [3:0]be;
   input clk;
@@ -2643,6 +2674,13 @@ module RV32I_RAM_MEMORY_imp_1PB3UDL
   input valid;
   input [31:0]wdata;
   input we;
+  input [31:0]zynq_addr;
+  input [3:0]zynq_be;
+  output [31:0]zynq_rdata;
+  output zynq_ready;
+  input zynq_valid;
+  input [31:0]zynq_wdata;
+  input zynq_we;
 
   wire [31:0]RV32I_MEM_dmem_addr;
   wire [3:0]RV32I_MEM_dmem_be;
@@ -2650,9 +2688,16 @@ module RV32I_RAM_MEMORY_imp_1PB3UDL
   wire RV32I_MEM_dmem_we;
   wire [31:0]ram_data_1_rdata;
   wire ram_data_1_ready;
+  wire [31:0]ram_data_1_zynq_rdata;
+  wire ram_data_1_zynq_ready;
   wire rst_1;
   wire valid_1;
+  wire [31:0]zynq_addr_1;
+  wire [3:0]zynq_be_1;
   wire zynq_ultra_ps_e_0_pl_clk0;
+  wire zynq_valid_1;
+  wire [31:0]zynq_wdata_1;
+  wire zynq_we_1;
 
   assign RV32I_MEM_dmem_addr = addr[31:0];
   assign RV32I_MEM_dmem_be = be[3:0];
@@ -2662,7 +2707,14 @@ module RV32I_RAM_MEMORY_imp_1PB3UDL
   assign ready = ram_data_1_ready;
   assign rst_1 = rst;
   assign valid_1 = valid;
+  assign zynq_addr_1 = zynq_addr[31:0];
+  assign zynq_be_1 = zynq_be[3:0];
+  assign zynq_rdata[31:0] = ram_data_1_zynq_rdata;
+  assign zynq_ready = ram_data_1_zynq_ready;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
+  assign zynq_valid_1 = zynq_valid;
+  assign zynq_wdata_1 = zynq_wdata[31:0];
+  assign zynq_we_1 = zynq_we;
   RISCV_COCOTB_ram_data_1_0 ram_data_1
        (.addr(RV32I_MEM_dmem_addr),
         .be(RV32I_MEM_dmem_be),
@@ -2672,7 +2724,14 @@ module RV32I_RAM_MEMORY_imp_1PB3UDL
         .rst(rst_1),
         .valid(valid_1),
         .wdata(RV32I_MEM_dmem_wdata),
-        .we(RV32I_MEM_dmem_we));
+        .we(RV32I_MEM_dmem_we),
+        .zynq_addr(zynq_addr_1),
+        .zynq_be(zynq_be_1),
+        .zynq_rdata(ram_data_1_zynq_rdata),
+        .zynq_ready(ram_data_1_zynq_ready),
+        .zynq_valid(zynq_valid_1),
+        .zynq_wdata(zynq_wdata_1),
+        .zynq_we(zynq_we_1));
 endmodule
 
 module RV32I_WB_imp_LBXQBW
@@ -2801,7 +2860,7 @@ module UART_imp_118P651
   wire MMIO_uart_valid;
   wire [31:0]MMIO_uart_wdata;
   wire MMIO_uart_we;
-  wire proc_sys_reset_0_peripheral_reset;
+  wire rst_1;
   wire rx_1;
   wire [31:0]uart_0_rdata;
   wire uart_0_ready;
@@ -2813,9 +2872,9 @@ module UART_imp_118P651
   assign MMIO_uart_valid = valid;
   assign MMIO_uart_wdata = wdata[31:0];
   assign MMIO_uart_we = we;
-  assign proc_sys_reset_0_peripheral_reset = rst;
   assign rdata[31:0] = uart_0_rdata;
   assign ready = uart_0_ready;
+  assign rst_1 = rst;
   assign rx_1 = rx;
   assign tx = uart_0_tx;
   assign zynq_ultra_ps_e_0_pl_clk0 = clk;
@@ -2825,7 +2884,7 @@ module UART_imp_118P651
         .clk(zynq_ultra_ps_e_0_pl_clk0),
         .rdata(uart_0_rdata),
         .ready(uart_0_ready),
-        .rst(proc_sys_reset_0_peripheral_reset),
+        .rst(rst_1),
         .rx(rx_1),
         .tx(uart_0_tx),
         .valid(MMIO_uart_valid),

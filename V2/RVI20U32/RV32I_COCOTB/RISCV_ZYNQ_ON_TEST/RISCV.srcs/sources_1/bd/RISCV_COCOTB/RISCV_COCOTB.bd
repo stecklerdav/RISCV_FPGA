@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x7D0060597D006059",
+      "boundary_crc": "0xA9CCA1B7A9CCA1B7",
       "device": "xczu5ev-sfvc784-2-i",
       "name": "RISCV_COCOTB",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -57,9 +57,9 @@
           "util_vector_not_0": "",
           "util_vector_or_0": "",
           "constant_one_0": "",
-          "rom_memory_0": "",
           "pc_unit_0": "",
-          "if_id_reg_0": ""
+          "if_id_reg_0": "",
+          "rom_memory_0": ""
         },
         "load_use_detection_0": "",
         "priority_branch_OR_l_0": ""
@@ -90,21 +90,19 @@
       "xlslice_2bit_0": "",
       "zynq_ultra_ps_e_0": "",
       "xlconstant_0": "",
-      "util_vector_logic_2": "",
-      "util_vector_logic_3": "",
       "proc_sys_reset_0": "",
-      "vio_0": ""
+      "uart_ram_converter_0": "",
+      "util_vector_or_0": "",
+      "uart_tx_mux_0": ""
     },
     "ports": {
-      "SW1": {
-        "direction": "I",
-        "left": "0",
-        "right": "0"
-      },
       "gpio_out_0": {
         "direction": "O",
         "left": "1",
         "right": "0"
+      },
+      "SW1": {
+        "direction": "I"
       }
     },
     "components": {
@@ -158,6 +156,17 @@
           "uart_0": {
             "vlnv": "xilinx.com:module_ref:uart:1.0",
             "xci_name": "RISCV_COCOTB_uart_0_0",
+            "parameters": {
+              "BAUD": {
+                "value": "921000"
+              },
+              "CLK_FREQ": {
+                "value": "190474289"
+              },
+              "FIFO_DEPTH": {
+                "value": "64"
+              }
+            },
             "reference_info": {
               "ref_type": "hdl",
               "ref_name": "uart",
@@ -243,12 +252,6 @@
               "uart_0/clk"
             ]
           },
-          "proc_sys_reset_0_peripheral_reset": {
-            "ports": [
-              "rst",
-              "uart_0/rst"
-            ]
-          },
           "MMIO_uart_valid": {
             "ports": [
               "valid",
@@ -301,6 +304,12 @@
             "ports": [
               "uart_0/tx",
               "tx"
+            ]
+          },
+          "rst_1": {
+            "ports": [
+              "rst",
+              "uart_0/rst"
             ]
           }
         }
@@ -4746,44 +4755,6 @@
                   }
                 }
               },
-              "rom_memory_0": {
-                "vlnv": "xilinx.com:module_ref:rom_memory:1.0",
-                "xci_name": "RISCV_COCOTB_rom_memory_0_0",
-                "reference_info": {
-                  "ref_type": "hdl",
-                  "ref_name": "rom_memory",
-                  "boundary_crc": "0x0"
-                },
-                "ports": {
-                  "clk": {
-                    "type": "clk",
-                    "direction": "I",
-                    "parameters": {
-                      "CLK_DOMAIN": {
-                        "value": "RISCV_COCOTB_zynq_ultra_ps_e_0_0_pl_clk0",
-                        "value_src": "default_prop"
-                      },
-                      "FREQ_HZ": {
-                        "value": "190474289",
-                        "value_src": "user_prop"
-                      }
-                    }
-                  },
-                  "en": {
-                    "direction": "I"
-                  },
-                  "addr": {
-                    "direction": "I",
-                    "left": "10",
-                    "right": "0"
-                  },
-                  "dout": {
-                    "direction": "O",
-                    "left": "31",
-                    "right": "0"
-                  }
-                }
-              },
               "pc_unit_0": {
                 "vlnv": "xilinx.com:module_ref:pc_unit:1.0",
                 "xci_name": "RISCV_COCOTB_pc_unit_0_0",
@@ -4967,6 +4938,49 @@
                     "right": "0"
                   }
                 }
+              },
+              "rom_memory_0": {
+                "vlnv": "xilinx.com:module_ref:rom_memory:1.0",
+                "xci_name": "RISCV_COCOTB_rom_memory_0_0",
+                "parameters": {
+                  "INIT_FILE": {
+                    "value": "/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog.mem"
+                  }
+                },
+                "reference_info": {
+                  "ref_type": "hdl",
+                  "ref_name": "rom_memory",
+                  "boundary_crc": "0x0"
+                },
+                "ports": {
+                  "clk": {
+                    "type": "clk",
+                    "direction": "I",
+                    "parameters": {
+                      "CLK_DOMAIN": {
+                        "value": "RISCV_COCOTB_zynq_ultra_ps_e_0_0_pl_clk0",
+                        "value_src": "default_prop"
+                      },
+                      "FREQ_HZ": {
+                        "value": "190474289",
+                        "value_src": "user_prop"
+                      }
+                    }
+                  },
+                  "en": {
+                    "direction": "I"
+                  },
+                  "addr": {
+                    "direction": "I",
+                    "left": "10",
+                    "right": "0"
+                  },
+                  "dout": {
+                    "direction": "O",
+                    "left": "31",
+                    "right": "0"
+                  }
+                }
               }
             },
             "nets": {
@@ -4988,9 +5002,9 @@
                 "ports": [
                   "clk",
                   "branch_predictor_btb_0/clk",
-                  "rom_memory_0/clk",
                   "pc_unit_0/clk",
-                  "if_id_reg_0/clk"
+                  "if_id_reg_0/clk",
+                  "rom_memory_0/clk"
                 ]
               },
               "proc_sys_reset_0_peripheral_reset": {
@@ -8211,6 +8225,35 @@
           },
           "valid": {
             "direction": "I"
+          },
+          "zynq_valid": {
+            "direction": "I"
+          },
+          "zynq_we": {
+            "direction": "I"
+          },
+          "zynq_be": {
+            "direction": "I",
+            "left": "3",
+            "right": "0"
+          },
+          "zynq_addr": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "zynq_wdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "zynq_rdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "zynq_ready": {
+            "direction": "O"
           }
         },
         "components": {
@@ -8243,7 +8286,13 @@
               },
               "rst": {
                 "type": "rst",
-                "direction": "I"
+                "direction": "I",
+                "parameters": {
+                  "POLARITY": {
+                    "value": "ACTIVE_HIGH",
+                    "value_src": "const_prop"
+                  }
+                }
               },
               "valid": {
                 "direction": "I"
@@ -8272,6 +8321,35 @@
                 "right": "0"
               },
               "ready": {
+                "direction": "O"
+              },
+              "zynq_valid": {
+                "direction": "I"
+              },
+              "zynq_we": {
+                "direction": "I"
+              },
+              "zynq_be": {
+                "direction": "I",
+                "left": "3",
+                "right": "0"
+              },
+              "zynq_addr": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "zynq_wdata": {
+                "direction": "I",
+                "left": "31",
+                "right": "0"
+              },
+              "zynq_rdata": {
+                "direction": "O",
+                "left": "31",
+                "right": "0"
+              },
+              "zynq_ready": {
                 "direction": "O"
               }
             }
@@ -8314,12 +8392,6 @@
               "ram_data_1/clk"
             ]
           },
-          "rst_1": {
-            "ports": [
-              "rst",
-              "ram_data_1/rst"
-            ]
-          },
           "ram_data_1_ready": {
             "ports": [
               "ram_data_1/ready",
@@ -8330,6 +8402,54 @@
             "ports": [
               "valid",
               "ram_data_1/valid"
+            ]
+          },
+          "zynq_valid_1": {
+            "ports": [
+              "zynq_valid",
+              "ram_data_1/zynq_valid"
+            ]
+          },
+          "zynq_we_1": {
+            "ports": [
+              "zynq_we",
+              "ram_data_1/zynq_we"
+            ]
+          },
+          "zynq_be_1": {
+            "ports": [
+              "zynq_be",
+              "ram_data_1/zynq_be"
+            ]
+          },
+          "zynq_addr_1": {
+            "ports": [
+              "zynq_addr",
+              "ram_data_1/zynq_addr"
+            ]
+          },
+          "zynq_wdata_1": {
+            "ports": [
+              "zynq_wdata",
+              "ram_data_1/zynq_wdata"
+            ]
+          },
+          "ram_data_1_zynq_rdata": {
+            "ports": [
+              "ram_data_1/zynq_rdata",
+              "zynq_rdata"
+            ]
+          },
+          "ram_data_1_zynq_ready": {
+            "ports": [
+              "ram_data_1/zynq_ready",
+              "zynq_ready"
+            ]
+          },
+          "rst_1": {
+            "ports": [
+              "rst",
+              "ram_data_1/rst"
             ]
           }
         }
@@ -9879,10 +9999,10 @@
             "value": "RPLL"
           },
           "PSU__CRL_APB__PL1_REF_CTRL__ACT_FREQMHZ": {
-            "value": "148.146667"
+            "value": "190.474289"
           },
           "PSU__CRL_APB__PL1_REF_CTRL__FREQMHZ": {
-            "value": "150"
+            "value": "195"
           },
           "PSU__CRL_APB__PL1_REF_CTRL__SRCSEL": {
             "value": "RPLL"
@@ -11106,7 +11226,7 @@
             "value": "MIO 34 .. 35"
           },
           "PSU__UART1__BAUD_RATE": {
-            "value": "115200"
+            "value": "921600"
           },
           "PSU__UART1__MODEM__ENABLE": {
             "value": "0"
@@ -11368,43 +11488,146 @@
           }
         }
       },
-      "util_vector_logic_2": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "RISCV_COCOTB_util_vector_logic_2_0",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "or"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
-      "util_vector_logic_3": {
-        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
-        "xci_name": "RISCV_COCOTB_util_vector_logic_3_0",
-        "parameters": {
-          "C_OPERATION": {
-            "value": "or"
-          },
-          "C_SIZE": {
-            "value": "1"
-          }
-        }
-      },
       "proc_sys_reset_0": {
         "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
         "xci_name": "RISCV_COCOTB_proc_sys_reset_0_0"
       },
-      "vio_0": {
-        "vlnv": "xilinx.com:ip:vio:3.0",
-        "xci_name": "RISCV_COCOTB_vio_0_0",
-        "parameters": {
-          "C_NUM_PROBE_IN": {
-            "value": "0"
+      "uart_ram_converter_0": {
+        "vlnv": "xilinx.com:module_ref:uart_ram_converter:1.0",
+        "xci_name": "RISCV_COCOTB_uart_ram_converter_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "uart_ram_converter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "RISCV_COCOTB_zynq_ultra_ps_e_0_0_pl_clk0",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "190474289",
+                "value_src": "user_prop"
+              }
+            }
           },
-          "C_NUM_PROBE_OUT": {
-            "value": "2"
+          "rst": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "uart_rx": {
+            "direction": "I"
+          },
+          "uart_tx": {
+            "direction": "O"
+          },
+          "cpu_reset_out": {
+            "direction": "O"
+          },
+          "zynq_valid": {
+            "direction": "O"
+          },
+          "zynq_we": {
+            "direction": "O"
+          },
+          "zynq_be": {
+            "direction": "O",
+            "left": "3",
+            "right": "0"
+          },
+          "zynq_addr": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "zynq_wdata": {
+            "direction": "O",
+            "left": "31",
+            "right": "0"
+          },
+          "zynq_rdata": {
+            "direction": "I",
+            "left": "31",
+            "right": "0"
+          },
+          "zynq_ready": {
+            "direction": "I"
+          }
+        }
+      },
+      "util_vector_or_0": {
+        "vlnv": "xilinx.com:module_ref:util_vector_or:1.0",
+        "xci_name": "RISCV_COCOTB_util_vector_or_0_4",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "util_vector_or",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "Op1": {
+            "direction": "I",
+            "left": "0",
+            "right": "0"
+          },
+          "Op2": {
+            "direction": "I",
+            "left": "0",
+            "right": "0",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "Res": {
+            "direction": "O",
+            "left": "0",
+            "right": "0",
+            "parameters": {
+              "POLARITY": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
+          }
+        }
+      },
+      "uart_tx_mux_0": {
+        "vlnv": "xilinx.com:module_ref:uart_tx_mux:1.0",
+        "xci_name": "RISCV_COCOTB_uart_tx_mux_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "uart_tx_mux",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "loader_cpu_reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "loader_uart_tx": {
+            "direction": "I"
+          },
+          "riscv_uart_tx": {
+            "direction": "I"
+          },
+          "uart_tx_to_zynq": {
+            "direction": "O"
           }
         }
       }
@@ -11421,8 +11644,8 @@
           "TIMER/clk",
           "PRIVILEGED/clk",
           "proc_sys_reset_0/slowest_sync_clk",
-          "vio_0/clk",
-          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk"
+          "zynq_ultra_ps_e_0/maxihpm0_fpd_aclk",
+          "uart_ram_converter_0/clk"
         ]
       },
       "gpio_0_gpio_out": {
@@ -11433,14 +11656,14 @@
       },
       "proc_sys_reset_0_peripheral_reset": {
         "ports": [
-          "util_vector_logic_2/Res",
+          "util_vector_or_0/Res",
           "MMIO/rst",
           "Core_RV32I/rst",
-          "RV32I_RAM_MEMORY/rst",
           "GPIO/rst",
           "UART/rst",
           "TIMER/rst",
-          "PRIVILEGED/rst"
+          "PRIVILEGED/rst",
+          "uart_tx_mux_0/loader_cpu_reset"
         ]
       },
       "valid_2": {
@@ -11923,35 +12146,11 @@
           "Core_RV32I/csr_use_id_ex_flush"
         ]
       },
-      "UART_tx": {
-        "ports": [
-          "UART/tx",
-          "zynq_ultra_ps_e_0/emio_uart1_rxd"
-        ]
-      },
       "hier_0_emio_uart1_txd": {
         "ports": [
           "zynq_ultra_ps_e_0/emio_uart1_txd",
-          "UART/rx"
-        ]
-      },
-      "SW1_1": {
-        "ports": [
-          "SW1",
-          "util_vector_logic_3/Op1"
-        ]
-      },
-      "hier_0_Res1": {
-        "ports": [
-          "util_vector_logic_3/Res",
-          "xlconcat_8_0/in3",
-          "xlconcat_8_0/in0",
-          "xlconcat_8_0/in1",
-          "xlconcat_8_0/in2",
-          "xlconcat_8_0/in4",
-          "xlconcat_8_0/in5",
-          "xlconcat_8_0/in6",
-          "xlconcat_8_0/in7"
+          "UART/rx",
+          "uart_ram_converter_0/uart_rx"
         ]
       },
       "zynq_ultra_ps_e_0_pl_resetn0": {
@@ -11969,19 +12168,88 @@
       "proc_sys_reset_0_peripheral_reset2": {
         "ports": [
           "proc_sys_reset_0/peripheral_reset",
-          "util_vector_logic_2/Op1"
+          "uart_ram_converter_0/rst",
+          "util_vector_or_0/Op2",
+          "RV32I_RAM_MEMORY/rst"
         ]
       },
-      "vio_0_probe_out0": {
+      "Net": {
         "ports": [
-          "vio_0/probe_out0",
-          "util_vector_logic_2/Op2"
+          "SW1",
+          "xlconcat_8_0/in0",
+          "xlconcat_8_0/in1",
+          "xlconcat_8_0/in2",
+          "xlconcat_8_0/in3",
+          "xlconcat_8_0/in6",
+          "xlconcat_8_0/in4",
+          "xlconcat_8_0/in5",
+          "xlconcat_8_0/in7"
         ]
       },
-      "vio_0_probe_out1": {
+      "uart_ram_converter_0_zynq_valid": {
         "ports": [
-          "vio_0/probe_out1",
-          "util_vector_logic_3/Op2"
+          "uart_ram_converter_0/zynq_valid",
+          "RV32I_RAM_MEMORY/zynq_valid"
+        ]
+      },
+      "uart_ram_converter_0_zynq_we": {
+        "ports": [
+          "uart_ram_converter_0/zynq_we",
+          "RV32I_RAM_MEMORY/zynq_we"
+        ]
+      },
+      "uart_ram_converter_0_zynq_be": {
+        "ports": [
+          "uart_ram_converter_0/zynq_be",
+          "RV32I_RAM_MEMORY/zynq_be"
+        ]
+      },
+      "uart_ram_converter_0_zynq_addr": {
+        "ports": [
+          "uart_ram_converter_0/zynq_addr",
+          "RV32I_RAM_MEMORY/zynq_addr"
+        ]
+      },
+      "uart_ram_converter_0_zynq_wdata": {
+        "ports": [
+          "uart_ram_converter_0/zynq_wdata",
+          "RV32I_RAM_MEMORY/zynq_wdata"
+        ]
+      },
+      "uart_ram_converter_0_cpu_reset_out": {
+        "ports": [
+          "uart_ram_converter_0/cpu_reset_out",
+          "util_vector_or_0/Op1"
+        ]
+      },
+      "RV32I_RAM_MEMORY_zynq_rdata": {
+        "ports": [
+          "RV32I_RAM_MEMORY/zynq_rdata",
+          "uart_ram_converter_0/zynq_rdata"
+        ]
+      },
+      "RV32I_RAM_MEMORY_zynq_ready": {
+        "ports": [
+          "RV32I_RAM_MEMORY/zynq_ready",
+          "uart_ram_converter_0/zynq_ready"
+        ]
+      },
+      "UART_tx": {
+        "ports": [
+          "UART/tx",
+          "uart_tx_mux_0/riscv_uart_tx"
+        ]
+      },
+      "uart_ram_converter_0_uart_tx": {
+        "ports": [
+          "uart_ram_converter_0/uart_tx",
+          "uart_tx_mux_0/loader_uart_tx"
+        ]
+      },
+      "uart_tx_mux_0_uart_tx_to_zynq": {
+        "ports": [
+          "uart_tx_mux_0/uart_tx_to_zynq",
+          "zynq_ultra_ps_e_0/emio_uart1_rxd"
         ]
       }
     },

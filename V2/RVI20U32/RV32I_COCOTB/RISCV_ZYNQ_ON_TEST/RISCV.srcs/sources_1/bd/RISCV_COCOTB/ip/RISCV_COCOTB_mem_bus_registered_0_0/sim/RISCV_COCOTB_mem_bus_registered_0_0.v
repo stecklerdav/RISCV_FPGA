@@ -143,8 +143,8 @@ input wire timer_ready;
 input wire timer_error;
 
   mem_bus_registered #(
-    .RAM_BASE(32'H80001000),
-    .RAM_SIZE(32'H00002000),
+    .RAM_BASE(32'H80002000),
+    .RAM_SIZE(32'H00001000),
     .GPIO_BASE(32'H80003000),
     .GPIO_SIZE(32'H00000010),
     .UART_BASE(32'H80003010),

@@ -30,7 +30,7 @@ LDFLAGS := -Wl,-T,link.ld,--gc-sections \
 # - prog.dump:  disassembly + hexdump de secciones (objdump -s)
 # - prog.text.dump: solo .text/.rodata + hexdump (más manejable)
 # - main.s / syscalls.s: ASM que genera GCC desde los .c (antes del link)
-all: prog.elf prog.bin prog_array.h prog.mem prog.coe \
+all: prog.elf prog.bin prog.mem prog.coe \
      prog.disasm prog.asm prog.dump prog.text.dump \
      main.s syscalls.s
 
@@ -71,12 +71,12 @@ main.s: main.c
 syscalls.s: syscalls.c
 	$(CC) $(CFLAGS) $(C_ASMFLAGS) -o $@ $<
 
-prog_array.h: prog.bin
-	$(XXD) -i prog.bin > $(LOADER_HDR)
+#prog_array.h: prog.bin
+#	$(XXD) -i prog.bin > $(LOADER_HDR)
 
 symbols: prog.elf
 	$(NM) prog.elf | grep -E "malloc|free|_sbrk|__heap_start|__heap_end|__stack_top"
-# =========================================================
+# ================================prog_array.h=========================
 # Compilar ASM escrito manualmente (para tests de pipeline)
 # =========================================================
 
@@ -99,8 +99,10 @@ prog_asm.asm: prog_asm.elf
 	$(OBJDUMP) -d -M no-aliases,numeric $< > $@
 
 clean:
-	rm -f prog.elf prog.bin prog_array.h prog.mem prog.coe \
+	rm -f prog.elf prog.bin prog.mem prog.coe \
 	      prog.disasm prog.asm prog.dump prog.text.dump \
 	      main.s syscalls.s
 
 .PHONY: all clean symbols
+
+#prog_array.h

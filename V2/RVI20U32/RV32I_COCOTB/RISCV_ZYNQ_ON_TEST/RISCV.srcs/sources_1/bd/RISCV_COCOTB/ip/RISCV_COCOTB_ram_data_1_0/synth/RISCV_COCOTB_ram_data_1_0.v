@@ -64,13 +64,20 @@ module RISCV_COCOTB_ram_data_1_0 (
   addr,
   wdata,
   rdata,
-  ready
+  ready,
+  zynq_valid,
+  zynq_we,
+  zynq_be,
+  zynq_addr,
+  zynq_wdata,
+  zynq_rdata,
+  zynq_ready
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME clk, ASSOCIATED_RESET rst, FREQ_HZ 190474289, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN RISCV_COCOTB_zynq_ultra_ps_e_0_0_pl_clk0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:clock:1.0 clk CLK" *)
 input wire clk;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst RST" *)
 input wire rst;
 input wire valid;
@@ -80,6 +87,13 @@ input wire [31 : 0] addr;
 input wire [31 : 0] wdata;
 output wire [31 : 0] rdata;
 output wire ready;
+input wire zynq_valid;
+input wire zynq_we;
+input wire [3 : 0] zynq_be;
+input wire [31 : 0] zynq_addr;
+input wire [31 : 0] zynq_wdata;
+output wire [31 : 0] zynq_rdata;
+output wire zynq_ready;
 
   ram_data #(
     .ADDR_WIDTH(10),
@@ -94,6 +108,13 @@ output wire ready;
     .addr(addr),
     .wdata(wdata),
     .rdata(rdata),
-    .ready(ready)
+    .ready(ready),
+    .zynq_valid(zynq_valid),
+    .zynq_we(zynq_we),
+    .zynq_be(zynq_be),
+    .zynq_addr(zynq_addr),
+    .zynq_wdata(zynq_wdata),
+    .zynq_rdata(zynq_rdata),
+    .zynq_ready(zynq_ready)
   );
 endmodule

@@ -1,0 +1,24 @@
+#include "xuartps.h"
+#include "xparameters.h"
+
+XUartPs uart_pc;
+XUartPs uart_riscv;
+
+int main()
+{
+    XUartPs_Config *cfg;
+
+    cfg = XUartPs_LookupConfig(XPAR_XUARTPS_0_DEVICE_ID);
+    XUartPs_CfgInitialize(&uart_pc, cfg, cfg->BaseAddress);
+
+    XUartPs_SetBaudRate(&uart_pc, 115200);
+
+    const u8 txt[] = "A53 RUNNING\r\n";
+
+    while(1)
+    {
+        XUartPs_Send(&uart_pc, (u8*)txt, sizeof(txt)-1);
+
+        for(volatile int i=0;i<10000000;i++);
+    }
+}

@@ -55,7 +55,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f10d70dc</spirit:value>
+            <spirit:value>aa36956c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -68,7 +68,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>f10d70dc</spirit:value>
+            <spirit:value>aa36956c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -687,12 +687,12 @@
       <spirit:modelParameter xsi:type="spirit:nameValueTypeType" spirit:dataType="integer">
         <spirit:name>RAM_BASE</spirit:name>
         <spirit:displayName>Ram Base</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_BASE" spirit:bitStringLength="32">0x80001000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_BASE" spirit:bitStringLength="32">0x80002000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>RAM_SIZE</spirit:name>
         <spirit:displayName>Ram Size</spirit:displayName>
-        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00002000</spirit:value>
+        <spirit:value spirit:format="bitString" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00001000</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>GPIO_BASE</spirit:name>
@@ -747,12 +747,12 @@
     <spirit:parameter>
       <spirit:name>RAM_BASE</spirit:name>
       <spirit:displayName>Ram Base</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_BASE" spirit:bitStringLength="32">0x80001000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_BASE" spirit:bitStringLength="32">0x80002000</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>RAM_SIZE</spirit:name>
       <spirit:displayName>Ram Size</spirit:displayName>
-      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00002000</spirit:value>
+      <spirit:value spirit:format="bitString" spirit:resolve="user" spirit:id="PARAM_VALUE.RAM_SIZE" spirit:bitStringLength="32">0x00001000</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>GPIO_BASE</spirit:name>
@@ -809,7 +809,7 @@
         <xilinx:designToolContext>IPI</xilinx:designToolContext>
       </xilinx:designToolContexts>
       <xilinx:coreRevision>1</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2026-06-06T21:14:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2026-06-20T16:44:07Z</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>

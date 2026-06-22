@@ -1,0 +1,78 @@
+#include "xuartps.h"
+#include "xparameters.h"
+#include "xstatus.h"
+#include "xil_printf.h"
+
+static XUartPs uart_pc;
+static XUartPs uart_riscv;
+
+static int init_uart(XUartPs *uart, u16 dev_id)
+{
+    XUartPs_Config *cfg;
+    int status;
+
+    cfg = XUartPs_LookupConfig(dev_id);
+    if (cfg == NULL)
+        return XST_FAILURE;
+
+    status = XUartPs_CfgInitialize(uart, cfg, cfg->BaseAddress);
+    if (status != XST_SUCCESS)
+        return XST_FAILURE;
+
+    status = XUartPs_SetBaudRate(uart, 115200);
+    if (status != XST_SUCCESS)
+        return XST_FAILURE;
+
+    return XST_SUCCESS;
+}
+
+static void send_byte(XUartPs *uart, u8 c)
+{
+    XUartPs_SendByte(uart->Config.BaseAddress, c);
+}
+
+static int recv_byte_timeout(XUartPs *uart, u8 *c, unsigned int timeout)
+{
+    while (timeout--) {
+        if (XUartPs_IsReceiveData(uart->Config.BaseAddress)) {
+            *c = XUartPs_ReadReg(uart->Config.BaseAddress,
+                                  XUARTPS_FIFO_OFFSET);
+            return XST_SUCCESS;
+        }
+    }
+
+    return XST_FAILURE;
+}
+
+
+int main(void)
+{
+    u8 c;
+    u8 r;
+
+    if (init_uart(&uart_pc, XPAR_XUARTPS_0_DEVICE_ID) != XST_SUCCESS)
+        return XST_FAILURE;
+
+    if (init_uart(&uart_riscv, XPAR_XUARTPS_1_DEVICE_ID) != XST_SUCCESS)
+        return XST_FAILURE;
+
+    xil_printf("\r\nA53 <-> RISC-V UART echo test\r\n");
+    xil_printf("Escribe una letra. El RISC-V debe devolverla.\r\n\r\n");
+
+    while (1) {
+      /*  if (XUartPs_IsReceiveData(uart_pc.Config.BaseAddress)) {
+            c = XUartPs_ReadReg(uart_pc.Config.BaseAddress,
+                                XUARTPS_FIFO_OFFSET);
+
+            send_byte(&uart_riscv, c);
+
+            if (recv_byte_timeout(&uart_riscv, &r, 1000000) == XST_SUCCESS) {
+                send_byte(&uart_pc, r);
+            } else {
+                xil_printf("\r\nTIMEOUT RISC-V\r\n");
+            }
+        }*/
+    }
+
+    return XST_SUCCESS;
+}

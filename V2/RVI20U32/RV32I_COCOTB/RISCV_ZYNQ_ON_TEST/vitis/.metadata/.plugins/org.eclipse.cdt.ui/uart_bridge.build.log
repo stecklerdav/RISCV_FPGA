@@ -1,0 +1,32 @@
+21:19:46 **** Build of configuration Debug for project uart_bridge ****
+make all 
+Building file: ../src/main.c
+Invoking: ARM v8 gcc compiler
+aarch64-none-elf-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/vitis/ZYNQ_RISCV_UART/export/ZYNQ_RISCV_UART/sw/ZYNQ_RISCV_UART/domain_psu_cortexa53_0/bspinclude/include -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:47:8: warning: unused variable 'c' [-Wunused-variable]
+   47 |     u8 c;
+      |        ^
+At top level:
+../src/main.c:40:13: warning: 'riscv_putc' defined but not used [-Wunused-function]
+   40 | static void riscv_putc(u8 c)
+      |             ^~~~~~~~~~
+../src/main.c:34:13: warning: 'pc_puts' defined but not used [-Wunused-function]
+   34 | static void pc_puts(const char *s)
+      |             ^~~~~~~
+Finished building: ../src/main.c
+ 
+Building target: uart_bridge.elf
+Invoking: ARM v8 gcc linker
+aarch64-none-elf-gcc -Wl,-T -Wl,../src/lscript.ld -L/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/vitis/ZYNQ_RISCV_UART/export/ZYNQ_RISCV_UART/sw/ZYNQ_RISCV_UART/domain_psu_cortexa53_0/bsplib/lib -o "uart_bridge.elf"  ./src/main.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: uart_bridge.elf
+ 
+Invoking: ARM v8 Print Size
+aarch64-none-elf-size uart_bridge.elf  |tee "uart_bridge.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  31724	   2088	  20876	  54688	   d5a0	uart_bridge.elf
+Finished building: uart_bridge.elf.size
+ 
+
+21:19:47 Build Finished (took 1s.335ms)
+

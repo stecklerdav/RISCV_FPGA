@@ -71,7 +71,7 @@ output wire [31 : 0] dout;
   rom_memory #(
     .ADDR_WIDTH(11),
     .DATA_WIDTH(32),
-    .INIT_FILE("/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/programs/prog_asm.mem")
+    .INIT_FILE("/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog.mem")
   ) inst (
     .clk(clk),
     .en(en),

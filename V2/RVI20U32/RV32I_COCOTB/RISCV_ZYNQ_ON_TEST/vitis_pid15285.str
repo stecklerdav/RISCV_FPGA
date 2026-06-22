@@ -1,0 +1,382 @@
+/*
+
+Xilinx Vitis v2020.1.0 (64-bit) [Major: 2020, Minor: 1]
+SW Build 2902540 on Wed May 27 19:55:13 MDT 2020
+
+Process ID (PID): 15285
+License: Customer
+
+Current time: 	Sat Jun 20 20:11:04 WEST 2026
+Time zone: 	hora estándar de Europa occidental (Europe/Lisbon)
+
+OS: Ubuntu
+OS Version: 5.4.0-231-generic
+OS Architecture: amd64
+Available processors (cores): 12
+
+Display: :1
+Screen size: 1920x1080
+Available screens: 1
+Available disk space: 43 GB
+
+Java version: 	9.0.4 64-bit
+Java home: 	/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/tps/lnx64/jre9.0.4
+Java executable location: 	/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/tps/lnx64/jre9.0.4/bin/java
+Java initial memory (-Xms): 	64 MB
+Java maximum memory (-Xmx):	 4 GB
+
+Java library paths: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o/Ubuntu/18:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o/Ubuntu:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/tps/lnx64/jre9.0.4/lib/:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/tps/lnx64/jre9.0.4/lib//server:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o/Ubuntu/18:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o/Ubuntu:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/lib/lnx64.o:/media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1/bin/../lnx64/tools/dot/lib:/media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/bin/../lnx64/tools/dot/lib:/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib
+
+Java class paths: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/eclipse/lnx64.o//plugins/org.eclipse.equinox.launcher_1.5.0.v20180512-1130.jar
+LD_LIBRARY_PATH: /media/steckler/xilinx_linux/vitis_2020.1/Vitis
+
+User name: 	steckler
+User home directory: /home/steckler
+User working directory: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST
+User country: 	ES
+User language: 	es
+User locale: 	es_ES
+
+RDI_BASEROOT: /media/steckler/xilinx_linux/vitis_2020.1/Vitis
+HDI_APPROOT: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1
+RDI_DATADIR: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/data
+RDI_BINDIR: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1/bin
+
+Vitis preferences directory: /home/steckler/.Xilinx/Vitis/2020.1/
+Vitis workspace directory: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/vitis
+Vitis workspace log file location: /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/vitis/.metadata/.log
+Engine tmp dir: 	
+
+Xilinx Environment Variables
+----------------------------
+XILINX_DSP: 
+XILINX_HLS: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1
+XILINX_PLANAHEAD: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1
+XILINX_SDK: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1
+XILINX_VITIS: /media/steckler/xilinx_linux/vitis_2020.1/Vitis/2020.1
+XILINX_VIVADO: /media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1
+XILINX_VIVADO_HLS: /media/steckler/xilinx_linux/vitis_2020.1/Vivado/2020.1
+_RDI_DONT_SET_XILINX_AS_PATH: True
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+selectTree("Debug", "uart_bridge_system > uart_bridge", "Vitis Serial Terminal", "SDKTerminalView", "Tree");
+selectToolBarButton("Debug", "uart_bridge", "WorkbenchWindow", "ToolItem.DEBUG");
+selectToolBarButton("Design", "uart_bridge", "WorkbenchWindow", "ToolItem.DESIGN");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Update Hardware Specification", "Assistant", "SDXAssistantView", "MenuItem.UPDATE_HARDWARE");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemProjectSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "Settingseditor", "CTabItem.UART_BRIDGE");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Update Hardware Specification", "Assistant", "WorkbenchWindow", "MenuItem.UPDATE_HARDWARE");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectButton("OK", "Update Hardware Specification", "MessageDialog", "Button.OK");
+selectButton("OK", "Update Hardware Specification", "MessageDialog", "Button.OK");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("xparameters.h", "ZYNQ_RISCV_UART/psu_cortexa53_0/standalone_domain/b", "CEditor", "CTabItem.XPARAMETERS_H");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+activateView("xparameters.h", "ZYNQ_RISCV_UART/psu_cortexa53_0/standalone_domain/b", "CEditor", "CTabItem.XPARAMETERS_H");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+activateView("Vitis Log", "SdkLogView", "CTabItem.VITIS_LOG");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("Yes", "Overwrite Boot Mode", "MessageDialogWithToggle", "Button.YES");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Clean", "Assistant", "SDXAssistantView", "MenuItem.CLEAN");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "WorkbenchWindow", "MenuItem.BUILD");
+activateView("Problems", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+selectTreeTable("uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("ZYNQ_RISCV_UART", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectTree("main.c", "uart_bridge_system > uart_bridge > src", "Explorer", "ProjectExplorer", "Tree");
+selectTreeTable("uart_bridge", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+activateView("Problems", "2 errors 4 warnings 17 others", "ProblemsView", "CTabItem.PROBLEMS");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Open Platform Editor", "Assistant", "SDXAssistantView", "MenuItem.OPEN_PLATFORM_EDITOR");
+selectCheckBox("Generate boot components", Boolean.FALSE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("Yes", "Confirm", "MessageDialog", "Button.YES");
+selectCheckBox("Generate boot components", Boolean.TRUE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("Yes", "Confirm", "MessageDialog", "Button.YES");
+selectTree("Board Support Package", "ZYNQ_RISCV_UART > psu_pmu_0 > zynqmp_pmufw", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTab("Drivers", "Drivers", "ScwEditor", "TabItem.DRIVERS");
+selectTree("zynqmp_pmufw", "ZYNQ_RISCV_UART > psu_pmu_0", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTreeTable("ZYNQ_RISCV_UART", "ZYNQ_RISCV_UART > psu_pmu_0", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", "ZYNQ_RISCV_UART > psu_pmu_0", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+activateView("Problems", "0 errors 4 warnings 4 others", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Vitis Log", "SDKLogView", "CTabItem.VITIS_LOG");
+activateView("Guidance", "SDXDrcView", "CTabItem.GUIDANCE");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("Yes", "Overwrite Boot Mode", "MessageDialogWithToggle", "Button.YES");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectButton("Cancel", "Open Declaration", "Button", "CANCEL");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("xparameters.h", "ZYNQ_RISCV_UART/psu_cortexa53_0/standalone_domain/b", "CEditor", "CTabItem.XPARAMETERS_H");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTree("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectMenuItem("Update Hardware Specification", "Explorer", "ProjectExplorer", "MenuItem.UPDATE_HARDWARE");
+selectButton("Browse", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.BROWSE");
+setFileDialog("/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV_COCOTB_wrapper.xsa", "Locate Hardware Specification File", "SDXFileDialog", "Button.OK");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+selectButton("OK", "Update Hardware Specification", "MessageDialog", "Button.OK");
+selectCheckBox("Generate boot components", Boolean.FALSE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("No", "Confirm", "MessageDialog", "Button.NO");
+selectCheckBox("Generate boot components", Boolean.FALSE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("Yes", "Confirm", "MessageDialog", "Button.YES");
+selectCheckBox("Generate boot components", Boolean.TRUE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("Yes", "Confirm", "MessageDialog", "Button.YES");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Clean", "Assistant", "SDXAssistantView", "MenuItem.CLEAN");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Clean", "Assistant", "SDXAssistantView", "MenuItem.CLEAN");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectTreeTable("uart_bridge", "uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+activateView("Problems", "0 errors 4 warnings 4 others", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+activateView("Vitis Log", "SDKLogView", "CTabItem.VITIS_LOG");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+activateView("Problems", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("Yes", "Overwrite Boot Mode", "MessageDialogWithToggle", "Button.YES");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTreeTable("uart_bridge", "uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTree("Debug", "uart_bridge_system > uart_bridge", "Console", "ConsoleView", "Tree");
+selectTreeTable("uart_bridge_system", "uart_bridge_system > uart_bridge", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("Yes", "Overwrite Boot Mode", "MessageDialogWithToggle", "Button.YES");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("Yes", "Overwrite Boot Mode", "MessageDialogWithToggle", "Button.YES");
+activateView("Problems", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+selectTextEditor("main.c", "uart_bridge/src/main.c", EventType.POPUP_TRIGGER_CLICK, "CEditor", "StyledText.MAIN_C");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Clean", "Assistant", "WorkbenchWindow", "MenuItem.CLEAN");
+selectTree("main.c", "uart_bridge_system > uart_bridge > src", EventType.POPUP_TRIGGER_CLICK, "Explorer", "ProjectExplorer", "Tree");
+selectTreeTable("uart_bridge_system", "uart_bridge_system > uart_bridge > src", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Console", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "ZYNQ_RISCV_UART", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("Yes", "Overwrite Boot Mode", "MessageDialogWithToggle", "Button.YES");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("Run Configurations", "uart_bridge_system", "WorkbenchWindow", "MenuItem.RUN_CONFIGURATIONS");
+selectTab("Target Setup", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.TARGET_SETUP");
+selectCheckBox("Program FPGA", Boolean.FALSE, "Run Configurations", "LaunchConfigurationsDialog", "Button.PROGRAM_FPGA");
+selectCheckBox("Initialize using FSBL", Boolean.FALSE, "Run Configurations", "LaunchConfigurationsDialog", "Button.INITIALIZE_USING");
+selectCheckBox("Reset entire system", Boolean.FALSE, "Run Configurations", "LaunchConfigurationsDialog", "Button.RESET_ENTIRE_SYSTEM");
+selectCheckBox("Use FSBL flow for initialization", Boolean.FALSE, "Run Configurations", "LaunchConfigurationsDialog", "Button.USE_FSBL_FLOW_FOR");
+selectButton("Apply", "Run Configurations", "LaunchConfigurationsDialog", "Button.APPLY");
+selectButton("Run", "Run Configurations", "LaunchConfigurationsDialog", "Button.RUN");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Update Hardware Specification", "Assistant", "SDXAssistantView", "MenuItem.UPDATE_HARDWARE");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("xparameters.h", "ZYNQ_RISCV_UART/psu_cortexa53_0/standalone_domain/b", "CEditor", "CTabItem.XPARAMETERS_H");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("xstatus.h", "ZYNQ_RISCV_UART/zynqmp_pmufw/zynqmp_pmufw_bsp/psu_p", "CEditor", "CTabItem.XSTATUS_H");
+activateView("xuartps.h", "ZYNQ_RISCV_UART/zynqmp_pmufw/zynqmp_pmufw_bsp/psu_p", "CEditor", "CTabItem.XUARTPS_H");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectHyperlink("Hardware Specification View processors memory range", "uart_bridge", "SDXSettingsEditor", "Link.HARDWARE_SPECIFICATION");
+selectButton("OK", "Update Hardware Specification", "MessageDialog", "Button.OK");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+activateView("ZYNQ_RISCV_UART", "ZYNQ_RISCV_UART/platform.spr", "ScwEditor", "CTabItem.ZYNQ_RISCV_UART");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectHyperlink("Hardware Specification View processors memory range", "uart_bridge", "SDXSettingsEditor", "Link.HARDWARE_SPECIFICATION");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectHyperlink("ZYNQ_RISCV_UART", "uart_bridge", "SDXSettingsEditor", "Hyperlink.ZYNQ_RISCV_UART");
+selectButton("OK", "Platform Summary", "Button", "OK");
+selectIconButton("Change target platform for the current project", "uart_bridge", "SDXSettingsEditor", "Button.CHANGE_TARGET_PLATFORM");
+selectHyperlink("uart_bridge", "uart_bridge", "SDXSettingsEditor", "Hyperlink.UART_BRIDGE");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+selectTreeTable("domain_psu_cortexa53_0", EventType.DOUBLE_CLICK, "uart_bridge_system", "SystemSettingsEditor", "SystemSettingsEditor");
+selectButton("Navigate to BSP Settings", "uart_bridge", "SDXSettingsEditor", "Button.NAVIGATE_TO_BSP");
+selectTab("Drivers", "Drivers", "ScwEditor", "TabItem.DRIVERS");
+selectTree("psu_pmu_0", "ZYNQ_RISCV_UART", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTree("zynqmp_pmufw", "ZYNQ_RISCV_UART > psu_pmu_0", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTreeTable("uart_bridge", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectTreeTable("ZYNQ_RISCV_UART", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("Run Configurations", "uart_bridge_system", "WorkbenchWindow", "MenuItem.RUN_CONFIGURATIONS");
+selectTab("Target Setup", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.TARGET_SETUP");
+selectCheckBox("Reset APU", Boolean.TRUE, "Run Configurations", "LaunchConfigurationsDialog", "Button.RESET_APU");
+selectButton("Run", "Run Configurations", "LaunchConfigurationsDialog", "Button.RUN");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Update Hardware Specification", "Assistant", "SDXAssistantView", "MenuItem.UPDATE_HARDWARE");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+selectHyperlink("Hardware Specification View processors memory range", "uart_bridge", "SDXSettingsEditor", "Link.HARDWARE_SPECIFICATION");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectButton("OK", "Update Hardware Specification", "MessageDialog", "Button.OK");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+selectHyperlink("ZYNQ_RISCV_UART", "uart_bridge_system", "SystemSettingsEditor", "Hyperlink.ZYNQ_RISCV_UART");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectHyperlink("Hardware Specification View processors memory range", "uart_bridge", "SDXSettingsEditor", "Link.HARDWARE_SPECIFICATION");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectHyperlink("ZYNQ_RISCV_UART", "uart_bridge", "SDXSettingsEditor", "Hyperlink.ZYNQ_RISCV_UART");
+selectHyperlink("uart_bridge", "uart_bridge", "SDXSettingsEditor", "Hyperlink.UART_BRIDGE");
+activateView("ZYNQ_RISCV_UART", "ZYNQ_RISCV_UART/platform.spr", "ScwEditor", "CTabItem.ZYNQ_RISCV_UART");
+activateView("uart_bridge_system", "uart_bridge_system/uart_bridge_system.sprj", "SystemSettingsEditor", "CTabItem.UART_BRIDGE_SYSTEM");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "WorkbenchWindow", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "SDXAssistantView", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectButton("OK", "Assistant", "SDXAssistantView", "Button.OK");
+selectMenuItem("Program Flash", "Assistant", "WorkbenchWindow", "MenuItem.PROGRAM_FLASH");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "WorkbenchWindow", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("ZYNQ_RISCV_UART", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("Run Configurations", "uart_bridge_system", "WorkbenchWindow", "MenuItem.RUN_CONFIGURATIONS");
+selectTab("Target Setup", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.TARGET_SETUP");
+selectCheckBox("Reset RPU", Boolean.TRUE, "Run Configurations", "LaunchConfigurationsDialog", "Button.RESET_RPU");
+selectButton("Run", "Run Configurations", "LaunchConfigurationsDialog", "Button.RUN");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("Run Configurations", "uart_bridge_system", "WorkbenchWindow", "MenuItem.RUN_CONFIGURATIONS");
+selectTab("Target Setup", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.TARGET_SETUP");
+selectCheckBox("Reset RPU", Boolean.FALSE, "Run Configurations", "LaunchConfigurationsDialog", "Button.RESET_RPU");
+selectCheckBox("Reset APU", Boolean.FALSE, "Run Configurations", "LaunchConfigurationsDialog", "Button.RESET_APU");
+selectButton("Apply", "Run Configurations", "LaunchConfigurationsDialog", "Button.APPLY");
+selectButton("Run", "Run Configurations", "LaunchConfigurationsDialog", "Button.RUN");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectButton("OK", "Error Launching Program", "ErrorDialog", "Button.OK");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectTreeTable("uart_bridge", "uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("Run Configurations", "uart_bridge_system", "WorkbenchWindow", "MenuItem.RUN_CONFIGURATIONS");
+selectTab("Target Setup", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.TARGET_SETUP");
+selectCheckBox("Reset APU", Boolean.TRUE, "Run Configurations", "LaunchConfigurationsDialog", "Button.RESET_APU");
+selectTab("Environment", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.ENVIRONMENT");
+selectTab("Target Setup", "Run Configurations", "LaunchConfigurationsDialog", "CTabItem.TARGET_SETUP");
+selectButton("Run", "Run Configurations", "LaunchConfigurationsDialog", "Button.RUN");
+selectTreeTable("uart_bridge", "uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectIconButton("Change target platform for the current project", "uart_bridge_system", "SystemSettingsEditor", "Button.CHANGE_TARGET_PLATFORM");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("xparameters.h", "ZYNQ_RISCV_UART/psu_cortexa53_0/standalone_domain/b", "CEditor", "CTabItem.XPARAMETERS_H");
+closeView("xparameters.h", "ZYNQ_RISCV_UART/psu_cortexa53_0/standalone_domain/bsp/psu_cortexa53_0/include/xparameters.h", "CEditor", "CTabItem.XPARAMETERS_H");
+activateView("xstatus.h", "ZYNQ_RISCV_UART/zynqmp_pmufw/zynqmp_pmufw_bsp/psu_p", "CEditor", "CTabItem.XSTATUS_H");
+closeView("xstatus.h", "ZYNQ_RISCV_UART/zynqmp_pmufw/zynqmp_pmufw_bsp/psu_pmu_0/include/xstatus.h", "CEditor", "CTabItem.XSTATUS_H");
+closeView("xuartps.h", "ZYNQ_RISCV_UART/zynqmp_pmufw/zynqmp_pmufw_bsp/psu_pmu_0/include/xuartps.h", "CEditor", "CTabItem.XUARTPS_H");
+activateView("ZYNQ_RISCV_UART", "ZYNQ_RISCV_UART/platform.spr", "ScwEditor", "CTabItem.ZYNQ_RISCV_UART");
+activateView("main.c", "uart_bridge/src/main.c", "CEditor", "CTabItem.MAIN_C");
+activateView("uart_bridge", "uart_bridge/uart_bridge.prj", "SDXSettingsEditor", "CTabItem.UART_BRIDGE");
+selectTreeTable("Debug", "uart_bridge_system > uart_bridge", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectButton("Navigate to BSP Settings", "uart_bridge", "SDXSettingsEditor", "Button.NAVIGATE_TO_BSP");
+selectTree("psu_pmu_0", "ZYNQ_RISCV_UART", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTree("zynqmp_pmufw", "ZYNQ_RISCV_UART > psu_pmu_0", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTree("Board Support Package", "ZYNQ_RISCV_UART > psu_pmu_0 > zynqmp_pmufw", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTree("zynqmp_pmufw", "ZYNQ_RISCV_UART > psu_pmu_0", "ZYNQ_RISCV_UART", "ScwEditor", "Tree");
+selectTreeTable("uart_bridge_system", "ZYNQ_RISCV_UART > psu_pmu_0", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTab("Drivers", "Drivers", "SDXAssistantView", "TabItem.DRIVERS");
+selectTreeTable("ZYNQ_RISCV_UART", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("uart_bridge_system", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectTreeTable("ZYNQ_RISCV_UART", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+activateView("Problems", "0 items", "ProblemsView", "CTabItem.PROBLEMS");
+activateView("Console", "ConsoleView", "CTabItem.CONSOLE");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Update Hardware Specification", "Assistant", "WorkbenchWindow", "MenuItem.UPDATE_HARDWARE");
+selectButton("OK", "Update Hardware Specification", "ScwSyncHwSpecDialog", "Button.OK");
+selectButton("OK", "Update Hardware Specification", "MessageDialog", "Button.OK");
+selectCheckBox("Generate boot components", Boolean.FALSE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("Yes", "Confirm", "MessageDialog", "Button.YES");
+selectCheckBox("Generate boot components", Boolean.TRUE, "ZYNQ_RISCV_UART", "ScwEditor", "Button.GENERATE_BOOT_COMPONENTS");
+selectButton("Yes", "Confirm", "MessageDialog", "Button.YES");
+selectTreeTable("ZYNQ_RISCV_UART", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Build", "Assistant", "WorkbenchWindow", "MenuItem.BUILD");
+selectTreeTable("uart_bridge_system", EventType.POPUP_TRIGGER_CLICK, "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectMenuItem("Run", "Assistant", "SDXAssistantView", "MenuItem.RUN");
+selectMenuItem("SystemDebugger_uart_bridge_system", "uart_bridge_system", "WorkbenchWindow", "MenuItem.SYSTEMDEBUGGER_UART_BRIDGE_SYSTEM");
+selectTreeTable("ZYNQ_RISCV_UART", "Assistant", "SDXAssistantView", "TreeViewer.AssistantContentProvider");
+selectButton("Exit", "Confirm Exit", "MessageDialogWithToggle", "Button.EXIT");
+// Exiting Xilinx Vitis with a status code '0' at 6/21/26, 1:14:49 AM WEST
+// Elapsed time: 05:03:45
+

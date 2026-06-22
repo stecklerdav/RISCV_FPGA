@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# xlconcat_8, xlslice_2bit, load_use_detection, priority_branch_OR_load_use, gpio, mem_bus_registered, csr_access_unit, csr_file, csr_regfile_wb_mux, csr_use_detection, exception_mux, mem_exception_merge, privileged_pc_redirect_mux, system_decoder, trap_controller, util_vector_and, util_vector_not, ram_data, timer, uart, alu, branch, constant_zero, ex_mem_reg, forward_mux, forward_mux, forward_mux, forwarding, operand_a_mux, operand_b_mux, util_vector_and, util_vector_and, control, decoder, id_ex_reg, imm_mux, regfile, branch_predictor_btb_bht, constant_one, if_id_reg, pc_to_imem_addr, pc_unit, rom_memory, util_vector_and, util_vector_and, util_vector_not, util_vector_not, util_vector_or, util_vector_or, constant_zero, mem_stage, mem_wb_reg, regfile_we_gen, wb_mux
+# uart_ram_converter, uart_tx_mux, util_vector_or, xlconcat_8, xlslice_2bit, load_use_detection, priority_branch_OR_load_use, gpio, mem_bus_registered, csr_access_unit, csr_file, csr_regfile_wb_mux, csr_use_detection, exception_mux, mem_exception_merge, privileged_pc_redirect_mux, system_decoder, trap_controller, util_vector_and, util_vector_not, ram_data, timer, uart, alu, branch, constant_zero, ex_mem_reg, forward_mux, forward_mux, forward_mux, forwarding, operand_a_mux, operand_b_mux, util_vector_and, util_vector_and, control, decoder, id_ex_reg, imm_mux, regfile, branch_predictor_btb_bht, constant_one, if_id_reg, pc_to_imem_addr, pc_unit, rom_memory, util_vector_and, util_vector_and, util_vector_not, util_vector_not, util_vector_or, util_vector_or, constant_zero, mem_stage, mem_wb_reg, regfile_we_gen, wb_mux
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -514,7 +514,10 @@ proc create_hier_cell_RV32I_IF { parentCell nameHier } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
-  
+    set_property -dict [ list \
+   CONFIG.INIT_FILE {/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/rv32i_vscode/prog.mem} \
+ ] $rom_memory_0
+
   # Create instance: util_vector_and_0, and set properties
   set block_name util_vector_and
   set block_cell_name util_vector_and_0
@@ -1216,14 +1219,19 @@ proc create_hier_cell_UART { parentCell nameHier } {
      catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
      return 1
    }
-  
+    set_property -dict [ list \
+   CONFIG.BAUD {921000} \
+   CONFIG.CLK_FREQ {190474289} \
+   CONFIG.FIFO_DEPTH {64} \
+ ] $uart_0
+
   # Create port connections
   connect_bd_net -net MMIO_uart_addr [get_bd_pins addr] [get_bd_pins uart_0/addr]
   connect_bd_net -net MMIO_uart_be [get_bd_pins be] [get_bd_pins uart_0/be]
   connect_bd_net -net MMIO_uart_valid [get_bd_pins valid] [get_bd_pins uart_0/valid]
   connect_bd_net -net MMIO_uart_wdata [get_bd_pins wdata] [get_bd_pins uart_0/wdata]
   connect_bd_net -net MMIO_uart_we [get_bd_pins we] [get_bd_pins uart_0/we]
-  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins rst] [get_bd_pins uart_0/rst]
+  connect_bd_net -net rst_1 [get_bd_pins rst] [get_bd_pins uart_0/rst]
   connect_bd_net -net rx_1 [get_bd_pins rx] [get_bd_pins uart_0/rx]
   connect_bd_net -net uart_0_rdata [get_bd_pins rdata] [get_bd_pins uart_0/rdata]
   connect_bd_net -net uart_0_ready [get_bd_pins ready] [get_bd_pins uart_0/ready]
@@ -1360,6 +1368,13 @@ proc create_hier_cell_RV32I_RAM_MEMORY { parentCell nameHier } {
   create_bd_pin -dir I valid
   create_bd_pin -dir I -from 31 -to 0 wdata
   create_bd_pin -dir I we
+  create_bd_pin -dir I -from 31 -to 0 zynq_addr
+  create_bd_pin -dir I -from 3 -to 0 zynq_be
+  create_bd_pin -dir O -from 31 -to 0 zynq_rdata
+  create_bd_pin -dir O zynq_ready
+  create_bd_pin -dir I zynq_valid
+  create_bd_pin -dir I -from 31 -to 0 zynq_wdata
+  create_bd_pin -dir I zynq_we
 
   # Create instance: ram_data_1, and set properties
   set block_name ram_data
@@ -1379,9 +1394,16 @@ proc create_hier_cell_RV32I_RAM_MEMORY { parentCell nameHier } {
   connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins we] [get_bd_pins ram_data_1/we]
   connect_bd_net -net ram_data_1_rdata [get_bd_pins rdata] [get_bd_pins ram_data_1/rdata]
   connect_bd_net -net ram_data_1_ready [get_bd_pins ready] [get_bd_pins ram_data_1/ready]
+  connect_bd_net -net ram_data_1_zynq_rdata [get_bd_pins zynq_rdata] [get_bd_pins ram_data_1/zynq_rdata]
+  connect_bd_net -net ram_data_1_zynq_ready [get_bd_pins zynq_ready] [get_bd_pins ram_data_1/zynq_ready]
   connect_bd_net -net rst_1 [get_bd_pins rst] [get_bd_pins ram_data_1/rst]
   connect_bd_net -net valid_1 [get_bd_pins valid] [get_bd_pins ram_data_1/valid]
+  connect_bd_net -net zynq_addr_1 [get_bd_pins zynq_addr] [get_bd_pins ram_data_1/zynq_addr]
+  connect_bd_net -net zynq_be_1 [get_bd_pins zynq_be] [get_bd_pins ram_data_1/zynq_be]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk] [get_bd_pins ram_data_1/clk]
+  connect_bd_net -net zynq_valid_1 [get_bd_pins zynq_valid] [get_bd_pins ram_data_1/zynq_valid]
+  connect_bd_net -net zynq_wdata_1 [get_bd_pins zynq_wdata] [get_bd_pins ram_data_1/zynq_wdata]
+  connect_bd_net -net zynq_we_1 [get_bd_pins zynq_we] [get_bd_pins ram_data_1/zynq_we]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2166,7 +2188,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
-  set SW1 [ create_bd_port -dir I -from 0 -to 0 SW1 ]
+  set SW1 [ create_bd_port -dir I SW1 ]
   set gpio_out_0 [ create_bd_port -dir O -from 1 -to 0 gpio_out_0 ]
 
   # Create instance: Core_RV32I
@@ -2193,30 +2215,39 @@ proc create_root_design { parentCell } {
   # Create instance: proc_sys_reset_0, and set properties
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
 
-  # Create instance: util_vector_logic_2, and set properties
-  set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {or} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_orgate.png} \
- ] $util_vector_logic_2
-
-  # Create instance: util_vector_logic_3, and set properties
-  set util_vector_logic_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_3 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {or} \
-   CONFIG.C_SIZE {1} \
-   CONFIG.LOGO_FILE {data/sym_orgate.png} \
- ] $util_vector_logic_3
-
-  # Create instance: vio_0, and set properties
-  set vio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:vio:3.0 vio_0 ]
-  set_property -dict [ list \
-   CONFIG.C_EN_PROBE_IN_ACTIVITY {0} \
-   CONFIG.C_NUM_PROBE_IN {0} \
-   CONFIG.C_NUM_PROBE_OUT {2} \
- ] $vio_0
-
+  # Create instance: uart_ram_converter_0, and set properties
+  set block_name uart_ram_converter
+  set block_cell_name uart_ram_converter_0
+  if { [catch {set uart_ram_converter_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $uart_ram_converter_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: uart_tx_mux_0, and set properties
+  set block_name uart_tx_mux
+  set block_cell_name uart_tx_mux_0
+  if { [catch {set uart_tx_mux_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $uart_tx_mux_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
+  # Create instance: util_vector_or_0, and set properties
+  set block_name util_vector_or
+  set block_cell_name util_vector_or_0
+  if { [catch {set util_vector_or_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $util_vector_or_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+  
   # Create instance: xlconcat_8_0, and set properties
   set block_name xlconcat_8
   set block_cell_name xlconcat_8_0
@@ -3009,10 +3040,10 @@ proc create_root_design { parentCell } {
    CONFIG.PSU__CRL_APB__PL0_REF_CTRL__DIVISOR1 {1} \
    CONFIG.PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ {195} \
    CONFIG.PSU__CRL_APB__PL0_REF_CTRL__SRCSEL {RPLL} \
-   CONFIG.PSU__CRL_APB__PL1_REF_CTRL__ACT_FREQMHZ {148.146667} \
-   CONFIG.PSU__CRL_APB__PL1_REF_CTRL__DIVISOR0 {9} \
+   CONFIG.PSU__CRL_APB__PL1_REF_CTRL__ACT_FREQMHZ {190.474289} \
+   CONFIG.PSU__CRL_APB__PL1_REF_CTRL__DIVISOR0 {7} \
    CONFIG.PSU__CRL_APB__PL1_REF_CTRL__DIVISOR1 {1} \
-   CONFIG.PSU__CRL_APB__PL1_REF_CTRL__FREQMHZ {150} \
+   CONFIG.PSU__CRL_APB__PL1_REF_CTRL__FREQMHZ {195} \
    CONFIG.PSU__CRL_APB__PL1_REF_CTRL__SRCSEL {RPLL} \
    CONFIG.PSU__CRL_APB__PL2_REF_CTRL__ACT_FREQMHZ {100} \
    CONFIG.PSU__CRL_APB__PL2_REF_CTRL__DIVISOR0 {4} \
@@ -3670,7 +3701,7 @@ proc create_root_design { parentCell } {
    CONFIG.PSU__UART0__MODEM__ENABLE {0} \
    CONFIG.PSU__UART0__PERIPHERAL__ENABLE {1} \
    CONFIG.PSU__UART0__PERIPHERAL__IO {MIO 34 .. 35} \
-   CONFIG.PSU__UART1__BAUD_RATE {115200} \
+   CONFIG.PSU__UART1__BAUD_RATE {921600} \
    CONFIG.PSU__UART1__MODEM__ENABLE {0} \
    CONFIG.PSU__UART1__PERIPHERAL__ENABLE {1} \
    CONFIG.PSU__UART1__PERIPHERAL__IO {EMIO} \
@@ -3790,6 +3821,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net Core_RV32I_wb_rd [get_bd_pins Core_RV32I/wb_rd] [get_bd_pins PRIVILEGED/normal_rd]
   connect_bd_net -net MMIO_mem_rsp_error [get_bd_pins Core_RV32I/dmem_error] [get_bd_pins MMIO/mem_rsp_error]
   connect_bd_net -net MMIO_ram_valid [get_bd_pins MMIO/ram_valid] [get_bd_pins RV32I_RAM_MEMORY/valid]
+  connect_bd_net -net Net [get_bd_ports SW1] [get_bd_pins xlconcat_8_0/in0] [get_bd_pins xlconcat_8_0/in1] [get_bd_pins xlconcat_8_0/in2] [get_bd_pins xlconcat_8_0/in3] [get_bd_pins xlconcat_8_0/in4] [get_bd_pins xlconcat_8_0/in5] [get_bd_pins xlconcat_8_0/in6] [get_bd_pins xlconcat_8_0/in7]
   connect_bd_net -net PRIVILEGED_csr_rd_data1 [get_bd_pins Core_RV32I/ex_csr_rd_data] [get_bd_pins PRIVILEGED/csr_rd_data1]
   connect_bd_net -net PRIVILEGED_csr_rd_we [get_bd_pins Core_RV32I/ex_csr_rd_we] [get_bd_pins PRIVILEGED/csr_rd_we]
   connect_bd_net -net PRIVILEGED_id_ex_flush [get_bd_pins Core_RV32I/csr_use_id_ex_flush] [get_bd_pins PRIVILEGED/id_ex_flush]
@@ -3800,8 +3832,9 @@ proc create_root_design { parentCell } {
   connect_bd_net -net RV32I_MEM_dmem_wdata [get_bd_pins Core_RV32I/dmem_wdata] [get_bd_pins MMIO/cpu_wdata]
   connect_bd_net -net RV32I_MEM_dmem_we [get_bd_pins Core_RV32I/dmem_we] [get_bd_pins MMIO/cpu_we]
   connect_bd_net -net RV32I_RAM_MEMORY_rdata [get_bd_pins MMIO/ram_rdata] [get_bd_pins RV32I_RAM_MEMORY/rdata]
-  connect_bd_net -net SW1_1 [get_bd_ports SW1] [get_bd_pins util_vector_logic_3/Op1]
-  connect_bd_net -net UART_tx [get_bd_pins UART/tx] [get_bd_pins zynq_ultra_ps_e_0/emio_uart1_rxd]
+  connect_bd_net -net RV32I_RAM_MEMORY_zynq_rdata [get_bd_pins RV32I_RAM_MEMORY/zynq_rdata] [get_bd_pins uart_ram_converter_0/zynq_rdata]
+  connect_bd_net -net RV32I_RAM_MEMORY_zynq_ready [get_bd_pins RV32I_RAM_MEMORY/zynq_ready] [get_bd_pins uart_ram_converter_0/zynq_ready]
+  connect_bd_net -net UART_tx [get_bd_pins UART/tx] [get_bd_pins uart_tx_mux_0/riscv_uart_tx]
   connect_bd_net -net addr_1 [get_bd_pins MMIO/ram_addr] [get_bd_pins RV32I_RAM_MEMORY/addr]
   connect_bd_net -net addr_2 [get_bd_pins GPIO/addr] [get_bd_pins MMIO/gpio_addr]
   connect_bd_net -net addr_3 [get_bd_pins MMIO/uart_addr] [get_bd_pins UART/addr]
@@ -3820,29 +3853,34 @@ proc create_root_design { parentCell } {
   connect_bd_net -net gpio_0_gpio_out [get_bd_pins GPIO/gpio_out] [get_bd_pins xlslice_2bit_0/Din]
   connect_bd_net -net gpio_0_rdata [get_bd_pins GPIO/rdata] [get_bd_pins MMIO/gpio_rdata]
   connect_bd_net -net gpio_0_ready [get_bd_pins GPIO/ready] [get_bd_pins MMIO/gpio_ready]
-  connect_bd_net -net hier_0_Res1 [get_bd_pins util_vector_logic_3/Res] [get_bd_pins xlconcat_8_0/in0] [get_bd_pins xlconcat_8_0/in1] [get_bd_pins xlconcat_8_0/in2] [get_bd_pins xlconcat_8_0/in3] [get_bd_pins xlconcat_8_0/in4] [get_bd_pins xlconcat_8_0/in5] [get_bd_pins xlconcat_8_0/in6] [get_bd_pins xlconcat_8_0/in7]
-  connect_bd_net -net hier_0_emio_uart1_txd [get_bd_pins UART/rx] [get_bd_pins zynq_ultra_ps_e_0/emio_uart1_txd]
+  connect_bd_net -net hier_0_emio_uart1_txd [get_bd_pins UART/rx] [get_bd_pins uart_ram_converter_0/uart_rx] [get_bd_pins zynq_ultra_ps_e_0/emio_uart1_txd]
   connect_bd_net -net if_id_rs1_used_1 [get_bd_pins Core_RV32I/rs1_used] [get_bd_pins PRIVILEGED/if_id_rs1_used]
   connect_bd_net -net if_id_rs2_1 [get_bd_pins Core_RV32I/rs2] [get_bd_pins PRIVILEGED/if_id_rs2]
   connect_bd_net -net mem_data_1 [get_bd_pins Core_RV32I/mem_data] [get_bd_pins MMIO/mem_rsp_rdata]
   connect_bd_net -net mem_req_valid_1 [get_bd_pins Core_RV32I/dmem_valid] [get_bd_pins MMIO/mem_req_valid]
   connect_bd_net -net privileged_pc_redire_0_priv_redirect_target [get_bd_pins Core_RV32I/priv_redirect_target] [get_bd_pins PRIVILEGED/priv_redirect_target]
   connect_bd_net -net privileged_pc_redire_0_priv_redirect_valid [get_bd_pins Core_RV32I/priv_redirect_valid] [get_bd_pins PRIVILEGED/priv_redirect_valid]
-  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins Core_RV32I/rst] [get_bd_pins GPIO/rst] [get_bd_pins MMIO/rst] [get_bd_pins PRIVILEGED/rst] [get_bd_pins RV32I_RAM_MEMORY/rst] [get_bd_pins TIMER/rst] [get_bd_pins UART/rst] [get_bd_pins util_vector_logic_2/Res]
-  connect_bd_net -net proc_sys_reset_0_peripheral_reset2 [get_bd_pins proc_sys_reset_0/peripheral_reset] [get_bd_pins util_vector_logic_2/Op1]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset [get_bd_pins Core_RV32I/rst] [get_bd_pins GPIO/rst] [get_bd_pins MMIO/rst] [get_bd_pins PRIVILEGED/rst] [get_bd_pins TIMER/rst] [get_bd_pins UART/rst] [get_bd_pins uart_tx_mux_0/loader_cpu_reset] [get_bd_pins util_vector_or_0/Res]
+  connect_bd_net -net proc_sys_reset_0_peripheral_reset2 [get_bd_pins RV32I_RAM_MEMORY/rst] [get_bd_pins proc_sys_reset_0/peripheral_reset] [get_bd_pins uart_ram_converter_0/rst] [get_bd_pins util_vector_or_0/Op2]
   connect_bd_net -net ram_ready_1 [get_bd_pins MMIO/ram_ready] [get_bd_pins RV32I_RAM_MEMORY/ready]
   connect_bd_net -net timer_0_rdata [get_bd_pins MMIO/timer_rdata] [get_bd_pins TIMER/rdata]
   connect_bd_net -net timer_0_ready [get_bd_pins MMIO/timer_ready] [get_bd_pins TIMER/ready]
   connect_bd_net -net timer_error_1 [get_bd_pins MMIO/timer_error] [get_bd_pins TIMER/error]
   connect_bd_net -net timer_irq_1 [get_bd_pins PRIVILEGED/timer_irq] [get_bd_pins TIMER/timer_irq]
   connect_bd_net -net trap_controller_0_trap_flush [get_bd_pins Core_RV32I/trap_flush] [get_bd_pins PRIVILEGED/trap_flush]
+  connect_bd_net -net uart_ram_converter_0_cpu_reset_out [get_bd_pins uart_ram_converter_0/cpu_reset_out] [get_bd_pins util_vector_or_0/Op1]
+  connect_bd_net -net uart_ram_converter_0_uart_tx [get_bd_pins uart_ram_converter_0/uart_tx] [get_bd_pins uart_tx_mux_0/loader_uart_tx]
+  connect_bd_net -net uart_ram_converter_0_zynq_addr [get_bd_pins RV32I_RAM_MEMORY/zynq_addr] [get_bd_pins uart_ram_converter_0/zynq_addr]
+  connect_bd_net -net uart_ram_converter_0_zynq_be [get_bd_pins RV32I_RAM_MEMORY/zynq_be] [get_bd_pins uart_ram_converter_0/zynq_be]
+  connect_bd_net -net uart_ram_converter_0_zynq_valid [get_bd_pins RV32I_RAM_MEMORY/zynq_valid] [get_bd_pins uart_ram_converter_0/zynq_valid]
+  connect_bd_net -net uart_ram_converter_0_zynq_wdata [get_bd_pins RV32I_RAM_MEMORY/zynq_wdata] [get_bd_pins uart_ram_converter_0/zynq_wdata]
+  connect_bd_net -net uart_ram_converter_0_zynq_we [get_bd_pins RV32I_RAM_MEMORY/zynq_we] [get_bd_pins uart_ram_converter_0/zynq_we]
   connect_bd_net -net uart_tx_0_rdata [get_bd_pins MMIO/uart_rdata] [get_bd_pins UART/rdata]
   connect_bd_net -net uart_tx_0_ready [get_bd_pins MMIO/uart_ready] [get_bd_pins UART/ready]
+  connect_bd_net -net uart_tx_mux_0_uart_tx_to_zynq [get_bd_pins uart_tx_mux_0/uart_tx_to_zynq] [get_bd_pins zynq_ultra_ps_e_0/emio_uart1_rxd]
   connect_bd_net -net valid_1 [get_bd_pins GPIO/valid] [get_bd_pins MMIO/gpio_valid]
   connect_bd_net -net valid_2 [get_bd_pins MMIO/uart_valid] [get_bd_pins UART/valid]
   connect_bd_net -net valid_3 [get_bd_pins MMIO/timer_valid] [get_bd_pins TIMER/valid]
-  connect_bd_net -net vio_0_probe_out0 [get_bd_pins util_vector_logic_2/Op2] [get_bd_pins vio_0/probe_out0]
-  connect_bd_net -net vio_0_probe_out1 [get_bd_pins util_vector_logic_3/Op2] [get_bd_pins vio_0/probe_out1]
   connect_bd_net -net wdata_1 [get_bd_pins MMIO/ram_wdata] [get_bd_pins RV32I_RAM_MEMORY/wdata]
   connect_bd_net -net wdata_2 [get_bd_pins GPIO/wdata] [get_bd_pins MMIO/gpio_wdata]
   connect_bd_net -net wdata_3 [get_bd_pins MMIO/uart_wdata] [get_bd_pins UART/wdata]
@@ -3854,7 +3892,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net xlconcat_8_0_dout [get_bd_pins GPIO/gpio_in] [get_bd_pins xlconcat_8_0/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins proc_sys_reset_0/dcm_locked] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlslice_2bit_0_Dout [get_bd_ports gpio_out_0] [get_bd_pins xlslice_2bit_0/Dout]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins Core_RV32I/clk] [get_bd_pins GPIO/clk] [get_bd_pins MMIO/clk] [get_bd_pins PRIVILEGED/clk] [get_bd_pins RV32I_RAM_MEMORY/clk] [get_bd_pins TIMER/clk] [get_bd_pins UART/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins vio_0/clk] [get_bd_pins zynq_ultra_ps_e_0/maxihpm0_fpd_aclk] [get_bd_pins zynq_ultra_ps_e_0/pl_clk0]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins Core_RV32I/clk] [get_bd_pins GPIO/clk] [get_bd_pins MMIO/clk] [get_bd_pins PRIVILEGED/clk] [get_bd_pins RV32I_RAM_MEMORY/clk] [get_bd_pins TIMER/clk] [get_bd_pins UART/clk] [get_bd_pins proc_sys_reset_0/slowest_sync_clk] [get_bd_pins uart_ram_converter_0/clk] [get_bd_pins zynq_ultra_ps_e_0/maxihpm0_fpd_aclk] [get_bd_pins zynq_ultra_ps_e_0/pl_clk0]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins proc_sys_reset_0/ext_reset_in] [get_bd_pins zynq_ultra_ps_e_0/pl_resetn0]
 
   # Create address segments

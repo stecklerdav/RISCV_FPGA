@@ -93,8 +93,9 @@ output wire rx_busy;
 output wire rx_ready;
 
   uart #(
-    .CLK_FREQ(100000000),
-    .BAUD(115200)
+    .CLK_FREQ(190474289),
+    .BAUD(921000),
+    .FIFO_DEPTH(64)
   ) inst (
     .clk(clk),
     .rst(rst),

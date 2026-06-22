@@ -912,7 +912,7 @@ set psu_clock_init_data {
 		# PSU_CRL_APB_PL1_REF_CTRL_DIVISOR1                                               0x1
 
 		# 6 bit divider
-		# PSU_CRL_APB_PL1_REF_CTRL_DIVISOR0                                               0x9
+		# PSU_CRL_APB_PL1_REF_CTRL_DIVISOR0                                               0x7
 
 		# 000 = IOPLL; 010 = RPLL; 011 = DPLL; (This signal may only be toggled af
     # ter 4 cycles of the old clock and 4 cycles of the new clock. This is not
@@ -920,8 +920,8 @@ set psu_clock_init_data {
 		# PSU_CRL_APB_PL1_REF_CTRL_SRCSEL                                                 0x2
 
 		# This register controls this reference clock
-		#(OFFSET, MASK, VALUE)      (0XFF5E00C4, 0x013F3F07U ,0x01010902U)  */
-    mask_write 0XFF5E00C4 0x013F3F07 0x01010902
+		#(OFFSET, MASK, VALUE)      (0XFF5E00C4, 0x013F3F07U ,0x01010702U)  */
+    mask_write 0XFF5E00C4 0x013F3F07 0x01010702
 		# Register : AMS_REF_CTRL @ 0XFF5E0108</p>
 
 		# 6 bit divider
@@ -14375,20 +14375,20 @@ set psu_peripherals_init_data {
 		# Register : Baud_rate_divider_reg0 @ 0XFF010034</p>
 
 		# Baud rate divider value: 0 - 3: ignored 4 - 255: Baud rate
-		# PSU_UART1_BAUD_RATE_DIVIDER_REG0_BDIV                                           0x6
+		# PSU_UART1_BAUD_RATE_DIVIDER_REG0_BDIV                                           0x5
 
 		# Baud Rate Divider Register
-		#(OFFSET, MASK, VALUE)      (0XFF010034, 0x000000FFU ,0x00000006U)  */
-    mask_write 0XFF010034 0x000000FF 0x00000006
+		#(OFFSET, MASK, VALUE)      (0XFF010034, 0x000000FFU ,0x00000005U)  */
+    mask_write 0XFF010034 0x000000FF 0x00000005
 		# Register : Baud_rate_gen_reg0 @ 0XFF010018</p>
 
 		# Baud Rate Clock Divisor Value: 0: Disables baud_sample 1: Clock divisor
     # bypass (baud_sample = sel_clk) 2 - 65535: baud_sample
-		# PSU_UART1_BAUD_RATE_GEN_REG0_CD                                                 0x7c
+		# PSU_UART1_BAUD_RATE_GEN_REG0_CD                                                 0x12
 
 		# Baud Rate Generator Register.
-		#(OFFSET, MASK, VALUE)      (0XFF010018, 0x0000FFFFU ,0x0000007CU)  */
-    mask_write 0XFF010018 0x0000FFFF 0x0000007C
+		#(OFFSET, MASK, VALUE)      (0XFF010018, 0x0000FFFFU ,0x00000012U)  */
+    mask_write 0XFF010018 0x0000FFFF 0x00000012
 		# Register : Control_reg0 @ 0XFF010000</p>
 
 		# Stop transmitter break: 0: no affect 1: stop transmission of the break a

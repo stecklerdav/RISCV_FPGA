@@ -70,11 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "RISCV_COCOTB_synth_1" START { ROLLUP_AUTO }
-set_param power.enableLutRouteBelPower 1
-set_param power.enableCarry8RouteBelPower 1
-set_param power.enableUnconnectedCarry8PinPower 1
+set_param xicom.use_bs_reader 1
 set_param chipscope.maxJobs 3
-set_param power.BramSDPPropagationFix 1
 set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true
 OPTRACE "Creating in-memory project" START { }
@@ -138,6 +135,8 @@ read_verilog -library xil_defaultlib {
   /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/xlconcat_8.v
   /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/xlslice_2bit.v
   /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/rtl/core/csr_use_detection.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/new/uart_ram_converter.v
+  /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/new/uart_tx_mux.v
 }
 add_files /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB.bd
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_zynq_ultra_ps_e_0_0/RISCV_COCOTB_zynq_ultra_ps_e_0_0_ooc.xdc]
@@ -145,8 +144,6 @@ set_property used_in_implementation false [get_files -all /media/steckler/xilinx
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_board.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0_ooc.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xdc]
-set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0_ooc.xdc]
 set_property used_in_implementation false [get_files -all /media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/RISCV_ZYNQ_ON_TEST/RISCV.srcs/sources_1/bd/RISCV_COCOTB/RISCV_COCOTB_ooc.xdc]
 
 OPTRACE "Adding files" END { }

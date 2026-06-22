@@ -2,35 +2,35 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="RISCV_COCOTB" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1781658985"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1781658985"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1781658985"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1781658985"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1782082818"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1782082818"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1782082818"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1782082818"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="RISCV_COCOTB_sim_netlist.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1781659257" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
         <UsedIn Val="SINGLE_LANGUAGE"/>
       </File>
       <File Name="RISCV_COCOTB_sim_netlist.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1781659256" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
         <UsedIn Val="SINGLE_LANGUAGE"/>
       </File>
       <File Name="RISCV_COCOTB_stub.vhdl" Type="VHDL">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1781659256" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
       </File>
       <File Name="RISCV_COCOTB_stub.v" Type="Verilog">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1781659256" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTH_BLACKBOX_STUB"/>
       </File>
       <File Name="RISCV_COCOTB.dcp" Type="DCP">
-        <Properties IsEditable="true" IsVisible="true" Timestamp="1781659255" IsTrackable="true" IsStatusTracked="false"/>
+        <Properties IsEditable="true" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -483,22 +483,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/RISCV_COCOTB_util_vector_logic_2_0/RISCV_COCOTB_util_vector_logic_2_0.xci" Type="IP">
-        <Instance HierarchyPath="util_vector_logic_2"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip/RISCV_COCOTB_util_vector_logic_3_0/RISCV_COCOTB_util_vector_logic_3_0.xci" Type="IP">
-        <Instance HierarchyPath="util_vector_logic_3"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip/RISCV_COCOTB_proc_sys_reset_0_0/RISCV_COCOTB_proc_sys_reset_0_0.xci" Type="IP">
         <Instance HierarchyPath="proc_sys_reset_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -507,8 +491,24 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip/RISCV_COCOTB_vio_0_0/RISCV_COCOTB_vio_0_0.xci" Type="IP">
-        <Instance HierarchyPath="vio_0"/>
+      <File Name="ip/RISCV_COCOTB_uart_ram_converter_0_0/RISCV_COCOTB_uart_ram_converter_0_0.xci" Type="IP">
+        <Instance HierarchyPath="uart_ram_converter_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/RISCV_COCOTB_util_vector_or_0_4/RISCV_COCOTB_util_vector_or_0_4.xci" Type="IP">
+        <Instance HierarchyPath="util_vector_or_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip/RISCV_COCOTB_uart_tx_mux_0_0/RISCV_COCOTB_uart_tx_mux_0_0.xci" Type="IP">
+        <Instance HierarchyPath="uart_tx_mux_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
