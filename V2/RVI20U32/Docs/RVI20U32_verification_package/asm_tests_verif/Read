@@ -1,8 +1,0 @@
-
-
-                                 simulacion
-VS Code
-Copiar    -> TC en asm en prog_user.S 
-Ensamblar -> make -B asm
-cargar    -> prog_asm.coe -> BRAM
-Run Simulation

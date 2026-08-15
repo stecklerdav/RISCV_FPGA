@@ -1,8 +1,0 @@
-<testsuites name="results">
-  <testsuite name="all" package="all">
-    <property name="random_seed" value="1781911266" />
-    <testcase classname="regression" file="/media/steckler/xilinx_linux/RISCV_ZYNQ/V2/RVI20U32/RV32I_COCOTB/COCOTB/regression.py" lineno="468" name="regression" ratio_time="1208.0052588355964" sim_time_ns="1420.0" time="1.1754915714263916">
-      <failure error_msg="FAIL oficial RISC-V: tohost=0x00000005, addr=0x80001000" error_type="AssertionError" />
-    </testcase>
-  </testsuite>
-</testsuites>

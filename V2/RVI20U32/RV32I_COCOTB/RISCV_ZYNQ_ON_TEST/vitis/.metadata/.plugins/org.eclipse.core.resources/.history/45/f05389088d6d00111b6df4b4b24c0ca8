@@ -1,7 +1,0 @@
-#include "xil_printf.h"
-
-int main(void)
-{
-    xil_printf("\r\nA53 TEST OK\r\n");
-    while (1);
-}

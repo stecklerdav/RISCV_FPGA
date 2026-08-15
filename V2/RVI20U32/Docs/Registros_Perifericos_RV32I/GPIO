@@ -1,9 +1,0 @@
-
-GPIO_BASE = 0x0000_3000
-
-| Registro   | Offset | Dirección absoluta | R/W | Descripción                                   |
-| ---------- | -----: | -----------------: | --- | --------------------------------------------- |
-| `GPIO_OUT` | `0x00` |      `0x0000_3000` | R/W | Salida GPIO `[7:0]`                           |
-| `GPIO_IN`  | `0x04` |      `0x0000_3004` | R   | Entrada GPIO `[7:0]`                          |
-| `GPIO_DIR` | `0x08` |      `0x0000_3008` | R/W | Dirección GPIO `[7:0]`, `1=output`, `0=input` |
-
